@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		18EED2A418157CD8000856CE /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18EED2A318157CD8000856CE /* MainStoryboard.storyboard */; };
+		18EED2A718157D13000856CE /* WXYTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18EED2A618157D13000856CE /* WXYTestViewController.m */; };
 		515B0BEC18082A9B0092BADB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 515B0BEB18082A9B0092BADB /* Foundation.framework */; };
 		515B0BEE18082A9B0092BADB /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 515B0BED18082A9B0092BADB /* CoreGraphics.framework */; };
 		515B0BF018082A9B0092BADB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 515B0BEF18082A9B0092BADB /* UIKit.framework */; };
@@ -33,6 +35,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		18EED2A318157CD8000856CE /* MainStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainStoryboard.storyboard; sourceTree = "<group>"; };
+		18EED2A518157D13000856CE /* WXYTestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXYTestViewController.h; sourceTree = "<group>"; };
+		18EED2A618157D13000856CE /* WXYTestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXYTestViewController.m; sourceTree = "<group>"; };
 		515B0BE818082A9B0092BADB /* vbo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = vbo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		515B0BEB18082A9B0092BADB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		515B0BED18082A9B0092BADB /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -116,6 +121,9 @@
 				515B0C0118082A9B0092BADB /* ViewController.m */,
 				515B0C0318082A9B0092BADB /* Images.xcassets */,
 				515B0BF218082A9B0092BADB /* Supporting Files */,
+				18EED2A318157CD8000856CE /* MainStoryboard.storyboard */,
+				18EED2A518157D13000856CE /* WXYTestViewController.h */,
+				18EED2A618157D13000856CE /* WXYTestViewController.m */,
 			);
 			path = vbo;
 			sourceTree = "<group>";
@@ -225,6 +233,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18EED2A418157CD8000856CE /* MainStoryboard.storyboard in Resources */,
 				515B0C0418082A9B0092BADB /* Images.xcassets in Resources */,
 				515B0BF618082A9B0092BADB /* InfoPlist.strings in Resources */,
 			);
@@ -246,6 +255,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				515B0C0218082A9B0092BADB /* ViewController.m in Sources */,
+				18EED2A718157D13000856CE /* WXYTestViewController.m in Sources */,
 				515B0BFC18082A9B0092BADB /* AppDelegate.m in Sources */,
 				515B0BF818082A9B0092BADB /* main.m in Sources */,
 			);
