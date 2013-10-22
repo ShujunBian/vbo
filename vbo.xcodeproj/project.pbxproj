@@ -80,6 +80,7 @@
 		18399D2A1815FE14000C8971 /* WeiboSDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = WeiboSDK.bundle; sourceTree = "<group>"; };
 		18399D2B1815FE14000C8971 /* WeiboSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeiboSDK.h; sourceTree = "<group>"; };
 		18AD18C2181608D90097E830 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
+		18AD18C618160DD10097E830 /* DDLogLevelGlobal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DDLogLevelGlobal.h; sourceTree = "<group>"; };
 		18EED2F31815853E000856CE /* DDAbstractDatabaseLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDAbstractDatabaseLogger.h; sourceTree = "<group>"; };
 		18EED2F41815853E000856CE /* DDAbstractDatabaseLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDAbstractDatabaseLogger.m; sourceTree = "<group>"; };
 		18EED2F51815853E000856CE /* DDASLLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDASLLogger.h; sourceTree = "<group>"; };
@@ -163,6 +164,14 @@
 				18399D2B1815FE14000C8971 /* WeiboSDK.h */,
 			);
 			path = libWeiboSDK;
+			sourceTree = "<group>";
+		};
+		18AD18C518160DB50097E830 /* other */ = {
+			isa = PBXGroup;
+			children = (
+				18AD18C618160DD10097E830 /* DDLogLevelGlobal.h */,
+			);
+			path = other;
 			sourceTree = "<group>";
 		};
 		18EED2EF1815853E000856CE /* controller */ = {
@@ -302,6 +311,7 @@
 		515B0BF118082A9B0092BADB /* vbo */ = {
 			isa = PBXGroup;
 			children = (
+				18AD18C518160DB50097E830 /* other */,
 				18EED2EF1815853E000856CE /* controller */,
 				18EED2F01815853E000856CE /* model */,
 				18EED3201815853E000856CE /* view */,

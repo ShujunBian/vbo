@@ -8,11 +8,14 @@
 
 #import "AppDelegate.h"
 #import "DDLog.h"
+#import "DDASLLogger.h"
+#import "DDTTYLogger.h"
+#import "DDLogLevelGlobal.h"
+#import "WeiboSDK.h"
 
 
 #define WEIBO_APP_KEY @"1965726745"
-#define WEIBo_APP_SECRET @"55377ca138fa49b63b7767778ca1fb5a"
-
+#define WEIBO_APP_SECRET @"55377ca138fa49b63b7767778ca1fb5a"
 
 
 
@@ -20,17 +23,16 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    //WeiboSDK 初始化
+    [WeiboSDK registerApp:WEIBO_APP_KEY];
+    [WeiboSDK enableDebugMode:YES];
     
+    //DDLog 初始化
+    [DDLog addLogger:[DDASLLogger sharedInstance]];
+    [DDLog addLogger:[DDTTYLogger sharedInstance]];
+
+    //DDLogVerbose(@"DDLog Test");
     
-    
-    /*
-    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    UIViewController* rootVC = [[UIViewController alloc] init];
-    [self.window addSubview:rootVC.view];
-    rootVC.view.backgroundColor = [UIColor whiteColor];
-    self.window.rootViewController = rootVC;
-    [self.window makeKeyAndVisible];
-    */
     
     // Override point for customization after application launch.
     
