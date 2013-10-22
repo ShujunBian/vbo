@@ -7,11 +7,22 @@
 //
 
 #import "AppDelegate.h"
+#import "DDLog.h"
+
+
+#define WEIBO_APP_KEY @"1965726745"
+#define WEIBo_APP_SECRET @"55377ca138fa49b63b7767778ca1fb5a"
+
+
+
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    
+    
+    
     /*
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     UIViewController* rootVC = [[UIViewController alloc] init];

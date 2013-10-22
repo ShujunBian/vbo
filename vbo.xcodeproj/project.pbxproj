@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		18399D2C1815FE14000C8971 /* libWeiboSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 18399D291815FE14000C8971 /* libWeiboSDK.a */; };
+		18399D2D1815FE14000C8971 /* WeiboSDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 18399D2A1815FE14000C8971 /* WeiboSDK.bundle */; };
+		18AD18C3181608D90097E830 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18AD18C2181608D90097E830 /* ImageIO.framework */; };
 		18EED3211815853E000856CE /* DDAbstractDatabaseLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 18EED2F41815853E000856CE /* DDAbstractDatabaseLogger.m */; };
 		18EED3221815853E000856CE /* DDAbstractDatabaseLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 18EED2F41815853E000856CE /* DDAbstractDatabaseLogger.m */; };
 		18EED3231815853E000856CE /* DDASLLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 18EED2F61815853E000856CE /* DDASLLogger.m */; };
@@ -23,24 +26,6 @@
 		18EED32E1815853E000856CE /* DispatchQueueLogFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 18EED3011815853E000856CE /* DispatchQueueLogFormatter.m */; };
 		18EED32F1815853E000856CE /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = 18EED3021815853E000856CE /* README.txt */; };
 		18EED3301815853E000856CE /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = 18EED3021815853E000856CE /* README.txt */; };
-		18EED3311815853E000856CE /* NSData+MKBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = 18EED3071815853E000856CE /* NSData+MKBase64.m */; };
-		18EED3321815853E000856CE /* NSData+MKBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = 18EED3071815853E000856CE /* NSData+MKBase64.m */; };
-		18EED3331815853E000856CE /* NSDate+RFC1123.m in Sources */ = {isa = PBXBuildFile; fileRef = 18EED3091815853E000856CE /* NSDate+RFC1123.m */; };
-		18EED3341815853E000856CE /* NSDate+RFC1123.m in Sources */ = {isa = PBXBuildFile; fileRef = 18EED3091815853E000856CE /* NSDate+RFC1123.m */; };
-		18EED3351815853E000856CE /* NSDictionary+RequestEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 18EED30B1815853E000856CE /* NSDictionary+RequestEncoding.m */; };
-		18EED3361815853E000856CE /* NSDictionary+RequestEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 18EED30B1815853E000856CE /* NSDictionary+RequestEncoding.m */; };
-		18EED3371815853E000856CE /* NSString+MKNetworkKitAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 18EED30D1815853E000856CE /* NSString+MKNetworkKitAdditions.m */; };
-		18EED3381815853E000856CE /* NSString+MKNetworkKitAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 18EED30D1815853E000856CE /* NSString+MKNetworkKitAdditions.m */; };
-		18EED3391815853E000856CE /* UIAlertView+MKNetworkKitAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 18EED30F1815853E000856CE /* UIAlertView+MKNetworkKitAdditions.m */; };
-		18EED33A1815853E000856CE /* UIAlertView+MKNetworkKitAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 18EED30F1815853E000856CE /* UIAlertView+MKNetworkKitAdditions.m */; };
-		18EED33B1815853E000856CE /* UIImageView+MKNetworkKitAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 18EED3111815853E000856CE /* UIImageView+MKNetworkKitAdditions.m */; };
-		18EED33C1815853E000856CE /* UIImageView+MKNetworkKitAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 18EED3111815853E000856CE /* UIImageView+MKNetworkKitAdditions.m */; };
-		18EED33D1815853E000856CE /* MKNetworkEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 18EED3131815853E000856CE /* MKNetworkEngine.m */; };
-		18EED33E1815853E000856CE /* MKNetworkEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 18EED3131815853E000856CE /* MKNetworkEngine.m */; };
-		18EED33F1815853E000856CE /* MKNetworkOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 18EED3161815853E000856CE /* MKNetworkOperation.m */; };
-		18EED3401815853E000856CE /* MKNetworkOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 18EED3161815853E000856CE /* MKNetworkOperation.m */; };
-		18EED3411815853E000856CE /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 18EED3191815853E000856CE /* Reachability.m */; };
-		18EED3421815853E000856CE /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 18EED3191815853E000856CE /* Reachability.m */; };
 		18EED34618158587000856CE /* libMKNetworkKit-iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 18EED3451815853E000856CE /* libMKNetworkKit-iOS.a */; };
 		18EED34818158590000856CE /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18EED34718158590000856CE /* Security.framework */; };
 		18EED34A1815859A000856CE /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18EED3491815859A000856CE /* SystemConfiguration.framework */; };
@@ -67,6 +52,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		18AD18C01816073A0097E830 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 18EED31D1815853E000856CE /* MKNetworkKit-iOS.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = ABB5C25B148B3AE00056D3E9;
+			remoteInfo = "MKNetworkKit-iOS";
+		};
 		18EED3441815853E000856CE /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 18EED31D1815853E000856CE /* MKNetworkKit-iOS.xcodeproj */;
@@ -84,6 +76,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		18399D291815FE14000C8971 /* libWeiboSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeiboSDK.a; sourceTree = "<group>"; };
+		18399D2A1815FE14000C8971 /* WeiboSDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = WeiboSDK.bundle; sourceTree = "<group>"; };
+		18399D2B1815FE14000C8971 /* WeiboSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeiboSDK.h; sourceTree = "<group>"; };
+		18AD18C2181608D90097E830 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		18EED2F31815853E000856CE /* DDAbstractDatabaseLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDAbstractDatabaseLogger.h; sourceTree = "<group>"; };
 		18EED2F41815853E000856CE /* DDAbstractDatabaseLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDAbstractDatabaseLogger.m; sourceTree = "<group>"; };
 		18EED2F51815853E000856CE /* DDASLLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDASLLogger.h; sourceTree = "<group>"; };
@@ -99,25 +95,6 @@
 		18EED3001815853E000856CE /* DispatchQueueLogFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DispatchQueueLogFormatter.h; sourceTree = "<group>"; };
 		18EED3011815853E000856CE /* DispatchQueueLogFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DispatchQueueLogFormatter.m; sourceTree = "<group>"; };
 		18EED3021815853E000856CE /* README.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
-		18EED3061815853E000856CE /* NSData+MKBase64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+MKBase64.h"; sourceTree = "<group>"; };
-		18EED3071815853E000856CE /* NSData+MKBase64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+MKBase64.m"; sourceTree = "<group>"; };
-		18EED3081815853E000856CE /* NSDate+RFC1123.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+RFC1123.h"; sourceTree = "<group>"; };
-		18EED3091815853E000856CE /* NSDate+RFC1123.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+RFC1123.m"; sourceTree = "<group>"; };
-		18EED30A1815853E000856CE /* NSDictionary+RequestEncoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+RequestEncoding.h"; sourceTree = "<group>"; };
-		18EED30B1815853E000856CE /* NSDictionary+RequestEncoding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+RequestEncoding.m"; sourceTree = "<group>"; };
-		18EED30C1815853E000856CE /* NSString+MKNetworkKitAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+MKNetworkKitAdditions.h"; sourceTree = "<group>"; };
-		18EED30D1815853E000856CE /* NSString+MKNetworkKitAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+MKNetworkKitAdditions.m"; sourceTree = "<group>"; };
-		18EED30E1815853E000856CE /* UIAlertView+MKNetworkKitAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAlertView+MKNetworkKitAdditions.h"; sourceTree = "<group>"; };
-		18EED30F1815853E000856CE /* UIAlertView+MKNetworkKitAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertView+MKNetworkKitAdditions.m"; sourceTree = "<group>"; };
-		18EED3101815853E000856CE /* UIImageView+MKNetworkKitAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+MKNetworkKitAdditions.h"; sourceTree = "<group>"; };
-		18EED3111815853E000856CE /* UIImageView+MKNetworkKitAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+MKNetworkKitAdditions.m"; sourceTree = "<group>"; };
-		18EED3121815853E000856CE /* MKNetworkEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKNetworkEngine.h; sourceTree = "<group>"; };
-		18EED3131815853E000856CE /* MKNetworkEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKNetworkEngine.m; sourceTree = "<group>"; };
-		18EED3141815853E000856CE /* MKNetworkKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKNetworkKit.h; sourceTree = "<group>"; };
-		18EED3151815853E000856CE /* MKNetworkOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKNetworkOperation.h; sourceTree = "<group>"; };
-		18EED3161815853E000856CE /* MKNetworkOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKNetworkOperation.m; sourceTree = "<group>"; };
-		18EED3181815853E000856CE /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
-		18EED3191815853E000856CE /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		18EED31C1815853E000856CE /* MKNetworkKit-iOS-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MKNetworkKit-iOS-Prefix.pch"; sourceTree = "<group>"; };
 		18EED31D1815853E000856CE /* MKNetworkKit-iOS.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = "MKNetworkKit-iOS.xcodeproj"; sourceTree = "<group>"; };
 		18EED34718158590000856CE /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
@@ -152,10 +129,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18AD18C3181608D90097E830 /* ImageIO.framework in Frameworks */,
 				18EED34E181585AD000856CE /* QuartzCore.framework in Frameworks */,
 				18EED34C181585A2000856CE /* CFNetwork.framework in Frameworks */,
 				18EED34A1815859A000856CE /* SystemConfiguration.framework in Frameworks */,
 				18EED34818158590000856CE /* Security.framework in Frameworks */,
+				18399D2C1815FE14000C8971 /* libWeiboSDK.a in Frameworks */,
 				18EED34618158587000856CE /* libMKNetworkKit-iOS.a in Frameworks */,
 				515B0BEE18082A9B0092BADB /* CoreGraphics.framework in Frameworks */,
 				515B0BF018082A9B0092BADB /* UIKit.framework in Frameworks */,
@@ -176,6 +155,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		18399D281815FE14000C8971 /* libWeiboSDK */ = {
+			isa = PBXGroup;
+			children = (
+				18399D291815FE14000C8971 /* libWeiboSDK.a */,
+				18399D2A1815FE14000C8971 /* WeiboSDK.bundle */,
+				18399D2B1815FE14000C8971 /* WeiboSDK.h */,
+			);
+			path = libWeiboSDK;
+			sourceTree = "<group>";
+		};
 		18EED2EF1815853E000856CE /* controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -197,6 +186,7 @@
 		18EED2F11815853E000856CE /* otherLibraries */ = {
 			isa = PBXGroup;
 			children = (
+				18399D281815FE14000C8971 /* libWeiboSDK */,
 				18EED2F21815853E000856CE /* Lumberjack */,
 				18EED3031815853E000856CE /* MKNetworkKit */,
 			);
@@ -236,52 +226,9 @@
 		18EED3031815853E000856CE /* MKNetworkKit */ = {
 			isa = PBXGroup;
 			children = (
-				18EED3041815853E000856CE /* MKNetworkKit */,
 				18EED31A1815853E000856CE /* MKNetworkKit-iOS */,
 			);
 			path = MKNetworkKit;
-			sourceTree = "<group>";
-		};
-		18EED3041815853E000856CE /* MKNetworkKit */ = {
-			isa = PBXGroup;
-			children = (
-				18EED3051815853E000856CE /* Categories */,
-				18EED3121815853E000856CE /* MKNetworkEngine.h */,
-				18EED3131815853E000856CE /* MKNetworkEngine.m */,
-				18EED3141815853E000856CE /* MKNetworkKit.h */,
-				18EED3151815853E000856CE /* MKNetworkOperation.h */,
-				18EED3161815853E000856CE /* MKNetworkOperation.m */,
-				18EED3171815853E000856CE /* Reachability */,
-			);
-			path = MKNetworkKit;
-			sourceTree = "<group>";
-		};
-		18EED3051815853E000856CE /* Categories */ = {
-			isa = PBXGroup;
-			children = (
-				18EED3061815853E000856CE /* NSData+MKBase64.h */,
-				18EED3071815853E000856CE /* NSData+MKBase64.m */,
-				18EED3081815853E000856CE /* NSDate+RFC1123.h */,
-				18EED3091815853E000856CE /* NSDate+RFC1123.m */,
-				18EED30A1815853E000856CE /* NSDictionary+RequestEncoding.h */,
-				18EED30B1815853E000856CE /* NSDictionary+RequestEncoding.m */,
-				18EED30C1815853E000856CE /* NSString+MKNetworkKitAdditions.h */,
-				18EED30D1815853E000856CE /* NSString+MKNetworkKitAdditions.m */,
-				18EED30E1815853E000856CE /* UIAlertView+MKNetworkKitAdditions.h */,
-				18EED30F1815853E000856CE /* UIAlertView+MKNetworkKitAdditions.m */,
-				18EED3101815853E000856CE /* UIImageView+MKNetworkKitAdditions.h */,
-				18EED3111815853E000856CE /* UIImageView+MKNetworkKitAdditions.m */,
-			);
-			path = Categories;
-			sourceTree = "<group>";
-		};
-		18EED3171815853E000856CE /* Reachability */ = {
-			isa = PBXGroup;
-			children = (
-				18EED3181815853E000856CE /* Reachability.h */,
-				18EED3191815853E000856CE /* Reachability.m */,
-			);
-			path = Reachability;
 			sourceTree = "<group>";
 		};
 		18EED31A1815853E000856CE /* MKNetworkKit-iOS */ = {
@@ -339,6 +286,7 @@
 		515B0BEA18082A9B0092BADB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				18AD18C2181608D90097E830 /* ImageIO.framework */,
 				18EED34D181585AD000856CE /* QuartzCore.framework */,
 				18EED34B181585A2000856CE /* CFNetwork.framework */,
 				18EED3491815859A000856CE /* SystemConfiguration.framework */,
@@ -409,6 +357,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				18AD18C11816073A0097E830 /* PBXTargetDependency */,
 			);
 			name = vbo;
 			productName = vbo;
@@ -489,6 +438,7 @@
 			files = (
 				515B0C0418082A9B0092BADB /* Images.xcassets in Resources */,
 				18EED32F1815853E000856CE /* README.txt in Resources */,
+				18399D2D1815FE14000C8971 /* WeiboSDK.bundle in Resources */,
 				18EED3581815865F000856CE /* MainStoryboard.storyboard in Resources */,
 				515B0BF618082A9B0092BADB /* InfoPlist.strings in Resources */,
 			);
@@ -511,26 +461,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				18EED3351815853E000856CE /* NSDictionary+RequestEncoding.m in Sources */,
 				18EED35518158653000856CE /* WXYTestViewController.m in Sources */,
-				18EED3331815853E000856CE /* NSDate+RFC1123.m in Sources */,
-				18EED3371815853E000856CE /* NSString+MKNetworkKitAdditions.m in Sources */,
 				18EED3231815853E000856CE /* DDASLLogger.m in Sources */,
 				18EED32B1815853E000856CE /* ContextFilterLogFormatter.m in Sources */,
 				18EED3291815853E000856CE /* DDTTYLogger.m in Sources */,
 				18EED3251815853E000856CE /* DDFileLogger.m in Sources */,
-				18EED33F1815853E000856CE /* MKNetworkOperation.m in Sources */,
 				18EED35318158653000856CE /* ViewController.m in Sources */,
 				18EED3271815853E000856CE /* DDLog.m in Sources */,
 				515B0BFC18082A9B0092BADB /* AppDelegate.m in Sources */,
-				18EED3391815853E000856CE /* UIAlertView+MKNetworkKitAdditions.m in Sources */,
 				18EED32D1815853E000856CE /* DispatchQueueLogFormatter.m in Sources */,
-				18EED3411815853E000856CE /* Reachability.m in Sources */,
 				515B0BF818082A9B0092BADB /* main.m in Sources */,
 				18EED3211815853E000856CE /* DDAbstractDatabaseLogger.m in Sources */,
-				18EED33B1815853E000856CE /* UIImageView+MKNetworkKitAdditions.m in Sources */,
-				18EED33D1815853E000856CE /* MKNetworkEngine.m in Sources */,
-				18EED3311815853E000856CE /* NSData+MKBase64.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -540,29 +481,25 @@
 			files = (
 				18EED35418158653000856CE /* ViewController.m in Sources */,
 				18EED3281815853E000856CE /* DDLog.m in Sources */,
-				18EED33E1815853E000856CE /* MKNetworkEngine.m in Sources */,
-				18EED3401815853E000856CE /* MKNetworkOperation.m in Sources */,
 				18EED32E1815853E000856CE /* DispatchQueueLogFormatter.m in Sources */,
-				18EED3321815853E000856CE /* NSData+MKBase64.m in Sources */,
-				18EED3341815853E000856CE /* NSDate+RFC1123.m in Sources */,
 				18EED32C1815853E000856CE /* ContextFilterLogFormatter.m in Sources */,
 				18EED3221815853E000856CE /* DDAbstractDatabaseLogger.m in Sources */,
 				18EED35618158653000856CE /* WXYTestViewController.m in Sources */,
-				18EED3381815853E000856CE /* NSString+MKNetworkKitAdditions.m in Sources */,
 				18EED3261815853E000856CE /* DDFileLogger.m in Sources */,
-				18EED33A1815853E000856CE /* UIAlertView+MKNetworkKitAdditions.m in Sources */,
 				18EED32A1815853E000856CE /* DDTTYLogger.m in Sources */,
-				18EED33C1815853E000856CE /* UIImageView+MKNetworkKitAdditions.m in Sources */,
 				515B0C1718082A9B0092BADB /* vboTests.m in Sources */,
-				18EED3361815853E000856CE /* NSDictionary+RequestEncoding.m in Sources */,
 				18EED3241815853E000856CE /* DDASLLogger.m in Sources */,
-				18EED3421815853E000856CE /* Reachability.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		18AD18C11816073A0097E830 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "MKNetworkKit-iOS";
+			targetProxy = 18AD18C01816073A0097E830 /* PBXContainerItemProxy */;
+		};
 		515B0C0F18082A9B0092BADB /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 515B0BE718082A9B0092BADB /* vbo */;
@@ -670,6 +607,11 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "vbo/vbo-Prefix.pch";
 				INFOPLIST_FILE = "vbo/vbo-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/apple/developer/vbo/project/vbo/vbo/otherLibraries/libWeiboSDK,
+				);
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -683,6 +625,11 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "vbo/vbo-Prefix.pch";
 				INFOPLIST_FILE = "vbo/vbo-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/apple/developer/vbo/project/vbo/vbo/otherLibraries/libWeiboSDK,
+				);
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
