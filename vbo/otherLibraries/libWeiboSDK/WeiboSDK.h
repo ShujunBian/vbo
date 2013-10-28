@@ -9,6 +9,9 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
+#define WEIBO_APP_KEY @"1965726745"
+#define WEIBO_REDIRECT_URI @"https://api.weibo.com/oauth2/default.html"
+
 typedef NS_ENUM(NSInteger, WeiboSDKResponseStatusCode)
 {
     WeiboSDKResponseStatusCodeSuccess               = 0,//成功

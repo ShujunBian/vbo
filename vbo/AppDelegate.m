@@ -14,8 +14,7 @@
 #import "WeiboSDK.h"
 
 
-#define WEIBO_APP_KEY @"1965726745"
-#define WEIBO_APP_SECRET @"55377ca138fa49b63b7767778ca1fb5a"
+
 
 
 
@@ -66,13 +65,10 @@
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 
-- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
-    return [ WeiboSDK handleOpenURL:url delegate:self ];
-}
-- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
 
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
 {
-    return [ WeiboSDK handleOpenURL:url delegate:self ];
+    return [WeiboSDK handleOpenURL:url delegate:self];
 }
 
 #pragma mark - Weibo SDK Delegate
@@ -84,7 +80,6 @@
  */
 - (void)didReceiveWeiboRequest:(WBBaseRequest *)request
 {
-
 }
 
 /**
@@ -95,7 +90,22 @@
  */
 - (void)didReceiveWeiboResponse:(WBBaseResponse *)response
 {
-    
+    if ([response isKindOfClass:WBAuthorizeResponse.class])
+    {
+        NSString *title = @"认证结果";
+        NSString *message = [NSString stringWithFormat:@"响应状态: %d\nresponse.userId: %@\nresponse.accessToken: %@\n响应UserInfo数据: %@\n原请求UserInfo数据: %@",
+                             response.statusCode, [(WBAuthorizeResponse *)response userID], [(WBAuthorizeResponse *)response accessToken], response.userInfo, response.requestUserInfo];
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title
+                                                        message:message
+                                                       delegate:nil
+                                              cancelButtonTitle:@"确定"
+                                              otherButtonTitles:nil];
+        
+//        self.wbtoken = [(WBAuthorizeResponse *)response accessToken];
+        
+        [alert show];
+//        [alert release];
+}
 }
 
 
