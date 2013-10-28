@@ -7,8 +7,24 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		18399D2C1815FE14000C8971 /* libWeiboSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 18399D291815FE14000C8971 /* libWeiboSDK.a */; };
-		18399D2D1815FE14000C8971 /* WeiboSDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 18399D2A1815FE14000C8971 /* WeiboSDK.bundle */; };
+		18411000181655EB008B700C /* WXYNetworkEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 18410FFF181655EB008B700C /* WXYNetworkEngine.m */; };
+		1841100318165608008B700C /* WXYNetworkOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 1841100218165608008B700C /* WXYNetworkOperation.m */; };
+		1841100618165626008B700C /* WXYError.m in Sources */ = {isa = PBXBuildFile; fileRef = 1841100518165626008B700C /* WXYError.m */; };
+		1841101D18165713008B700C /* NSData+MKBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = 1841100A18165713008B700C /* NSData+MKBase64.m */; };
+		1841101E18165713008B700C /* NSDate+RFC1123.m in Sources */ = {isa = PBXBuildFile; fileRef = 1841100C18165713008B700C /* NSDate+RFC1123.m */; };
+		1841101F18165713008B700C /* NSDictionary+RequestEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 1841100E18165713008B700C /* NSDictionary+RequestEncoding.m */; };
+		1841102018165713008B700C /* NSString+MKNetworkKitAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 1841101018165713008B700C /* NSString+MKNetworkKitAdditions.m */; };
+		1841102118165713008B700C /* UIAlertView+MKNetworkKitAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 1841101218165713008B700C /* UIAlertView+MKNetworkKitAdditions.m */; };
+		1841102218165713008B700C /* UIImageView+MKNetworkKitAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 1841101418165713008B700C /* UIImageView+MKNetworkKitAdditions.m */; };
+		1841102318165713008B700C /* MKNetworkEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 1841101618165713008B700C /* MKNetworkEngine.m */; };
+		1841102418165713008B700C /* MKNetworkOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 1841101918165713008B700C /* MKNetworkOperation.m */; };
+		1841102518165713008B700C /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 1841101C18165713008B700C /* Reachability.m */; };
+		184110271816585B008B700C /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 184110261816585B008B700C /* libz.dylib */; };
+		1841102918165875008B700C /* libstdc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 1841102818165875008B700C /* libstdc++.dylib */; };
+		1841102B1816587E008B700C /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 1841102A1816587E008B700C /* libsqlite3.dylib */; };
+		1841102D181658A9008B700C /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1841102C181658A9008B700C /* CoreData.framework */; };
+		1841103518165B8D008B700C /* libWeiboSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1841103218165B8D008B700C /* libWeiboSDK.a */; };
+		1841103618165B8D008B700C /* WeiboSDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 1841103318165B8D008B700C /* WeiboSDK.bundle */; };
 		18AD18C3181608D90097E830 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18AD18C2181608D90097E830 /* ImageIO.framework */; };
 		18EED3211815853E000856CE /* DDAbstractDatabaseLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 18EED2F41815853E000856CE /* DDAbstractDatabaseLogger.m */; };
 		18EED3221815853E000856CE /* DDAbstractDatabaseLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 18EED2F41815853E000856CE /* DDAbstractDatabaseLogger.m */; };
@@ -49,6 +65,7 @@
 		515B0C0D18082A9B0092BADB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 515B0BEF18082A9B0092BADB /* UIKit.framework */; };
 		515B0C1518082A9B0092BADB /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 515B0C1318082A9B0092BADB /* InfoPlist.strings */; };
 		515B0C1718082A9B0092BADB /* vboTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 515B0C1618082A9B0092BADB /* vboTests.m */; };
+		56F04C44E0F44253BE15C2ED /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DFB0F5D3655E4A02801ED5B1 /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,9 +93,39 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		18399D291815FE14000C8971 /* libWeiboSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeiboSDK.a; sourceTree = "<group>"; };
-		18399D2A1815FE14000C8971 /* WeiboSDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = WeiboSDK.bundle; sourceTree = "<group>"; };
-		18399D2B1815FE14000C8971 /* WeiboSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeiboSDK.h; sourceTree = "<group>"; };
+		0B1879528B2F4B1DA083D08E /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
+		18410FFE181655EB008B700C /* WXYNetworkEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXYNetworkEngine.h; sourceTree = "<group>"; };
+		18410FFF181655EB008B700C /* WXYNetworkEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXYNetworkEngine.m; sourceTree = "<group>"; };
+		1841100118165608008B700C /* WXYNetworkOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXYNetworkOperation.h; sourceTree = "<group>"; };
+		1841100218165608008B700C /* WXYNetworkOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXYNetworkOperation.m; sourceTree = "<group>"; };
+		1841100418165626008B700C /* WXYError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXYError.h; sourceTree = "<group>"; };
+		1841100518165626008B700C /* WXYError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXYError.m; sourceTree = "<group>"; };
+		1841100918165713008B700C /* NSData+MKBase64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+MKBase64.h"; sourceTree = "<group>"; };
+		1841100A18165713008B700C /* NSData+MKBase64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+MKBase64.m"; sourceTree = "<group>"; };
+		1841100B18165713008B700C /* NSDate+RFC1123.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+RFC1123.h"; sourceTree = "<group>"; };
+		1841100C18165713008B700C /* NSDate+RFC1123.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+RFC1123.m"; sourceTree = "<group>"; };
+		1841100D18165713008B700C /* NSDictionary+RequestEncoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+RequestEncoding.h"; sourceTree = "<group>"; };
+		1841100E18165713008B700C /* NSDictionary+RequestEncoding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+RequestEncoding.m"; sourceTree = "<group>"; };
+		1841100F18165713008B700C /* NSString+MKNetworkKitAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+MKNetworkKitAdditions.h"; sourceTree = "<group>"; };
+		1841101018165713008B700C /* NSString+MKNetworkKitAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+MKNetworkKitAdditions.m"; sourceTree = "<group>"; };
+		1841101118165713008B700C /* UIAlertView+MKNetworkKitAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAlertView+MKNetworkKitAdditions.h"; sourceTree = "<group>"; };
+		1841101218165713008B700C /* UIAlertView+MKNetworkKitAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertView+MKNetworkKitAdditions.m"; sourceTree = "<group>"; };
+		1841101318165713008B700C /* UIImageView+MKNetworkKitAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+MKNetworkKitAdditions.h"; sourceTree = "<group>"; };
+		1841101418165713008B700C /* UIImageView+MKNetworkKitAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+MKNetworkKitAdditions.m"; sourceTree = "<group>"; };
+		1841101518165713008B700C /* MKNetworkEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKNetworkEngine.h; sourceTree = "<group>"; };
+		1841101618165713008B700C /* MKNetworkEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKNetworkEngine.m; sourceTree = "<group>"; };
+		1841101718165713008B700C /* MKNetworkKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKNetworkKit.h; sourceTree = "<group>"; };
+		1841101818165713008B700C /* MKNetworkOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKNetworkOperation.h; sourceTree = "<group>"; };
+		1841101918165713008B700C /* MKNetworkOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKNetworkOperation.m; sourceTree = "<group>"; };
+		1841101B18165713008B700C /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		1841101C18165713008B700C /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		184110261816585B008B700C /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		1841102818165875008B700C /* libstdc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.dylib"; path = "usr/lib/libstdc++.dylib"; sourceTree = SDKROOT; };
+		1841102A1816587E008B700C /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		1841102C181658A9008B700C /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		1841103218165B8D008B700C /* libWeiboSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeiboSDK.a; sourceTree = "<group>"; };
+		1841103318165B8D008B700C /* WeiboSDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = WeiboSDK.bundle; sourceTree = "<group>"; };
+		1841103418165B8D008B700C /* WeiboSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeiboSDK.h; sourceTree = "<group>"; };
 		18AD18C2181608D90097E830 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		18AD18C618160DD10097E830 /* DDLogLevelGlobal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DDLogLevelGlobal.h; sourceTree = "<group>"; };
 		18EED2F31815853E000856CE /* DDAbstractDatabaseLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDAbstractDatabaseLogger.h; sourceTree = "<group>"; };
@@ -123,6 +170,7 @@
 		515B0C1218082A9B0092BADB /* vboTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "vboTests-Info.plist"; sourceTree = "<group>"; };
 		515B0C1418082A9B0092BADB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		515B0C1618082A9B0092BADB /* vboTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = vboTests.m; sourceTree = "<group>"; };
+		DFB0F5D3655E4A02801ED5B1 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,16 +178,21 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1841102D181658A9008B700C /* CoreData.framework in Frameworks */,
+				1841102B1816587E008B700C /* libsqlite3.dylib in Frameworks */,
+				1841102918165875008B700C /* libstdc++.dylib in Frameworks */,
+				1841103518165B8D008B700C /* libWeiboSDK.a in Frameworks */,
+				184110271816585B008B700C /* libz.dylib in Frameworks */,
 				18AD18C3181608D90097E830 /* ImageIO.framework in Frameworks */,
 				18EED34E181585AD000856CE /* QuartzCore.framework in Frameworks */,
 				18EED34C181585A2000856CE /* CFNetwork.framework in Frameworks */,
 				18EED34A1815859A000856CE /* SystemConfiguration.framework in Frameworks */,
 				18EED34818158590000856CE /* Security.framework in Frameworks */,
-				18399D2C1815FE14000C8971 /* libWeiboSDK.a in Frameworks */,
 				18EED34618158587000856CE /* libMKNetworkKit-iOS.a in Frameworks */,
 				515B0BEE18082A9B0092BADB /* CoreGraphics.framework in Frameworks */,
 				515B0BF018082A9B0092BADB /* UIKit.framework in Frameworks */,
 				515B0BEC18082A9B0092BADB /* Foundation.framework in Frameworks */,
+				56F04C44E0F44253BE15C2ED /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -156,12 +209,82 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		18399D281815FE14000C8971 /* libWeiboSDK */ = {
+		18410FFA18165589008B700C /* data */ = {
 			isa = PBXGroup;
 			children = (
-				18399D291815FE14000C8971 /* libWeiboSDK.a */,
-				18399D2A1815FE14000C8971 /* WeiboSDK.bundle */,
-				18399D2B1815FE14000C8971 /* WeiboSDK.h */,
+				18410FFB18165589008B700C /* coredata */,
+			);
+			path = data;
+			sourceTree = "<group>";
+		};
+		18410FFB18165589008B700C /* coredata */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = coredata;
+			sourceTree = "<group>";
+		};
+		18410FFC18165589008B700C /* network */ = {
+			isa = PBXGroup;
+			children = (
+				18410FFE181655EB008B700C /* WXYNetworkEngine.h */,
+				18410FFF181655EB008B700C /* WXYNetworkEngine.m */,
+				1841100118165608008B700C /* WXYNetworkOperation.h */,
+				1841100218165608008B700C /* WXYNetworkOperation.m */,
+				1841100418165626008B700C /* WXYError.h */,
+				1841100518165626008B700C /* WXYError.m */,
+			);
+			path = network;
+			sourceTree = "<group>";
+		};
+		1841100718165713008B700C /* MKNetworkKit */ = {
+			isa = PBXGroup;
+			children = (
+				1841100818165713008B700C /* Categories */,
+				1841101518165713008B700C /* MKNetworkEngine.h */,
+				1841101618165713008B700C /* MKNetworkEngine.m */,
+				1841101718165713008B700C /* MKNetworkKit.h */,
+				1841101818165713008B700C /* MKNetworkOperation.h */,
+				1841101918165713008B700C /* MKNetworkOperation.m */,
+				1841101A18165713008B700C /* Reachability */,
+			);
+			path = MKNetworkKit;
+			sourceTree = "<group>";
+		};
+		1841100818165713008B700C /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				1841100918165713008B700C /* NSData+MKBase64.h */,
+				1841100A18165713008B700C /* NSData+MKBase64.m */,
+				1841100B18165713008B700C /* NSDate+RFC1123.h */,
+				1841100C18165713008B700C /* NSDate+RFC1123.m */,
+				1841100D18165713008B700C /* NSDictionary+RequestEncoding.h */,
+				1841100E18165713008B700C /* NSDictionary+RequestEncoding.m */,
+				1841100F18165713008B700C /* NSString+MKNetworkKitAdditions.h */,
+				1841101018165713008B700C /* NSString+MKNetworkKitAdditions.m */,
+				1841101118165713008B700C /* UIAlertView+MKNetworkKitAdditions.h */,
+				1841101218165713008B700C /* UIAlertView+MKNetworkKitAdditions.m */,
+				1841101318165713008B700C /* UIImageView+MKNetworkKitAdditions.h */,
+				1841101418165713008B700C /* UIImageView+MKNetworkKitAdditions.m */,
+			);
+			path = Categories;
+			sourceTree = "<group>";
+		};
+		1841101A18165713008B700C /* Reachability */ = {
+			isa = PBXGroup;
+			children = (
+				1841101B18165713008B700C /* Reachability.h */,
+				1841101C18165713008B700C /* Reachability.m */,
+			);
+			path = Reachability;
+			sourceTree = "<group>";
+		};
+		1841103118165B8D008B700C /* libWeiboSDK */ = {
+			isa = PBXGroup;
+			children = (
+				1841103218165B8D008B700C /* libWeiboSDK.a */,
+				1841103318165B8D008B700C /* WeiboSDK.bundle */,
+				1841103418165B8D008B700C /* WeiboSDK.h */,
 			);
 			path = libWeiboSDK;
 			sourceTree = "<group>";
@@ -188,6 +311,8 @@
 		18EED2F01815853E000856CE /* model */ = {
 			isa = PBXGroup;
 			children = (
+				18410FFA18165589008B700C /* data */,
+				18410FFC18165589008B700C /* network */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -195,7 +320,7 @@
 		18EED2F11815853E000856CE /* otherLibraries */ = {
 			isa = PBXGroup;
 			children = (
-				18399D281815FE14000C8971 /* libWeiboSDK */,
+				1841103118165B8D008B700C /* libWeiboSDK */,
 				18EED2F21815853E000856CE /* Lumberjack */,
 				18EED3031815853E000856CE /* MKNetworkKit */,
 			);
@@ -235,6 +360,7 @@
 		18EED3031815853E000856CE /* MKNetworkKit */ = {
 			isa = PBXGroup;
 			children = (
+				1841100718165713008B700C /* MKNetworkKit */,
 				18EED31A1815853E000856CE /* MKNetworkKit-iOS */,
 			);
 			path = MKNetworkKit;
@@ -280,6 +406,7 @@
 				515B0C1018082A9B0092BADB /* vboTests */,
 				515B0BEA18082A9B0092BADB /* Frameworks */,
 				515B0BE918082A9B0092BADB /* Products */,
+				0B1879528B2F4B1DA083D08E /* Pods.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -295,6 +422,10 @@
 		515B0BEA18082A9B0092BADB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1841102C181658A9008B700C /* CoreData.framework */,
+				1841102A1816587E008B700C /* libsqlite3.dylib */,
+				1841102818165875008B700C /* libstdc++.dylib */,
+				184110261816585B008B700C /* libz.dylib */,
 				18AD18C2181608D90097E830 /* ImageIO.framework */,
 				18EED34D181585AD000856CE /* QuartzCore.framework */,
 				18EED34B181585A2000856CE /* CFNetwork.framework */,
@@ -304,6 +435,7 @@
 				515B0BED18082A9B0092BADB /* CoreGraphics.framework */,
 				515B0BEF18082A9B0092BADB /* UIKit.framework */,
 				515B0C0A18082A9B0092BADB /* XCTest.framework */,
+				DFB0F5D3655E4A02801ED5B1 /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -360,9 +492,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 515B0C1A18082A9B0092BADB /* Build configuration list for PBXNativeTarget "vbo" */;
 			buildPhases = (
+				EE594A7F413B4D63B8551170 /* Check Pods Manifest.lock */,
 				515B0BE418082A9B0092BADB /* Sources */,
 				515B0BE518082A9B0092BADB /* Frameworks */,
 				515B0BE618082A9B0092BADB /* Resources */,
+				B6DF7960788C4B6295F22B33 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -448,7 +582,7 @@
 			files = (
 				515B0C0418082A9B0092BADB /* Images.xcassets in Resources */,
 				18EED32F1815853E000856CE /* README.txt in Resources */,
-				18399D2D1815FE14000C8971 /* WeiboSDK.bundle in Resources */,
+				1841103618165B8D008B700C /* WeiboSDK.bundle in Resources */,
 				18EED3581815865F000856CE /* MainStoryboard.storyboard in Resources */,
 				515B0BF618082A9B0092BADB /* InfoPlist.strings in Resources */,
 			);
@@ -466,22 +600,67 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		B6DF7960788C4B6295F22B33 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EE594A7F413B4D63B8551170 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		515B0BE418082A9B0092BADB /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1841102018165713008B700C /* NSString+MKNetworkKitAdditions.m in Sources */,
+				1841100318165608008B700C /* WXYNetworkOperation.m in Sources */,
 				18EED35518158653000856CE /* WXYTestViewController.m in Sources */,
+				1841101D18165713008B700C /* NSData+MKBase64.m in Sources */,
+				1841102318165713008B700C /* MKNetworkEngine.m in Sources */,
 				18EED3231815853E000856CE /* DDASLLogger.m in Sources */,
 				18EED32B1815853E000856CE /* ContextFilterLogFormatter.m in Sources */,
+				1841102218165713008B700C /* UIImageView+MKNetworkKitAdditions.m in Sources */,
 				18EED3291815853E000856CE /* DDTTYLogger.m in Sources */,
 				18EED3251815853E000856CE /* DDFileLogger.m in Sources */,
+				1841101E18165713008B700C /* NSDate+RFC1123.m in Sources */,
 				18EED35318158653000856CE /* ViewController.m in Sources */,
 				18EED3271815853E000856CE /* DDLog.m in Sources */,
+				1841102118165713008B700C /* UIAlertView+MKNetworkKitAdditions.m in Sources */,
+				1841101F18165713008B700C /* NSDictionary+RequestEncoding.m in Sources */,
 				515B0BFC18082A9B0092BADB /* AppDelegate.m in Sources */,
+				1841102418165713008B700C /* MKNetworkOperation.m in Sources */,
+				1841102518165713008B700C /* Reachability.m in Sources */,
 				18EED32D1815853E000856CE /* DispatchQueueLogFormatter.m in Sources */,
+				18411000181655EB008B700C /* WXYNetworkEngine.m in Sources */,
 				515B0BF818082A9B0092BADB /* main.m in Sources */,
 				18EED3211815853E000856CE /* DDAbstractDatabaseLogger.m in Sources */,
+				1841100618165626008B700C /* WXYError.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -611,17 +790,23 @@
 		};
 		515B0C1B18082A9B0092BADB /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0B1879528B2F4B1DA083D08E /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "vbo/vbo-Prefix.pch";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"$(SRCROOT)//vbo/otherLibraries/MKNetworkKit/",
+				);
 				INFOPLIST_FILE = "vbo/vbo-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/apple/developer/vbo/project/vbo/vbo/otherLibraries/libWeiboSDK,
 				);
-				OTHER_LDFLAGS = "-ObjC";
+				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -629,17 +814,23 @@
 		};
 		515B0C1C18082A9B0092BADB /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0B1879528B2F4B1DA083D08E /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "vbo/vbo-Prefix.pch";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"$(SRCROOT)//vbo/otherLibraries/MKNetworkKit/",
+				);
 				INFOPLIST_FILE = "vbo/vbo-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/apple/developer/vbo/project/vbo/vbo/otherLibraries/libWeiboSDK,
 				);
-				OTHER_LDFLAGS = "-ObjC";
+				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};

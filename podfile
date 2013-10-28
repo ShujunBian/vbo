@@ -1,0 +1,3 @@
+platform :ios
+pod 'SinaWeibo'
+pod 'MKNetworkKit'
