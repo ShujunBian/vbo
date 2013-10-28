@@ -1,3 +1,2 @@
-platform :ios
-pod 'SinaWeibo'
+platform :ios,      '7.0'
 pod 'MKNetworkKit'

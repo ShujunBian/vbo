@@ -1,19 +1,13 @@
 PODS:
-  - JSONKit (1.5pre)
   - MKNetworkKit (0.87):
     - Reachability (~> 3.1.0)
   - Reachability (3.1.1)
-  - SinaWeibo (0.0.1):
-    - JSONKit
 
 DEPENDENCIES:
   - MKNetworkKit
-  - SinaWeibo
 
 SPEC CHECKSUMS:
-  JSONKit: 409734ab3407fce90ef7eaa95d7168f38d9a6601
   MKNetworkKit: f174100f92473012138b6b1c3040266af8d43a14
   Reachability: 2be6bc2fd2bd31d97f5db33e75e4b29c79e95883
-  SinaWeibo: d7cb18c0b5880a95c1b203842ab8dfdd0da106dc
 
 COCOAPODS: 0.27.1

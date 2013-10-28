@@ -1,1 +1,0 @@
-../../SinaWeibo/sinaweibo_ios_sdk&demo/sinaweibo_ios_sdk/SinaWeibo/SinaWeiboRequest.h

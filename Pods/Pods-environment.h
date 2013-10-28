@@ -6,13 +6,6 @@
 // project.
 
 
-// JSONKit
-#define COCOAPODS_POD_AVAILABLE_JSONKit
-// This library does not follow semantic-versioning,
-// so we were not able to define version macros.
-// Please contact the author.
-// Version: 1.5pre.
-
 // MKNetworkKit
 #define COCOAPODS_POD_AVAILABLE_MKNetworkKit
 #define COCOAPODS_VERSION_MAJOR_MKNetworkKit 0
@@ -24,10 +17,4 @@
 #define COCOAPODS_VERSION_MAJOR_Reachability 3
 #define COCOAPODS_VERSION_MINOR_Reachability 1
 #define COCOAPODS_VERSION_PATCH_Reachability 1
-
-// SinaWeibo
-#define COCOAPODS_POD_AVAILABLE_SinaWeibo
-#define COCOAPODS_VERSION_MAJOR_SinaWeibo 0
-#define COCOAPODS_VERSION_MINOR_SinaWeibo 0
-#define COCOAPODS_VERSION_PATCH_SinaWeibo 1
 
