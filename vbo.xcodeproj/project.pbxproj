@@ -7,19 +7,57 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1838DF1F181E677A003D015A /* libWeiboSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1838DF1C181E677A003D015A /* libWeiboSDK.a */; };
+		1838DF20181E677A003D015A /* WeiboSDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 1838DF1D181E677A003D015A /* WeiboSDK.bundle */; };
+		18411000181655EB008B700C /* WXYNetworkEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 18410FFF181655EB008B700C /* WXYNetworkEngine.m */; };
+		1841100318165608008B700C /* WXYNetworkOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 1841100218165608008B700C /* WXYNetworkOperation.m */; };
+		1841100618165626008B700C /* WXYError.m in Sources */ = {isa = PBXBuildFile; fileRef = 1841100518165626008B700C /* WXYError.m */; };
+		184110271816585B008B700C /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 184110261816585B008B700C /* libz.dylib */; };
+		1841102918165875008B700C /* libstdc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 1841102818165875008B700C /* libstdc++.dylib */; };
+		1841102B1816587E008B700C /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 1841102A1816587E008B700C /* libsqlite3.dylib */; };
+		1841102D181658A9008B700C /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1841102C181658A9008B700C /* CoreData.framework */; };
+		18AD18C3181608D90097E830 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18AD18C2181608D90097E830 /* ImageIO.framework */; };
+		18EC4C1E181E671500E4196E /* libPods-MKNetworkKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 18EC4C1D181E671500E4196E /* libPods-MKNetworkKit.a */; };
+		18EC4C20181E671900E4196E /* libPods-Reachability.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 18EC4C1F181E671900E4196E /* libPods-Reachability.a */; };
+		18EED3211815853E000856CE /* DDAbstractDatabaseLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 18EED2F41815853E000856CE /* DDAbstractDatabaseLogger.m */; };
+		18EED3221815853E000856CE /* DDAbstractDatabaseLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 18EED2F41815853E000856CE /* DDAbstractDatabaseLogger.m */; };
+		18EED3231815853E000856CE /* DDASLLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 18EED2F61815853E000856CE /* DDASLLogger.m */; };
+		18EED3241815853E000856CE /* DDASLLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 18EED2F61815853E000856CE /* DDASLLogger.m */; };
+		18EED3251815853E000856CE /* DDFileLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 18EED2F81815853E000856CE /* DDFileLogger.m */; };
+		18EED3261815853E000856CE /* DDFileLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 18EED2F81815853E000856CE /* DDFileLogger.m */; };
+		18EED3271815853E000856CE /* DDLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 18EED2FA1815853E000856CE /* DDLog.m */; };
+		18EED3281815853E000856CE /* DDLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 18EED2FA1815853E000856CE /* DDLog.m */; };
+		18EED3291815853E000856CE /* DDTTYLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 18EED2FC1815853E000856CE /* DDTTYLogger.m */; };
+		18EED32A1815853E000856CE /* DDTTYLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 18EED2FC1815853E000856CE /* DDTTYLogger.m */; };
+		18EED32B1815853E000856CE /* ContextFilterLogFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 18EED2FF1815853E000856CE /* ContextFilterLogFormatter.m */; };
+		18EED32C1815853E000856CE /* ContextFilterLogFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 18EED2FF1815853E000856CE /* ContextFilterLogFormatter.m */; };
+		18EED32D1815853E000856CE /* DispatchQueueLogFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 18EED3011815853E000856CE /* DispatchQueueLogFormatter.m */; };
+		18EED32E1815853E000856CE /* DispatchQueueLogFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 18EED3011815853E000856CE /* DispatchQueueLogFormatter.m */; };
+		18EED32F1815853E000856CE /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = 18EED3021815853E000856CE /* README.txt */; };
+		18EED3301815853E000856CE /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = 18EED3021815853E000856CE /* README.txt */; };
+		18EED34818158590000856CE /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18EED34718158590000856CE /* Security.framework */; };
+		18EED34A1815859A000856CE /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18EED3491815859A000856CE /* SystemConfiguration.framework */; };
+		18EED34C181585A2000856CE /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18EED34B181585A2000856CE /* CFNetwork.framework */; };
+		18EED34E181585AD000856CE /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18EED34D181585AD000856CE /* QuartzCore.framework */; };
+		18EED35318158653000856CE /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18EED35018158653000856CE /* ViewController.m */; };
+		18EED35418158653000856CE /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18EED35018158653000856CE /* ViewController.m */; };
+		18EED35518158653000856CE /* WXYTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18EED35218158653000856CE /* WXYTestViewController.m */; };
+		18EED35618158653000856CE /* WXYTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18EED35218158653000856CE /* WXYTestViewController.m */; };
+		18EED3581815865F000856CE /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18EED3571815865F000856CE /* MainStoryboard.storyboard */; };
+		18EED3591815865F000856CE /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18EED3571815865F000856CE /* MainStoryboard.storyboard */; };
 		515B0BEC18082A9B0092BADB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 515B0BEB18082A9B0092BADB /* Foundation.framework */; };
 		515B0BEE18082A9B0092BADB /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 515B0BED18082A9B0092BADB /* CoreGraphics.framework */; };
 		515B0BF018082A9B0092BADB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 515B0BEF18082A9B0092BADB /* UIKit.framework */; };
 		515B0BF618082A9B0092BADB /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 515B0BF418082A9B0092BADB /* InfoPlist.strings */; };
 		515B0BF818082A9B0092BADB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 515B0BF718082A9B0092BADB /* main.m */; };
 		515B0BFC18082A9B0092BADB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 515B0BFB18082A9B0092BADB /* AppDelegate.m */; };
-		515B0C0218082A9B0092BADB /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 515B0C0118082A9B0092BADB /* ViewController.m */; };
 		515B0C0418082A9B0092BADB /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 515B0C0318082A9B0092BADB /* Images.xcassets */; };
 		515B0C0B18082A9B0092BADB /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 515B0C0A18082A9B0092BADB /* XCTest.framework */; };
 		515B0C0C18082A9B0092BADB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 515B0BEB18082A9B0092BADB /* Foundation.framework */; };
 		515B0C0D18082A9B0092BADB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 515B0BEF18082A9B0092BADB /* UIKit.framework */; };
 		515B0C1518082A9B0092BADB /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 515B0C1318082A9B0092BADB /* InfoPlist.strings */; };
 		515B0C1718082A9B0092BADB /* vboTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 515B0C1618082A9B0092BADB /* vboTests.m */; };
+		56F04C44E0F44253BE15C2ED /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DFB0F5D3655E4A02801ED5B1 /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,6 +71,48 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0B1879528B2F4B1DA083D08E /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
+		1838DF1C181E677A003D015A /* libWeiboSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeiboSDK.a; sourceTree = "<group>"; };
+		1838DF1D181E677A003D015A /* WeiboSDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = WeiboSDK.bundle; sourceTree = "<group>"; };
+		1838DF1E181E677A003D015A /* WeiboSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeiboSDK.h; sourceTree = "<group>"; };
+		18410FFE181655EB008B700C /* WXYNetworkEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXYNetworkEngine.h; sourceTree = "<group>"; };
+		18410FFF181655EB008B700C /* WXYNetworkEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXYNetworkEngine.m; sourceTree = "<group>"; };
+		1841100118165608008B700C /* WXYNetworkOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXYNetworkOperation.h; sourceTree = "<group>"; };
+		1841100218165608008B700C /* WXYNetworkOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXYNetworkOperation.m; sourceTree = "<group>"; };
+		1841100418165626008B700C /* WXYError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXYError.h; sourceTree = "<group>"; };
+		1841100518165626008B700C /* WXYError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXYError.m; sourceTree = "<group>"; };
+		184110261816585B008B700C /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		1841102818165875008B700C /* libstdc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.dylib"; path = "usr/lib/libstdc++.dylib"; sourceTree = SDKROOT; };
+		1841102A1816587E008B700C /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		1841102C181658A9008B700C /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		18AD18C2181608D90097E830 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
+		18AD18C618160DD10097E830 /* DDLogLevelGlobal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DDLogLevelGlobal.h; sourceTree = "<group>"; };
+		18EC4C1D181E671500E4196E /* libPods-MKNetworkKit.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-MKNetworkKit.a"; path = "Pods/build/Release-iphoneos/libPods-MKNetworkKit.a"; sourceTree = "<group>"; };
+		18EC4C1F181E671900E4196E /* libPods-Reachability.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-Reachability.a"; path = "Pods/build/Release-iphoneos/libPods-Reachability.a"; sourceTree = "<group>"; };
+		18EED2F31815853E000856CE /* DDAbstractDatabaseLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDAbstractDatabaseLogger.h; sourceTree = "<group>"; };
+		18EED2F41815853E000856CE /* DDAbstractDatabaseLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDAbstractDatabaseLogger.m; sourceTree = "<group>"; };
+		18EED2F51815853E000856CE /* DDASLLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDASLLogger.h; sourceTree = "<group>"; };
+		18EED2F61815853E000856CE /* DDASLLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDASLLogger.m; sourceTree = "<group>"; };
+		18EED2F71815853E000856CE /* DDFileLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDFileLogger.h; sourceTree = "<group>"; };
+		18EED2F81815853E000856CE /* DDFileLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDFileLogger.m; sourceTree = "<group>"; };
+		18EED2F91815853E000856CE /* DDLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDLog.h; sourceTree = "<group>"; };
+		18EED2FA1815853E000856CE /* DDLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDLog.m; sourceTree = "<group>"; };
+		18EED2FB1815853E000856CE /* DDTTYLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDTTYLogger.h; sourceTree = "<group>"; };
+		18EED2FC1815853E000856CE /* DDTTYLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDTTYLogger.m; sourceTree = "<group>"; };
+		18EED2FE1815853E000856CE /* ContextFilterLogFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContextFilterLogFormatter.h; sourceTree = "<group>"; };
+		18EED2FF1815853E000856CE /* ContextFilterLogFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContextFilterLogFormatter.m; sourceTree = "<group>"; };
+		18EED3001815853E000856CE /* DispatchQueueLogFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DispatchQueueLogFormatter.h; sourceTree = "<group>"; };
+		18EED3011815853E000856CE /* DispatchQueueLogFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DispatchQueueLogFormatter.m; sourceTree = "<group>"; };
+		18EED3021815853E000856CE /* README.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
+		18EED34718158590000856CE /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		18EED3491815859A000856CE /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		18EED34B181585A2000856CE /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		18EED34D181585AD000856CE /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		18EED34F18158653000856CE /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		18EED35018158653000856CE /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		18EED35118158653000856CE /* WXYTestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXYTestViewController.h; sourceTree = "<group>"; };
+		18EED35218158653000856CE /* WXYTestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXYTestViewController.m; sourceTree = "<group>"; };
+		18EED3571815865F000856CE /* MainStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainStoryboard.storyboard; sourceTree = "<group>"; };
 		515B0BE818082A9B0092BADB /* vbo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = vbo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		515B0BEB18082A9B0092BADB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		515B0BED18082A9B0092BADB /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -43,14 +123,13 @@
 		515B0BF918082A9B0092BADB /* vbo-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "vbo-Prefix.pch"; sourceTree = "<group>"; };
 		515B0BFA18082A9B0092BADB /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		515B0BFB18082A9B0092BADB /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		515B0C0018082A9B0092BADB /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		515B0C0118082A9B0092BADB /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		515B0C0318082A9B0092BADB /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		515B0C0918082A9B0092BADB /* vboTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = vboTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		515B0C0A18082A9B0092BADB /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		515B0C1218082A9B0092BADB /* vboTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "vboTests-Info.plist"; sourceTree = "<group>"; };
 		515B0C1418082A9B0092BADB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		515B0C1618082A9B0092BADB /* vboTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = vboTests.m; sourceTree = "<group>"; };
+		DFB0F5D3655E4A02801ED5B1 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,9 +137,22 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18EC4C20181E671900E4196E /* libPods-Reachability.a in Frameworks */,
+				18EC4C1E181E671500E4196E /* libPods-MKNetworkKit.a in Frameworks */,
+				1841102D181658A9008B700C /* CoreData.framework in Frameworks */,
+				1841102B1816587E008B700C /* libsqlite3.dylib in Frameworks */,
+				1841102918165875008B700C /* libstdc++.dylib in Frameworks */,
+				184110271816585B008B700C /* libz.dylib in Frameworks */,
+				18AD18C3181608D90097E830 /* ImageIO.framework in Frameworks */,
+				18EED34E181585AD000856CE /* QuartzCore.framework in Frameworks */,
+				18EED34C181585A2000856CE /* CFNetwork.framework in Frameworks */,
+				18EED34A1815859A000856CE /* SystemConfiguration.framework in Frameworks */,
+				18EED34818158590000856CE /* Security.framework in Frameworks */,
+				1838DF1F181E677A003D015A /* libWeiboSDK.a in Frameworks */,
 				515B0BEE18082A9B0092BADB /* CoreGraphics.framework in Frameworks */,
 				515B0BF018082A9B0092BADB /* UIKit.framework in Frameworks */,
 				515B0BEC18082A9B0092BADB /* Foundation.framework in Frameworks */,
+				56F04C44E0F44253BE15C2ED /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -77,6 +169,119 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1838DF1B181E677A003D015A /* libWeiboSDK */ = {
+			isa = PBXGroup;
+			children = (
+				1838DF1C181E677A003D015A /* libWeiboSDK.a */,
+				1838DF1D181E677A003D015A /* WeiboSDK.bundle */,
+				1838DF1E181E677A003D015A /* WeiboSDK.h */,
+			);
+			path = libWeiboSDK;
+			sourceTree = "<group>";
+		};
+		18410FFA18165589008B700C /* data */ = {
+			isa = PBXGroup;
+			children = (
+				18410FFB18165589008B700C /* coredata */,
+			);
+			path = data;
+			sourceTree = "<group>";
+		};
+		18410FFB18165589008B700C /* coredata */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = coredata;
+			sourceTree = "<group>";
+		};
+		18410FFC18165589008B700C /* network */ = {
+			isa = PBXGroup;
+			children = (
+				18410FFE181655EB008B700C /* WXYNetworkEngine.h */,
+				18410FFF181655EB008B700C /* WXYNetworkEngine.m */,
+				1841100118165608008B700C /* WXYNetworkOperation.h */,
+				1841100218165608008B700C /* WXYNetworkOperation.m */,
+				1841100418165626008B700C /* WXYError.h */,
+				1841100518165626008B700C /* WXYError.m */,
+			);
+			path = network;
+			sourceTree = "<group>";
+		};
+		18AD18C518160DB50097E830 /* other */ = {
+			isa = PBXGroup;
+			children = (
+				18AD18C618160DD10097E830 /* DDLogLevelGlobal.h */,
+			);
+			path = other;
+			sourceTree = "<group>";
+		};
+		18EED2EF1815853E000856CE /* controller */ = {
+			isa = PBXGroup;
+			children = (
+				18EED34F18158653000856CE /* ViewController.h */,
+				18EED35018158653000856CE /* ViewController.m */,
+				18EED35118158653000856CE /* WXYTestViewController.h */,
+				18EED35218158653000856CE /* WXYTestViewController.m */,
+			);
+			path = controller;
+			sourceTree = "<group>";
+		};
+		18EED2F01815853E000856CE /* model */ = {
+			isa = PBXGroup;
+			children = (
+				18410FFA18165589008B700C /* data */,
+				18410FFC18165589008B700C /* network */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		18EED2F11815853E000856CE /* otherLibraries */ = {
+			isa = PBXGroup;
+			children = (
+				1838DF1B181E677A003D015A /* libWeiboSDK */,
+				18EED2F21815853E000856CE /* Lumberjack */,
+			);
+			path = otherLibraries;
+			sourceTree = "<group>";
+		};
+		18EED2F21815853E000856CE /* Lumberjack */ = {
+			isa = PBXGroup;
+			children = (
+				18EED2F31815853E000856CE /* DDAbstractDatabaseLogger.h */,
+				18EED2F41815853E000856CE /* DDAbstractDatabaseLogger.m */,
+				18EED2F51815853E000856CE /* DDASLLogger.h */,
+				18EED2F61815853E000856CE /* DDASLLogger.m */,
+				18EED2F71815853E000856CE /* DDFileLogger.h */,
+				18EED2F81815853E000856CE /* DDFileLogger.m */,
+				18EED2F91815853E000856CE /* DDLog.h */,
+				18EED2FA1815853E000856CE /* DDLog.m */,
+				18EED2FB1815853E000856CE /* DDTTYLogger.h */,
+				18EED2FC1815853E000856CE /* DDTTYLogger.m */,
+				18EED2FD1815853E000856CE /* Extensions */,
+			);
+			path = Lumberjack;
+			sourceTree = "<group>";
+		};
+		18EED2FD1815853E000856CE /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				18EED2FE1815853E000856CE /* ContextFilterLogFormatter.h */,
+				18EED2FF1815853E000856CE /* ContextFilterLogFormatter.m */,
+				18EED3001815853E000856CE /* DispatchQueueLogFormatter.h */,
+				18EED3011815853E000856CE /* DispatchQueueLogFormatter.m */,
+				18EED3021815853E000856CE /* README.txt */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		18EED3201815853E000856CE /* view */ = {
+			isa = PBXGroup;
+			children = (
+				18EED3571815865F000856CE /* MainStoryboard.storyboard */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
 		515B0BDF18082A9B0092BADB = {
 			isa = PBXGroup;
 			children = (
@@ -84,6 +289,7 @@
 				515B0C1018082A9B0092BADB /* vboTests */,
 				515B0BEA18082A9B0092BADB /* Frameworks */,
 				515B0BE918082A9B0092BADB /* Products */,
+				0B1879528B2F4B1DA083D08E /* Pods.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -99,10 +305,22 @@
 		515B0BEA18082A9B0092BADB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				18EC4C1F181E671900E4196E /* libPods-Reachability.a */,
+				18EC4C1D181E671500E4196E /* libPods-MKNetworkKit.a */,
+				1841102C181658A9008B700C /* CoreData.framework */,
+				1841102A1816587E008B700C /* libsqlite3.dylib */,
+				1841102818165875008B700C /* libstdc++.dylib */,
+				184110261816585B008B700C /* libz.dylib */,
+				18AD18C2181608D90097E830 /* ImageIO.framework */,
+				18EED34D181585AD000856CE /* QuartzCore.framework */,
+				18EED34B181585A2000856CE /* CFNetwork.framework */,
+				18EED3491815859A000856CE /* SystemConfiguration.framework */,
+				18EED34718158590000856CE /* Security.framework */,
 				515B0BEB18082A9B0092BADB /* Foundation.framework */,
 				515B0BED18082A9B0092BADB /* CoreGraphics.framework */,
 				515B0BEF18082A9B0092BADB /* UIKit.framework */,
 				515B0C0A18082A9B0092BADB /* XCTest.framework */,
+				DFB0F5D3655E4A02801ED5B1 /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -110,11 +328,14 @@
 		515B0BF118082A9B0092BADB /* vbo */ = {
 			isa = PBXGroup;
 			children = (
+				18AD18C518160DB50097E830 /* other */,
+				18EED2EF1815853E000856CE /* controller */,
+				18EED2F01815853E000856CE /* model */,
+				18EED3201815853E000856CE /* view */,
 				515B0BFA18082A9B0092BADB /* AppDelegate.h */,
 				515B0BFB18082A9B0092BADB /* AppDelegate.m */,
-				515B0C0018082A9B0092BADB /* ViewController.h */,
-				515B0C0118082A9B0092BADB /* ViewController.m */,
 				515B0C0318082A9B0092BADB /* Images.xcassets */,
+				18EED2F11815853E000856CE /* otherLibraries */,
 				515B0BF218082A9B0092BADB /* Supporting Files */,
 			);
 			path = vbo;
@@ -156,9 +377,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 515B0C1A18082A9B0092BADB /* Build configuration list for PBXNativeTarget "vbo" */;
 			buildPhases = (
+				EE594A7F413B4D63B8551170 /* Check Pods Manifest.lock */,
 				515B0BE418082A9B0092BADB /* Sources */,
 				515B0BE518082A9B0092BADB /* Frameworks */,
 				515B0BE618082A9B0092BADB /* Resources */,
+				B6DF7960788C4B6295F22B33 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -226,6 +449,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				515B0C0418082A9B0092BADB /* Images.xcassets in Resources */,
+				18EED32F1815853E000856CE /* README.txt in Resources */,
+				1838DF20181E677A003D015A /* WeiboSDK.bundle in Resources */,
+				18EED3581815865F000856CE /* MainStoryboard.storyboard in Resources */,
 				515B0BF618082A9B0092BADB /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -234,20 +460,66 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18EED3591815865F000856CE /* MainStoryboard.storyboard in Resources */,
+				18EED3301815853E000856CE /* README.txt in Resources */,
 				515B0C1518082A9B0092BADB /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		B6DF7960788C4B6295F22B33 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EE594A7F413B4D63B8551170 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		515B0BE418082A9B0092BADB /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				515B0C0218082A9B0092BADB /* ViewController.m in Sources */,
+				1841100318165608008B700C /* WXYNetworkOperation.m in Sources */,
+				18EED35518158653000856CE /* WXYTestViewController.m in Sources */,
+				18EED3231815853E000856CE /* DDASLLogger.m in Sources */,
+				18EED32B1815853E000856CE /* ContextFilterLogFormatter.m in Sources */,
+				18EED3291815853E000856CE /* DDTTYLogger.m in Sources */,
+				18EED3251815853E000856CE /* DDFileLogger.m in Sources */,
+				18EED35318158653000856CE /* ViewController.m in Sources */,
+				18EED3271815853E000856CE /* DDLog.m in Sources */,
 				515B0BFC18082A9B0092BADB /* AppDelegate.m in Sources */,
+				18EED32D1815853E000856CE /* DispatchQueueLogFormatter.m in Sources */,
+				18411000181655EB008B700C /* WXYNetworkEngine.m in Sources */,
 				515B0BF818082A9B0092BADB /* main.m in Sources */,
+				18EED3211815853E000856CE /* DDAbstractDatabaseLogger.m in Sources */,
+				1841100618165626008B700C /* WXYError.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -255,7 +527,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18EED35418158653000856CE /* ViewController.m in Sources */,
+				18EED3281815853E000856CE /* DDLog.m in Sources */,
+				18EED32E1815853E000856CE /* DispatchQueueLogFormatter.m in Sources */,
+				18EED32C1815853E000856CE /* ContextFilterLogFormatter.m in Sources */,
+				18EED3221815853E000856CE /* DDAbstractDatabaseLogger.m in Sources */,
+				18EED35618158653000856CE /* WXYTestViewController.m in Sources */,
+				18EED3261815853E000856CE /* DDFileLogger.m in Sources */,
+				18EED32A1815853E000856CE /* DDTTYLogger.m in Sources */,
 				515B0C1718082A9B0092BADB /* vboTests.m in Sources */,
+				18EED3241815853E000856CE /* DDASLLogger.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -363,26 +644,58 @@
 		};
 		515B0C1B18082A9B0092BADB /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0B1879528B2F4B1DA083D08E /* Pods.xcconfig */;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Hongming Zhu (H5SJ56Z88P)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "vbo/vbo-Prefix.pch";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = NO;
+				"GCC_WARN_64_TO_32_BIT_CONVERSION[arch=*64]" = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+				);
 				INFOPLIST_FILE = "vbo/vbo-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/apple/developer/vbo/project/vbo/vbo/otherLibraries/libWeiboSDK,
+				);
+				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "297D6A85-0B39-4370-A5D6-D5B6A0C95246";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
 		};
 		515B0C1C18082A9B0092BADB /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0B1879528B2F4B1DA083D08E /* Pods.xcconfig */;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Hongming Zhu (H5SJ56Z88P)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "vbo/vbo-Prefix.pch";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = NO;
+				"GCC_WARN_64_TO_32_BIT_CONVERSION[arch=*64]" = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+				);
 				INFOPLIST_FILE = "vbo/vbo-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/apple/developer/vbo/project/vbo/vbo/otherLibraries/libWeiboSDK,
+				);
+				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "297D6A85-0B39-4370-A5D6-D5B6A0C95246";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
