@@ -21,7 +21,7 @@
 #pragma mark - Init Method
 - (id)init
 {
-    self = [super initWithFrame:CGRectMake(0, 0, 320, 65)];
+    self = [super init];
     if (self)
     {
         self.translatesAutoresizingMaskIntoConstraints = NO;
@@ -29,19 +29,21 @@
         self.titleTextView = [[WXYBlurTextView alloc] init];
 
         [self addSubview:self.titleTextView];
-        
+     
+        self.navBarHeightConstraint = [NSLayoutConstraint constraintWithItem:self attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:0 constant:65.f];
+        [self addConstraint:self.navBarHeightConstraint];
         
         NSDictionary* viewsDict = @{@"outView":self, @"titleTextView":self.titleTextView};
-//        NSArray* vLayouts = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[titleTextView]-|" options:0 metrics:nil views:viewsDict];
-//        NSArray* hLayouts = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|[titleTextView]|" options:0 metrics:nil views:viewsDict];
-        
-//        [self addConstraints:vLayouts];
-//        [self addConstraints:hLayouts];
-        
-        
+        NSArray* vLayouts = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|[titleTextView]|" options:0 metrics:nil views:viewsDict];
+        NSArray* hLayouts = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|[titleTextView]|" options:0 metrics:nil views:viewsDict];
+        [self addConstraints:vLayouts];
+        [self addConstraints:hLayouts];
     }
     return self;
 }
+
+
+
 
 /*
 // Only override drawRect: if you perform custom drawing.
