@@ -61,4 +61,14 @@
 }
 #pragma mark - UITableView Delegate
 
+#pragma mark - UIScrollView Delegate
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    id<UIScrollViewDelegate> delegate = nil;
+    if ([self.parentViewController.parentViewController conformsToProtocol:@protocol(UIScrollViewDelegate)])
+    {
+        delegate = (id<UIScrollViewDelegate>) self.parentViewController.parentViewController;
+    }
+    [delegate scrollViewDidScroll:scrollView];
+}
 @end

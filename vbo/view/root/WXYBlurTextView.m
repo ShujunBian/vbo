@@ -8,6 +8,7 @@
 
 #import "WXYBlurTextView.h"
 
+#import "UIImage+ImageEffects.h"
 
 #import <QuartzCore/QuartzCore.h>
 
@@ -36,20 +37,14 @@
 //        self.textLayer = [CATextLayer layer];
         
         self.titleLabel = [[UILabel alloc] init];
-        self.titleLabel.text = @"dddddd";
-//        [self addSubview:self.titleLabel];
         
         self.text = @"aaaaaa";
         
-        [self refresh];
+//        [self refresh];
         
-        self.layer.mask = self.titleLabel.layer;
-//        self.layer.mask = self.textLayer;
-//        self.textLayer.position = self.center;
-//        [self.layer addSublayer:self.textLayer];
-//        self.textLayer.anchorPoint = CGPointMake(0.5f, 0.5f);
+        self.titleLabel.textAlignment = NSTextAlignmentCenter;
         
-        
+//        self.layer.mask = self.titleLabel.layer;
     }
     return self;
 }
@@ -58,26 +53,65 @@
 - (void)layoutSubviews
 {
     [super layoutSubviews];
-    self.titleLabel.frame = self.bounds;
+    self.titleLabel.frame = CGRectMake(0, 20, self.bounds.size.width, self.bounds.size.height - 20);
 }
 
 
 - (void)refresh
 {
-
-#warning SnapShotImage应该为模糊以后的截图
-    UIImage* snapShotImage = [UIImage imageNamed:@"test.png"];
-    
-    self.layer.contents = (__bridge id)(snapShotImage.CGImage);
-
+    if (self.snapShotView)
+    {
+        UIImage* snapShotImage = [self captureView:self.snapShotView frame:self.frame];
+        snapShotImage = [snapShotImage applyExtraLightEffect];
+        self.layer.contents = snapShotImage;
+        
+//        [self setNeedsDisplay];
+//        self.backgroundColor = [UIColor clearColor];
+//        
+//        UIGraphicsBeginImageContext(self.frame.size); //currentView 当前的view
+//        [self.superview.superview.layer renderInContext:UIGraphicsGetCurrentContext()];
+//        UIImage *snapShotImage = UIGraphicsGetImageFromCurrentImageContext();
+//        UIGraphicsEndImageContext();
+//        
+//        //    UIImage* snapShotImage = [UIImage imageNamed:@"test.png"];
+//        //    snapShotImage = [snapShotImage applyLightEffect];
+//        self.layer.contents = (__bridge id)(snapShotImage.CGImage);
+    }
 }
-/*
+
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.
 - (void)drawRect:(CGRect)rect
 {
     // Drawing code
+//    if (self.snapShotView)
+//    {
+//        UIGraphicsBeginImageContext(self.frame.size); //currentView 当前的view
+//        [self.snapShotView.layer renderInContext:UIGraphicsGetCurrentContext()];
+//        UIImage *snapShotImage = UIGraphicsGetImageFromCurrentImageContext();
+//        UIGraphicsEndImageContext();
+//        [snapShotImage applyLightEffect];
+//        //    UIImage* snapShotImage = [UIImage imageNamed:@"test.png"];
+//        //    snapShotImage = [snapShotImage applyLightEffect];
+//        
+//        self.layer.contents = (__bridge id)(snapShotImage.CGImage);
+//    }
+
 }
-*/
+- (UIImage *)captureView:(UIView *)view frame:(CGRect)rect
+{
+    CGRect screenRect = rect;
+    UIGraphicsBeginImageContext(screenRect.size);
+    CGContextRef ctx = UIGraphicsGetCurrentContext();
+    [[UIColor blackColor] set];
+    CGContextFillRect(ctx, screenRect);
+    [view.layer renderInContext:ctx];
+    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    ctx = nil;
+    
+    return newImage;
+}
+
 
 @end

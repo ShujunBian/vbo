@@ -26,6 +26,7 @@
 		185E88AF182AABF40020F3B2 /* MKNetworkEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 185E889B182AABF40020F3B2 /* MKNetworkEngine.m */; };
 		185E88B0182AABF40020F3B2 /* MKNetworkOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 185E889E182AABF40020F3B2 /* MKNetworkOperation.m */; };
 		185E88B1182AABF40020F3B2 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 185E88A1182AABF40020F3B2 /* Reachability.m */; };
+		185E88B9182AAE670020F3B2 /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 185E88B8182AAE670020F3B2 /* UIImage+ImageEffects.m */; };
 		1868F0FC1829C8B200C5764D /* WXYRootNavViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1868F0F91829C8B200C5764D /* WXYRootNavViewController.m */; };
 		1868F0FD1829C8B200C5764D /* WXYRootNavViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1868F0F91829C8B200C5764D /* WXYRootNavViewController.m */; };
 		1868F0FE1829C8B200C5764D /* WXYRootTabbarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1868F0FB1829C8B200C5764D /* WXYRootTabbarViewController.m */; };
@@ -150,6 +151,8 @@
 		185E88A1182AABF40020F3B2 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		185E88A4182AABF40020F3B2 /* MKNetworkKit-iOS-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MKNetworkKit-iOS-Prefix.pch"; sourceTree = "<group>"; };
 		185E88A5182AABF40020F3B2 /* MKNetworkKit-iOS.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = "MKNetworkKit-iOS.xcodeproj"; sourceTree = "<group>"; };
+		185E88B7182AAE670020F3B2 /* UIImage+ImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageEffects.h"; sourceTree = "<group>"; };
+		185E88B8182AAE670020F3B2 /* UIImage+ImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageEffects.m"; sourceTree = "<group>"; };
 		1868F0F81829C8B200C5764D /* WXYRootNavViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXYRootNavViewController.h; sourceTree = "<group>"; };
 		1868F0F91829C8B200C5764D /* WXYRootNavViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXYRootNavViewController.m; sourceTree = "<group>"; };
 		1868F0FA1829C8B200C5764D /* WXYRootTabbarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXYRootTabbarViewController.h; sourceTree = "<group>"; };
@@ -374,6 +377,15 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		185E88B6182AAE670020F3B2 /* ImageEffect */ = {
+			isa = PBXGroup;
+			children = (
+				185E88B7182AAE670020F3B2 /* UIImage+ImageEffects.h */,
+				185E88B8182AAE670020F3B2 /* UIImage+ImageEffects.m */,
+			);
+			path = ImageEffect;
+			sourceTree = "<group>";
+		};
 		1868F0F11829C86500C5764D /* root */ = {
 			isa = PBXGroup;
 			children = (
@@ -496,6 +508,7 @@
 		18EED2F11815853E000856CE /* otherLibraries */ = {
 			isa = PBXGroup;
 			children = (
+				185E88B6182AAE670020F3B2 /* ImageEffect */,
 				185E8889182AABF40020F3B2 /* MKNetworkKit */,
 				1868F12C1829DA3300C5764D /* AMBlurView */,
 				1838DF1B181E677A003D015A /* libWeiboSDK */,
@@ -819,6 +832,7 @@
 				1868F1241829D7EA00C5764D /* WXYTabBar.m in Sources */,
 				515B0BF818082A9B0092BADB /* main.m in Sources */,
 				185E88AD182AABF40020F3B2 /* UIAlertView+MKNetworkKitAdditions.m in Sources */,
+				185E88B9182AAE670020F3B2 /* UIImage+ImageEffects.m in Sources */,
 				18EED3211815853E000856CE /* DDAbstractDatabaseLogger.m in Sources */,
 				185E88AE182AABF40020F3B2 /* UIImageView+MKNetworkKitAdditions.m in Sources */,
 				1841100618165626008B700C /* WXYError.m in Sources */,

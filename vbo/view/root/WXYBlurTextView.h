@@ -12,6 +12,7 @@
 @interface WXYBlurTextView : UIView
 
 @property (copy, nonatomic) NSString* text;
+@property (weak, nonatomic) UIView* snapShotView;
 
 - (void)refresh;
 @end

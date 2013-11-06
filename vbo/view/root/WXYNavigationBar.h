@@ -8,12 +8,15 @@
 
 #import <UIKit/UIKit.h>
 #import "AMBlurView.h"
-#import "WXYBlurTextView.h"
+
 
 @interface WXYNavigationBar : AMBlurView
 
-@property (strong, nonatomic) WXYBlurTextView* titleTextView;
-
 @property (strong, nonatomic) NSLayoutConstraint* navBarHeightConstraint;
+
+@property (weak, nonatomic) UIView* snapShotView;
+
+
+- (void)refresh;
 
 @end
