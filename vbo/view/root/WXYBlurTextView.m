@@ -13,8 +13,7 @@
 
 @interface WXYBlurTextView ()
 
-@property (strong, nonatomic) CATextLayer* textLayer;
-
+@property (strong, nonatomic) UILabel* titleLabel;
 @end
 
 @implementation WXYBlurTextView
@@ -23,10 +22,7 @@
 - (void)setText:(NSString *)text
 {
     _text = text;
-    
-//    NSAttributedString* attributedText = [[NSAttributedString alloc] initWithString:_text attributes:@{}];
-    
-    self.textLayer.string = _text;
+    self.titleLabel.text = _text;
 }
 
 #pragma mark - Init Method
@@ -37,15 +33,20 @@
     {
         self.translatesAutoresizingMaskIntoConstraints = NO;
         self.backgroundColor = [UIColor clearColor];
-        self.textLayer = [CATextLayer layer];
+//        self.textLayer = [CATextLayer layer];
+        
+        self.titleLabel = [[UILabel alloc] init];
+        self.titleLabel.text = @"dddddd";
+//        [self addSubview:self.titleLabel];
         
         self.text = @"aaaaaa";
         
         [self refresh];
         
-        self.layer.mask = self.textLayer;
-        self.textLayer.position = self.center;
-
+        self.layer.mask = self.titleLabel.layer;
+//        self.layer.mask = self.textLayer;
+//        self.textLayer.position = self.center;
+//        [self.layer addSublayer:self.textLayer];
 //        self.textLayer.anchorPoint = CGPointMake(0.5f, 0.5f);
         
         
@@ -57,10 +58,8 @@
 - (void)layoutSubviews
 {
     [super layoutSubviews];
-    self.textLayer.frame = self.bounds;
+    self.titleLabel.frame = self.bounds;
 }
-
-
 
 
 - (void)refresh
