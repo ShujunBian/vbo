@@ -7,7 +7,9 @@
 //
 
 #import "MKNetworkKit.h"
-
+#define SHARE_NW_ENGINE [WXYNetworkEngine shareNetworkEngine]
 @interface WXYNetworkEngine : MKNetworkEngine
+
++ (WXYNetworkEngine*)shareNetworkEngine;
 
 @end
