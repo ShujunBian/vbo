@@ -14,4 +14,6 @@
 
 @property (strong, nonatomic) WXYBlurTextView* titleTextView;
 
+@property (strong, nonatomic) NSLayoutConstraint* navBarHeightConstraint;
+
 @end
