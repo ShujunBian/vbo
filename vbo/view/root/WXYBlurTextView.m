@@ -44,7 +44,7 @@
         
         self.titleLabel.textAlignment = NSTextAlignmentCenter;
         
-//        self.layer.mask = self.titleLabel.layer;
+        self.layer.mask = self.titleLabel.layer;
     }
     return self;
 }
@@ -61,11 +61,11 @@
 {
     if (self.snapShotView)
     {
-        UIImage* snapShotImage = [self captureView:self.snapShotView frame:self.frame];
-        snapShotImage = [snapShotImage applyExtraLightEffect];
-        self.layer.contents = snapShotImage;
+//        UIImage* snapShotImage = [self captureView:self.snapShotView frame:self.frame];
+//        snapShotImage = [snapShotImage applyExtraLightEffect];
+//        self.layer.contents = snapShotImage;
         
-//        [self setNeedsDisplay];
+        [self setNeedsDisplay];
 //        self.backgroundColor = [UIColor clearColor];
 //        
 //        UIGraphicsBeginImageContext(self.frame.size); //currentView 当前的view
@@ -84,18 +84,18 @@
 - (void)drawRect:(CGRect)rect
 {
     // Drawing code
-//    if (self.snapShotView)
-//    {
-//        UIGraphicsBeginImageContext(self.frame.size); //currentView 当前的view
-//        [self.snapShotView.layer renderInContext:UIGraphicsGetCurrentContext()];
-//        UIImage *snapShotImage = UIGraphicsGetImageFromCurrentImageContext();
-//        UIGraphicsEndImageContext();
-//        [snapShotImage applyLightEffect];
-//        //    UIImage* snapShotImage = [UIImage imageNamed:@"test.png"];
-//        //    snapShotImage = [snapShotImage applyLightEffect];
-//        
+    if (self.snapShotView)
+    {
+        UIGraphicsBeginImageContext(self.frame.size); //currentView 当前的view
+        [self.snapShotView.layer renderInContext:UIGraphicsGetCurrentContext()];
+        UIImage *snapShotImage = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+        [snapShotImage applyExtraLightEffect];
+        //    UIImage* snapShotImage = [UIImage imageNamed:@"test.png"];
+        //    snapShotImage = [snapShotImage applyLightEffect];
+        [snapShotImage drawAtPoint:CGPointZero];
 //        self.layer.contents = (__bridge id)(snapShotImage.CGImage);
-//    }
+    }
 
 }
 - (UIImage *)captureView:(UIView *)view frame:(CGRect)rect
