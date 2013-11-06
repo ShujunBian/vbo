@@ -16,6 +16,8 @@
 		1841102918165875008B700C /* libstdc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 1841102818165875008B700C /* libstdc++.dylib */; };
 		1841102B1816587E008B700C /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 1841102A1816587E008B700C /* libsqlite3.dylib */; };
 		1841102D181658A9008B700C /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1841102C181658A9008B700C /* CoreData.framework */; };
+		188E68971829131600BE534D /* vbo_datamodel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 188E68951829131600BE534D /* vbo_datamodel.xcdatamodeld */; };
+		188E68981829131600BE534D /* vbo_datamodel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 188E68951829131600BE534D /* vbo_datamodel.xcdatamodeld */; };
 		18AD18C3181608D90097E830 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18AD18C2181608D90097E830 /* ImageIO.framework */; };
 		18EC4C1E181E671500E4196E /* libPods-MKNetworkKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 18EC4C1D181E671500E4196E /* libPods-MKNetworkKit.a */; };
 		18EC4C20181E671900E4196E /* libPods-Reachability.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 18EC4C1F181E671900E4196E /* libPods-Reachability.a */; };
@@ -85,6 +87,7 @@
 		1841102818165875008B700C /* libstdc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.dylib"; path = "usr/lib/libstdc++.dylib"; sourceTree = SDKROOT; };
 		1841102A1816587E008B700C /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		1841102C181658A9008B700C /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		188E68961829131600BE534D /* vbo_datamodel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = vbo_datamodel.xcdatamodel; sourceTree = "<group>"; };
 		18AD18C2181608D90097E830 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		18AD18C618160DD10097E830 /* DDLogLevelGlobal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DDLogLevelGlobal.h; sourceTree = "<group>"; };
 		18EC4C1D181E671500E4196E /* libPods-MKNetworkKit.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-MKNetworkKit.a"; path = "Pods/build/Release-iphoneos/libPods-MKNetworkKit.a"; sourceTree = "<group>"; };
@@ -190,6 +193,7 @@
 		18410FFB18165589008B700C /* coredata */ = {
 			isa = PBXGroup;
 			children = (
+				188E68951829131600BE534D /* vbo_datamodel.xcdatamodeld */,
 			);
 			path = coredata;
 			sourceTree = "<group>";
@@ -515,6 +519,7 @@
 				18EED35318158653000856CE /* ViewController.m in Sources */,
 				18EED3271815853E000856CE /* DDLog.m in Sources */,
 				515B0BFC18082A9B0092BADB /* AppDelegate.m in Sources */,
+				188E68971829131600BE534D /* vbo_datamodel.xcdatamodeld in Sources */,
 				18EED32D1815853E000856CE /* DispatchQueueLogFormatter.m in Sources */,
 				18411000181655EB008B700C /* WXYNetworkEngine.m in Sources */,
 				515B0BF818082A9B0092BADB /* main.m in Sources */,
@@ -536,6 +541,7 @@
 				18EED3261815853E000856CE /* DDFileLogger.m in Sources */,
 				18EED32A1815853E000856CE /* DDTTYLogger.m in Sources */,
 				515B0C1718082A9B0092BADB /* vboTests.m in Sources */,
+				188E68981829131600BE534D /* vbo_datamodel.xcdatamodeld in Sources */,
 				18EED3241815853E000856CE /* DDASLLogger.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -773,6 +779,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		188E68951829131600BE534D /* vbo_datamodel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				188E68961829131600BE534D /* vbo_datamodel.xcdatamodel */,
+			);
+			currentVersion = 188E68961829131600BE534D /* vbo_datamodel.xcdatamodel */;
+			path = vbo_datamodel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 515B0BE018082A9B0092BADB /* Project object */;
 }

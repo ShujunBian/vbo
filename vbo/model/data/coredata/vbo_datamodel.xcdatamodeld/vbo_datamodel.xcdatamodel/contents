@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="3400" systemVersion="13A603" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="LoginUser" parentEntity="User" syncable="YES">
+        <attribute name="accessToken" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="Status" syncable="YES">
+        <attribute name="bmiddlePicURL" optional="YES" attributeType="String">
+            <userInfo/>
+        </attribute>
+        <attribute name="commentsCount" optional="YES" attributeType="Integer 64" defaultValueString="0">
+            <userInfo/>
+        </attribute>
+        <attribute name="createdAt" attributeType="Date">
+            <userInfo/>
+        </attribute>
+        <attribute name="favorited" optional="YES" attributeType="Boolean">
+            <userInfo/>
+        </attribute>
+        <attribute name="originalPicURL" optional="YES" attributeType="String">
+            <userInfo/>
+        </attribute>
+        <attribute name="repostsCount" optional="YES" attributeType="Integer 64" defaultValueString="0">
+            <userInfo/>
+        </attribute>
+        <attribute name="source" optional="YES" attributeType="String">
+            <userInfo/>
+        </attribute>
+        <attribute name="statusID" attributeType="String">
+            <userInfo/>
+        </attribute>
+        <attribute name="text" attributeType="String">
+            <userInfo/>
+        </attribute>
+        <attribute name="thumbnailPicURL" optional="YES" attributeType="String">
+            <userInfo/>
+        </attribute>
+        <attribute name="truncated" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <relationship name="author" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="statuses" inverseEntity="User" syncable="YES"/>
+        <relationship name="repostedBy" optional="YES" toMany="YES" deletionRule="No Action" destinationEntity="Status" inverseName="repostStatus" inverseEntity="Status">
+            <userInfo/>
+        </relationship>
+        <relationship name="repostStatus" optional="YES" maxCount="1" deletionRule="No Action" destinationEntity="Status" inverseName="repostedBy" inverseEntity="Status">
+            <userInfo/>
+        </relationship>
+    </entity>
+    <entity name="User" syncable="YES">
+        <attribute name="blogURL" optional="YES" attributeType="String">
+            <userInfo/>
+        </attribute>
+        <attribute name="city" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="domain" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="followersCount" optional="YES" attributeType="String">
+            <userInfo/>
+        </attribute>
+        <attribute name="gender" optional="YES" attributeType="String">
+            <userInfo/>
+        </attribute>
+        <attribute name="location" optional="YES" attributeType="String">
+            <userInfo/>
+        </attribute>
+        <attribute name="province" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="screenName" attributeType="String">
+            <userInfo/>
+        </attribute>
+        <attribute name="selfDescription" optional="YES" attributeType="String">
+            <userInfo/>
+        </attribute>
+        <attribute name="userID" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="statuses" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Status" inverseName="author" inverseEntity="Status" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="User" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="Status" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="LoginUser" positionX="0" positionY="0" width="0" height="0"/>
+    </elements>
+</model>

@@ -1,2 +1,3 @@
 platform :ios,      '7.0'
 pod 'MKNetworkKit'
+pod 'GHUnitIOS', '~>0.5.6'
