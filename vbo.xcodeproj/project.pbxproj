@@ -830,7 +830,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					/Users/apple/developer/vbo/project/vbo/vbo/otherLibraries/libWeiboSDK,
+					"$(SRCROOT)/vbo/otherLibraries/libWeiboSDK",
 				);
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -859,7 +859,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					/Users/apple/developer/vbo/project/vbo/vbo/otherLibraries/libWeiboSDK,
+					"$(SRCROOT)/vbo/otherLibraries/libWeiboSDK",
 				);
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
