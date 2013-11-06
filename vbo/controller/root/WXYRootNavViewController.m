@@ -31,10 +31,19 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-//    self.navigationBar.barTintColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.5f];
-//    self.navigationBar.frame = CGRectMake(0, 0, 480, 50);
+    self.view.translatesAutoresizingMaskIntoConstraints = NO;
+    
+
     self.navBar = [[WXYNavigationBar alloc] init];
     [self.view addSubview:self.navBar];
+    
+    NSLayoutConstraint* navBarTopConstraint = [NSLayoutConstraint constraintWithItem:self.view attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.navBar attribute:NSLayoutAttributeTop multiplier:1 constant:0];
+    NSArray* navBarHoriConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|[navBar]|" options:0 metrics:nil views:@{@"navBar":self.navBar}];
+    [self.view addConstraint:navBarTopConstraint];
+    [self.view addConstraints:navBarHoriConstraints];
+    
+    
+    
 }
 
 - (void)didReceiveMemoryWarning
