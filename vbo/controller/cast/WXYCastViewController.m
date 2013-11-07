@@ -7,6 +7,7 @@
 //
 
 #import "WXYCastViewController.h"
+#import "CastViewCell.h"
 
 @interface WXYCastViewController ()
 
@@ -36,6 +37,7 @@
     [super viewDidLayoutSubviews];
     self.tableView.backgroundColor = [UIColor blackColor];
 }
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -48,18 +50,25 @@
     return 20;
 }
 
+//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    return 30.0;
+//}
+
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString* cellIdentifier = @"Identifier";
-    UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    static NSString* cellIdentifier = @"castViewCell";
+    CastViewCell* cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     if (!cell)
     {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+        cell = [[CastViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
-    cell.textLabel.text = [NSString stringWithFormat:@"aaaaaaa%d",indexPath.row];
     return cell;
 }
 #pragma mark - UITableView Delegate
+
+
 
 #pragma mark - UIScrollView Delegate
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
