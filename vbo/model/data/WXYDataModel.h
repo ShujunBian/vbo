@@ -27,5 +27,6 @@
 @property (nonatomic, retain, readonly) NSPersistentStoreCoordinator* cachePersistentStoreCoordinator;
 -(void)saveCacheContext;
 
+- (void)removeAllCachedStatus;
 
 @end

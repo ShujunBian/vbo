@@ -57,4 +57,6 @@
 - (void)addComments:(NSSet *)values;
 - (void)removeComments:(NSSet *)values;
 
++ (User*)insertWithId:(NSNumber*)uId InContext:(NSManagedObjectContext*)context;
+
 @end

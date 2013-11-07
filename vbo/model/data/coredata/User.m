@@ -42,4 +42,11 @@
 @dynamic statuses;
 @dynamic comments;
 
++ (User*)insertWithId:(NSNumber*)uId InContext:(NSManagedObjectContext*)context
+{
+    User* u = [NSEntityDescription insertNewObjectForEntityForName:@"User" inManagedObjectContext:context];
+    u.userID = uId;
+    return u;
+}
+
 @end

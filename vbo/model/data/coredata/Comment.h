@@ -21,4 +21,6 @@
 @property (nonatomic, retain) Status *status;
 @property (nonatomic, retain) User *user;
 
++ (Comment*)insertWithId:(NSNumber*)cId InContest:(NSManagedObjectContext*)context;
+
 @end

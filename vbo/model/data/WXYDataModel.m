@@ -110,5 +110,15 @@
     return [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject];
 }
 
-
+#pragma mark -
+- (void)removeAllCachedStatus
+{
+    NSFetchRequest* fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"Status"];
+    NSArray* resultArray = [self.cacheManagedObjectContext executeFetchRequest:fetchRequest error:nil];
+    for (NSManagedObject* obj in resultArray)
+    {
+        [self.cacheManagedObjectContext deleteObject:obj];
+    }
+    [self saveCacheContext];
+}
 @end

@@ -44,4 +44,8 @@
 - (void)addComments:(NSSet *)values;
 - (void)removeComments:(NSSet *)values;
 
++ (Status*)insertWithId:(NSNumber*)sId InContext:(NSManagedObjectContext*)context;
+
+- (void)updateWithDict:(NSDictionary*)dict;
+
 @end

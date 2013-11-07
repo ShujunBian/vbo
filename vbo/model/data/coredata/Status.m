@@ -31,4 +31,17 @@
 @dynamic repostStatus;
 @dynamic comments;
 
+
++ (Status*)insertWithId:(NSNumber*)sId InContext:(NSManagedObjectContext*)context;
+{
+    Status* s = [NSEntityDescription insertNewObjectForEntityForName:@"Status" inManagedObjectContext:context];
+    s.statusID = sId;
+    return s;
+}
+
+- (void)updateWithDict:(NSDictionary*)dict
+{
+    
+}
+
 @end
