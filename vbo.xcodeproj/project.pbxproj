@@ -82,6 +82,7 @@
 		515B0C0D18082A9B0092BADB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 515B0BEF18082A9B0092BADB /* UIKit.framework */; };
 		515B0C1518082A9B0092BADB /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 515B0C1318082A9B0092BADB /* InfoPlist.strings */; };
 		515B0C1718082A9B0092BADB /* vboTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 515B0C1618082A9B0092BADB /* vboTests.m */; };
+		5183B185182AA876008F22D1 /* CastViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5183B184182AA876008F22D1 /* CastViewCell.m */; };
 		56F04C44E0F44253BE15C2ED /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DFB0F5D3655E4A02801ED5B1 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -177,6 +178,8 @@
 		515B0C1218082A9B0092BADB /* vboTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "vboTests-Info.plist"; sourceTree = "<group>"; };
 		515B0C1418082A9B0092BADB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		515B0C1618082A9B0092BADB /* vboTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = vboTests.m; sourceTree = "<group>"; };
+		5183B183182AA876008F22D1 /* CastViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CastViewCell.h; sourceTree = "<group>"; };
+		5183B184182AA876008F22D1 /* CastViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CastViewCell.m; sourceTree = "<group>"; };
 		DFB0F5D3655E4A02801ED5B1 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -272,6 +275,8 @@
 			children = (
 				1868F1011829CD9700C5764D /* WXYCastViewController.h */,
 				1868F1021829CD9700C5764D /* WXYCastViewController.m */,
+				5183B183182AA876008F22D1 /* CastViewCell.h */,
+				5183B184182AA876008F22D1 /* CastViewCell.m */,
 			);
 			path = cast;
 			sourceTree = "<group>";
@@ -677,6 +682,7 @@
 				515B0BF818082A9B0092BADB /* main.m in Sources */,
 				18EED3211815853E000856CE /* DDAbstractDatabaseLogger.m in Sources */,
 				1841100618165626008B700C /* WXYError.m in Sources */,
+				5183B185182AA876008F22D1 /* CastViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
