@@ -39,8 +39,9 @@
 - (void)testGetHomeTimelineOfCurrentUser
 {
     [self.asyncTestCase prepare];
-    [self.engine getHomeTimelineOfCurrentUserSucceed:^(NSArray *completedOperation) {
+    [self.engine getHomeTimelineOfCurrentUserSucceed:^(NSArray *resultArray) {
         [self.asyncTestCase notify:kGHUnitWaitStatusSuccess];
+
     } error:^(NSError *error) {
         XCTFail(@"获取Home界面微博失败");
         [self.asyncTestCase notify:kGHUnitWaitStatusFailure];

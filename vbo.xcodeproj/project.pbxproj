@@ -70,6 +70,9 @@
 		18EB09F0182BD049005CC27D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 515B0BFB18082A9B0092BADB /* AppDelegate.m */; };
 		18EB09F7182BD613005CC27D /* GHUnitIOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18EB09F6182BD613005CC27D /* GHUnitIOS.framework */; };
 		18EB09FB182BD674005CC27D /* GHUnitIOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18EB09F6182BD613005CC27D /* GHUnitIOS.framework */; };
+		18EB0A02182BED82005CC27D /* StatusPicture.m in Sources */ = {isa = PBXBuildFile; fileRef = 18EB0A01182BED82005CC27D /* StatusPicture.m */; };
+		18EB0A06182BF701005CC27D /* NSDate+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 18EB0A05182BF701005CC27D /* NSDate+Addition.m */; };
+		18EB0A09182BF7DD005CC27D /* NSDictionary+noNilValueForKey.m in Sources */ = {isa = PBXBuildFile; fileRef = 18EB0A08182BF7DD005CC27D /* NSDictionary+noNilValueForKey.m */; };
 		18EED3211815853E000856CE /* DDAbstractDatabaseLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 18EED2F41815853E000856CE /* DDAbstractDatabaseLogger.m */; };
 		18EED3221815853E000856CE /* DDAbstractDatabaseLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 18EED2F41815853E000856CE /* DDAbstractDatabaseLogger.m */; };
 		18EED3231815853E000856CE /* DDASLLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 18EED2F61815853E000856CE /* DDASLLogger.m */; };
@@ -205,6 +208,12 @@
 		18EB09E5182BAB38005CC27D /* Comment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Comment.m; sourceTree = "<group>"; };
 		18EB09EB182BCFE2005CC27D /* WXYNetworkEngineTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXYNetworkEngineTest.m; sourceTree = "<group>"; };
 		18EB09F6182BD613005CC27D /* GHUnitIOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GHUnitIOS.framework; path = vbo/otherLibraries/GHUnitIOS.framework; sourceTree = "<group>"; };
+		18EB0A00182BED82005CC27D /* StatusPicture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatusPicture.h; sourceTree = "<group>"; };
+		18EB0A01182BED82005CC27D /* StatusPicture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatusPicture.m; sourceTree = "<group>"; };
+		18EB0A04182BF701005CC27D /* NSDate+Addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Addition.h"; sourceTree = "<group>"; };
+		18EB0A05182BF701005CC27D /* NSDate+Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Addition.m"; sourceTree = "<group>"; };
+		18EB0A07182BF7DD005CC27D /* NSDictionary+noNilValueForKey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+noNilValueForKey.h"; sourceTree = "<group>"; };
+		18EB0A08182BF7DD005CC27D /* NSDictionary+noNilValueForKey.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+noNilValueForKey.m"; sourceTree = "<group>"; };
 		18EED2F31815853E000856CE /* DDAbstractDatabaseLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDAbstractDatabaseLogger.h; sourceTree = "<group>"; };
 		18EED2F41815853E000856CE /* DDAbstractDatabaseLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDAbstractDatabaseLogger.m; sourceTree = "<group>"; };
 		18EED2F51815853E000856CE /* DDASLLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDASLLogger.h; sourceTree = "<group>"; };
@@ -309,6 +318,8 @@
 			isa = PBXGroup;
 			children = (
 				188E68951829131600BE534D /* vboCachedDatamodel.xcdatamodeld */,
+				18EB0A00182BED82005CC27D /* StatusPicture.h */,
+				18EB0A01182BED82005CC27D /* StatusPicture.m */,
 				18EB09E4182BAB38005CC27D /* Comment.h */,
 				18EB09E5182BAB38005CC27D /* Comment.m */,
 				18EB09E0182BAB37005CC27D /* User.h */,
@@ -528,6 +539,17 @@
 			path = beans;
 			sourceTree = "<group>";
 		};
+		18EB0A03182BF701005CC27D /* extension */ = {
+			isa = PBXGroup;
+			children = (
+				18EB0A04182BF701005CC27D /* NSDate+Addition.h */,
+				18EB0A05182BF701005CC27D /* NSDate+Addition.m */,
+				18EB0A07182BF7DD005CC27D /* NSDictionary+noNilValueForKey.h */,
+				18EB0A08182BF7DD005CC27D /* NSDictionary+noNilValueForKey.m */,
+			);
+			path = extension;
+			sourceTree = "<group>";
+		};
 		18EED2EF1815853E000856CE /* controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -652,6 +674,7 @@
 		515B0BF118082A9B0092BADB /* vbo */ = {
 			isa = PBXGroup;
 			children = (
+				18EB0A03182BF701005CC27D /* extension */,
 				1868F1361829EC7A00C5764D /* graphic */,
 				18AD18C518160DB50097E830 /* other */,
 				18EED2EF1815853E000856CE /* controller */,
@@ -870,10 +893,13 @@
 				18EED35318158653000856CE /* ViewController.m in Sources */,
 				18EED3271815853E000856CE /* DDLog.m in Sources */,
 				1868F12F1829DA3300C5764D /* AMBlurView.m in Sources */,
+				18EB0A09182BF7DD005CC27D /* NSDictionary+noNilValueForKey.m in Sources */,
 				18EB09DE182BAB37005CC27D /* Status.m in Sources */,
 				515B0BFC18082A9B0092BADB /* AppDelegate.m in Sources */,
 				185E88AC182AABF40020F3B2 /* NSString+MKNetworkKitAdditions.m in Sources */,
+				18EB0A06182BF701005CC27D /* NSDate+Addition.m in Sources */,
 				188E68971829131600BE534D /* vboCachedDatamodel.xcdatamodeld in Sources */,
+				18EB0A02182BED82005CC27D /* StatusPicture.m in Sources */,
 				185E88A8182AABF40020F3B2 /* NSAlert+MKNetworkKitAdditions.m in Sources */,
 				1868F1131829CE1400C5764D /* WXYMineViewController.m in Sources */,
 				185E88B1182AABF40020F3B2 /* Reachability.m in Sources */,

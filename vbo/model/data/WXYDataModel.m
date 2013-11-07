@@ -121,4 +121,53 @@
     }
     [self saveCacheContext];
 }
+
+- (id)getEntity:(NSString*)entityName byId:(long long)entityId idPropertyName:(NSString*)propertyName
+{
+    NSFetchRequest* fetchRequest = [NSFetchRequest fetchRequestWithEntityName:entityName];
+    NSPredicate* predicate = [NSPredicate predicateWithFormat:@"%@=%ld",propertyName,entityId];
+    [fetchRequest setPredicate:predicate];
+    NSArray* resultArray = [self.cacheManagedObjectContext executeFetchRequest:fetchRequest error:nil];
+    id returnEntity = nil;
+    if (resultArray.count)
+    {
+        returnEntity = resultArray[0];
+    }
+//    else
+//    {
+//        returnStatus = [Status insertWithId:@(statusId) InContext:self.cacheManagedObjectContext];
+//    }
+    return returnEntity;
+}
+
+- (Status*)getStatusById:(long long)statusId
+{
+    Status* returnStatus = nil;
+    returnStatus = [self getEntity:@"Status" byId:statusId idPropertyName:@"StatusID"];
+    if (!returnStatus)
+    {
+        returnStatus = [Status insertWithId:@(statusId) InContext:self.cacheManagedObjectContext];
+    }
+    return returnStatus;
+}
+- (User*)getUserById:(long long)userId
+{
+    User* returnUser = nil;
+    returnUser = [self getEntity:@"User" byId:userId idPropertyName:@"userID"];
+    if (!returnUser)
+    {
+        returnUser = [User insertWithId:@(userId) InContext:self.cacheManagedObjectContext];
+    }
+    return returnUser;
+}
+- (Comment*)getCommentById:(long long)commentId
+{
+    Comment* returnComment = nil;
+    returnComment = [self getEntity:@"Comment" byId:commentId idPropertyName:@"commentID"];
+    if (returnComment)
+    {
+        returnComment = [Comment insertWithId:@(commentId) InContest:self.cacheManagedObjectContext];
+    }
+    return returnComment;
+}
 @end

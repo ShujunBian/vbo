@@ -29,4 +29,8 @@
 
 - (void)removeAllCachedStatus;
 
+- (Status*)getStatusById:(long long)statusId;
+- (User*)getUserById:(long long)userId;
+- (Comment*)getCommentById:(long long)commentId;
+
 @end

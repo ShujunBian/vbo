@@ -10,9 +10,7 @@
         <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="comments" inverseEntity="User" syncable="YES"/>
     </entity>
     <entity name="Status" representedClassName="Status" syncable="YES">
-        <attribute name="bmiddlePicURL" optional="YES" attributeType="String">
-            <userInfo/>
-        </attribute>
+        <attribute name="bmiddlePicURL" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="commentsCount" optional="YES" attributeType="Integer 64" defaultValueString="0">
             <userInfo/>
         </attribute>
@@ -23,9 +21,7 @@
             <userInfo/>
         </attribute>
         <attribute name="geo" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="originalPicURL" optional="YES" attributeType="String">
-            <userInfo/>
-        </attribute>
+        <attribute name="originalPicURL" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="repostsCount" optional="YES" attributeType="Integer 64" defaultValueString="0">
             <userInfo/>
         </attribute>
@@ -39,18 +35,23 @@
         <attribute name="text" attributeType="String">
             <userInfo/>
         </attribute>
-        <attribute name="thumbnailPicURL" optional="YES" attributeType="String">
-            <userInfo/>
-        </attribute>
+        <attribute name="thumbnailPicURL" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="truncated" optional="YES" attributeType="Boolean" syncable="YES"/>
         <relationship name="author" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="statuses" inverseEntity="User" syncable="YES"/>
         <relationship name="comments" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Comment" inverseName="status" inverseEntity="Comment" syncable="YES"/>
+        <relationship name="pictures" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="StatusPicture" inverseName="status" inverseEntity="StatusPicture" syncable="YES"/>
         <relationship name="repostedBy" optional="YES" toMany="YES" deletionRule="No Action" destinationEntity="Status" inverseName="repostStatus" inverseEntity="Status">
             <userInfo/>
         </relationship>
         <relationship name="repostStatus" optional="YES" maxCount="1" deletionRule="No Action" destinationEntity="Status" inverseName="repostedBy" inverseEntity="Status">
             <userInfo/>
         </relationship>
+    </entity>
+    <entity name="StatusPicture" representedClassName="StatusPicture" syncable="YES">
+        <attribute name="bmiddlePicURL" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="originalPicURL" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="thumbnailPicURL" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="status" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Status" inverseName="pictures" inverseEntity="Status" syncable="YES"/>
     </entity>
     <entity name="User" representedClassName="User" syncable="YES">
         <attribute name="allowAllActMessage" optional="YES" attributeType="Boolean" syncable="YES"/>
@@ -61,7 +62,7 @@
             <userInfo/>
         </attribute>
         <attribute name="cityCode" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="createdAt" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="createdAt" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="domain" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="favouritesCount" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="followersCount" optional="YES" attributeType="Integer 64" defaultValueString="0">
@@ -96,8 +97,9 @@
         <relationship name="statuses" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Status" inverseName="author" inverseEntity="Status" syncable="YES"/>
     </entity>
     <elements>
+        <element name="Comment" positionX="0" positionY="0" width="0" height="0"/>
         <element name="Status" positionX="0" positionY="0" width="0" height="0"/>
         <element name="User" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="Comment" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="StatusPicture" positionX="0" positionY="0" width="0" height="0"/>
     </elements>
 </model>
