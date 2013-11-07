@@ -53,7 +53,10 @@
 #warning 添加用户信息
     [params setValue:SHARE_SETTING_MANAGER.testAccessToken forKey:@"access_token"];
     //    }
-    op = [self operationWithPath:path params:params httpMethod:method];
+    op = [self operationWithPath:path
+                          params:params
+                      httpMethod:method
+                             ssl:YES];
     [op addCompletionHandler:succeedBlock errorHandler:errorBlock];
     [self enqueueOperation:op];
     return op;
@@ -65,7 +68,7 @@
                                       onError:(OperationErrorBlock)errorBlock
 {
 #warning 未完成，user暂时为nil
-    return [self startOperationWithPath:path user:nil paramers:paramDict httpMethod:@"POST" onSucceeded:succeedBlock onError:errorBlock];
+    return [self startOperationWithPath:path user:nil paramers:paramDict httpMethod:@"GET" onSucceeded:succeedBlock onError:errorBlock];
 }
 
 #pragma mark - Network Service Client

@@ -63,8 +63,13 @@
 		18EB09E3182BAB37005CC27D /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 18EB09E1182BAB37005CC27D /* User.m */; };
 		18EB09E6182BAB38005CC27D /* Comment.m in Sources */ = {isa = PBXBuildFile; fileRef = 18EB09E5182BAB38005CC27D /* Comment.m */; };
 		18EB09E7182BAB38005CC27D /* Comment.m in Sources */ = {isa = PBXBuildFile; fileRef = 18EB09E5182BAB38005CC27D /* Comment.m */; };
-		18EC4C1E181E671500E4196E /* libPods-MKNetworkKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 18EC4C1D181E671500E4196E /* libPods-MKNetworkKit.a */; };
-		18EC4C20181E671900E4196E /* libPods-Reachability.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 18EC4C1F181E671900E4196E /* libPods-Reachability.a */; };
+		18EB09EC182BCFE2005CC27D /* WXYNetworkEngineTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 18EB09EB182BCFE2005CC27D /* WXYNetworkEngineTest.m */; };
+		18EB09ED182BD049005CC27D /* WXYNetworkEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 18410FFF181655EB008B700C /* WXYNetworkEngine.m */; };
+		18EB09EE182BD049005CC27D /* WXYNetworkOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 1841100218165608008B700C /* WXYNetworkOperation.m */; };
+		18EB09EF182BD049005CC27D /* WXYError.m in Sources */ = {isa = PBXBuildFile; fileRef = 1841100518165626008B700C /* WXYError.m */; };
+		18EB09F0182BD049005CC27D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 515B0BFB18082A9B0092BADB /* AppDelegate.m */; };
+		18EB09F7182BD613005CC27D /* GHUnitIOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18EB09F6182BD613005CC27D /* GHUnitIOS.framework */; };
+		18EB09FB182BD674005CC27D /* GHUnitIOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18EB09F6182BD613005CC27D /* GHUnitIOS.framework */; };
 		18EED3211815853E000856CE /* DDAbstractDatabaseLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 18EED2F41815853E000856CE /* DDAbstractDatabaseLogger.m */; };
 		18EED3221815853E000856CE /* DDAbstractDatabaseLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 18EED2F41815853E000856CE /* DDAbstractDatabaseLogger.m */; };
 		18EED3231815853E000856CE /* DDASLLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 18EED2F61815853E000856CE /* DDASLLogger.m */; };
@@ -102,7 +107,6 @@
 		515B0C0C18082A9B0092BADB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 515B0BEB18082A9B0092BADB /* Foundation.framework */; };
 		515B0C0D18082A9B0092BADB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 515B0BEF18082A9B0092BADB /* UIKit.framework */; };
 		515B0C1518082A9B0092BADB /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 515B0C1318082A9B0092BADB /* InfoPlist.strings */; };
-		515B0C1718082A9B0092BADB /* vboTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 515B0C1618082A9B0092BADB /* vboTests.m */; };
 		56F04C44E0F44253BE15C2ED /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DFB0F5D3655E4A02801ED5B1 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -199,8 +203,8 @@
 		18EB09E1182BAB37005CC27D /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		18EB09E4182BAB38005CC27D /* Comment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Comment.h; sourceTree = "<group>"; };
 		18EB09E5182BAB38005CC27D /* Comment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Comment.m; sourceTree = "<group>"; };
-		18EC4C1D181E671500E4196E /* libPods-MKNetworkKit.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-MKNetworkKit.a"; path = "Pods/build/Release-iphoneos/libPods-MKNetworkKit.a"; sourceTree = "<group>"; };
-		18EC4C1F181E671900E4196E /* libPods-Reachability.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-Reachability.a"; path = "Pods/build/Release-iphoneos/libPods-Reachability.a"; sourceTree = "<group>"; };
+		18EB09EB182BCFE2005CC27D /* WXYNetworkEngineTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXYNetworkEngineTest.m; sourceTree = "<group>"; };
+		18EB09F6182BD613005CC27D /* GHUnitIOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GHUnitIOS.framework; path = vbo/otherLibraries/GHUnitIOS.framework; sourceTree = "<group>"; };
 		18EED2F31815853E000856CE /* DDAbstractDatabaseLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDAbstractDatabaseLogger.h; sourceTree = "<group>"; };
 		18EED2F41815853E000856CE /* DDAbstractDatabaseLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDAbstractDatabaseLogger.m; sourceTree = "<group>"; };
 		18EED2F51815853E000856CE /* DDASLLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDASLLogger.h; sourceTree = "<group>"; };
@@ -240,7 +244,6 @@
 		515B0C0A18082A9B0092BADB /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		515B0C1218082A9B0092BADB /* vboTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "vboTests-Info.plist"; sourceTree = "<group>"; };
 		515B0C1418082A9B0092BADB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		515B0C1618082A9B0092BADB /* vboTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = vboTests.m; sourceTree = "<group>"; };
 		DFB0F5D3655E4A02801ED5B1 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -249,8 +252,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				18EC4C20181E671900E4196E /* libPods-Reachability.a in Frameworks */,
-				18EC4C1E181E671500E4196E /* libPods-MKNetworkKit.a in Frameworks */,
+				18EB09F7182BD613005CC27D /* GHUnitIOS.framework in Frameworks */,
 				1841102D181658A9008B700C /* CoreData.framework in Frameworks */,
 				1841102B1816587E008B700C /* libsqlite3.dylib in Frameworks */,
 				1841102918165875008B700C /* libstdc++.dylib in Frameworks */,
@@ -272,6 +274,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18EB09FB182BD674005CC27D /* GHUnitIOS.framework in Frameworks */,
 				515B0C0B18082A9B0092BADB /* XCTest.framework in Frameworks */,
 				515B0C0D18082A9B0092BADB /* UIKit.framework in Frameworks */,
 				515B0C0C18082A9B0092BADB /* Foundation.framework in Frameworks */,
@@ -627,8 +630,7 @@
 		515B0BEA18082A9B0092BADB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				18EC4C1F181E671900E4196E /* libPods-Reachability.a */,
-				18EC4C1D181E671500E4196E /* libPods-MKNetworkKit.a */,
+				18EB09F6182BD613005CC27D /* GHUnitIOS.framework */,
 				1841102C181658A9008B700C /* CoreData.framework */,
 				1841102A1816587E008B700C /* libsqlite3.dylib */,
 				1841102818165875008B700C /* libstdc++.dylib */,
@@ -678,7 +680,7 @@
 		515B0C1018082A9B0092BADB /* vboTests */ = {
 			isa = PBXGroup;
 			children = (
-				515B0C1618082A9B0092BADB /* vboTests.m */,
+				18EB09EB182BCFE2005CC27D /* WXYNetworkEngineTest.m */,
 				515B0C1118082A9B0092BADB /* Supporting Files */,
 			);
 			path = vboTests;
@@ -896,6 +898,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18EB09ED182BD049005CC27D /* WXYNetworkEngine.m in Sources */,
+				18EB09EE182BD049005CC27D /* WXYNetworkOperation.m in Sources */,
+				18EB09EF182BD049005CC27D /* WXYError.m in Sources */,
+				18EB09F0182BD049005CC27D /* AppDelegate.m in Sources */,
 				18EB09E3182BAB37005CC27D /* User.m in Sources */,
 				18EED35418158653000856CE /* ViewController.m in Sources */,
 				1868F1101829CE0A00C5764D /* WXYMessageViewController.m in Sources */,
@@ -915,7 +921,7 @@
 				1868F1231829D7EA00C5764D /* WXYNavigationBar.m in Sources */,
 				18EB09C9182B7F30005CC27D /* WXYSettingManager.m in Sources */,
 				18EB09DA182B82F1005CC27D /* WXYDataModel.m in Sources */,
-				515B0C1718082A9B0092BADB /* vboTests.m in Sources */,
+				18EB09EC182BCFE2005CC27D /* WXYNetworkEngineTest.m in Sources */,
 				1868F0FD1829C8B200C5764D /* WXYRootNavViewController.m in Sources */,
 				18EB09E7182BAB38005CC27D /* Comment.m in Sources */,
 				188E68981829131600BE534D /* vboCachedDatamodel.xcdatamodeld in Sources */,
@@ -1035,6 +1041,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Hongming Zhu (H5SJ56Z88P)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/apple/developer/vbo/project/vbo/vbo/otherLibraries,
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "vbo/vbo-Prefix.pch";
 				GCC_WARN_64_TO_32_BIT_CONVERSION = NO;
@@ -1064,6 +1074,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Hongming Zhu (H5SJ56Z88P)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/apple/developer/vbo/project/vbo/vbo/otherLibraries,
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "vbo/vbo-Prefix.pch";
 				GCC_WARN_64_TO_32_BIT_CONVERSION = NO;
@@ -1088,18 +1102,23 @@
 		515B0C1E18082A9B0092BADB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				ARCHS = "$(ARCHS_STANDARD)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/vbo.app/vbo";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					/Users/apple/developer/vbo/project/vbo/vbo/otherLibraries,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "vbo/vbo-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
+				);
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 				);
 				INFOPLIST_FILE = "vboTests/vboTests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1111,15 +1130,20 @@
 		515B0C1F18082A9B0092BADB /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				ARCHS = "$(ARCHS_STANDARD)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/vbo.app/vbo";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					/Users/apple/developer/vbo/project/vbo/vbo/otherLibraries,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "vbo/vbo-Prefix.pch";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+				);
 				INFOPLIST_FILE = "vboTests/vboTests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
