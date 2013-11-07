@@ -14,8 +14,7 @@
 #import "WeiboSDK.h"
 
 
-
-
+#import "WXYSettingManager.h"
 
 
 @implementation AppDelegate
@@ -92,18 +91,30 @@
 {
     if ([response isKindOfClass:WBAuthorizeResponse.class])
     {
-        NSString *title = @"认证结果";
-        NSString *message = [NSString stringWithFormat:@"响应状态: %d\nresponse.userId: %@\nresponse.accessToken: %@\n响应UserInfo数据: %@\n原请求UserInfo数据: %@",
-                             response.statusCode, [(WBAuthorizeResponse *)response userID], [(WBAuthorizeResponse *)response accessToken], response.userInfo, response.requestUserInfo];
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title
-                                                        message:message
-                                                       delegate:nil
-                                              cancelButtonTitle:@"确定"
-                                              otherButtonTitles:nil];
+        SHARE_SETTING_MANAGER.testAccessToken = [(WBAuthorizeResponse *)response accessToken];
+        UIAlertView* alert = nil;
+        if (SHARE_SETTING_MANAGER.testAccessToken)
+        {
+            alert = [[UIAlertView alloc] initWithTitle:@"成功" message:nil delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
+        }
+        else
+        {
+            alert = [[UIAlertView alloc] initWithTitle:@"失败" message:nil delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
+        }
+        [alert show];
+//        NSString *title = @"认证结果";
+//        NSString *message = [NSString stringWithFormat:@"响应状态: %d\nresponse.userId: %@\nresponse.accessToken: %@\n响应UserInfo数据: %@\n原请求UserInfo数据: %@",
+//                             response.statusCode, [(WBAuthorizeResponse *)response userID], [(WBAuthorizeResponse *)response accessToken], response.userInfo, response.requestUserInfo];
+//        UIAlertView *alert =
+//        [[UIAlertView alloc] initWithTitle:title
+//                                   message:message
+//                                  delegate:nil
+//                         cancelButtonTitle:@"确定"
+//                         otherButtonTitles:nil];
         
 //        self.wbtoken = [(WBAuthorizeResponse *)response accessToken];
         
-        [alert show];
+//        [alert show];
 //        [alert release];
 }
 }
