@@ -14,6 +14,7 @@
 #define HOME_TIMELINE_URL @"2/statuses/home_timeline.json"
 
 #import "WXYSettingManager.h"
+#import "WXYDataModel.h"
 
 @implementation WXYNetworkEngine
 
@@ -83,10 +84,25 @@
     {
         NSDictionary* responseDict = completedOperation.responseJSON;
         NSArray* statuesDictArray = responseDict[@"statuses"];
+        
+        NSMutableArray* returnArray = [[NSMutableArray alloc] init];
+        
         for (NSDictionary* dict in statuesDictArray)
         {
+            NSNumber* statusId = dict[@"id"];
+            Status* status = [SHARE_DATA_MODEL getStatusById:statusId.longLongValue];
+            [status updateWithDict:dict];
+            NSDictionary* userDict = dict[@"user"];
+            NSNumber* userId = userDict[@"id"];
+            User* user = [SHARE_DATA_MODEL getUserById:userId.longLongValue];
+            [user updateWithDict:userDict];
+            status.author = user;
             
+#warning 多图微博处理未写   pic_urls
+            [returnArray addObject:status];
         }
+        [SHARE_DATA_MODEL saveCacheContext];
+        succeedBlock(returnArray);
         
     }
                               onError:^(MKNetworkOperation *completedOperation, NSError *error)

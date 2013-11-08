@@ -28,4 +28,9 @@
     return c;
 }
 
+- (void)updateWithDict:(NSDictionary*)dict
+{
+#warning 未实现
+}
+
 @end

@@ -13,7 +13,7 @@
 @class Comment;
 
 @interface User : NSManagedObject
-
+//各项属性含义参看 http://open.weibo.com/wiki/2/users/show
 @property (nonatomic, retain) NSString * blogURL;
 @property (nonatomic, retain) NSString * cityCode;
 @property (nonatomic, retain) NSString * domain;
@@ -29,7 +29,7 @@
 @property (nonatomic, retain) NSNumber * friendCount;
 @property (nonatomic, retain) NSNumber * statusCount;
 @property (nonatomic, retain) NSNumber * favouritesCount;
-@property (nonatomic, retain) NSNumber * createdAt;
+@property (nonatomic, retain) NSDate * createdAt;
 @property (nonatomic, retain) NSNumber * following;
 @property (nonatomic, retain) NSNumber * allowAllActMessage;
 @property (nonatomic, retain) NSString * remark;
@@ -58,5 +58,7 @@
 - (void)removeComments:(NSSet *)values;
 
 + (User*)insertWithId:(NSNumber*)uId InContext:(NSManagedObjectContext*)context;
+
+- (void)updateWithDict:(NSDictionary*)dict;
 
 @end

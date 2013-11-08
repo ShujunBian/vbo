@@ -23,4 +23,6 @@
 
 + (Comment*)insertWithId:(NSNumber*)cId InContest:(NSManagedObjectContext*)context;
 
+- (void)updateWithDict:(NSDictionary*)dict;
+
 @end
