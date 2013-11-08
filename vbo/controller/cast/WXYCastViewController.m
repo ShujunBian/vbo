@@ -8,8 +8,16 @@
 
 #import "WXYCastViewController.h"
 #import "CastViewCell.h"
+#import "WXYNetworkEngine.h"
+#import "Status.h"
+#import "UIImageView+MKNetworkKitAdditions.h"
+
+#define contantHeight 120.0
 
 @interface WXYCastViewController ()
+
+@property (strong, nonatomic) WXYNetworkEngine* engine;
+@property (nonatomic, strong) NSArray * weiboContentArray;
 
 @end
 
@@ -28,8 +36,15 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    [self fetchWeiboContent];
+}
 
-    
+- (void)fetchWeiboContent
+{
+    self.engine = SHARE_NW_ENGINE;
+    [self.engine getHomeTimelineOfCurrentUserSucceed:^(NSArray * resultArray){
+        self.weiboContentArray = resultArray;
+    }error:nil];
 }
 
 - (void)viewDidLayoutSubviews
@@ -50,10 +65,17 @@
     return 20;
 }
 
-//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    return 30.0;
-//}
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    Status * currentCellStatus = [_weiboContentArray objectAtIndex:[indexPath row]];
+    float cellHeight = contantHeight;
+    if (currentCellStatus.originalPicURL != nil) {
+        cellHeight += 106.0;
+    }
+    cellHeight += 150.0;
+    
+    return cellHeight;
+}
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -64,6 +86,21 @@
     {
         cell = [[CastViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
+    
+    Status * currentCellStatus = [_weiboContentArray objectAtIndex:[indexPath row]];
+    [cell.weiboContentLabel setText:currentCellStatus.text];
+    NSLog(@"url is %@",currentCellStatus.thumbnailPicURL);
+    if (currentCellStatus.thumbnailPicURL != nil) {
+        cell.avatorTopSpaceConstaint.constant = 116.0;
+    }
+    else {
+        cell.avatorTopSpaceConstaint.constant = 10.0;
+    }
+    NSURL *anImageURL = [NSURL URLWithString:currentCellStatus.thumbnailPicURL];
+    [cell.weiboImage setImageFromURL:anImageURL placeHolderImage:nil animation:YES];
+    UIImageView * testView = [[UIImageView alloc]initWithFrame:CGRectMake(0.0, 0.0, 100.0, 100.0)];
+    [testView setImageFromURL:anImageURL placeHolderImage:nil animation:YES];
+    [cell addSubview:testView];
     return cell;
 }
 #pragma mark - UITableView Delegate
