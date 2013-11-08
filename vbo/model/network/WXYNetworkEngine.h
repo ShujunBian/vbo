@@ -7,9 +7,14 @@
 //
 
 #import "MKNetworkKit.h"
+#import "WXYBlock.h"
+
 #define SHARE_NW_ENGINE [WXYNetworkEngine shareNetworkEngine]
 @interface WXYNetworkEngine : MKNetworkEngine
 
 + (WXYNetworkEngine*)shareNetworkEngine;
+
+- (MKNetworkOperation*)getHomeTimelineOfCurrentUserSucceed:(ArrayBlock)succeedBlock
+                                                     error:(ErrorBlock)errorBlock;
 
 @end

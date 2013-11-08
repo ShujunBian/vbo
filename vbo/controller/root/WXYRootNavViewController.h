@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface WXYRootNavViewController : UINavigationController
+@interface WXYRootNavViewController : UINavigationController <UIScrollViewDelegate>
 
 @end

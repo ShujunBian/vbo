@@ -1,16 +1,1 @@
-PODS:
-  - GHUnitIOS (0.5.8)
-  - MKNetworkKit (0.87):
-    - Reachability (~> 3.1.0)
-  - Reachability (3.1.1)
-
-DEPENDENCIES:
-  - GHUnitIOS (~> 0.5.6)
-  - MKNetworkKit
-
-SPEC CHECKSUMS:
-  GHUnitIOS: 23167e22b8abe162d71f86bd4bda7550e53414cb
-  MKNetworkKit: f174100f92473012138b6b1c3040266af8d43a14
-  Reachability: 2be6bc2fd2bd31d97f5db33e75e4b29c79e95883
-
 COCOAPODS: 0.27.1

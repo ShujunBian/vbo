@@ -7,16 +7,27 @@
 //
 
 #import "WXYNavigationBar.h"
-
+#import "WXYBlurTextView.h"
 
 @interface WXYNavigationBar ()
 
 @property (strong, nonatomic) AMBlurView* blurView;
 
+@property (strong, nonatomic) WXYBlurTextView* titleTextView;
+
+
 @end
 
-
 @implementation WXYNavigationBar
+@dynamic snapShotView;
+- (void)setSnapShotView:(UIView *)snapShotView
+{
+    self.titleTextView.snapShotView = snapShotView;
+}
+- (UIView*)snapShotView
+{
+    return self.titleTextView.snapShotView;
+}
 
 #pragma mark - Init Method
 - (id)init
@@ -42,7 +53,10 @@
     return self;
 }
 
-
+- (void)refresh
+{
+    [self.titleTextView refresh];
+}
 
 
 /*
