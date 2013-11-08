@@ -8,8 +8,9 @@
 
 #import "WXYNetworkEngine.h"
 #import "WXYNetworkOperation.h"
-#define HOST_NAME @"api.weibo.com"
 
+#define HOST_NAME @"api.weibo.com"
+#import "UIImageView+MKNetworkKitAdditions.h"
 
 #define HOME_TIMELINE_URL @"2/statuses/home_timeline.json"
 
@@ -25,6 +26,10 @@
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         s_networkEngine = [[WXYNetworkEngine alloc] initWithHostName:HOST_NAME];
+
+        MKNetworkEngine* imageEngine = [[MKNetworkEngine alloc] init];
+        [imageEngine useCache];
+        [UIImageView setDefaultEngine:imageEngine];
     });
     return s_networkEngine;
 }
