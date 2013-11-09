@@ -10,6 +10,9 @@
 
 #define SHARE_SETTING_MANAGER [WXYSettingManager shareSettingManager]
 
+
+
+
 @interface WXYSettingManager : NSObject
 
 @property (copy, nonatomic) NSString* currentUserId;
@@ -18,6 +21,10 @@
 
 + (WXYSettingManager*)shareSettingManager;
 
-
+//Init Method
 - (id)init;
+
+//Color
+@property (strong, nonatomic, readonly) UIColor* rootBarTintColor;
+
 @end

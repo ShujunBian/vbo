@@ -7,7 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AMBlurView.h"
+#import "WXYTabBarButton.h"
 
-@interface WXYTabBar : UIView
+#define ROOT_TAB_BAR_HEIGHT 50.f
+
+@interface WXYTabBar : AMBlurView
+
+
+- (id)init;
+
+- (void)refresh;
 
 @end

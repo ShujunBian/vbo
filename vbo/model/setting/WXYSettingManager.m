@@ -21,6 +21,7 @@
 @implementation WXYSettingManager
 @synthesize currentUserId = _currentUserId;
 @synthesize testAccessToken = _testAccessToken;
+@synthesize rootBarTintColor = _rootBarTintColor;
 #pragma mark - Getter And Setter Method
 #pragma mark
 - (NSString*)currentUserId
@@ -90,4 +91,13 @@
     return self;
 }
 
+#pragma mark - Color
+- (UIColor*)rootBarTintColor
+{
+    if (!_rootBarTintColor)
+    {
+        _rootBarTintColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.6f];
+    }
+    return _rootBarTintColor;
+}
 @end

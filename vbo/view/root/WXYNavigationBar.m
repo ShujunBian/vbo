@@ -8,13 +8,11 @@
 
 #import "WXYNavigationBar.h"
 #import "WXYBlurTextView.h"
+#import "WXYSettingManager.h"
 
 @interface WXYNavigationBar ()
 
-@property (strong, nonatomic) AMBlurView* blurView;
-
 @property (strong, nonatomic) WXYBlurTextView* titleTextView;
-
 
 @end
 
@@ -36,12 +34,12 @@
     if (self)
     {
         self.translatesAutoresizingMaskIntoConstraints = NO;
-        self.blurTintColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.5f];
+        self.blurTintColor = SHARE_SETTING_MANAGER.rootBarTintColor;
         self.titleTextView = [[WXYBlurTextView alloc] init];
 
         [self addSubview:self.titleTextView];
      
-        self.navBarHeightConstraint = [NSLayoutConstraint constraintWithItem:self attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:0 constant:65.f];
+        self.navBarHeightConstraint = [NSLayoutConstraint constraintWithItem:self attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:0 constant:ROOT_NAV_BAR_HEIGHT];
         [self addConstraint:self.navBarHeightConstraint];
         
         NSDictionary* viewsDict = @{@"outView":self, @"titleTextView":self.titleTextView};

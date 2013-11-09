@@ -40,10 +40,10 @@
         <relationship name="author" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="statuses" inverseEntity="User" syncable="YES"/>
         <relationship name="comments" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Comment" inverseName="status" inverseEntity="Comment" syncable="YES"/>
         <relationship name="pictures" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="StatusPicture" inverseName="status" inverseEntity="StatusPicture" syncable="YES"/>
-        <relationship name="repostedBy" optional="YES" toMany="YES" deletionRule="No Action" destinationEntity="Status" inverseName="repostStatus" inverseEntity="Status">
+        <relationship name="repostedBy" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Status" inverseName="repostStatus" inverseEntity="Status">
             <userInfo/>
         </relationship>
-        <relationship name="repostStatus" optional="YES" maxCount="1" deletionRule="No Action" destinationEntity="Status" inverseName="repostedBy" inverseEntity="Status">
+        <relationship name="repostStatus" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Status" inverseName="repostedBy" inverseEntity="Status">
             <userInfo/>
         </relationship>
     </entity>
@@ -99,7 +99,7 @@
     <elements>
         <element name="Comment" positionX="0" positionY="0" width="0" height="0"/>
         <element name="Status" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="User" positionX="0" positionY="0" width="0" height="0"/>
         <element name="StatusPicture" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="User" positionX="0" positionY="0" width="0" height="0"/>
     </elements>
 </model>

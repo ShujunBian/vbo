@@ -18,6 +18,7 @@
 
 @implementation WXYRootNavViewController
 
+#pragma mark - Init Method
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -27,6 +28,7 @@
     return self;
 }
 
+#pragma mark - Life Cycle
 - (void)viewDidLoad
 {
     [super viewDidLoad];
