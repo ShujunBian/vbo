@@ -10,7 +10,14 @@
 
 #define SHARE_SETTING_MANAGER [WXYSettingManager shareSettingManager]
 
-
+typedef enum
+{
+    ThemeColorTypeBlue = 1,
+    ThemeColorTypeWhite = 2,
+    ThemeColorTypeGreen = 3,
+    ThemeColorTypeYellow = 4,
+    ThemeColorTypeRed = 5
+} ThemeColorType;
 
 
 @interface WXYSettingManager : NSObject
@@ -18,6 +25,10 @@
 @property (copy, nonatomic) NSString* currentUserId;
 
 @property (copy, nonatomic) NSString* testAccessToken;
+
+@property (assign, nonatomic) ThemeColorType themeColorType;
+
+@property (readonly, nonatomic) UIColor* themeColor;
 
 @property (nonatomic, strong,readonly) UIFont * castViewTableCellContentLabelFont;
 

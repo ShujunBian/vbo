@@ -50,6 +50,8 @@
 		1868F1381829EC7A00C5764D /* test.png in Resources */ = {isa = PBXBuildFile; fileRef = 1868F1371829EC7A00C5764D /* test.png */; };
 		188E68971829131600BE534D /* vboCachedDatamodel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 188E68951829131600BE534D /* vboCachedDatamodel.xcdatamodeld */; };
 		188E68981829131600BE534D /* vboCachedDatamodel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 188E68951829131600BE534D /* vboCachedDatamodel.xcdatamodeld */; };
+		18A6A682182FCD6000D9FB7F /* WXYTabBarPostButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A6A681182FCD6000D9FB7F /* WXYTabBarPostButton.m */; };
+		18A6A683182FCD6000D9FB7F /* WXYTabBarPostButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A6A681182FCD6000D9FB7F /* WXYTabBarPostButton.m */; };
 		18AD18C3181608D90097E830 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18AD18C2181608D90097E830 /* ImageIO.framework */; };
 		18B02D4B182E0F1B00D9AF04 /* tabbar_discover_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 18B02D41182E0F1B00D9AF04 /* tabbar_discover_button.png */; };
 		18B02D4C182E0F1B00D9AF04 /* tabbar_discover_button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18B02D42182E0F1B00D9AF04 /* tabbar_discover_button@2x.png */; };
@@ -204,6 +206,8 @@
 		1868F1321829DC1900C5764D /* WXYBlurTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXYBlurTextView.m; sourceTree = "<group>"; };
 		1868F1371829EC7A00C5764D /* test.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test.png; sourceTree = "<group>"; };
 		188E68961829131600BE534D /* vboCachedDatamodel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = vboCachedDatamodel.xcdatamodel; sourceTree = "<group>"; };
+		18A6A680182FCD6000D9FB7F /* WXYTabBarPostButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXYTabBarPostButton.h; sourceTree = "<group>"; };
+		18A6A681182FCD6000D9FB7F /* WXYTabBarPostButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXYTabBarPostButton.m; sourceTree = "<group>"; };
 		18AD18C2181608D90097E830 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		18AD18C618160DD10097E830 /* DDLogLevelGlobal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DDLogLevelGlobal.h; sourceTree = "<group>"; };
 		18B02D41182E0F1B00D9AF04 /* tabbar_discover_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tabbar_discover_button.png; sourceTree = "<group>"; };
@@ -525,6 +529,8 @@
 				1868F1211829D7EA00C5764D /* WXYTabBar.m */,
 				18B02D57182E167800D9AF04 /* WXYTabBarButton.h */,
 				18B02D58182E167800D9AF04 /* WXYTabBarButton.m */,
+				18A6A680182FCD6000D9FB7F /* WXYTabBarPostButton.h */,
+				18A6A681182FCD6000D9FB7F /* WXYTabBarPostButton.m */,
 			);
 			path = root;
 			sourceTree = "<group>";
@@ -963,6 +969,7 @@
 				1868F12F1829DA3300C5764D /* AMBlurView.m in Sources */,
 				18EB0A09182BF7DD005CC27D /* NSDictionary+noNilValueForKey.m in Sources */,
 				18EB09DE182BAB37005CC27D /* Status.m in Sources */,
+				18A6A682182FCD6000D9FB7F /* WXYTabBarPostButton.m in Sources */,
 				515B0BFC18082A9B0092BADB /* AppDelegate.m in Sources */,
 				185E88AC182AABF40020F3B2 /* NSString+MKNetworkKitAdditions.m in Sources */,
 				18B02D59182E167800D9AF04 /* WXYTabBarButton.m in Sources */,
@@ -1001,6 +1008,7 @@
 				18EB09F0182BD049005CC27D /* AppDelegate.m in Sources */,
 				18EB09E3182BAB37005CC27D /* User.m in Sources */,
 				18EED35418158653000856CE /* ViewController.m in Sources */,
+				18A6A683182FCD6000D9FB7F /* WXYTabBarPostButton.m in Sources */,
 				1868F1101829CE0A00C5764D /* WXYMessageViewController.m in Sources */,
 				18EED3281815853E000856CE /* DDLog.m in Sources */,
 				18EED32E1815853E000856CE /* DispatchQueueLogFormatter.m in Sources */,

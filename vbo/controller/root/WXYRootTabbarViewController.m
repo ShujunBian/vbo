@@ -7,6 +7,7 @@
 //
 
 #import "WXYRootTabbarViewController.h"
+#import "WXYSettingManager.h"
 #import "WXYTabBar.h"
 
 @interface WXYRootTabbarViewController ()
@@ -31,6 +32,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.view.tintColor = SHARE_SETTING_MANAGER.themeColor;
 	// Do any additional setup after loading the view.
 
 //    self.view.translatesAutoresizingMaskIntoConstraints = NO;
