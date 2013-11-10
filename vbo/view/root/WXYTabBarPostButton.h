@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "WXYBarButtonAbstract.h"
 
-@interface WXYTabBarPostButton : UIView
+@interface WXYTabBarPostButton : WXYBarButtonAbstract
 
 - (id)init;
 

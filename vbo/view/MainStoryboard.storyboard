@@ -313,7 +313,7 @@
         <!--Test View Controller-->
         <scene sceneID="3GL-R7-saz">
             <objects>
-                <viewController id="6wC-7g-hi4" customClass="WXYTestViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="WXYTestViewControllerIdentity" id="6wC-7g-hi4" customClass="WXYTestViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="gif-Mo-HIX"/>
                         <viewControllerLayoutGuide type="bottom" id="CGq-hB-6nf"/>
@@ -323,13 +323,23 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="phl-HL-cq7">
-                                <rect key="frame" x="137" y="158" width="46" height="30"/>
+                                <rect key="frame" x="137" y="158" width="30" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button">
+                                <state key="normal" title="登陆">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="buttonPressed:" destination="6wC-7g-hi4" eventType="touchUpInside" id="cN2-KU-qMP"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Llb-3S-sTu">
+                                <rect key="frame" x="129" y="322" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="隐藏">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="hideButtonPressed:" destination="6wC-7g-hi4" eventType="touchUpInside" id="nwU-TJ-AgJ"/>
                                 </connections>
                             </button>
                         </subviews>

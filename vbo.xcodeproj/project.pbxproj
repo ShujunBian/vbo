@@ -52,6 +52,8 @@
 		188E68981829131600BE534D /* vboCachedDatamodel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 188E68951829131600BE534D /* vboCachedDatamodel.xcdatamodeld */; };
 		18A6A682182FCD6000D9FB7F /* WXYTabBarPostButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A6A681182FCD6000D9FB7F /* WXYTabBarPostButton.m */; };
 		18A6A683182FCD6000D9FB7F /* WXYTabBarPostButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A6A681182FCD6000D9FB7F /* WXYTabBarPostButton.m */; };
+		18A6A687182FF65C00D9FB7F /* WXYBarButtonAbstract.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A6A686182FF65C00D9FB7F /* WXYBarButtonAbstract.m */; };
+		18A6A688182FF65C00D9FB7F /* WXYBarButtonAbstract.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A6A686182FF65C00D9FB7F /* WXYBarButtonAbstract.m */; };
 		18AD18C3181608D90097E830 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18AD18C2181608D90097E830 /* ImageIO.framework */; };
 		18B02D4B182E0F1B00D9AF04 /* tabbar_discover_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 18B02D41182E0F1B00D9AF04 /* tabbar_discover_button.png */; };
 		18B02D4C182E0F1B00D9AF04 /* tabbar_discover_button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18B02D42182E0F1B00D9AF04 /* tabbar_discover_button@2x.png */; };
@@ -208,6 +210,8 @@
 		188E68961829131600BE534D /* vboCachedDatamodel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = vboCachedDatamodel.xcdatamodel; sourceTree = "<group>"; };
 		18A6A680182FCD6000D9FB7F /* WXYTabBarPostButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXYTabBarPostButton.h; sourceTree = "<group>"; };
 		18A6A681182FCD6000D9FB7F /* WXYTabBarPostButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXYTabBarPostButton.m; sourceTree = "<group>"; };
+		18A6A685182FF65C00D9FB7F /* WXYBarButtonAbstract.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXYBarButtonAbstract.h; sourceTree = "<group>"; };
+		18A6A686182FF65C00D9FB7F /* WXYBarButtonAbstract.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXYBarButtonAbstract.m; sourceTree = "<group>"; };
 		18AD18C2181608D90097E830 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		18AD18C618160DD10097E830 /* DDLogLevelGlobal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DDLogLevelGlobal.h; sourceTree = "<group>"; };
 		18B02D41182E0F1B00D9AF04 /* tabbar_discover_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tabbar_discover_button.png; sourceTree = "<group>"; };
@@ -531,6 +535,8 @@
 				18B02D58182E167800D9AF04 /* WXYTabBarButton.m */,
 				18A6A680182FCD6000D9FB7F /* WXYTabBarPostButton.h */,
 				18A6A681182FCD6000D9FB7F /* WXYTabBarPostButton.m */,
+				18A6A685182FF65C00D9FB7F /* WXYBarButtonAbstract.h */,
+				18A6A686182FF65C00D9FB7F /* WXYBarButtonAbstract.m */,
 			);
 			path = root;
 			sourceTree = "<group>";
@@ -990,6 +996,7 @@
 				18EB09C8182B7F30005CC27D /* WXYSettingManager.m in Sources */,
 				185E88AD182AABF40020F3B2 /* UIAlertView+MKNetworkKitAdditions.m in Sources */,
 				185E88B9182AAE670020F3B2 /* UIImage+ImageEffects.m in Sources */,
+				18A6A687182FF65C00D9FB7F /* WXYBarButtonAbstract.m in Sources */,
 				18EB09D9182B82F1005CC27D /* WXYDataModel.m in Sources */,
 				18EED3211815853E000856CE /* DDAbstractDatabaseLogger.m in Sources */,
 				185E88AE182AABF40020F3B2 /* UIImageView+MKNetworkKitAdditions.m in Sources */,
@@ -1033,6 +1040,7 @@
 				188E68981829131600BE534D /* vboCachedDatamodel.xcdatamodeld in Sources */,
 				1868F1251829D7EA00C5764D /* WXYTabBar.m in Sources */,
 				1868F1041829CD9700C5764D /* WXYCastViewController.m in Sources */,
+				18A6A688182FF65C00D9FB7F /* WXYBarButtonAbstract.m in Sources */,
 				18EED3241815853E000856CE /* DDASLLogger.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

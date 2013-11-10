@@ -8,7 +8,7 @@
 
 #import "WXYRootTabbarViewController.h"
 #import "WXYSettingManager.h"
-#import "WXYTabBar.h"
+
 
 @interface WXYRootTabbarViewController ()
 
@@ -38,6 +38,7 @@
 //    self.view.translatesAutoresizingMaskIntoConstraints = NO;
     
     self.tabbar = [[WXYTabBar alloc] init];
+    self.tabbar.delegate = self;
     [self.view addSubview:self.tabbar];
     
     
@@ -68,5 +69,36 @@
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
     
+}
+
+- (void)tabBar:(WXYTabBar*)tabBar buttonPressed:(WXYTabBarButtonType)type
+{
+    switch (type)
+    {
+        case WXYTabBarButtonTypePost:
+        {
+#warning 毛妹妹把显示post界面加在这里。。
+            UIStoryboard* storyBoard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
+            UIViewController* vc = [storyBoard instantiateViewControllerWithIdentifier:@"WXYTestViewControllerIdentity"];
+            [self presentViewController:vc animated:YES completion:nil];
+            break;
+        }
+        case WXYTabBarButtonTypeWeibo:
+        {
+            break;
+        }
+        case WXYTabBarButtonTypeMessage:
+        {
+            break;
+        }
+        case WXYTabBarButtonTypeDiscover:
+        {
+            break;
+        }
+        case WXYTabBarButtonTypeMine:
+        {
+            break;
+        }
+    }
 }
 @end

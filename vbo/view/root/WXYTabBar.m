@@ -62,6 +62,7 @@
     if (!_postButton)
     {
         _postButton = [[WXYTabBarPostButton alloc] init];
+        [_postButton addTarget:self selector:@selector(postButtonPressed)];
     }
     return _postButton;
 }
@@ -96,12 +97,22 @@
     
 }
 
+- (void)postButtonPressed
+{
+    NSLog(@"post");
+    if ([self.delegate respondsToSelector:@selector(tabBar:buttonPressed:)])
+    {
+        [self.delegate tabBar:self buttonPressed:WXYTabBarButtonTypePost];
+    }
+}
 
 #pragma mark - Refresh Blur
 - (void)refresh
 {
 
 }
+
+
 /*
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.

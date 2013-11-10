@@ -37,7 +37,7 @@
     if (self)
     {
         self.translatesAutoresizingMaskIntoConstraints = NO;
-//        self.iconImageView.translatesAutoresizingMaskIntoConstraints = NO;
+        
         NSLayoutConstraint* heightConstraint = [NSLayoutConstraint constraintWithItem:self attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:0 constant:ROOT_TAB_BAR_HEIGHT];
 //        NSLayoutConstraint* widthConstraint = [NSLayoutConstraint constraintWithItem:self attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:0 constant:[UIScreen mainScreen].bounds.size.width / 5];
         [self addConstraint:heightConstraint];
@@ -45,11 +45,9 @@
         
         self.backgroundColor = SHARE_SETTING_MANAGER.themeColor;
         
-        self.iconImage = [[UIImage imageNamed:GRAPHIC_TAB_BAR_POST_BUTTON] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
-        self.iconImageView.tintColor = [UIColor blackColor];
+        self.iconImage = [[UIImage imageNamed:GRAPHIC_TAB_BAR_POST_BUTTON] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
         self.iconImageView.image = self.iconImage;
         [self addSubview:self.iconImageView];
-//        self.iconImageView.center = self.center;
         
         NSLayoutConstraint* centerX = [NSLayoutConstraint constraintWithItem:self.iconImageView attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeCenterX multiplier:1 constant:0];
         NSLayoutConstraint* centerY = [NSLayoutConstraint constraintWithItem:self.iconImageView attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeCenterY multiplier:1 constant:0];
@@ -57,12 +55,6 @@
         [self addConstraint:centerY];
     }
     return self;
-}
-
-- (void)layoutSubviews
-{
-    [super layoutSubviews];
-//    self.iconImageView.center = self.center;
 }
 
 /*

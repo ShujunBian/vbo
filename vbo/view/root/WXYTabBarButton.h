@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "WXYBarButtonAbstract.h"
 
-@interface WXYTabBarButton : UIView
+@interface WXYTabBarButton : WXYBarButtonAbstract
 
 - (id)initWithImageName:(NSString*)imageName title:(NSString*)title;
 
