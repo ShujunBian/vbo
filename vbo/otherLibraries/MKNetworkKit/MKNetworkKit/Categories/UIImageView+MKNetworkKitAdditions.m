@@ -70,6 +70,7 @@ const float kFreshLoadAnimationDuration = 0.35f;
   
   return [self setImageFromURL:url placeHolderImage:image usingEngine:DefaultEngine animation:yesOrNo];
 }
+
 -(MKNetworkOperation*) setImageFromURL:(NSURL*) url placeHolderImage:(UIImage*) image animation:(BOOL) yesOrNo completion:(void (^)(UIImageView* imageView, UIImage* image))completion
 {
     return [self setImageFromURL:url placeHolderImage:image usingEngine:DefaultEngine animation:yesOrNo completion:completion];
@@ -121,5 +122,12 @@ const float kFreshLoadAnimationDuration = 0.35f;
     return self.imageFetchOperation;
 }
 
-
+-(MKNetworkOperation*) setImageFromURLString:(NSString *)urlString
+                            placeHolderImage:(UIImage *)image
+                                   animation:(BOOL)yesOrNo
+                                  completion:(void (^)(UIImageView *, UIImage *))completion
+{
+    NSURL * url = [NSURL URLWithString:urlString];
+    return [self setImageFromURL:url placeHolderImage:image usingEngine:DefaultEngine animation:yesOrNo completion:completion];
+}
 @end

@@ -19,6 +19,8 @@
 
 @property (copy, nonatomic) NSString* testAccessToken;
 
+@property (nonatomic, strong,readonly) UIFont * castViewTableCellContentLabelFont;
+
 + (WXYSettingManager*)shareSettingManager;
 
 //Init Method

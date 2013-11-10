@@ -97,7 +97,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="288" translatesAutoresizingMaskIntoConstraints="NO" id="QCN-1x-NJ6">
-                                                    <rect key="frame" x="16" y="165" width="288" height="133"/>
+                                                    <rect key="frame" x="16" y="165" width="288" height="122"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <string key="text">Y5 椅子设计，这款 Y5 椅子是由芬兰设计师 Sami Kallio 设计的，这款椅子的特点在于它的后背是由 5 个倒立的“Y”及一个却又弯曲的光滑靠背组成。这五个倒立的“Y”形态，相似却不完全相同，交错着排在一起，重复却不单调，很好的把握了设计美的节奏和韵律。</string>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="16"/>
@@ -131,33 +131,33 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="npp-bc-3SE" userLabel="likeButton">
-                                                    <rect key="frame" x="14" y="315" width="22" height="22"/>
+                                                    <rect key="frame" x="3" y="304" width="44" height="44"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="22" id="Tx3-w6-PEy"/>
-                                                        <constraint firstAttribute="height" constant="22" id="ift-h3-DyW"/>
+                                                        <constraint firstAttribute="width" constant="44" id="Tx3-w6-PEy"/>
+                                                        <constraint firstAttribute="height" constant="44" id="ift-h3-DyW"/>
                                                     </constraints>
                                                     <state key="normal" image="castView_like_button">
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TjN-uc-EIq" userLabel="commentButton">
-                                                    <rect key="frame" x="109" y="315" width="22" height="22"/>
+                                                    <rect key="frame" x="98" y="304" width="44" height="44"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="22" id="cyk-Q8-2ru"/>
-                                                        <constraint firstAttribute="width" constant="22" id="ewr-mx-QYu"/>
+                                                        <constraint firstAttribute="height" constant="44" id="cyk-Q8-2ru"/>
+                                                        <constraint firstAttribute="width" constant="44" id="ewr-mx-QYu"/>
                                                     </constraints>
                                                     <state key="normal" image="castView_comment_button">
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Crc-ff-zhZ" userLabel="repostButton">
-                                                    <rect key="frame" x="204" y="315" width="22" height="22"/>
+                                                    <rect key="frame" x="193" y="304" width="44" height="44"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="22" id="SVf-9u-tkr"/>
-                                                        <constraint firstAttribute="height" constant="22" id="WS0-Yh-7i3"/>
+                                                        <constraint firstAttribute="width" constant="44" id="SVf-9u-tkr"/>
+                                                        <constraint firstAttribute="height" constant="44" id="WS0-Yh-7i3"/>
                                                     </constraints>
                                                     <state key="normal" image="castView_repost_button">
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -165,30 +165,30 @@
                                                 </button>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="Crc-ff-zhZ" firstAttribute="leading" secondItem="TjN-uc-EIq" secondAttribute="trailing" constant="73" id="0uX-85-o8T"/>
+                                                <constraint firstItem="Crc-ff-zhZ" firstAttribute="leading" secondItem="TjN-uc-EIq" secondAttribute="trailing" constant="51" id="0uX-85-o8T"/>
                                                 <constraint firstAttribute="trailing" secondItem="lNT-ig-yAc" secondAttribute="trailing" constant="18" id="1Na-BT-E9L"/>
                                                 <constraint firstItem="V97-S3-ctY" firstAttribute="top" secondItem="gHv-u1-HKw" secondAttribute="top" id="AbA-WY-gGg"/>
                                                 <constraint firstItem="lNT-ig-yAc" firstAttribute="centerY" secondItem="PpB-yj-yWz" secondAttribute="centerY" id="Bce-wu-Psk"/>
-                                                <constraint firstItem="GXz-Tr-xWV" firstAttribute="leading" secondItem="npp-bc-3SE" secondAttribute="trailing" constant="8" id="CYM-z5-6Jn"/>
-                                                <constraint firstItem="TjN-uc-EIq" firstAttribute="leading" secondItem="npp-bc-3SE" secondAttribute="trailing" constant="73" id="EcO-9a-yXh"/>
+                                                <constraint firstItem="GXz-Tr-xWV" firstAttribute="leading" secondItem="npp-bc-3SE" secondAttribute="trailing" constant="-3" id="CYM-z5-6Jn"/>
+                                                <constraint firstItem="TjN-uc-EIq" firstAttribute="leading" secondItem="npp-bc-3SE" secondAttribute="trailing" constant="51" id="EcO-9a-yXh"/>
                                                 <constraint firstItem="npp-bc-3SE" firstAttribute="centerY" secondItem="GXz-Tr-xWV" secondAttribute="centerY" id="F0P-iz-3ar"/>
                                                 <constraint firstItem="QCN-1x-NJ6" firstAttribute="top" secondItem="PpB-yj-yWz" secondAttribute="bottom" constant="17" id="FIO-vf-CKD"/>
                                                 <constraint firstItem="918-Ag-MuX" firstAttribute="centerY" secondItem="Crc-ff-zhZ" secondAttribute="centerY" id="KKo-2x-i0D"/>
                                                 <constraint firstItem="0Xt-sC-oIQ" firstAttribute="leading" secondItem="PpB-yj-yWz" secondAttribute="trailing" constant="9" id="LwC-v0-zJM"/>
-                                                <constraint firstAttribute="bottom" secondItem="npp-bc-3SE" secondAttribute="bottom" constant="22" id="LxV-ty-oLj"/>
+                                                <constraint firstAttribute="bottom" secondItem="npp-bc-3SE" secondAttribute="bottom" constant="11" id="LxV-ty-oLj"/>
                                                 <constraint firstItem="PpB-yj-yWz" firstAttribute="leading" secondItem="gHv-u1-HKw" secondAttribute="leading" constant="10" id="RD0-Gl-Bbp"/>
-                                                <constraint firstItem="npp-bc-3SE" firstAttribute="leading" secondItem="gHv-u1-HKw" secondAttribute="leading" constant="14" id="SeL-yA-j42"/>
+                                                <constraint firstItem="npp-bc-3SE" firstAttribute="leading" secondItem="gHv-u1-HKw" secondAttribute="leading" constant="3" id="SeL-yA-j42"/>
                                                 <constraint firstItem="V97-S3-ctY" firstAttribute="leading" secondItem="gHv-u1-HKw" secondAttribute="leading" id="Txm-7c-gET"/>
                                                 <constraint firstItem="0Xt-sC-oIQ" firstAttribute="centerY" secondItem="PpB-yj-yWz" secondAttribute="centerY" id="X8Q-kQ-b3m"/>
                                                 <constraint firstAttribute="trailing" secondItem="QCN-1x-NJ6" secondAttribute="trailing" constant="16" id="aea-Nl-9Q1"/>
                                                 <constraint firstItem="Crc-ff-zhZ" firstAttribute="top" secondItem="QCN-1x-NJ6" secondAttribute="bottom" constant="17" id="csc-YN-kSl"/>
                                                 <constraint firstItem="QCN-1x-NJ6" firstAttribute="leading" secondItem="gHv-u1-HKw" secondAttribute="leading" constant="16" id="dsU-jV-YJn"/>
-                                                <constraint firstAttribute="bottom" secondItem="TjN-uc-EIq" secondAttribute="bottom" constant="22" id="h4q-JZ-fA0"/>
+                                                <constraint firstAttribute="bottom" secondItem="TjN-uc-EIq" secondAttribute="bottom" constant="11" id="h4q-JZ-fA0"/>
                                                 <constraint firstItem="TjN-uc-EIq" firstAttribute="centerY" secondItem="J8i-M4-h8b" secondAttribute="centerY" id="kxW-Z8-lkO"/>
-                                                <constraint firstItem="J8i-M4-h8b" firstAttribute="leading" secondItem="TjN-uc-EIq" secondAttribute="trailing" constant="8" id="oco-cm-VBC"/>
-                                                <constraint firstItem="918-Ag-MuX" firstAttribute="leading" secondItem="Crc-ff-zhZ" secondAttribute="trailing" constant="8" id="pqc-CY-Scf"/>
+                                                <constraint firstItem="J8i-M4-h8b" firstAttribute="leading" secondItem="TjN-uc-EIq" secondAttribute="trailing" constant="-3" id="oco-cm-VBC"/>
+                                                <constraint firstItem="918-Ag-MuX" firstAttribute="leading" secondItem="Crc-ff-zhZ" secondAttribute="trailing" constant="-3" id="pqc-CY-Scf"/>
                                                 <constraint firstItem="PpB-yj-yWz" firstAttribute="top" secondItem="gHv-u1-HKw" secondAttribute="top" constant="116" id="skS-aG-Gxs"/>
-                                                <constraint firstAttribute="bottom" secondItem="Crc-ff-zhZ" secondAttribute="bottom" constant="22" id="wpx-Wx-87j"/>
+                                                <constraint firstAttribute="bottom" secondItem="Crc-ff-zhZ" secondAttribute="bottom" constant="11" id="wpx-Wx-87j"/>
                                                 <constraint firstItem="lNT-ig-yAc" firstAttribute="centerY" secondItem="0Xt-sC-oIQ" secondAttribute="centerY" id="yKc-Nr-K4z"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -342,9 +342,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="castView_comment_button" width="22" height="22"/>
-        <image name="castView_like_button" width="22" height="22"/>
-        <image name="castView_repost_button" width="22" height="22"/>
+        <image name="castView_comment_button" width="44" height="44"/>
+        <image name="castView_like_button" width="44" height="44"/>
+        <image name="castView_repost_button" width="44" height="44"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

@@ -22,6 +22,7 @@
 @synthesize currentUserId = _currentUserId;
 @synthesize testAccessToken = _testAccessToken;
 @synthesize rootBarTintColor = _rootBarTintColor;
+@synthesize castViewTableCellContentLabelFont = _castViewTableCellContentLabelFont;
 #pragma mark - Getter And Setter Method
 #pragma mark
 - (NSString*)currentUserId
@@ -100,4 +101,13 @@
     }
     return _rootBarTintColor;
 }
+#pragma mark - CastView Settings
+-(UIFont *)castViewTableCellContentLabelFont
+{
+    if (!_castViewTableCellContentLabelFont) {
+        _castViewTableCellContentLabelFont = [UIFont fontWithName:@"Helvetica-Light" size:16];
+    }
+    return _castViewTableCellContentLabelFont;
+}
+
 @end

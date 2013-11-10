@@ -40,4 +40,5 @@ extern const float kFreshLoadAnimationDuration;
 -(MKNetworkOperation*) setImageFromURL:(NSURL*) url placeHolderImage:(UIImage*) image usingEngine:(MKNetworkEngine*) imageCacheEngine animation:(BOOL) yesOrNo;
 -(MKNetworkOperation*) setImageFromURL:(NSURL*) url placeHolderImage:(UIImage*) image usingEngine:(MKNetworkEngine*) imageCacheEngine animation:(BOOL) animation completion:(void (^)(UIImageView* imageView, UIImage* image))completion;
 
+-(MKNetworkOperation*) setImageFromURLString:(NSString*) urlString placeHolderImage:(UIImage*) image animation:(BOOL) yesOrNo completion:(void (^)(UIImageView* imageView, UIImage* image))completion;
 @end

@@ -10,9 +10,14 @@
 #import "CastViewCell.h"
 #import "WXYNetworkEngine.h"
 #import "Status.h"
+#import "User.h"
 #import "UIImageView+MKNetworkKitAdditions.h"
+#import "TTTAttributedLabel.h"
+#import "WXYSettingManager.h"
 
 #define contantHeight 120.0
+#define weiboImageHeight 106.0
+#define weiboCellBetweenHeight 10.0
 
 @interface WXYCastViewController ()
 
@@ -37,6 +42,7 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     [self fetchWeiboContent];
+
 }
 
 - (void)fetchWeiboContent
@@ -44,6 +50,7 @@
     self.engine = SHARE_NW_ENGINE;
     [self.engine getHomeTimelineOfCurrentUserSucceed:^(NSArray * resultArray){
         self.weiboContentArray = resultArray;
+        [self.tableView reloadData];
     }error:nil];
 }
 
@@ -62,7 +69,10 @@
 #pragma mark - UITableView DataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 20;
+    if (_weiboContentArray == nil) {
+        return 0;
+    }
+    return [_weiboContentArray count];;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -72,7 +82,7 @@
     if (currentCellStatus.originalPicURL != nil) {
         cellHeight += 106.0;
     }
-    cellHeight += 150.0;
+    cellHeight += [self cellContentHeightForRowAtIndex:[indexPath row]];
     
     return cellHeight;
 }
@@ -87,20 +97,30 @@
         cell = [[CastViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
     
+    
     Status * currentCellStatus = [_weiboContentArray objectAtIndex:[indexPath row]];
     [cell.weiboContentLabel setText:currentCellStatus.text];
-    NSLog(@"url is %@",currentCellStatus.thumbnailPicURL);
-    if (currentCellStatus.thumbnailPicURL != nil) {
-        cell.avatorTopSpaceConstaint.constant = 116.0;
+    if (currentCellStatus.bmiddlePicURL != nil) {
+        cell.avatorTopSpaceConstaint.constant = weiboImageHeight + weiboCellBetweenHeight;
     }
     else {
-        cell.avatorTopSpaceConstaint.constant = 10.0;
+        cell.avatorTopSpaceConstaint.constant = weiboCellBetweenHeight;
     }
-    NSURL *anImageURL = [NSURL URLWithString:currentCellStatus.thumbnailPicURL];
-    [cell.weiboImage setImageFromURL:anImageURL placeHolderImage:nil animation:YES];
-    UIImageView * testView = [[UIImageView alloc]initWithFrame:CGRectMake(0.0, 0.0, 100.0, 100.0)];
-    [testView setImageFromURL:anImageURL placeHolderImage:nil animation:YES];
-    [cell addSubview:testView];
+    
+    [cell.weiboImage setImage:nil];
+    NSURL *anImageURL = [NSURL URLWithString:currentCellStatus.bmiddlePicURL];
+    [cell.weiboImage setImageFromURL:anImageURL placeHolderImage:nil animation:YES completion:nil];
+    cell.weiboImage.contentMode = UIViewContentModeScaleAspectFill;
+    cell.weiboImage.clipsToBounds = YES;
+    
+    [cell.userAvator setImageFromURLString:currentCellStatus.author.profileImageUrl
+                          placeHolderImage:nil animation:YES completion:nil];
+    cell.userAvator.layer.cornerRadius = 16.0;
+    cell.userAvator.layer.masksToBounds = YES;
+    
+    [cell.userNickname setText:currentCellStatus.author.screenName];
+    [self.view layoutIfNeeded];
+    
     return cell;
 }
 #pragma mark - UITableView Delegate
@@ -115,5 +135,24 @@
         delegate = (id<UIScrollViewDelegate>) self.parentViewController.parentViewController;
     }
     [delegate scrollViewDidScroll:scrollView];
+}
+
+#pragma mark - calculate weiboCell Height
+- (float)cellContentHeightForRowAtIndex:(NSInteger)row
+{
+    Status * currentCellStatus = [_weiboContentArray objectAtIndex:row];
+    NSMutableAttributedString * contentString = [[NSMutableAttributedString alloc]initWithString:currentCellStatus.text];
+    [contentString addAttribute:NSFontAttributeName
+                          value:[WXYSettingManager shareSettingManager].castViewTableCellContentLabelFont
+                          range:NSMakeRange(0, contentString.length)];
+    
+    CTFramesetterRef framesetter = CTFramesetterCreateWithAttributedString((CFMutableAttributedStringRef)contentString);
+    CFRange fitRange;
+    CFRange textRange = CFRangeMake(0, contentString.length);
+    CGSize frameSize = CTFramesetterSuggestFrameSizeWithConstraints(framesetter, textRange, NULL, CGSizeMake(288, CGFLOAT_MAX), &fitRange);
+    CFRelease(framesetter);
+    
+//    NSLog(@"The %@ Label height is %f",contentString,frameSize.height);
+    return frameSize.height + 25.0;
 }
 @end
