@@ -10,4 +10,6 @@
 
 @interface WXYTabBarPostButton : UIView
 
+- (id)init;
+
 @end

@@ -7,6 +7,7 @@
 //
 
 #import "WXYTabBar.h"
+#import "WXYTabBarPostButton.h"
 #import "WXYSettingManager.h"
 #import "GraphicName.h"
 
@@ -18,7 +19,7 @@
 @property (strong, nonatomic) WXYTabBarButton* discoverButton;
 @property (strong, nonatomic) WXYTabBarButton* messageButton;
 @property (strong, nonatomic) WXYTabBarButton* mineButton;
-
+@property (strong, nonatomic) WXYTabBarPostButton* postButton;
 @end
 
 @implementation WXYTabBar
@@ -56,6 +57,14 @@
     }
     return _mineButton;
 }
+- (WXYTabBarPostButton*)postButton
+{
+    if (!_postButton)
+    {
+        _postButton = [[WXYTabBarPostButton alloc] init];
+    }
+    return _postButton;
+}
 
 #pragma mark - Init Method
 - (id)init
@@ -73,8 +82,9 @@
         [self addSubview:self.discoverButton];
         [self addSubview:self.messageButton];
         [self addSubview:self.mineButton];
+        [self addSubview:self.postButton];
         
-        NSArray* hContrains = [NSLayoutConstraint constraintsWithVisualFormat:@"|[weibo][discover][message][mine]" options:NSLayoutFormatAlignAllCenterY metrics:nil views:@{@"weibo":self.weiboButton,@"discover":self.discoverButton,@"message":self.messageButton,@"mine":self.mineButton}];
+        NSArray* hContrains = [NSLayoutConstraint constraintsWithVisualFormat:@"|[weibo][discover(weibo)][message(weibo)][mine(weibo)][post(weibo)]|" options:NSLayoutFormatAlignAllCenterY metrics:nil views:@{@"weibo":self.weiboButton,@"discover":self.discoverButton,@"message":self.messageButton,@"mine":self.mineButton,@"post":self.postButton}];
         [self addConstraints:hContrains];
         
     }
