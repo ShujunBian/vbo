@@ -11,8 +11,12 @@
 #import "WXYNetworkEngine.h"
 #import "Status.h"
 #import "UIImageView+MKNetworkKitAdditions.h"
+#import "TTTAttributedLabel.h"
+#import "WXYSettingManager.h"
 
 #define contantHeight 120.0
+#define weiboImageHeight 106.0
+#define weiboCellBetweenHeight 10.0
 
 @interface WXYCastViewController ()
 
@@ -37,6 +41,7 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     [self fetchWeiboContent];
+//    self.view.translatesAutoresizingMaskIntoConstraints = NO;
 }
 
 - (void)fetchWeiboContent
@@ -44,6 +49,7 @@
     self.engine = SHARE_NW_ENGINE;
     [self.engine getHomeTimelineOfCurrentUserSucceed:^(NSArray * resultArray){
         self.weiboContentArray = resultArray;
+        [self.tableView reloadData];
     }error:nil];
 }
 
@@ -91,16 +97,15 @@
     [cell.weiboContentLabel setText:currentCellStatus.text];
     NSLog(@"url is %@",currentCellStatus.thumbnailPicURL);
     if (currentCellStatus.thumbnailPicURL != nil) {
-        cell.avatorTopSpaceConstaint.constant = 116.0;
+        cell.avatorTopSpaceConstaint.constant = weiboImageHeight + weiboCellBetweenHeight;
     }
     else {
-        cell.avatorTopSpaceConstaint.constant = 10.0;
+        cell.avatorTopSpaceConstaint.constant = weiboImageHeight;
     }
+    
     NSURL *anImageURL = [NSURL URLWithString:currentCellStatus.thumbnailPicURL];
     [cell.weiboImage setImageFromURL:anImageURL placeHolderImage:nil animation:YES];
-    UIImageView * testView = [[UIImageView alloc]initWithFrame:CGRectMake(0.0, 0.0, 100.0, 100.0)];
-    [testView setImageFromURL:anImageURL placeHolderImage:nil animation:YES];
-    [cell addSubview:testView];
+
     return cell;
 }
 #pragma mark - UITableView Delegate
@@ -115,5 +120,23 @@
         delegate = (id<UIScrollViewDelegate>) self.parentViewController.parentViewController;
     }
     [delegate scrollViewDidScroll:scrollView];
+}
+
+#pragma mark - calculate weiboCell Height
+- (float)cellContentHeightForRowAtIndex:(NSInteger)row
+{
+    Status * currentCellStatus = [_weiboContentArray objectAtIndex:row];
+    NSMutableAttributedString * contentString = [[NSMutableAttributedString alloc]initWithString:currentCellStatus.text];
+    [contentString addAttribute:NSFontAttributeName
+                          value:[WXYSettingManager shareSettingManager].castViewTableCellContentLabelFont
+                          range:NSMakeRange(0, contentString.length)];
+    
+    CTFramesetterRef framesetter = CTFramesetterCreateWithAttributedString((CFMutableAttributedStringRef)contentString);
+    CFRange fitRange;
+    CFRange textRange = CFRangeMake(0, contentString.length);
+    CGSize frameSize = CTFramesetterSuggestFrameSizeWithConstraints(framesetter, textRange, NULL, CGSizeMake(288, CGFLOAT_MAX), &fitRange);
+    CFRelease(framesetter);
+    
+    return frameSize.height;
 }
 @end

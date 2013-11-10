@@ -21,6 +21,8 @@
 @implementation WXYSettingManager
 @synthesize currentUserId = _currentUserId;
 @synthesize testAccessToken = _testAccessToken;
+@synthesize castViewTableCellContentLabelFont = _castViewTableCellContentLabelFont;
+
 #pragma mark - Getter And Setter Method
 #pragma mark
 - (NSString*)currentUserId
@@ -88,6 +90,15 @@
         self.userDefault = [NSUserDefaults standardUserDefaults];
     }
     return self;
+}
+
+#pragma mark - CastView Settings
+-(UIFont *)castViewTableCellContentLabelFont
+{
+    if (!_castViewTableCellContentLabelFont) {
+        _castViewTableCellContentLabelFont = [UIFont fontWithName:@"Helvetica-Light" size:14];
+    }
+    return _castViewTableCellContentLabelFont;
 }
 
 @end
