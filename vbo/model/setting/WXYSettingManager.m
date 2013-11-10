@@ -96,7 +96,7 @@
 -(UIFont *)castViewTableCellContentLabelFont
 {
     if (!_castViewTableCellContentLabelFont) {
-        _castViewTableCellContentLabelFont = [UIFont fontWithName:@"Helvetica-Light" size:14];
+        _castViewTableCellContentLabelFont = [UIFont fontWithName:@"Helvetica-Light" size:16];
     }
     return _castViewTableCellContentLabelFont;
 }

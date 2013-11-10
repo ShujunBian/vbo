@@ -10,6 +10,7 @@
 #import "CastViewCell.h"
 #import "WXYNetworkEngine.h"
 #import "Status.h"
+#import "User.h"
 #import "UIImageView+MKNetworkKitAdditions.h"
 #import "TTTAttributedLabel.h"
 #import "WXYSettingManager.h"
@@ -41,7 +42,7 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     [self fetchWeiboContent];
-//    self.view.translatesAutoresizingMaskIntoConstraints = NO;
+
 }
 
 - (void)fetchWeiboContent
@@ -68,7 +69,10 @@
 #pragma mark - UITableView DataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 20;
+    if (_weiboContentArray == nil) {
+        return 0;
+    }
+    return [_weiboContentArray count];;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -78,7 +82,7 @@
     if (currentCellStatus.originalPicURL != nil) {
         cellHeight += 106.0;
     }
-    cellHeight += 150.0;
+    cellHeight += [self cellContentHeightForRowAtIndex:[indexPath row]];
     
     return cellHeight;
 }
@@ -93,19 +97,30 @@
         cell = [[CastViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
     
+    
     Status * currentCellStatus = [_weiboContentArray objectAtIndex:[indexPath row]];
     [cell.weiboContentLabel setText:currentCellStatus.text];
-    NSLog(@"url is %@",currentCellStatus.thumbnailPicURL);
-    if (currentCellStatus.thumbnailPicURL != nil) {
+    if (currentCellStatus.bmiddlePicURL != nil) {
         cell.avatorTopSpaceConstaint.constant = weiboImageHeight + weiboCellBetweenHeight;
     }
     else {
-        cell.avatorTopSpaceConstaint.constant = weiboImageHeight;
+        cell.avatorTopSpaceConstaint.constant = weiboCellBetweenHeight;
     }
     
-    NSURL *anImageURL = [NSURL URLWithString:currentCellStatus.thumbnailPicURL];
-    [cell.weiboImage setImageFromURL:anImageURL placeHolderImage:nil animation:YES];
-
+    [cell.weiboImage setImage:nil];
+    NSURL *anImageURL = [NSURL URLWithString:currentCellStatus.bmiddlePicURL];
+    [cell.weiboImage setImageFromURL:anImageURL placeHolderImage:nil animation:YES completion:nil];
+    cell.weiboImage.contentMode = UIViewContentModeScaleAspectFill;
+    cell.weiboImage.clipsToBounds = YES;
+    
+    [cell.userAvator setImageFromURLString:currentCellStatus.author.profileImageUrl
+                          placeHolderImage:nil animation:YES completion:nil];
+    cell.userAvator.layer.cornerRadius = 16.0;
+    cell.userAvator.layer.masksToBounds = YES;
+    
+    [cell.userNickname setText:currentCellStatus.author.screenName];
+    [self.view layoutIfNeeded];
+    
     return cell;
 }
 #pragma mark - UITableView Delegate
@@ -137,6 +152,7 @@
     CGSize frameSize = CTFramesetterSuggestFrameSizeWithConstraints(framesetter, textRange, NULL, CGSizeMake(288, CGFLOAT_MAX), &fitRange);
     CFRelease(framesetter);
     
-    return frameSize.height;
+//    NSLog(@"The %@ Label height is %f",contentString,frameSize.height);
+    return frameSize.height + 25.0;
 }
 @end
