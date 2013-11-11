@@ -12,10 +12,11 @@
 #import "Status.h"
 #import "User.h"
 #import "UIImageView+MKNetworkKitAdditions.h"
+#import "NSNotificationCenter+Addition.h"
 #import "TTTAttributedLabel.h"
 #import "WXYSettingManager.h"
 
-#define contantHeight 120.0
+#define contantHeight 132.0
 #define weiboImageHeight 106.0
 #define weiboCellBetweenHeight 10.0
 
@@ -41,6 +42,12 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+
+    UIView *bgview = [[UIView alloc]init];
+    [bgview setBackgroundColor:[WXYSettingManager shareSettingManager].castViewTableViewBackgroundColor];
+    [self.tableView setBackgroundView:bgview];
+    [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
+    [self.tableView setTranslatesAutoresizingMaskIntoConstraints:NO];
     [self fetchWeiboContent];
 
 }
@@ -51,6 +58,7 @@
     [self.engine getHomeTimelineOfCurrentUserSucceed:^(NSArray * resultArray){
         self.weiboContentArray = resultArray;
         [self.tableView reloadData];
+        [NSNotificationCenter postDidFetchCurrentUserNameNotification];
     }error:nil];
 }
 
@@ -79,10 +87,12 @@
 {
     Status * currentCellStatus = [_weiboContentArray objectAtIndex:[indexPath row]];
     float cellHeight = contantHeight;
-    if (currentCellStatus.originalPicURL != nil) {
+    if (currentCellStatus.bmiddlePicURL != nil) {
         cellHeight += 106.0;
     }
     cellHeight += [self cellContentHeightForRowAtIndex:[indexPath row]];
+    
+    NSLog(@"the %ld cell height of cell is %f",(long)[indexPath row],cellHeight);
     
     return cellHeight;
 }
@@ -100,12 +110,16 @@
     
     Status * currentCellStatus = [_weiboContentArray objectAtIndex:[indexPath row]];
     [cell.weiboContentLabel setText:currentCellStatus.text];
+    [cell.weiboContentLabel setBackgroundColor:[UIColor greenColor]];
     if (currentCellStatus.bmiddlePicURL != nil) {
         cell.avatorTopSpaceConstaint.constant = weiboImageHeight + weiboCellBetweenHeight;
     }
     else {
         cell.avatorTopSpaceConstaint.constant = weiboCellBetweenHeight;
     }
+    NSLog(@"the %ld cell height of constant is %f",(long)[indexPath row],cell.avatorTopSpaceConstaint.constant);
+    
+    [cell.cellBackgroundView setBackgroundColor:[WXYSettingManager shareSettingManager].castViewTableCellBackgroundColor];
     
     [cell.weiboImage setImage:nil];
     NSURL *anImageURL = [NSURL URLWithString:currentCellStatus.bmiddlePicURL];
@@ -124,7 +138,19 @@
     return cell;
 }
 #pragma mark - UITableView Delegate
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    cell.backgroundColor = [UIColor clearColor];
 
+    UIView *normalView = [[UIView alloc]init];
+    [normalView setBackgroundColor:[UIColor clearColor]];
+    cell.backgroundView = normalView;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [tableView deselectRowAtIndexPath:indexPath animated:NO];
+}
 
 #pragma mark - UIScrollView Delegate
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
@@ -153,6 +179,7 @@
     CFRelease(framesetter);
     
 //    NSLog(@"The %@ Label height is %f",contentString,frameSize.height);
-    return frameSize.height + 25.0;
+    return frameSize.height + 10.0;
+//    return 0.0;
 }
 @end

@@ -23,4 +23,6 @@
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint * avatorTopSpaceConstaint;
 
+@property (weak, nonatomic) IBOutlet UIView * cellBackgroundView;
+
 @end

@@ -22,6 +22,8 @@
 @synthesize currentUserId = _currentUserId;
 @synthesize testAccessToken = _testAccessToken;
 @synthesize castViewTableCellContentLabelFont = _castViewTableCellContentLabelFont;
+@synthesize castViewTableCellBackgroundColor = _castViewTableCellBackgroundColor;
+@synthesize castViewTableViewBackgroundColor = _castViewTableViewBackgroundColor;
 
 #pragma mark - Getter And Setter Method
 #pragma mark
@@ -93,12 +95,27 @@
 }
 
 #pragma mark - CastView Settings
--(UIFont *)castViewTableCellContentLabelFont
+- (UIFont *)castViewTableCellContentLabelFont
 {
     if (!_castViewTableCellContentLabelFont) {
         _castViewTableCellContentLabelFont = [UIFont fontWithName:@"Helvetica-Light" size:16];
     }
     return _castViewTableCellContentLabelFont;
+}
+
+- (UIColor *)castViewTableCellBackgroundColor {
+    if (!_castViewTableCellBackgroundColor) {
+        _castViewTableCellBackgroundColor = [UIColor colorWithRed:246.0 / 255.0 green:244.0 / 255.0 blue:240.0 / 255.0 alpha:1.0];
+    }
+    return _castViewTableCellBackgroundColor;
+}
+
+- (UIColor *)castViewTableViewBackgroundColor {
+    if (!_castViewTableViewBackgroundColor) {
+#warning 从设备型号读取颜色
+        _castViewTableViewBackgroundColor = [UIColor colorWithRed:255.0 / 255.0 green:130.0 / 255.0 blue:130.0 / 255.0 alpha:1.0];
+    }
+    return _castViewTableViewBackgroundColor;
 }
 
 @end

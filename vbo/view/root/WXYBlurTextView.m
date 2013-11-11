@@ -7,8 +7,9 @@
 //
 
 #import "WXYBlurTextView.h"
-
 #import "UIImage+ImageEffects.h"
+#import "NSNotificationCenter+Addition.h"
+#import "User.h"
 
 #import <QuartzCore/QuartzCore.h>
 
@@ -35,16 +36,12 @@
         self.translatesAutoresizingMaskIntoConstraints = NO;
         self.backgroundColor = [UIColor clearColor];
 //        self.textLayer = [CATextLayer layer];
-        
         self.titleLabel = [[UILabel alloc] init];
-        
-        self.text = @"aaaaaa";
-        
-//        [self refresh];
-        
+        self.text = @"";
         self.titleLabel.textAlignment = NSTextAlignmentCenter;
-        
         self.layer.mask = self.titleLabel.layer;
+        
+        [NSNotificationCenter registerDidFetchCurrentUserNameNotificationWithSelector:@selector(afterDidFetchCurrentUserName) target:self];
     }
     return self;
 }
@@ -56,7 +53,6 @@
     self.titleLabel.frame = CGRectMake(0, 20, self.bounds.size.width, self.bounds.size.height - 20);
 }
 
-
 - (void)refresh
 {
     if (self.snapShotView)
@@ -64,7 +60,7 @@
 //        UIImage* snapShotImage = [self captureView:self.snapShotView frame:self.frame];
 //        snapShotImage = [snapShotImage applyExtraLightEffect];
 //        self.layer.contents = snapShotImage;
-        
+
         [self setNeedsDisplay];
 //        self.backgroundColor = [UIColor clearColor];
 //        
@@ -76,6 +72,16 @@
 //        //    UIImage* snapShotImage = [UIImage imageNamed:@"test.png"];
 //        //    snapShotImage = [snapShotImage applyLightEffect];
 //        self.layer.contents = (__bridge id)(snapShotImage.CGImage);
+    }
+}
+
+- (void)afterDidFetchCurrentUserName
+{
+    if (self.snapShotView)
+    {
+#warning 此处填上现在用户的用户名
+        self.text = @"Emersonwade";
+        [self setNeedsDisplay];
     }
 }
 
