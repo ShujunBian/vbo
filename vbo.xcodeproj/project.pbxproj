@@ -70,6 +70,8 @@
 		18EED35618158653000856CE /* WXYTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18EED35218158653000856CE /* WXYTestViewController.m */; };
 		18EED3581815865F000856CE /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18EED3571815865F000856CE /* MainStoryboard.storyboard */; };
 		18EED3591815865F000856CE /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18EED3571815865F000856CE /* MainStoryboard.storyboard */; };
+		4D1E6F1B182A3AF60078229F /* MHCPostModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D1E6F18182A3AF50078229F /* MHCPostModalViewController.m */; };
+		4D1E6F1C182A3AF60078229F /* postViewStoryBoard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D1E6F1A182A3AF50078229F /* postViewStoryBoard.storyboard */; };
 		515B0BEC18082A9B0092BADB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 515B0BEB18082A9B0092BADB /* Foundation.framework */; };
 		515B0BEE18082A9B0092BADB /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 515B0BED18082A9B0092BADB /* CoreGraphics.framework */; };
 		515B0BF018082A9B0092BADB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 515B0BEF18082A9B0092BADB /* UIKit.framework */; };
@@ -161,6 +163,9 @@
 		18EED35118158653000856CE /* WXYTestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXYTestViewController.h; sourceTree = "<group>"; };
 		18EED35218158653000856CE /* WXYTestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXYTestViewController.m; sourceTree = "<group>"; };
 		18EED3571815865F000856CE /* MainStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainStoryboard.storyboard; sourceTree = "<group>"; };
+		4D1E6F17182A3AF50078229F /* MHCPostModalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHCPostModalViewController.h; sourceTree = "<group>"; };
+		4D1E6F18182A3AF50078229F /* MHCPostModalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHCPostModalViewController.m; sourceTree = "<group>"; };
+		4D1E6F1A182A3AF50078229F /* postViewStoryBoard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = postViewStoryBoard.storyboard; sourceTree = "<group>"; };
 		515B0BE818082A9B0092BADB /* vbo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = vbo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		515B0BEB18082A9B0092BADB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		515B0BED18082A9B0092BADB /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -303,13 +308,6 @@
 			path = mine;
 			sourceTree = "<group>";
 		};
-		1868F1081829CDF600C5764D /* post */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = post;
-			sourceTree = "<group>";
-		};
 		1868F11D1829D7EA00C5764D /* root */ = {
 			isa = PBXGroup;
 			children = (
@@ -352,7 +350,7 @@
 		18EED2EF1815853E000856CE /* controller */ = {
 			isa = PBXGroup;
 			children = (
-				1868F1081829CDF600C5764D /* post */,
+				4D1E6F16182A3AF50078229F /* post */,
 				1868F1051829CDE400C5764D /* discover */,
 				1868F1061829CDE400C5764D /* message */,
 				1868F1071829CDE400C5764D /* mine */,
@@ -422,6 +420,24 @@
 				18EED3571815865F000856CE /* MainStoryboard.storyboard */,
 			);
 			path = view;
+			sourceTree = "<group>";
+		};
+		4D1E6F16182A3AF50078229F /* post */ = {
+			isa = PBXGroup;
+			children = (
+				4D1E6F18182A3AF50078229F /* MHCPostModalViewController.m */,
+				4D1E6F17182A3AF50078229F /* MHCPostModalViewController.h */,
+				4D1E6F19182A3AF50078229F /* postView */,
+			);
+			path = post;
+			sourceTree = "<group>";
+		};
+		4D1E6F19182A3AF50078229F /* postView */ = {
+			isa = PBXGroup;
+			children = (
+				4D1E6F1A182A3AF50078229F /* postViewStoryBoard.storyboard */,
+			);
+			path = postView;
 			sourceTree = "<group>";
 		};
 		515B0BDF18082A9B0092BADB = {
@@ -597,6 +613,7 @@
 				1838DF20181E677A003D015A /* WeiboSDK.bundle in Resources */,
 				1868F12A1829D85200C5764D /* WXYTabBar.xib in Resources */,
 				18EED3581815865F000856CE /* MainStoryboard.storyboard in Resources */,
+				4D1E6F1C182A3AF60078229F /* postViewStoryBoard.storyboard in Resources */,
 				515B0BF618082A9B0092BADB /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -659,6 +676,7 @@
 				1868F1221829D7EA00C5764D /* WXYNavigationBar.m in Sources */,
 				18EED3231815853E000856CE /* DDASLLogger.m in Sources */,
 				1868F10F1829CE0A00C5764D /* WXYMessageViewController.m in Sources */,
+				4D1E6F1B182A3AF60078229F /* MHCPostModalViewController.m in Sources */,
 				18EED32B1815853E000856CE /* ContextFilterLogFormatter.m in Sources */,
 				18EED3291815853E000856CE /* DDTTYLogger.m in Sources */,
 				1868F1331829DC1900C5764D /* WXYBlurTextView.m in Sources */,
