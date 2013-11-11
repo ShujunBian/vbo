@@ -92,7 +92,7 @@
     }
     cellHeight += [self cellContentHeightForRowAtIndex:[indexPath row]];
     
-    NSLog(@"the %ld cell height of cell is %f",(long)[indexPath row],cellHeight);
+//    NSLog(@"the %ld cell height of cell is %f",(long)[indexPath row],cellHeight);
     
     return cellHeight;
 }
@@ -106,20 +106,20 @@
     {
         cell = [[CastViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
-    
-    
+    [cell.cellBackgroundView setBackgroundColor:[WXYSettingManager shareSettingManager].castViewTableCellBackgroundColor];
+
     Status * currentCellStatus = [_weiboContentArray objectAtIndex:[indexPath row]];
-    [cell.weiboContentLabel setText:currentCellStatus.text];
     [cell.weiboContentLabel setBackgroundColor:[UIColor greenColor]];
+    [cell.weiboContentLabel setText:currentCellStatus.text];
+    cell.contentLabelHeight.constant = [self cellContentHeightForRowAtIndex:[indexPath row]];
+    
     if (currentCellStatus.bmiddlePicURL != nil) {
         cell.avatorTopSpaceConstaint.constant = weiboImageHeight + weiboCellBetweenHeight;
     }
     else {
         cell.avatorTopSpaceConstaint.constant = weiboCellBetweenHeight;
     }
-    NSLog(@"the %ld cell height of constant is %f",(long)[indexPath row],cell.avatorTopSpaceConstaint.constant);
-    
-    [cell.cellBackgroundView setBackgroundColor:[WXYSettingManager shareSettingManager].castViewTableCellBackgroundColor];
+//    NSLog(@"the %ld cell height of constant is %f",(long)[indexPath row],cell.avatorTopSpaceConstaint.constant);
     
     [cell.weiboImage setImage:nil];
     NSURL *anImageURL = [NSURL URLWithString:currentCellStatus.bmiddlePicURL];
@@ -133,6 +133,7 @@
     cell.userAvator.layer.masksToBounds = YES;
     
     [cell.userNickname setText:currentCellStatus.author.screenName];
+    
     [self.view layoutIfNeeded];
     
     return cell;
@@ -171,6 +172,14 @@
     [contentString addAttribute:NSFontAttributeName
                           value:[WXYSettingManager shareSettingManager].castViewTableCellContentLabelFont
                           range:NSMakeRange(0, contentString.length)];
+
+//    NSMutableParagraphStyle *style = [[NSMutableParagraphStyle alloc] init];
+//    [style setLineSpacing:4.0];
+//    [style setLineBreakMode:NSLineBreakByWordWrapping];
+//    [contentString addAttribute:NSParagraphStyleAttributeName
+//                   value:style
+//                   range:NSMakeRange(0, contentString.length)];
+    
     
     CTFramesetterRef framesetter = CTFramesetterCreateWithAttributedString((CFMutableAttributedStringRef)contentString);
     CFRange fitRange;
@@ -178,7 +187,7 @@
     CGSize frameSize = CTFramesetterSuggestFrameSizeWithConstraints(framesetter, textRange, NULL, CGSizeMake(288, CGFLOAT_MAX), &fitRange);
     CFRelease(framesetter);
     
-//    NSLog(@"The %@ Label height is %f",contentString,frameSize.height);
+    NSLog(@"The %@ Label height is %f",contentString,frameSize.height);
     return frameSize.height + 10.0;
 //    return 0.0;
 }
