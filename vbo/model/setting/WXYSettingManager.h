@@ -30,7 +30,11 @@ typedef enum
 
 @property (readonly, nonatomic) UIColor* themeColor;
 
-@property (nonatomic, strong,readonly) UIFont * castViewTableCellContentLabelFont;
+//@property (nonatomic, strong,readonly) UIFont * castViewTableCellContentLabelFont;
+#pragma mark - castViewSettings
+@property (nonatomic, strong, readonly) UIFont * castViewTableCellContentLabelFont;
+@property (nonatomic, strong, readonly) UIColor * castViewTableCellBackgroundColor;
+//@property (nonatomic, strong, readonly) UIColor * castViewTableViewBackgroundColor;
 
 + (WXYSettingManager*)shareSettingManager;
 

@@ -22,5 +22,8 @@
 @property (nonatomic,weak) IBOutlet UILabel * repostTimesLabel;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint * avatorTopSpaceConstaint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint * contentLabelHeight;
+
+@property (weak, nonatomic) IBOutlet UIView * cellBackgroundView;
 
 @end

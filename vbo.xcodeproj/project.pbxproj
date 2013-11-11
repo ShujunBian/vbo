@@ -115,6 +115,7 @@
 		18EED3591815865F000856CE /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18EED3571815865F000856CE /* MainStoryboard.storyboard */; };
 		4D1E6F1B182A3AF60078229F /* MHCPostModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D1E6F18182A3AF50078229F /* MHCPostModalViewController.m */; };
 		4D1E6F1C182A3AF60078229F /* postViewStoryBoard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D1E6F1A182A3AF50078229F /* postViewStoryBoard.storyboard */; };
+		5116A5BF18300277004FCC1A /* NSNotificationCenter+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 5116A5BE18300277004FCC1A /* NSNotificationCenter+Addition.m */; };
 		515B0BEC18082A9B0092BADB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 515B0BEB18082A9B0092BADB /* Foundation.framework */; };
 		515B0BEE18082A9B0092BADB /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 515B0BED18082A9B0092BADB /* CoreGraphics.framework */; };
 		515B0BF018082A9B0092BADB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 515B0BEF18082A9B0092BADB /* UIKit.framework */; };
@@ -275,6 +276,8 @@
 		4D1E6F17182A3AF50078229F /* MHCPostModalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHCPostModalViewController.h; sourceTree = "<group>"; };
 		4D1E6F18182A3AF50078229F /* MHCPostModalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHCPostModalViewController.m; sourceTree = "<group>"; };
 		4D1E6F1A182A3AF50078229F /* postViewStoryBoard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = postViewStoryBoard.storyboard; sourceTree = "<group>"; };
+		5116A5BD18300277004FCC1A /* NSNotificationCenter+Addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSNotificationCenter+Addition.h"; sourceTree = "<group>"; };
+		5116A5BE18300277004FCC1A /* NSNotificationCenter+Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSNotificationCenter+Addition.m"; sourceTree = "<group>"; };
 		515B0BE818082A9B0092BADB /* vbo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = vbo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		515B0BEB18082A9B0092BADB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		515B0BED18082A9B0092BADB /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -606,6 +609,8 @@
 				18EB0A05182BF701005CC27D /* NSDate+Addition.m */,
 				18EB0A07182BF7DD005CC27D /* NSDictionary+noNilValueForKey.h */,
 				18EB0A08182BF7DD005CC27D /* NSDictionary+noNilValueForKey.m */,
+				5116A5BD18300277004FCC1A /* NSNotificationCenter+Addition.h */,
+				5116A5BE18300277004FCC1A /* NSNotificationCenter+Addition.m */,
 			);
 			path = extension;
 			sourceTree = "<group>";
@@ -914,11 +919,8 @@
 				1868F1381829EC7A00C5764D /* test.png in Resources */,
 				1838DF20181E677A003D015A /* WeiboSDK.bundle in Resources */,
 				18EED3581815865F000856CE /* MainStoryboard.storyboard in Resources */,
-
 				4D1E6F1C182A3AF60078229F /* postViewStoryBoard.storyboard in Resources */,
-
 				18B02D52182E0F1B00D9AF04 /* tabbar_post_button@2x.png in Resources */,
-
 				515B0BF618082A9B0092BADB /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -981,6 +983,7 @@
 				1868F10B1829CE0100C5764D /* WXYDiscoverViewController.m in Sources */,
 				185E88AB182AABF40020F3B2 /* NSDictionary+RequestEncoding.m in Sources */,
 				185E88B0182AABF40020F3B2 /* MKNetworkOperation.m in Sources */,
+				5116A5BF18300277004FCC1A /* NSNotificationCenter+Addition.m in Sources */,
 				1868F1221829D7EA00C5764D /* WXYNavigationBar.m in Sources */,
 				18EED3231815853E000856CE /* DDASLLogger.m in Sources */,
 				1868F10F1829CE0A00C5764D /* WXYMessageViewController.m in Sources */,
