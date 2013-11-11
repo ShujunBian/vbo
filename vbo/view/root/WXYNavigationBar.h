@@ -8,12 +8,16 @@
 
 #import <UIKit/UIKit.h>
 #import "AMBlurView.h"
-#import "WXYBlurTextView.h"
+#define ROOT_NAV_BAR_HEIGHT 65.f
 
 @interface WXYNavigationBar : AMBlurView
 
-@property (strong, nonatomic) WXYBlurTextView* titleTextView;
-
 @property (strong, nonatomic) NSLayoutConstraint* navBarHeightConstraint;
+
+@property (weak, nonatomic) UIView* snapShotView;
+
+- (id)init;
+
+- (void)refresh;
 
 @end
