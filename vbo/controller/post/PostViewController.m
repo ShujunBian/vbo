@@ -1,18 +1,18 @@
 //
-//  MHCPostModalViewController.m
+//  MHCPostViewController.m
 //  vbo
 //
-//  Created by Pursue_finky on 13-11-6.
+//  Created by Pursue_finky on 13-11-12.
 //  Copyright (c) 2013年 BmwDev. All rights reserved.
 //
 
-#import "MHCPostModalViewController.h"
+#import "MHCPostViewController.h"
 
-@interface MHCPostModalViewController ()
+@interface MHCPostViewController ()
 
 @end
 
-@implementation MHCPostModalViewController
+@implementation MHCPostViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
