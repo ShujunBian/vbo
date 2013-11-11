@@ -7,10 +7,12 @@
 //
 
 #import "ExampleViewCollectionView.h"
-#import "ModalViewController.h"
-#import "ModalViewControllerWithoutScrollView.h"
+//#import "ModalViewController.h"
+//#import "ModalViewControllerWithoutScrollView.h"
 #import "UIImage+ImageEffects.h"
 #import "UINavigationController+MHDismissModalView.h"
+
+#import "PostViewController.h"
 
 @implementation IVCollectionViewCell
 
@@ -24,22 +26,36 @@
 -(void)viewDidLoad{
     
     if (self.navigationController.viewControllers.count ==1) {
-        self.navigationItem.rightBarButtonItems = @[[[UIBarButtonItem alloc]initWithTitle:@"ScrollView" style:UIBarButtonItemStyleBordered target:self action:@selector(modalPresentationMH)],[[UIBarButtonItem alloc]initWithTitle:@"View" style:UIBarButtonItemStyleBordered target:self action:@selector(modalPresentationMHWithoutScrollView)]];
+        self.navigationItem.rightBarButtonItems = @[[[UIBarButtonItem alloc]initWithTitle:@"写微博" style:UIBarButtonItemStyleBordered target:self action:@selector(writeANewWeiboAtNewView)]];
 
     }
 }
--(void)modalPresentationMHWithoutScrollView{
-    ModalViewControllerWithoutScrollView *modal = [self.storyboard instantiateViewControllerWithIdentifier:@"ModalViewControllerWithoutScrollView"];
-    UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:modal];
+
+
+-(void)writeANewWeiboAtNewView{
+    MHCPostViewController *testViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"PostViewController"];
+    
+    
+    UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:testViewController];
+    
     [self presentViewController:nav animated:YES completion:nil];
+    
 }
--(void)modalPresentationMH{
-    ModalViewController *modal = [self.storyboard instantiateViewControllerWithIdentifier:@"ModalViewController"];
-    UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:modal];
-    [self presentViewController:nav animated:YES completion:^{
-        
-    }];
-}
+
+
+
+//-(void)modalPresentationMHWithoutScrollView{
+//    ModalViewControllerWithoutScrollView *modal = [self.storyboard instantiateViewControllerWithIdentifier:@"ModalViewControllerWithoutScrollView"];
+//    UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:modal];
+//    [self presentViewController:nav animated:YES completion:nil];
+//}
+//-(void)modalPresentationMH{
+//    ModalViewController *modal = [self.storyboard instantiateViewControllerWithIdentifier:@"ModalViewController"];
+//    UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:modal];
+//    [self presentViewController:nav animated:YES completion:^{
+//        
+//    }];
+//}
 
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
     return 10;

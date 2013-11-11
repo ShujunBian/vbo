@@ -113,8 +113,14 @@
 		18EED35618158653000856CE /* WXYTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18EED35218158653000856CE /* WXYTestViewController.m */; };
 		18EED3581815865F000856CE /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18EED3571815865F000856CE /* MainStoryboard.storyboard */; };
 		18EED3591815865F000856CE /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18EED3571815865F000856CE /* MainStoryboard.storyboard */; };
-		4D1E6F1B182A3AF60078229F /* MHCPostModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D1E6F18182A3AF50078229F /* MHCPostModalViewController.m */; };
 		4D1E6F1C182A3AF60078229F /* postViewStoryBoard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D1E6F1A182A3AF50078229F /* postViewStoryBoard.storyboard */; };
+		4D784890183147C40025ADDA /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D78488D183147C40025ADDA /* UIImage+ImageEffects.m */; };
+		4D784891183147C40025ADDA /* UINavigationController+MHDismissModalView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D78488F183147C40025ADDA /* UINavigationController+MHDismissModalView.m */; };
+		4D78489518314B8A0025ADDA /* ExampleViewCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D78489418314B8A0025ADDA /* ExampleViewCollectionView.m */; };
+		4D78489918314C0A0025ADDA /* itunesradio_mystations_2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D78489618314C0A0025ADDA /* itunesradio_mystations_2x.png */; };
+		4D78489A18314C0A0025ADDA /* multitasking_screen_2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D78489718314C0A0025ADDA /* multitasking_screen_2x.png */; };
+		4D78489B18314C0A0025ADDA /* photos_moments_screen_2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D78489818314C0A0025ADDA /* photos_moments_screen_2x.png */; };
+		4D78489E18314EB60025ADDA /* PostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D78489D18314EB60025ADDA /* PostViewController.m */; };
 		5116A5BF18300277004FCC1A /* NSNotificationCenter+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 5116A5BE18300277004FCC1A /* NSNotificationCenter+Addition.m */; };
 		515B0BEC18082A9B0092BADB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 515B0BEB18082A9B0092BADB /* Foundation.framework */; };
 		515B0BEE18082A9B0092BADB /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 515B0BED18082A9B0092BADB /* CoreGraphics.framework */; };
@@ -273,9 +279,18 @@
 		18EED35118158653000856CE /* WXYTestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXYTestViewController.h; sourceTree = "<group>"; };
 		18EED35218158653000856CE /* WXYTestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXYTestViewController.m; sourceTree = "<group>"; };
 		18EED3571815865F000856CE /* MainStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainStoryboard.storyboard; sourceTree = "<group>"; };
-		4D1E6F17182A3AF50078229F /* MHCPostModalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHCPostModalViewController.h; sourceTree = "<group>"; };
-		4D1E6F18182A3AF50078229F /* MHCPostModalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHCPostModalViewController.m; sourceTree = "<group>"; };
 		4D1E6F1A182A3AF50078229F /* postViewStoryBoard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = postViewStoryBoard.storyboard; sourceTree = "<group>"; };
+		4D78488C183147C40025ADDA /* UIImage+ImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+ImageEffects.h"; path = "blur/UIImage+ImageEffects.h"; sourceTree = "<group>"; };
+		4D78488D183147C40025ADDA /* UIImage+ImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+ImageEffects.m"; path = "blur/UIImage+ImageEffects.m"; sourceTree = "<group>"; };
+		4D78488E183147C40025ADDA /* UINavigationController+MHDismissModalView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UINavigationController+MHDismissModalView.h"; path = "blur/UINavigationController+MHDismissModalView.h"; sourceTree = "<group>"; };
+		4D78488F183147C40025ADDA /* UINavigationController+MHDismissModalView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UINavigationController+MHDismissModalView.m"; path = "blur/UINavigationController+MHDismissModalView.m"; sourceTree = "<group>"; };
+		4D78489318314B8A0025ADDA /* ExampleViewCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExampleViewCollectionView.h; path = testPreView/ExampleViewCollectionView.h; sourceTree = "<group>"; };
+		4D78489418314B8A0025ADDA /* ExampleViewCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExampleViewCollectionView.m; path = testPreView/ExampleViewCollectionView.m; sourceTree = "<group>"; };
+		4D78489618314C0A0025ADDA /* itunesradio_mystations_2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = itunesradio_mystations_2x.png; path = testPreView/itunesradio_mystations_2x.png; sourceTree = "<group>"; };
+		4D78489718314C0A0025ADDA /* multitasking_screen_2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = multitasking_screen_2x.png; path = testPreView/multitasking_screen_2x.png; sourceTree = "<group>"; };
+		4D78489818314C0A0025ADDA /* photos_moments_screen_2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = photos_moments_screen_2x.png; path = testPreView/photos_moments_screen_2x.png; sourceTree = "<group>"; };
+		4D78489C18314EB60025ADDA /* PostViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostViewController.h; sourceTree = "<group>"; };
+		4D78489D18314EB60025ADDA /* PostViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostViewController.m; sourceTree = "<group>"; };
 		5116A5BD18300277004FCC1A /* NSNotificationCenter+Addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSNotificationCenter+Addition.h"; sourceTree = "<group>"; };
 		5116A5BE18300277004FCC1A /* NSNotificationCenter+Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSNotificationCenter+Addition.m"; sourceTree = "<group>"; };
 		515B0BE818082A9B0092BADB /* vbo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = vbo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -698,9 +713,12 @@
 		4D1E6F16182A3AF50078229F /* post */ = {
 			isa = PBXGroup;
 			children = (
-				4D1E6F18182A3AF50078229F /* MHCPostModalViewController.m */,
-				4D1E6F17182A3AF50078229F /* MHCPostModalViewController.h */,
+				4D78489F183153FC0025ADDA /* customSettings */,
+				4D78489218314ABF0025ADDA /* testPreView */,
+				4D78488B1831474C0025ADDA /* blur */,
 				4D1E6F19182A3AF50078229F /* postView */,
+				4D78489C18314EB60025ADDA /* PostViewController.h */,
+				4D78489D18314EB60025ADDA /* PostViewController.m */,
 			);
 			path = post;
 			sourceTree = "<group>";
@@ -711,6 +729,36 @@
 				4D1E6F1A182A3AF50078229F /* postViewStoryBoard.storyboard */,
 			);
 			path = postView;
+			sourceTree = "<group>";
+		};
+		4D78488B1831474C0025ADDA /* blur */ = {
+			isa = PBXGroup;
+			children = (
+				4D78488C183147C40025ADDA /* UIImage+ImageEffects.h */,
+				4D78488D183147C40025ADDA /* UIImage+ImageEffects.m */,
+				4D78488E183147C40025ADDA /* UINavigationController+MHDismissModalView.h */,
+				4D78488F183147C40025ADDA /* UINavigationController+MHDismissModalView.m */,
+			);
+			name = blur;
+			sourceTree = "<group>";
+		};
+		4D78489218314ABF0025ADDA /* testPreView */ = {
+			isa = PBXGroup;
+			children = (
+				4D78489618314C0A0025ADDA /* itunesradio_mystations_2x.png */,
+				4D78489718314C0A0025ADDA /* multitasking_screen_2x.png */,
+				4D78489818314C0A0025ADDA /* photos_moments_screen_2x.png */,
+				4D78489318314B8A0025ADDA /* ExampleViewCollectionView.h */,
+				4D78489418314B8A0025ADDA /* ExampleViewCollectionView.m */,
+			);
+			name = testPreView;
+			sourceTree = "<group>";
+		};
+		4D78489F183153FC0025ADDA /* customSettings */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = customSettings;
 			sourceTree = "<group>";
 		};
 		515B0BDF18082A9B0092BADB = {
@@ -907,12 +955,15 @@
 			files = (
 				18B02D54182E0F1B00D9AF04 /* tabbar_weibo_button@2x.png in Resources */,
 				18B02D4E182E0F1B00D9AF04 /* tabbar_message_button@2x.png in Resources */,
+				4D78489918314C0A0025ADDA /* itunesradio_mystations_2x.png in Resources */,
 				515B0C0418082A9B0092BADB /* Images.xcassets in Resources */,
 				18EED32F1815853E000856CE /* README.txt in Resources */,
 				18B02D4B182E0F1B00D9AF04 /* tabbar_discover_button.png in Resources */,
 				18B02D4F182E0F1B00D9AF04 /* tabbar_mine_button.png in Resources */,
 				18B02D4D182E0F1B00D9AF04 /* tabbar_message_button.png in Resources */,
+				4D78489A18314C0A0025ADDA /* multitasking_screen_2x.png in Resources */,
 				18B02D53182E0F1B00D9AF04 /* tabbar_weibo_button.png in Resources */,
+				4D78489B18314C0A0025ADDA /* photos_moments_screen_2x.png in Resources */,
 				18B02D4C182E0F1B00D9AF04 /* tabbar_discover_button@2x.png in Resources */,
 				18B02D51182E0F1B00D9AF04 /* tabbar_post_button.png in Resources */,
 				18B02D50182E0F1B00D9AF04 /* tabbar_mine_button@2x.png in Resources */,
@@ -976,6 +1027,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				18EB09E2182BAB37005CC27D /* User.m in Sources */,
+				4D78489E18314EB60025ADDA /* PostViewController.m in Sources */,
 				1841100318165608008B700C /* WXYNetworkOperation.m in Sources */,
 				185E88AF182AABF40020F3B2 /* MKNetworkEngine.m in Sources */,
 				1868F0FE1829C8B200C5764D /* WXYRootTabbarViewController.m in Sources */,
@@ -987,7 +1039,6 @@
 				1868F1221829D7EA00C5764D /* WXYNavigationBar.m in Sources */,
 				18EED3231815853E000856CE /* DDASLLogger.m in Sources */,
 				1868F10F1829CE0A00C5764D /* WXYMessageViewController.m in Sources */,
-				4D1E6F1B182A3AF60078229F /* MHCPostModalViewController.m in Sources */,
 				18EED32B1815853E000856CE /* ContextFilterLogFormatter.m in Sources */,
 				18EED3291815853E000856CE /* DDTTYLogger.m in Sources */,
 				1868F1331829DC1900C5764D /* WXYBlurTextView.m in Sources */,
@@ -997,6 +1048,7 @@
 				18EED35318158653000856CE /* ViewController.m in Sources */,
 				18EED3271815853E000856CE /* DDLog.m in Sources */,
 				1868F12F1829DA3300C5764D /* AMBlurView.m in Sources */,
+				4D78489518314B8A0025ADDA /* ExampleViewCollectionView.m in Sources */,
 				18EB0A09182BF7DD005CC27D /* NSDictionary+noNilValueForKey.m in Sources */,
 				18EB09DE182BAB37005CC27D /* Status.m in Sources */,
 				18A6A682182FCD6000D9FB7F /* WXYTabBarPostButton.m in Sources */,
@@ -1015,8 +1067,10 @@
 				51F8FA28182E0F5C00E211AC /* TTTAttributedLabel.m in Sources */,
 				18411000181655EB008B700C /* WXYNetworkEngine.m in Sources */,
 				185E88AA182AABF40020F3B2 /* NSDate+RFC1123.m in Sources */,
+				4D784890183147C40025ADDA /* UIImage+ImageEffects.m in Sources */,
 				1868F1241829D7EA00C5764D /* WXYTabBar.m in Sources */,
 				515B0BF818082A9B0092BADB /* main.m in Sources */,
+				4D784891183147C40025ADDA /* UINavigationController+MHDismissModalView.m in Sources */,
 				18EB09C8182B7F30005CC27D /* WXYSettingManager.m in Sources */,
 				185E88AD182AABF40020F3B2 /* UIAlertView+MKNetworkKitAdditions.m in Sources */,
 				185E88B9182AAE670020F3B2 /* UIImage+ImageEffects.m in Sources */,

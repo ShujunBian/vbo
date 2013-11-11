@@ -6,7 +6,8 @@
 //  Copyright (c) 2013年 BmwDev. All rights reserved.
 //
 
-#import "MHCPostViewController.h"
+#import "PostViewController.h"
+#import "UINavigationController+MHDismissModalView.h"
 
 @interface MHCPostViewController ()
 
@@ -14,25 +15,27 @@
 
 @implementation MHCPostViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
+
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
+    
+    
+    //change to a global function to custom settings after.
+    UILabel *titleLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 98, 32)];
+    titleLabel.font = [UIFont fontWithName:@"Helvetica Neue" size:34];
+    
+    titleLabel.text = @"新微博";
+    
+    titleLabel.baselineAdjustment = UIBaselineAdjustmentAlignCenters;
+    
+    self.navigationItem.titleView = titleLabel;
+    
+    [self.navigationController installMHDismissModalViewWithOptions:[[MHDismissModalViewOptions alloc] initWithScrollView:nil
+                                                                                                                    theme:MHModalThemeWhite]];
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
+
 
 @end
