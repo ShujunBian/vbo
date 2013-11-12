@@ -7,7 +7,7 @@
         <!--PostViewController-->
         <scene sceneID="wbl-gp-dm3">
             <objects>
-                <viewController storyboardIdentifier="PostViewController" id="8aN-vb-FjD" userLabel="PostViewController" customClass="PostViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PostViewController" id="8aN-vb-FjD" userLabel="PostViewController" customClass="MHCPostViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="b2Q-uc-eML"/>
                         <viewControllerLayoutGuide type="bottom" id="xzn-dt-4g0"/>

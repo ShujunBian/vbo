@@ -32,7 +32,8 @@
 @dynamic repostStatus;
 @dynamic comments;
 @dynamic pictures;
-
+@dynamic visible;
+@dynamic visibleListId;
 
 + (Status*)insertWithId:(NSNumber*)sId InContext:(NSManagedObjectContext*)context;
 {
@@ -62,6 +63,10 @@
     
     NSString* dateStr = [dict noNilValueForKey:@"created_at"];
     self.createdAt = [NSDate dateFromStringRepresentation:dateStr];
+    
+    NSDictionary* visibleDict = [dict noNilValueForKey:@"visible"];
+    self.visible = [visibleDict noNilValueForKey:@"type"];
+    self.visibleListId = [dict noNilValueForKey:@"list_id"];
     
 }
 

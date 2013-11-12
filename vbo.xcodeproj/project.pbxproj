@@ -120,7 +120,7 @@
 		4D78489918314C0A0025ADDA /* itunesradio_mystations_2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D78489618314C0A0025ADDA /* itunesradio_mystations_2x.png */; };
 		4D78489A18314C0A0025ADDA /* multitasking_screen_2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D78489718314C0A0025ADDA /* multitasking_screen_2x.png */; };
 		4D78489B18314C0A0025ADDA /* photos_moments_screen_2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D78489818314C0A0025ADDA /* photos_moments_screen_2x.png */; };
-		4D78489E18314EB60025ADDA /* PostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D78489D18314EB60025ADDA /* PostViewController.m */; };
+		4D78489E18314EB60025ADDA /* MHCPostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D78489D18314EB60025ADDA /* MHCPostViewController.m */; };
 		5116A5BF18300277004FCC1A /* NSNotificationCenter+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 5116A5BE18300277004FCC1A /* NSNotificationCenter+Addition.m */; };
 		515B0BEC18082A9B0092BADB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 515B0BEB18082A9B0092BADB /* Foundation.framework */; };
 		515B0BEE18082A9B0092BADB /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 515B0BED18082A9B0092BADB /* CoreGraphics.framework */; };
@@ -289,8 +289,8 @@
 		4D78489618314C0A0025ADDA /* itunesradio_mystations_2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = itunesradio_mystations_2x.png; path = testPreView/itunesradio_mystations_2x.png; sourceTree = "<group>"; };
 		4D78489718314C0A0025ADDA /* multitasking_screen_2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = multitasking_screen_2x.png; path = testPreView/multitasking_screen_2x.png; sourceTree = "<group>"; };
 		4D78489818314C0A0025ADDA /* photos_moments_screen_2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = photos_moments_screen_2x.png; path = testPreView/photos_moments_screen_2x.png; sourceTree = "<group>"; };
-		4D78489C18314EB60025ADDA /* PostViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostViewController.h; sourceTree = "<group>"; };
-		4D78489D18314EB60025ADDA /* PostViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostViewController.m; sourceTree = "<group>"; };
+		4D78489C18314EB60025ADDA /* MHCPostViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHCPostViewController.h; sourceTree = "<group>"; };
+		4D78489D18314EB60025ADDA /* MHCPostViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHCPostViewController.m; sourceTree = "<group>"; };
 		5116A5BD18300277004FCC1A /* NSNotificationCenter+Addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSNotificationCenter+Addition.h"; sourceTree = "<group>"; };
 		5116A5BE18300277004FCC1A /* NSNotificationCenter+Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSNotificationCenter+Addition.m"; sourceTree = "<group>"; };
 		515B0BE818082A9B0092BADB /* vbo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = vbo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -717,8 +717,8 @@
 				4D78489218314ABF0025ADDA /* testPreView */,
 				4D78488B1831474C0025ADDA /* blur */,
 				4D1E6F19182A3AF50078229F /* postView */,
-				4D78489C18314EB60025ADDA /* PostViewController.h */,
-				4D78489D18314EB60025ADDA /* PostViewController.m */,
+				4D78489C18314EB60025ADDA /* MHCPostViewController.h */,
+				4D78489D18314EB60025ADDA /* MHCPostViewController.m */,
 			);
 			path = post;
 			sourceTree = "<group>";
@@ -1027,7 +1027,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				18EB09E2182BAB37005CC27D /* User.m in Sources */,
-				4D78489E18314EB60025ADDA /* PostViewController.m in Sources */,
+				4D78489E18314EB60025ADDA /* MHCPostViewController.m in Sources */,
 				1841100318165608008B700C /* WXYNetworkOperation.m in Sources */,
 				185E88AF182AABF40020F3B2 /* MKNetworkEngine.m in Sources */,
 				1868F0FE1829C8B200C5764D /* WXYRootTabbarViewController.m in Sources */,

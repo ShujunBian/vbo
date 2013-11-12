@@ -46,10 +46,76 @@
         XCTFail(@"获取Home界面微博失败");
         [self.asyncTestCase notify:kGHUnitWaitStatusFailure];
     }];
-    [self.asyncTestCase waitForStatus:kGHUnitWaitStatusSuccess timeout:30.f];
+    [self.asyncTestCase waitForStatus:kGHUnitWaitStatusSuccess timeout:kMKNetworkKitRequestTimeOutInSeconds];
 
 }
 
+- (void)testPostWeiboText
+{
+    [self.asyncTestCase prepare];
+    
+    NSString* str = [NSString stringWithFormat:@"超级大测试%@",[[NSDate date] descriptionWithLocale:[NSLocale currentLocale]]];
+    
+    
+    [self.engine postWeiboOfCurrentUser:str
+                                  image:nil
+                           withLocation:NO
+                            visibleType:StatusVisibleTypeNormal
+                          visibleListId:0
+                                succeed:^(Status *status)
+     {
+         if (status)
+         {
+             [self.asyncTestCase notify:kGHUnitWaitStatusSuccess];
+         }
+         else
+         {
+             XCTFail(@"发送微博文字失败");
+             [self.asyncTestCase notify:kGHUnitWaitStatusFailure];
+         }
+
+     }
+                                  error:^(NSError *error)
+     {
+         XCTFail(@"发送微博文字失败");
+         [self.asyncTestCase notify:kGHUnitWaitStatusFailure];
+     }];
+    
+    [self.asyncTestCase waitForStatus:kGHUnitWaitStatusSuccess timeout:kMKNetworkKitRequestTimeOutInSeconds];
+}
+
+- (void)testPostWeiboImage
+{
+    [self.asyncTestCase prepare];
+    
+    NSString* str = [NSString stringWithFormat:@"超级图片大测试%@",[[NSDate date] descriptionWithLocale:[NSLocale currentLocale]]];
+    UIImage* testImage = [UIImage imageNamed:@"test.png"];
+    
+    [self.engine postWeiboOfCurrentUser:str
+                                  image:testImage
+                           withLocation:NO
+                            visibleType:StatusVisibleTypeNormal
+                          visibleListId:0
+                                succeed:^(Status *status)
+     {
+         if (status)
+         {
+             [self.asyncTestCase notify:kGHUnitWaitStatusSuccess];
+         }
+         else
+         {
+             XCTFail(@"发送图片失败");
+             [self.asyncTestCase notify:kGHUnitWaitStatusFailure];
+         }
+     }
+                                  error:^(NSError *error)
+     {
+         XCTFail(@"发送图片失败");
+         [self.asyncTestCase notify:kGHUnitWaitStatusFailure];
+     }];
+    
+    [self.asyncTestCase waitForStatus:kGHUnitWaitStatusSuccess timeout:kMKNetworkKitRequestTimeOutInSeconds];
+}
 
 
 @end

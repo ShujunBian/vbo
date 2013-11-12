@@ -12,7 +12,7 @@
 #import "UIImage+ImageEffects.h"
 #import "UINavigationController+MHDismissModalView.h"
 
-#import "PostViewController.h"
+#import "MHCPostViewController.h"
 
 @implementation IVCollectionViewCell
 

@@ -6,7 +6,7 @@
 //  Copyright (c) 2013年 BmwDev. All rights reserved.
 //
 
-#import "PostViewController.h"
+#import "MHCPostViewController.h"
 #import "UINavigationController+MHDismissModalView.h"
 
 @interface MHCPostViewController ()

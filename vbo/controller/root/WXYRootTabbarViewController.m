@@ -8,7 +8,7 @@
 
 #import "WXYRootTabbarViewController.h"
 #import "WXYSettingManager.h"
-
+#import "MHCPostViewController.h"
 
 @interface WXYRootTabbarViewController ()
 
@@ -77,10 +77,14 @@
     {
         case WXYTabBarButtonTypePost:
         {
-#warning 毛妹妹把显示post界面加在这里。。
-            UIStoryboard* storyBoard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
-            UIViewController* vc = [storyBoard instantiateViewControllerWithIdentifier:@"WXYTestViewControllerIdentity"];
-            [self presentViewController:vc animated:YES completion:nil];
+            UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"postViewStoryBoard" bundle:nil];
+            MHCPostViewController *testViewController = [storyboard instantiateViewControllerWithIdentifier:@"PostViewController"];
+            
+            
+            UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:testViewController];
+            
+            [self presentViewController:nav animated:YES completion:nil];
+            
             break;
         }
         case WXYTabBarButtonTypeWeibo:
