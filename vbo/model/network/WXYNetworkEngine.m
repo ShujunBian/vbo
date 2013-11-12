@@ -17,6 +17,12 @@
 #import "WXYSettingManager.h"
 #import "WXYDataModel.h"
 
+@interface WXYNetworkDataFactory : NSObject
++ (Status*)getStatusWithDict:(NSDictionary*)dict;
+@end
+
+
+
 @implementation WXYNetworkEngine
 
 #pragma mark - Static Method
@@ -94,16 +100,8 @@
               
               for (NSDictionary* dict in statuesDictArray)
               {
-                  NSNumber* statusId = dict[@"id"];
-                  Status* status = [SHARE_DATA_MODEL getStatusById:statusId.longLongValue];
-                  [status updateWithDict:dict];
-                  NSDictionary* userDict = dict[@"user"];
-                  NSNumber* userId = userDict[@"id"];
-                  User* user = [SHARE_DATA_MODEL getUserById:userId.longLongValue];
-                  [user updateWithDict:userDict];
-                  status.author = user;
+                  Status* status = [WXYNetworkDataFactory getStatusWithDict:dict];
                   
-#warning 多图微博处理未写   pic_urls
                   [returnArray addObject:status];
               }
               [SHARE_DATA_MODEL saveCacheContext];
@@ -119,6 +117,30 @@
           }];
     return op;
     
+}
+@end
+
+@implementation WXYNetworkDataFactory
+
++ (Status*)getStatusWithDict:(NSDictionary*)dict
+{
+    NSNumber* statusId = dict[@"id"];
+    Status* status = [SHARE_DATA_MODEL getStatusById:statusId.longLongValue];
+    [status updateWithDict:dict];
+    NSDictionary* userDict = dict[@"user"];
+    NSNumber* userId = userDict[@"id"];
+    User* user = [SHARE_DATA_MODEL getUserById:userId.longLongValue];
+    [user updateWithDict:userDict];
+    status.author = user;
+#warning 多图微博处理未写   pic_urls
+    NSDictionary* repostDict =  dict[@"retweeted_status"];
+
+    //处理转发
+    if (repostDict)
+    {
+        status.repostStatus = [self getStatusWithDict:repostDict];
+    }
+    return status;
 }
 
 @end
