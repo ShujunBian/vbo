@@ -82,7 +82,6 @@
 		18EB09EE182BD049005CC27D /* WXYNetworkOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 1841100218165608008B700C /* WXYNetworkOperation.m */; };
 		18EB09EF182BD049005CC27D /* WXYError.m in Sources */ = {isa = PBXBuildFile; fileRef = 1841100518165626008B700C /* WXYError.m */; };
 		18EB09F0182BD049005CC27D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 515B0BFB18082A9B0092BADB /* AppDelegate.m */; };
-		18EB09F7182BD613005CC27D /* GHUnitIOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18EB09F6182BD613005CC27D /* GHUnitIOS.framework */; };
 		18EB09FB182BD674005CC27D /* GHUnitIOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18EB09F6182BD613005CC27D /* GHUnitIOS.framework */; };
 		18EB0A02182BED82005CC27D /* StatusPicture.m in Sources */ = {isa = PBXBuildFile; fileRef = 18EB0A01182BED82005CC27D /* StatusPicture.m */; };
 		18EB0A06182BF701005CC27D /* NSDate+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 18EB0A05182BF701005CC27D /* NSDate+Addition.m */; };
@@ -125,9 +124,9 @@
 		515B0C0C18082A9B0092BADB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 515B0BEB18082A9B0092BADB /* Foundation.framework */; };
 		515B0C0D18082A9B0092BADB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 515B0BEF18082A9B0092BADB /* UIKit.framework */; };
 		515B0C1518082A9B0092BADB /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 515B0C1318082A9B0092BADB /* InfoPlist.strings */; };
+		515F4499183356C400AFD64D /* TTTAttributedLabelHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 515F4498183356C400AFD64D /* TTTAttributedLabelHelper.m */; };
 		5183B185182AA876008F22D1 /* CastViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5183B184182AA876008F22D1 /* CastViewCell.m */; };
 		51F8FA28182E0F5C00E211AC /* TTTAttributedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 51F8FA27182E0F5C00E211AC /* TTTAttributedLabel.m */; };
-		56F04C44E0F44253BE15C2ED /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DFB0F5D3655E4A02801ED5B1 /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -288,11 +287,12 @@
 		515B0C0A18082A9B0092BADB /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		515B0C1218082A9B0092BADB /* vboTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "vboTests-Info.plist"; sourceTree = "<group>"; };
 		515B0C1418082A9B0092BADB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		515F4497183356C400AFD64D /* TTTAttributedLabelHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTTAttributedLabelHelper.h; sourceTree = "<group>"; };
+		515F4498183356C400AFD64D /* TTTAttributedLabelHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTTAttributedLabelHelper.m; sourceTree = "<group>"; };
 		5183B183182AA876008F22D1 /* CastViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CastViewCell.h; sourceTree = "<group>"; };
 		5183B184182AA876008F22D1 /* CastViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CastViewCell.m; sourceTree = "<group>"; };
 		51F8FA26182E0F5C00E211AC /* TTTAttributedLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTTAttributedLabel.h; sourceTree = "<group>"; };
 		51F8FA27182E0F5C00E211AC /* TTTAttributedLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTTAttributedLabel.m; sourceTree = "<group>"; };
-		DFB0F5D3655E4A02801ED5B1 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -300,7 +300,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				18EB09F7182BD613005CC27D /* GHUnitIOS.framework in Frameworks */,
 				1841102D181658A9008B700C /* CoreData.framework in Frameworks */,
 				1841102B1816587E008B700C /* libsqlite3.dylib in Frameworks */,
 				1841102918165875008B700C /* libstdc++.dylib in Frameworks */,
@@ -314,7 +313,6 @@
 				515B0BEE18082A9B0092BADB /* CoreGraphics.framework in Frameworks */,
 				515B0BF018082A9B0092BADB /* UIKit.framework in Frameworks */,
 				515B0BEC18082A9B0092BADB /* Foundation.framework in Frameworks */,
-				56F04C44E0F44253BE15C2ED /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -567,6 +565,8 @@
 			children = (
 				18AD18C618160DD10097E830 /* DDLogLevelGlobal.h */,
 				18B02D56182E0F6100D9AF04 /* GraphicName.h */,
+				515F4497183356C400AFD64D /* TTTAttributedLabelHelper.h */,
+				515F4498183356C400AFD64D /* TTTAttributedLabelHelper.m */,
 			);
 			path = other;
 			sourceTree = "<group>";
@@ -734,7 +734,6 @@
 				515B0BED18082A9B0092BADB /* CoreGraphics.framework */,
 				515B0BEF18082A9B0092BADB /* UIKit.framework */,
 				515B0C0A18082A9B0092BADB /* XCTest.framework */,
-				DFB0F5D3655E4A02801ED5B1 /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1003,6 +1002,7 @@
 				1868F1241829D7EA00C5764D /* WXYTabBar.m in Sources */,
 				515B0BF818082A9B0092BADB /* main.m in Sources */,
 				18EB09C8182B7F30005CC27D /* WXYSettingManager.m in Sources */,
+				515F4499183356C400AFD64D /* TTTAttributedLabelHelper.m in Sources */,
 				185E88AD182AABF40020F3B2 /* UIAlertView+MKNetworkKitAdditions.m in Sources */,
 				185E88B9182AAE670020F3B2 /* UIImage+ImageEffects.m in Sources */,
 				18A6A687182FF65C00D9FB7F /* WXYBarButtonAbstract.m in Sources */,
@@ -1163,7 +1163,8 @@
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Xie Cheng (AXP8APNT95)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Xie Cheng (AXP8APNT95)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/vbo/otherLibraries",
@@ -1184,7 +1185,7 @@
 				);
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "297D6A85-0B39-4370-A5D6-D5B6A0C95246";
+				PROVISIONING_PROFILE = "EC6D8CC3-D1FE-41D6-8051-2C8654F2A6B4";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1196,7 +1197,8 @@
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Xie Cheng (AXP8APNT95)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Xie Cheng (AXP8APNT95)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/vbo/otherLibraries",
@@ -1217,7 +1219,7 @@
 				);
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "297D6A85-0B39-4370-A5D6-D5B6A0C95246";
+				PROVISIONING_PROFILE = "EC6D8CC3-D1FE-41D6-8051-2C8654F2A6B4";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

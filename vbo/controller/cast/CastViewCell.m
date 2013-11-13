@@ -22,6 +22,13 @@
 @end
 
 @implementation CastViewCell
+- (void)awakeFromNib
+{
+//    _cellBackgroundView.layer.shadowColor = [UIColor blackColor].CGColor;
+//    _cellBackgroundView.layer.shadowOffset = CGSizeMake(0, 0.5);
+//    _cellBackgroundView.layer.shadowOpacity = 0.28;
+//    _cellBackgroundView.layer.shadowRadius = 1.0;
+}
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
