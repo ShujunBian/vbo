@@ -12,6 +12,13 @@
 
 #define SHARE_NW_ENGINE [WXYNetworkEngine shareNetworkEngine]
 
+typedef enum{
+    RepostCommentTypeNo = 0,            //不评论
+    RepostCommentTypePresentStatus = 1, //评论给当前微博
+    RepostCommentTypeOriginStatus = 2,  //评论给原始微博
+    RepostCommentTypeAll = 3            //都评论
+} RepostCommentType;                    //转发评论方式
+
 
 
 @interface WXYNetworkEngine : MKNetworkEngine
@@ -48,6 +55,18 @@
                                 visibleListId:(NSNumber*)listId
                                       succeed:(StatusBlock)succeedBlock
                                         error:(ErrorBlock)errorBlock;
+/*! 转发微博
+ * \param weiboId 转发原始微博的id
+ * \param text 转发内容
+ * \param commentType 转发评论方式
+ * \param succeedBlock 网络请求成功处理block，block参数转发用的微博
+ * \param errorBlock 网络请求失败处理block
+ */
+- (MKNetworkOperation*)repostWeibo:(NSNumber*)weiboId
+                              text:(NSString*)text
+                         isComment:(RepostCommentType)commentType
+                           succeed:(StatusBlock)succeedBlock
+                             error:(ErrorBlock)errorBlock;
 
 
 //////////////评论接口

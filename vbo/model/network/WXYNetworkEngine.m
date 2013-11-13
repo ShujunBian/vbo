@@ -12,8 +12,9 @@
 #define HOST_NAME @"api.weibo.com"
 #import "UIImageView+MKNetworkKitAdditions.h"
 
-//
+//Weibo
 #define HOME_TIMELINE_URL @"2/statuses/home_timeline.json"
+#define REPOST_WEIBO_URL @"2/statuses/repost.json"
 
 //post
 #define POST_WEIBO_URL @"2/statuses/update.json"
@@ -109,6 +110,8 @@
 }
 
 #pragma mark - Network Service Client
+#pragma mark - 微博接口
+#pragma mark 读取
 - (MKNetworkOperation*)getHomeTimelineOfCurrentUserSucceed:(ArrayBlock)succeedBlock
                                                      error:(ErrorBlock)errorBlock
 {
@@ -144,6 +147,7 @@
     
 }
 
+#pragma mark 写入
 - (MKNetworkOperation*)postWeiboOfCurrentUser:(NSString*)content
                                         image:(UIImage*)weiboImage
                                  withLocation:(BOOL)fLocation
@@ -195,6 +199,38 @@
     }];
     
     
+    return op;
+}
+
+- (MKNetworkOperation*)repostWeibo:(NSNumber*)weiboId
+                              text:(NSString*)text
+                         isComment:(RepostCommentType)commentType
+                           succeed:(StatusBlock)succeedBlock
+                             error:(ErrorBlock)errorBlock
+{
+    MKNetworkOperation* op = nil;
+    
+#warning user暂为nil
+    op = [self startOperationWithPath:REPOST_WEIBO_URL
+                                 user:nil
+                             paramers:@{@"id":weiboId, @"status":text, @"is_comment":@(commentType)}
+                           httpMethod:@"POST"
+                          onSucceeded:^(MKNetworkOperation *completedOperation)
+    {
+        NSDictionary* dict = completedOperation.responseJSON;
+        Status* status = [WXYNetworkDataFactory getStatusWithDict:dict];
+        if (succeedBlock)
+        {
+            succeedBlock(status);
+        }
+    }
+                              onError:^(MKNetworkOperation *completedOperation, NSError *error)
+    {
+        if (errorBlock)
+        {
+            errorBlock(error);
+        }
+    }];    
     return op;
 }
 

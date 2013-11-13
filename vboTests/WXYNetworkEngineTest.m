@@ -27,6 +27,7 @@
     self.asyncTestCase = [[GHAsyncTestCase alloc] init];
     [self.asyncTestCase setUp];
     self.engine = SHARE_NW_ENGINE;
+    [NSThread sleepForTimeInterval:0.5f];
 }
 
 - (void)tearDown
@@ -119,6 +120,35 @@
          XCTFail(@"发送图片失败");
          [self.asyncTestCase notify:kGHUnitWaitStatusFailure];
      }];
+    
+    [self.asyncTestCase waitForStatus:kGHUnitWaitStatusSuccess timeout:kMKNetworkKitRequestTimeOutInSeconds];
+}
+
+- (void)testRepostWeibo
+{
+    [self.asyncTestCase prepare];
+    
+    [self.engine repostWeibo:@(3644235297736244) text:@"转发测试" isComment:RepostCommentTypeNo succeed:^(Status *status) {
+        XCTAssertNotNil(status, @"返回微博为空");
+        [self.asyncTestCase notify:kGHUnitWaitStatusSuccess];
+    } error:^(NSError *error) {
+        XCTFail(@"转发失败");
+        [self.asyncTestCase notify:kGHUnitWaitStatusFailure];
+    }];
+    
+    [self.asyncTestCase waitForStatus:kGHUnitWaitStatusSuccess timeout:kMKNetworkKitRequestTimeOutInSeconds];
+}
+- (void)testRepostWeiboWithCommentAll
+{
+    [self.asyncTestCase prepare];
+    
+    [self.engine repostWeibo:@(3644235297736244) text:@"转发测试" isComment:RepostCommentTypeAll succeed:^(Status *status) {
+        XCTAssertNotNil(status, @"返回微博为空");
+        [self.asyncTestCase notify:kGHUnitWaitStatusSuccess];
+    } error:^(NSError *error) {
+        XCTFail(@"转发失败");
+        [self.asyncTestCase notify:kGHUnitWaitStatusFailure];
+    }];
     
     [self.asyncTestCase waitForStatus:kGHUnitWaitStatusSuccess timeout:kMKNetworkKitRequestTimeOutInSeconds];
 }
