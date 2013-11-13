@@ -26,13 +26,17 @@ typedef enum
 
 @property (copy, nonatomic) NSString* testAccessToken;
 
+@property (assign, nonatomic) ThemeColorType themeColorType;
+
+@property (readonly, nonatomic) UIColor* themeColor;
+
+//@property (nonatomic, strong,readonly) UIFont * castViewTableCellContentLabelFont;
 #pragma mark - castViewSettings
 @property (nonatomic, strong, readonly) UIFont * castViewTableCellContentLabelFont;
 @property (nonatomic, strong, readonly) UIColor * castViewTableCellBackgroundColor;
-@property (nonatomic, strong, readonly) UIColor * castViewTableViewBackgroundColor;
+//@property (nonatomic, strong, readonly) UIColor * castViewTableViewBackgroundColor;
 
 @property (assign, nonatomic) ThemeColorType themeColorType;
-
 @property (readonly, nonatomic) UIColor* themeColor;
 
 + (WXYSettingManager*)shareSettingManager;

@@ -37,6 +37,8 @@
         </attribute>
         <attribute name="thumbnailPicURL" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="truncated" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="visible" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="visibleListId" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <relationship name="author" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="statuses" inverseEntity="User" syncable="YES"/>
         <relationship name="comments" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Comment" inverseName="status" inverseEntity="Comment" syncable="YES"/>
         <relationship name="pictures" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="StatusPicture" inverseName="status" inverseEntity="StatusPicture" syncable="YES"/>

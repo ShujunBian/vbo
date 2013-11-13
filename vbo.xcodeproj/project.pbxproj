@@ -67,16 +67,14 @@
 		18B02D54182E0F1B00D9AF04 /* tabbar_weibo_button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18B02D4A182E0F1B00D9AF04 /* tabbar_weibo_button@2x.png */; };
 		18B02D59182E167800D9AF04 /* WXYTabBarButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B02D58182E167800D9AF04 /* WXYTabBarButton.m */; };
 		18B02D5A182E167800D9AF04 /* WXYTabBarButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B02D58182E167800D9AF04 /* WXYTabBarButton.m */; };
+		18D9E4E8183388E0004539CC /* Comment.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D9E4E7183388E0004539CC /* Comment.m */; };
+		18D9E4ED18338BF0004539CC /* Status.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D9E4EC18338BF0004539CC /* Status.m */; };
 		18EB09C8182B7F30005CC27D /* WXYSettingManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 18EB09C7182B7F30005CC27D /* WXYSettingManager.m */; };
 		18EB09C9182B7F30005CC27D /* WXYSettingManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 18EB09C7182B7F30005CC27D /* WXYSettingManager.m */; };
 		18EB09D9182B82F1005CC27D /* WXYDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 18EB09D8182B82F1005CC27D /* WXYDataModel.m */; };
 		18EB09DA182B82F1005CC27D /* WXYDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 18EB09D8182B82F1005CC27D /* WXYDataModel.m */; };
-		18EB09DE182BAB37005CC27D /* Status.m in Sources */ = {isa = PBXBuildFile; fileRef = 18EB09DD182BAB37005CC27D /* Status.m */; };
-		18EB09DF182BAB37005CC27D /* Status.m in Sources */ = {isa = PBXBuildFile; fileRef = 18EB09DD182BAB37005CC27D /* Status.m */; };
 		18EB09E2182BAB37005CC27D /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 18EB09E1182BAB37005CC27D /* User.m */; };
 		18EB09E3182BAB37005CC27D /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 18EB09E1182BAB37005CC27D /* User.m */; };
-		18EB09E6182BAB38005CC27D /* Comment.m in Sources */ = {isa = PBXBuildFile; fileRef = 18EB09E5182BAB38005CC27D /* Comment.m */; };
-		18EB09E7182BAB38005CC27D /* Comment.m in Sources */ = {isa = PBXBuildFile; fileRef = 18EB09E5182BAB38005CC27D /* Comment.m */; };
 		18EB09EC182BCFE2005CC27D /* WXYNetworkEngineTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 18EB09EB182BCFE2005CC27D /* WXYNetworkEngineTest.m */; };
 		18EB09ED182BD049005CC27D /* WXYNetworkEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 18410FFF181655EB008B700C /* WXYNetworkEngine.m */; };
 		18EB09EE182BD049005CC27D /* WXYNetworkOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 1841100218165608008B700C /* WXYNetworkOperation.m */; };
@@ -112,6 +110,14 @@
 		18EED35618158653000856CE /* WXYTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18EED35218158653000856CE /* WXYTestViewController.m */; };
 		18EED3581815865F000856CE /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18EED3571815865F000856CE /* MainStoryboard.storyboard */; };
 		18EED3591815865F000856CE /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18EED3571815865F000856CE /* MainStoryboard.storyboard */; };
+		4D1E6F1C182A3AF60078229F /* postViewStoryBoard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D1E6F1A182A3AF50078229F /* postViewStoryBoard.storyboard */; };
+		4D784890183147C40025ADDA /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D78488D183147C40025ADDA /* UIImage+ImageEffects.m */; };
+		4D784891183147C40025ADDA /* UINavigationController+MHDismissModalView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D78488F183147C40025ADDA /* UINavigationController+MHDismissModalView.m */; };
+		4D78489518314B8A0025ADDA /* ExampleViewCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D78489418314B8A0025ADDA /* ExampleViewCollectionView.m */; };
+		4D78489918314C0A0025ADDA /* itunesradio_mystations_2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D78489618314C0A0025ADDA /* itunesradio_mystations_2x.png */; };
+		4D78489A18314C0A0025ADDA /* multitasking_screen_2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D78489718314C0A0025ADDA /* multitasking_screen_2x.png */; };
+		4D78489B18314C0A0025ADDA /* photos_moments_screen_2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D78489818314C0A0025ADDA /* photos_moments_screen_2x.png */; };
+		4D78489E18314EB60025ADDA /* MHCPostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D78489D18314EB60025ADDA /* MHCPostViewController.m */; };
 		5116A5BF18300277004FCC1A /* NSNotificationCenter+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 5116A5BE18300277004FCC1A /* NSNotificationCenter+Addition.m */; };
 		515B0BEC18082A9B0092BADB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 515B0BEB18082A9B0092BADB /* Foundation.framework */; };
 		515B0BEE18082A9B0092BADB /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 515B0BED18082A9B0092BADB /* CoreGraphics.framework */; };
@@ -227,17 +233,17 @@
 		18B02D56182E0F6100D9AF04 /* GraphicName.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GraphicName.h; sourceTree = "<group>"; };
 		18B02D57182E167800D9AF04 /* WXYTabBarButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXYTabBarButton.h; sourceTree = "<group>"; };
 		18B02D58182E167800D9AF04 /* WXYTabBarButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXYTabBarButton.m; sourceTree = "<group>"; };
+		18D9E4E6183388E0004539CC /* Comment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Comment.h; sourceTree = "<group>"; };
+		18D9E4E7183388E0004539CC /* Comment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Comment.m; sourceTree = "<group>"; };
+		18D9E4EB18338BF0004539CC /* Status.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Status.h; sourceTree = "<group>"; };
+		18D9E4EC18338BF0004539CC /* Status.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Status.m; sourceTree = "<group>"; };
 		18EB09C4182B7C97005CC27D /* WXYBlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXYBlock.h; sourceTree = "<group>"; };
 		18EB09C6182B7F30005CC27D /* WXYSettingManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXYSettingManager.h; sourceTree = "<group>"; };
 		18EB09C7182B7F30005CC27D /* WXYSettingManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXYSettingManager.m; sourceTree = "<group>"; };
 		18EB09D7182B82F1005CC27D /* WXYDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXYDataModel.h; sourceTree = "<group>"; };
 		18EB09D8182B82F1005CC27D /* WXYDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXYDataModel.m; sourceTree = "<group>"; };
-		18EB09DC182BAB37005CC27D /* Status.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Status.h; sourceTree = "<group>"; };
-		18EB09DD182BAB37005CC27D /* Status.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Status.m; sourceTree = "<group>"; };
 		18EB09E0182BAB37005CC27D /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		18EB09E1182BAB37005CC27D /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
-		18EB09E4182BAB38005CC27D /* Comment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Comment.h; sourceTree = "<group>"; };
-		18EB09E5182BAB38005CC27D /* Comment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Comment.m; sourceTree = "<group>"; };
 		18EB09EB182BCFE2005CC27D /* WXYNetworkEngineTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXYNetworkEngineTest.m; sourceTree = "<group>"; };
 		18EB09F6182BD613005CC27D /* GHUnitIOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GHUnitIOS.framework; path = vbo/otherLibraries/GHUnitIOS.framework; sourceTree = "<group>"; };
 		18EB0A00182BED82005CC27D /* StatusPicture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatusPicture.h; sourceTree = "<group>"; };
@@ -270,6 +276,18 @@
 		18EED35118158653000856CE /* WXYTestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXYTestViewController.h; sourceTree = "<group>"; };
 		18EED35218158653000856CE /* WXYTestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXYTestViewController.m; sourceTree = "<group>"; };
 		18EED3571815865F000856CE /* MainStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainStoryboard.storyboard; sourceTree = "<group>"; };
+		4D1E6F1A182A3AF50078229F /* postViewStoryBoard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = postViewStoryBoard.storyboard; sourceTree = "<group>"; };
+		4D78488C183147C40025ADDA /* UIImage+ImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+ImageEffects.h"; path = "blur/UIImage+ImageEffects.h"; sourceTree = "<group>"; };
+		4D78488D183147C40025ADDA /* UIImage+ImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+ImageEffects.m"; path = "blur/UIImage+ImageEffects.m"; sourceTree = "<group>"; };
+		4D78488E183147C40025ADDA /* UINavigationController+MHDismissModalView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UINavigationController+MHDismissModalView.h"; path = "blur/UINavigationController+MHDismissModalView.h"; sourceTree = "<group>"; };
+		4D78488F183147C40025ADDA /* UINavigationController+MHDismissModalView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UINavigationController+MHDismissModalView.m"; path = "blur/UINavigationController+MHDismissModalView.m"; sourceTree = "<group>"; };
+		4D78489318314B8A0025ADDA /* ExampleViewCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExampleViewCollectionView.h; path = testPreView/ExampleViewCollectionView.h; sourceTree = "<group>"; };
+		4D78489418314B8A0025ADDA /* ExampleViewCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExampleViewCollectionView.m; path = testPreView/ExampleViewCollectionView.m; sourceTree = "<group>"; };
+		4D78489618314C0A0025ADDA /* itunesradio_mystations_2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = itunesradio_mystations_2x.png; path = testPreView/itunesradio_mystations_2x.png; sourceTree = "<group>"; };
+		4D78489718314C0A0025ADDA /* multitasking_screen_2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = multitasking_screen_2x.png; path = testPreView/multitasking_screen_2x.png; sourceTree = "<group>"; };
+		4D78489818314C0A0025ADDA /* photos_moments_screen_2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = photos_moments_screen_2x.png; path = testPreView/photos_moments_screen_2x.png; sourceTree = "<group>"; };
+		4D78489C18314EB60025ADDA /* MHCPostViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHCPostViewController.h; sourceTree = "<group>"; };
+		4D78489D18314EB60025ADDA /* MHCPostViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHCPostViewController.m; sourceTree = "<group>"; };
 		5116A5BD18300277004FCC1A /* NSNotificationCenter+Addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSNotificationCenter+Addition.h"; sourceTree = "<group>"; };
 		5116A5BE18300277004FCC1A /* NSNotificationCenter+Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSNotificationCenter+Addition.m"; sourceTree = "<group>"; };
 		515B0BE818082A9B0092BADB /* vbo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = vbo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -355,14 +373,14 @@
 			isa = PBXGroup;
 			children = (
 				188E68951829131600BE534D /* vboCachedDatamodel.xcdatamodeld */,
+				18D9E4EB18338BF0004539CC /* Status.h */,
+				18D9E4EC18338BF0004539CC /* Status.m */,
+				18D9E4E6183388E0004539CC /* Comment.h */,
+				18D9E4E7183388E0004539CC /* Comment.m */,
 				18EB0A00182BED82005CC27D /* StatusPicture.h */,
 				18EB0A01182BED82005CC27D /* StatusPicture.m */,
-				18EB09E4182BAB38005CC27D /* Comment.h */,
-				18EB09E5182BAB38005CC27D /* Comment.m */,
 				18EB09E0182BAB37005CC27D /* User.h */,
 				18EB09E1182BAB37005CC27D /* User.m */,
-				18EB09DC182BAB37005CC27D /* Status.h */,
-				18EB09DD182BAB37005CC27D /* Status.m */,
 			);
 			path = coredata;
 			sourceTree = "<group>";
@@ -516,13 +534,6 @@
 			path = mine;
 			sourceTree = "<group>";
 		};
-		1868F1081829CDF600C5764D /* post */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = post;
-			sourceTree = "<group>";
-		};
 		1868F11D1829D7EA00C5764D /* root */ = {
 			isa = PBXGroup;
 			children = (
@@ -620,7 +631,7 @@
 		18EED2EF1815853E000856CE /* controller */ = {
 			isa = PBXGroup;
 			children = (
-				1868F1081829CDF600C5764D /* post */,
+				4D1E6F16182A3AF50078229F /* post */,
 				1868F1051829CDE400C5764D /* discover */,
 				1868F1061829CDE400C5764D /* message */,
 				1868F1071829CDE400C5764D /* mine */,
@@ -695,6 +706,57 @@
 				18EED3571815865F000856CE /* MainStoryboard.storyboard */,
 			);
 			path = view;
+			sourceTree = "<group>";
+		};
+		4D1E6F16182A3AF50078229F /* post */ = {
+			isa = PBXGroup;
+			children = (
+				4D78489F183153FC0025ADDA /* customSettings */,
+				4D78489218314ABF0025ADDA /* testPreView */,
+				4D78488B1831474C0025ADDA /* blur */,
+				4D1E6F19182A3AF50078229F /* postView */,
+				4D78489C18314EB60025ADDA /* MHCPostViewController.h */,
+				4D78489D18314EB60025ADDA /* MHCPostViewController.m */,
+			);
+			path = post;
+			sourceTree = "<group>";
+		};
+		4D1E6F19182A3AF50078229F /* postView */ = {
+			isa = PBXGroup;
+			children = (
+				4D1E6F1A182A3AF50078229F /* postViewStoryBoard.storyboard */,
+			);
+			path = postView;
+			sourceTree = "<group>";
+		};
+		4D78488B1831474C0025ADDA /* blur */ = {
+			isa = PBXGroup;
+			children = (
+				4D78488C183147C40025ADDA /* UIImage+ImageEffects.h */,
+				4D78488D183147C40025ADDA /* UIImage+ImageEffects.m */,
+				4D78488E183147C40025ADDA /* UINavigationController+MHDismissModalView.h */,
+				4D78488F183147C40025ADDA /* UINavigationController+MHDismissModalView.m */,
+			);
+			name = blur;
+			sourceTree = "<group>";
+		};
+		4D78489218314ABF0025ADDA /* testPreView */ = {
+			isa = PBXGroup;
+			children = (
+				4D78489618314C0A0025ADDA /* itunesradio_mystations_2x.png */,
+				4D78489718314C0A0025ADDA /* multitasking_screen_2x.png */,
+				4D78489818314C0A0025ADDA /* photos_moments_screen_2x.png */,
+				4D78489318314B8A0025ADDA /* ExampleViewCollectionView.h */,
+				4D78489418314B8A0025ADDA /* ExampleViewCollectionView.m */,
+			);
+			name = testPreView;
+			sourceTree = "<group>";
+		};
+		4D78489F183153FC0025ADDA /* customSettings */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = customSettings;
 			sourceTree = "<group>";
 		};
 		515B0BDF18082A9B0092BADB = {
@@ -893,18 +955,23 @@
 			files = (
 				18B02D54182E0F1B00D9AF04 /* tabbar_weibo_button@2x.png in Resources */,
 				18B02D4E182E0F1B00D9AF04 /* tabbar_message_button@2x.png in Resources */,
+				4D78489918314C0A0025ADDA /* itunesradio_mystations_2x.png in Resources */,
 				515B0C0418082A9B0092BADB /* Images.xcassets in Resources */,
 				18EED32F1815853E000856CE /* README.txt in Resources */,
 				18B02D4B182E0F1B00D9AF04 /* tabbar_discover_button.png in Resources */,
 				18B02D4F182E0F1B00D9AF04 /* tabbar_mine_button.png in Resources */,
 				18B02D4D182E0F1B00D9AF04 /* tabbar_message_button.png in Resources */,
 				18B02D53182E0F1B00D9AF04 /* tabbar_weibo_button.png in Resources */,
+				4D78489A18314C0A0025ADDA /* multitasking_screen_2x.png in Resources */,
+				18B02D53182E0F1B00D9AF04 /* tabbar_weibo_button.png in Resources */,
+				4D78489B18314C0A0025ADDA /* photos_moments_screen_2x.png in Resources */,
 				18B02D4C182E0F1B00D9AF04 /* tabbar_discover_button@2x.png in Resources */,
 				18B02D51182E0F1B00D9AF04 /* tabbar_post_button.png in Resources */,
 				18B02D50182E0F1B00D9AF04 /* tabbar_mine_button@2x.png in Resources */,
 				1868F1381829EC7A00C5764D /* test.png in Resources */,
 				1838DF20181E677A003D015A /* WeiboSDK.bundle in Resources */,
 				18EED3581815865F000856CE /* MainStoryboard.storyboard in Resources */,
+				4D1E6F1C182A3AF60078229F /* postViewStoryBoard.storyboard in Resources */,
 				18B02D52182E0F1B00D9AF04 /* tabbar_post_button@2x.png in Resources */,
 				515B0BF618082A9B0092BADB /* InfoPlist.strings in Resources */,
 			);
@@ -961,11 +1028,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				18EB09E2182BAB37005CC27D /* User.m in Sources */,
+				4D78489E18314EB60025ADDA /* MHCPostViewController.m in Sources */,
 				1841100318165608008B700C /* WXYNetworkOperation.m in Sources */,
 				185E88AF182AABF40020F3B2 /* MKNetworkEngine.m in Sources */,
 				1868F0FE1829C8B200C5764D /* WXYRootTabbarViewController.m in Sources */,
 				18EED35518158653000856CE /* WXYTestViewController.m in Sources */,
 				1868F10B1829CE0100C5764D /* WXYDiscoverViewController.m in Sources */,
+				18D9E4ED18338BF0004539CC /* Status.m in Sources */,
 				185E88AB182AABF40020F3B2 /* NSDictionary+RequestEncoding.m in Sources */,
 				185E88B0182AABF40020F3B2 /* MKNetworkOperation.m in Sources */,
 				5116A5BF18300277004FCC1A /* NSNotificationCenter+Addition.m in Sources */,
@@ -981,6 +1050,7 @@
 				18EED35318158653000856CE /* ViewController.m in Sources */,
 				18EED3271815853E000856CE /* DDLog.m in Sources */,
 				1868F12F1829DA3300C5764D /* AMBlurView.m in Sources */,
+				4D78489518314B8A0025ADDA /* ExampleViewCollectionView.m in Sources */,
 				18EB0A09182BF7DD005CC27D /* NSDictionary+noNilValueForKey.m in Sources */,
 				18EB09DE182BAB37005CC27D /* Status.m in Sources */,
 				18A6A682182FCD6000D9FB7F /* WXYTabBarPostButton.m in Sources */,
@@ -995,12 +1065,14 @@
 				185E88B1182AABF40020F3B2 /* Reachability.m in Sources */,
 				1868F1031829CD9700C5764D /* WXYCastViewController.m in Sources */,
 				18EED32D1815853E000856CE /* DispatchQueueLogFormatter.m in Sources */,
-				18EB09E6182BAB38005CC27D /* Comment.m in Sources */,
 				51F8FA28182E0F5C00E211AC /* TTTAttributedLabel.m in Sources */,
 				18411000181655EB008B700C /* WXYNetworkEngine.m in Sources */,
 				185E88AA182AABF40020F3B2 /* NSDate+RFC1123.m in Sources */,
+				4D784890183147C40025ADDA /* UIImage+ImageEffects.m in Sources */,
 				1868F1241829D7EA00C5764D /* WXYTabBar.m in Sources */,
 				515B0BF818082A9B0092BADB /* main.m in Sources */,
+				18D9E4E8183388E0004539CC /* Comment.m in Sources */,
+				4D784891183147C40025ADDA /* UINavigationController+MHDismissModalView.m in Sources */,
 				18EB09C8182B7F30005CC27D /* WXYSettingManager.m in Sources */,
 				515F4499183356C400AFD64D /* TTTAttributedLabelHelper.m in Sources */,
 				185E88AD182AABF40020F3B2 /* UIAlertView+MKNetworkKitAdditions.m in Sources */,
@@ -1031,7 +1103,6 @@
 				1868F1141829CE1400C5764D /* WXYMineViewController.m in Sources */,
 				18EED32C1815853E000856CE /* ContextFilterLogFormatter.m in Sources */,
 				18EED3221815853E000856CE /* DDAbstractDatabaseLogger.m in Sources */,
-				18EB09DF182BAB37005CC27D /* Status.m in Sources */,
 				18EED35618158653000856CE /* WXYTestViewController.m in Sources */,
 				18EED3261815853E000856CE /* DDFileLogger.m in Sources */,
 				1868F1301829DA3300C5764D /* AMBlurView.m in Sources */,
@@ -1045,7 +1116,6 @@
 				18EB09DA182B82F1005CC27D /* WXYDataModel.m in Sources */,
 				18EB09EC182BCFE2005CC27D /* WXYNetworkEngineTest.m in Sources */,
 				1868F0FD1829C8B200C5764D /* WXYRootNavViewController.m in Sources */,
-				18EB09E7182BAB38005CC27D /* Comment.m in Sources */,
 				188E68981829131600BE534D /* vboCachedDatamodel.xcdatamodeld in Sources */,
 				1868F1251829D7EA00C5764D /* WXYTabBar.m in Sources */,
 				1868F1041829CD9700C5764D /* WXYCastViewController.m in Sources */,

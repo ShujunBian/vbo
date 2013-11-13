@@ -31,10 +31,14 @@
 @synthesize testAccessToken = _testAccessToken;
 @synthesize rootBarTintColor = _rootBarTintColor;
 @synthesize castViewTableCellContentLabelFont = _castViewTableCellContentLabelFont;
+@synthesize themeColorType = _themeColorType;
+@synthesize themeColor = _themeColor;
 @synthesize castViewTableCellBackgroundColor = _castViewTableCellBackgroundColor;
+
 @synthesize castViewTableViewBackgroundColor = _castViewTableViewBackgroundColor;
 @synthesize themeColorType = _themeColorType;
 @synthesize themeColor = _themeColor;
+//@synthesize castViewTableViewBackgroundColor = _castViewTableViewBackgroundColor;
 
 #pragma mark - Getter And Setter Method
 #pragma mark
@@ -195,6 +199,7 @@
     return _castViewTableCellBackgroundColor;
 }
 
+/*
 - (UIColor *)castViewTableViewBackgroundColor {
     if (!_castViewTableViewBackgroundColor) {
 #warning 从设备型号读取颜色
@@ -202,5 +207,6 @@
     }
     return _castViewTableViewBackgroundColor;
 }
+*/
 
 @end

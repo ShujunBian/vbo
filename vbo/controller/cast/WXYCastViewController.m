@@ -47,7 +47,7 @@
 	// Do any additional setup after loading the view.
     
     UIView *bgview = [[UIView alloc]init];
-    [bgview setBackgroundColor:[WXYSettingManager shareSettingManager].castViewTableViewBackgroundColor];
+    [bgview setBackgroundColor:[WXYSettingManager shareSettingManager].themeColor];
     [self.tableView setBackgroundView:bgview];
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
 //    [self.view setTranslatesAutoresizingMaskIntoConstraints:NO];

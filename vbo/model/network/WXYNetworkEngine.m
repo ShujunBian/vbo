@@ -12,10 +12,25 @@
 #define HOST_NAME @"api.weibo.com"
 #import "UIImageView+MKNetworkKitAdditions.h"
 
+//
 #define HOME_TIMELINE_URL @"2/statuses/home_timeline.json"
+
+//post
+#define POST_WEIBO_URL @"2/statuses/update.json"
+#define POST_WEIBO_IMAGE_URL @"2/statuses/upload.json"
+
+//Comment
+#define COMMENT_SHOW_URL @"2/comments/show.json"
 
 #import "WXYSettingManager.h"
 #import "WXYDataModel.h"
+
+@interface WXYNetworkDataFactory : NSObject
++ (Status*)getStatusWithDict:(NSDictionary*)dict;
++ (Comment*)getCommentWithDict:(NSDictionary*)dict;
+@end
+
+
 
 @implementation WXYNetworkEngine
 
@@ -49,6 +64,7 @@
                                          user:(id)user
                                      paramers:(NSDictionary*)paramDict
                                    httpMethod:(NSString*)method
+                                       dataDict:(NSDictionary*)dataDict
                                   onSucceeded:(OperationSucceedBlock)succeedBlock
                                       onError:(OperationErrorBlock)errorBlock
 {
@@ -63,9 +79,24 @@
                           params:params
                       httpMethod:method
                              ssl:YES];
+    for (NSString* key in dataDict.allKeys)
+    {
+        [op addData:dataDict[key] forKey:key];
+    }
+
     [op addCompletionHandler:succeedBlock errorHandler:errorBlock];
     [self enqueueOperation:op];
     return op;
+}
+
+- (MKNetworkOperation*)startOperationWithPath:(NSString*)path
+                                         user:(id)user
+                                     paramers:(NSDictionary*)paramDict
+                                   httpMethod:(NSString*)method
+                                  onSucceeded:(OperationSucceedBlock)succeedBlock
+                                      onError:(OperationErrorBlock)errorBlock
+{
+    return [self startOperationWithPath:path user:user paramers:paramDict httpMethod:method dataDict:nil onSucceeded:succeedBlock onError:errorBlock];
 }
 - (MKNetworkOperation*)startOperationWithPath:(NSString*)path
                                     needLogin:(BOOL)fLogin
@@ -94,16 +125,8 @@
               
               for (NSDictionary* dict in statuesDictArray)
               {
-                  NSNumber* statusId = dict[@"id"];
-                  Status* status = [SHARE_DATA_MODEL getStatusById:statusId.longLongValue];
-                  [status updateWithDict:dict];
-                  NSDictionary* userDict = dict[@"user"];
-                  NSNumber* userId = userDict[@"id"];
-                  User* user = [SHARE_DATA_MODEL getUserById:userId.longLongValue];
-                  [user updateWithDict:userDict];
-                  status.author = user;
+                  Status* status = [WXYNetworkDataFactory getStatusWithDict:dict];
                   
-#warning 多图微博处理未写   pic_urls
                   [returnArray addObject:status];
               }
               [SHARE_DATA_MODEL saveCacheContext];
@@ -120,5 +143,158 @@
     return op;
     
 }
+
+- (MKNetworkOperation*)postWeiboOfCurrentUser:(NSString*)content
+                                        image:(UIImage*)weiboImage
+                                 withLocation:(BOOL)fLocation
+                                  visibleType:(StatusVisibleType)visibleType
+                                visibleListId:(NSNumber*)listId
+                                      succeed:(StatusBlock)succeedBlock
+                                        error:(ErrorBlock)errorBlock
+{
+    MKNetworkOperation* op = nil;
+    
+    NSString *urlStr = nil;
+    NSMutableDictionary* paramDict = [[NSMutableDictionary alloc] initWithDictionary:@{@"status":content, @"visible":@(visibleType)}];
+    if (visibleType == StatusVisibleTypeGroup)
+    {
+        [paramDict setValue:listId forKey:@"list_id"];
+    }
+    //annotations
+    NSDictionary* imageDict = nil;
+    if (weiboImage)
+    {
+        urlStr = POST_WEIBO_IMAGE_URL;
+        
+#warning 图片压缩未处理
+        NSData *imageData = UIImageJPEGRepresentation(weiboImage, 0.5);
+        imageDict = @{@"pic":imageData};
+    }
+    else
+    {
+        urlStr = POST_WEIBO_URL;
+    }
+    
+
+
+    
+#warning user暂为nil
+    [self startOperationWithPath:urlStr user:nil paramers:paramDict httpMethod:@"POST" dataDict:imageDict onSucceeded:^(MKNetworkOperation *completedOperation) {
+        NSDictionary* dict = completedOperation.responseJSON;
+        Status* status = [WXYNetworkDataFactory getStatusWithDict:dict];
+        [SHARE_DATA_MODEL saveCacheContext];
+        if (succeedBlock)
+        {
+            succeedBlock(status);
+        }
+    } onError:^(MKNetworkOperation *completedOperation, NSError *error) {
+        if (errorBlock)
+        {
+            errorBlock(error);
+        }
+    }];
+    
+    
+    return op;
+}
+
+#pragma mark - 评论接口
+#pragma mark 读取
+- (MKNetworkOperation*)getCommentsOfWeibo:(NSNumber*)weiboId
+                                     page:(int)page
+                                  succeed:(ArrayBlock)succeedBlock
+                                    error:(ErrorBlock)errorBlock
+{
+    MKNetworkOperation* op = nil;
+    
+    op = [self startOperationWithPath:COMMENT_SHOW_URL
+                            needLogin:YES
+                             paramers:@{@"id":weiboId, @"page":@(page)}
+                          onSucceeded:^(MKNetworkOperation *completedOperation)
+          {
+              NSDictionary* dict = completedOperation.responseJSON;
+              NSDictionary* commentArray = dict[@"comments"];
+              
+              NSMutableArray* returnArray = [[NSMutableArray alloc] init];
+              
+              BOOL fFirst = YES;
+              
+              for (NSDictionary* commentDict in commentArray)
+              {
+                  Comment* comment = [WXYNetworkDataFactory getCommentWithDict:commentDict];
+                  [returnArray addObject:comment];
+                  if (fFirst)
+                  {
+                      fFirst = NO;
+                      NSDictionary* dict = commentDict[@"status"];
+                    [WXYNetworkDataFactory getStatusWithDict:dict]; //刷新微博信息
+                      
+                  }
+              }
+              if (succeedBlock)
+              {
+                  succeedBlock(returnArray);
+              }
+              [SHARE_DATA_MODEL saveCacheContext];
+              
+          }
+                              onError:^(MKNetworkOperation *completedOperation, NSError *error)
+          {
+              if (errorBlock) {
+                  errorBlock(error);
+              }
+          }];
+    return op;
+}
+
+
+#pragma mark 写入
+
+
+@end
+
+@implementation WXYNetworkDataFactory
+
++ (Status*)getStatusWithDict:(NSDictionary*)dict
+{
+    NSNumber* statusId = dict[@"id"];
+    Status* status = [SHARE_DATA_MODEL getStatusById:statusId.longLongValue];
+    [status updateWithDict:dict];
+    NSDictionary* userDict = dict[@"user"];
+    NSNumber* userId = userDict[@"id"];
+    User* user = [SHARE_DATA_MODEL getUserById:userId.longLongValue];
+    [user updateWithDict:userDict];
+    status.author = user;
+#warning 多图微博处理未写   pic_urls
+    NSDictionary* repostDict =  dict[@"retweeted_status"];
+
+    //处理转发
+    if (repostDict)
+    {
+        status.repostStatus = [self getStatusWithDict:repostDict];
+    }
+    return status;
+}
+
++ (Comment*)getCommentWithDict:(NSDictionary*)dict
+{
+    NSNumber* commentId = dict[@"id"];
+    Comment* comment = [SHARE_DATA_MODEL getCommentById:commentId.longLongValue];
+    [comment updateWithDict:dict];
+    
+    NSDictionary* userDict = dict[@"user"];
+    NSNumber* userId = userDict[@"id"];
+    User* user = [SHARE_DATA_MODEL getUserById:userId.longLongValue];
+    [user updateWithDict:userDict];
+    comment.user = user;
+    
+    NSDictionary* statusDict = dict[@"status"];
+    NSNumber* statusId = statusDict[@"id"];
+    Status* status = [SHARE_DATA_MODEL getStatusById:statusId.longLongValue];
+    comment.status = status;
+    
+    return comment;
+}
+
 
 @end
