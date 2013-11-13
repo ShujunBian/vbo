@@ -112,7 +112,10 @@
           }
                               onError:^(MKNetworkOperation *completedOperation, NSError *error)
           {
-              errorBlock(error);
+              if (errorBlock)
+              {
+                  errorBlock(error);
+              }
           }];
     return op;
     

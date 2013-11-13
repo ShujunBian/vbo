@@ -50,7 +50,7 @@
     [bgview setBackgroundColor:[WXYSettingManager shareSettingManager].castViewTableViewBackgroundColor];
     [self.tableView setBackgroundView:bgview];
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
-    [self.tableView setTranslatesAutoresizingMaskIntoConstraints:NO];
+    [self.view setTranslatesAutoresizingMaskIntoConstraints:NO];
     [self fetchWeiboContent];
 
 }
@@ -111,7 +111,6 @@
     [cell.weiboContentLabel setAttributedText:[self weiboContentLabelAttributedStringAtIndex:[indexPath row]]];
     [cell.weiboContentLabel setFont:[WXYSettingManager shareSettingManager].castViewTableCellContentLabelFont];
     cell.contentLabelHeight.constant = [self cellContentHeightForRowAtIndex:[indexPath row]];
-//    cell.weiboContentLabel.leading = 10.0;
     
     if (currentCellStatus.bmiddlePicURL != nil) {
         cell.avatorTopSpaceConstaint.constant = weiboImageHeight + weiboCellBetweenHeight;

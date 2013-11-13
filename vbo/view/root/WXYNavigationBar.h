@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "AMBlurView.h"
-
+#define ROOT_NAV_BAR_HEIGHT 65.f
 
 @interface WXYNavigationBar : AMBlurView
 
@@ -16,6 +16,7 @@
 
 @property (weak, nonatomic) UIView* snapShotView;
 
+- (id)init;
 
 - (void)refresh;
 

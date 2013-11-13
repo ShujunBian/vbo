@@ -7,13 +7,18 @@
 //
 
 #import "WXYRootTabbarViewController.h"
+#import "WXYSettingManager.h"
+
 
 @interface WXYRootTabbarViewController ()
+
+@property (strong, nonatomic) WXYTabBar* tabbar;
 
 @end
 
 @implementation WXYRootTabbarViewController
 
+#pragma mark - Init Method
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -23,10 +28,26 @@
     return self;
 }
 
+#pragma mark - Life Cycle
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.view.tintColor = SHARE_SETTING_MANAGER.themeColor;
 	// Do any additional setup after loading the view.
+
+//    self.view.translatesAutoresizingMaskIntoConstraints = NO;
+    
+    self.tabbar = [[WXYTabBar alloc] init];
+    self.tabbar.delegate = self;
+    [self.view addSubview:self.tabbar];
+    
+    
+    NSLayoutConstraint* tabBarTopConstraint = [NSLayoutConstraint constraintWithItem:self.view attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self.tabbar attribute:NSLayoutAttributeBottom multiplier:1 constant:0];
+    NSArray* tabBarHoriConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|[tabbar]|" options:0 metrics:nil views:@{@"tabbar":self.tabbar}];
+    [self.view addConstraint:tabBarTopConstraint];
+    [self.view addConstraints:tabBarHoriConstraints];
+     
+
 }
 
 - (void)didReceiveMemoryWarning
@@ -35,4 +56,49 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - UIScroll View Delegate
+
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
+{
+    
+}
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    [self.tabbar refresh];
+}
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+{
+    
+}
+
+- (void)tabBar:(WXYTabBar*)tabBar buttonPressed:(WXYTabBarButtonType)type
+{
+    switch (type)
+    {
+        case WXYTabBarButtonTypePost:
+        {
+#warning 毛妹妹把显示post界面加在这里。。
+            UIStoryboard* storyBoard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
+            UIViewController* vc = [storyBoard instantiateViewControllerWithIdentifier:@"WXYTestViewControllerIdentity"];
+            [self presentViewController:vc animated:YES completion:nil];
+            break;
+        }
+        case WXYTabBarButtonTypeWeibo:
+        {
+            break;
+        }
+        case WXYTabBarButtonTypeMessage:
+        {
+            break;
+        }
+        case WXYTabBarButtonTypeDiscover:
+        {
+            break;
+        }
+        case WXYTabBarButtonTypeMine:
+        {
+            break;
+        }
+    }
+}
 @end
