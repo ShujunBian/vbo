@@ -19,11 +19,15 @@
 #define POST_WEIBO_URL @"2/statuses/update.json"
 #define POST_WEIBO_IMAGE_URL @"2/statuses/upload.json"
 
+//Comment
+#define COMMENT_SHOW_URL @"2/comments/show.json"
+
 #import "WXYSettingManager.h"
 #import "WXYDataModel.h"
 
 @interface WXYNetworkDataFactory : NSObject
 + (Status*)getStatusWithDict:(NSDictionary*)dict;
++ (Comment*)getCommentWithDict:(NSDictionary*)dict;
 @end
 
 
@@ -194,6 +198,58 @@
     return op;
 }
 
+#pragma mark - 评论接口
+#pragma mark 读取
+- (MKNetworkOperation*)getCommentsOfWeibo:(NSNumber*)weiboId
+                                     page:(int)page
+                                  succeed:(ArrayBlock)succeedBlock
+                                    error:(ErrorBlock)errorBlock
+{
+    MKNetworkOperation* op = nil;
+    
+    op = [self startOperationWithPath:COMMENT_SHOW_URL
+                            needLogin:YES
+                             paramers:@{@"id":weiboId, @"page":@(page)}
+                          onSucceeded:^(MKNetworkOperation *completedOperation)
+          {
+              NSDictionary* dict = completedOperation.responseJSON;
+              NSDictionary* commentArray = dict[@"comments"];
+              
+              NSMutableArray* returnArray = [[NSMutableArray alloc] init];
+              
+              BOOL fFirst = YES;
+              
+              for (NSDictionary* commentDict in commentArray)
+              {
+                  Comment* comment = [WXYNetworkDataFactory getCommentWithDict:commentDict];
+                  [returnArray addObject:comment];
+                  if (fFirst)
+                  {
+                      fFirst = NO;
+                      NSDictionary* dict = commentDict[@"status"];
+                    [WXYNetworkDataFactory getStatusWithDict:dict]; //刷新微博信息
+                      
+                  }
+              }
+              if (succeedBlock)
+              {
+                  succeedBlock(returnArray);
+              }
+              [SHARE_DATA_MODEL saveCacheContext];
+              
+          }
+                              onError:^(MKNetworkOperation *completedOperation, NSError *error)
+          {
+              if (errorBlock) {
+                  errorBlock(error);
+              }
+          }];
+    return op;
+}
+
+
+#pragma mark 写入
+
 
 @end
 
@@ -219,5 +275,26 @@
     }
     return status;
 }
+
++ (Comment*)getCommentWithDict:(NSDictionary*)dict
+{
+    NSNumber* commentId = dict[@"id"];
+    Comment* comment = [SHARE_DATA_MODEL getCommentById:commentId.longLongValue];
+    [comment updateWithDict:dict];
+    
+    NSDictionary* userDict = dict[@"user"];
+    NSNumber* userId = userDict[@"id"];
+    User* user = [SHARE_DATA_MODEL getUserById:userId.longLongValue];
+    [user updateWithDict:userDict];
+    comment.user = user;
+    
+    NSDictionary* statusDict = dict[@"status"];
+    NSNumber* statusId = statusDict[@"id"];
+    Status* status = [SHARE_DATA_MODEL getStatusById:statusId.longLongValue];
+    comment.status = status;
+    
+    return comment;
+}
+
 
 @end

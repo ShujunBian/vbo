@@ -2,7 +2,7 @@
 //  Comment.h
 //  vbo
 //
-//  Created by wxy325 on 11/7/13.
+//  Created by wxy325 on 11/13/13.
 //  Copyright (c) 2013 BmwDev. All rights reserved.
 //
 
@@ -13,16 +13,15 @@
 
 @interface Comment : NSManagedObject
 
-@property (nonatomic, retain) NSDate * createdAt;
 @property (nonatomic, retain) NSNumber * commentID;
-@property (nonatomic, retain) NSString * text;
-@property (nonatomic, retain) NSString * source;
 @property (nonatomic, retain) NSString * commentMID;
+@property (nonatomic, retain) NSDate * createdAt;
+@property (nonatomic, retain) NSString * source;
+@property (nonatomic, retain) NSString * text;
 @property (nonatomic, retain) Status *status;
 @property (nonatomic, retain) User *user;
 
 + (Comment*)insertWithId:(NSNumber*)cId InContest:(NSManagedObjectContext*)context;
-
 - (void)updateWithDict:(NSDictionary*)dict;
 
 @end

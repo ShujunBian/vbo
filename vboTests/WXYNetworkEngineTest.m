@@ -36,10 +36,14 @@
     [self.asyncTestCase tearDown];
 }
 
+#pragma mark - Weibo
+#pragma mark Read
 - (void)testGetHomeTimelineOfCurrentUser
 {
     [self.asyncTestCase prepare];
     [self.engine getHomeTimelineOfCurrentUserSucceed:^(NSArray *resultArray) {
+        Status* status = resultArray[0];
+        NSLog(@"%@",status.statusID);
         [self.asyncTestCase notify:kGHUnitWaitStatusSuccess];
 
     } error:^(NSError *error) {
@@ -50,6 +54,7 @@
 
 }
 
+#pragma mark Write
 - (void)testPostWeiboText
 {
     [self.asyncTestCase prepare];
@@ -84,6 +89,7 @@
     [self.asyncTestCase waitForStatus:kGHUnitWaitStatusSuccess timeout:kMKNetworkKitRequestTimeOutInSeconds];
 }
 
+
 - (void)testPostWeiboImage
 {
     [self.asyncTestCase prepare];
@@ -117,5 +123,32 @@
     [self.asyncTestCase waitForStatus:kGHUnitWaitStatusSuccess timeout:kMKNetworkKitRequestTimeOutInSeconds];
 }
 
-
+#pragma mark - Comment
+#pragma mark Read
+- (void)testGetCommentOfWeibo
+{
+    [self.asyncTestCase prepare];
+    
+    // 3644230360421007
+    
+    [SHARE_NW_ENGINE getCommentsOfWeibo:@(3644235297736244) page:1 succeed:^(NSArray *resultArray) {
+        XCTAssertNotNil(resultArray, @"获取评论失败");
+        
+        if (resultArray.count)
+        {
+            id comment = resultArray[0];
+            XCTAssert([comment isKindOfClass:[Comment class]], @"评论类型错误");
+            Comment* c = (Comment*)comment;
+            XCTAssertNotEqual(c.text.length, 0, @"评论内容为空");
+        }
+        
+        [self.asyncTestCase notify:kGHUnitWaitStatusSuccess];
+    } error:^(NSError *error) {
+        XCTFail(@"获取评论失败");
+        [self.asyncTestCase notify:kGHUnitWaitStatusFailure];
+    }];
+    
+    
+    [self.asyncTestCase waitForStatus:kGHUnitWaitStatusSuccess timeout:kMKNetworkKitRequestTimeOutInSeconds];
+}
 @end

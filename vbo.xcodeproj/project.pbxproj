@@ -67,16 +67,14 @@
 		18B02D54182E0F1B00D9AF04 /* tabbar_weibo_button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18B02D4A182E0F1B00D9AF04 /* tabbar_weibo_button@2x.png */; };
 		18B02D59182E167800D9AF04 /* WXYTabBarButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B02D58182E167800D9AF04 /* WXYTabBarButton.m */; };
 		18B02D5A182E167800D9AF04 /* WXYTabBarButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B02D58182E167800D9AF04 /* WXYTabBarButton.m */; };
+		18D9E4E8183388E0004539CC /* Comment.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D9E4E7183388E0004539CC /* Comment.m */; };
+		18D9E4ED18338BF0004539CC /* Status.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D9E4EC18338BF0004539CC /* Status.m */; };
 		18EB09C8182B7F30005CC27D /* WXYSettingManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 18EB09C7182B7F30005CC27D /* WXYSettingManager.m */; };
 		18EB09C9182B7F30005CC27D /* WXYSettingManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 18EB09C7182B7F30005CC27D /* WXYSettingManager.m */; };
 		18EB09D9182B82F1005CC27D /* WXYDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 18EB09D8182B82F1005CC27D /* WXYDataModel.m */; };
 		18EB09DA182B82F1005CC27D /* WXYDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 18EB09D8182B82F1005CC27D /* WXYDataModel.m */; };
-		18EB09DE182BAB37005CC27D /* Status.m in Sources */ = {isa = PBXBuildFile; fileRef = 18EB09DD182BAB37005CC27D /* Status.m */; };
-		18EB09DF182BAB37005CC27D /* Status.m in Sources */ = {isa = PBXBuildFile; fileRef = 18EB09DD182BAB37005CC27D /* Status.m */; };
 		18EB09E2182BAB37005CC27D /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 18EB09E1182BAB37005CC27D /* User.m */; };
 		18EB09E3182BAB37005CC27D /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 18EB09E1182BAB37005CC27D /* User.m */; };
-		18EB09E6182BAB38005CC27D /* Comment.m in Sources */ = {isa = PBXBuildFile; fileRef = 18EB09E5182BAB38005CC27D /* Comment.m */; };
-		18EB09E7182BAB38005CC27D /* Comment.m in Sources */ = {isa = PBXBuildFile; fileRef = 18EB09E5182BAB38005CC27D /* Comment.m */; };
 		18EB09EC182BCFE2005CC27D /* WXYNetworkEngineTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 18EB09EB182BCFE2005CC27D /* WXYNetworkEngineTest.m */; };
 		18EB09ED182BD049005CC27D /* WXYNetworkEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 18410FFF181655EB008B700C /* WXYNetworkEngine.m */; };
 		18EB09EE182BD049005CC27D /* WXYNetworkOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 1841100218165608008B700C /* WXYNetworkOperation.m */; };
@@ -236,17 +234,17 @@
 		18B02D56182E0F6100D9AF04 /* GraphicName.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GraphicName.h; sourceTree = "<group>"; };
 		18B02D57182E167800D9AF04 /* WXYTabBarButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXYTabBarButton.h; sourceTree = "<group>"; };
 		18B02D58182E167800D9AF04 /* WXYTabBarButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXYTabBarButton.m; sourceTree = "<group>"; };
+		18D9E4E6183388E0004539CC /* Comment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Comment.h; sourceTree = "<group>"; };
+		18D9E4E7183388E0004539CC /* Comment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Comment.m; sourceTree = "<group>"; };
+		18D9E4EB18338BF0004539CC /* Status.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Status.h; sourceTree = "<group>"; };
+		18D9E4EC18338BF0004539CC /* Status.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Status.m; sourceTree = "<group>"; };
 		18EB09C4182B7C97005CC27D /* WXYBlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXYBlock.h; sourceTree = "<group>"; };
 		18EB09C6182B7F30005CC27D /* WXYSettingManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXYSettingManager.h; sourceTree = "<group>"; };
 		18EB09C7182B7F30005CC27D /* WXYSettingManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXYSettingManager.m; sourceTree = "<group>"; };
 		18EB09D7182B82F1005CC27D /* WXYDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXYDataModel.h; sourceTree = "<group>"; };
 		18EB09D8182B82F1005CC27D /* WXYDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXYDataModel.m; sourceTree = "<group>"; };
-		18EB09DC182BAB37005CC27D /* Status.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Status.h; sourceTree = "<group>"; };
-		18EB09DD182BAB37005CC27D /* Status.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Status.m; sourceTree = "<group>"; };
 		18EB09E0182BAB37005CC27D /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		18EB09E1182BAB37005CC27D /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
-		18EB09E4182BAB38005CC27D /* Comment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Comment.h; sourceTree = "<group>"; };
-		18EB09E5182BAB38005CC27D /* Comment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Comment.m; sourceTree = "<group>"; };
 		18EB09EB182BCFE2005CC27D /* WXYNetworkEngineTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXYNetworkEngineTest.m; sourceTree = "<group>"; };
 		18EB09F6182BD613005CC27D /* GHUnitIOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GHUnitIOS.framework; path = vbo/otherLibraries/GHUnitIOS.framework; sourceTree = "<group>"; };
 		18EB0A00182BED82005CC27D /* StatusPicture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatusPicture.h; sourceTree = "<group>"; };
@@ -377,14 +375,14 @@
 			isa = PBXGroup;
 			children = (
 				188E68951829131600BE534D /* vboCachedDatamodel.xcdatamodeld */,
+				18D9E4EB18338BF0004539CC /* Status.h */,
+				18D9E4EC18338BF0004539CC /* Status.m */,
+				18D9E4E6183388E0004539CC /* Comment.h */,
+				18D9E4E7183388E0004539CC /* Comment.m */,
 				18EB0A00182BED82005CC27D /* StatusPicture.h */,
 				18EB0A01182BED82005CC27D /* StatusPicture.m */,
-				18EB09E4182BAB38005CC27D /* Comment.h */,
-				18EB09E5182BAB38005CC27D /* Comment.m */,
 				18EB09E0182BAB37005CC27D /* User.h */,
 				18EB09E1182BAB37005CC27D /* User.m */,
-				18EB09DC182BAB37005CC27D /* Status.h */,
-				18EB09DD182BAB37005CC27D /* Status.m */,
 			);
 			path = coredata;
 			sourceTree = "<group>";
@@ -1033,6 +1031,7 @@
 				1868F0FE1829C8B200C5764D /* WXYRootTabbarViewController.m in Sources */,
 				18EED35518158653000856CE /* WXYTestViewController.m in Sources */,
 				1868F10B1829CE0100C5764D /* WXYDiscoverViewController.m in Sources */,
+				18D9E4ED18338BF0004539CC /* Status.m in Sources */,
 				185E88AB182AABF40020F3B2 /* NSDictionary+RequestEncoding.m in Sources */,
 				185E88B0182AABF40020F3B2 /* MKNetworkOperation.m in Sources */,
 				5116A5BF18300277004FCC1A /* NSNotificationCenter+Addition.m in Sources */,
@@ -1050,7 +1049,6 @@
 				1868F12F1829DA3300C5764D /* AMBlurView.m in Sources */,
 				4D78489518314B8A0025ADDA /* ExampleViewCollectionView.m in Sources */,
 				18EB0A09182BF7DD005CC27D /* NSDictionary+noNilValueForKey.m in Sources */,
-				18EB09DE182BAB37005CC27D /* Status.m in Sources */,
 				18A6A682182FCD6000D9FB7F /* WXYTabBarPostButton.m in Sources */,
 				515B0BFC18082A9B0092BADB /* AppDelegate.m in Sources */,
 				185E88AC182AABF40020F3B2 /* NSString+MKNetworkKitAdditions.m in Sources */,
@@ -1063,13 +1061,13 @@
 				185E88B1182AABF40020F3B2 /* Reachability.m in Sources */,
 				1868F1031829CD9700C5764D /* WXYCastViewController.m in Sources */,
 				18EED32D1815853E000856CE /* DispatchQueueLogFormatter.m in Sources */,
-				18EB09E6182BAB38005CC27D /* Comment.m in Sources */,
 				51F8FA28182E0F5C00E211AC /* TTTAttributedLabel.m in Sources */,
 				18411000181655EB008B700C /* WXYNetworkEngine.m in Sources */,
 				185E88AA182AABF40020F3B2 /* NSDate+RFC1123.m in Sources */,
 				4D784890183147C40025ADDA /* UIImage+ImageEffects.m in Sources */,
 				1868F1241829D7EA00C5764D /* WXYTabBar.m in Sources */,
 				515B0BF818082A9B0092BADB /* main.m in Sources */,
+				18D9E4E8183388E0004539CC /* Comment.m in Sources */,
 				4D784891183147C40025ADDA /* UINavigationController+MHDismissModalView.m in Sources */,
 				18EB09C8182B7F30005CC27D /* WXYSettingManager.m in Sources */,
 				185E88AD182AABF40020F3B2 /* UIAlertView+MKNetworkKitAdditions.m in Sources */,
@@ -1100,7 +1098,6 @@
 				1868F1141829CE1400C5764D /* WXYMineViewController.m in Sources */,
 				18EED32C1815853E000856CE /* ContextFilterLogFormatter.m in Sources */,
 				18EED3221815853E000856CE /* DDAbstractDatabaseLogger.m in Sources */,
-				18EB09DF182BAB37005CC27D /* Status.m in Sources */,
 				18EED35618158653000856CE /* WXYTestViewController.m in Sources */,
 				18EED3261815853E000856CE /* DDFileLogger.m in Sources */,
 				1868F1301829DA3300C5764D /* AMBlurView.m in Sources */,
@@ -1114,7 +1111,6 @@
 				18EB09DA182B82F1005CC27D /* WXYDataModel.m in Sources */,
 				18EB09EC182BCFE2005CC27D /* WXYNetworkEngineTest.m in Sources */,
 				1868F0FD1829C8B200C5764D /* WXYRootNavViewController.m in Sources */,
-				18EB09E7182BAB38005CC27D /* Comment.m in Sources */,
 				188E68981829131600BE534D /* vboCachedDatamodel.xcdatamodeld in Sources */,
 				1868F1251829D7EA00C5764D /* WXYTabBar.m in Sources */,
 				1868F1041829CD9700C5764D /* WXYCastViewController.m in Sources */,

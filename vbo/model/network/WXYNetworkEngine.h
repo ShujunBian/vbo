@@ -18,6 +18,10 @@
 
 + (WXYNetworkEngine*)shareNetworkEngine;
 
+
+///////////////微博接口
+////////读取
+
 /*! 获取当前登录用户及其所关注用户的最新微博
  * \param succeedBlock 网络请求成功处理block，block参数NSArray的内容为Status
  * \param errorBlock 网络请求失败处理block
@@ -25,7 +29,7 @@
  */
 - (MKNetworkOperation*)getHomeTimelineOfCurrentUserSucceed:(ArrayBlock)succeedBlock
                                                      error:(ErrorBlock)errorBlock;
-
+////////写入
 #warning fLocation暂不实现
 /*! 发送微博
  * \param content 微博内容
@@ -44,6 +48,23 @@
                                 visibleListId:(NSNumber*)listId
                                       succeed:(StatusBlock)succeedBlock
                                         error:(ErrorBlock)errorBlock;
+
+
+//////////////评论接口
+//////读取
+/*!获取某条微博的评论列表，每页50条评论
+ * \param weiboId 要获取评论的微博Id
+ * \param page 评论页码
+ * \param succeedBlock 网络请求成功处理block，array内容为Comment
+ * \param errorBlock 网络请求失败处理block
+ * \return 当前网络请求Operation
+ */
+- (MKNetworkOperation*)getCommentsOfWeibo:(NSNumber*)weiboId
+                                     page:(int)page
+                                  succeed:(ArrayBlock)succeedBlock
+                                    error:(ErrorBlock)errorBlock;
+
+///////写入
 
 
 @end

@@ -125,8 +125,13 @@
 - (id)getEntity:(NSString*)entityName byId:(long long)entityId idPropertyName:(NSString*)propertyName
 {
     NSFetchRequest* fetchRequest = [NSFetchRequest fetchRequestWithEntityName:entityName];
-    NSPredicate* predicate = [NSPredicate predicateWithFormat:@"%@=%ld",propertyName,entityId];
-    [fetchRequest setPredicate:predicate];
+    NSString* predicateStr = [NSString stringWithFormat:@"%@==%lld",propertyName,entityId];
+    NSPredicate* predicate = [NSPredicate predicateWithFormat:predicateStr];
+    fetchRequest.predicate = predicate;
+    
+//    NSFetchRequest* fetchRequest = [NSFetchRequest fetchRequestWithEntityName:entityName];
+//    NSPredicate* predicate = [NSPredicate predicateWithFormat:@"%@=%lld",propertyName,entityId];
+//    [fetchRequest setPredicate:predicate];
     NSArray* resultArray = [self.cacheManagedObjectContext executeFetchRequest:fetchRequest error:nil];
     id returnEntity = nil;
     if (resultArray.count)
@@ -143,7 +148,9 @@
 - (Status*)getStatusById:(long long)statusId
 {
     Status* returnStatus = nil;
-    returnStatus = [self getEntity:@"Status" byId:statusId idPropertyName:@"StatusID"];
+    returnStatus = [self getEntity:@"Status" byId:statusId idPropertyName:@"statusID"];
+    
+    
     if (!returnStatus)
     {
         returnStatus = [Status insertWithId:@(statusId) InContext:self.cacheManagedObjectContext];
@@ -164,7 +171,7 @@
 {
     Comment* returnComment = nil;
     returnComment = [self getEntity:@"Comment" byId:commentId idPropertyName:@"commentID"];
-    if (returnComment)
+    if (!returnComment)
     {
         returnComment = [Comment insertWithId:@(commentId) InContest:self.cacheManagedObjectContext];
     }

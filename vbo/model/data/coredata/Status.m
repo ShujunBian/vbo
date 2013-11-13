@@ -2,15 +2,18 @@
 //  Status.m
 //  vbo
 //
-//  Created by wxy325 on 11/7/13.
+//  Created by wxy325 on 11/13/13.
 //  Copyright (c) 2013 BmwDev. All rights reserved.
 //
 
 #import "Status.h"
+#import "Comment.h"
 #import "Status.h"
+#import "StatusPicture.h"
 #import "User.h"
-#import "NSDate+Addition.h"
 #import "NSDictionary+noNilValueForKey.h"
+#import "NSDate+Addition.h"
+
 
 @implementation Status
 
@@ -18,24 +21,25 @@
 @dynamic commentsCount;
 @dynamic createdAt;
 @dynamic favorited;
+@dynamic geo;
 @dynamic originalPicURL;
 @dynamic repostsCount;
 @dynamic source;
 @dynamic statusID;
+@dynamic statusMID;
 @dynamic text;
 @dynamic thumbnailPicURL;
 @dynamic truncated;
-@dynamic geo;
-@dynamic statusMID;
-@dynamic author;
-@dynamic repostedBy;
-@dynamic repostStatus;
-@dynamic comments;
-@dynamic pictures;
 @dynamic visible;
 @dynamic visibleListId;
+@dynamic author;
+@dynamic comments;
+@dynamic pictures;
+@dynamic repostedBy;
+@dynamic repostStatus;
 
-+ (Status*)insertWithId:(NSNumber*)sId InContext:(NSManagedObjectContext*)context;
+
++ (Status*)insertWithId:(NSNumber*)sId InContext:(NSManagedObjectContext*)context
 {
     Status* s = [NSEntityDescription insertNewObjectForEntityForName:@"Status" inManagedObjectContext:context];
     s.statusID = sId;
@@ -55,8 +59,8 @@
     self.repostsCount = [dict noNilValueForKey:@"reposts_count"];
     self.commentsCount = [dict noNilValueForKey:@"comments_count"];
     self.statusMID = [dict noNilValueForKey:@"mid"];
-//    self.geo = [dict noNilValueForKey:@"geo"];
-
+    //    self.geo = [dict noNilValueForKey:@"geo"];
+    
     self.thumbnailPicURL = [dict noNilValueForKey:@"thumbnail_pic"];
     self.bmiddlePicURL = [dict noNilValueForKey:@"bmiddle_pic"];
     self.originalPicURL = [dict noNilValueForKey:@"original_pic"];
