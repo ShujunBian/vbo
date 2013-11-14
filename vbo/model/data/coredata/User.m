@@ -42,6 +42,8 @@
 @dynamic biFollowersCount;
 @dynamic statuses;
 @dynamic comments;
+@dynamic ownGroups;
+@dynamic groups;
 
 + (User*)insertWithId:(NSNumber*)uId InContext:(NSManagedObjectContext*)context
 {
