@@ -21,6 +21,8 @@
 @dynamic text;
 @dynamic status;
 @dynamic user;
+@dynamic repliedComments;
+@dynamic replyComment;
 
 + (Comment*)insertWithId:(NSNumber*)cId InContest:(NSManagedObjectContext*)context;
 {

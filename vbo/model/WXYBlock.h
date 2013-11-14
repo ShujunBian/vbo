@@ -10,6 +10,7 @@
 #define vbo_WXYBlock_h
 @class MKNetworkOperation;
 @class Status;
+@class Comment;
 @class NSError;
 
 typedef void (^VoidBlock)(void);
@@ -18,5 +19,6 @@ typedef void (^OperationSucceedBlock)(MKNetworkOperation *completedOperation);
 typedef void (^OperationErrorBlock)(MKNetworkOperation *completedOperation, NSError *error);
 typedef void (^ArrayBlock)(NSArray *resultArray);
 typedef void (^StatusBlock)(Status* status);
+typedef void (^CommentBlock)(Comment* comment);
 
 #endif

@@ -68,6 +68,14 @@ typedef enum{
                            succeed:(StatusBlock)succeedBlock
                              error:(ErrorBlock)errorBlock;
 
+/*! 删除微博
+ * \param weiboId 删除微博的id
+ * \param succeedBlock 网络请求成功处理block
+ * \param errorBlock 网络请求失败处理block
+ */
+- (MKNetworkOperation*)destroyWeibo:(NSNumber*)weiboId
+                            succeed:(VoidBlock)succeedBlock
+                              error:(ErrorBlock)errorBlock;
 
 //////////////评论接口
 //////读取
@@ -84,6 +92,18 @@ typedef enum{
                                     error:(ErrorBlock)errorBlock;
 
 ///////写入
+/*!评论微博
+ * \param weiboId 要评论的微博Id
+ * \param content 评论内容
+ * \param succeedBlock 网络请求成功处理block
+ * \param errorBlock 网络请求失败处理block
+ * \return 当前网络请求Operation
+ */
+- (MKNetworkOperation*)createCommentOfWeibo:(NSNumber*)weiboId
+                                    content:(NSString*)content
+                            commentOnOrigin:(BOOL)fOrigin
+                                    succeed:(CommentBlock)succeedBlock
+                                      error:(ErrorBlock)errorBlock;
 
 
 @end
