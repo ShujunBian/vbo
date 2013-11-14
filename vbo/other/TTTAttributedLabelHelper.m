@@ -8,6 +8,7 @@
 
 #import "TTTAttributedLabelHelper.h"
 #import "TTTAttributedLabel.h"
+#import "WXYSettingManager.h"
 
 static NSRegularExpression *__nameRegularExpression;
 static inline NSRegularExpression * NameRegularExpression() {
@@ -56,33 +57,56 @@ static inline NSRegularExpression * EmotionIDRegularExpression() {
 
 
 @implementation TTTAttributedLabelHelper
-
-+ (void)theTTTatributedlabel:(TTTAttributedLabel *)label
-          setAttributeString:(NSMutableAttributedString *)attributeString
-                    withFont:(UIFont *)font
-                   withColor:(UIColor *)color
++ (NSMutableAttributedString* )setAttributeString:(NSMutableAttributedString *)mutableAttributedString
+                                   WithNormalFont:(UIFont *)normalFont
+                                      withUrlFont:(UIFont *)urlFont
+                                  withNormalColor:(UIColor *)normalColor
+                                     withUrlColor:(UIColor *)urlColor
+                               withLabelLineSpace:(float)lineSpace
 {
-    [label setText:attributeString afterInheritingLabelAttributesAndConfiguringWithBlock:^NSMutableAttributedString *(NSMutableAttributedString *mutableAttributedString){
-        
-        NSRange stringRange = NSMakeRange(0, [mutableAttributedString length]);
-        NSRegularExpression *regexp = UrlRegularExpression();
-        NSRange urlRange = [regexp rangeOfFirstMatchInString:[mutableAttributedString string] options:0 range:stringRange];
-        [regexp enumerateMatchesInString:[mutableAttributedString string]
-                                 options:0
-                                   range:stringRange
-                              usingBlock:^(NSTextCheckingResult *result, NSMatchingFlags flags, BOOL *stop) {
-                                  CTFontRef systemFont = CTFontCreateWithName((__bridge CFStringRef)font.fontName, font.pointSize, NULL);
-                                  if (systemFont) {
-                                      [mutableAttributedString removeAttribute:(NSString *)kCTFontAttributeName range:stringRange];
-                                      [mutableAttributedString addAttribute:(NSString *)kCTFontAttributeName value:(__bridge id)systemFont range:urlRange];
-                                      
-                                      [mutableAttributedString removeAttribute:(NSString *)kCTForegroundColorAttributeName range:stringRange];
-                                      [mutableAttributedString addAttribute:(NSString*)kCTForegroundColorAttributeName value:(id)color.CGColor range:urlRange];
-                                      CFRelease(systemFont);
-                                  }
-                              }];
-        return mutableAttributedString;
-    }];
+    NSRange stringRange = NSMakeRange(0, mutableAttributedString.length);
+    [mutableAttributedString addAttribute:NSFontAttributeName
+                                    value:SHARE_SETTING_MANAGER.castViewTableCellContentLabelFont
+                                    range:stringRange];
+    
+    NSMutableParagraphStyle *style = [[NSMutableParagraphStyle alloc] init];
+    [style setLineSpacing:lineSpace];
+    [style setLineBreakMode:NSLineBreakByWordWrapping];
+    [mutableAttributedString addAttribute:NSParagraphStyleAttributeName
+                                    value:style
+                                    range:stringRange];
+    [mutableAttributedString addAttribute:(NSString*)kCTForegroundColorAttributeName value:(id)normalColor.CGColor range:stringRange];
+    
+    NSRegularExpression *regexp = UrlRegularExpression();
+    NSRange urlRange = [regexp rangeOfFirstMatchInString:[mutableAttributedString string] options:0 range:stringRange];
+    [regexp enumerateMatchesInString:[mutableAttributedString string]
+                             options:0
+                               range:stringRange
+                          usingBlock:^(NSTextCheckingResult *result, NSMatchingFlags flags, BOOL *stop) {
+                              CTFontRef urlFontRef = CTFontCreateWithName((__bridge CFStringRef)urlFont.fontName, urlFont.pointSize, NULL);
+                              if (urlFontRef) {
+                                  [mutableAttributedString removeAttribute:(NSString *)kCTFontAttributeName range:urlRange];
+                                  [mutableAttributedString addAttribute:(NSString *)kCTFontAttributeName value:(__bridge id)urlFontRef range:urlRange];
+                                  
+                                  [mutableAttributedString removeAttribute:(NSString *)kCTForegroundColorAttributeName range:urlRange];
+                                  [mutableAttributedString addAttribute:(NSString*)kCTForegroundColorAttributeName value:(id)urlColor.CGColor range:urlRange];
+                                  CFRelease(urlFontRef);
+                              }
+                          }];
+    return mutableAttributedString;
 }
+
++ (float)HeightForAttributedString:(NSAttributedString *)attributedString
+                       withPadding:(float)padding
+{
+    CTFramesetterRef framesetter = CTFramesetterCreateWithAttributedString((CFMutableAttributedStringRef)attributedString);
+    CFRange fitRange;
+    CFRange textRange = CFRangeMake(0, attributedString.length);
+    CGSize frameSize = CTFramesetterSuggestFrameSizeWithConstraints(framesetter, textRange, NULL, CGSizeMake(288, CGFLOAT_MAX), &fitRange);
+    CFRelease(framesetter);
+    
+    return frameSize.height + padding;
+}
+
 
 @end

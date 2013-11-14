@@ -13,12 +13,11 @@
 #import "User.h"
 #import "UIImageView+MKNetworkKitAdditions.h"
 #import "NSNotificationCenter+Addition.h"
+#import "TTTAttributedLabelHelper.h"
 #import "TTTAttributedLabel.h"
 #import "WXYSettingManager.h"
 
 #define contantHeight 108.0
-#define weiboImageHeight 106.0
-#define weiboCellBetweenHeight 10.0
 #define contentLabelPadding 10.0
 #define contentLabelLineSpace 6.0
 #define tableViewSeprateLine [UIColor colorWithRed:0.0/255.0 green:0.0/255.0 blue:0.0/255.0 alpha:1.0]
@@ -47,7 +46,7 @@
 	// Do any additional setup after loading the view.
     
     UIView *bgview = [[UIView alloc]init];
-    [bgview setBackgroundColor:[WXYSettingManager shareSettingManager].themeColor];
+    [bgview setBackgroundColor:SHARE_SETTING_MANAGER.themeColor];
     [self.tableView setBackgroundView:bgview];
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
 //    [self.view setTranslatesAutoresizingMaskIntoConstraints:NO];
@@ -97,41 +96,14 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    Status * currentCellStatus = [_weiboContentArray objectAtIndex:[indexPath row]];
     static NSString* cellIdentifier = @"castViewCell";
     CastViewCell* cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     if (cell == nil)
     {
         cell = [[CastViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
-    [cell.cellBackgroundView setBackgroundColor:[WXYSettingManager shareSettingManager].castViewTableCellBackgroundColor];
-    
-    Status * currentCellStatus = [_weiboContentArray objectAtIndex:[indexPath row]];
-    //    [cell.weiboContentLabel setBackgroundColor:[UIColor greenColor]];
-    [cell.weiboContentLabel setAttributedText:[self weiboContentLabelAttributedStringAtIndex:[indexPath row]]];
-    [cell.weiboContentLabel setFont:[WXYSettingManager shareSettingManager].castViewTableCellContentLabelFont];
-    cell.contentLabelHeight.constant = [self cellContentHeightForRowAtIndex:[indexPath row]];
-    
-    if (currentCellStatus.bmiddlePicURL != nil) {
-        cell.avatorTopSpaceConstaint.constant = weiboImageHeight + weiboCellBetweenHeight;
-    }
-    else {
-        cell.avatorTopSpaceConstaint.constant = weiboCellBetweenHeight;
-    }
-    //    NSLog(@"the %ld cell height of constant is %f",(long)[indexPath row],cell.avatorTopSpaceConstaint.constant);
-    
-    [cell.weiboImage setImage:nil];
-    NSURL *anImageURL = [NSURL URLWithString:currentCellStatus.bmiddlePicURL];
-    [cell.weiboImage setImageFromURL:anImageURL placeHolderImage:nil animation:YES completion:nil];
-    cell.weiboImage.contentMode = UIViewContentModeScaleAspectFill;
-    cell.weiboImage.clipsToBounds = YES;
-    
-    [cell.userAvator setImageFromURLString:currentCellStatus.author.profileImageUrl
-                          placeHolderImage:nil animation:YES completion:nil];
-    cell.userAvator.layer.cornerRadius = 16.0;
-    cell.userAvator.layer.masksToBounds = YES;
-    
-    [cell.userNickname setText:currentCellStatus.author.screenName];
-    
+    [cell setCellWithWeiboStatus:currentCellStatus];
     [self.view layoutIfNeeded];
     return cell;
 }
@@ -169,37 +141,14 @@
     if (currentCellStatus.bmiddlePicURL != nil) {
         cellHeight += 106.0;
     }
-    cellHeight += [self cellContentHeightForRowAtIndex:row];
+    NSMutableAttributedString * contentString = [TTTAttributedLabelHelper setAttributeString:[[NSMutableAttributedString alloc]initWithString:currentCellStatus.text]
+                                                                              WithNormalFont:SHARE_SETTING_MANAGER.castViewTableCellContentLabelFont
+                                                                                 withUrlFont:SHARE_SETTING_MANAGER.castViewTableCellContentLabelFont
+                                                                             withNormalColor:SHARE_SETTING_MANAGER.castViewTableCellContentLabelTextColor
+                                                                                withUrlColor:SHARE_SETTING_MANAGER.themeColor
+                                                                          withLabelLineSpace:contentLabelLineSpace];
+    cellHeight += [TTTAttributedLabelHelper HeightForAttributedString:contentString withPadding:contentLabelPadding];
     return cellHeight;
-}
-
-- (float)cellContentHeightForRowAtIndex:(NSInteger)row
-{
-    CTFramesetterRef framesetter = CTFramesetterCreateWithAttributedString((CFMutableAttributedStringRef)[self weiboContentLabelAttributedStringAtIndex:row]);
-    CFRange fitRange;
-    CFRange textRange = CFRangeMake(0, [self weiboContentLabelAttributedStringAtIndex:row].length);
-    CGSize frameSize = CTFramesetterSuggestFrameSizeWithConstraints(framesetter, textRange, NULL, CGSizeMake(288, CGFLOAT_MAX), &fitRange);
-    CFRelease(framesetter);
-    
-    return frameSize.height + contentLabelPadding;
-}
-
-- (NSAttributedString *)weiboContentLabelAttributedStringAtIndex:(NSInteger)row
-{
-    Status * currentCellStatus = [_weiboContentArray objectAtIndex:row];
-    NSMutableAttributedString * contentString = [[NSMutableAttributedString alloc]initWithString:currentCellStatus.text];
-    [contentString addAttribute:NSFontAttributeName
-                          value:[WXYSettingManager shareSettingManager].castViewTableCellContentLabelFont
-                          range:NSMakeRange(0, contentString.length)];
-    
-    NSMutableParagraphStyle *style = [[NSMutableParagraphStyle alloc] init];
-    [style setLineSpacing:contentLabelLineSpace];
-    [style setLineBreakMode:NSLineBreakByWordWrapping];
-    [contentString addAttribute:NSParagraphStyleAttributeName
-                          value:style
-                          range:NSMakeRange(0, contentString.length)];
-    
-    return contentString;
 }
 
 #warning castView分隔线 待完成
