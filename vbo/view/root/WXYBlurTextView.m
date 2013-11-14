@@ -61,7 +61,7 @@
 //        snapShotImage = [snapShotImage applyExtraLightEffect];
 //        self.layer.contents = snapShotImage;
 
-        [self setNeedsDisplay];
+//        [self setNeedsDisplay];
 //        self.backgroundColor = [UIColor clearColor];
 //        
 //        UIGraphicsBeginImageContext(self.frame.size); //currentView 当前的view

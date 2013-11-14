@@ -9,21 +9,14 @@
 #import <UIKit/UIKit.h>
 
 @class TTTAttributedLabel;
+@class Status;
 
 @interface CastViewCell : UITableViewCell
 
-@property (nonatomic,weak) IBOutlet UIImageView * weiboImage;
-@property (nonatomic,weak) IBOutlet UIImageView * userAvator;
+/*! 通过微博Status设置CastViewCell
+ * \param currentCellStatus 该Cell对应的微博Status
+ */
 
-@property (nonatomic,weak) IBOutlet UILabel * userNickname;
-@property (nonatomic,weak) IBOutlet TTTAttributedLabel * weiboContentLabel;
-@property (nonatomic,weak) IBOutlet UILabel * likeTimesLabel;
-@property (nonatomic,weak) IBOutlet UILabel * commentTimesLabel;
-@property (nonatomic,weak) IBOutlet UILabel * repostTimesLabel;
-
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint * avatorTopSpaceConstaint;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint * contentLabelHeight;
-
-@property (weak, nonatomic) IBOutlet UIView * cellBackgroundView;
+- (void)setCellWithWeiboStatus:(Status *)currentCellStatus;
 
 @end
