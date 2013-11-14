@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1808F45C1835382900829471 /* WXYGroupTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 1808F45B1835382900829471 /* WXYGroupTest.m */; };
 		1838DF1F181E677A003D015A /* libWeiboSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1838DF1C181E677A003D015A /* libWeiboSDK.a */; };
 		1838DF20181E677A003D015A /* WeiboSDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 1838DF1D181E677A003D015A /* WeiboSDK.bundle */; };
 		18411000181655EB008B700C /* WXYNetworkEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 18410FFF181655EB008B700C /* WXYNetworkEngine.m */; };
@@ -158,6 +159,7 @@
 
 /* Begin PBXFileReference section */
 		0B1879528B2F4B1DA083D08E /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
+		1808F45B1835382900829471 /* WXYGroupTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXYGroupTest.m; sourceTree = "<group>"; };
 		1838DF1C181E677A003D015A /* libWeiboSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeiboSDK.a; sourceTree = "<group>"; };
 		1838DF1D181E677A003D015A /* WeiboSDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = WeiboSDK.bundle; sourceTree = "<group>"; };
 		1838DF1E181E677A003D015A /* WeiboSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeiboSDK.h; sourceTree = "<group>"; };
@@ -843,6 +845,7 @@
 		515B0C1018082A9B0092BADB /* vboTests */ = {
 			isa = PBXGroup;
 			children = (
+				1808F45B1835382900829471 /* WXYGroupTest.m */,
 				18E790EB1834EF4E002B4785 /* WXYUserTest.m */,
 				18E790E71834E584002B4785 /* WXYStatusTest.m */,
 				1866FAD71833D31100E08A03 /* WXYCommentTest.m */,
@@ -1106,6 +1109,7 @@
 			files = (
 				1866FAD81833D31100E08A03 /* WXYCommentTest.m in Sources */,
 				18EB09ED182BD049005CC27D /* WXYNetworkEngine.m in Sources */,
+				1808F45C1835382900829471 /* WXYGroupTest.m in Sources */,
 				18EB09EE182BD049005CC27D /* WXYNetworkOperation.m in Sources */,
 				18EB09EF182BD049005CC27D /* WXYError.m in Sources */,
 				18EB09F0182BD049005CC27D /* AppDelegate.m in Sources */,

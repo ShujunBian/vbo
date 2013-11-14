@@ -24,7 +24,7 @@
 @dynamic repliedComments;
 @dynamic replyComment;
 
-+ (Comment*)insertWithId:(NSNumber*)cId InContest:(NSManagedObjectContext*)context;
++ (Comment*)insertWithId:(NSNumber*)cId InContext:(NSManagedObjectContext*)context;
 {
     Comment* c = [NSEntityDescription insertNewObjectForEntityForName:@"Comment" inManagedObjectContext:context];
     c.commentID = cId;

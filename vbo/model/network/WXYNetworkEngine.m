@@ -25,12 +25,16 @@
 #define COMMENT_SHOW_URL @"2/comments/show.json"
 #define COMMENT_CREATE_URL @"2/comments/create.json"
 
+//Group
+#define GROUP_LIST_URL @"2/friendships/groups.json"
+
 #import "WXYSettingManager.h"
 #import "WXYDataModel.h"
 
 @interface WXYNetworkDataFactory : NSObject
 + (Status*)getStatusWithDict:(NSDictionary*)dict;
 + (Comment*)getCommentWithDict:(NSDictionary*)dict status:(Status*)s;
++ (Group*)getGroupWithDict:(NSDictionary*)dict;
 @end
 
 
@@ -350,6 +354,45 @@
     return op;
 }
 
+#pragma mark - 分组
+#pragma mark 读取
+- (MKNetworkOperation*)getGroupListSucceed:(ArrayBlock)succeedBlock
+                                     error:(ErrorBlock)errorBlock
+{
+    MKNetworkOperation* op = nil;
+    op = [self startOperationWithPath:GROUP_LIST_URL
+                            needLogin:YES
+                             paramers:@{}
+                          onSucceeded:^(MKNetworkOperation *completedOperation)
+          {
+              NSDictionary* responseDict = completedOperation.responseJSON;
+              
+              NSArray* groupDictArray = responseDict[@"lists"];
+              
+              NSMutableArray* returnArray = [[NSMutableArray alloc] init];
+              for (NSDictionary* dict in groupDictArray)
+              {
+                  Group* group = [WXYNetworkDataFactory getGroupWithDict:dict];
+#warning user暂不知user参数未什么情况
+              }
+              if (succeedBlock)
+              {
+                  succeedBlock(returnArray);
+              }
+              
+          }
+                              onError:^(MKNetworkOperation *completedOperation, NSError *error)
+          {
+              if (errorBlock)
+              {
+                  errorBlock(error);
+              }
+          }];
+    
+    return op;
+}
+
+
 @end
 
 @implementation WXYNetworkDataFactory
@@ -409,5 +452,13 @@
     return comment;
 }
 
++ (Group*)getGroupWithDict:(NSDictionary*)dict
+{
+    NSNumber* groupId = dict[@"id"];
+    Group* group = [SHARE_DATA_MODEL getGroupById:groupId.longLongValue];
+    [group updateWithDict:dict];
+#warning 暂不知user参数为什么情况
+    return group;
+}
 
 @end

@@ -33,4 +33,7 @@
 - (void)addUsers:(NSSet *)values;
 - (void)removeUsers:(NSSet *)values;
 
++ (Group*)insertWithId:(NSNumber*)gId inContext:(NSManagedObjectContext*)context;
+- (void)updateWithDict:(NSDictionary*)dict;
+
 @end

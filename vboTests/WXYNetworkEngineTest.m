@@ -181,4 +181,25 @@
     
     [self.asyncTestCase waitForStatus:kGHUnitWaitStatusSuccess timeout:kMKNetworkKitRequestTimeOutInSeconds];
 }
+#pragma mark - Group
+#pragma mark Read
+- (void)testGroupGetList
+{
+    [self.asyncTestCase prepare];
+    
+    [SHARE_NW_ENGINE getGroupListSucceed:^(NSArray *resultArray)
+    {
+        XCTAssertNotNil(resultArray, @"resultArray不能为空");
+        if (resultArray.count)
+        {
+            id g = resultArray[0];
+            XCTAssert([g isKindOfClass:[Group class]], @"Array内容应为Group");
+        }
+        [self.asyncTestCase notify:kGHUnitWaitStatusSuccess];
+    } error:^(NSError *error) {
+        XCTFail(@"网络请求失败");
+        [self.asyncTestCase notify:kGHUnitWaitStatusFailure];
+    }];
+    [self.asyncTestCase waitForStatus:kGHUnitWaitStatusSuccess timeout:kMKNetworkKitRequestTimeOutInSeconds];
+}
 @end

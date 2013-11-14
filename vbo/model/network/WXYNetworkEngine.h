@@ -79,6 +79,7 @@ typedef enum{
 
 //////////////评论接口
 //////读取
+
 /*!获取某条微博的评论列表，每页50条评论
  * \param weiboId 要获取评论的微博Id
  * \param page 评论页码
@@ -92,6 +93,7 @@ typedef enum{
                                     error:(ErrorBlock)errorBlock;
 
 ///////写入
+
 /*!评论微博
  * \param weiboId 要评论的微博Id
  * \param content 评论内容
@@ -105,5 +107,15 @@ typedef enum{
                                     succeed:(CommentBlock)succeedBlock
                                       error:(ErrorBlock)errorBlock;
 
+/////////分组
+///////读取
+#warning 由于微博2.0获取好友分组API暂未申请完成，此接口暂无法使用
+/*!读取用户分组列表
+ * \param succeedBlock block参数array内容为Group
+ * \param errorBlock 网络请求失败处理block
+ * \return 当前网络请求Operation
+ */
+- (MKNetworkOperation*)getGroupListSucceed:(ArrayBlock)succeedBlock
+                                     error:(ErrorBlock)errorBlock;
 
 @end

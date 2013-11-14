@@ -23,7 +23,7 @@
 @property (nonatomic, retain) Comment* replyComment;
 @property (nonatomic, retain) NSSet* repliedComments;
 
-+ (Comment*)insertWithId:(NSNumber*)cId InContest:(NSManagedObjectContext*)context;
++ (Comment*)insertWithId:(NSNumber*)cId InContext:(NSManagedObjectContext*)context;
 - (void)updateWithDict:(NSDictionary*)dict;
 
 @end
