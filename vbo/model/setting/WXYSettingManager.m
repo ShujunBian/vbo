@@ -184,10 +184,14 @@
 #pragma mark - CastView Settings
 - (UIFont *)castViewTableCellContentLabelFont
 {
-    if (!_castViewTableCellContentLabelFont) {
-        _castViewTableCellContentLabelFont = [UIFont fontWithName:@"Helvetica-Light" size:16];
-    }
-    return _castViewTableCellContentLabelFont;
+#warning 设置字体单例有待重新完成
+//    if (!_castViewTableCellContentLabelFont) {
+        UIFontDescriptor *fontDescriptor = [UIFontDescriptor fontDescriptorWithName:@"Helvetica-Light" size:16];
+        UIFontDescriptor* bodyFontDescriptor = [UIFontDescriptor preferredFontDescriptorWithTextStyle:UIFontTextStyleBody];
+        NSNumber* bodyFontSize = bodyFontDescriptor.fontAttributes[UIFontDescriptorSizeAttribute];
+        UIFont* font = [UIFont fontWithDescriptor:fontDescriptor size:[bodyFontSize floatValue]];
+//    }
+    return font;
 }
 
 - (UIColor *)castViewTableCellBackgroundColor {

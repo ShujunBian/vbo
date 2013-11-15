@@ -13,17 +13,15 @@
 #import "User.h"
 #import "UIImageView+MKNetworkKitAdditions.h"
 #import "NSNotificationCenter+Addition.h"
-#import "TTTAttributedLabelHelper.h"
-#import "TTTAttributedLabel.h"
 #import "WXYSettingManager.h"
 
 #define contantHeight 108.0
-#define contentLabelPadding 10.0
 #define contentLabelLineSpace 6.0
 #define tableViewSeprateLine [UIColor colorWithRed:0.0/255.0 green:0.0/255.0 blue:0.0/255.0 alpha:1.0]
 
 @interface WXYCastViewController ()
 
+//@property (nonatomic, strong) UIDynamicAnimator *animator;
 @property (strong, nonatomic) WXYNetworkEngine* engine;
 @property (nonatomic, strong) NSArray * weiboContentArray;
 
@@ -49,8 +47,13 @@
     [bgview setBackgroundColor:SHARE_SETTING_MANAGER.themeColor];
     [self.tableView setBackgroundView:bgview];
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
-//    [self.view setTranslatesAutoresizingMaskIntoConstraints:NO];
+    //    [self.view setTranslatesAutoresizingMaskIntoConstraints:NO];
     [self fetchWeiboContent];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(preferredContentSizeChanged:)
+                                                 name:UIContentSizeCategoryDidChangeNotification
+                                               object:nil];
     
 }
 
@@ -86,8 +89,6 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
-    
     //    NSLog(@"the %ld cell height of cell is %f",(long)[indexPath row],cellHeight);
     
     return [self cellHeightForRowAtIndex:[indexPath row]];
@@ -105,6 +106,10 @@
     }
     [cell setCellWithWeiboStatus:currentCellStatus];
     [self.view layoutIfNeeded];
+    //    if (!_animator) {
+    //        _animator = [[UIDynamicAnimator alloc]initWithReferenceView:self.view];
+    //    }
+    
     return cell;
 }
 #pragma mark - UITableView Delegate
@@ -141,14 +146,19 @@
     if (currentCellStatus.bmiddlePicURL != nil) {
         cellHeight += 106.0;
     }
-    NSMutableAttributedString * contentString = [TTTAttributedLabelHelper setAttributeString:[[NSMutableAttributedString alloc]initWithString:currentCellStatus.text]
-                                                                              WithNormalFont:SHARE_SETTING_MANAGER.castViewTableCellContentLabelFont
-                                                                                 withUrlFont:SHARE_SETTING_MANAGER.castViewTableCellContentLabelFont
-                                                                             withNormalColor:SHARE_SETTING_MANAGER.castViewTableCellContentLabelTextColor
-                                                                                withUrlColor:SHARE_SETTING_MANAGER.themeColor
-                                                                          withLabelLineSpace:contentLabelLineSpace];
-    cellHeight += [TTTAttributedLabelHelper HeightForAttributedString:contentString withPadding:contentLabelPadding];
+    NSMutableAttributedString * contentString = [UITextViewHelper setAttributeString:[[NSMutableAttributedString alloc]initWithString:currentCellStatus.text]
+                                                                      WithNormalFont:SHARE_SETTING_MANAGER.castViewTableCellContentLabelFont
+                                                                         withUrlFont:SHARE_SETTING_MANAGER.castViewTableCellContentLabelFont
+                                                                     withNormalColor:SHARE_SETTING_MANAGER.castViewTableCellContentLabelTextColor
+                                                                        withUrlColor:SHARE_SETTING_MANAGER.themeColor
+                                                                  withLabelLineSpace:contentLabelLineSpace];
+    cellHeight += [UITextViewHelper HeightForAttributedString:contentString withWidth:288.0f];
     return cellHeight;
+}
+
+- (void)preferredContentSizeChanged:(NSNotification *)notification
+{
+    [self.tableView reloadData];
 }
 
 #warning castView分隔线 待完成

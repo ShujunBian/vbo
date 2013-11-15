@@ -1,15 +1,14 @@
 //
-//  TTTAttributedLabelHelper.h
+//  UITextViewHelper.h
 //  vbo
 //
-//  Created by Emerson on 13-11-13.
+//  Created by Emerson on 13-11-15.
 //  Copyright (c) 2013年 BmwDev. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 
-@class TTTAttributedLabel;
-@interface TTTAttributedLabelHelper : NSObject
+@interface UITextViewHelper : NSObject
 
 /*! 设置TTTAttributedLabel所有属性
  * \param attributeString 传入要设置的attributeString
@@ -28,13 +27,10 @@
 
 /*! 获取AttributedSting的高度
  * \param attributedString 被设置的attributedString
- * \param padding attributedString 的空白
+ * \param width 被设置的attributedString的宽度
  * \returns attributedString高度
  */
 + (float)HeightForAttributedString:(NSAttributedString *)attributedString
-                       withPadding:(float)padding;
+                         withWidth:(float)width;
+
 @end
-
-
-
-

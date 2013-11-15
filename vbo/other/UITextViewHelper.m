@@ -1,14 +1,14 @@
 //
-//  TTTAttributedLabelHelper.m
+//  UITextViewHelper.m
 //  vbo
 //
-//  Created by Emerson on 13-11-13.
+//  Created by Emerson on 13-11-15.
 //  Copyright (c) 2013年 BmwDev. All rights reserved.
 //
 
-#import "TTTAttributedLabelHelper.h"
-#import "TTTAttributedLabel.h"
+#import "UITextViewHelper.h"
 #import "WXYSettingManager.h"
+#import <CoreText/CoreText.h>
 
 static NSRegularExpression *__nameRegularExpression;
 static inline NSRegularExpression * NameRegularExpression() {
@@ -55,8 +55,8 @@ static inline NSRegularExpression * EmotionIDRegularExpression() {
     return __emotionIDRegularExpression;
 }
 
+@implementation UITextViewHelper
 
-@implementation TTTAttributedLabelHelper
 + (NSMutableAttributedString* )setAttributeString:(NSMutableAttributedString *)mutableAttributedString
                                    WithNormalFont:(UIFont *)normalFont
                                       withUrlFont:(UIFont *)urlFont
@@ -65,48 +65,29 @@ static inline NSRegularExpression * EmotionIDRegularExpression() {
                                withLabelLineSpace:(float)lineSpace
 {
     NSRange stringRange = NSMakeRange(0, mutableAttributedString.length);
-    [mutableAttributedString addAttribute:NSFontAttributeName
-                                    value:SHARE_SETTING_MANAGER.castViewTableCellContentLabelFont
-                                    range:stringRange];
     
     NSMutableParagraphStyle *style = [[NSMutableParagraphStyle alloc] init];
     [style setLineSpacing:lineSpace];
     [style setLineBreakMode:NSLineBreakByWordWrapping];
-    [mutableAttributedString addAttribute:NSParagraphStyleAttributeName
-                                    value:style
-                                    range:stringRange];
-    [mutableAttributedString addAttribute:(NSString*)kCTForegroundColorAttributeName value:(id)normalColor.CGColor range:stringRange];
+
+    NSDictionary* scriptAttributes = @{ NSFontAttributeName : normalFont,
+                                        NSForegroundColorAttributeName : normalColor,
+                                        NSParagraphStyleAttributeName : style
+                                        };
     
-    NSRegularExpression *regexp = UrlRegularExpression();
-    NSRange urlRange = [regexp rangeOfFirstMatchInString:[mutableAttributedString string] options:0 range:stringRange];
-    [regexp enumerateMatchesInString:[mutableAttributedString string]
-                             options:0
-                               range:stringRange
-                          usingBlock:^(NSTextCheckingResult *result, NSMatchingFlags flags, BOOL *stop) {
-                              CTFontRef urlFontRef = CTFontCreateWithName((__bridge CFStringRef)urlFont.fontName, urlFont.pointSize, NULL);
-                              if (urlFontRef) {
-                                  [mutableAttributedString removeAttribute:(NSString *)kCTFontAttributeName range:urlRange];
-                                  [mutableAttributedString addAttribute:(NSString *)kCTFontAttributeName value:(__bridge id)urlFontRef range:urlRange];
-                                  
-                                  [mutableAttributedString removeAttribute:(NSString *)kCTForegroundColorAttributeName range:urlRange];
-                                  [mutableAttributedString addAttribute:(NSString*)kCTForegroundColorAttributeName value:(id)urlColor.CGColor range:urlRange];
-                                  CFRelease(urlFontRef);
-                              }
-                          }];
+    [mutableAttributedString addAttributes:scriptAttributes range:stringRange];
+    
     return mutableAttributedString;
 }
 
 + (float)HeightForAttributedString:(NSAttributedString *)attributedString
-                       withPadding:(float)padding
+                         withWidth:(float)width
 {
-    CTFramesetterRef framesetter = CTFramesetterCreateWithAttributedString((CFMutableAttributedStringRef)attributedString);
-    CFRange fitRange;
-    CFRange textRange = CFRangeMake(0, attributedString.length);
-    CGSize frameSize = CTFramesetterSuggestFrameSizeWithConstraints(framesetter, textRange, NULL, CGSizeMake(288, CGFLOAT_MAX), &fitRange);
-    CFRelease(framesetter);
-    
-    return frameSize.height + padding;
+    UITextView * testView = [[UITextView alloc]init];
+    testView.attributedText = attributedString;
+    CGSize maxSize = CGSizeMake(width, CGFLOAT_MAX);
+    CGSize requiredSize = [testView sizeThatFits:maxSize];
+    return requiredSize.height;
 }
-
 
 @end

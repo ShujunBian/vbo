@@ -14,4 +14,10 @@
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
     #define $(str) NSLocalizedString(@str, nil)
+    #import "UILabel+TextKitAddition.h"
+    #import"UIFont+TextKitAddition.h"
+    #import"UIFontDescriptor+TextKitAddition.h"
+    #import"UITextView+TextKitAddition.h"
+    #import"UITextViewHelper.h"
+
 #endif

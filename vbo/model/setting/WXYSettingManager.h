@@ -32,6 +32,7 @@ typedef enum
 @property (nonatomic, strong, readonly) UIFont * castViewTableCellContentLabelFont;
 @property (nonatomic, strong, readonly) UIColor * castViewTableCellBackgroundColor;
 @property (nonatomic, strong, readonly) UIColor * castViewTableCellTimeLabelColor;
+
 //@property (nonatomic, strong, readonly) UIColor * castViewTableViewBackgroundColor;
 
 @property (assign, nonatomic) ThemeColorType themeColorType;

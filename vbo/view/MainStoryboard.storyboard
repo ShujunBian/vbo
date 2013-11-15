@@ -61,7 +61,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="353"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1qg-Dh-QwN">
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1qg-Dh-QwN" userLabel="backgroundView">
                                                     <rect key="frame" x="0.0" y="0.0" width="320" height="348"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -69,7 +69,7 @@
                                                         <constraint firstAttribute="width" constant="320" id="mYe-bc-BtB"/>
                                                     </constraints>
                                                 </view>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="V97-S3-ctY">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="V97-S3-ctY" userLabel="WeiboImage">
                                                     <rect key="frame" x="0.0" y="0.0" width="320" height="106"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <constraints>
@@ -77,7 +77,7 @@
                                                         <constraint firstAttribute="height" constant="106" id="c4p-Ex-wKI"/>
                                                     </constraints>
                                                 </imageView>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="PpB-yj-yWz">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="PpB-yj-yWz" userLabel="AvatorImage">
                                                     <rect key="frame" x="10" y="116" width="32" height="32"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <constraints>
@@ -104,17 +104,7 @@
                                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="10"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="288" translatesAutoresizingMaskIntoConstraints="NO" id="QCN-1x-NJ6" customClass="TTTAttributedLabel">
-                                                    <rect key="frame" x="16" y="160" width="288" height="140"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="140" id="qTb-gl-Ghv"/>
-                                                    </constraints>
-                                                    <string key="text">Y5 椅子设计，这款 Y5 椅子是由芬兰设计师 Sami Kallio 设计的，这款椅子的特点在于它的后背是由 5 个倒立的“Y”及一个却又弯曲的光滑靠背组成。这五个倒立的“Y”形态，相似却不完全相同，交错着排在一起，重复却不单调，很好的把握了设计美的节奏和韵律。</string>
-                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="16"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GXz-Tr-xWV">
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GXz-Tr-xWV" userLabel="likeTimesLabel">
                                                     <rect key="frame" x="44" y="313" width="24" height="18"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <constraints>
@@ -123,7 +113,7 @@
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="15"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="17" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J8i-M4-h8b">
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="17" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J8i-M4-h8b" userLabel="CommentTimesLabel">
                                                     <rect key="frame" x="139" y="313" width="42" height="18"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <constraints>
@@ -132,7 +122,7 @@
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="15"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="186" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="918-Ag-MuX">
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="186" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="918-Ag-MuX" userLabel="RepostTimesLaebl">
                                                     <rect key="frame" x="234" y="313" width="42" height="18"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <constraints>
@@ -174,6 +164,17 @@
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                 </button>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3rC-0O-gQU">
+                                                    <rect key="frame" x="16" y="160" width="288" height="140"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="140" id="POt-Ml-A0M"/>
+                                                    </constraints>
+                                                    <string key="text">Y5 椅子设计，这款 Y5 椅子是由芬兰设计师 Sami Kallio 设计的，这款椅子的特点在于它的后背是由 5 个倒立的“Y”及一个却又弯曲的光滑靠背组成。这五个倒立的“Y”形态，相似却不完全相同，交错着排在一起，重复却不单调，很好的把握了设计美的节奏和韵律。</string>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="16"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                    <dataDetectorType key="dataDetectorTypes" link="YES"/>
+                                                </textView>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="Crc-ff-zhZ" firstAttribute="leading" secondItem="TjN-uc-EIq" secondAttribute="trailing" constant="51" id="0uX-85-o8T"/>
@@ -185,19 +186,19 @@
                                                 <constraint firstItem="lNT-ig-yAc" firstAttribute="centerY" secondItem="PpB-yj-yWz" secondAttribute="centerY" id="Bce-wu-Psk"/>
                                                 <constraint firstItem="GXz-Tr-xWV" firstAttribute="leading" secondItem="npp-bc-3SE" secondAttribute="trailing" constant="-3" id="CYM-z5-6Jn"/>
                                                 <constraint firstItem="TjN-uc-EIq" firstAttribute="leading" secondItem="npp-bc-3SE" secondAttribute="trailing" constant="51" id="EcO-9a-yXh"/>
-                                                <constraint firstItem="QCN-1x-NJ6" firstAttribute="top" secondItem="PpB-yj-yWz" secondAttribute="bottom" constant="12" id="FIO-vf-CKD"/>
                                                 <constraint firstItem="1qg-Dh-QwN" firstAttribute="leading" secondItem="gHv-u1-HKw" secondAttribute="leading" id="FbQ-sB-a8W"/>
+                                                <constraint firstItem="Crc-ff-zhZ" firstAttribute="top" secondItem="3rC-0O-gQU" secondAttribute="bottom" id="G0y-B6-6D1"/>
                                                 <constraint firstAttribute="bottom" secondItem="1qg-Dh-QwN" secondAttribute="bottom" constant="5" id="H6k-XX-h1I"/>
                                                 <constraint firstItem="npp-bc-3SE" firstAttribute="centerY" secondItem="Crc-ff-zhZ" secondAttribute="centerY" id="Hqj-mj-i05"/>
                                                 <constraint firstItem="0Xt-sC-oIQ" firstAttribute="leading" secondItem="PpB-yj-yWz" secondAttribute="trailing" constant="9" id="LwC-v0-zJM"/>
+                                                <constraint firstAttribute="trailing" secondItem="3rC-0O-gQU" secondAttribute="trailing" constant="16" id="Pmx-Fl-nmP"/>
                                                 <constraint firstItem="PpB-yj-yWz" firstAttribute="leading" secondItem="gHv-u1-HKw" secondAttribute="leading" constant="10" id="RD0-Gl-Bbp"/>
                                                 <constraint firstItem="npp-bc-3SE" firstAttribute="centerY" secondItem="GXz-Tr-xWV" secondAttribute="centerY" id="RmY-IE-FU1"/>
+                                                <constraint firstItem="3rC-0O-gQU" firstAttribute="top" secondItem="PpB-yj-yWz" secondAttribute="bottom" constant="12" id="SaC-cV-Vnx"/>
                                                 <constraint firstItem="npp-bc-3SE" firstAttribute="leading" secondItem="gHv-u1-HKw" secondAttribute="leading" constant="3" id="SeL-yA-j42"/>
                                                 <constraint firstItem="V97-S3-ctY" firstAttribute="leading" secondItem="gHv-u1-HKw" secondAttribute="leading" id="Txm-7c-gET"/>
                                                 <constraint firstItem="0Xt-sC-oIQ" firstAttribute="centerY" secondItem="PpB-yj-yWz" secondAttribute="centerY" id="X8Q-kQ-b3m"/>
-                                                <constraint firstAttribute="trailing" secondItem="QCN-1x-NJ6" secondAttribute="trailing" constant="16" id="aea-Nl-9Q1"/>
-                                                <constraint firstItem="Crc-ff-zhZ" firstAttribute="top" secondItem="QCN-1x-NJ6" secondAttribute="bottom" id="csc-YN-kSl"/>
-                                                <constraint firstItem="QCN-1x-NJ6" firstAttribute="leading" secondItem="gHv-u1-HKw" secondAttribute="leading" constant="16" id="dsU-jV-YJn"/>
+                                                <constraint firstItem="3rC-0O-gQU" firstAttribute="leading" secondItem="gHv-u1-HKw" secondAttribute="leading" constant="16" id="equ-rE-3qY"/>
                                                 <constraint firstItem="npp-bc-3SE" firstAttribute="centerY" secondItem="TjN-uc-EIq" secondAttribute="centerY" id="mUd-Sl-VMK"/>
                                                 <constraint firstItem="J8i-M4-h8b" firstAttribute="leading" secondItem="TjN-uc-EIq" secondAttribute="trailing" constant="-3" id="oco-cm-VBC"/>
                                                 <constraint firstItem="918-Ag-MuX" firstAttribute="leading" secondItem="Crc-ff-zhZ" secondAttribute="trailing" constant="-3" id="pqc-CY-Scf"/>
@@ -210,7 +211,7 @@
                                             <outlet property="cellBackgroundView" destination="1qg-Dh-QwN" id="6q5-i2-JDF"/>
                                             <outlet property="commentButton" destination="TjN-uc-EIq" id="PJf-x0-Jgs"/>
                                             <outlet property="commentTimesLabel" destination="J8i-M4-h8b" id="h4a-Oh-SDU"/>
-                                            <outlet property="contentLabelHeight" destination="qTb-gl-Ghv" id="xWz-v4-NJ5"/>
+                                            <outlet property="contentTextViewHegihtConstraint" destination="POt-Ml-A0M" id="xBK-bN-mx5"/>
                                             <outlet property="currentTimeLabel" destination="lNT-ig-yAc" id="usU-t0-Zuu"/>
                                             <outlet property="likeButton" destination="npp-bc-3SE" id="KuJ-Op-fUk"/>
                                             <outlet property="likeTimesLabel" destination="GXz-Tr-xWV" id="lfW-cz-vVh"/>
@@ -218,7 +219,7 @@
                                             <outlet property="repostTimesLabel" destination="918-Ag-MuX" id="a1J-Lo-yQG"/>
                                             <outlet property="userAvator" destination="PpB-yj-yWz" id="HZt-XD-oFz"/>
                                             <outlet property="userNickname" destination="0Xt-sC-oIQ" id="85P-Lo-pkh"/>
-                                            <outlet property="weiboContentLabel" destination="QCN-1x-NJ6" id="6BN-cg-it5"/>
+                                            <outlet property="weiboContentTextView" destination="3rC-0O-gQU" id="ITF-aE-PNq"/>
                                             <outlet property="weiboImage" destination="V97-S3-ctY" id="lf8-Kr-APG"/>
                                         </connections>
                                     </tableViewCell>
@@ -244,7 +245,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="azM-Ia-xvr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="335" y="835"/>
+            <point key="canvasLocation" x="79" y="833"/>
         </scene>
         <!--Root Tabbar View Controller-->
         <scene sceneID="HHq-dZ-ONs">
