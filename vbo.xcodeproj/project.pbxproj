@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1808F45C1835382900829471 /* WXYGroupTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 1808F45B1835382900829471 /* WXYGroupTest.m */; };
 		1838DF1F181E677A003D015A /* libWeiboSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1838DF1C181E677A003D015A /* libWeiboSDK.a */; };
 		1838DF20181E677A003D015A /* WeiboSDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 1838DF1D181E677A003D015A /* WeiboSDK.bundle */; };
 		18411000181655EB008B700C /* WXYNetworkEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 18410FFF181655EB008B700C /* WXYNetworkEngine.m */; };
@@ -27,6 +28,7 @@
 		185E88B0182AABF40020F3B2 /* MKNetworkOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 185E889E182AABF40020F3B2 /* MKNetworkOperation.m */; };
 		185E88B1182AABF40020F3B2 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 185E88A1182AABF40020F3B2 /* Reachability.m */; };
 		185E88B9182AAE670020F3B2 /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 185E88B8182AAE670020F3B2 /* UIImage+ImageEffects.m */; };
+		1866FAD81833D31100E08A03 /* WXYCommentTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 1866FAD71833D31100E08A03 /* WXYCommentTest.m */; };
 		1868F0FC1829C8B200C5764D /* WXYRootNavViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1868F0F91829C8B200C5764D /* WXYRootNavViewController.m */; };
 		1868F0FD1829C8B200C5764D /* WXYRootNavViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1868F0F91829C8B200C5764D /* WXYRootNavViewController.m */; };
 		1868F0FE1829C8B200C5764D /* WXYRootTabbarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1868F0FB1829C8B200C5764D /* WXYRootTabbarViewController.m */; };
@@ -69,6 +71,9 @@
 		18B02D5A182E167800D9AF04 /* WXYTabBarButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B02D58182E167800D9AF04 /* WXYTabBarButton.m */; };
 		18D9E4E8183388E0004539CC /* Comment.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D9E4E7183388E0004539CC /* Comment.m */; };
 		18D9E4ED18338BF0004539CC /* Status.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D9E4EC18338BF0004539CC /* Status.m */; };
+		18E790E81834E584002B4785 /* WXYStatusTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E790E71834E584002B4785 /* WXYStatusTest.m */; };
+		18E790EC1834EF4E002B4785 /* WXYUserTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E790EB1834EF4E002B4785 /* WXYUserTest.m */; };
+		18E790F11834F512002B4785 /* Group.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E790F01834F512002B4785 /* Group.m */; };
 		18EB09C8182B7F30005CC27D /* WXYSettingManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 18EB09C7182B7F30005CC27D /* WXYSettingManager.m */; };
 		18EB09C9182B7F30005CC27D /* WXYSettingManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 18EB09C7182B7F30005CC27D /* WXYSettingManager.m */; };
 		18EB09D9182B82F1005CC27D /* WXYDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 18EB09D8182B82F1005CC27D /* WXYDataModel.m */; };
@@ -158,6 +163,7 @@
 
 /* Begin PBXFileReference section */
 		0B1879528B2F4B1DA083D08E /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
+		1808F45B1835382900829471 /* WXYGroupTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXYGroupTest.m; sourceTree = "<group>"; };
 		1838DF1C181E677A003D015A /* libWeiboSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeiboSDK.a; sourceTree = "<group>"; };
 		1838DF1D181E677A003D015A /* WeiboSDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = WeiboSDK.bundle; sourceTree = "<group>"; };
 		1838DF1E181E677A003D015A /* WeiboSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeiboSDK.h; sourceTree = "<group>"; };
@@ -196,6 +202,7 @@
 		185E88A5182AABF40020F3B2 /* MKNetworkKit-iOS.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = "MKNetworkKit-iOS.xcodeproj"; sourceTree = "<group>"; };
 		185E88B7182AAE670020F3B2 /* UIImage+ImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageEffects.h"; sourceTree = "<group>"; };
 		185E88B8182AAE670020F3B2 /* UIImage+ImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageEffects.m"; sourceTree = "<group>"; };
+		1866FAD71833D31100E08A03 /* WXYCommentTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXYCommentTest.m; sourceTree = "<group>"; };
 		1868F0F81829C8B200C5764D /* WXYRootNavViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXYRootNavViewController.h; sourceTree = "<group>"; };
 		1868F0F91829C8B200C5764D /* WXYRootNavViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXYRootNavViewController.m; sourceTree = "<group>"; };
 		1868F0FA1829C8B200C5764D /* WXYRootTabbarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXYRootTabbarViewController.h; sourceTree = "<group>"; };
@@ -241,6 +248,10 @@
 		18D9E4E7183388E0004539CC /* Comment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Comment.m; sourceTree = "<group>"; };
 		18D9E4EB18338BF0004539CC /* Status.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Status.h; sourceTree = "<group>"; };
 		18D9E4EC18338BF0004539CC /* Status.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Status.m; sourceTree = "<group>"; };
+		18E790E71834E584002B4785 /* WXYStatusTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXYStatusTest.m; sourceTree = "<group>"; };
+		18E790EB1834EF4E002B4785 /* WXYUserTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXYUserTest.m; sourceTree = "<group>"; };
+		18E790EF1834F512002B4785 /* Group.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Group.h; sourceTree = "<group>"; };
+		18E790F01834F512002B4785 /* Group.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Group.m; sourceTree = "<group>"; };
 		18EB09C4182B7C97005CC27D /* WXYBlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXYBlock.h; sourceTree = "<group>"; };
 		18EB09C6182B7F30005CC27D /* WXYSettingManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXYSettingManager.h; sourceTree = "<group>"; };
 		18EB09C7182B7F30005CC27D /* WXYSettingManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXYSettingManager.m; sourceTree = "<group>"; };
@@ -385,6 +396,8 @@
 			isa = PBXGroup;
 			children = (
 				188E68951829131600BE534D /* vboCachedDatamodel.xcdatamodeld */,
+				18E790EF1834F512002B4785 /* Group.h */,
+				18E790F01834F512002B4785 /* Group.m */,
 				18D9E4EB18338BF0004539CC /* Status.h */,
 				18D9E4EC18338BF0004539CC /* Status.m */,
 				18D9E4E6183388E0004539CC /* Comment.h */,
@@ -845,6 +858,10 @@
 		515B0C1018082A9B0092BADB /* vboTests */ = {
 			isa = PBXGroup;
 			children = (
+				1808F45B1835382900829471 /* WXYGroupTest.m */,
+				18E790EB1834EF4E002B4785 /* WXYUserTest.m */,
+				18E790E71834E584002B4785 /* WXYStatusTest.m */,
+				1866FAD71833D31100E08A03 /* WXYCommentTest.m */,
 				18EB09EB182BCFE2005CC27D /* WXYNetworkEngineTest.m */,
 				515B0C1118082A9B0092BADB /* Supporting Files */,
 			);
@@ -1080,6 +1097,7 @@
 				18EED35318158653000856CE /* ViewController.m in Sources */,
 				18EED3271815853E000856CE /* DDLog.m in Sources */,
 				1868F12F1829DA3300C5764D /* AMBlurView.m in Sources */,
+				18E790F11834F512002B4785 /* Group.m in Sources */,
 				4D78489518314B8A0025ADDA /* ExampleViewCollectionView.m in Sources */,
 				18EB0A09182BF7DD005CC27D /* NSDictionary+noNilValueForKey.m in Sources */,
 				18A6A682182FCD6000D9FB7F /* WXYTabBarPostButton.m in Sources */,
@@ -1121,7 +1139,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1866FAD81833D31100E08A03 /* WXYCommentTest.m in Sources */,
 				18EB09ED182BD049005CC27D /* WXYNetworkEngine.m in Sources */,
+				1808F45C1835382900829471 /* WXYGroupTest.m in Sources */,
 				18EB09EE182BD049005CC27D /* WXYNetworkOperation.m in Sources */,
 				18EB09EF182BD049005CC27D /* WXYError.m in Sources */,
 				18EB09F0182BD049005CC27D /* AppDelegate.m in Sources */,
@@ -1143,6 +1163,7 @@
 				1868F1341829DC1900C5764D /* WXYBlurTextView.m in Sources */,
 				18B02D5A182E167800D9AF04 /* WXYTabBarButton.m in Sources */,
 				1868F1231829D7EA00C5764D /* WXYNavigationBar.m in Sources */,
+				18E790EC1834EF4E002B4785 /* WXYUserTest.m in Sources */,
 				18EB09C9182B7F30005CC27D /* WXYSettingManager.m in Sources */,
 				18EB09DA182B82F1005CC27D /* WXYDataModel.m in Sources */,
 				18EB09EC182BCFE2005CC27D /* WXYNetworkEngineTest.m in Sources */,
@@ -1151,6 +1172,7 @@
 				1868F1251829D7EA00C5764D /* WXYTabBar.m in Sources */,
 				1868F1041829CD9700C5764D /* WXYCastViewController.m in Sources */,
 				18A6A688182FF65C00D9FB7F /* WXYBarButtonAbstract.m in Sources */,
+				18E790E81834E584002B4785 /* WXYStatusTest.m in Sources */,
 				18EED3241815853E000856CE /* DDASLLogger.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

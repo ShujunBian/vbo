@@ -12,6 +12,7 @@
 #import "Comment.h"
 #import "User.h"
 #import "Status.h"
+#import "Group.h"
 
 
 #define SHARE_DATA_MODEL [WXYDataModel shareDataModel]
@@ -32,5 +33,5 @@
 - (Status*)getStatusById:(long long)statusId;
 - (User*)getUserById:(long long)userId;
 - (Comment*)getCommentById:(long long)commentId;
-
+- (Group*)getGroupById:(long long)groupId;
 @end
