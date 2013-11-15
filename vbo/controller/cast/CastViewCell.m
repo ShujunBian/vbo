@@ -51,6 +51,7 @@
                                              selector:@selector(preferredContentSizeChanged:)
                                                  name:UIContentSizeCategoryDidChangeNotification
                                                object:nil];
+    [self setSelectionStyle:UITableViewCellSelectionStyleNone];
 }
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
@@ -150,5 +151,10 @@ static inline void calculateAndSetFonts(CastViewCell *aCell)
     UIFont * weiboContentTextFont = [UIFont vbo_preferredFontWithTextStyle:weiboContentTextStyle scale:cellTitleTextScaleFactor];
     
     aCell.weiboContentTextView.font = weiboContentTextFont;
+}
+
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 @end

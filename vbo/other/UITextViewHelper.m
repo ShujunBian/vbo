@@ -77,7 +77,47 @@ static inline NSRegularExpression * EmotionIDRegularExpression() {
     
     [mutableAttributedString addAttributes:scriptAttributes range:stringRange];
     
+    [UITextViewHelper addLinkToAttributedString:mutableAttributedString];
+    
     return mutableAttributedString;
+}
+
++ (void)addLinkToAttributedString:(NSMutableAttributedString *)mutableAttributedString
+{
+    NSRange stringRange = NSMakeRange(0, mutableAttributedString.length);
+    
+    NSRegularExpression *regexp = NameRegularExpression();
+    [regexp enumerateMatchesInString:[mutableAttributedString string]
+                             options:0
+                               range:stringRange
+                          usingBlock:^(NSTextCheckingResult *result, NSMatchingFlags flags, BOOL *stop) {
+                              
+                              NSDictionary* nameLinkAttributeDic = @{NSLinkAttributeName: @"nameLink"};
+                              [mutableAttributedString addAttributes:nameLinkAttributeDic range:result.range];
+                          }];
+    
+    regexp = TagRegularExpression();
+    [regexp enumerateMatchesInString:[mutableAttributedString string]
+                             options:0
+                               range:stringRange
+                          usingBlock:^(NSTextCheckingResult *result, NSMatchingFlags flags, BOOL *stop) {
+                              
+                              NSDictionary* tagLinkAttributeDic = @{NSLinkAttributeName: @"tagLink"};
+                              [mutableAttributedString addAttributes:tagLinkAttributeDic range:result.range];
+                          }];
+
+    
+    regexp = UrlRegularExpression();
+    [regexp enumerateMatchesInString:[mutableAttributedString string]
+                             options:0
+                               range:stringRange
+                          usingBlock:^(NSTextCheckingResult *result, NSMatchingFlags flags, BOOL *stop) {
+                              
+                              NSDictionary* urlLinkAttributeDic = @{NSLinkAttributeName: @"urlLink"};
+                              [mutableAttributedString addAttributes:urlLinkAttributeDic range:result.range];
+                          }];
+
+
 }
 
 + (float)HeightForAttributedString:(NSAttributedString *)attributedString

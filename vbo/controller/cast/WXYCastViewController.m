@@ -106,6 +106,7 @@
     }
     [cell setCellWithWeiboStatus:currentCellStatus];
     [self.view layoutIfNeeded];
+    
     //    if (!_animator) {
     //        _animator = [[UIDynamicAnimator alloc]initWithReferenceView:self.view];
     //    }
@@ -124,7 +125,6 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [tableView deselectRowAtIndexPath:indexPath animated:NO];
 }
 
 #pragma mark - UIScrollView Delegate
@@ -177,5 +177,17 @@
     UIImageView * nnView = [[UIImageView alloc]initWithImage:newPic];
     [nnView setFrame:CGRectMake(0.0, height, 320.0, 5.0)];
     [cell addSubview:nnView];
+}
+
+- (void)viewDidUnload
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    
+    [super viewDidUnload];
+}
+
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 @end
