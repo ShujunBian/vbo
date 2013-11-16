@@ -42,6 +42,7 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+
     
     UIView *bgview = [[UIView alloc]init];
     [bgview setBackgroundColor:SHARE_SETTING_MANAGER.themeColor];

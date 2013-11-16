@@ -145,7 +145,7 @@
 #pragma mark - 根据系统设置字体调整cell高度和cell字体大小
 static inline void calculateAndSetFonts(CastViewCell *aCell)
 {
-    static const CGFloat cellTitleTextScaleFactor = .85;
+    static const CGFloat cellTitleTextScaleFactor = 1;
     
     NSString * weiboContentTextStyle = [aCell.weiboContentTextView vbo_textStyle];
     UIFont * weiboContentTextFont = [UIFont vbo_preferredFontWithTextStyle:weiboContentTextStyle scale:cellTitleTextScaleFactor];
