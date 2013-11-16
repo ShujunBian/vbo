@@ -457,7 +457,13 @@
     NSNumber* groupId = dict[@"id"];
     Group* group = [SHARE_DATA_MODEL getGroupById:groupId.longLongValue];
     [group updateWithDict:dict];
-#warning 暂不知user参数为什么情况
+
+    NSDictionary* userDict = dict[@"user"];
+    NSNumber* userId = userDict[@"id"];;
+    User* user = [SHARE_DATA_MODEL getUserById:userId];
+    [user updateWithDict:dict];
+    group.owner = user;
+    
     return group;
 }
 
