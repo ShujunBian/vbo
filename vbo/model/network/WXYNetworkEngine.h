@@ -109,7 +109,8 @@ typedef enum{
 
 /////////分组
 ///////读取
-/*!读取用户分组列表
+
+/*!读取当前用户分组列表
  * \param succeedBlock block参数array内容为Group
  * \param errorBlock 网络请求失败处理block
  * \return 当前网络请求Operation
@@ -117,6 +118,17 @@ typedef enum{
 - (MKNetworkOperation*)getGroupListSucceed:(ArrayBlock)succeedBlock
                                      error:(ErrorBlock)errorBlock;
 
+/*!读取分组用户列表
+ * \param groupId 分组id
+ * \param cursor 页码游标，默认为0
+ * \param succeedBlock group为当前获取的分组, previousCursor与 nextCursor为上、下页游标，用于下次请求
+ * \param errorBlock 错误处理block
+ * \return 当前网络请求Operation
+ */
+- (MKNetworkOperation*)getGroupMemberListById:(NSNumber*)groupId
+                                       cursor:(NSNumber*)cursor
+                                      succeed:(GroupWithCursorBlock)succeedBlock
+                                        error:(ErrorBlock)errorBlock;
 
 
 @end

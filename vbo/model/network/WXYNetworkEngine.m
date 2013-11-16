@@ -27,6 +27,7 @@
 
 //Group
 #define GROUP_LIST_URL @"2/friendships/groups.json"
+#define GROUP_MEMBER_URL @"2/friendships/groups/members.json"
 
 #import "WXYSettingManager.h"
 #import "WXYDataModel.h"
@@ -35,6 +36,7 @@
 + (Status*)getStatusWithDict:(NSDictionary*)dict;
 + (Comment*)getCommentWithDict:(NSDictionary*)dict status:(Status*)s;
 + (Group*)getGroupWithDict:(NSDictionary*)dict;
++ (User*)getUserWithDict:(NSDictionary*)dict;
 @end
 
 
@@ -374,12 +376,51 @@
               {
                   Group* group = [WXYNetworkDataFactory getGroupWithDict:dict];
 #warning user暂不知user参数未什么情况
+                  [returnArray addObject:group];
               }
               if (succeedBlock)
               {
                   succeedBlock(returnArray);
               }
               
+          }
+                              onError:^(MKNetworkOperation *completedOperation, NSError *error)
+          {
+              if (errorBlock)
+              {
+                  errorBlock(error);
+              }
+          }];
+    
+    return op;
+}
+- (MKNetworkOperation*)getGroupMemberListById:(NSNumber*)groupId
+                                       cursor:(NSNumber*)cursor
+                                      succeed:(GroupWithCursorBlock)succeedBlock
+                                        error:(ErrorBlock)errorBlock
+{
+    MKNetworkOperation* op = nil;
+    
+    op = [self startOperationWithPath:GROUP_MEMBER_URL
+                            needLogin:YES
+                             paramers:@{@"list_id":groupId, @"cursor":cursor}
+                          onSucceeded:^(MKNetworkOperation *completedOperation)
+          {
+              NSDictionary* responseDict = completedOperation.responseJSON;
+              NSNumber* previousCursor = responseDict[@"previous_cursor"];
+              NSNumber* nextCursor = responseDict[@"next_cursor"];
+              
+              NSArray* userDictArray = responseDict[@"users"];
+              Group* group = [SHARE_DATA_MODEL getGroupById:groupId.longLongValue];
+              for (NSDictionary* userDict in userDictArray)
+              {
+                  User* user = [WXYNetworkDataFactory getUserWithDict:userDict];
+                  [group addUsersObject:user];
+              }
+              if (succeedBlock)
+              {
+                  succeedBlock(group, previousCursor, nextCursor);
+              }
           }
                               onError:^(MKNetworkOperation *completedOperation, NSError *error)
           {
@@ -402,10 +443,9 @@
     NSNumber* statusId = dict[@"id"];
     Status* status = [SHARE_DATA_MODEL getStatusById:statusId.longLongValue];
     [status updateWithDict:dict];
+    
     NSDictionary* userDict = dict[@"user"];
-    NSNumber* userId = userDict[@"id"];
-    User* user = [SHARE_DATA_MODEL getUserById:userId.longLongValue];
-    [user updateWithDict:userDict];
+    User* user = [self getUserWithDict:userDict];
     status.author = user;
 #warning 多图微博处理未写   pic_urls
     NSDictionary* repostDict =  dict[@"retweeted_status"];
@@ -459,12 +499,16 @@
     [group updateWithDict:dict];
 
     NSDictionary* userDict = dict[@"user"];
-    NSNumber* userId = userDict[@"id"];;
-    User* user = [SHARE_DATA_MODEL getUserById:userId];
-    [user updateWithDict:dict];
+    User* user = [self getUserWithDict:userDict];
     group.owner = user;
-    
     return group;
+}
++ (User*)getUserWithDict:(NSDictionary*)dict
+{
+    NSNumber* userId = dict[@"id"];
+    User* user = [SHARE_DATA_MODEL getUserById:userId.longLongValue];
+    [user updateWithDict:dict];
+    return user;
 }
 
 @end

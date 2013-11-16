@@ -11,6 +11,8 @@
 #import <XCTest/XCTest.h>
 #import "WXYNetworkEngine.h"
 
+#define TEST_GROUP_ID 3417030495788416
+
 @interface WXYNetworkEngineTest : XCTestCase
 
 @property (strong, nonatomic) GHAsyncTestCase* asyncTestCase;
@@ -200,6 +202,29 @@
         XCTFail(@"网络请求失败");
         [self.asyncTestCase notify:kGHUnitWaitStatusFailure];
     }];
+    [self.asyncTestCase waitForStatus:kGHUnitWaitStatusSuccess timeout:kMKNetworkKitRequestTimeOutInSeconds];
+}
+- (void)testGroupGetMemberList
+{
+    [self.asyncTestCase prepare];
+    
+    [SHARE_NW_ENGINE getGroupMemberListById:@(TEST_GROUP_ID) cursor:@(0) succeed:^(Group *group, NSNumber *previousCursor, NSNumber *nextCursor)
+    {
+        
+        if (group.users.count)
+        {
+            User* u = [group.users anyObject];
+            
+            XCTAssert([u isKindOfClass:[User class]], @"Array内容应为User");
+        }
+        [self.asyncTestCase notify:kGHUnitWaitStatusSuccess];
+    } error:^(NSError *error)
+    {
+        XCTFail(@"网络请求失败");
+        [self.asyncTestCase notify:kGHUnitWaitStatusFailure];
+    }];
+    
+    
     [self.asyncTestCase waitForStatus:kGHUnitWaitStatusSuccess timeout:kMKNetworkKitRequestTimeOutInSeconds];
 }
 @end
