@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="3400" systemVersion="13A603" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="3401" systemVersion="13A603" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="Comment" representedClassName="Comment" syncable="YES">
         <attribute name="commentID" optional="YES" attributeType="Integer 64" defaultValueString="0" indexed="YES" syncable="YES"/>
         <attribute name="commentMID" optional="YES" attributeType="String" syncable="YES"/>
@@ -22,6 +22,7 @@
         <attribute name="profileImageUrl" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="visible" optional="YES" attributeType="Boolean" syncable="YES"/>
         <relationship name="owner" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="ownGroups" inverseEntity="User" syncable="YES"/>
+        <relationship name="statuses" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Status" inverseName="groups" inverseEntity="Status" syncable="YES"/>
         <relationship name="users" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="User" inverseName="groups" inverseEntity="User" syncable="YES"/>
     </entity>
     <entity name="Status" representedClassName="Status" syncable="YES">
@@ -56,6 +57,7 @@
         <attribute name="visibleListId" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <relationship name="author" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="statuses" inverseEntity="User" syncable="YES"/>
         <relationship name="comments" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Comment" inverseName="status" inverseEntity="Comment" syncable="YES"/>
+        <relationship name="groups" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Group" inverseName="statuses" inverseEntity="Group" syncable="YES"/>
         <relationship name="pictures" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="StatusPicture" inverseName="status" inverseEntity="StatusPicture" syncable="YES"/>
         <relationship name="repostedBy" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Status" inverseName="repostStatus" inverseEntity="Status">
             <userInfo/>
@@ -117,9 +119,9 @@
     </entity>
     <elements>
         <element name="Comment" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="Group" positionX="0" positionY="0" width="0" height="0"/>
         <element name="Status" positionX="0" positionY="0" width="0" height="0"/>
         <element name="StatusPicture" positionX="0" positionY="0" width="0" height="0"/>
         <element name="User" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="Group" positionX="0" positionY="0" width="0" height="0"/>
     </elements>
 </model>

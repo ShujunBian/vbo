@@ -109,7 +109,6 @@ typedef enum{
 
 /////////分组
 ///////读取
-#warning 由于微博2.0获取好友分组API暂未申请完成，此接口暂无法使用
 /*!读取用户分组列表
  * \param succeedBlock block参数array内容为Group
  * \param errorBlock 网络请求失败处理block
@@ -117,5 +116,7 @@ typedef enum{
  */
 - (MKNetworkOperation*)getGroupListSucceed:(ArrayBlock)succeedBlock
                                      error:(ErrorBlock)errorBlock;
+
+
 
 @end

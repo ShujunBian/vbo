@@ -21,7 +21,7 @@ typedef enum
 } StatusVisibleType;
 
 
-@class Comment, Status, StatusPicture, User;
+@class Comment, Status, StatusPicture, User, Group;
 
 @interface Status : NSManagedObject
 
@@ -45,6 +45,8 @@ typedef enum
 @property (nonatomic, retain) NSSet *pictures;
 @property (nonatomic, retain) NSSet *repostedBy;
 @property (nonatomic, retain) Status *repostStatus;
+
+@property (nonatomic, retain) NSSet * groups;   //此方法仅作为group中statuses属性的inverse，不实际使用
 @end
 
 @interface Status (CoreDataGeneratedAccessors)

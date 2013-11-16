@@ -24,6 +24,7 @@
 @dynamic createdAt;
 @dynamic users;
 @dynamic owner;
+@dynamic statuses;
 
 + (Group*)insertWithId:(NSNumber*)gId inContext:(NSManagedObjectContext*)context
 {
