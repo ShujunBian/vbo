@@ -82,7 +82,7 @@ typedef enum{
 
 /*!获取某条微博的评论列表，每页50条评论
  * \param weiboId 要获取评论的微博Id
- * \param page 评论页码
+ * \param page 评论页码，从1开始
  * \param succeedBlock 网络请求成功处理block，array内容为Comment
  * \param errorBlock 网络请求失败处理block
  * \return 当前网络请求Operation
@@ -128,6 +128,16 @@ typedef enum{
 - (MKNetworkOperation*)getGroupMemberListById:(NSNumber*)groupId
                                        cursor:(NSNumber*)cursor
                                       succeed:(GroupWithCursorBlock)succeedBlock
+                                        error:(ErrorBlock)errorBlock;
+/*!读取分组微博列表
+ * \param groupId 分组id
+ * \param page 页码,从1开始
+ * \param SucceedBlock 成功处理block,array内容为Status
+ * \param errorBlock 错误处理block
+ */
+- (MKNetworkOperation*)getGroupStatusListById:(NSNumber*)groupId
+                                         page:(int)page
+                                      succeed:(ArrayBlock)succeedBlock
                                         error:(ErrorBlock)errorBlock;
 
 

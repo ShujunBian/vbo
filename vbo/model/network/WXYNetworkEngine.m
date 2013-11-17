@@ -28,6 +28,7 @@
 //Group
 #define GROUP_LIST_URL @"2/friendships/groups.json"
 #define GROUP_MEMBER_URL @"2/friendships/groups/members.json"
+#define GROUP_STATUS_URL @"2/friendships/groups/timeline.json"
 
 #import "WXYSettingManager.h"
 #import "WXYDataModel.h"
@@ -433,6 +434,43 @@
     return op;
 }
 
+- (MKNetworkOperation*)getGroupStatusListById:(NSNumber*)groupId
+                                         page:(int)page
+                                      succeed:(ArrayBlock)succeedBlock
+                                        error:(ErrorBlock)errorBlock
+{
+    MKNetworkOperation* op = nil;
+    
+    op = [self startOperationWithPath:GROUP_STATUS_URL
+                            needLogin:YES
+                             paramers:@{@"list_id":groupId, @"page":@(page)}
+                          onSucceeded:^(MKNetworkOperation *completedOperation)
+          {
+              NSDictionary* responseDict = completedOperation.responseJSON;
+              NSArray* statusesArray = responseDict[@"statuses"];
+              Group* group = [SHARE_DATA_MODEL getGroupById:groupId.longLongValue];
+              NSMutableArray* returnArray = [[NSMutableArray alloc] init];
+              for (NSDictionary* dict in statusesArray)
+              {
+                  Status* status = [WXYNetworkDataFactory getStatusWithDict:dict];
+                  [returnArray addObject:status];
+                  [group addStatusesObject:status];
+              }
+              if (succeedBlock)
+              {
+                  succeedBlock(returnArray);
+              }
+          }
+                              onError:^(MKNetworkOperation *completedOperation, NSError *error)
+          {
+              if (errorBlock)
+              {
+                  errorBlock(error);
+              }
+          }];
+    
+    return op;
+}
 
 @end
 

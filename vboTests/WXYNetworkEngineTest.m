@@ -229,4 +229,30 @@
     
     [self.asyncTestCase waitForStatus:kGHUnitWaitStatusSuccess timeout:kMKNetworkKitRequestTimeOutInSeconds];
 }
+
+- (void)testGroupGetStatus
+{
+    [self.asyncTestCase prepare];
+    
+    [SHARE_NW_ENGINE getGroupStatusListById:@(TEST_GROUP_ID)
+                                       page:1
+                                    succeed:^(NSArray *resultArray)
+     {
+         if (resultArray.count)
+         {
+             id s = resultArray[0];
+             XCTAssert([s isKindOfClass:[Status class]], @"s的类型应该为Status");
+         }
+         
+         [self.asyncTestCase notify:kGHUnitWaitStatusSuccess];
+     }
+                                      error:^(NSError *error)
+     {
+         XCTFail(@"网络请求失败");
+         [self.asyncTestCase notify:kGHUnitWaitStatusFailure];
+     }];
+    
+    [self.asyncTestCase waitForStatus:kGHUnitWaitStatusSuccess timeout:kMKNetworkKitRequestTimeOutInSeconds];
+}
+
 @end
