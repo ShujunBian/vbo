@@ -82,4 +82,9 @@
     XCTAssertEqual(self.group.users.count, (NSUInteger)0, @"user个数应为0");
 }
 
+- (void)testGroupClass
+{
+    XCTAssert([self.group isKindOfClass:[Group class]], @"self.group应该为Group类");
+}
+
 @end
