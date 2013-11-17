@@ -34,8 +34,8 @@
 - (void)addUsers:(NSSet *)values;
 - (void)removeUsers:(NSSet *)values;
 
-- (void)addStatusesObject:(Group *)value;
-- (void)removeStatusesObject:(Group*)value;
+- (void)addStatusesObject:(Status *)value;
+- (void)removeStatusesObject:(Status *)value;
 - (void)addStatuses:(NSSet *)values;
 - (void)removeStatuses:(NSSet *)values;
 
