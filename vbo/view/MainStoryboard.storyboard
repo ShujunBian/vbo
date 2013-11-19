@@ -49,26 +49,64 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="354" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Wga-Wk-7IP">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="400" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Wga-Wk-7IP">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="castViewCell" rowHeight="354" id="CO7-GV-DVF" customClass="CastViewCell">
-                                        <rect key="frame" x="0.0" y="22" width="320" height="354"/>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="castViewCell" rowHeight="400" id="CO7-GV-DVF" customClass="CastViewCell">
+                                        <rect key="frame" x="0.0" y="22" width="320" height="400"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="CO7-GV-DVF" id="gHv-u1-HKw">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="353"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="399"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1qg-Dh-QwN" userLabel="backgroundView">
-                                                    <rect key="frame" x="0.0" y="0.0" width="320" height="348"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="320" height="394"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="320" id="mYe-bc-BtB"/>
                                                     </constraints>
                                                 </view>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m0h-JS-mSJ" userLabel="RepostBackgroundView">
+                                                    <rect key="frame" x="0.0" y="192" width="320" height="149"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="149" id="VhW-EJ-CIx"/>
+                                                        <constraint firstAttribute="width" constant="320" id="ikO-kx-T2R"/>
+                                                    </constraints>
+                                                </view>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g1M-JC-mhy" userLabel="RepostTextView">
+                                                    <rect key="frame" x="16" y="321" width="288" height="20"/>
+                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="288" id="JMq-cP-efW"/>
+                                                        <constraint firstAttribute="height" constant="20" id="msC-zJ-a5b"/>
+                                                    </constraints>
+                                                    <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                </textView>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Emersonwade" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lw6-74-z3w">
+                                                    <rect key="frame" x="16" y="300" width="82" height="14"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="82" id="zhb-9C-4Pc"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eab-AU-Atl" userLabel="RepostImageView">
+                                                    <rect key="frame" x="16" y="192" width="288" height="98"/>
+                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="288" id="EAS-L4-8LI"/>
+                                                        <constraint firstAttribute="height" constant="98" id="n2X-3J-FUV"/>
+                                                    </constraints>
+                                                </imageView>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="V97-S3-ctY" userLabel="WeiboImage">
                                                     <rect key="frame" x="0.0" y="0.0" width="320" height="106"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -105,7 +143,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GXz-Tr-xWV" userLabel="likeTimesLabel">
-                                                    <rect key="frame" x="44" y="313" width="24" height="18"/>
+                                                    <rect key="frame" x="44" y="357" width="24" height="18"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="24" id="Ij7-h9-RPg"/>
@@ -114,7 +152,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="17" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J8i-M4-h8b" userLabel="CommentTimesLabel">
-                                                    <rect key="frame" x="139" y="313" width="42" height="18"/>
+                                                    <rect key="frame" x="139" y="357" width="42" height="18"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="42" id="Hrc-2x-i2F"/>
@@ -123,7 +161,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="186" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="918-Ag-MuX" userLabel="RepostTimesLaebl">
-                                                    <rect key="frame" x="234" y="313" width="42" height="18"/>
+                                                    <rect key="frame" x="234" y="357" width="42" height="18"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="42" id="KvM-fU-0SJ"/>
@@ -132,7 +170,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="npp-bc-3SE" userLabel="likeButton">
-                                                    <rect key="frame" x="3" y="300" width="44" height="44"/>
+                                                    <rect key="frame" x="3" y="344" width="44" height="44"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="44" id="Tx3-w6-PEy"/>
@@ -143,7 +181,7 @@
                                                     </state>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TjN-uc-EIq" userLabel="commentButton">
-                                                    <rect key="frame" x="98" y="300" width="44" height="44"/>
+                                                    <rect key="frame" x="98" y="344" width="44" height="44"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="44" id="cyk-Q8-2ru"/>
@@ -154,7 +192,7 @@
                                                     </state>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Crc-ff-zhZ" userLabel="repostButton">
-                                                    <rect key="frame" x="193" y="300" width="44" height="44"/>
+                                                    <rect key="frame" x="193" y="344" width="44" height="44"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="44" id="SVf-9u-tkr"/>
@@ -165,10 +203,10 @@
                                                     </state>
                                                 </button>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3rC-0O-gQU">
-                                                    <rect key="frame" x="16" y="160" width="288" height="140"/>
+                                                    <rect key="frame" x="16" y="160" width="288" height="20"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="140" id="POt-Ml-A0M"/>
+                                                        <constraint firstAttribute="height" constant="20" id="POt-Ml-A0M"/>
                                                     </constraints>
                                                     <string key="text">Y5 椅子设计，这款 Y5 椅子是由芬兰设计师 Sami Kallio 设计的，这款椅子的特点在于它的后背是由 5 个倒立的“Y”及一个却又弯曲的光滑靠背组成。这五个倒立的“Y”形态，相似却不完全相同，交错着排在一起，重复却不单调，很好的把握了设计美的节奏和韵律。</string>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="16"/>
@@ -178,17 +216,22 @@
                                             <constraints>
                                                 <constraint firstItem="Crc-ff-zhZ" firstAttribute="leading" secondItem="TjN-uc-EIq" secondAttribute="trailing" constant="51" id="0uX-85-o8T"/>
                                                 <constraint firstAttribute="trailing" secondItem="lNT-ig-yAc" secondAttribute="trailing" constant="18" id="1Na-BT-E9L"/>
+                                                <constraint firstItem="m0h-JS-mSJ" firstAttribute="top" secondItem="eab-AU-Atl" secondAttribute="top" id="1Of-Y6-vVr"/>
                                                 <constraint firstItem="npp-bc-3SE" firstAttribute="centerY" secondItem="918-Ag-MuX" secondAttribute="centerY" id="1UC-GZ-oaN"/>
+                                                <constraint firstItem="Crc-ff-zhZ" firstAttribute="top" secondItem="3rC-0O-gQU" secondAttribute="bottom" constant="164" id="5w1-eN-JJJ"/>
                                                 <constraint firstItem="npp-bc-3SE" firstAttribute="centerY" secondItem="J8i-M4-h8b" secondAttribute="centerY" id="7Jo-CG-zXG"/>
                                                 <constraint firstItem="1qg-Dh-QwN" firstAttribute="top" secondItem="gHv-u1-HKw" secondAttribute="top" id="7il-he-WIF"/>
+                                                <constraint firstItem="eab-AU-Atl" firstAttribute="leading" secondItem="Lw6-74-z3w" secondAttribute="leading" id="9Cr-pZ-Vgi"/>
                                                 <constraint firstItem="V97-S3-ctY" firstAttribute="top" secondItem="gHv-u1-HKw" secondAttribute="top" id="AbA-WY-gGg"/>
+                                                <constraint firstItem="g1M-JC-mhy" firstAttribute="centerX" secondItem="eab-AU-Atl" secondAttribute="centerX" id="BaQ-FL-T9e"/>
                                                 <constraint firstItem="lNT-ig-yAc" firstAttribute="centerY" secondItem="PpB-yj-yWz" secondAttribute="centerY" id="Bce-wu-Psk"/>
+                                                <constraint firstItem="m0h-JS-mSJ" firstAttribute="centerX" secondItem="eab-AU-Atl" secondAttribute="centerX" id="BlP-La-SaC"/>
                                                 <constraint firstItem="GXz-Tr-xWV" firstAttribute="leading" secondItem="npp-bc-3SE" secondAttribute="trailing" constant="-3" id="CYM-z5-6Jn"/>
                                                 <constraint firstItem="TjN-uc-EIq" firstAttribute="leading" secondItem="npp-bc-3SE" secondAttribute="trailing" constant="51" id="EcO-9a-yXh"/>
                                                 <constraint firstItem="1qg-Dh-QwN" firstAttribute="leading" secondItem="gHv-u1-HKw" secondAttribute="leading" id="FbQ-sB-a8W"/>
-                                                <constraint firstItem="Crc-ff-zhZ" firstAttribute="top" secondItem="3rC-0O-gQU" secondAttribute="bottom" id="G0y-B6-6D1"/>
                                                 <constraint firstAttribute="bottom" secondItem="1qg-Dh-QwN" secondAttribute="bottom" constant="5" id="H6k-XX-h1I"/>
                                                 <constraint firstItem="npp-bc-3SE" firstAttribute="centerY" secondItem="Crc-ff-zhZ" secondAttribute="centerY" id="Hqj-mj-i05"/>
+                                                <constraint firstItem="eab-AU-Atl" firstAttribute="centerX" secondItem="3rC-0O-gQU" secondAttribute="centerX" id="Lf4-uV-RVN"/>
                                                 <constraint firstItem="0Xt-sC-oIQ" firstAttribute="leading" secondItem="PpB-yj-yWz" secondAttribute="trailing" constant="9" id="LwC-v0-zJM"/>
                                                 <constraint firstAttribute="trailing" secondItem="3rC-0O-gQU" secondAttribute="trailing" constant="16" id="Pmx-Fl-nmP"/>
                                                 <constraint firstItem="PpB-yj-yWz" firstAttribute="leading" secondItem="gHv-u1-HKw" secondAttribute="leading" constant="10" id="RD0-Gl-Bbp"/>
@@ -196,11 +239,14 @@
                                                 <constraint firstItem="3rC-0O-gQU" firstAttribute="top" secondItem="PpB-yj-yWz" secondAttribute="bottom" constant="12" id="SaC-cV-Vnx"/>
                                                 <constraint firstItem="npp-bc-3SE" firstAttribute="leading" secondItem="gHv-u1-HKw" secondAttribute="leading" constant="3" id="SeL-yA-j42"/>
                                                 <constraint firstItem="V97-S3-ctY" firstAttribute="leading" secondItem="gHv-u1-HKw" secondAttribute="leading" id="Txm-7c-gET"/>
+                                                <constraint firstItem="g1M-JC-mhy" firstAttribute="top" secondItem="Lw6-74-z3w" secondAttribute="bottom" constant="7" id="VLr-Hl-3KX"/>
                                                 <constraint firstItem="0Xt-sC-oIQ" firstAttribute="centerY" secondItem="PpB-yj-yWz" secondAttribute="centerY" id="X8Q-kQ-b3m"/>
                                                 <constraint firstItem="3rC-0O-gQU" firstAttribute="leading" secondItem="gHv-u1-HKw" secondAttribute="leading" constant="16" id="equ-rE-3qY"/>
+                                                <constraint firstItem="eab-AU-Atl" firstAttribute="top" secondItem="3rC-0O-gQU" secondAttribute="bottom" constant="12" id="esY-7c-Ih7"/>
                                                 <constraint firstItem="npp-bc-3SE" firstAttribute="centerY" secondItem="TjN-uc-EIq" secondAttribute="centerY" id="mUd-Sl-VMK"/>
                                                 <constraint firstItem="J8i-M4-h8b" firstAttribute="leading" secondItem="TjN-uc-EIq" secondAttribute="trailing" constant="-3" id="oco-cm-VBC"/>
                                                 <constraint firstItem="918-Ag-MuX" firstAttribute="leading" secondItem="Crc-ff-zhZ" secondAttribute="trailing" constant="-3" id="pqc-CY-Scf"/>
+                                                <constraint firstItem="Lw6-74-z3w" firstAttribute="top" secondItem="3rC-0O-gQU" secondAttribute="bottom" constant="120" id="sD0-ym-IyN"/>
                                                 <constraint firstItem="PpB-yj-yWz" firstAttribute="top" secondItem="gHv-u1-HKw" secondAttribute="top" constant="116" id="skS-aG-Gxs"/>
                                                 <constraint firstItem="lNT-ig-yAc" firstAttribute="centerY" secondItem="0Xt-sC-oIQ" secondAttribute="centerY" id="yKc-Nr-K4z"/>
                                             </constraints>
@@ -214,8 +260,16 @@
                                             <outlet property="currentTimeLabel" destination="lNT-ig-yAc" id="usU-t0-Zuu"/>
                                             <outlet property="likeButton" destination="npp-bc-3SE" id="KuJ-Op-fUk"/>
                                             <outlet property="likeTimesLabel" destination="GXz-Tr-xWV" id="lfW-cz-vVh"/>
+                                            <outlet property="reposetUserNameTopConstraint" destination="sD0-ym-IyN" id="XwH-h0-7gC"/>
+                                            <outlet property="repostBackgroundView" destination="m0h-JS-mSJ" id="Jem-k8-gVE"/>
+                                            <outlet property="repostBackgroundViewConstraint" destination="VhW-EJ-CIx" id="ilp-a6-ojN"/>
                                             <outlet property="repostButton" destination="Crc-ff-zhZ" id="BnU-T8-wuT"/>
+                                            <outlet property="repostButtonTopConstraint" destination="5w1-eN-JJJ" id="MZe-Dd-wUG"/>
+                                            <outlet property="repostImageView" destination="eab-AU-Atl" id="FcU-vu-klY"/>
+                                            <outlet property="repostTextView" destination="g1M-JC-mhy" id="H10-op-6FP"/>
+                                            <outlet property="repostTextViewHeightConstraint" destination="msC-zJ-a5b" id="v8m-J6-ux1"/>
                                             <outlet property="repostTimesLabel" destination="918-Ag-MuX" id="a1J-Lo-yQG"/>
+                                            <outlet property="repostUserNameLabel" destination="Lw6-74-z3w" id="LCM-hK-qaH"/>
                                             <outlet property="userAvator" destination="PpB-yj-yWz" id="HZt-XD-oFz"/>
                                             <outlet property="userNickname" destination="0Xt-sC-oIQ" id="85P-Lo-pkh"/>
                                             <outlet property="weiboContentTextView" destination="3rC-0O-gQU" id="ITF-aE-PNq"/>
