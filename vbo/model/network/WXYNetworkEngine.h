@@ -82,7 +82,7 @@ typedef enum{
 
 /*!获取某条微博的评论列表，每页50条评论
  * \param weiboId 要获取评论的微博Id
- * \param page 评论页码
+ * \param page 评论页码，从1开始
  * \param succeedBlock 网络请求成功处理block，array内容为Comment
  * \param errorBlock 网络请求失败处理block
  * \return 当前网络请求Operation
@@ -109,13 +109,36 @@ typedef enum{
 
 /////////分组
 ///////读取
-#warning 由于微博2.0获取好友分组API暂未申请完成，此接口暂无法使用
-/*!读取用户分组列表
+
+/*!读取当前用户分组列表
  * \param succeedBlock block参数array内容为Group
  * \param errorBlock 网络请求失败处理block
  * \return 当前网络请求Operation
  */
 - (MKNetworkOperation*)getGroupListSucceed:(ArrayBlock)succeedBlock
                                      error:(ErrorBlock)errorBlock;
+
+/*!读取分组用户列表
+ * \param groupId 分组id
+ * \param cursor 页码游标，默认为0
+ * \param succeedBlock group为当前获取的分组, previousCursor与 nextCursor为上、下页游标，用于下次请求
+ * \param errorBlock 错误处理block
+ * \return 当前网络请求Operation
+ */
+- (MKNetworkOperation*)getGroupMemberListById:(NSNumber*)groupId
+                                       cursor:(NSNumber*)cursor
+                                      succeed:(GroupWithCursorBlock)succeedBlock
+                                        error:(ErrorBlock)errorBlock;
+/*!读取分组微博列表
+ * \param groupId 分组id
+ * \param page 页码,从1开始
+ * \param SucceedBlock 成功处理block,array内容为Status
+ * \param errorBlock 错误处理block
+ */
+- (MKNetworkOperation*)getGroupStatusListById:(NSNumber*)groupId
+                                         page:(int)page
+                                      succeed:(ArrayBlock)succeedBlock
+                                        error:(ErrorBlock)errorBlock;
+
 
 @end

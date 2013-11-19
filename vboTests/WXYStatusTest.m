@@ -43,4 +43,9 @@
     XCTAssertEqualObjects(self.status, status2, @"Status不可用");
 }
 
+- (void)testStatusClass
+{
+    XCTAssert([self.status isKindOfClass:[Status class]], @"self.status应该为Status类");
+}
+
 @end

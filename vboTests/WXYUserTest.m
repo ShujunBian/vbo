@@ -39,4 +39,10 @@
     User* u = [SHARE_DATA_MODEL getUserById:200ll];
     XCTAssertEqualObjects(self.user, u, @"GetUserById有错");
 }
+
+- (void)testUserClass
+{
+#warning 暂无法解决
+    XCTAssert([self.user isKindOfClass:[User class]], @"self.user应该为User类");
+}
 @end

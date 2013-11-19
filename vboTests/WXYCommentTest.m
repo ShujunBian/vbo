@@ -45,5 +45,9 @@
     XCTAssertEqualObjects(self.comment, c, @"getCommentById不可用");
 }
 
+- (void)testCommentClass
+{
+    XCTAssert([self.comment isKindOfClass:[Comment class]], @"self.comment应该为Comment类");
+}
 
 @end

@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-@class User;
+@class User, Status;
 
 @interface Group : NSManagedObject
 
@@ -24,6 +24,7 @@
 @property (nonatomic, retain) NSDate * createdAt;
 @property (nonatomic, retain) NSSet *users;
 @property (nonatomic, retain) User *owner;
+@property (nonatomic, retain) NSSet * statuses;
 @end
 
 @interface Group (CoreDataGeneratedAccessors)
@@ -32,6 +33,12 @@
 - (void)removeUsersObject:(User *)value;
 - (void)addUsers:(NSSet *)values;
 - (void)removeUsers:(NSSet *)values;
+
+- (void)addStatusesObject:(Status *)value;
+- (void)removeStatusesObject:(Status *)value;
+- (void)addStatuses:(NSSet *)values;
+- (void)removeStatuses:(NSSet *)values;
+
 
 + (Group*)insertWithId:(NSNumber*)gId inContext:(NSManagedObjectContext*)context;
 - (void)updateWithDict:(NSDictionary*)dict;
