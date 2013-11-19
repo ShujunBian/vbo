@@ -18,6 +18,10 @@
 
 @interface WXYLoginManager : NSObject
 
+- (BOOL)changeUser:(NSString*)userId;
+- (void)loginUser:(LoginUserInfo*)info;
+- (void)removeUserInfo:(NSString*)userId;
+
 
 + (WXYLoginManager*)shareLoginManager;
 

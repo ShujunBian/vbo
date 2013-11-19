@@ -20,6 +20,7 @@
 		184A0FAC183BACC30003E82E /* WXYLoginManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 184A0FAB183BACC30003E82E /* WXYLoginManager.m */; };
 		184A0FB0183BAE050003E82E /* LoginUserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 184A0FAF183BAE050003E82E /* LoginUserInfo.m */; };
 		184A0FB1183BAE050003E82E /* LoginUserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 184A0FAF183BAE050003E82E /* LoginUserInfo.m */; };
+		184A0FB3183BC6D70003E82E /* WXYLoginManagerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 184A0FB2183BC6D70003E82E /* WXYLoginManagerTest.m */; };
 		185E88A8182AABF40020F3B2 /* NSAlert+MKNetworkKitAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 185E888D182AABF40020F3B2 /* NSAlert+MKNetworkKitAdditions.m */; };
 		185E88A9182AABF40020F3B2 /* NSData+MKBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = 185E888F182AABF40020F3B2 /* NSData+MKBase64.m */; };
 		185E88AA182AABF40020F3B2 /* NSDate+RFC1123.m in Sources */ = {isa = PBXBuildFile; fileRef = 185E8891182AABF40020F3B2 /* NSDate+RFC1123.m */; };
@@ -186,6 +187,7 @@
 		184A0FAB183BACC30003E82E /* WXYLoginManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXYLoginManager.m; sourceTree = "<group>"; };
 		184A0FAE183BAE050003E82E /* LoginUserInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginUserInfo.h; sourceTree = "<group>"; };
 		184A0FAF183BAE050003E82E /* LoginUserInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginUserInfo.m; sourceTree = "<group>"; };
+		184A0FB2183BC6D70003E82E /* WXYLoginManagerTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXYLoginManagerTest.m; sourceTree = "<group>"; };
 		185E888C182AABF40020F3B2 /* NSAlert+MKNetworkKitAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSAlert+MKNetworkKitAdditions.h"; sourceTree = "<group>"; };
 		185E888D182AABF40020F3B2 /* NSAlert+MKNetworkKitAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSAlert+MKNetworkKitAdditions.m"; sourceTree = "<group>"; };
 		185E888E182AABF40020F3B2 /* NSData+MKBase64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+MKBase64.h"; sourceTree = "<group>"; };
@@ -877,6 +879,7 @@
 		515B0C1018082A9B0092BADB /* vboTests */ = {
 			isa = PBXGroup;
 			children = (
+				184A0FB2183BC6D70003E82E /* WXYLoginManagerTest.m */,
 				1808F45B1835382900829471 /* WXYGroupTest.m */,
 				18E790EB1834EF4E002B4785 /* WXYUserTest.m */,
 				18E790E71834E584002B4785 /* WXYStatusTest.m */,
@@ -1190,6 +1193,7 @@
 				18EB09C9182B7F30005CC27D /* WXYSettingManager.m in Sources */,
 				18EB09DA182B82F1005CC27D /* WXYDataModel.m in Sources */,
 				18EB09EC182BCFE2005CC27D /* WXYNetworkEngineTest.m in Sources */,
+				184A0FB3183BC6D70003E82E /* WXYLoginManagerTest.m in Sources */,
 				1868F0FD1829C8B200C5764D /* WXYRootNavViewController.m in Sources */,
 				188E68981829131600BE534D /* vboCachedDatamodel.xcdatamodeld in Sources */,
 				184A0FB1183BAE050003E82E /* LoginUserInfo.m in Sources */,

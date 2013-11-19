@@ -11,10 +11,10 @@
 #define kLoginUserInfoFileName @"loginUserInfo"
 @interface WXYLoginManager ()
 
+@property (strong, nonatomic) NSMutableArray* loginUserMutableList;
 //Document
 -(NSURL*)applicationDocumentsDirectory;
 -(NSString*)applicationDocumentsDirectoryPath;
-
 
 //Write And Read User Info
 - (void)saveUserInfo;
@@ -26,7 +26,8 @@
 @implementation WXYLoginManager
 
 @dynamic currentUserInfo;
-@synthesize loginUserList = _loginUserList;
+@dynamic loginUserList;
+@synthesize loginUserMutableList = _loginUserMutableList;
 
 #pragma mark - Static Method
 #pragma mark Singleton
@@ -43,12 +44,18 @@
 #pragma mark - Getter And Setter Method
 - (NSArray*)loginUserList
 {
-    if (!_loginUserList)
-    {
-        _loginUserList = [self unarchiveLoginUserInfoList];
-    }
-    return _loginUserList;
+    return self.loginUserMutableList;
 }
+
+- (NSMutableArray*)loginUserMutableList
+{
+    if (!_loginUserMutableList)
+    {
+        _loginUserMutableList = [[NSMutableArray alloc] initWithArray: [self unarchiveLoginUserInfoList]];
+    }
+    return _loginUserMutableList;
+}
+
 - (LoginUserInfo*)currentUserInfo
 {
     LoginUserInfo* info = nil;
@@ -58,7 +65,6 @@
     }
     return info;
 }
-
 
 #pragma mark - Document
 -(NSURL*)applicationDocumentsDirectory
@@ -108,6 +114,56 @@
     NSArray* array = [unarchiver decodeObjectForKey:kLoginUserListArchiverKey];
     [unarchiver finishDecoding];
     return array;
+}
+
+#pragma mark - Login And Remove
+- (BOOL)changeUser:(NSString*)userId
+{
+    NSUInteger index = 0;
+    for (; index < self.loginUserMutableList.count; index++)
+    {
+        LoginUserInfo* info = self.loginUserMutableList[index];
+        if ([info.userId isEqualToString:userId])
+        {
+            break;
+        }
+    }
+    if (index < self.loginUserMutableList.count)
+    {
+        [self.loginUserMutableList exchangeObjectAtIndex:index withObjectAtIndex:0];
+        return YES;
+    }
+    else
+    {
+        return NO;
+    }
+}
+- (void)loginUser:(LoginUserInfo*)info
+{
+    //删除原有数据
+    [self removeUserInfo:info.userId];
+    //加入新数据
+    [self.loginUserMutableList insertObject:info atIndex:0];
+    [self saveUserInfo];
+}
+
+- (void)removeUserInfo:(NSString*)userId
+{
+    //删除原有数据
+    LoginUserInfo* oldInfo = nil;
+    for (LoginUserInfo* i in self.loginUserMutableList)
+    {
+        if ([i.userId isEqualToString:userId])
+        {
+            oldInfo = i;
+            break;
+        }
+    }
+    if (oldInfo)
+    {
+        [self.loginUserMutableList removeObject:oldInfo];
+        [self saveUserInfo];
+    }
 }
 
 
