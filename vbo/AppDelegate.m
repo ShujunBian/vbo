@@ -13,7 +13,8 @@
 #import "DDLogLevelGlobal.h"
 #import "WeiboSDK.h"
 #import "WXYSettingManager.h"
-
+#import "WXYLoginManager.h"
+#import "WXYNetworkEngine.h"
 
 @implementation AppDelegate
 
@@ -89,6 +90,14 @@
 {
     if ([response isKindOfClass:WBAuthorizeResponse.class])
     {
+        WBAuthorizeResponse* wbResponse = (WBAuthorizeResponse *)response;
+        __block LoginUserInfo* info = [[LoginUserInfo alloc] init];
+        info.userId = wbResponse.userID;
+        info.accessToken = wbResponse.accessToken;
+        info.expireDate = wbResponse.expirationDate;
+        [SHARE_LOGIN_MANAGER loginUser:info];
+#warning 未获取用户信息，需要再次发送网络请求
+        
         SHARE_SETTING_MANAGER.testAccessToken = [(WBAuthorizeResponse *)response accessToken];
         UIAlertView* alert = nil;
         if (SHARE_SETTING_MANAGER.testAccessToken)
@@ -100,21 +109,21 @@
             alert = [[UIAlertView alloc] initWithTitle:@"失败" message:nil delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
         }
         [alert show];
-//        NSString *title = @"认证结果";
-//        NSString *message = [NSString stringWithFormat:@"响应状态: %d\nresponse.userId: %@\nresponse.accessToken: %@\n响应UserInfo数据: %@\n原请求UserInfo数据: %@",
-//                             response.statusCode, [(WBAuthorizeResponse *)response userID], [(WBAuthorizeResponse *)response accessToken], response.userInfo, response.requestUserInfo];
-//        UIAlertView *alert =
-//        [[UIAlertView alloc] initWithTitle:title
-//                                   message:message
-//                                  delegate:nil
-//                         cancelButtonTitle:@"确定"
-//                         otherButtonTitles:nil];
+        //        NSString *title = @"认证结果";
+        //        NSString *message = [NSString stringWithFormat:@"响应状态: %d\nresponse.userId: %@\nresponse.accessToken: %@\n响应UserInfo数据: %@\n原请求UserInfo数据: %@",
+        //                             response.statusCode, [(WBAuthorizeResponse *)response userID], [(WBAuthorizeResponse *)response accessToken], response.userInfo, response.requestUserInfo];
+        //        UIAlertView *alert =
+        //        [[UIAlertView alloc] initWithTitle:title
+        //                                   message:message
+        //                                  delegate:nil
+        //                         cancelButtonTitle:@"确定"
+        //                         otherButtonTitles:nil];
         
-//        self.wbtoken = [(WBAuthorizeResponse *)response accessToken];
+        //        self.wbtoken = [(WBAuthorizeResponse *)response accessToken];
         
-//        [alert show];
-//        [alert release];
-}
+        //        [alert show];
+        //        [alert release];
+    }
 }
 
 
