@@ -8,6 +8,7 @@
 
 #import "WXYCastViewController.h"
 #import "CastViewCell.h"
+#import "CastRepostView.h"
 #import "WXYNetworkEngine.h"
 #import "Status.h"
 #import "User.h"
@@ -153,6 +154,11 @@
                                                                         withUrlColor:SHARE_SETTING_MANAGER.themeColor
                                                                   withLabelLineSpace:contentLabelLineSpace];
     cellHeight += [UITextViewHelper HeightForAttributedString:contentString withWidth:288.0f];
+    
+    if (currentCellStatus.repostStatus != nil) {
+        cellHeight += [CastRepostView getHeightofCastRepostViewByStatus:currentCellStatus.repostStatus];
+    }
+    
     return cellHeight;
 }
 

@@ -10,9 +10,12 @@
 #import "WXYNetworkEngine.h"
 #import "WXYSettingManager.h"
 
+#define padding 5.0
 #define weiboImageHeight 106.0
 #define weiboCellBetweenHeight 10.0
+#define repostViewConstantHeight 43.0
 #define contentLabelLineSpace 6.0
+#define repostBackgroundViewColor [UIColor colorWithRed:234.0 / 255.0 green:234.0 / 255.0 blue:234.0 / 255.0 alpha:1.0]
 
 @interface CastViewCell()<UITextViewDelegate, UIActionSheetDelegate>
 
@@ -36,7 +39,16 @@
 @property (nonatomic, weak) IBOutlet UITextView * weiboContentTextView;
 @property (nonatomic, weak) IBOutlet NSLayoutConstraint * contentTextViewHegihtConstraint;
 
+@property (nonatomic, weak) IBOutlet UIImageView * repostImageView;
+@property (nonatomic, weak) IBOutlet UITextView * repostTextView;
+@property (nonatomic, weak) IBOutlet UILabel * repostUserNameLabel;
+@property (nonatomic, weak) IBOutlet UIView * repostBackgroundView;
+@property (nonatomic, weak) IBOutlet NSLayoutConstraint * repostTextViewHeightConstraint;
+@property (nonatomic, weak) IBOutlet NSLayoutConstraint * reposetUserNameTopConstraint;
+@property (nonatomic, weak) IBOutlet NSLayoutConstraint * repostButtonTopConstraint;
+@property (nonatomic, weak) IBOutlet NSLayoutConstraint * repostBackgroundViewConstraint;
 
+//@property (nonatomic, strong) CastRepostView * repostContentView;
 @end
 
 @implementation CastViewCell
@@ -107,6 +119,35 @@
     [_likeTimesLabel setTextColor:SHARE_SETTING_MANAGER.themeColor];
     [_commentTimesLabel setTextColor:SHARE_SETTING_MANAGER.themeColor];
     [_repostTimesLabel setTextColor:SHARE_SETTING_MANAGER.themeColor];
+    
+    [_repostImageView setImage:nil];
+    if (currentCellStatus.repostStatus != nil) {
+        _repostBackgroundViewConstraint.constant = [self getHeightofCastRepostViewByStatus:currentCellStatus.repostStatus] - 2.0;
+        [_repostBackgroundView setBackgroundColor:repostBackgroundViewColor];
+        _repostButtonTopConstraint.constant = [self getHeightofCastRepostViewByStatus:currentCellStatus.repostStatus] + 10.0;
+        if (currentCellStatus.repostStatus.bmiddlePicURL != nil) {
+            _reposetUserNameTopConstraint.constant = 123.0;
+            NSURL *anImageURL = [NSURL URLWithString:currentCellStatus.repostStatus.bmiddlePicURL];
+            [_repostImageView setImageFromURL:anImageURL placeHolderImage:nil animation:YES completion:nil];
+            _repostImageView.contentMode = UIViewContentModeScaleAspectFill;
+            _repostImageView.clipsToBounds = YES;
+        }
+        else {
+            _reposetUserNameTopConstraint.constant = 27.0;
+        }
+        [_repostTextView setAttributedText:[self weiboContentLabelAttributedStringByStatus:currentCellStatus.repostStatus]];
+        _repostTextViewHeightConstraint.constant = [UITextViewHelper HeightForAttributedString:_repostTextView.attributedText
+                                                                                      withWidth:288.0];
+        [_repostTextView setScrollEnabled:NO];
+        _repostTextView.delegate = self;
+
+    }
+    else {
+        _repostBackgroundViewConstraint.constant = 0;
+        _repostButtonTopConstraint.constant = 0;
+    }
+
+//    NSLog(@"The repostView size is %f %f",tmpCustomView.bounds.size.width,tmpCustomView.bounds.size.height);
 }
 
 - (NSMutableAttributedString *)weiboContentLabelAttributedStringByStatus:(Status *)currentCellStatus
@@ -128,6 +169,24 @@
                                                                                   withWidth:288.0];
 }
 
+- (float)getHeightofCastRepostViewByStatus:(Status *) status
+{
+    float heightofCastRepostView = repostViewConstantHeight;
+    if (status.bmiddlePicURL != nil) {
+        heightofCastRepostView += 98.0;
+    }
+    if (status.text != nil) {
+        NSMutableAttributedString * contentString = [UITextViewHelper setAttributeString:[[NSMutableAttributedString alloc]initWithString:status.text]
+                                                                          WithNormalFont:SHARE_SETTING_MANAGER.castViewTableCellContentLabelFont
+                                                                             withUrlFont:SHARE_SETTING_MANAGER.castViewTableCellContentLabelFont
+                                                                         withNormalColor:SHARE_SETTING_MANAGER.castViewTableCellContentLabelTextColor
+                                                                            withUrlColor:SHARE_SETTING_MANAGER.themeColor
+                                                                      withLabelLineSpace:contentLabelLineSpace];
+        heightofCastRepostView += [UITextViewHelper HeightForAttributedString:contentString withWidth:288.0f];
+    }
+    return heightofCastRepostView + padding;
+}
+
 #pragma mark - textViewDelegate
 -(BOOL)textView:(UITextView *)textView shouldInteractWithURL:(NSURL *)URL inRange:(NSRange)characterRange
 {
@@ -145,7 +204,7 @@
 #pragma mark - 根据系统设置字体调整cell高度和cell字体大小
 static inline void calculateAndSetFonts(CastViewCell *aCell)
 {
-    static const CGFloat cellTitleTextScaleFactor = .85;
+    static const CGFloat cellTitleTextScaleFactor = 1;
     
     NSString * weiboContentTextStyle = [aCell.weiboContentTextView vbo_textStyle];
     UIFont * weiboContentTextFont = [UIFont vbo_preferredFontWithTextStyle:weiboContentTextStyle scale:cellTitleTextScaleFactor];
