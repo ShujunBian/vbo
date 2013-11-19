@@ -19,5 +19,6 @@
     #import"UIFontDescriptor+TextKitAddition.h"
     #import"UITextView+TextKitAddition.h"
     #import"UITextViewHelper.h"
+    #import "WXYSettingManager.h"
 
 #endif

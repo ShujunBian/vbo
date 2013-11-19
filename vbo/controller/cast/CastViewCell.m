@@ -9,6 +9,7 @@
 #import "CastViewCell.h"
 #import "WXYNetworkEngine.h"
 #import "WXYSettingManager.h"
+#import "ComRepViewController.h"
 
 #define padding 5.0
 #define weiboImageHeight 106.0
@@ -18,6 +19,7 @@
 #define repostBackgroundViewColor [UIColor colorWithRed:234.0 / 255.0 green:234.0 / 255.0 blue:234.0 / 255.0 alpha:1.0]
 
 @interface CastViewCell()<UITextViewDelegate, UIActionSheetDelegate>
+@property (nonatomic, strong) Status * currentStatus;
 
 @property (nonatomic, weak) IBOutlet UIImageView * weiboImage;
 @property (nonatomic, weak) IBOutlet UIImageView * userAvator;
@@ -83,7 +85,10 @@
 }
 
 - (void)setCellWithWeiboStatus:(Status *)currentCellStatus
+                  isInCastView:(BOOL)isInCastView
 {
+    self.currentStatus = currentCellStatus;
+    
     [_cellBackgroundView setBackgroundColor:SHARE_SETTING_MANAGER.castViewTableCellBackgroundColor];
     
 //    [_weiboContentTextView setBackgroundColor:[UIColor greenColor]];
@@ -116,15 +121,29 @@
     
     [_currentTimeLabel setTextColor:SHARE_SETTING_MANAGER.castViewTableCellTimeLabelColor];
     
-    [_likeTimesLabel setTextColor:SHARE_SETTING_MANAGER.themeColor];
-    [_commentTimesLabel setTextColor:SHARE_SETTING_MANAGER.themeColor];
-    [_repostTimesLabel setTextColor:SHARE_SETTING_MANAGER.themeColor];
+    if (isInCastView) {
+        [_likeTimesLabel setTextColor:SHARE_SETTING_MANAGER.themeColor];
+        [_commentTimesLabel setTextColor:SHARE_SETTING_MANAGER.themeColor];
+        NSString * commentTimesString = [NSString stringWithFormat:@"%d",[currentCellStatus.commentsCount integerValue]];
+        [_commentTimesLabel setText:commentTimesString];
+        [_repostTimesLabel setTextColor:SHARE_SETTING_MANAGER.themeColor];
+        NSString * repostTimesString = [NSString stringWithFormat:@"%d",[currentCellStatus.repostsCount integerValue]];
+        [_repostTimesLabel setText:repostTimesString];
+    }
+    else {
+        _likeButton.hidden = YES;
+        _likeTimesLabel.hidden = YES;
+        _commentButton.hidden = YES;
+        _commentTimesLabel.hidden = YES;
+        _repostButton.hidden = YES;
+        _repostTimesLabel.hidden = YES;
+    }
     
     [_repostImageView setImage:nil];
     if (currentCellStatus.repostStatus != nil) {
-        _repostBackgroundViewConstraint.constant = [self getHeightofCastRepostViewByStatus:currentCellStatus.repostStatus] - 2.0;
+        _repostBackgroundViewConstraint.constant = [CastViewCell getHeightofCastRepostViewByStatus:currentCellStatus.repostStatus] - 2.0;
         [_repostBackgroundView setBackgroundColor:repostBackgroundViewColor];
-        _repostButtonTopConstraint.constant = [self getHeightofCastRepostViewByStatus:currentCellStatus.repostStatus] + 10.0;
+        _repostButtonTopConstraint.constant = isInCastView ? [CastViewCell getHeightofCastRepostViewByStatus:currentCellStatus.repostStatus] + 10.0 + 10.0: 0.0;
         if (currentCellStatus.repostStatus.bmiddlePicURL != nil) {
             _reposetUserNameTopConstraint.constant = 123.0;
             NSURL *anImageURL = [NSURL URLWithString:currentCellStatus.repostStatus.bmiddlePicURL];
@@ -169,7 +188,7 @@
                                                                                   withWidth:288.0];
 }
 
-- (float)getHeightofCastRepostViewByStatus:(Status *) status
++ (float)getHeightofCastRepostViewByStatus:(Status *) status
 {
     float heightofCastRepostView = repostViewConstantHeight;
     if (status.bmiddlePicURL != nil) {
@@ -200,6 +219,16 @@
     
     return NO;
 }
+
+#pragma mark - IBActions
+- (IBAction)clickCommentButton:(id)sender {
+    [self.delegateForCastViewCell clickCommentButtonByStatus:_currentStatus];
+}
+
+- (IBAction)clickRepostButton:(id)sender {
+    [self.delegateForCastViewCell clickRepostButtonByStatus:_currentStatus];
+}
+
 
 #pragma mark - 根据系统设置字体调整cell高度和cell字体大小
 static inline void calculateAndSetFonts(CastViewCell *aCell)

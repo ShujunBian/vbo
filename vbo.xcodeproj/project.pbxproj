@@ -124,6 +124,10 @@
 		4D78489B18314C0A0025ADDA /* photos_moments_screen_2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D78489818314C0A0025ADDA /* photos_moments_screen_2x.png */; };
 		4D78489E18314EB60025ADDA /* MHCPostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D78489D18314EB60025ADDA /* MHCPostViewController.m */; };
 		5116A5BF18300277004FCC1A /* NSNotificationCenter+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 5116A5BE18300277004FCC1A /* NSNotificationCenter+Addition.m */; };
+		51510C0E183BB10A00BD7823 /* CastViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 51510C0D183BB10A00BD7823 /* CastViewCell.xib */; };
+		51510C12183BBB4800BD7823 /* ComRepViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 51510C11183BBB4800BD7823 /* ComRepViewController.m */; };
+		51510C15183BD8F600BD7823 /* ComRepCountCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 51510C14183BD8F600BD7823 /* ComRepCountCell.m */; };
+		51510C18183BDF3B00BD7823 /* ComReqDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 51510C17183BDF3B00BD7823 /* ComReqDetailCell.m */; };
 		515B0BEC18082A9B0092BADB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 515B0BEB18082A9B0092BADB /* Foundation.framework */; };
 		515B0BEE18082A9B0092BADB /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 515B0BED18082A9B0092BADB /* CoreGraphics.framework */; };
 		515B0BF018082A9B0092BADB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 515B0BEF18082A9B0092BADB /* UIKit.framework */; };
@@ -307,6 +311,13 @@
 		4D78489D18314EB60025ADDA /* MHCPostViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHCPostViewController.m; sourceTree = "<group>"; };
 		5116A5BD18300277004FCC1A /* NSNotificationCenter+Addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSNotificationCenter+Addition.h"; sourceTree = "<group>"; };
 		5116A5BE18300277004FCC1A /* NSNotificationCenter+Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSNotificationCenter+Addition.m"; sourceTree = "<group>"; };
+		51510C0D183BB10A00BD7823 /* CastViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CastViewCell.xib; sourceTree = "<group>"; };
+		51510C10183BBB4800BD7823 /* ComRepViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComRepViewController.h; sourceTree = "<group>"; };
+		51510C11183BBB4800BD7823 /* ComRepViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ComRepViewController.m; sourceTree = "<group>"; };
+		51510C13183BD8F600BD7823 /* ComRepCountCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComRepCountCell.h; sourceTree = "<group>"; };
+		51510C14183BD8F600BD7823 /* ComRepCountCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ComRepCountCell.m; sourceTree = "<group>"; };
+		51510C16183BDF3B00BD7823 /* ComReqDetailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComReqDetailCell.h; sourceTree = "<group>"; };
+		51510C17183BDF3B00BD7823 /* ComReqDetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ComReqDetailCell.m; sourceTree = "<group>"; };
 		515B0BE818082A9B0092BADB /* vbo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = vbo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		515B0BEB18082A9B0092BADB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		515B0BED18082A9B0092BADB /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -533,9 +544,16 @@
 				1868F1021829CD9700C5764D /* WXYCastViewController.m */,
 				5183B183182AA876008F22D1 /* CastViewCell.h */,
 				5183B184182AA876008F22D1 /* CastViewCell.m */,
-				51FBFDE618364CD100F2BFF2 /* CastRepostView.xib */,
+				51510C0D183BB10A00BD7823 /* CastViewCell.xib */,
 				51FBFDE818364CEC00F2BFF2 /* CastRepostView.h */,
 				51FBFDE918364CEC00F2BFF2 /* CastRepostView.m */,
+				51FBFDE618364CD100F2BFF2 /* CastRepostView.xib */,
+				51510C10183BBB4800BD7823 /* ComRepViewController.h */,
+				51510C11183BBB4800BD7823 /* ComRepViewController.m */,
+				51510C13183BD8F600BD7823 /* ComRepCountCell.h */,
+				51510C14183BD8F600BD7823 /* ComRepCountCell.m */,
+				51510C16183BDF3B00BD7823 /* ComReqDetailCell.h */,
+				51510C17183BDF3B00BD7823 /* ComReqDetailCell.m */,
 			);
 			path = cast;
 			sourceTree = "<group>";
@@ -1009,6 +1027,7 @@
 				18B02D54182E0F1B00D9AF04 /* tabbar_weibo_button@2x.png in Resources */,
 				18B02D4E182E0F1B00D9AF04 /* tabbar_message_button@2x.png in Resources */,
 				4D78489918314C0A0025ADDA /* itunesradio_mystations_2x.png in Resources */,
+				51510C0E183BB10A00BD7823 /* CastViewCell.xib in Resources */,
 				515B0C0418082A9B0092BADB /* Images.xcassets in Resources */,
 				18EED32F1815853E000856CE /* README.txt in Resources */,
 				18B02D4B182E0F1B00D9AF04 /* tabbar_discover_button.png in Resources */,
@@ -1088,6 +1107,7 @@
 				51FBFDEA18364CEC00F2BFF2 /* CastRepostView.m in Sources */,
 				185E88AF182AABF40020F3B2 /* MKNetworkEngine.m in Sources */,
 				1868F0FE1829C8B200C5764D /* WXYRootTabbarViewController.m in Sources */,
+				51510C18183BDF3B00BD7823 /* ComReqDetailCell.m in Sources */,
 				18EED35518158653000856CE /* WXYTestViewController.m in Sources */,
 				1868F10B1829CE0100C5764D /* WXYDiscoverViewController.m in Sources */,
 				18D9E4ED18338BF0004539CC /* Status.m in Sources */,
@@ -1097,6 +1117,7 @@
 				1868F1221829D7EA00C5764D /* WXYNavigationBar.m in Sources */,
 				18EED3231815853E000856CE /* DDASLLogger.m in Sources */,
 				1868F10F1829CE0A00C5764D /* WXYMessageViewController.m in Sources */,
+				51510C12183BBB4800BD7823 /* ComRepViewController.m in Sources */,
 				18EED32B1815853E000856CE /* ContextFilterLogFormatter.m in Sources */,
 				18EED3291815853E000856CE /* DDTTYLogger.m in Sources */,
 				1868F1331829DC1900C5764D /* WXYBlurTextView.m in Sources */,
@@ -1115,6 +1136,7 @@
 				185E88AC182AABF40020F3B2 /* NSString+MKNetworkKitAdditions.m in Sources */,
 				18B02D59182E167800D9AF04 /* WXYTabBarButton.m in Sources */,
 				18EB0A06182BF701005CC27D /* NSDate+Addition.m in Sources */,
+				51510C15183BD8F600BD7823 /* ComRepCountCell.m in Sources */,
 				188E68971829131600BE534D /* vboCachedDatamodel.xcdatamodeld in Sources */,
 				51652DF01835D7FF004E4D30 /* UIFontDescriptor+TextKitAddition.m in Sources */,
 				18EB0A02182BED82005CC27D /* StatusPicture.m in Sources */,
@@ -1296,7 +1318,7 @@
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Hongming Zhu (H5SJ56Z88P)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Xie Cheng (AXP8APNT95)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Xie Cheng (AXP8APNT95)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1318,7 +1340,7 @@
 				);
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "297D6A85-0B39-4370-A5D6-D5B6A0C95246";
+				PROVISIONING_PROFILE = "EC6D8CC3-D1FE-41D6-8051-2C8654F2A6B4";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1330,7 +1352,7 @@
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Hongming Zhu (H5SJ56Z88P)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Xie Cheng (AXP8APNT95)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Xie Cheng (AXP8APNT95)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1352,7 +1374,7 @@
 				);
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "297D6A85-0B39-4370-A5D6-D5B6A0C95246";
+				PROVISIONING_PROFILE = "EC6D8CC3-D1FE-41D6-8051-2C8654F2A6B4";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

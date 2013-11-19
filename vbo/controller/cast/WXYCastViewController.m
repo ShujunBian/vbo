@@ -7,23 +7,22 @@
 //
 
 #import "WXYCastViewController.h"
-#import "CastViewCell.h"
 #import "CastRepostView.h"
 #import "WXYNetworkEngine.h"
+#import "ComRepViewController.h"
 #import "Status.h"
 #import "User.h"
 #import "UIImageView+MKNetworkKitAdditions.h"
 #import "NSNotificationCenter+Addition.h"
 #import "WXYSettingManager.h"
 
-#define contantHeight 108.0
+#define contantHeight 110.0
 #define contentLabelLineSpace 6.0
 #define tableViewSeprateLine [UIColor colorWithRed:0.0/255.0 green:0.0/255.0 blue:0.0/255.0 alpha:1.0]
 
 @interface WXYCastViewController ()
 
 //@property (nonatomic, strong) UIDynamicAnimator *animator;
-@property (strong, nonatomic) WXYNetworkEngine* engine;
 @property (nonatomic, strong) NSArray * weiboContentArray;
 
 @end
@@ -51,6 +50,9 @@
     //    [self.view setTranslatesAutoresizingMaskIntoConstraints:NO];
     [self fetchWeiboContent];
     
+    UINib *castNib = [UINib nibWithNibName:@"CastViewCell" bundle:[NSBundle bundleForClass:[CastViewCell class]]];
+    [self.tableView registerNib:castNib forCellReuseIdentifier:@"CastViewCell"];
+    
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(preferredContentSizeChanged:)
                                                  name:UIContentSizeCategoryDidChangeNotification
@@ -60,8 +62,7 @@
 
 - (void)fetchWeiboContent
 {
-    self.engine = SHARE_NW_ENGINE;
-    [self.engine getHomeTimelineOfCurrentUserSucceed:^(NSArray * resultArray){
+    [SHARE_NW_ENGINE getHomeTimelineOfCurrentUserSucceed:^(NSArray * resultArray){
         self.weiboContentArray = resultArray;
         [self.tableView reloadData];
         [NSNotificationCenter postDidFetchCurrentUserNameNotification];
@@ -99,13 +100,14 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     Status * currentCellStatus = [_weiboContentArray objectAtIndex:[indexPath row]];
-    static NSString* cellIdentifier = @"castViewCell";
+    static NSString* cellIdentifier = @"CastViewCell";
     CastViewCell* cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    cell.delegateForCastViewCell = self;
     if (cell == nil)
     {
         cell = [[CastViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
-    [cell setCellWithWeiboStatus:currentCellStatus];
+    [cell setCellWithWeiboStatus:currentCellStatus isInCastView:YES];
     [self.view layoutIfNeeded];
     
     //    if (!_animator) {
@@ -156,7 +158,7 @@
     cellHeight += [UITextViewHelper HeightForAttributedString:contentString withWidth:288.0f];
     
     if (currentCellStatus.repostStatus != nil) {
-        cellHeight += [CastRepostView getHeightofCastRepostViewByStatus:currentCellStatus.repostStatus];
+        cellHeight += [CastViewCell getHeightofCastRepostViewByStatus:currentCellStatus.repostStatus] + 10.0 + 10.0;
     }
     
     return cellHeight;
@@ -165,6 +167,23 @@
 - (void)preferredContentSizeChanged:(NSNotification *)notification
 {
     [self.tableView reloadData];
+}
+
+#pragma mark - CastViewCellDelegate
+- (void)clickCommentButtonByStatus:(Status *)status
+{
+    UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:NULL];
+    ComRepViewController * comRepViewController = [storyBoard instantiateViewControllerWithIdentifier:@"ComRepViewController"];
+    comRepViewController.currentStatus = status;
+    [self.navigationController pushViewController:comRepViewController animated:YES];
+}
+
+- (void)clickRepostButtonByStatus:(Status *)status
+{
+    UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:NULL];
+    ComRepViewController * comRepViewController = [storyBoard instantiateViewControllerWithIdentifier:@"ComRepViewController"];
+    comRepViewController.currentStatus = status;
+    [self.navigationController pushViewController:comRepViewController animated:YES];
 }
 
 #warning castView分隔线 待完成

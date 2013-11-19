@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CastViewCell.h"
 
-@interface WXYCastViewController : UIViewController<UITableViewDataSource, UITableViewDelegate>
+@interface WXYCastViewController : UIViewController<UITableViewDataSource, UITableViewDelegate,CastViewCellDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
