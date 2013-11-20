@@ -15,6 +15,8 @@
 #import "UIImageView+MKNetworkKitAdditions.h"
 #import "NSNotificationCenter+Addition.h"
 #import "WXYSettingManager.h"
+#import "UIImage+ImageEffects.h"
+#import "ScreenShotHelper.h"
 
 #define contantHeight 110.0
 #define contentLabelLineSpace 6.0

@@ -145,6 +145,7 @@
 		51652DF31835D9A7004E4D30 /* UILabel+TextKitAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = 51652DF21835D9A7004E4D30 /* UILabel+TextKitAddition.m */; };
 		51652DF71835DA96004E4D30 /* UITextView+TextKitAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = 51652DF61835DA96004E4D30 /* UITextView+TextKitAddition.m */; };
 		5183B185182AA876008F22D1 /* CastViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5183B184182AA876008F22D1 /* CastViewCell.m */; };
+		51AACA90183D027100793547 /* ScreenShotHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 51AACA8F183D027100793547 /* ScreenShotHelper.m */; };
 		51F8FA28182E0F5C00E211AC /* TTTAttributedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 51F8FA27182E0F5C00E211AC /* TTTAttributedLabel.m */; };
 		51FBFDE718364CD100F2BFF2 /* CastRepostView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 51FBFDE618364CD100F2BFF2 /* CastRepostView.xib */; };
 		51FBFDEA18364CEC00F2BFF2 /* CastRepostView.m in Sources */ = {isa = PBXBuildFile; fileRef = 51FBFDE918364CEC00F2BFF2 /* CastRepostView.m */; };
@@ -345,6 +346,8 @@
 		51652DF61835DA96004E4D30 /* UITextView+TextKitAddition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextView+TextKitAddition.m"; sourceTree = "<group>"; };
 		5183B183182AA876008F22D1 /* CastViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CastViewCell.h; sourceTree = "<group>"; };
 		5183B184182AA876008F22D1 /* CastViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CastViewCell.m; sourceTree = "<group>"; };
+		51AACA8E183D027100793547 /* ScreenShotHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScreenShotHelper.h; sourceTree = "<group>"; };
+		51AACA8F183D027100793547 /* ScreenShotHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScreenShotHelper.m; sourceTree = "<group>"; };
 		51F8FA26182E0F5C00E211AC /* TTTAttributedLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTTAttributedLabel.h; sourceTree = "<group>"; };
 		51F8FA27182E0F5C00E211AC /* TTTAttributedLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTTAttributedLabel.m; sourceTree = "<group>"; };
 		51FBFDE618364CD100F2BFF2 /* CastRepostView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CastRepostView.xib; sourceTree = "<group>"; };
@@ -629,6 +632,8 @@
 				18B02D56182E0F6100D9AF04 /* GraphicName.h */,
 				51652DE81835AC13004E4D30 /* UITextViewHelper.h */,
 				51652DE91835AC13004E4D30 /* UITextViewHelper.m */,
+				51AACA8E183D027100793547 /* ScreenShotHelper.h */,
+				51AACA8F183D027100793547 /* ScreenShotHelper.m */,
 			);
 			path = other;
 			sourceTree = "<group>";
@@ -1144,6 +1149,7 @@
 				1868F1131829CE1400C5764D /* WXYMineViewController.m in Sources */,
 				185E88B1182AABF40020F3B2 /* Reachability.m in Sources */,
 				1868F1031829CD9700C5764D /* WXYCastViewController.m in Sources */,
+				51AACA90183D027100793547 /* ScreenShotHelper.m in Sources */,
 				18EED32D1815853E000856CE /* DispatchQueueLogFormatter.m in Sources */,
 				51F8FA28182E0F5C00E211AC /* TTTAttributedLabel.m in Sources */,
 				18411000181655EB008B700C /* WXYNetworkEngine.m in Sources */,
