@@ -12,10 +12,12 @@
 #import "WXYNetworkEngine.h"
 #import "CastViewCell.h"
 #import "ComRepCountCell.h"
+#import "ComReqDetailCell.h"
 
 #define contantHeight 108.0
 #define contentLabelLineSpace 6.0
 #define secondCommentCellHeight 25.0
+#define commentDetailCellcontantHeight 29.0
 
 @interface ComRepViewController ()
 
@@ -39,7 +41,8 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-
+    [self.view setTintColor:SHARE_SETTING_MANAGER.themeColor];
+    
     [self.view setBackgroundColor:SHARE_SETTING_MANAGER.themeColor];
     
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
@@ -76,8 +79,7 @@
 #pragma mark - UITableView DataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-//    return [self.commentArray count] + 2;
-    return 2;
+    return [self.commentArray count] + 2;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -90,7 +92,7 @@
         return secondCommentCellHeight;
     }
     else {
-        return [self commentCellHeightForRowAtIndex:[indexPath row] - 1];
+        return [self commentCellHeightForRowAtIndex:[indexPath row] - 2];
     }
 }
 
@@ -98,8 +100,8 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if ([indexPath row] == 0) {
-        static NSString* cellIdentifier = @"CastViewCell";
-        CastViewCell* cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+        static NSString * cellIdentifier = @"CastViewCell";
+        CastViewCell * cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
         if (cell == nil)
         {
             cell = [[CastViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
@@ -110,8 +112,8 @@
         return cell;
     }
     else if ([indexPath row] == 1){
-        static NSString* secondRowcellIdentifier = @"ComRepCountCell";
-        ComRepCountCell* cell = [tableView dequeueReusableCellWithIdentifier:secondRowcellIdentifier];
+        static NSString * secondRowcellIdentifier = @"ComRepCountCell";
+        ComRepCountCell * cell = [tableView dequeueReusableCellWithIdentifier:secondRowcellIdentifier];
         if (cell == nil)
         {
             cell = [[ComRepCountCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:secondRowcellIdentifier];
@@ -124,7 +126,16 @@
 
     }
     else {
-        return nil;
+        static NSString * comRepDetailCellIdentifier = @"ComRepDetailCell";
+        ComReqDetailCell * cell = [tableView dequeueReusableCellWithIdentifier:comRepDetailCellIdentifier];
+        if (cell == nil)
+        {
+            cell = [[ComReqDetailCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:comRepDetailCellIdentifier];
+        }
+        [cell setCellWithWeiboComment:(Comment * )[_commentArray objectAtIndex:[indexPath row] - 2]];
+        [self.view layoutIfNeeded];
+        
+        return cell;
     }
 
 }
@@ -167,7 +178,15 @@
 
 - (float)commentCellHeightForRowAtIndex:(NSInteger)row
 {
-    float cellHeight = 0.0;
+    float cellHeight = commentDetailCellcontantHeight;
+    Comment * currentComment = (Comment*)[_commentArray objectAtIndex:row];
+    NSMutableAttributedString * contentString = [UITextViewHelper setAttributeString:[[NSMutableAttributedString alloc]initWithString:currentComment.text]
+                                                                      WithNormalFont:SHARE_SETTING_MANAGER.castViewTableCellContentLabelFont
+                                                                         withUrlFont:SHARE_SETTING_MANAGER.castViewTableCellContentLabelFont
+                                                                     withNormalColor:SHARE_SETTING_MANAGER.castViewTableCellContentLabelTextColor
+                                                                        withUrlColor:SHARE_SETTING_MANAGER.themeColor
+                                                                  withLabelLineSpace:contentLabelLineSpace];
+    cellHeight += [UITextViewHelper HeightForAttributedString:contentString withWidth:254.0f];
     return cellHeight;
 }
 

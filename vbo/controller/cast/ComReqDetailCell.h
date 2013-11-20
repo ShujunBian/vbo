@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+@class Comment;
+
 @interface ComReqDetailCell : UITableViewCell
+
+- (void)setCellWithWeiboComment:(Comment *)comment;
 
 @end

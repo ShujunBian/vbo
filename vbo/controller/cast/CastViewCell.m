@@ -10,6 +10,7 @@
 #import "WXYNetworkEngine.h"
 #import "WXYSettingManager.h"
 #import "ComRepViewController.h"
+#import "NSDate+Addition.h"
 
 #define padding 5.0
 #define weiboImageHeight 106.0
@@ -111,6 +112,7 @@
     _weiboImage.contentMode = UIViewContentModeScaleAspectFill;
     _weiboImage.clipsToBounds = YES;
     
+    [_userAvator setImage:nil];
     [_userAvator setImageFromURLString:currentCellStatus.author.profileImageUrl
                       placeHolderImage:nil animation:YES completion:nil];
     _userAvator.layer.cornerRadius = 16.0;
@@ -120,6 +122,7 @@
     [_userNickname setTextColor:SHARE_SETTING_MANAGER.themeColor];
     
     [_currentTimeLabel setTextColor:SHARE_SETTING_MANAGER.castViewTableCellTimeLabelColor];
+    [_currentTimeLabel setText:[currentCellStatus.createdAt customString]];
     
     if (isInCastView) {
         [_likeTimesLabel setTextColor:SHARE_SETTING_MANAGER.themeColor];
@@ -154,6 +157,8 @@
         else {
             _reposetUserNameTopConstraint.constant = 27.0;
         }
+        [_repostUserNameLabel setText:currentCellStatus.repostStatus.author.name];
+        
         [_repostTextView setAttributedText:[self weiboContentLabelAttributedStringByStatus:currentCellStatus.repostStatus]];
         _repostTextViewHeightConstraint.constant = [UITextViewHelper HeightForAttributedString:_repostTextView.attributedText
                                                                                       withWidth:288.0];

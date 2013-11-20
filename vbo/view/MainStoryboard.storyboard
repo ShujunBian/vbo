@@ -137,13 +137,70 @@
                                             <outlet property="countsLabel" destination="ZhC-Gn-5eZ" id="icH-1a-U65"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="200" id="b8O-eh-4Vh">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ComRepDetailCell" rowHeight="200" id="b8O-eh-4Vh" customClass="ComReqDetailCell">
                                         <rect key="frame" x="0.0" y="48" width="320" height="200"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="b8O-eh-4Vh" id="zm6-1D-pfD">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="199"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ln7-do-pfl" userLabel="UserAvator">
+                                                    <rect key="frame" x="11" y="11" width="35" height="35"/>
+                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="35" id="DCD-KX-x2W"/>
+                                                        <constraint firstAttribute="height" constant="35" id="b9J-Cu-J5L"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Emerson" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hJo-Og-uQB">
+                                                    <rect key="frame" x="54" y="13" width="57" height="14"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="57" id="a9x-EW-bEH"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="今天 09:45" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JwX-U9-SyV">
+                                                    <rect key="frame" x="257" y="13" width="51" height="12"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="51" id="Gi2-jZ-tri"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="10"/>
+                                                    <color key="textColor" red="0.58823529411764708" green="0.58823529411764708" blue="0.58823529411764708" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="toX-xN-5tt" userLabel="CommentTextView">
+                                                    <rect key="frame" x="54" y="31" width="254" height="27"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="27" id="i3r-be-bbU"/>
+                                                    </constraints>
+                                                    <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                </textView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="toX-xN-5tt" firstAttribute="leading" secondItem="ln7-do-pfl" secondAttribute="trailing" constant="8" id="3wx-Jh-OKH"/>
+                                                <constraint firstItem="hJo-Og-uQB" firstAttribute="leading" secondItem="ln7-do-pfl" secondAttribute="trailing" constant="8" id="8Q0-eu-HfP"/>
+                                                <constraint firstAttribute="trailing" secondItem="JwX-U9-SyV" secondAttribute="trailing" constant="12" id="9WO-dZ-sH7"/>
+                                                <constraint firstItem="ln7-do-pfl" firstAttribute="top" secondItem="zm6-1D-pfD" secondAttribute="top" constant="11" id="L6d-Q8-QUw"/>
+                                                <constraint firstItem="ln7-do-pfl" firstAttribute="leading" secondItem="zm6-1D-pfD" secondAttribute="leading" constant="11" id="Sci-sH-AcM"/>
+                                                <constraint firstItem="toX-xN-5tt" firstAttribute="top" secondItem="hJo-Og-uQB" secondAttribute="bottom" constant="4" id="ZgM-YA-kkf"/>
+                                                <constraint firstItem="ln7-do-pfl" firstAttribute="top" secondItem="hJo-Og-uQB" secondAttribute="top" constant="-2" id="n88-OR-4wH"/>
+                                                <constraint firstAttribute="trailing" secondItem="toX-xN-5tt" secondAttribute="trailing" constant="12" id="uW8-8l-D46"/>
+                                                <constraint firstItem="JwX-U9-SyV" firstAttribute="top" secondItem="hJo-Og-uQB" secondAttribute="top" id="y8E-kG-Lil"/>
+                                            </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="commentTextView" destination="toX-xN-5tt" id="7cM-A4-Ngb"/>
+                                            <outlet property="commentTextViewHeightConstraint" destination="i3r-be-bbU" id="PXk-DG-ChK"/>
+                                            <outlet property="commentTimeLabel" destination="JwX-U9-SyV" id="E84-JC-BFX"/>
+                                            <outlet property="commentUserAvatorImageView" destination="ln7-do-pfl" id="lxu-lG-7fs"/>
+                                            <outlet property="commentUserNameLabel" destination="hJo-Og-uQB" id="3Sf-rc-Kyx"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
