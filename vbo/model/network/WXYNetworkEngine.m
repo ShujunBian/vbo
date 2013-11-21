@@ -32,6 +32,8 @@
 
 #import "WXYSettingManager.h"
 #import "WXYDataModel.h"
+#import "WXYLoginManager.h"
+
 
 @interface WXYNetworkDataFactory : NSObject
 + (Status*)getStatusWithDict:(NSDictionary*)dict;
@@ -119,6 +121,17 @@
 }
 
 #pragma mark - Network Service Client
+#pragma mark - 用户接口
+#pragma mark 用户登陆
+- (void)userLogin
+{
+    WBAuthorizeRequest *request = [WBAuthorizeRequest request];
+    request.redirectURI = WEIBO_REDIRECT_URI;
+    request.scope = @"all";
+    
+    [WeiboSDK sendRequest:request];
+}
+
 #pragma mark - 微博接口
 #pragma mark 读取
 - (MKNetworkOperation*)getHomeTimelineOfCurrentUserSucceed:(ArrayBlock)succeedBlock
@@ -548,5 +561,6 @@
     [user updateWithDict:dict];
     return user;
 }
+
 
 @end

@@ -9,6 +9,8 @@
 #import "MKNetworkKit.h"
 #import "WXYBlock.h"
 #import "WXYDataModel.h"
+#import "WeiboSDK.h"
+
 
 #define SHARE_NW_ENGINE [WXYNetworkEngine shareNetworkEngine]
 
@@ -21,10 +23,15 @@ typedef enum{
 
 
 
-@interface WXYNetworkEngine : MKNetworkEngine
+@interface WXYNetworkEngine : MKNetworkEngine <WeiboSDKDelegate>
 
 + (WXYNetworkEngine*)shareNetworkEngine;
 
+//////////////用户接口
+
+/*! 用户登陆，使用微博SDK，似乎要在controller上调用
+  */
+- (void)userLogin;
 
 ///////////////微博接口
 ////////读取
@@ -139,6 +146,8 @@ typedef enum{
                                          page:(int)page
                                       succeed:(ArrayBlock)succeedBlock
                                         error:(ErrorBlock)errorBlock;
+//写入
+
 
 
 @end

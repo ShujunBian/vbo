@@ -17,6 +17,10 @@
 		1841102918165875008B700C /* libstdc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 1841102818165875008B700C /* libstdc++.dylib */; };
 		1841102B1816587E008B700C /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 1841102A1816587E008B700C /* libsqlite3.dylib */; };
 		1841102D181658A9008B700C /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1841102C181658A9008B700C /* CoreData.framework */; };
+		184A0FAC183BACC30003E82E /* WXYLoginManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 184A0FAB183BACC30003E82E /* WXYLoginManager.m */; };
+		184A0FB0183BAE050003E82E /* LoginUserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 184A0FAF183BAE050003E82E /* LoginUserInfo.m */; };
+		184A0FB1183BAE050003E82E /* LoginUserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 184A0FAF183BAE050003E82E /* LoginUserInfo.m */; };
+		184A0FB3183BC6D70003E82E /* WXYLoginManagerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 184A0FB2183BC6D70003E82E /* WXYLoginManagerTest.m */; };
 		185E88A8182AABF40020F3B2 /* NSAlert+MKNetworkKitAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 185E888D182AABF40020F3B2 /* NSAlert+MKNetworkKitAdditions.m */; };
 		185E88A9182AABF40020F3B2 /* NSData+MKBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = 185E888F182AABF40020F3B2 /* NSData+MKBase64.m */; };
 		185E88AA182AABF40020F3B2 /* NSDate+RFC1123.m in Sources */ = {isa = PBXBuildFile; fileRef = 185E8891182AABF40020F3B2 /* NSDate+RFC1123.m */; };
@@ -184,6 +188,11 @@
 		1841102818165875008B700C /* libstdc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.dylib"; path = "usr/lib/libstdc++.dylib"; sourceTree = SDKROOT; };
 		1841102A1816587E008B700C /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		1841102C181658A9008B700C /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		184A0FAA183BACC30003E82E /* WXYLoginManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXYLoginManager.h; sourceTree = "<group>"; };
+		184A0FAB183BACC30003E82E /* WXYLoginManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXYLoginManager.m; sourceTree = "<group>"; };
+		184A0FAE183BAE050003E82E /* LoginUserInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginUserInfo.h; sourceTree = "<group>"; };
+		184A0FAF183BAE050003E82E /* LoginUserInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginUserInfo.m; sourceTree = "<group>"; };
+		184A0FB2183BC6D70003E82E /* WXYLoginManagerTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXYLoginManagerTest.m; sourceTree = "<group>"; };
 		185E888C182AABF40020F3B2 /* NSAlert+MKNetworkKitAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSAlert+MKNetworkKitAdditions.h"; sourceTree = "<group>"; };
 		185E888D182AABF40020F3B2 /* NSAlert+MKNetworkKitAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSAlert+MKNetworkKitAdditions.m"; sourceTree = "<group>"; };
 		185E888E182AABF40020F3B2 /* NSData+MKBase64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+MKBase64.h"; sourceTree = "<group>"; };
@@ -407,6 +416,8 @@
 				18410FFB18165589008B700C /* coredata */,
 				18EB09D7182B82F1005CC27D /* WXYDataModel.h */,
 				18EB09D8182B82F1005CC27D /* WXYDataModel.m */,
+				184A0FAA183BACC30003E82E /* WXYLoginManager.h */,
+				184A0FAB183BACC30003E82E /* WXYLoginManager.m */,
 			);
 			path = data;
 			sourceTree = "<group>";
@@ -667,6 +678,8 @@
 		18EB09D6182B82C9005CC27D /* beans */ = {
 			isa = PBXGroup;
 			children = (
+				184A0FAE183BAE050003E82E /* LoginUserInfo.h */,
+				184A0FAF183BAE050003E82E /* LoginUserInfo.m */,
 			);
 			path = beans;
 			sourceTree = "<group>";
@@ -889,6 +902,7 @@
 		515B0C1018082A9B0092BADB /* vboTests */ = {
 			isa = PBXGroup;
 			children = (
+				184A0FB2183BC6D70003E82E /* WXYLoginManagerTest.m */,
 				1808F45B1835382900829471 /* WXYGroupTest.m */,
 				18E790EB1834EF4E002B4785 /* WXYUserTest.m */,
 				18E790E71834E584002B4785 /* WXYStatusTest.m */,
@@ -1107,6 +1121,7 @@
 			files = (
 				18EB09E2182BAB37005CC27D /* User.m in Sources */,
 				4D78489E18314EB60025ADDA /* MHCPostViewController.m in Sources */,
+				184A0FAC183BACC30003E82E /* WXYLoginManager.m in Sources */,
 				1841100318165608008B700C /* WXYNetworkOperation.m in Sources */,
 				51652DEA1835AC13004E4D30 /* UITextViewHelper.m in Sources */,
 				51FBFDEA18364CEC00F2BFF2 /* CastRepostView.m in Sources */,
@@ -1127,6 +1142,7 @@
 				18EED3291815853E000856CE /* DDTTYLogger.m in Sources */,
 				1868F1331829DC1900C5764D /* WXYBlurTextView.m in Sources */,
 				51652DF31835D9A7004E4D30 /* UILabel+TextKitAddition.m in Sources */,
+				184A0FB0183BAE050003E82E /* LoginUserInfo.m in Sources */,
 				1868F0FC1829C8B200C5764D /* WXYRootNavViewController.m in Sources */,
 				185E88A9182AABF40020F3B2 /* NSData+MKBase64.m in Sources */,
 				18EED3251815853E000856CE /* DDFileLogger.m in Sources */,
@@ -1205,8 +1221,10 @@
 				18EB09C9182B7F30005CC27D /* WXYSettingManager.m in Sources */,
 				18EB09DA182B82F1005CC27D /* WXYDataModel.m in Sources */,
 				18EB09EC182BCFE2005CC27D /* WXYNetworkEngineTest.m in Sources */,
+				184A0FB3183BC6D70003E82E /* WXYLoginManagerTest.m in Sources */,
 				1868F0FD1829C8B200C5764D /* WXYRootNavViewController.m in Sources */,
 				188E68981829131600BE534D /* vboCachedDatamodel.xcdatamodeld in Sources */,
+				184A0FB1183BAE050003E82E /* LoginUserInfo.m in Sources */,
 				1868F1251829D7EA00C5764D /* WXYTabBar.m in Sources */,
 				1868F1041829CD9700C5764D /* WXYCastViewController.m in Sources */,
 				18A6A688182FF65C00D9FB7F /* WXYBarButtonAbstract.m in Sources */,
