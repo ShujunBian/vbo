@@ -34,7 +34,12 @@
     if (self)
     {
         self.translatesAutoresizingMaskIntoConstraints = NO;
-        self.blurTintColor = SHARE_SETTING_MANAGER.rootBarTintColor;
+        
+//        UIView * testView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 320, 64)];
+//        [testView setBackgroundColor:SHARE_SETTING_MANAGER.rootBarTintColor];
+//        [self addSubview:testView];
+        
+        self.blurTintColor = [UIColor clearColor];
         self.titleTextView = [[WXYBlurTextView alloc] init];
 
         [self addSubview:self.titleTextView];
@@ -47,6 +52,8 @@
         NSArray* hLayouts = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|[titleTextView]|" options:0 metrics:nil views:viewsDict];
         [self addConstraints:vLayouts];
         [self addConstraints:hLayouts];
+        
+        
     }
     return self;
 }

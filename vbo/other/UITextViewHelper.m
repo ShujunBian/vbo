@@ -69,7 +69,7 @@ static inline NSRegularExpression * EmotionIDRegularExpression() {
     NSMutableParagraphStyle *style = [[NSMutableParagraphStyle alloc] init];
     [style setLineSpacing:lineSpace];
     [style setLineBreakMode:NSLineBreakByWordWrapping];
-
+    
     NSDictionary* scriptAttributes = @{ NSFontAttributeName : normalFont,
                                         NSForegroundColorAttributeName : normalColor,
                                         NSParagraphStyleAttributeName : style
@@ -90,7 +90,9 @@ static inline NSRegularExpression * EmotionIDRegularExpression() {
                              options:0
                                range:stringRange
                           usingBlock:^(NSTextCheckingResult *result, NSMatchingFlags flags, BOOL *stop) {
-                              NSDictionary* nameLinkAttributeDic = @{NSLinkAttributeName: @"nameLink"};
+                              NSDictionary* nameLinkAttributeDic = @{
+                                                                     NSLinkAttributeName: [[[mutableAttributedString string] substringWithRange:result.range]stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]
+                                                                     };
                               [mutableAttributedString addAttributes:nameLinkAttributeDic range:result.range];
                           }];
     
@@ -99,20 +101,19 @@ static inline NSRegularExpression * EmotionIDRegularExpression() {
                              options:0
                                range:stringRange
                           usingBlock:^(NSTextCheckingResult *result, NSMatchingFlags flags, BOOL *stop) {
-                              NSDictionary* tagLinkAttributeDic = @{NSLinkAttributeName: @"tagLink"};
-                              [mutableAttributedString addAttributes:tagLinkAttributeDic range:result.range];
+                              NSDictionary* tagLinkAttributeDic = @{NSLinkAttributeName: [[[mutableAttributedString string] substringWithRange:result.range]stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]};                              [mutableAttributedString addAttributes:tagLinkAttributeDic range:result.range];
                           }];
-
+    
     regexp = UrlRegularExpression();
     [regexp enumerateMatchesInString:[mutableAttributedString string]
                              options:0
                                range:stringRange
                           usingBlock:^(NSTextCheckingResult *result, NSMatchingFlags flags, BOOL *stop) {
-                              NSDictionary* urlLinkAttributeDic = @{NSLinkAttributeName: @"urlLink"};
+                              NSDictionary* urlLinkAttributeDic = @{NSLinkAttributeName: [[[mutableAttributedString string] substringWithRange:result.range]stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]};
                               [mutableAttributedString addAttributes:urlLinkAttributeDic range:result.range];
                           }];
-
-
+    
+    
 }
 
 + (float)HeightForAttributedString:(NSAttributedString *)attributedString

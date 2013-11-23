@@ -26,7 +26,6 @@
 @property (nonatomic, weak) IBOutlet UIImageView * userAvator;
 
 @property (nonatomic, weak) IBOutlet UILabel * userNickname;
-@property (nonatomic, weak) IBOutlet UILabel * likeTimesLabel;
 @property (nonatomic, weak) IBOutlet UILabel * commentTimesLabel;
 @property (nonatomic, weak) IBOutlet UILabel * repostTimesLabel;
 @property (nonatomic, weak) IBOutlet UILabel * currentTimeLabel;
@@ -35,7 +34,7 @@
 
 @property (weak, nonatomic) IBOutlet UIView * cellBackgroundView;
 
-@property (nonatomic, weak) IBOutlet UIButton * likeButton;
+@property (nonatomic, weak) IBOutlet UIButton * moreButton;
 @property (nonatomic, weak) IBOutlet UIButton * commentButton;
 @property (nonatomic, weak) IBOutlet UIButton * repostButton;
 
@@ -125,7 +124,9 @@
     [_currentTimeLabel setText:[currentCellStatus.createdAt customString]];
     
     if (isInCastView) {
-        [_likeTimesLabel setTextColor:SHARE_SETTING_MANAGER.themeColor];
+        _moreButton.imageView.image = [_moreButton.imageView.image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+        [_moreButton.imageView setTintColor:SHARE_SETTING_MANAGER.themeColor];
+        
         [_commentTimesLabel setTextColor:SHARE_SETTING_MANAGER.themeColor];
         NSString * commentTimesString = [NSString stringWithFormat:@"%d",[currentCellStatus.commentsCount integerValue]];
         [_commentTimesLabel setText:commentTimesString];
@@ -134,8 +135,7 @@
         [_repostTimesLabel setText:repostTimesString];
     }
     else {
-        _likeButton.hidden = YES;
-        _likeTimesLabel.hidden = YES;
+        _moreButton.hidden = YES;
         _commentButton.hidden = YES;
         _commentTimesLabel.hidden = YES;
         _repostButton.hidden = YES;
@@ -214,10 +214,14 @@
 #pragma mark - textViewDelegate
 -(BOOL)textView:(UITextView *)textView shouldInteractWithURL:(NSURL *)URL inRange:(NSRange)characterRange
 {
+//    NSLog(@"THE URL IS %@ and The range is %d",URL,characterRange.length);
+    NSString * string = [URL.relativeString stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    NSLog(@"The URL is %@",string);
+        
     UIActionSheet * testActionSheet = [[UIActionSheet alloc]initWithTitle:@"Click URl"
                                                                  delegate:self
                                                         cancelButtonTitle:@"OK"
-                                                   destructiveButtonTitle:nil
+                                                    destructiveButtonTitle:nil
                                                         otherButtonTitles:nil];
     [testActionSheet showInView:self.superview];
 //    NSLayoutManager * layoutManger = _weiboContentTextView.layoutManager;
