@@ -44,18 +44,7 @@
 
 
 
-//-(void)modalPresentationMHWithoutScrollView{
-//    ModalViewControllerWithoutScrollView *modal = [self.storyboard instantiateViewControllerWithIdentifier:@"ModalViewControllerWithoutScrollView"];
-//    UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:modal];
-//    [self presentViewController:nav animated:YES completion:nil];
-//}
-//-(void)modalPresentationMH{
-//    ModalViewController *modal = [self.storyboard instantiateViewControllerWithIdentifier:@"ModalViewController"];
-//    UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:modal];
-//    [self presentViewController:nav animated:YES completion:^{
-//        
-//    }];
-//}
+
 
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
     return 10;
