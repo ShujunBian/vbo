@@ -7,25 +7,24 @@
 //
 
 #import "WXYCastViewController.h"
-#import "CastViewCell.h"
+#import "CastRepostView.h"
 #import "WXYNetworkEngine.h"
+#import "ComRepViewController.h"
 #import "Status.h"
 #import "User.h"
 #import "UIImageView+MKNetworkKitAdditions.h"
 #import "NSNotificationCenter+Addition.h"
-#import "TTTAttributedLabel.h"
 #import "WXYSettingManager.h"
+#import "UIImage+ImageEffects.h"
+#import "ScreenShotHelper.h"
 
-#define contantHeight 108.0
-#define weiboImageHeight 106.0
-#define weiboCellBetweenHeight 10.0
-#define contentLabelPadding 10.0
+#define contantHeight 110.0
 #define contentLabelLineSpace 6.0
 #define tableViewSeprateLine [UIColor colorWithRed:0.0/255.0 green:0.0/255.0 blue:0.0/255.0 alpha:1.0]
 
 @interface WXYCastViewController ()
 
-@property (strong, nonatomic) WXYNetworkEngine* engine;
+//@property (nonatomic, strong) UIDynamicAnimator *animator;
 @property (nonatomic, strong) NSArray * weiboContentArray;
 
 @end
@@ -45,20 +44,27 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-
+    
     UIView *bgview = [[UIView alloc]init];
-    [bgview setBackgroundColor:[WXYSettingManager shareSettingManager].themeColor];
+    [bgview setBackgroundColor:SHARE_SETTING_MANAGER.themeColor];
     [self.tableView setBackgroundView:bgview];
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
-    [self.tableView setTranslatesAutoresizingMaskIntoConstraints:NO];
+    //    [self.view setTranslatesAutoresizingMaskIntoConstraints:NO];
     [self fetchWeiboContent];
-
+    
+    UINib *castNib = [UINib nibWithNibName:@"CastViewCell" bundle:[NSBundle bundleForClass:[CastViewCell class]]];
+    [self.tableView registerNib:castNib forCellReuseIdentifier:@"CastViewCell"];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(preferredContentSizeChanged:)
+                                                 name:UIContentSizeCategoryDidChangeNotification
+                                               object:nil];
+    
 }
 
 - (void)fetchWeiboContent
 {
-    self.engine = SHARE_NW_ENGINE;
-    [self.engine getHomeTimelineOfCurrentUserSucceed:^(NSArray * resultArray){
+    [SHARE_NW_ENGINE getHomeTimelineOfCurrentUserSucceed:^(NSArray * resultArray){
         self.weiboContentArray = resultArray;
         [self.tableView reloadData];
         [NSNotificationCenter postDidFetchCurrentUserNameNotification];
@@ -68,7 +74,6 @@
 - (void)viewDidLayoutSubviews
 {
     [super viewDidLayoutSubviews];
-    self.tableView.backgroundColor = [UIColor blackColor];
 }
 
 - (void)didReceiveMemoryWarning
@@ -88,9 +93,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-
-    
-//    NSLog(@"the %ld cell height of cell is %f",(long)[indexPath row],cellHeight);
+    //    NSLog(@"the %ld cell height of cell is %f",(long)[indexPath row],cellHeight);
     
     return [self cellHeightForRowAtIndex:[indexPath row]];
 }
@@ -98,50 +101,28 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString* cellIdentifier = @"castViewCell";
+    Status * currentCellStatus = [_weiboContentArray objectAtIndex:[indexPath row]];
+    static NSString* cellIdentifier = @"CastViewCell";
     CastViewCell* cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    cell.delegateForCastViewCell = self;
     if (cell == nil)
     {
         cell = [[CastViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
-    [cell.cellBackgroundView setBackgroundColor:[WXYSettingManager shareSettingManager].castViewTableCellBackgroundColor];
-
-    Status * currentCellStatus = [_weiboContentArray objectAtIndex:[indexPath row]];
-//    [cell.weiboContentLabel setBackgroundColor:[UIColor greenColor]];
-    [cell.weiboContentLabel setAttributedText:[self weiboContentLabelAttributedStringAtIndex:[indexPath row]]];
-    [cell.weiboContentLabel setFont:[WXYSettingManager shareSettingManager].castViewTableCellContentLabelFont];
-    cell.contentLabelHeight.constant = [self cellContentHeightForRowAtIndex:[indexPath row]];
-//    cell.weiboContentLabel.leading = 10.0;
-    
-    if (currentCellStatus.bmiddlePicURL != nil) {
-        cell.avatorTopSpaceConstaint.constant = weiboImageHeight + weiboCellBetweenHeight;
-    }
-    else {
-        cell.avatorTopSpaceConstaint.constant = weiboCellBetweenHeight;
-    }
-//    NSLog(@"the %ld cell height of constant is %f",(long)[indexPath row],cell.avatorTopSpaceConstaint.constant);
-    
-    [cell.weiboImage setImage:nil];
-    NSURL *anImageURL = [NSURL URLWithString:currentCellStatus.bmiddlePicURL];
-    [cell.weiboImage setImageFromURL:anImageURL placeHolderImage:nil animation:YES completion:nil];
-    cell.weiboImage.contentMode = UIViewContentModeScaleAspectFill;
-    cell.weiboImage.clipsToBounds = YES;
-    
-    [cell.userAvator setImageFromURLString:currentCellStatus.author.profileImageUrl
-                          placeHolderImage:nil animation:YES completion:nil];
-    cell.userAvator.layer.cornerRadius = 16.0;
-    cell.userAvator.layer.masksToBounds = YES;
-    
-    [cell.userNickname setText:currentCellStatus.author.screenName];
-    
+    [cell setCellWithWeiboStatus:currentCellStatus isInCastView:YES];
     [self.view layoutIfNeeded];
+    
+    //    if (!_animator) {
+    //        _animator = [[UIDynamicAnimator alloc]initWithReferenceView:self.view];
+    //    }
+    
     return cell;
 }
 #pragma mark - UITableView Delegate
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     cell.backgroundColor = [UIColor clearColor];
-
+    
     UIView *normalView = [[UIView alloc]init];
     [normalView setBackgroundColor:[UIColor clearColor]];
     cell.backgroundView = normalView;
@@ -149,7 +130,6 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [tableView deselectRowAtIndexPath:indexPath animated:NO];
 }
 
 #pragma mark - UIScrollView Delegate
@@ -171,37 +151,41 @@
     if (currentCellStatus.bmiddlePicURL != nil) {
         cellHeight += 106.0;
     }
-    cellHeight += [self cellContentHeightForRowAtIndex:row];
+    NSMutableAttributedString * contentString = [UITextViewHelper setAttributeString:[[NSMutableAttributedString alloc]initWithString:currentCellStatus.text]
+                                                                      WithNormalFont:SHARE_SETTING_MANAGER.castViewTableCellContentLabelFont
+                                                                         withUrlFont:SHARE_SETTING_MANAGER.castViewTableCellContentLabelFont
+                                                                     withNormalColor:SHARE_SETTING_MANAGER.castViewTableCellContentLabelTextColor
+                                                                        withUrlColor:SHARE_SETTING_MANAGER.themeColor
+                                                                  withLabelLineSpace:contentLabelLineSpace];
+    cellHeight += [UITextViewHelper HeightForAttributedString:contentString withWidth:288.0f];
+    
+    if (currentCellStatus.repostStatus != nil) {
+        cellHeight += [CastViewCell getHeightofCastRepostViewByStatus:currentCellStatus.repostStatus] + 10.0 + 10.0;
+    }
+    
     return cellHeight;
 }
 
-- (float)cellContentHeightForRowAtIndex:(NSInteger)row
+- (void)preferredContentSizeChanged:(NSNotification *)notification
 {
-    CTFramesetterRef framesetter = CTFramesetterCreateWithAttributedString((CFMutableAttributedStringRef)[self weiboContentLabelAttributedStringAtIndex:row]);
-    CFRange fitRange;
-    CFRange textRange = CFRangeMake(0, [self weiboContentLabelAttributedStringAtIndex:row].length);
-    CGSize frameSize = CTFramesetterSuggestFrameSizeWithConstraints(framesetter, textRange, NULL, CGSizeMake(288, CGFLOAT_MAX), &fitRange);
-    CFRelease(framesetter);
-    
-    return frameSize.height + contentLabelPadding;
+    [self.tableView reloadData];
 }
 
-- (NSAttributedString *)weiboContentLabelAttributedStringAtIndex:(NSInteger)row
+#pragma mark - CastViewCellDelegate
+- (void)clickCommentButtonByStatus:(Status *)status
 {
-    Status * currentCellStatus = [_weiboContentArray objectAtIndex:row];
-    NSMutableAttributedString * contentString = [[NSMutableAttributedString alloc]initWithString:currentCellStatus.text];
-    [contentString addAttribute:NSFontAttributeName
-                          value:[WXYSettingManager shareSettingManager].castViewTableCellContentLabelFont
-                          range:NSMakeRange(0, contentString.length)];
-    
-    NSMutableParagraphStyle *style = [[NSMutableParagraphStyle alloc] init];
-    [style setLineSpacing:contentLabelLineSpace];
-    [style setLineBreakMode:NSLineBreakByWordWrapping];
-    [contentString addAttribute:NSParagraphStyleAttributeName
-                          value:style
-                          range:NSMakeRange(0, contentString.length)];
-    
-    return contentString;
+    UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:NULL];
+    ComRepViewController * comRepViewController = [storyBoard instantiateViewControllerWithIdentifier:@"ComRepViewController"];
+    comRepViewController.currentStatus = status;
+    [self.navigationController pushViewController:comRepViewController animated:YES];
+}
+
+- (void)clickRepostButtonByStatus:(Status *)status
+{
+    UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:NULL];
+    ComRepViewController * comRepViewController = [storyBoard instantiateViewControllerWithIdentifier:@"ComRepViewController"];
+    comRepViewController.currentStatus = status;
+    [self.navigationController pushViewController:comRepViewController animated:YES];
 }
 
 #warning castView分隔线 待完成
@@ -220,5 +204,17 @@
     UIImageView * nnView = [[UIImageView alloc]initWithImage:newPic];
     [nnView setFrame:CGRectMake(0.0, height, 320.0, 5.0)];
     [cell addSubview:nnView];
+}
+
+- (void)viewDidUnload
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    
+    [super viewDidUnload];
+}
+
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 @end

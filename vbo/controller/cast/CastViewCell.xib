@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="4510" systemVersion="12F45" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3742"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CastViewCell" rowHeight="400" id="Nog-k7-dMn" customClass="CastViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="400"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Nog-k7-dMn" id="Bau-FJ-4Gl">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="399"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="K0U-d1-WnY" userLabel="backgroundView">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="394"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="320" id="Tsw-n9-NHM"/>
+                        </constraints>
+                    </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ziw-tH-Akl" userLabel="RepostBackgroundView">
+                        <rect key="frame" x="0.0" y="192" width="320" height="149"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="149" id="Ouo-oO-iqe"/>
+                            <constraint firstAttribute="width" constant="320" id="v8Q-Lc-bfG"/>
+                        </constraints>
+                    </view>
+                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cMg-Mz-mvZ" userLabel="RepostTextView">
+                        <rect key="frame" x="16" y="321" width="288" height="20"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="288" id="4bQ-Zw-B67"/>
+                            <constraint firstAttribute="height" constant="20" id="lAB-5H-cO6"/>
+                        </constraints>
+                        <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                    </textView>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Emersonwade" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eS8-5X-Ar2">
+                        <rect key="frame" x="16" y="300" width="82" height="14"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <constraints>
+                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="82" id="oaM-2f-tXt"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
+                        <color key="textColor" red="0.58823529411764708" green="0.58823529411764708" blue="0.58823529411764708" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1Zl-Kn-KmJ" userLabel="RepostImageView">
+                        <rect key="frame" x="16" y="192" width="288" height="98"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="288" id="6pR-Bf-5r0"/>
+                            <constraint firstAttribute="height" constant="98" id="iKk-5o-LmQ"/>
+                        </constraints>
+                    </imageView>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="kLw-c9-YN2" userLabel="WeiboImage">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="106"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="320" id="VdJ-f8-YH9"/>
+                            <constraint firstAttribute="height" constant="106" id="fJk-wz-3Go"/>
+                        </constraints>
+                    </imageView>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xwt-Va-4Nu" userLabel="AvatorImage">
+                        <rect key="frame" x="10" y="116" width="32" height="32"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="32" id="g3V-mu-wYy"/>
+                            <constraint firstAttribute="height" constant="32" id="ljD-dh-bs5"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ProMag" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bv6-c1-8eL">
+                        <rect key="frame" x="51" y="125" width="47" height="14"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <constraints>
+                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="47" id="xG1-ux-mAu"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="今日 09:45" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gJJ-Gk-MD6">
+                        <rect key="frame" x="252" y="126" width="50" height="12"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <constraints>
+                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="50" id="Wvw-EH-Whb"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="10"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="17" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sBg-Hb-VAm" userLabel="CommentTimesLabel">
+                        <rect key="frame" x="44" y="357" width="42" height="18"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <constraints>
+                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="42" id="J16-lg-Avp"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="15"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="186" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hvg-h3-G03" userLabel="RepostTimesLaebl">
+                        <rect key="frame" x="179" y="357" width="42" height="18"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <constraints>
+                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="42" id="WiZ-o6-FNF"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="15"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wKb-IR-68c" userLabel="commentButton">
+                        <rect key="frame" x="3" y="344" width="44" height="44"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="44" id="8Pj-XK-kv1"/>
+                            <constraint firstAttribute="width" constant="44" id="Tab-Yu-8lt"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <state key="normal" image="castView_comment_button">
+                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
+                        <connections>
+                            <action selector="clickCommentButton:" destination="Nog-k7-dMn" eventType="touchUpInside" id="QbT-v1-Nh7"/>
+                        </connections>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qnp-4R-bip" userLabel="repostButton">
+                        <rect key="frame" x="138" y="344" width="44" height="44"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="44" id="Lff-bo-xsB"/>
+                            <constraint firstAttribute="height" constant="44" id="ySc-Gj-CRO"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <state key="normal" image="castView_repost_button">
+                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
+                        <connections>
+                            <action selector="clickRepostButton:" destination="Nog-k7-dMn" eventType="touchUpInside" id="KyC-Kr-qLO"/>
+                        </connections>
+                    </button>
+                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mbk-o2-xuG">
+                        <rect key="frame" x="16" y="160" width="288" height="20"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="20" id="hQs-mf-XYc"/>
+                        </constraints>
+                        <string key="text">Y5 椅子设计，这款 Y5 椅子是由芬兰设计师 Sami Kallio 设计的，这款椅子的特点在于它的后背是由 5 个倒立的“Y”及一个却又弯曲的光滑靠背组成。这五个倒立的“Y”形态，相似却不完全相同，交错着排在一起，重复却不单调，很好的把握了设计美的节奏和韵律。</string>
+                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="16"/>
+                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                    </textView>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QeE-JZ-r3y">
+                        <rect key="frame" x="271" y="344" width="44" height="44"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="44" id="3x9-u7-S3h"/>
+                            <constraint firstAttribute="width" constant="44" id="OD5-0j-jn3"/>
+                        </constraints>
+                        <state key="normal" image="castView_more_button">
+                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="wKb-IR-68c" firstAttribute="leading" secondItem="Bau-FJ-4Gl" secondAttribute="leading" constant="3" id="06K-O3-pgU"/>
+                    <constraint firstItem="Qnp-4R-bip" firstAttribute="top" secondItem="mbk-o2-xuG" secondAttribute="bottom" constant="164" id="2XJ-vO-iG2"/>
+                    <constraint firstItem="hvg-h3-G03" firstAttribute="leading" secondItem="Qnp-4R-bip" secondAttribute="trailing" constant="-3" id="2oK-Hn-vVS"/>
+                    <constraint firstAttribute="trailing" secondItem="mbk-o2-xuG" secondAttribute="trailing" constant="16" id="3Pq-MB-Zf5"/>
+                    <constraint firstItem="mbk-o2-xuG" firstAttribute="leading" secondItem="Bau-FJ-4Gl" secondAttribute="leading" constant="16" id="3Vu-fb-WMU"/>
+                    <constraint firstItem="wKb-IR-68c" firstAttribute="centerY" secondItem="sBg-Hb-VAm" secondAttribute="centerY" id="6hi-HG-qVK"/>
+                    <constraint firstItem="gJJ-Gk-MD6" firstAttribute="centerY" secondItem="xwt-Va-4Nu" secondAttribute="centerY" id="AKL-mB-jYW"/>
+                    <constraint firstItem="xwt-Va-4Nu" firstAttribute="top" secondItem="Bau-FJ-4Gl" secondAttribute="top" constant="116" id="BTx-oO-BJ9"/>
+                    <constraint firstItem="Bv6-c1-8eL" firstAttribute="centerY" secondItem="xwt-Va-4Nu" secondAttribute="centerY" id="BUs-gW-ZbD"/>
+                    <constraint firstItem="wKb-IR-68c" firstAttribute="centerY" secondItem="hvg-h3-G03" secondAttribute="centerY" id="GUA-ZM-rl3"/>
+                    <constraint firstItem="wKb-IR-68c" firstAttribute="centerY" secondItem="Qnp-4R-bip" secondAttribute="centerY" id="KQM-IA-1zD"/>
+                    <constraint firstItem="eS8-5X-Ar2" firstAttribute="top" secondItem="mbk-o2-xuG" secondAttribute="bottom" constant="120" id="LQs-Hz-yyk"/>
+                    <constraint firstItem="kLw-c9-YN2" firstAttribute="leading" secondItem="Bau-FJ-4Gl" secondAttribute="leading" id="Qhx-aD-boM"/>
+                    <constraint firstItem="Qnp-4R-bip" firstAttribute="centerY" secondItem="QeE-JZ-r3y" secondAttribute="centerY" id="Vxn-GG-C2G"/>
+                    <constraint firstItem="cMg-Mz-mvZ" firstAttribute="top" secondItem="eS8-5X-Ar2" secondAttribute="bottom" constant="7" id="WDY-it-EEx"/>
+                    <constraint firstItem="cMg-Mz-mvZ" firstAttribute="centerX" secondItem="1Zl-Kn-KmJ" secondAttribute="centerX" id="WXV-bR-XVb"/>
+                    <constraint firstItem="Bv6-c1-8eL" firstAttribute="leading" secondItem="xwt-Va-4Nu" secondAttribute="trailing" constant="9" id="Xtf-nd-phd"/>
+                    <constraint firstAttribute="trailing" secondItem="gJJ-Gk-MD6" secondAttribute="trailing" constant="18" id="aHH-Gj-RSf"/>
+                    <constraint firstItem="gJJ-Gk-MD6" firstAttribute="centerY" secondItem="Bv6-c1-8eL" secondAttribute="centerY" id="b8I-5Q-Qfw"/>
+                    <constraint firstItem="1Zl-Kn-KmJ" firstAttribute="centerX" secondItem="mbk-o2-xuG" secondAttribute="centerX" id="bOI-0z-9r2"/>
+                    <constraint firstAttribute="bottom" secondItem="K0U-d1-WnY" secondAttribute="bottom" constant="5" id="dH6-za-jYM"/>
+                    <constraint firstItem="K0U-d1-WnY" firstAttribute="leading" secondItem="Bau-FJ-4Gl" secondAttribute="leading" id="e8t-3s-cvQ"/>
+                    <constraint firstItem="sBg-Hb-VAm" firstAttribute="leading" secondItem="wKb-IR-68c" secondAttribute="trailing" constant="-3" id="enF-GQ-E9X"/>
+                    <constraint firstItem="mbk-o2-xuG" firstAttribute="top" secondItem="xwt-Va-4Nu" secondAttribute="bottom" constant="12" id="hFy-24-sKt"/>
+                    <constraint firstItem="K0U-d1-WnY" firstAttribute="top" secondItem="Bau-FJ-4Gl" secondAttribute="top" id="hhS-MK-Dl3"/>
+                    <constraint firstItem="1Zl-Kn-KmJ" firstAttribute="top" secondItem="mbk-o2-xuG" secondAttribute="bottom" constant="12" id="k08-BI-BY7"/>
+                    <constraint firstItem="Qnp-4R-bip" firstAttribute="leading" secondItem="wKb-IR-68c" secondAttribute="trailing" constant="91" id="oKH-L8-sJX"/>
+                    <constraint firstItem="Ziw-tH-Akl" firstAttribute="centerX" secondItem="1Zl-Kn-KmJ" secondAttribute="centerX" id="pCN-As-EF2"/>
+                    <constraint firstAttribute="trailing" secondItem="QeE-JZ-r3y" secondAttribute="trailing" constant="5" id="svj-gz-LHf"/>
+                    <constraint firstItem="1Zl-Kn-KmJ" firstAttribute="leading" secondItem="eS8-5X-Ar2" secondAttribute="leading" id="uhZ-34-tbA"/>
+                    <constraint firstItem="Ziw-tH-Akl" firstAttribute="top" secondItem="1Zl-Kn-KmJ" secondAttribute="top" id="xpV-zh-c9Z"/>
+                    <constraint firstItem="kLw-c9-YN2" firstAttribute="top" secondItem="Bau-FJ-4Gl" secondAttribute="top" id="yy5-2r-Jqo"/>
+                    <constraint firstItem="xwt-Va-4Nu" firstAttribute="leading" secondItem="Bau-FJ-4Gl" secondAttribute="leading" constant="10" id="zOv-9x-r2F"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="avatorTopSpaceConstaint" destination="BTx-oO-BJ9" id="zlb-Pw-pD3"/>
+                <outlet property="cellBackgroundView" destination="K0U-d1-WnY" id="iKS-VB-BWY"/>
+                <outlet property="commentButton" destination="wKb-IR-68c" id="W8b-RP-Vy2"/>
+                <outlet property="commentTimesLabel" destination="sBg-Hb-VAm" id="GAy-fK-Zho"/>
+                <outlet property="contentTextViewHegihtConstraint" destination="hQs-mf-XYc" id="IVi-cb-ZFm"/>
+                <outlet property="currentTimeLabel" destination="gJJ-Gk-MD6" id="fUp-WF-lF1"/>
+                <outlet property="moreButton" destination="QeE-JZ-r3y" id="xTm-gM-3F4"/>
+                <outlet property="reposetUserNameTopConstraint" destination="LQs-Hz-yyk" id="eoP-he-nO7"/>
+                <outlet property="repostBackgroundView" destination="Ziw-tH-Akl" id="wgC-W5-rdb"/>
+                <outlet property="repostBackgroundViewConstraint" destination="Ouo-oO-iqe" id="261-kH-txF"/>
+                <outlet property="repostButton" destination="Qnp-4R-bip" id="HoJ-1T-nB7"/>
+                <outlet property="repostButtonTopConstraint" destination="2XJ-vO-iG2" id="cne-2n-QkB"/>
+                <outlet property="repostImageView" destination="1Zl-Kn-KmJ" id="Wnj-qM-oPW"/>
+                <outlet property="repostTextView" destination="cMg-Mz-mvZ" id="KUw-i8-asc"/>
+                <outlet property="repostTextViewHeightConstraint" destination="lAB-5H-cO6" id="4Kw-WL-Uag"/>
+                <outlet property="repostTimesLabel" destination="hvg-h3-G03" id="G6E-z5-2wo"/>
+                <outlet property="repostUserNameLabel" destination="eS8-5X-Ar2" id="MDA-Zm-u1Y"/>
+                <outlet property="userAvator" destination="xwt-Va-4Nu" id="Le1-Yk-qfu"/>
+                <outlet property="userNickname" destination="Bv6-c1-8eL" id="uQo-yY-CxE"/>
+                <outlet property="weiboContentTextView" destination="mbk-o2-xuG" id="s8E-SI-W84"/>
+                <outlet property="weiboImage" destination="kLw-c9-YN2" id="p53-GN-2m0"/>
+            </connections>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="castView_comment_button" width="44" height="44"/>
+        <image name="castView_more_button" width="44" height="44"/>
+        <image name="castView_repost_button" width="44" height="44"/>
+    </resources>
+</document>

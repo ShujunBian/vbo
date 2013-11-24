@@ -84,7 +84,6 @@
             UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:testViewController];
             
             [self presentViewController:nav animated:YES completion:nil];
-            
             break;
         }
         case WXYTabBarButtonTypeWeibo:

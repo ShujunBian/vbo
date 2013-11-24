@@ -43,6 +43,9 @@
 @property (nonatomic, retain) NSNumber * biFollowersCount;
 @property (nonatomic, retain) NSSet *statuses;
 @property (nonatomic, retain) NSSet *comments;
+@property (nonatomic, retain) NSSet *ownGroups;
+@property (nonatomic, retain) NSSet *groups;    //此属性仅作为group的users属性的相反属性，不使用
+
 @end
 
 @interface User (CoreDataGeneratedAccessors)

@@ -9,21 +9,32 @@
 #import <UIKit/UIKit.h>
 
 @class TTTAttributedLabel;
+@class Status;
+
+@protocol CastViewCellDelegate <NSObject>
+
+@optional
+- (void)clickCommentButtonByStatus:(Status *)status;
+- (void)clickRepostButtonByStatus:(Status *)status;
+
+@end
 
 @interface CastViewCell : UITableViewCell
 
-@property (nonatomic,weak) IBOutlet UIImageView * weiboImage;
-@property (nonatomic,weak) IBOutlet UIImageView * userAvator;
+/*! 通过微博Status设置CastViewCell
+ * \param currentCellStatus 该Cell对应的微博Status
+ * \param isInCastView 该Cell是否在CastView中（即是否显示转发，评论等按钮）
+ */
 
-@property (nonatomic,weak) IBOutlet UILabel * userNickname;
-@property (nonatomic,weak) IBOutlet TTTAttributedLabel * weiboContentLabel;
-@property (nonatomic,weak) IBOutlet UILabel * likeTimesLabel;
-@property (nonatomic,weak) IBOutlet UILabel * commentTimesLabel;
-@property (nonatomic,weak) IBOutlet UILabel * repostTimesLabel;
+- (void)setCellWithWeiboStatus:(Status *)currentCellStatus
+                  isInCastView:(BOOL)isInCastView;
 
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint * avatorTopSpaceConstaint;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint * contentLabelHeight;
+/*! 获得转发的View的高度
+ * \param status 转发的status内容
+ */
 
-@property (weak, nonatomic) IBOutlet UIView * cellBackgroundView;
++ (float)getHeightofCastRepostViewByStatus:(Status *) status;
+
+@property (nonatomic, weak) id<CastViewCellDelegate> delegateForCastViewCell;
 
 @end

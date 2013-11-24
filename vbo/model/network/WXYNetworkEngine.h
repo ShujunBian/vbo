@@ -9,6 +9,8 @@
 #import "MKNetworkKit.h"
 #import "WXYBlock.h"
 #import "WXYDataModel.h"
+#import "WeiboSDK.h"
+
 
 #define SHARE_NW_ENGINE [WXYNetworkEngine shareNetworkEngine]
 
@@ -21,10 +23,15 @@ typedef enum{
 
 
 
-@interface WXYNetworkEngine : MKNetworkEngine
+@interface WXYNetworkEngine : MKNetworkEngine <WeiboSDKDelegate>
 
 + (WXYNetworkEngine*)shareNetworkEngine;
 
+//////////////用户接口
+
+/*! 用户登陆，使用微博SDK，似乎要在controller上调用
+  */
+- (void)userLogin;
 
 ///////////////微博接口
 ////////读取
@@ -68,12 +75,21 @@ typedef enum{
                            succeed:(StatusBlock)succeedBlock
                              error:(ErrorBlock)errorBlock;
 
+/*! 删除微博
+ * \param weiboId 删除微博的id
+ * \param succeedBlock 网络请求成功处理block
+ * \param errorBlock 网络请求失败处理block
+ */
+- (MKNetworkOperation*)destroyWeibo:(NSNumber*)weiboId
+                            succeed:(VoidBlock)succeedBlock
+                              error:(ErrorBlock)errorBlock;
 
 //////////////评论接口
 //////读取
+
 /*!获取某条微博的评论列表，每页50条评论
  * \param weiboId 要获取评论的微博Id
- * \param page 评论页码
+ * \param page 评论页码，从1开始
  * \param succeedBlock 网络请求成功处理block，array内容为Comment
  * \param errorBlock 网络请求失败处理block
  * \return 当前网络请求Operation
@@ -84,6 +100,54 @@ typedef enum{
                                     error:(ErrorBlock)errorBlock;
 
 ///////写入
+
+/*!评论微博
+ * \param weiboId 要评论的微博Id
+ * \param content 评论内容
+ * \param succeedBlock 网络请求成功处理block
+ * \param errorBlock 网络请求失败处理block
+ * \return 当前网络请求Operation
+ */
+- (MKNetworkOperation*)createCommentOfWeibo:(NSNumber*)weiboId
+                                    content:(NSString*)content
+                            commentOnOrigin:(BOOL)fOrigin
+                                    succeed:(CommentBlock)succeedBlock
+                                      error:(ErrorBlock)errorBlock;
+
+/////////分组
+///////读取
+
+/*!读取当前用户分组列表
+ * \param succeedBlock block参数array内容为Group
+ * \param errorBlock 网络请求失败处理block
+ * \return 当前网络请求Operation
+ */
+- (MKNetworkOperation*)getGroupListSucceed:(ArrayBlock)succeedBlock
+                                     error:(ErrorBlock)errorBlock;
+
+/*!读取分组用户列表
+ * \param groupId 分组id
+ * \param cursor 页码游标，默认为0
+ * \param succeedBlock group为当前获取的分组, previousCursor与 nextCursor为上、下页游标，用于下次请求
+ * \param errorBlock 错误处理block
+ * \return 当前网络请求Operation
+ */
+- (MKNetworkOperation*)getGroupMemberListById:(NSNumber*)groupId
+                                       cursor:(NSNumber*)cursor
+                                      succeed:(GroupWithCursorBlock)succeedBlock
+                                        error:(ErrorBlock)errorBlock;
+/*!读取分组微博列表
+ * \param groupId 分组id
+ * \param page 页码,从1开始
+ * \param SucceedBlock 成功处理block,array内容为Status
+ * \param errorBlock 错误处理block
+ */
+- (MKNetworkOperation*)getGroupStatusListById:(NSNumber*)groupId
+                                         page:(int)page
+                                      succeed:(ArrayBlock)succeedBlock
+                                        error:(ErrorBlock)errorBlock;
+//写入
+
 
 
 @end

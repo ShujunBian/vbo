@@ -57,21 +57,7 @@
 {
     if (self.snapShotView)
     {
-//        UIImage* snapShotImage = [self captureView:self.snapShotView frame:self.frame];
-//        snapShotImage = [snapShotImage applyExtraLightEffect];
-//        self.layer.contents = snapShotImage;
-
-        [self setNeedsDisplay];
-//        self.backgroundColor = [UIColor clearColor];
-//        
-//        UIGraphicsBeginImageContext(self.frame.size); //currentView 当前的view
-//        [self.superview.superview.layer renderInContext:UIGraphicsGetCurrentContext()];
-//        UIImage *snapShotImage = UIGraphicsGetImageFromCurrentImageContext();
-//        UIGraphicsEndImageContext();
-//        
-//        //    UIImage* snapShotImage = [UIImage imageNamed:@"test.png"];
-//        //    snapShotImage = [snapShotImage applyLightEffect];
-//        self.layer.contents = (__bridge id)(snapShotImage.CGImage);
+//        [self setNeedsDisplay];
     }
 }
 
@@ -96,28 +82,25 @@
         [self.snapShotView.layer renderInContext:UIGraphicsGetCurrentContext()];
         UIImage *snapShotImage = UIGraphicsGetImageFromCurrentImageContext();
         UIGraphicsEndImageContext();
-        [snapShotImage applyExtraLightEffect];
-        //    UIImage* snapShotImage = [UIImage imageNamed:@"test.png"];
-        //    snapShotImage = [snapShotImage applyLightEffect];
+        [snapShotImage applyLightEffect];
         [snapShotImage drawAtPoint:CGPointZero];
-//        self.layer.contents = (__bridge id)(snapShotImage.CGImage);
     }
 
 }
-- (UIImage *)captureView:(UIView *)view frame:(CGRect)rect
-{
-    CGRect screenRect = rect;
-    UIGraphicsBeginImageContext(screenRect.size);
-    CGContextRef ctx = UIGraphicsGetCurrentContext();
-    [[UIColor blackColor] set];
-    CGContextFillRect(ctx, screenRect);
-    [view.layer renderInContext:ctx];
-    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    ctx = nil;
-    
-    return newImage;
-}
+//- (UIImage *)captureView:(UIView *)view frame:(CGRect)rect
+//{
+//    CGRect screenRect = rect;
+//    UIGraphicsBeginImageContext(screenRect.size);
+//    CGContextRef ctx = UIGraphicsGetCurrentContext();
+//    [[UIColor blackColor] set];
+//    CGContextFillRect(ctx, screenRect);
+//    [view.layer renderInContext:ctx];
+//    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
+//    UIGraphicsEndImageContext();
+//    ctx = nil;
+//    
+//    return newImage;
+//}
 
 
 @end

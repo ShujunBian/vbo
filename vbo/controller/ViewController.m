@@ -8,7 +8,6 @@
 
 #import "ViewController.h"
 
-//iasdfiasdfiasdfi
 
 @interface ViewController ()
 
@@ -20,6 +19,11 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+}
+
+- (void)viewDidLayoutSubviews
+{
+    [super viewDidLayoutSubviews];
 }
 
 - (void)didReceiveMemoryWarning

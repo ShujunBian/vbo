@@ -37,6 +37,7 @@
 @dynamic pictures;
 @dynamic repostedBy;
 @dynamic repostStatus;
+@dynamic groups;
 
 
 + (Status*)insertWithId:(NSNumber*)sId InContext:(NSManagedObjectContext*)context

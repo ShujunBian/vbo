@@ -34,6 +34,8 @@
 @synthesize themeColorType = _themeColorType;
 @synthesize themeColor = _themeColor;
 @synthesize castViewTableCellBackgroundColor = _castViewTableCellBackgroundColor;
+@synthesize castViewTableCellContentLabelTextColor = _castViewTableCellContentLabelTextColor;
+@synthesize castViewTableCellTimeLabelColor = _castViewTableCellTimeLabelColor;
 //@synthesize castViewTableViewBackgroundColor = _castViewTableViewBackgroundColor;
 
 #pragma mark - Getter And Setter Method
@@ -182,10 +184,14 @@
 #pragma mark - CastView Settings
 - (UIFont *)castViewTableCellContentLabelFont
 {
-    if (!_castViewTableCellContentLabelFont) {
-        _castViewTableCellContentLabelFont = [UIFont fontWithName:@"Helvetica-Light" size:16];
-    }
-    return _castViewTableCellContentLabelFont;
+#warning 设置字体单例有待重新完成
+//    if (!_castViewTableCellContentLabelFont) {
+        UIFontDescriptor *fontDescriptor = [UIFontDescriptor fontDescriptorWithName:@"Helvetica-Light" size:16];
+        UIFontDescriptor* bodyFontDescriptor = [UIFontDescriptor preferredFontDescriptorWithTextStyle:UIFontTextStyleBody];
+        NSNumber* bodyFontSize = bodyFontDescriptor.fontAttributes[UIFontDescriptorSizeAttribute];
+        UIFont* font = [UIFont fontWithDescriptor:fontDescriptor size:[bodyFontSize floatValue]];
+//    }
+    return font;
 }
 
 - (UIColor *)castViewTableCellBackgroundColor {
@@ -195,6 +201,19 @@
     return _castViewTableCellBackgroundColor;
 }
 
+- (UIColor *)castViewTableCellContentLabelTextColor {
+    if (!_castViewTableCellContentLabelTextColor) {
+        _castViewTableCellContentLabelTextColor = [UIColor colorWithRed:49.0 / 255.0 green:42.0 / 255.0 blue:37.0 / 255.0 alpha:1.0];
+    }
+    return _castViewTableCellContentLabelTextColor;
+}
+
+- (UIColor *)castViewTableCellTimeLabelColor {
+    if (!_castViewTableCellTimeLabelColor) {
+        _castViewTableCellTimeLabelColor = [UIColor colorWithRed:150.0 / 255.0 green:150.0 / 255.0 blue:150.0 / 255.0 alpha:1.0];
+    }
+    return _castViewTableCellTimeLabelColor;
+}
 /*
 - (UIColor *)castViewTableViewBackgroundColor {
     if (!_castViewTableViewBackgroundColor) {

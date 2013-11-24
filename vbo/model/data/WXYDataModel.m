@@ -173,8 +173,18 @@
     returnComment = [self getEntity:@"Comment" byId:commentId idPropertyName:@"commentID"];
     if (!returnComment)
     {
-        returnComment = [Comment insertWithId:@(commentId) InContest:self.cacheManagedObjectContext];
+        returnComment = [Comment insertWithId:@(commentId) InContext:self.cacheManagedObjectContext];
     }
     return returnComment;
+}
+- (Group*)getGroupById:(long long)groupId
+{
+    Group* returnGroup = nil;
+    returnGroup = [self getEntity:@"Group" byId:groupId idPropertyName:@"groupId"];
+    if (!returnGroup)
+    {
+        returnGroup = [Group insertWithId:@(groupId) inContext:self.cacheManagedObjectContext];
+    }
+    return returnGroup;
 }
 @end
