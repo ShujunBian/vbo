@@ -149,6 +149,9 @@
 		51652DF31835D9A7004E4D30 /* UILabel+TextKitAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = 51652DF21835D9A7004E4D30 /* UILabel+TextKitAddition.m */; };
 		51652DF71835DA96004E4D30 /* UITextView+TextKitAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = 51652DF61835DA96004E4D30 /* UITextView+TextKitAddition.m */; };
 		5183B185182AA876008F22D1 /* CastViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5183B184182AA876008F22D1 /* CastViewCell.m */; };
+		518A1CB818431CCE00D36AFD /* MyTextAttachment.m in Sources */ = {isa = PBXBuildFile; fileRef = 518A1CB718431CCE00D36AFD /* MyTextAttachment.m */; };
+		518A1CBE1843243300D36AFD /* EmoticonsInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 518A1CBD1843243300D36AFD /* EmoticonsInfo.plist */; };
+		518A1CC11843247000D36AFD /* EmoticonsInfoHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 518A1CC01843247000D36AFD /* EmoticonsInfoHelper.m */; };
 		51AACA90183D027100793547 /* ScreenShotHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 51AACA8F183D027100793547 /* ScreenShotHelper.m */; };
 		51F8FA28182E0F5C00E211AC /* TTTAttributedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 51F8FA27182E0F5C00E211AC /* TTTAttributedLabel.m */; };
 		51FBFDE718364CD100F2BFF2 /* CastRepostView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 51FBFDE618364CD100F2BFF2 /* CastRepostView.xib */; };
@@ -355,6 +358,11 @@
 		51652DF61835DA96004E4D30 /* UITextView+TextKitAddition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextView+TextKitAddition.m"; sourceTree = "<group>"; };
 		5183B183182AA876008F22D1 /* CastViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CastViewCell.h; sourceTree = "<group>"; };
 		5183B184182AA876008F22D1 /* CastViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CastViewCell.m; sourceTree = "<group>"; };
+		518A1CB618431CCE00D36AFD /* MyTextAttachment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyTextAttachment.h; sourceTree = "<group>"; };
+		518A1CB718431CCE00D36AFD /* MyTextAttachment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyTextAttachment.m; sourceTree = "<group>"; };
+		518A1CBD1843243300D36AFD /* EmoticonsInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = EmoticonsInfo.plist; sourceTree = "<group>"; };
+		518A1CBF1843247000D36AFD /* EmoticonsInfoHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmoticonsInfoHelper.h; sourceTree = "<group>"; };
+		518A1CC01843247000D36AFD /* EmoticonsInfoHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmoticonsInfoHelper.m; sourceTree = "<group>"; };
 		51AACA8E183D027100793547 /* ScreenShotHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScreenShotHelper.h; sourceTree = "<group>"; };
 		51AACA8F183D027100793547 /* ScreenShotHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScreenShotHelper.m; sourceTree = "<group>"; };
 		51F8FA26182E0F5C00E211AC /* TTTAttributedLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTTAttributedLabel.h; sourceTree = "<group>"; };
@@ -645,6 +653,10 @@
 				51652DE91835AC13004E4D30 /* UITextViewHelper.m */,
 				51AACA8E183D027100793547 /* ScreenShotHelper.h */,
 				51AACA8F183D027100793547 /* ScreenShotHelper.m */,
+				518A1CB618431CCE00D36AFD /* MyTextAttachment.h */,
+				518A1CB718431CCE00D36AFD /* MyTextAttachment.m */,
+				518A1CBF1843247000D36AFD /* EmoticonsInfoHelper.h */,
+				518A1CC01843247000D36AFD /* EmoticonsInfoHelper.m */,
 			);
 			path = other;
 			sourceTree = "<group>";
@@ -891,6 +903,7 @@
 		515B0BF218082A9B0092BADB /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				518A1CBD1843243300D36AFD /* EmoticonsInfo.plist */,
 				515B0BF318082A9B0092BADB /* vbo-Info.plist */,
 				515B0BF418082A9B0092BADB /* InfoPlist.strings */,
 				515B0BF718082A9B0092BADB /* main.m */,
@@ -1061,6 +1074,7 @@
 				18B02D51182E0F1B00D9AF04 /* tabbar_post_button.png in Resources */,
 				18B02D50182E0F1B00D9AF04 /* tabbar_mine_button@2x.png in Resources */,
 				1868F1381829EC7A00C5764D /* test.png in Resources */,
+				518A1CBE1843243300D36AFD /* EmoticonsInfo.plist in Resources */,
 				1838DF20181E677A003D015A /* WeiboSDK.bundle in Resources */,
 				18EED3581815865F000856CE /* MainStoryboard.storyboard in Resources */,
 				4D1E6F1C182A3AF60078229F /* postViewStoryBoard.storyboard in Resources */,
@@ -1134,6 +1148,7 @@
 				185E88AB182AABF40020F3B2 /* NSDictionary+RequestEncoding.m in Sources */,
 				185E88B0182AABF40020F3B2 /* MKNetworkOperation.m in Sources */,
 				5116A5BF18300277004FCC1A /* NSNotificationCenter+Addition.m in Sources */,
+				518A1CC11843247000D36AFD /* EmoticonsInfoHelper.m in Sources */,
 				1868F1221829D7EA00C5764D /* WXYNavigationBar.m in Sources */,
 				18EED3231815853E000856CE /* DDASLLogger.m in Sources */,
 				1868F10F1829CE0A00C5764D /* WXYMessageViewController.m in Sources */,
@@ -1156,6 +1171,7 @@
 				515B0BFC18082A9B0092BADB /* AppDelegate.m in Sources */,
 				185E88AC182AABF40020F3B2 /* NSString+MKNetworkKitAdditions.m in Sources */,
 				18B02D59182E167800D9AF04 /* WXYTabBarButton.m in Sources */,
+				518A1CB818431CCE00D36AFD /* MyTextAttachment.m in Sources */,
 				18EB0A06182BF701005CC27D /* NSDate+Addition.m in Sources */,
 				51510C15183BD8F600BD7823 /* ComRepCountCell.m in Sources */,
 				188E68971829131600BE534D /* vboCachedDatamodel.xcdatamodeld in Sources */,

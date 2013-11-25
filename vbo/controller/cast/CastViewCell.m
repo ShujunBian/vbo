@@ -91,7 +91,6 @@
     
     [_cellBackgroundView setBackgroundColor:SHARE_SETTING_MANAGER.castViewTableCellBackgroundColor];
     
-//    [_weiboContentTextView setBackgroundColor:[UIColor greenColor]];
     [_weiboContentTextView setAttributedText:[self weiboContentLabelAttributedStringByStatus:currentCellStatus]];
     _contentTextViewHegihtConstraint.constant = [UITextViewHelper HeightForAttributedString:_weiboContentTextView.attributedText
                                                                                   withWidth:288.0];
@@ -142,7 +141,6 @@
         _repostTimesLabel.hidden = YES;
     }
     
-    [_repostImageView setImage:nil];
     if (currentCellStatus.repostStatus != nil) {
         _repostBackgroundViewConstraint.constant = [CastViewCell getHeightofCastRepostViewByStatus:currentCellStatus.repostStatus] - 2.0;
         [_repostBackgroundView setBackgroundColor:repostBackgroundViewColor];
@@ -167,6 +165,10 @@
 
     }
     else {
+        [_repostImageView setImage:nil];
+        [_repostTextView setText:nil];
+        [_repostUserNameLabel setText:nil];
+        
         _repostBackgroundViewConstraint.constant = 0;
         _repostButtonTopConstraint.constant = 0;
     }

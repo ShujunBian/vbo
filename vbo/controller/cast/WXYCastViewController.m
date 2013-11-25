@@ -68,8 +68,24 @@
         self.weiboContentArray = resultArray;
         [self.tableView reloadData];
         [NSNotificationCenter postDidFetchCurrentUserNameNotification];
+        
+//        [self performSelector:@selector(snap) withObject:nil afterDelay:5.0];
+        
     }error:nil];
 }
+
+
+//- (void)snap
+//{
+//    UIGraphicsBeginImageContextWithOptions(CGSizeMake(320,568), NO, 2);
+//    [self.view drawViewHierarchyInRect:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height) afterScreenUpdates:NO];
+//    UIImage *snapshot = UIGraphicsGetImageFromCurrentImageContext();
+//    UIGraphicsEndImageContext();
+//    
+//    UIImageView * testView = [[UIImageView alloc]initWithImage:[snapshot applyTintEffectWithColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.6]]];
+//    [testView setFrame:CGRectMake(0.0, 0.0, 320.0, 568.0)];
+//    [self.view addSubview:testView];
+//}
 
 - (void)viewDidLayoutSubviews
 {
@@ -177,7 +193,9 @@
     UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:NULL];
     ComRepViewController * comRepViewController = [storyBoard instantiateViewControllerWithIdentifier:@"ComRepViewController"];
     comRepViewController.currentStatus = status;
-    [self.navigationController pushViewController:comRepViewController animated:YES];
+    
+    [self.navigationController presentViewController:comRepViewController animated:YES completion:nil];
+//  [self.navigationController pushViewController:comRepViewController animated:YES];
 }
 
 - (void)clickRepostButtonByStatus:(Status *)status

@@ -9,6 +9,7 @@
 #import "UITextViewHelper.h"
 #import "WXYSettingManager.h"
 #import <CoreText/CoreText.h>
+#import "MyTextAttachment.h"
 
 static NSRegularExpression *__nameRegularExpression;
 static inline NSRegularExpression * NameRegularExpression() {
@@ -111,6 +112,20 @@ static inline NSRegularExpression * EmotionIDRegularExpression() {
                           usingBlock:^(NSTextCheckingResult *result, NSMatchingFlags flags, BOOL *stop) {
                               NSDictionary* urlLinkAttributeDic = @{NSLinkAttributeName: [[[mutableAttributedString string] substringWithRange:result.range]stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]};
                               [mutableAttributedString addAttributes:urlLinkAttributeDic range:result.range];
+                          }];
+    
+    regexp = EmotionRegularExpression();
+    [regexp enumerateMatchesInString:[mutableAttributedString string]
+                             options:0
+                               range:stringRange
+                          usingBlock:^(NSTextCheckingResult *result, NSMatchingFlags flags, BOOL *stop) {
+                              
+                              NSRange keyRange = NSMakeRange(result.range.location + 1, result.range.length - 2);
+                              NSString * keyString = [[mutableAttributedString string] substringWithRange:keyRange];
+                              MyTextAttachment * textAttachment = [[MyTextAttachment alloc]initWithData:nil ofType:nil];
+                              [textAttachment insertTextAttachmentIntoAttributedString:mutableAttributedString
+                                                                                       andKey:keyString
+                                                                                      inRange:result.range];
                           }];
     
     
