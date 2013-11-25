@@ -87,13 +87,13 @@
     
     UITapGestureRecognizer *singleTapExpress = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(DidExpressPressed)];
     
-    [self.locateBtn addGestureRecognizer:singleTapLocate];
+    [self.locateBgView addGestureRecognizer:singleTapLocate];
     
-    [self.photoBtn addGestureRecognizer:singleTapPhoto];
+    [self.photoBgView addGestureRecognizer:singleTapPhoto];
     
-    [self.atBtn addGestureRecognizer:singleTapAt];
+    [self.atBgView addGestureRecognizer:singleTapAt];
     
-    [self.expBtn addGestureRecognizer:singleTapExpress];
+    [self.expressBgView addGestureRecognizer:singleTapExpress];
     
 
 }
@@ -113,11 +113,11 @@
 #pragma mark keyboard button implementation
 -(void)DidLocatePressed
 {
-    self.locateBtn.tintColor = [UIColor grayColor];
-    
-    int a = 1;
-    
-    a++;
+//    self.locateBtn.tintColor = [UIColor grayColor];
+//    
+//    int a = 1;
+//    
+//    a++;
     
     //add some code after...
 }

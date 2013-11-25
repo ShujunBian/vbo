@@ -23,9 +23,14 @@
 
 @property (strong, nonatomic) IBOutlet UIImageView *unlockBtn;
 
+
 //keboard button background view property .
+@property (strong, nonatomic) IBOutlet UIView *locateBgView;
+@property (strong, nonatomic) IBOutlet UIView *photoBgView;
+@property (strong, nonatomic) IBOutlet UIView *expressBgView;
 
 @property (strong, nonatomic) IBOutlet UIView *atBgView;
+@property (strong, nonatomic) IBOutlet UIView *unlockBgView;
 
 
 @end
