@@ -18,6 +18,7 @@ static MyTextAttachment * sharedMyTextAttachment;
                              glyphPosition:(CGPoint)position
                             characterIndex:(NSUInteger)charIndex
 {
+    NSLog(@"the lineFrag is %f %f",lineFrag.size.width,lineFrag.size.height);
     return CGRectMake( 0 , -3.0 , lineFrag.size.height , lineFrag.size.height );
 }
 
@@ -30,7 +31,7 @@ static MyTextAttachment * sharedMyTextAttachment;
     }
 }
 
-- (void)insertTextAttachmentIntoAttributedString:(NSMutableAttributedString *)mutableAttributedString
+- (BOOL)insertTextAttachmentIntoAttributedString:(NSMutableAttributedString *)mutableAttributedString
                                           andKey:(NSString *)keyString
                                          inRange:(NSRange)range
 {
@@ -42,7 +43,10 @@ static MyTextAttachment * sharedMyTextAttachment;
         NSRange blankRange = NSMakeRange(range.location + 1, range.length);
         NSAttributedString * blankString = [[NSAttributedString alloc]initWithString:@""];
         [mutableAttributedString replaceCharactersInRange:blankRange withAttributedString:blankString];
+        
+        return YES;
     }
+    return NO;
 }
 
 @end

@@ -141,6 +141,10 @@
         _repostTimesLabel.hidden = YES;
     }
     
+    [_repostImageView setImage:nil];
+    [_repostTextView setText:nil];
+    [_repostUserNameLabel setText:nil];
+    
     if (currentCellStatus.repostStatus != nil) {
         _repostBackgroundViewConstraint.constant = [CastViewCell getHeightofCastRepostViewByStatus:currentCellStatus.repostStatus] - 2.0;
         [_repostBackgroundView setBackgroundColor:repostBackgroundViewColor];
@@ -165,10 +169,6 @@
 
     }
     else {
-        [_repostImageView setImage:nil];
-        [_repostTextView setText:nil];
-        [_repostUserNameLabel setText:nil];
-        
         _repostBackgroundViewConstraint.constant = 0;
         _repostButtonTopConstraint.constant = 0;
     }

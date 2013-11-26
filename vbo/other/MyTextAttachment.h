@@ -12,7 +12,7 @@
 
 - (void)setImageByTheKey:(NSString *)key;
 
-- (void)insertTextAttachmentIntoAttributedString:(NSMutableAttributedString *)mutableAttributedString
+- (BOOL)insertTextAttachmentIntoAttributedString:(NSMutableAttributedString *)mutableAttributedString
                                           andKey:(NSString *)keyString
                                          inRange:(NSRange)range;
 @end
