@@ -128,6 +128,7 @@
 		4D78489A18314C0A0025ADDA /* multitasking_screen_2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D78489718314C0A0025ADDA /* multitasking_screen_2x.png */; };
 		4D78489B18314C0A0025ADDA /* photos_moments_screen_2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D78489818314C0A0025ADDA /* photos_moments_screen_2x.png */; };
 		4D78489E18314EB60025ADDA /* MHCPostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D78489D18314EB60025ADDA /* MHCPostViewController.m */; };
+		4DE8AC38184629F900CA6A84 /* atViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DE8AC37184629F900CA6A84 /* atViewController.m */; };
 		5116A5BF18300277004FCC1A /* NSNotificationCenter+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 5116A5BE18300277004FCC1A /* NSNotificationCenter+Addition.m */; };
 		51510C0E183BB10A00BD7823 /* CastViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 51510C0D183BB10A00BD7823 /* CastViewCell.xib */; };
 		51510C12183BBB4800BD7823 /* ComRepViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 51510C11183BBB4800BD7823 /* ComRepViewController.m */; };
@@ -321,6 +322,8 @@
 		4D78489818314C0A0025ADDA /* photos_moments_screen_2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = photos_moments_screen_2x.png; path = testPreView/photos_moments_screen_2x.png; sourceTree = "<group>"; };
 		4D78489C18314EB60025ADDA /* MHCPostViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHCPostViewController.h; sourceTree = "<group>"; };
 		4D78489D18314EB60025ADDA /* MHCPostViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHCPostViewController.m; sourceTree = "<group>"; };
+		4DE8AC36184629F900CA6A84 /* atViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = atViewController.h; sourceTree = "<group>"; };
+		4DE8AC37184629F900CA6A84 /* atViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = atViewController.m; sourceTree = "<group>"; };
 		5116A5BD18300277004FCC1A /* NSNotificationCenter+Addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSNotificationCenter+Addition.h"; sourceTree = "<group>"; };
 		5116A5BE18300277004FCC1A /* NSNotificationCenter+Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSNotificationCenter+Addition.m"; sourceTree = "<group>"; };
 		51510C0D183BB10A00BD7823 /* CastViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CastViewCell.xib; sourceTree = "<group>"; };
@@ -783,7 +786,7 @@
 		4D1E6F16182A3AF50078229F /* post */ = {
 			isa = PBXGroup;
 			children = (
-				4D78489F183153FC0025ADDA /* customSettings */,
+				4DE8AC34184629D400CA6A84 /* subViews */,
 				4D78489218314ABF0025ADDA /* testPreView */,
 				4D78488B1831474C0025ADDA /* blur */,
 				4D1E6F19182A3AF50078229F /* postView */,
@@ -825,11 +828,21 @@
 			name = testPreView;
 			sourceTree = "<group>";
 		};
-		4D78489F183153FC0025ADDA /* customSettings */ = {
+		4DE8AC34184629D400CA6A84 /* subViews */ = {
 			isa = PBXGroup;
 			children = (
+				4DE8AC39184629FF00CA6A84 /* atView */,
 			);
-			name = customSettings;
+			name = subViews;
+			sourceTree = "<group>";
+		};
+		4DE8AC39184629FF00CA6A84 /* atView */ = {
+			isa = PBXGroup;
+			children = (
+				4DE8AC36184629F900CA6A84 /* atViewController.h */,
+				4DE8AC37184629F900CA6A84 /* atViewController.m */,
+			);
+			name = atView;
 			sourceTree = "<group>";
 		};
 		515B0BDF18082A9B0092BADB = {
@@ -1140,6 +1153,7 @@
 				5116A5BF18300277004FCC1A /* NSNotificationCenter+Addition.m in Sources */,
 				1868F1221829D7EA00C5764D /* WXYNavigationBar.m in Sources */,
 				18EED3231815853E000856CE /* DDASLLogger.m in Sources */,
+				4DE8AC38184629F900CA6A84 /* atViewController.m in Sources */,
 				1868F10F1829CE0A00C5764D /* WXYMessageViewController.m in Sources */,
 				51510C12183BBB4800BD7823 /* ComRepViewController.m in Sources */,
 				18EED32B1815853E000856CE /* ContextFilterLogFormatter.m in Sources */,

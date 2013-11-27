@@ -16,44 +16,14 @@
 
 @implementation MHCPostViewController
 
-
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
     
-    //change to a global function to custom settings after.
-    
-    //custom font function.
-    
-    //need to consider.
-    
-//   UILabel *titleLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 49, 17)];
-//   titleLabel.font = [UIFont fontWithName:@"Helvetica Neue-Medium" size:17];
-//    
-//   titleLabel.text = @"新微博";
-//   
-//   titleLabel.baselineAdjustment = UIBaselineAdjustmentAlignCenters;
-//   
-//   titleLabel.textColor = [UIColor blackColor];
-//    
-//   
-//    
-//    navItem.titleView = titleLabel;
-//   
-//    [self.postViewNavBar pushNavigationItem:navItem animated:NO];
-//    
-//    [self.view addSubview:self.postViewNavBar];
-    
-    
-    
-//    self.navigationItem.titleView = titleLabel;
-    
-    
     //navigation install.
     self.navigationItem.title = @"新微博";
-
+    
     [self.navigationController installMHDismissModalViewWithOptions:[[MHDismissModalViewOptions alloc] initWithScrollView:nil
                                                                                                                     theme:MHModalThemeWhite]];
    
@@ -62,8 +32,8 @@
     
     //set theme color
     
-    self.navigationItem.leftBarButtonItem.tintColor = [WXYSettingManager shareSettingManager].themeColor;
-    self.navigationItem.rightBarButtonItem.tintColor = [WXYSettingManager shareSettingManager].themeColor;
+    self.navigationItem.leftBarButtonItem.tintColor = SHARE_SETTING_MANAGER.themeColor;
+    self.navigationItem.rightBarButtonItem.tintColor = SHARE_SETTING_MANAGER.themeColor;
     
     self.postViewTextView.textColor = [UIColor blackColor];
     
@@ -78,14 +48,14 @@
     self.postViewTextView.inputAccessoryView = self.redefinedKeyboard;
     
     
-    //items become buttons.
-    UITapGestureRecognizer *singleTapLocate = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(DidLocatePressed)];
+    //add Tap Gesture that make items become buttons.
+    UITapGestureRecognizer *singleTapLocate = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didLocatePressed)];
     
-    UITapGestureRecognizer *singleTapPhoto = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(DidPhotoPressed)];
+    UITapGestureRecognizer *singleTapPhoto = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didPhotoPressed)];
     
-    UITapGestureRecognizer *singleTapAt = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(DidAtPressed)];
+    UITapGestureRecognizer *singleTapAt = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didAtPressed)];
     
-    UITapGestureRecognizer *singleTapExpress = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(DidExpressPressed)];
+    UITapGestureRecognizer *singleTapExpress = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didExpressPressed)];
     
     [self.locateBgView addGestureRecognizer:singleTapLocate];
     
@@ -111,30 +81,150 @@
 
 
 #pragma mark keyboard button implementation
--(void)DidLocatePressed
+-(void)didLocatePressed
 {
-//    self.locateBtn.tintColor = [UIColor grayColor];
-//    
-//    int a = 1;
-//    
-//    a++;
+    self.locateBgView.needsDisplayBg = !self.locateBgView.needsDisplayBg;
     
-    //add some code after...
+    if(self.locateBgView.needsDisplayBg)
+    {
+        self.locateBgView.startToDrawCircleBg = YES;
+        
+        [self.locateBgView setNeedsDisplay];
+        self.locateBtn.image = [self.locateBtn.image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+        self.locateBtn.tintColor = [UIColor whiteColor];
+        
+        
+    }
+    else
+    {
+        self.locateBgView.needsClear = YES;
+        
+        [self.locateBgView setNeedsDisplay];
+        
+        self.locateBtn.image = [self.locateBtn.image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+        self.locateBtn.tintColor = [UIColor colorWithRed:150.f/255.f green:150.f/255.f blue:150.f/255.f alpha:1.0f];
+    }
 }
--(void)DidPhotoPressed
+-(void)didPhotoPressed
 {
-    //add some code after...
+    self.photoBgView.needsDisplayBg = !self.photoBgView.needsDisplayBg;
+    
+    if(self.photoBgView.needsDisplayBg)
+    {
+        self.photoBgView.startToDrawCircleBg = YES;
+        
+        [self.photoBgView setNeedsDisplay];
+        self.photoBtn.image = [self.photoBtn.image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+        self.photoBtn.tintColor = [UIColor whiteColor];
+        
+        
+    }
+    else
+    {
+        self.photoBgView.needsClear = YES;
+        
+        [self.photoBgView setNeedsDisplay];
+        
+        self.photoBtn.image = [self.photoBtn.image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+        self.photoBtn.tintColor = [UIColor colorWithRed:150.f/255.f green:150.f/255.f blue:150.f/255.f alpha:1.0f];
+    }
 }
--(void)DidExpressPressed
+-(void)didExpressPressed
 {
-    //add some code after...
+    self.expressBgView.needsDisplayBg = !self.expressBgView.needsDisplayBg;
+    
+    if(self.expressBgView.needsDisplayBg)
+    {
+        self.expressBgView.startToDrawCircleBg = YES;
+        
+        [self.expressBgView setNeedsDisplay];
+        self.expBtn.image = [self.expBtn.image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+        self.expBtn.tintColor = [UIColor whiteColor];
+        
+        
+    }
+    else
+    {
+        self.expressBgView.needsClear = YES;
+        
+        [self.expressBgView setNeedsDisplay];
+        
+        self.expBtn.image = [self.expBtn.image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+        self.expBtn.tintColor = [UIColor colorWithRed:150.f/255.f green:150.f/255.f blue:150.f/255.f alpha:1.0f];
+    }
+
 }
--(void)DidAtPressed
+-(void)didAtPressed
 {
-    //add some code after...
+    self.atBgView.needsDisplayBg = !self.atBgView.needsDisplayBg;
+    
+    if(self.atBgView.needsDisplayBg)
+    {
+        self.atBgView.startToDrawCircleBg = YES;
+        
+        [self.atBgView setNeedsDisplay];
+        self.atBtn.image = [self.atBtn.image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+        self.atBtn.tintColor = [UIColor whiteColor];
+        
+        
+    }
+    else
+    {
+        self.atBgView.needsClear = YES;
+        
+        [self.atBgView setNeedsDisplay];
+        
+       self.atBtn.image = [self.atBtn.image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+        self.atBtn.tintColor = [UIColor colorWithRed:150.f/255.f green:150.f/255.f blue:150.f/255.f alpha:1.0f];
+    }
+
 }
 
 
+@end
+
+
+@implementation KeyButtonBgView
+
+-(void)viewDidLoad
+{
+    //var init
+    
+    self.needsDisplayBg = NO;
+    
+    self.startToDrawCircleBg = NO;
+    
+    self.needsClear = NO;
+    
+}
+
+- (void)drawRect:(CGRect)rect
+{
+    
+    if(self.startToDrawCircleBg)
+    {
+        
+        CGRectMake(0, 0, 44 , 44);
+        CGContextRef context = UIGraphicsGetCurrentContext();
+        
+        CGContextSetFillColorWithColor(context, SHARE_SETTING_MANAGER.themeColor.CGColor);
+        
+        CGContextAddEllipseInRect(context, self.bounds);
+    
+        CGContextDrawPath(context, kCGPathEOFill);
+        
+        self.startToDrawCircleBg = NO;
+    }
+    if(self.needsClear)
+    {
+        
+        CGContextRef context = UIGraphicsGetCurrentContext();
+        CGContextClearRect(context, self.bounds);
+        self.needsClear = NO;
+       
+    }
+    
+}
 
 
 @end
