@@ -7,7 +7,6 @@
 //
 
 #import "WXYCastViewController.h"
-#import "CastRepostView.h"
 #import "WXYNetworkEngine.h"
 #import "ComRepViewController.h"
 #import "Status.h"
@@ -17,6 +16,8 @@
 #import "WXYSettingManager.h"
 #import "UIImage+ImageEffects.h"
 #import "ScreenShotHelper.h"
+#import "CastViewImageTransitionAnimation.h"
+#import "CastImageViewController.h"
 
 #define contantHeight 110.0
 #define contentLabelLineSpace 6.0
@@ -26,6 +27,7 @@
 
 //@property (nonatomic, strong) UIDynamicAnimator *animator;
 @property (nonatomic, strong) NSArray * weiboContentArray;
+@property (nonatomic, strong) CastViewImageTransitionAnimation * imageTransitionAnimation;
 
 @end
 
@@ -44,6 +46,7 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    _imageTransitionAnimation = [CastViewImageTransitionAnimation new];
     
     UIView *bgview = [[UIView alloc]init];
     [bgview setBackgroundColor:SHARE_SETTING_MANAGER.themeColor];
@@ -139,13 +142,14 @@
 {
     cell.backgroundColor = [UIColor clearColor];
     
-    UIView *normalView = [[UIView alloc]init];
-    [normalView setBackgroundColor:[UIColor clearColor]];
-    cell.backgroundView = normalView;
+//    UIView *selectedBackgroundView = [[UIView alloc]init];
+//    [selectedBackgroundView setBackgroundColor:[UIColor clearColor]];
+//    cell.selectedBackgroundView = selectedBackgroundView;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 #pragma mark - UIScrollView Delegate
@@ -165,7 +169,7 @@
     Status * currentCellStatus = [_weiboContentArray objectAtIndex:row];
     float cellHeight = contantHeight;
     if (currentCellStatus.bmiddlePicURL != nil) {
-        cellHeight += 106.0;
+        cellHeight += 180.0;
     }
     NSMutableAttributedString * contentString = [UITextViewHelper setAttributeString:[[NSMutableAttributedString alloc]initWithString:currentCellStatus.text]
                                                                       WithNormalFont:SHARE_SETTING_MANAGER.castViewTableCellContentLabelFont
@@ -176,7 +180,7 @@
     cellHeight += [UITextViewHelper HeightForAttributedString:contentString withWidth:288.0f];
     
     if (currentCellStatus.repostStatus != nil) {
-        cellHeight += [CastViewCell getHeightofCastRepostViewByStatus:currentCellStatus.repostStatus] + 10.0 + 10.0;
+        cellHeight += [CastViewCell getHeightofCastRepostViewByStatus:currentCellStatus.repostStatus] + 20.0;
     }
     
     return cellHeight;
@@ -194,8 +198,7 @@
     ComRepViewController * comRepViewController = [storyBoard instantiateViewControllerWithIdentifier:@"ComRepViewController"];
     comRepViewController.currentStatus = status;
     
-    [self.navigationController presentViewController:comRepViewController animated:YES completion:nil];
-//  [self.navigationController pushViewController:comRepViewController animated:YES];
+    [self.navigationController pushViewController:comRepViewController animated:YES];
 }
 
 - (void)clickRepostButtonByStatus:(Status *)status
@@ -206,22 +209,17 @@
     [self.navigationController pushViewController:comRepViewController animated:YES];
 }
 
-#warning castView分隔线 待完成
-- (void)drawLineOnTableViewCell:(CastViewCell* )cell
-                       atYpoint:(float)height
+- (void)presentDetailImageViewWithImage:(UIImage *)image
+                         withInitalRect:(CGRect)initalRect
 {
-    UIGraphicsBeginImageContext(CGSizeMake(320.0, 1.0));
-    CGContextRef context = UIGraphicsGetCurrentContext();
-    CGContextSetStrokeColorWithColor(context, [tableViewSeprateLine CGColor]);
-    CGContextMoveToPoint(context, 0.0, 0.0);
-    CGContextAddLineToPoint(context, 320.0, 0.0);
-    CGContextStrokePath(context);
-    UIImage * newPic = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
+    CastImageViewController * toVc = [[CastImageViewController alloc]init];
     
-    UIImageView * nnView = [[UIImageView alloc]initWithImage:newPic];
-    [nnView setFrame:CGRectMake(0.0, height, 320.0, 5.0)];
-    [cell addSubview:nnView];
+    UIImageView * testView = [[UIImageView alloc]initWithImage:image];
+    toVc.weiboDetailImageView = testView;
+    toVc.initialRect = initalRect;
+    
+    toVc.transitioningDelegate = self;
+    [self.navigationController presentViewController:toVc animated:YES completion:nil];
 }
 
 - (void)viewDidUnload
@@ -234,5 +232,10 @@
 - (void)dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (id<UIViewControllerAnimatedTransitioning>)animationControllerForPresentedController:(UIViewController *)presented presentingController:(UIViewController *)presenting sourceController:(UIViewController *)source
+{
+    return self.imageTransitionAnimation;
 }
 @end

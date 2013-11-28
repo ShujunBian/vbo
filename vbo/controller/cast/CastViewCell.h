@@ -17,6 +17,10 @@
 - (void)clickCommentButtonByStatus:(Status *)status;
 - (void)clickRepostButtonByStatus:(Status *)status;
 
+@required
+- (void)presentDetailImageViewWithImage:(UIImage *)image
+                         withInitalRect:(CGRect)initalRect;
+
 @end
 
 @interface CastViewCell : UITableViewCell
