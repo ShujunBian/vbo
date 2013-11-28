@@ -12,6 +12,9 @@
 #define HOST_NAME @"api.weibo.com"
 #import "UIImageView+MKNetworkKitAdditions.h"
 
+//User
+#define USER_SHOW_URL @"2/users/show.json"
+
 //Weibo
 #define HOME_TIMELINE_URL @"2/statuses/home_timeline.json"
 #define REPOST_WEIBO_URL @"2/statuses/repost.json"
@@ -130,6 +133,46 @@
     request.scope = @"all";
     
     [WeiboSDK sendRequest:request];
+}
+#pragma mark 获取用户信息
+- (MKNetworkOperation*)getUserInfoId:(NSNumber*)userId
+                        orScreenName:(NSString*)screenName
+                             succeed:(UserBlock)succeedBlock
+                               error:(ErrorBlock)errorBlock
+{
+    MKNetworkOperation* op = nil;
+    
+    NSMutableDictionary* paramDict = [[NSMutableDictionary alloc] init];
+    if (userId)
+    {
+        [paramDict setValue:userId forKey:@"uid"];
+    }
+    else
+    {
+        [paramDict setValue:screenName forKey:@"screen_name"];
+    }
+    
+    op = [self startOperationWithPath:USER_SHOW_URL
+                            needLogin:YES
+                             paramers:paramDict
+                          onSucceeded:^(MKNetworkOperation *completedOperation)
+          {
+              NSDictionary* responseDict = completedOperation.responseJSON;
+              User* user = [WXYNetworkDataFactory getUserWithDict:responseDict];
+              if (succeedBlock)
+              {
+                  succeedBlock(user);
+              }
+          }
+                              onError:^(MKNetworkOperation *completedOperation, NSError *error)
+          {
+              if (errorBlock)
+              {
+                  errorBlock(error);
+              }
+          }];
+    
+    return op;
 }
 
 #pragma mark - 微博接口
