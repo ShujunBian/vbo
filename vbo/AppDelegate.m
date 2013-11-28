@@ -98,6 +98,8 @@
         [SHARE_LOGIN_MANAGER loginUser:info];
 #warning 未获取用户信息，需要再次发送网络请求
         
+        
+        
         SHARE_SETTING_MANAGER.testAccessToken = [(WBAuthorizeResponse *)response accessToken];
         UIAlertView* alert = nil;
         if (SHARE_SETTING_MANAGER.testAccessToken)

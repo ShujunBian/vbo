@@ -40,6 +40,17 @@
 }
 
 #pragma mark - User
+- (void)testGetUserInfoByUserId
+{
+    [self.asyncTestCase prepare];
+    [self.engine getUserInfoId:@2672281483 orScreenName:nil succeed:^(User *user) {
+        [self.asyncTestCase notify:kGHUnitWaitStatusSuccess];
+    } error:^(NSError *error) {
+        XCTFail(@"获取用户信息失败");
+        [self.asyncTestCase notify:kGHUnitWaitStatusFailure];
+    }];
+    [self.asyncTestCase waitForStatus:kGHUnitWaitStatusSuccess timeout:kMKNetworkKitRequestTimeOutInSeconds];
+}
 - (void)testGetUserInfoByScreenName
 {
     [self.asyncTestCase prepare];
