@@ -50,6 +50,9 @@
 
 @property (strong, nonatomic) IBOutlet UIView *unlockBgView;
 
+-(UIImage *)getImageWith:(UIImage *)screenShot;
+
+
 @end
 
 

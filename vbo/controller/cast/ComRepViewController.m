@@ -14,10 +14,14 @@
 #import "ComRepCountCell.h"
 #import "ComReqDetailCell.h"
 
-#define contantHeight 108.0
+#define contantHeight 110.0
 #define contentLabelLineSpace 6.0
 #define secondCommentCellHeight 25.0
 #define commentDetailCellcontantHeight 29.0
+#define commentDetailCellPadding 11.0
+
+#define cellButtonHeight 44.0
+#define cellBackgroundBottmoConstraint 5.0
 
 @interface ComRepViewController ()
 
@@ -41,6 +45,32 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    [self.navigationController setNavigationBarHidden:NO animated:YES];
+
+    self.view.tintColor = SHARE_SETTING_MANAGER.themeColor;
+    self.navigationItem.backBarButtonItem.tintColor = SHARE_SETTING_MANAGER.themeColor;
+    self.navigationItem.leftItemsSupplementBackButton = YES;
+//    UIImageView* im = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"weibo_List_Button.png"]];
+//    self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:im];
+//    [self.navigationItem.backBarButtonItem setBackgroundImage:[UIImage imageNamed:@"weibo_List_Button.png"] forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
+    
+    //                                                                           style:UIBarButtonItemStyleBordered target:self
+//                                                                          action:@selector(back)];
+//
+
+//    self.navigationItem.backBarButtonItem.customView = im;
+    
+    
+//    self.navigationItem.leftBarButtonItems = [[NSArray alloc]initWithObjects:
+//                                              [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"back_button.png"]
+//                                                                                                            style:UIBarButtonItemStyleBordered target:self
+//                                                                                                           action:@selector(back)],
+//                                              [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"weibo_List_Button.png"]
+//                                                                              style:UIBarButtonItemStyleBordered target:self
+//                                                                             action:nil],
+//                                              nil];
+    
+    
     [self.view setTintColor:SHARE_SETTING_MANAGER.themeColor];
     
     [self.view setBackgroundColor:SHARE_SETTING_MANAGER.themeColor];
@@ -151,6 +181,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 
@@ -159,7 +190,7 @@
 {
     float cellHeight = contantHeight;
     if (_currentStatus.bmiddlePicURL != nil) {
-        cellHeight += 106.0;
+        cellHeight += 180.0;
     }
     NSMutableAttributedString * contentString = [UITextViewHelper setAttributeString:[[NSMutableAttributedString alloc]initWithString:_currentStatus.text]
                                                                       WithNormalFont:SHARE_SETTING_MANAGER.castViewTableCellContentLabelFont
@@ -173,12 +204,12 @@
         cellHeight += [CastViewCell getHeightofCastRepostViewByStatus:_currentStatus.repostStatus];
     }
     
-    return cellHeight - 44.0;
+    return cellHeight - cellButtonHeight - cellBackgroundBottmoConstraint + 1.0;
 }
 
 - (float)commentCellHeightForRowAtIndex:(NSInteger)row
 {
-    float cellHeight = commentDetailCellcontantHeight;
+    float cellHeight = commentDetailCellcontantHeight + commentDetailCellPadding;
     Comment * currentComment = (Comment*)[_commentArray objectAtIndex:row];
     NSMutableAttributedString * contentString = [UITextViewHelper setAttributeString:[[NSMutableAttributedString alloc]initWithString:currentComment.text]
                                                                       WithNormalFont:SHARE_SETTING_MANAGER.castViewTableCellContentLabelFont
@@ -193,6 +224,11 @@
 - (void)preferredContentSizeChanged:(NSNotification *)notification
 {
     [self.tableView reloadData];
+}
+
+- (void)back
+{
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)viewDidUnload

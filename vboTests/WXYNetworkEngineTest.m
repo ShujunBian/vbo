@@ -39,6 +39,30 @@
     [self.asyncTestCase tearDown];
 }
 
+#pragma mark - User
+- (void)testGetUserInfoByUserId
+{
+    [self.asyncTestCase prepare];
+    [self.engine getUserInfoId:@2672281483 orScreenName:nil succeed:^(User *user) {
+        [self.asyncTestCase notify:kGHUnitWaitStatusSuccess];
+    } error:^(NSError *error) {
+        XCTFail(@"获取用户信息失败");
+        [self.asyncTestCase notify:kGHUnitWaitStatusFailure];
+    }];
+    [self.asyncTestCase waitForStatus:kGHUnitWaitStatusSuccess timeout:kMKNetworkKitRequestTimeOutInSeconds];
+}
+- (void)testGetUserInfoByScreenName
+{
+    [self.asyncTestCase prepare];
+    [self.engine getUserInfoId:nil orScreenName:@"大脸大魔王" succeed:^(User *user) {
+        [self.asyncTestCase notify:kGHUnitWaitStatusSuccess];
+    } error:^(NSError *error) {
+        XCTFail(@"获取用户信息失败");
+        [self.asyncTestCase notify:kGHUnitWaitStatusFailure];
+    }];
+    [self.asyncTestCase waitForStatus:kGHUnitWaitStatusSuccess timeout:kMKNetworkKitRequestTimeOutInSeconds];
+}
+
 #pragma mark - Weibo
 #pragma mark Read
 - (void)testGetHomeTimelineOfCurrentUser
@@ -254,5 +278,6 @@
     
     [self.asyncTestCase waitForStatus:kGHUnitWaitStatusSuccess timeout:kMKNetworkKitRequestTimeOutInSeconds];
 }
+
 
 @end

@@ -137,6 +137,7 @@
     {
         return NO;
     }
+    [self saveUserInfo];
 }
 - (void)loginUser:(LoginUserInfo*)info
 {

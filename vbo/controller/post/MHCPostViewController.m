@@ -8,7 +8,11 @@
 
 #import "MHCPostViewController.h"
 #import "UINavigationController+MHDismissModalView.h"
+
+#import "UIView+Effects.h"
+
 #import "WXYSettingManager.h"
+#import "AtViewController.h"
 
 @interface MHCPostViewController ()
 
@@ -21,12 +25,18 @@
     [super viewDidLoad];
     
     
+    self.view.backgroundColor = [UIColor colorWithPatternImage:[self.view makeScreenShot]];
+    //[self.view blur];
+    
+    
     //navigation install.
     self.navigationItem.title = @"新微博";
+//    
+//    [self.navigationController installMHDismissModalViewWithOptions:[[MHDismissModalViewOptions alloc] initWithScrollView:nil
+//                                                                                                                    theme:MHModalThemeWhite]];
+
     
-    [self.navigationController installMHDismissModalViewWithOptions:[[MHDismissModalViewOptions alloc] initWithScrollView:nil
-                                                                                                                    theme:MHModalThemeWhite]];
-   
+    
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"取消" style:UIBarButtonItemStyleBordered target:self action:@selector(cancel)];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"发表" style:UIBarButtonItemStyleBordered target:self action:@selector(postWeibo)];
     
@@ -67,6 +77,20 @@
     
 
 }
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    
+}
+
+#pragma mark getScreenShot method
+-(UIImage *)getImageWith:(UIImage *)screenShot
+{
+    return screenShot;
+}
+
+
+
 #pragma mark navigationItemButton implementation
 
 -(void)cancel
@@ -166,6 +190,10 @@
         self.atBtn.image = [self.atBtn.image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
         self.atBtn.tintColor = [UIColor whiteColor];
         
+//        AtViewController *atViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"AtViewController"];
+        
+        [self performSegueWithIdentifier:@"atViewControllerSegue" sender:nil];
+        
         
     }
     else
@@ -178,6 +206,11 @@
         self.atBtn.tintColor = [UIColor colorWithRed:150.f/255.f green:150.f/255.f blue:150.f/255.f alpha:1.0f];
     }
 
+}
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    
 }
 
 

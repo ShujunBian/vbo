@@ -15,6 +15,7 @@
 #import "WXYSettingManager.h"
 #import "WXYLoginManager.h"
 #import "WXYNetworkEngine.h"
+#import "WXYNotificationNameList.h"
 
 @implementation AppDelegate
 
@@ -96,7 +97,16 @@
         info.accessToken = wbResponse.accessToken;
         info.expireDate = wbResponse.expirationDate;
         [SHARE_LOGIN_MANAGER loginUser:info];
+        [SHARE_NW_ENGINE getUserInfoId:@(info.userId.longLongValue) orScreenName:nil succeed:^(User *user) {
+            info.userName = user.screenName;
+            [SHARE_LOGIN_MANAGER loginUser:info];
+            [[NSNotificationCenter defaultCenter] postNotificationName:kUserChangeNotification object:nil];
+        } error:^(NSError *error) {
+#warning 错误未处理
+        }];
 #warning 未获取用户信息，需要再次发送网络请求
+        
+        
         
         SHARE_SETTING_MANAGER.testAccessToken = [(WBAuthorizeResponse *)response accessToken];
         UIAlertView* alert = nil;

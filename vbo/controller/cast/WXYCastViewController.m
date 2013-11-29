@@ -7,7 +7,6 @@
 //
 
 #import "WXYCastViewController.h"
-#import "CastRepostView.h"
 #import "WXYNetworkEngine.h"
 #import "ComRepViewController.h"
 #import "Status.h"
@@ -17,6 +16,9 @@
 #import "WXYSettingManager.h"
 #import "UIImage+ImageEffects.h"
 #import "ScreenShotHelper.h"
+#import "WXYScrollHiddenDelegate.h"
+#import "CastViewImageTransitionAnimation.h"
+#import "CastImageViewController.h"
 
 #define contantHeight 110.0
 #define contentLabelLineSpace 6.0
@@ -26,6 +28,7 @@
 
 //@property (nonatomic, strong) UIDynamicAnimator *animator;
 @property (nonatomic, strong) NSArray * weiboContentArray;
+@property (nonatomic, strong) CastViewImageTransitionAnimation * imageTransitionAnimation;
 
 @end
 
@@ -44,6 +47,7 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    _imageTransitionAnimation = [CastViewImageTransitionAnimation new];
     
     UIView *bgview = [[UIView alloc]init];
     [bgview setBackgroundColor:SHARE_SETTING_MANAGER.themeColor];
@@ -68,8 +72,24 @@
         self.weiboContentArray = resultArray;
         [self.tableView reloadData];
         [NSNotificationCenter postDidFetchCurrentUserNameNotification];
+        
+//        [self performSelector:@selector(snap) withObject:nil afterDelay:5.0];
+        
     }error:nil];
 }
+
+
+//- (void)snap
+//{
+//    UIGraphicsBeginImageContextWithOptions(CGSizeMake(320,568), NO, 2);
+//    [self.view drawViewHierarchyInRect:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height) afterScreenUpdates:NO];
+//    UIImage *snapshot = UIGraphicsGetImageFromCurrentImageContext();
+//    UIGraphicsEndImageContext();
+//    
+//    UIImageView * testView = [[UIImageView alloc]initWithImage:[snapshot applyTintEffectWithColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.6]]];
+//    [testView setFrame:CGRectMake(0.0, 0.0, 320.0, 568.0)];
+//    [self.view addSubview:testView];
+//}
 
 - (void)viewDidLayoutSubviews
 {
@@ -123,33 +143,61 @@
 {
     cell.backgroundColor = [UIColor clearColor];
     
-    UIView *normalView = [[UIView alloc]init];
-    [normalView setBackgroundColor:[UIColor clearColor]];
-    cell.backgroundView = normalView;
+//    UIView *selectedBackgroundView = [[UIView alloc]init];
+//    [selectedBackgroundView setBackgroundColor:[UIColor clearColor]];
+//    cell.selectedBackgroundView = selectedBackgroundView;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 #pragma mark - UIScrollView Delegate
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
+{
+    id<WXYScrollHiddenDelegate> delegate = nil;
+    if ([self.parentViewController conformsToProtocol:@protocol(WXYScrollHiddenDelegate)] && [self.parentViewController respondsToSelector:@selector(wxyScrollViewWillBeginDragging:)])
+    {
+        delegate = (id<WXYScrollHiddenDelegate>) self.parentViewController;
+        [delegate wxyScrollViewWillBeginDragging:scrollView];
+    }
+}
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
-    id<UIScrollViewDelegate> delegate = nil;
-    if ([self.parentViewController.parentViewController conformsToProtocol:@protocol(UIScrollViewDelegate)])
+    id<WXYScrollHiddenDelegate> delegate = nil;
+    if ([self.parentViewController conformsToProtocol:@protocol(WXYScrollHiddenDelegate)] && [self.parentViewController respondsToSelector:@selector(wxyScrollViewDidScroll:)])
     {
-        delegate = (id<UIScrollViewDelegate>) self.parentViewController.parentViewController;
+        delegate = (id<WXYScrollHiddenDelegate>) self.parentViewController;
+        [delegate wxyScrollViewDidScroll:scrollView];
     }
-    [delegate scrollViewDidScroll:scrollView];
 }
-
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
+{
+    id<WXYScrollHiddenDelegate> delegate = nil;
+    if ([self.parentViewController conformsToProtocol:@protocol(WXYScrollHiddenDelegate)] && [self.parentViewController respondsToSelector:@selector(wxyScrollViewDidEndDragging:willDecelerate:)])
+    {
+        delegate = (id<WXYScrollHiddenDelegate>) self.parentViewController;
+        [delegate wxyScrollViewDidEndDragging:scrollView willDecelerate:decelerate];
+    }
+    
+}
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+{
+    id<WXYScrollHiddenDelegate> delegate = nil;
+    if ([self.parentViewController conformsToProtocol:@protocol(WXYScrollHiddenDelegate)] && [self.parentViewController respondsToSelector:@selector(wxyScrollViewDidEndDecelerating:)])
+    {
+        delegate = (id<WXYScrollHiddenDelegate>) self.parentViewController;
+        [delegate wxyScrollViewDidEndDecelerating:scrollView];
+    }
+}
 #pragma mark - calculate weiboCell Height
 - (float)cellHeightForRowAtIndex:(NSInteger)row
 {
     Status * currentCellStatus = [_weiboContentArray objectAtIndex:row];
     float cellHeight = contantHeight;
     if (currentCellStatus.bmiddlePicURL != nil) {
-        cellHeight += 106.0;
+        cellHeight += 180.0;
     }
     NSMutableAttributedString * contentString = [UITextViewHelper setAttributeString:[[NSMutableAttributedString alloc]initWithString:currentCellStatus.text]
                                                                       WithNormalFont:SHARE_SETTING_MANAGER.castViewTableCellContentLabelFont
@@ -160,7 +208,7 @@
     cellHeight += [UITextViewHelper HeightForAttributedString:contentString withWidth:288.0f];
     
     if (currentCellStatus.repostStatus != nil) {
-        cellHeight += [CastViewCell getHeightofCastRepostViewByStatus:currentCellStatus.repostStatus] + 10.0 + 10.0;
+        cellHeight += [CastViewCell getHeightofCastRepostViewByStatus:currentCellStatus.repostStatus] + 20.0;
     }
     
     return cellHeight;
@@ -177,6 +225,7 @@
     UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:NULL];
     ComRepViewController * comRepViewController = [storyBoard instantiateViewControllerWithIdentifier:@"ComRepViewController"];
     comRepViewController.currentStatus = status;
+    
     [self.navigationController pushViewController:comRepViewController animated:YES];
 }
 
@@ -188,22 +237,20 @@
     [self.navigationController pushViewController:comRepViewController animated:YES];
 }
 
-#warning castView分隔线 待完成
-- (void)drawLineOnTableViewCell:(CastViewCell* )cell
-                       atYpoint:(float)height
+- (void)presentDetailImageViewWithImage:(UIImage *)image
+                         withInitalRect:(CGRect)initalRect
 {
-    UIGraphicsBeginImageContext(CGSizeMake(320.0, 1.0));
-    CGContextRef context = UIGraphicsGetCurrentContext();
-    CGContextSetStrokeColorWithColor(context, [tableViewSeprateLine CGColor]);
-    CGContextMoveToPoint(context, 0.0, 0.0);
-    CGContextAddLineToPoint(context, 320.0, 0.0);
-    CGContextStrokePath(context);
-    UIImage * newPic = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
+    CastImageViewController * toVc = [[CastImageViewController alloc]init];
     
-    UIImageView * nnView = [[UIImageView alloc]initWithImage:newPic];
-    [nnView setFrame:CGRectMake(0.0, height, 320.0, 5.0)];
-    [cell addSubview:nnView];
+    CGPoint offsetRect = [_tableView contentOffset];
+    initalRect.origin.y -= offsetRect.y;
+    
+    UIImageView * testView = [[UIImageView alloc]initWithImage:image];
+    toVc.weiboDetailImageView = testView;
+    toVc.initialRect = initalRect;
+    
+    toVc.transitioningDelegate = self;
+    [self.navigationController presentViewController:toVc animated:YES completion:nil];
 }
 
 - (void)viewDidUnload
@@ -216,5 +263,12 @@
 - (void)dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (id<UIViewControllerAnimatedTransitioning>)animationControllerForPresentedController:(UIViewController *)presented
+                                                                  presentingController:(UIViewController *)presenting
+                                                                      sourceController:(UIViewController *)source
+{
+    return self.imageTransitionAnimation;
 }
 @end

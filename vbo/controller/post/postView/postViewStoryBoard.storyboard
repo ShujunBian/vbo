@@ -8,17 +8,30 @@
         <scene sceneID="wbl-gp-dm3">
             <objects>
                 <viewController storyboardIdentifier="PostViewController" id="8aN-vb-FjD" userLabel="PostViewController" customClass="MHCPostViewController" sceneMemberID="viewController">
-                    <textView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" placeholderIntrinsicWidth="320" placeholderIntrinsicHeight="568" id="uqW-Cp-SRh">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="IVx-Fl-enp"/>
+                        <viewControllerLayoutGuide type="bottom" id="fDt-X9-Wi4"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="wrv-Bl-6YJ">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                        <inset key="scrollIndicatorInsets" minX="0.0" minY="20" maxX="0.0" maxY="0.0"/>
-                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
-                        <textInputTraits key="textInputTraits"/>
-                    </textView>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" placeholderIntrinsicWidth="320" placeholderIntrinsicHeight="568" translatesAutoresizingMaskIntoConstraints="NO" id="uqW-Cp-SRh">
+                                <rect key="frame" x="0.0" y="387" width="320" height="161"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <inset key="scrollIndicatorInsets" minX="0.0" minY="20" maxX="0.0" maxY="0.0"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </view>
                     <navigationItem key="navigationItem" id="RlM-bb-X6l"/>
                     <connections>
                         <outlet property="postViewTextView" destination="uqW-Cp-SRh" id="eQW-Gr-mRC"/>
+                        <segue destination="Ljj-vl-b9B" kind="push" identifier="atViewControllerSegue" id="K1c-SP-h81"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fKr-LN-ruv" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -28,7 +41,7 @@
         <!--atViewController-->
         <scene sceneID="tlL-w2-iMI">
             <objects>
-                <viewController storyboardIdentifier="atViewController" id="Ljj-vl-b9B" userLabel="atViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="atViewController" id="Ljj-vl-b9B" userLabel="atViewController" customClass="AtViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="6y8-Bj-QUR"/>
                         <viewControllerLayoutGuide type="bottom" id="E6S-a7-ube"/>
@@ -38,6 +51,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" id="fCW-ix-KCv"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MEk-LP-deV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

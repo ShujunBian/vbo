@@ -9,6 +9,7 @@
 #import "UITextViewHelper.h"
 #import "WXYSettingManager.h"
 #import <CoreText/CoreText.h>
+#import "MyTextAttachment.h"
 
 static NSRegularExpression *__nameRegularExpression;
 static inline NSRegularExpression * NameRegularExpression() {
@@ -46,15 +47,6 @@ static inline NSRegularExpression * EmotionRegularExpression() {
     return __emotionRegularExpression;
 }
 
-static NSRegularExpression *__emotionIDRegularExpression;
-static inline NSRegularExpression * EmotionIDRegularExpression() {
-    if (!__emotionIDRegularExpression) {
-        __emotionIDRegularExpression = [[NSRegularExpression alloc] initWithPattern:@" \\[[[a-f][0-9] ]*\\] " options:NSRegularExpressionCaseInsensitive error:nil];
-    }
-    
-    return __emotionIDRegularExpression;
-}
-
 @implementation UITextViewHelper
 
 + (NSMutableAttributedString* )setAttributeString:(NSMutableAttributedString *)mutableAttributedString
@@ -64,6 +56,8 @@ static inline NSRegularExpression * EmotionIDRegularExpression() {
                                      withUrlColor:(UIColor *)urlColor
                                withLabelLineSpace:(float)lineSpace
 {
+    [UITextViewHelper addLinkToAttributedString:mutableAttributedString];
+
     NSRange stringRange = NSMakeRange(0, mutableAttributedString.length);
     
     NSMutableParagraphStyle *style = [[NSMutableParagraphStyle alloc] init];
@@ -77,7 +71,6 @@ static inline NSRegularExpression * EmotionIDRegularExpression() {
     
     [mutableAttributedString addAttributes:scriptAttributes range:stringRange];
     
-    [UITextViewHelper addLinkToAttributedString:mutableAttributedString];
     
     return mutableAttributedString;
 }
@@ -112,6 +105,34 @@ static inline NSRegularExpression * EmotionIDRegularExpression() {
                               NSDictionary* urlLinkAttributeDic = @{NSLinkAttributeName: [[[mutableAttributedString string] substringWithRange:result.range]stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]};
                               [mutableAttributedString addAttributes:urlLinkAttributeDic range:result.range];
                           }];
+    
+    
+    regexp = EmotionRegularExpression();
+    NSRange emotionStringRange = NSMakeRange(0, mutableAttributedString.length);
+
+    NSTextCheckingResult *result = [regexp firstMatchInString:[mutableAttributedString string]
+                                                      options:0
+                                                        range:emotionStringRange];
+    while (result) {
+        NSRange keyRange = NSMakeRange(result.range.location + 1, result.range.length - 2);
+        NSString * keyString = [[mutableAttributedString string] substringWithRange:keyRange];
+        
+        MyTextAttachment * myTextAttachment = [[MyTextAttachment alloc]initWithData:nil ofType:nil];
+        if ([myTextAttachment insertTextAttachmentIntoAttributedString:mutableAttributedString
+                                                                andKey:keyString
+                                                               inRange:result.range]) {
+            emotionStringRange = NSMakeRange(0, mutableAttributedString.length);
+        }
+        else {
+            emotionStringRange = NSMakeRange(result.range.location + result.range.length - 1,
+                                             mutableAttributedString.length - (result.range.location + result.range.length - 1));
+        }
+        
+        result = [regexp firstMatchInString:[mutableAttributedString string]
+                                    options:0
+                                      range:emotionStringRange];
+    }
+    
     
     
 }
