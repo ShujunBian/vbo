@@ -30,6 +30,8 @@
     
     
     //navigation install.
+    self.navigationController.view.backgroundColor = [UIColor colorWithRed:248.f/255.f green:248.f/255.f  blue:248.f/255.f  alpha:1.0f];
+    
     self.navigationItem.title = @"新微博";
 //    
 //    [self.navigationController installMHDismissModalViewWithOptions:[[MHDismissModalViewOptions alloc] initWithScrollView:nil
@@ -57,6 +59,10 @@
     
     self.postViewTextView.inputAccessoryView = self.redefinedKeyboard;
     
+    self.keyBoardMainView.backgroundColor = [UIColor colorWithRed:248.f/255.f green:248.f/255.f  blue:248.f/255.f  alpha:1.0f];
+    
+  
+    
     
     //add Tap Gesture that make items become buttons.
     UITapGestureRecognizer *singleTapLocate = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didLocatePressed)];
@@ -74,6 +80,8 @@
     [self.atBgView addGestureRecognizer:singleTapAt];
     
     [self.expressBgView addGestureRecognizer:singleTapExpress];
+    
+    
     
 
 }

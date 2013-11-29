@@ -9,6 +9,7 @@
 #import "atViewController.h"
 #import "WXYSettingManager.h"
 #import "UINavigationController+MHDismissModalView.h"
+#import "WXYNetworkEngine.h"
 
 @interface AtViewController ()
 
@@ -21,13 +22,34 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	
-    self.navigationItem.title = @"@";
     
-    [self.navigationController installMHDismissModalViewWithOptions:[[MHDismissModalViewOptions alloc] initWithScrollView:nil
-                                                                                                                    theme:MHModalThemeWhite]];
+    self.view.backgroundColor = [UIColor colorWithRed:246.f/255.f green:244.f/255.f blue:240.f/255.f alpha:1.0f];
     
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"新微博" style:UIBarButtonItemStyleBordered target:self action:@selector(cancel)];
+    
+    // Navigation settings
+    UILabel *title = [[UILabel alloc]initWithFrame:CGRectMake(0,0,0,44)];
+    
+    title.text = @"@";
+    
+    title.textColor = [UIColor blackColor];
+    
+    title.font = [UIFont fontWithName:@"Helvetica Neue-Medium" size:17];
+    
+    self.navigationItem.titleView = title;
+    
+    //custom nav left back button
+    
+    UIButton *backBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    backBtn.frame = CGRectMake(0, 0, 67, 21);
+    
+    [backBtn setImage:[UIImage imageNamed:@"backToPost.png"] forState:UIControlStateNormal];
+    [backBtn addTarget:self action:@selector(cancel) forControlEvents:UIControlEventTouchUpInside];
+    
+    UIBarButtonItem *backItem = [[UIBarButtonItem alloc] initWithCustomView:backBtn];
+    self.navigationItem.leftBarButtonItem = backItem;
+    
+    
+    //right button
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"分组" style:UIBarButtonItemStyleBordered target:self action:@selector(postWeibo)];
     
     self.navigationItem.leftBarButtonItem.tintColor = SHARE_SETTING_MANAGER.themeColor;
@@ -36,7 +58,7 @@
 }
 -(void)cancel
 {
-    [self.navigationController popToRootViewControllerAnimated:NO];
+    [self.navigationController popToRootViewControllerAnimated:YES];
 }
 -(void)postWeibo
 {
