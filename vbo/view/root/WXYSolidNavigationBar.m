@@ -8,6 +8,9 @@
 
 #import "WXYSolidNavigationBar.h"
 
+#define FONT_SIZE_SMALL 12.f
+#define FONT_SIZE_LARGE 17.f
+
 @interface WXYSolidNavigationBar ()
 
 @property (strong, nonatomic) NSLayoutConstraint* heightConstraint;
@@ -85,7 +88,12 @@
     height = height < ROOT_NAV_BAR_SHORT_HEIGHT? ROOT_NAV_BAR_SHORT_HEIGHT : height;
     height = height > ROOT_NAV_BAR_LONG_HEIGHT? ROOT_NAV_BAR_LONG_HEIGHT : height;
     self.heightConstraint.constant = height;
+    
+    float ratio = (height - ROOT_NAV_BAR_SHORT_HEIGHT) / (ROOT_NAV_BAR_LONG_HEIGHT - ROOT_NAV_BAR_SHORT_HEIGHT);
+
 #warning 还未改变文字大小及隐藏图标
+#warning 为显示缩小动画，字体使用scale调小
+    self.titleLabel.transform = CGAffineTransformMakeScale(0.7f + 0.3*ratio, 0.7f + 0.3*ratio);
 }
 
 

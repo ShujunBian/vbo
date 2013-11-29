@@ -129,6 +129,11 @@
         [delegate wxyScrollViewDidEndDragging:scrollView willDecelerate:decelerate];
     }
     
+    if (!decelerate)
+    {
+        [self wxyScrollViewDidEndDecelerating:scrollView];
+    }
+    
 }
 
 - (void)wxyScrollViewDidEndDecelerating:(UIScrollView *)scrollView
@@ -136,9 +141,8 @@
     float height = self.navBar.navBarHeight < ((ROOT_NAV_BAR_LONG_HEIGHT + ROOT_NAV_BAR_SHORT_HEIGHT) / 2)? ROOT_NAV_BAR_SHORT_HEIGHT : ROOT_NAV_BAR_LONG_HEIGHT;
     float deltaHeight = height - self.navBar.navBarHeight;
     
-    [self.navBar changeNavBarHeightTo:height];
-    
     [UIView animateWithDuration:0.1f animations:^{
+        [self.navBar changeNavBarHeightTo:height];
         [self.navBar layoutIfNeeded];
         UIEdgeInsets previousInset = scrollView.contentInset;
         id<UIScrollViewDelegate> aDelegate = scrollView.delegate;
