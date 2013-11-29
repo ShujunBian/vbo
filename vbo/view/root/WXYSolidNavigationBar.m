@@ -8,13 +8,17 @@
 
 #import "WXYSolidNavigationBar.h"
 
+#define FONT_SIZE_SMALL 12.f
+#define FONT_SIZE_LARGE 17.f
+
 @interface WXYSolidNavigationBar ()
 
-
+@property (strong, nonatomic) NSLayoutConstraint* heightConstraint;
 
 @end
 
 @implementation WXYSolidNavigationBar
+@dynamic navBarHeight;
 
 #pragma mark - Getter And Setter Method
 - (void)setTitle:(NSString *)title
@@ -22,6 +26,11 @@
     _title = title;
     self.titleLabel.text = _title;
 }
+- (float)navBarHeight
+{
+    return self.heightConstraint.constant;
+}
+
 
 #pragma mark - Init Method
 - (id)init
@@ -67,5 +76,25 @@
     // Drawing code
 }
 */
+#pragma mark - Change Height
+- (void)changeNavBarHeightBy:(float)deltaHeight
+{
+    float preHeight = self.heightConstraint.constant;
+    float height = deltaHeight + preHeight;
+    [self changeNavBarHeightTo:height];
+}
+- (void)changeNavBarHeightTo:(float)height
+{
+    height = height < ROOT_NAV_BAR_SHORT_HEIGHT? ROOT_NAV_BAR_SHORT_HEIGHT : height;
+    height = height > ROOT_NAV_BAR_LONG_HEIGHT? ROOT_NAV_BAR_LONG_HEIGHT : height;
+    self.heightConstraint.constant = height;
+    
+    float ratio = (height - ROOT_NAV_BAR_SHORT_HEIGHT) / (ROOT_NAV_BAR_LONG_HEIGHT - ROOT_NAV_BAR_SHORT_HEIGHT);
+
+#warning 还未改变文字大小及隐藏图标
+#warning 为显示缩小动画，字体使用scale调小
+    self.titleLabel.transform = CGAffineTransformMakeScale(0.7f + 0.3*ratio, 0.7f + 0.3*ratio);
+}
+
 
 @end

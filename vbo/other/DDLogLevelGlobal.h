@@ -8,7 +8,7 @@
 
 #ifndef vbo_DDLogLevelGlobal_h
 #define vbo_DDLogLevelGlobal_h
-
-static int ddLogLevel = LOG_LEVEL_VERBOSE;
+#import "DDLog.h"
+static int ddLogLevel = LOG_LEVEL_WARN;
 
 #endif
