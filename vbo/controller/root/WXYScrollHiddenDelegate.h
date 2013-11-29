@@ -15,6 +15,6 @@
 - (void)wxyScrollViewWillBeginDragging:(UIScrollView *)scrollView;
 - (void)wxyScrollViewDidScroll:(UIScrollView *)scrollView;
 - (void)wxyScrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate;
-
+- (void)wxyScrollViewDidEndDecelerating:(UIScrollView *)scrollView;
 
 @end

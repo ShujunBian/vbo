@@ -178,7 +178,15 @@
     }
     
 }
-
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+{
+    id<WXYScrollHiddenDelegate> delegate = nil;
+    if ([self.parentViewController conformsToProtocol:@protocol(WXYScrollHiddenDelegate)] && [self.parentViewController respondsToSelector:@selector(wxyScrollViewDidEndDecelerating:)])
+    {
+        delegate = (id<WXYScrollHiddenDelegate>) self.parentViewController;
+        [delegate wxyScrollViewDidEndDecelerating:scrollView];
+    }
+}
 #pragma mark - calculate weiboCell Height
 - (float)cellHeightForRowAtIndex:(NSInteger)row
 {
