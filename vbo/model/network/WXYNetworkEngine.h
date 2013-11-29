@@ -32,6 +32,19 @@ typedef enum{
 /*! 用户登陆，使用微博SDK，似乎要在controller上调用
   */
 - (void)userLogin;
+/*! 获取用户信息
+ * \param userId 所查看用户的id 与screenName二选一
+ * \param screenName 所查看用户的名称  与userId二选一
+ * \param succeedBlock 网络请求成功处理block
+ * \param errorBlock 网络请求失败处理block
+ * \returns 当前网络请求Operation
+ */
+- (MKNetworkOperation*)getUserInfoId:(NSNumber*)userId
+                        orScreenName:(NSString*)screenName
+                             succeed:(UserBlock)succeedBlock
+                               error:(ErrorBlock)errorBlock;
+
+
 
 ///////////////微博接口
 ////////读取

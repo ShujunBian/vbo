@@ -18,8 +18,6 @@ static MyTextAttachment * sharedMyTextAttachment;
                              glyphPosition:(CGPoint)position
                             characterIndex:(NSUInteger)charIndex
 {
-    
-//    NSLog(@"the lineFrag is %f %f",lineFrag.origin.y ,lineFrag.size.height);
     return CGRectMake( 0 , -5.0 , lineFrag.size.height , lineFrag.size.height );
 }
 

@@ -8,11 +8,12 @@
 
 #import "WXYRootNavViewController.h"
 #import "WXYNavigationBar.h"
-
+#import "WXYSolidNavigationBar.h"
+#import "WXYLoginManager.h"
 
 @interface WXYRootNavViewController ()
 
-@property (strong, nonatomic) WXYNavigationBar* navBar;
+@property (strong, nonatomic) WXYSolidNavigationBar* navBar;
 
 @end
 
@@ -36,9 +37,11 @@
 //    self.view.translatesAutoresizingMaskIntoConstraints = NO;
     
 
-    self.navBar = [[WXYNavigationBar alloc] init];
+    self.navBar = [[WXYSolidNavigationBar alloc] init];
+    self.navBar.title = SHARE_LOGIN_MANAGER.currentUserInfo.userName;
     [self.view addSubview:self.navBar];
-    self.navBar.snapShotView = ((UIViewController*)self.childViewControllers[0]).view;
+
+//    self.navBar.snapShotView = ((UIViewController*)self.childViewControllers[0]).view;
     
     NSLayoutConstraint* navBarTopConstraint = [NSLayoutConstraint constraintWithItem:self.view attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.navBar attribute:NSLayoutAttributeTop multiplier:1 constant:0];
     NSArray* navBarHoriConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|[navBar]|" options:0 metrics:nil views:@{@"navBar":self.navBar}];
@@ -48,7 +51,7 @@
 - (void)viewDidLayoutSubviews
 {
     [super viewDidLayoutSubviews];
-    [self.navBar refresh];
+//    [self.navBar refresh];
 }
 
 - (void)didReceiveMemoryWarning
@@ -65,7 +68,7 @@
 }
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
-    [self.navBar refresh];
+//    [self.navBar refresh];
 }
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
