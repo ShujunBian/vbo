@@ -32,6 +32,7 @@
 		185E88B0182AABF40020F3B2 /* MKNetworkOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 185E889E182AABF40020F3B2 /* MKNetworkOperation.m */; };
 		185E88B1182AABF40020F3B2 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 185E88A1182AABF40020F3B2 /* Reachability.m */; };
 		185E88B9182AAE670020F3B2 /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 185E88B8182AAE670020F3B2 /* UIImage+ImageEffects.m */; };
+		185EE17D18482FE90097F9D9 /* WXYSolidNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 185EE17C18482FE90097F9D9 /* WXYSolidNavigationBar.m */; };
 		1866FAD81833D31100E08A03 /* WXYCommentTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 1866FAD71833D31100E08A03 /* WXYCommentTest.m */; };
 		1868F0FC1829C8B200C5764D /* WXYRootNavViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1868F0F91829C8B200C5764D /* WXYRootNavViewController.m */; };
 		1868F0FD1829C8B200C5764D /* WXYRootNavViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1868F0F91829C8B200C5764D /* WXYRootNavViewController.m */; };
@@ -227,6 +228,8 @@
 		185E88A5182AABF40020F3B2 /* MKNetworkKit-iOS.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = "MKNetworkKit-iOS.xcodeproj"; sourceTree = "<group>"; };
 		185E88B7182AAE670020F3B2 /* UIImage+ImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageEffects.h"; sourceTree = "<group>"; };
 		185E88B8182AAE670020F3B2 /* UIImage+ImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageEffects.m"; sourceTree = "<group>"; };
+		185EE17B18482FE90097F9D9 /* WXYSolidNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXYSolidNavigationBar.h; sourceTree = "<group>"; };
+		185EE17C18482FE90097F9D9 /* WXYSolidNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXYSolidNavigationBar.m; sourceTree = "<group>"; };
 		1866FAD71833D31100E08A03 /* WXYCommentTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXYCommentTest.m; sourceTree = "<group>"; };
 		1868F0F81829C8B200C5764D /* WXYRootNavViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXYRootNavViewController.h; sourceTree = "<group>"; };
 		1868F0F91829C8B200C5764D /* WXYRootNavViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXYRootNavViewController.m; sourceTree = "<group>"; };
@@ -269,6 +272,7 @@
 		18B02D56182E0F6100D9AF04 /* GraphicName.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GraphicName.h; sourceTree = "<group>"; };
 		18B02D57182E167800D9AF04 /* WXYTabBarButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXYTabBarButton.h; sourceTree = "<group>"; };
 		18B02D58182E167800D9AF04 /* WXYTabBarButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXYTabBarButton.m; sourceTree = "<group>"; };
+		18B6AB511847A82E00124C7D /* WXYNotificationNameList.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WXYNotificationNameList.h; sourceTree = "<group>"; };
 		18D9E4E6183388E0004539CC /* Comment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Comment.h; sourceTree = "<group>"; };
 		18D9E4E7183388E0004539CC /* Comment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Comment.m; sourceTree = "<group>"; };
 		18D9E4EB18338BF0004539CC /* Status.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Status.h; sourceTree = "<group>"; };
@@ -634,6 +638,8 @@
 				18A6A681182FCD6000D9FB7F /* WXYTabBarPostButton.m */,
 				18A6A685182FF65C00D9FB7F /* WXYBarButtonAbstract.h */,
 				18A6A686182FF65C00D9FB7F /* WXYBarButtonAbstract.m */,
+				185EE17B18482FE90097F9D9 /* WXYSolidNavigationBar.h */,
+				185EE17C18482FE90097F9D9 /* WXYSolidNavigationBar.m */,
 			);
 			path = root;
 			sourceTree = "<group>";
@@ -746,6 +752,7 @@
 				18EB09C4182B7C97005CC27D /* WXYBlock.h */,
 				18410FFA18165589008B700C /* data */,
 				18410FFC18165589008B700C /* network */,
+				18B6AB511847A82E00124C7D /* WXYNotificationNameList.h */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -1233,6 +1240,7 @@
 				18EED3211815853E000856CE /* DDAbstractDatabaseLogger.m in Sources */,
 				185E88AE182AABF40020F3B2 /* UIImageView+MKNetworkKitAdditions.m in Sources */,
 				1841100618165626008B700C /* WXYError.m in Sources */,
+				185EE17D18482FE90097F9D9 /* WXYSolidNavigationBar.m in Sources */,
 				5183B185182AA876008F22D1 /* CastViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

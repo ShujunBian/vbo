@@ -159,6 +159,7 @@
           {
               NSDictionary* responseDict = completedOperation.responseJSON;
               User* user = [WXYNetworkDataFactory getUserWithDict:responseDict];
+              [SHARE_DATA_MODEL saveCacheContext];
               if (succeedBlock)
               {
                   succeedBlock(user);
