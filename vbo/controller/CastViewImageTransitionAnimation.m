@@ -7,6 +7,7 @@
 //
 
 #import "CastViewImageTransitionAnimation.h"
+#import "CastImageViewController.h"
 
 @implementation CastViewImageTransitionAnimation
 
@@ -17,7 +18,7 @@
 
 - (void)animateTransition:(id <UIViewControllerContextTransitioning>)transitionContext
 {
-    UIViewController *toVC = [transitionContext viewControllerForKey:UITransitionContextToViewControllerKey];
+    CastImageViewController *toVC = (CastImageViewController *)[transitionContext viewControllerForKey:UITransitionContextToViewControllerKey];
     UIViewController *fromVC = [transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey];
     
     toVC.view.frame = [transitionContext initialFrameForViewController:toVC];
@@ -28,20 +29,10 @@
     NSTimeInterval duration = [self transitionDuration:transitionContext];
     [UIView animateWithDuration:duration delay:0.0 options:7 << 12 animations:^{
         fromVC.view.alpha = 0.0;
+        toVC.weiboDetailImageView.frame = CGRectMake(0, 0, 320, 568);
     }completion:^(BOOL finished) {
         [transitionContext completeTransition:YES];
     }];
-    
-//    [UIView animateWithDuration:duration
-//                          delay:0.0
-//         usingSpringWithDamping:0.6
-//          initialSpringVelocity:0.0
-//                        options:UIViewAnimationOptionCurveLinear
-//                     animations:^{
-//                         toVC.view.frame = finalFrame;
-//                     } completion:^(BOOL finished) {
-//                         [transitionContext completeTransition:YES];
-//                     }];
 }
 
 @end

@@ -214,6 +214,9 @@
 {
     CastImageViewController * toVc = [[CastImageViewController alloc]init];
     
+    CGPoint offsetRect = [_tableView contentOffset];
+    initalRect.origin.y -= offsetRect.y;
+    
     UIImageView * testView = [[UIImageView alloc]initWithImage:image];
     toVc.weiboDetailImageView = testView;
     toVc.initialRect = initalRect;
@@ -234,7 +237,9 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
-- (id<UIViewControllerAnimatedTransitioning>)animationControllerForPresentedController:(UIViewController *)presented presentingController:(UIViewController *)presenting sourceController:(UIViewController *)source
+- (id<UIViewControllerAnimatedTransitioning>)animationControllerForPresentedController:(UIViewController *)presented
+                                                                  presentingController:(UIViewController *)presenting
+                                                                      sourceController:(UIViewController *)source
 {
     return self.imageTransitionAnimation;
 }

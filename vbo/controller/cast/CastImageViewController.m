@@ -28,15 +28,10 @@
     [super viewDidLoad];
     
     _weiboDetailImageView.frame = _initialRect;
-    _weiboDetailImageView.contentMode = UIViewContentModeScaleAspectFill;
+    _weiboDetailImageView.contentMode = UIViewContentModeScaleAspectFit;
     _weiboDetailImageView.clipsToBounds = YES;
     [self.view addSubview:_weiboDetailImageView];
     
-    NSLog(@"the frame is %f %f %f %f",_initialRect.origin.x,_initialRect.origin.y ,_initialRect.size.width,_initialRect.size.height);
-    
-//    [UIView animateWithDuration:3 animations:^{
-//        _weiboDetailImageView.frame = CGRectMake(0, 0, 320, 568);
-//    }];
 	// Do any additional setup after loading the view.
 }
 

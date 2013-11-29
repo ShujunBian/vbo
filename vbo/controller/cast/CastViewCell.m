@@ -304,21 +304,19 @@ static inline void calculateAndSetFonts(CastViewCell *aCell)
 #pragma mark - 手势检测处理
 - (void)handleGesture:(UITapGestureRecognizer *)gestureRecognizer {
     CGPoint tapPoint = [gestureRecognizer locationInView:self];
-    NSLog(@"Is in tap and point is %f %f",tapPoint.x,tapPoint.y);
-    NSLog(@"self .frame is %f",self.frame.origin.y);
+//    NSLog(@"Is in tap and point is %f %f",tapPoint.x,tapPoint.y);
+//    NSLog(@"self .frame is %f",self.frame.origin.y);
     
+    CGRect cellRect = self.frame;
     if (_currentStatus.bmiddlePicURL != nil && tapPoint.y < 180.0) {
         CGRect initialRect = _weiboImage.frame;
-        NSInteger i = floorf(self.frame.origin.y / 568.0);
-        initialRect.origin.y += (self.frame.origin.y - i * 568.0);
+        initialRect.origin.y += cellRect.origin.y;
         [self.delegateForCastViewCell presentDetailImageViewWithImage:_weiboImage.image
                                                        withInitalRect:initialRect];
     }
     else {
         CGRect initialRect = _repostImageView.frame;
-        NSLog(@"the first plaice is %f",initialRect.origin.y);
-        NSInteger i = floorf(self.frame.origin.y / 568.0);
-        initialRect.origin.y += (self.frame.origin.y - i * 568.0);
+        initialRect.origin.y += cellRect.origin.y;
         [self.delegateForCastViewCell presentDetailImageViewWithImage:_repostImageView.image
                                                        withInitalRect:initialRect];
     }
