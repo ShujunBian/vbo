@@ -20,6 +20,7 @@
 @property (nonatomic, weak) IBOutlet UIImageView * commentUserAvatorImageView;
 @property (nonatomic, weak) IBOutlet UITextView * commentTextView;
 @property (nonatomic, weak) IBOutlet UILabel * commentTimeLabel;
+@property (nonatomic, weak) IBOutlet UIImageView * shadowImageView;
 
 @property (nonatomic, weak) IBOutlet NSLayoutConstraint * commentTextViewHeightConstraint;
 
@@ -62,6 +63,11 @@
     _commentTextViewHeightConstraint.constant = [UITextViewHelper HeightForAttributedString:_commentTextView.attributedText
                                                                                   withWidth:254.0];
     [_commentTextView setScrollEnabled:NO];
+    
+    UIImage * shadowImage = [UIImage imageNamed:@"card_shadow_unit.png"];
+    UIEdgeInsets insets = UIEdgeInsetsMake(0, 0, 0, 0);
+    [shadowImage resizableImageWithCapInsets:insets resizingMode:UIImageResizingModeStretch];
+    [_shadowImageView setImage:shadowImage];
 }
 
 - (NSMutableAttributedString *)commentContentLabelAttributedString
@@ -82,5 +88,6 @@
 
     // Configure the view for the selected state
 }
+
 
 @end

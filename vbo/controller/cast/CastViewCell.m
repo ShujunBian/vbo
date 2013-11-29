@@ -13,11 +13,12 @@
 #import "NSDate+Addition.h"
 
 #define padding 5.0
-#define weiboImageHeight 106.0
+#define weiboImageHeight 180.0
 #define weiboCellBetweenHeight 10.0
-#define repostViewConstantHeight 43.0
+#define repostViewConstantHeight 59.0
 #define contentLabelLineSpace 6.0
 #define repostBackgroundViewColor [UIColor colorWithRed:234.0 / 255.0 green:234.0 / 255.0 blue:234.0 / 255.0 alpha:1.0]
+#define shadowHeight 1.0
 
 @interface CastViewCell()<UITextViewDelegate, UIActionSheetDelegate>
 @property (nonatomic, strong) Status * currentStatus;
@@ -33,6 +34,7 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint * avatorTopSpaceConstaint;
 
 @property (weak, nonatomic) IBOutlet UIView * cellBackgroundView;
+@property (nonatomic, weak) IBOutlet NSLayoutConstraint * cellBackgroundViewBottomConstraint;
 
 @property (nonatomic, weak) IBOutlet UIButton * moreButton;
 @property (nonatomic, weak) IBOutlet UIButton * commentButton;
@@ -50,6 +52,8 @@
 @property (nonatomic, weak) IBOutlet NSLayoutConstraint * repostButtonTopConstraint;
 @property (nonatomic, weak) IBOutlet NSLayoutConstraint * repostBackgroundViewConstraint;
 
+@property (nonatomic, weak) IBOutlet UIImageView * shadowImageView;
+
 //@property (nonatomic, strong) CastRepostView * repostContentView;
 @end
 
@@ -66,6 +70,8 @@
                                                  name:UIContentSizeCategoryDidChangeNotification
                                                object:nil];
     [self setSelectionStyle:UITableViewCellSelectionStyleNone];
+    
+    //    [self prepareGestureRecognizerInView:self];
 }
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
@@ -82,7 +88,32 @@
     [super setSelected:selected animated:animated];
     
     // Configure the view for the selected state
+    //    if (selected) {
+    //        [_cellBackgroundView setBackgroundColor:SHARE_SETTING_MANAGER.castViewTableCellContentLabelTextColor];
+    //        [_weiboContentTextView setTextColor:SHARE_SETTING_MANAGER.castViewTableCellBackgroundColor];
+    //    }
 }
+
+#pragma mark - 设置castview点击后效果
+//- (void)setHighlighted:(BOOL)highlighted animated:(BOOL)animated
+//{
+//    if (highlighted) {
+////        [UIView animateWithDuration:0.3 animations:^{
+//            [_cellBackgroundView setBackgroundColor:SHARE_SETTING_MANAGER.castViewTableCellContentLabelTextColor];
+//            [_weiboContentTextView setTextColor:SHARE_SETTING_MANAGER.castViewTableCellBackgroundColor];
+//
+////        }completion:nil];
+//
+//    }
+//    else  {
+//        [UIView animateWithDuration:0.3 animations:^{
+//            [_cellBackgroundView setBackgroundColor:SHARE_SETTING_MANAGER.castViewTableCellBackgroundColor];
+//            [_weiboContentTextView setTextColor:SHARE_SETTING_MANAGER.castViewTableCellContentLabelTextColor];
+//
+//        }completion:nil];
+//
+//    }
+//}
 
 - (void)setCellWithWeiboStatus:(Status *)currentCellStatus
                   isInCastView:(BOOL)isInCastView
@@ -90,6 +121,7 @@
     self.currentStatus = currentCellStatus;
     
     [_cellBackgroundView setBackgroundColor:SHARE_SETTING_MANAGER.castViewTableCellBackgroundColor];
+    _cellBackgroundViewBottomConstraint.constant = isInCastView ? 5.0 : 1.0;
     
     [_weiboContentTextView setAttributedText:[self weiboContentLabelAttributedStringByStatus:currentCellStatus]];
     _contentTextViewHegihtConstraint.constant = [UITextViewHelper HeightForAttributedString:_weiboContentTextView.attributedText
@@ -109,6 +141,8 @@
     [_weiboImage setImageFromURL:anImageURL placeHolderImage:nil animation:YES completion:nil];
     _weiboImage.contentMode = UIViewContentModeScaleAspectFill;
     _weiboImage.clipsToBounds = YES;
+    
+    [self prepareGestureRecognizerInView:_weiboImage];
     
     [_userAvator setImage:nil];
     [_userAvator setImageFromURLString:currentCellStatus.author.profileImageUrl
@@ -146,15 +180,17 @@
     [_repostUserNameLabel setText:nil];
     
     if (currentCellStatus.repostStatus != nil) {
-        _repostBackgroundViewConstraint.constant = [CastViewCell getHeightofCastRepostViewByStatus:currentCellStatus.repostStatus] - 2.0;
+        float repostHeightWithPadding = [CastViewCell getHeightofCastRepostViewByStatus:currentCellStatus.repostStatus];
+        _repostBackgroundViewConstraint.constant = isInCastView ?  repostHeightWithPadding : repostHeightWithPadding - padding;
         [_repostBackgroundView setBackgroundColor:repostBackgroundViewColor];
-        _repostButtonTopConstraint.constant = isInCastView ? [CastViewCell getHeightofCastRepostViewByStatus:currentCellStatus.repostStatus] + 10.0 + 10.0: 0.0;
+        _repostButtonTopConstraint.constant = isInCastView ? [CastViewCell getHeightofCastRepostViewByStatus:currentCellStatus.repostStatus] + 20.0 : 0.0;
         if (currentCellStatus.repostStatus.bmiddlePicURL != nil) {
-            _reposetUserNameTopConstraint.constant = 123.0;
+            _reposetUserNameTopConstraint.constant = 139.0;
             NSURL *anImageURL = [NSURL URLWithString:currentCellStatus.repostStatus.bmiddlePicURL];
             [_repostImageView setImageFromURL:anImageURL placeHolderImage:nil animation:YES completion:nil];
             _repostImageView.contentMode = UIViewContentModeScaleAspectFill;
             _repostImageView.clipsToBounds = YES;
+            [self prepareGestureRecognizerInView:_repostImageView];
         }
         else {
             _reposetUserNameTopConstraint.constant = 27.0;
@@ -163,27 +199,32 @@
         
         [_repostTextView setAttributedText:[self weiboContentLabelAttributedStringByStatus:currentCellStatus.repostStatus]];
         _repostTextViewHeightConstraint.constant = [UITextViewHelper HeightForAttributedString:_repostTextView.attributedText
-                                                                                      withWidth:288.0];
+                                                                                     withWidth:288.0];
         [_repostTextView setScrollEnabled:NO];
         _repostTextView.delegate = self;
-
+        
     }
     else {
         _repostBackgroundViewConstraint.constant = 0;
         _repostButtonTopConstraint.constant = 0;
     }
-
-//    NSLog(@"The repostView size is %f %f",tmpCustomView.bounds.size.width,tmpCustomView.bounds.size.height);
+    
+    UIImage * shadowImage = [UIImage imageNamed:@"card_shadow_unit.png"];
+    UIEdgeInsets insets = UIEdgeInsetsMake(0, 0, 0, 0);
+    [shadowImage resizableImageWithCapInsets:insets resizingMode:UIImageResizingModeStretch];
+    [_shadowImageView setImage:shadowImage];
+    
+    //    NSLog(@"The repostView size is %f %f",tmpCustomView.bounds.size.width,tmpCustomView.bounds.size.height);
 }
 
 - (NSMutableAttributedString *)weiboContentLabelAttributedStringByStatus:(Status *)currentCellStatus
 {
     NSMutableAttributedString * contentString = [UITextViewHelper setAttributeString:[[NSMutableAttributedString alloc]initWithString:currentCellStatus.text]
-                                                                              WithNormalFont:SHARE_SETTING_MANAGER.castViewTableCellContentLabelFont
-                                                                                 withUrlFont:SHARE_SETTING_MANAGER.castViewTableCellContentLabelFont
-                                                                             withNormalColor:SHARE_SETTING_MANAGER.castViewTableCellContentLabelTextColor
-                                                                                withUrlColor:SHARE_SETTING_MANAGER.themeColor
-                                                                          withLabelLineSpace:contentLabelLineSpace];
+                                                                      WithNormalFont:SHARE_SETTING_MANAGER.castViewTableCellContentLabelFont
+                                                                         withUrlFont:SHARE_SETTING_MANAGER.castViewTableCellContentLabelFont
+                                                                     withNormalColor:SHARE_SETTING_MANAGER.castViewTableCellContentLabelTextColor
+                                                                        withUrlColor:SHARE_SETTING_MANAGER.themeColor
+                                                                  withLabelLineSpace:contentLabelLineSpace];
     
     return contentString;
 }
@@ -216,17 +257,17 @@
 #pragma mark - textViewDelegate
 -(BOOL)textView:(UITextView *)textView shouldInteractWithURL:(NSURL *)URL inRange:(NSRange)characterRange
 {
-//    NSLog(@"THE URL IS %@ and The range is %d",URL,characterRange.length);
+    //    NSLog(@"THE URL IS %@ and The range is %d",URL,characterRange.length);
     NSString * string = [URL.relativeString stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     NSLog(@"The URL is %@",string);
-        
+    
     UIActionSheet * testActionSheet = [[UIActionSheet alloc]initWithTitle:@"Click URl"
                                                                  delegate:self
                                                         cancelButtonTitle:@"OK"
-                                                    destructiveButtonTitle:nil
+                                                   destructiveButtonTitle:nil
                                                         otherButtonTitles:nil];
     [testActionSheet showInView:self.superview];
-//    NSLayoutManager * layoutManger = _weiboContentTextView.layoutManager;
+    //    NSLayoutManager * layoutManger = _weiboContentTextView.layoutManager;
     
     return NO;
 }
@@ -251,9 +292,41 @@ static inline void calculateAndSetFonts(CastViewCell *aCell)
     
     aCell.weiboContentTextView.font = weiboContentTextFont;
 }
+#pragma mark - 初始化手势检测
+
+- (void)prepareGestureRecognizerInView:(UIView *)view{
+    [view setUserInteractionEnabled:YES];
+    UITapGestureRecognizer * tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleGesture:)];
+    tapGesture.numberOfTapsRequired = 1;
+    [view addGestureRecognizer:tapGesture];
+}
+
+#pragma mark - 手势检测处理
+- (void)handleGesture:(UITapGestureRecognizer *)gestureRecognizer {
+    CGPoint tapPoint = [gestureRecognizer locationInView:self];
+    NSLog(@"Is in tap and point is %f %f",tapPoint.x,tapPoint.y);
+    NSLog(@"self .frame is %f",self.frame.origin.y);
+    
+    if (_currentStatus.bmiddlePicURL != nil && tapPoint.y < 180.0) {
+        CGRect initialRect = _weiboImage.frame;
+        NSInteger i = floorf(self.frame.origin.y / 568.0);
+        initialRect.origin.y += (self.frame.origin.y - i * 568.0);
+        [self.delegateForCastViewCell presentDetailImageViewWithImage:_weiboImage.image
+                                                       withInitalRect:initialRect];
+    }
+    else {
+        CGRect initialRect = _repostImageView.frame;
+        NSLog(@"the first plaice is %f",initialRect.origin.y);
+        NSInteger i = floorf(self.frame.origin.y / 568.0);
+        initialRect.origin.y += (self.frame.origin.y - i * 568.0);
+        [self.delegateForCastViewCell presentDetailImageViewWithImage:_repostImageView.image
+                                                       withInitalRect:initialRect];
+    }
+}
 
 - (void)dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
+
 @end

@@ -159,10 +159,10 @@
 		518A1CB818431CCE00D36AFD /* MyTextAttachment.m in Sources */ = {isa = PBXBuildFile; fileRef = 518A1CB718431CCE00D36AFD /* MyTextAttachment.m */; };
 		518A1CBE1843243300D36AFD /* EmoticonsInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 518A1CBD1843243300D36AFD /* EmoticonsInfo.plist */; };
 		518A1CC11843247000D36AFD /* EmoticonsInfoHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 518A1CC01843247000D36AFD /* EmoticonsInfoHelper.m */; };
+		5199293518459C320000216F /* CastViewImageTransitionAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 5199293418459C320000216F /* CastViewImageTransitionAnimation.m */; };
+		5199293818459CD00000216F /* CastImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5199293718459CD00000216F /* CastImageViewController.m */; };
 		51AACA90183D027100793547 /* ScreenShotHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 51AACA8F183D027100793547 /* ScreenShotHelper.m */; };
 		51F8FA28182E0F5C00E211AC /* TTTAttributedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 51F8FA27182E0F5C00E211AC /* TTTAttributedLabel.m */; };
-		51FBFDE718364CD100F2BFF2 /* CastRepostView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 51FBFDE618364CD100F2BFF2 /* CastRepostView.xib */; };
-		51FBFDEA18364CEC00F2BFF2 /* CastRepostView.m in Sources */ = {isa = PBXBuildFile; fileRef = 51FBFDE918364CEC00F2BFF2 /* CastRepostView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -380,13 +380,14 @@
 		518A1CBD1843243300D36AFD /* EmoticonsInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = EmoticonsInfo.plist; sourceTree = "<group>"; };
 		518A1CBF1843247000D36AFD /* EmoticonsInfoHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmoticonsInfoHelper.h; sourceTree = "<group>"; };
 		518A1CC01843247000D36AFD /* EmoticonsInfoHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmoticonsInfoHelper.m; sourceTree = "<group>"; };
+		5199293318459C320000216F /* CastViewImageTransitionAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CastViewImageTransitionAnimation.h; sourceTree = "<group>"; };
+		5199293418459C320000216F /* CastViewImageTransitionAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CastViewImageTransitionAnimation.m; sourceTree = "<group>"; };
+		5199293618459CD00000216F /* CastImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CastImageViewController.h; sourceTree = "<group>"; };
+		5199293718459CD00000216F /* CastImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CastImageViewController.m; sourceTree = "<group>"; };
 		51AACA8E183D027100793547 /* ScreenShotHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScreenShotHelper.h; sourceTree = "<group>"; };
 		51AACA8F183D027100793547 /* ScreenShotHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScreenShotHelper.m; sourceTree = "<group>"; };
 		51F8FA26182E0F5C00E211AC /* TTTAttributedLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTTAttributedLabel.h; sourceTree = "<group>"; };
 		51F8FA27182E0F5C00E211AC /* TTTAttributedLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTTAttributedLabel.m; sourceTree = "<group>"; };
-		51FBFDE618364CD100F2BFF2 /* CastRepostView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CastRepostView.xib; sourceTree = "<group>"; };
-		51FBFDE818364CEC00F2BFF2 /* CastRepostView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CastRepostView.h; sourceTree = "<group>"; };
-		51FBFDE918364CEC00F2BFF2 /* CastRepostView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CastRepostView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -585,15 +586,14 @@
 				5183B183182AA876008F22D1 /* CastViewCell.h */,
 				5183B184182AA876008F22D1 /* CastViewCell.m */,
 				51510C0D183BB10A00BD7823 /* CastViewCell.xib */,
-				51FBFDE818364CEC00F2BFF2 /* CastRepostView.h */,
-				51FBFDE918364CEC00F2BFF2 /* CastRepostView.m */,
-				51FBFDE618364CD100F2BFF2 /* CastRepostView.xib */,
 				51510C10183BBB4800BD7823 /* ComRepViewController.h */,
 				51510C11183BBB4800BD7823 /* ComRepViewController.m */,
 				51510C13183BD8F600BD7823 /* ComRepCountCell.h */,
 				51510C14183BD8F600BD7823 /* ComRepCountCell.m */,
 				51510C16183BDF3B00BD7823 /* ComReqDetailCell.h */,
 				51510C17183BDF3B00BD7823 /* ComReqDetailCell.m */,
+				5199293618459CD00000216F /* CastImageViewController.h */,
+				5199293718459CD00000216F /* CastImageViewController.m */,
 			);
 			path = cast;
 			sourceTree = "<group>";
@@ -733,6 +733,7 @@
 		18EED2EF1815853E000856CE /* controller */ = {
 			isa = PBXGroup;
 			children = (
+				5199292E18459BF20000216F /* TransitionAnimation */,
 				4D1E6F16182A3AF50078229F /* post */,
 				1868F1051829CDE400C5764D /* discover */,
 				1868F1061829CDE400C5764D /* message */,
@@ -985,6 +986,15 @@
 			name = TextKit;
 			sourceTree = "<group>";
 		};
+		5199292E18459BF20000216F /* TransitionAnimation */ = {
+			isa = PBXGroup;
+			children = (
+				5199293318459C320000216F /* CastViewImageTransitionAnimation.h */,
+				5199293418459C320000216F /* CastViewImageTransitionAnimation.m */,
+			);
+			name = TransitionAnimation;
+			sourceTree = "<group>";
+		};
 		51F8FA25182E0F5C00E211AC /* TTTAttributedLabel */ = {
 			isa = PBXGroup;
 			children = (
@@ -1104,7 +1114,6 @@
 				4D4A8049184299C80078C81D /* unlock.png in Resources */,
 				18B02D4D182E0F1B00D9AF04 /* tabbar_message_button.png in Resources */,
 				4D4A8045184299C80078C81D /* at.png in Resources */,
-				51FBFDE718364CD100F2BFF2 /* CastRepostView.xib in Resources */,
 				18B02D53182E0F1B00D9AF04 /* tabbar_weibo_button.png in Resources */,
 				4D4A8048184299C80078C81D /* photo.png in Resources */,
 				4D78489A18314C0A0025ADDA /* multitasking_screen_2x.png in Resources */,
@@ -1179,7 +1188,6 @@
 				184A0FAC183BACC30003E82E /* WXYLoginManager.m in Sources */,
 				1841100318165608008B700C /* WXYNetworkOperation.m in Sources */,
 				51652DEA1835AC13004E4D30 /* UITextViewHelper.m in Sources */,
-				51FBFDEA18364CEC00F2BFF2 /* CastRepostView.m in Sources */,
 				185E88AF182AABF40020F3B2 /* MKNetworkEngine.m in Sources */,
 				1868F0FE1829C8B200C5764D /* WXYRootTabbarViewController.m in Sources */,
 				51510C18183BDF3B00BD7823 /* ComReqDetailCell.m in Sources */,
@@ -1222,6 +1230,7 @@
 				1868F1131829CE1400C5764D /* WXYMineViewController.m in Sources */,
 				185E88B1182AABF40020F3B2 /* Reachability.m in Sources */,
 				1868F1031829CD9700C5764D /* WXYCastViewController.m in Sources */,
+				5199293818459CD00000216F /* CastImageViewController.m in Sources */,
 				51AACA90183D027100793547 /* ScreenShotHelper.m in Sources */,
 				18EED32D1815853E000856CE /* DispatchQueueLogFormatter.m in Sources */,
 				51F8FA28182E0F5C00E211AC /* TTTAttributedLabel.m in Sources */,
@@ -1231,6 +1240,7 @@
 				1868F1241829D7EA00C5764D /* WXYTabBar.m in Sources */,
 				515B0BF818082A9B0092BADB /* main.m in Sources */,
 				18D9E4E8183388E0004539CC /* Comment.m in Sources */,
+				5199293518459C320000216F /* CastViewImageTransitionAnimation.m in Sources */,
 				4D784891183147C40025ADDA /* UINavigationController+MHDismissModalView.m in Sources */,
 				18EB09C8182B7F30005CC27D /* WXYSettingManager.m in Sources */,
 				51652DF71835DA96004E4D30 /* UITextView+TextKitAddition.m in Sources */,
