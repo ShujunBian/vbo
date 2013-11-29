@@ -62,16 +62,6 @@
 		18A6A687182FF65C00D9FB7F /* WXYBarButtonAbstract.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A6A686182FF65C00D9FB7F /* WXYBarButtonAbstract.m */; };
 		18A6A688182FF65C00D9FB7F /* WXYBarButtonAbstract.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A6A686182FF65C00D9FB7F /* WXYBarButtonAbstract.m */; };
 		18AD18C3181608D90097E830 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18AD18C2181608D90097E830 /* ImageIO.framework */; };
-		18B02D4B182E0F1B00D9AF04 /* tabbar_discover_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 18B02D41182E0F1B00D9AF04 /* tabbar_discover_button.png */; };
-		18B02D4C182E0F1B00D9AF04 /* tabbar_discover_button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18B02D42182E0F1B00D9AF04 /* tabbar_discover_button@2x.png */; };
-		18B02D4D182E0F1B00D9AF04 /* tabbar_message_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 18B02D43182E0F1B00D9AF04 /* tabbar_message_button.png */; };
-		18B02D4E182E0F1B00D9AF04 /* tabbar_message_button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18B02D44182E0F1B00D9AF04 /* tabbar_message_button@2x.png */; };
-		18B02D4F182E0F1B00D9AF04 /* tabbar_mine_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 18B02D45182E0F1B00D9AF04 /* tabbar_mine_button.png */; };
-		18B02D50182E0F1B00D9AF04 /* tabbar_mine_button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18B02D46182E0F1B00D9AF04 /* tabbar_mine_button@2x.png */; };
-		18B02D51182E0F1B00D9AF04 /* tabbar_post_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 18B02D47182E0F1B00D9AF04 /* tabbar_post_button.png */; };
-		18B02D52182E0F1B00D9AF04 /* tabbar_post_button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18B02D48182E0F1B00D9AF04 /* tabbar_post_button@2x.png */; };
-		18B02D53182E0F1B00D9AF04 /* tabbar_weibo_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 18B02D49182E0F1B00D9AF04 /* tabbar_weibo_button.png */; };
-		18B02D54182E0F1B00D9AF04 /* tabbar_weibo_button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18B02D4A182E0F1B00D9AF04 /* tabbar_weibo_button@2x.png */; };
 		18B02D59182E167800D9AF04 /* WXYTabBarButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B02D58182E167800D9AF04 /* WXYTabBarButton.m */; };
 		18B02D5A182E167800D9AF04 /* WXYTabBarButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B02D58182E167800D9AF04 /* WXYTabBarButton.m */; };
 		18D9E4E8183388E0004539CC /* Comment.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D9E4E7183388E0004539CC /* Comment.m */; };
@@ -260,16 +250,6 @@
 		18A6A686182FF65C00D9FB7F /* WXYBarButtonAbstract.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXYBarButtonAbstract.m; sourceTree = "<group>"; };
 		18AD18C2181608D90097E830 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		18AD18C618160DD10097E830 /* DDLogLevelGlobal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DDLogLevelGlobal.h; sourceTree = "<group>"; };
-		18B02D41182E0F1B00D9AF04 /* tabbar_discover_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tabbar_discover_button.png; sourceTree = "<group>"; };
-		18B02D42182E0F1B00D9AF04 /* tabbar_discover_button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabbar_discover_button@2x.png"; sourceTree = "<group>"; };
-		18B02D43182E0F1B00D9AF04 /* tabbar_message_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tabbar_message_button.png; sourceTree = "<group>"; };
-		18B02D44182E0F1B00D9AF04 /* tabbar_message_button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabbar_message_button@2x.png"; sourceTree = "<group>"; };
-		18B02D45182E0F1B00D9AF04 /* tabbar_mine_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tabbar_mine_button.png; sourceTree = "<group>"; };
-		18B02D46182E0F1B00D9AF04 /* tabbar_mine_button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabbar_mine_button@2x.png"; sourceTree = "<group>"; };
-		18B02D47182E0F1B00D9AF04 /* tabbar_post_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tabbar_post_button.png; sourceTree = "<group>"; };
-		18B02D48182E0F1B00D9AF04 /* tabbar_post_button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabbar_post_button@2x.png"; sourceTree = "<group>"; };
-		18B02D49182E0F1B00D9AF04 /* tabbar_weibo_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tabbar_weibo_button.png; sourceTree = "<group>"; };
-		18B02D4A182E0F1B00D9AF04 /* tabbar_weibo_button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabbar_weibo_button@2x.png"; sourceTree = "<group>"; };
 		18B02D56182E0F6100D9AF04 /* GraphicName.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GraphicName.h; sourceTree = "<group>"; };
 		18B02D57182E167800D9AF04 /* WXYTabBarButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXYTabBarButton.h; sourceTree = "<group>"; };
 		18B02D58182E167800D9AF04 /* WXYTabBarButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXYTabBarButton.m; sourceTree = "<group>"; };
@@ -658,7 +638,6 @@
 		1868F1361829EC7A00C5764D /* graphic */ = {
 			isa = PBXGroup;
 			children = (
-				18B02D40182E0F1B00D9AF04 /* tabbar */,
 				1868F1371829EC7A00C5764D /* test.png */,
 			);
 			path = graphic;
@@ -679,23 +658,6 @@
 				518A1CC01843247000D36AFD /* EmoticonsInfoHelper.m */,
 			);
 			path = other;
-			sourceTree = "<group>";
-		};
-		18B02D40182E0F1B00D9AF04 /* tabbar */ = {
-			isa = PBXGroup;
-			children = (
-				18B02D41182E0F1B00D9AF04 /* tabbar_discover_button.png */,
-				18B02D42182E0F1B00D9AF04 /* tabbar_discover_button@2x.png */,
-				18B02D43182E0F1B00D9AF04 /* tabbar_message_button.png */,
-				18B02D44182E0F1B00D9AF04 /* tabbar_message_button@2x.png */,
-				18B02D45182E0F1B00D9AF04 /* tabbar_mine_button.png */,
-				18B02D46182E0F1B00D9AF04 /* tabbar_mine_button@2x.png */,
-				18B02D47182E0F1B00D9AF04 /* tabbar_post_button.png */,
-				18B02D48182E0F1B00D9AF04 /* tabbar_post_button@2x.png */,
-				18B02D49182E0F1B00D9AF04 /* tabbar_weibo_button.png */,
-				18B02D4A182E0F1B00D9AF04 /* tabbar_weibo_button@2x.png */,
-			);
-			path = tabbar;
 			sourceTree = "<group>";
 		};
 		18EB09C5182B7F16005CC27D /* setting */ = {
@@ -1101,34 +1063,23 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				18B02D54182E0F1B00D9AF04 /* tabbar_weibo_button@2x.png in Resources */,
-				18B02D4E182E0F1B00D9AF04 /* tabbar_message_button@2x.png in Resources */,
 				4D78489918314C0A0025ADDA /* itunesradio_mystations_2x.png in Resources */,
 				51510C0E183BB10A00BD7823 /* CastViewCell.xib in Resources */,
 				515B0C0418082A9B0092BADB /* Images.xcassets in Resources */,
 				4D4A8047184299C80078C81D /* locate.png in Resources */,
 				4D4A803C1842999F0078C81D /* KeyboardView.xib in Resources */,
 				18EED32F1815853E000856CE /* README.txt in Resources */,
-				18B02D4B182E0F1B00D9AF04 /* tabbar_discover_button.png in Resources */,
-				18B02D4F182E0F1B00D9AF04 /* tabbar_mine_button.png in Resources */,
 				4D4A8049184299C80078C81D /* unlock.png in Resources */,
-				18B02D4D182E0F1B00D9AF04 /* tabbar_message_button.png in Resources */,
 				4D4A8045184299C80078C81D /* at.png in Resources */,
-				18B02D53182E0F1B00D9AF04 /* tabbar_weibo_button.png in Resources */,
 				4D4A8048184299C80078C81D /* photo.png in Resources */,
 				4D78489A18314C0A0025ADDA /* multitasking_screen_2x.png in Resources */,
-				18B02D53182E0F1B00D9AF04 /* tabbar_weibo_button.png in Resources */,
 				4D4A8046184299C80078C81D /* expression.png in Resources */,
 				4D78489B18314C0A0025ADDA /* photos_moments_screen_2x.png in Resources */,
-				18B02D4C182E0F1B00D9AF04 /* tabbar_discover_button@2x.png in Resources */,
-				18B02D51182E0F1B00D9AF04 /* tabbar_post_button.png in Resources */,
-				18B02D50182E0F1B00D9AF04 /* tabbar_mine_button@2x.png in Resources */,
 				1868F1381829EC7A00C5764D /* test.png in Resources */,
 				518A1CBE1843243300D36AFD /* EmoticonsInfo.plist in Resources */,
 				1838DF20181E677A003D015A /* WeiboSDK.bundle in Resources */,
 				18EED3581815865F000856CE /* MainStoryboard.storyboard in Resources */,
 				4D1E6F1C182A3AF60078229F /* postViewStoryBoard.storyboard in Resources */,
-				18B02D52182E0F1B00D9AF04 /* tabbar_post_button@2x.png in Resources */,
 				515B0BF618082A9B0092BADB /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

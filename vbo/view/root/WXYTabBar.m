@@ -53,7 +53,7 @@
 {
     if (!_mineButton)
     {
-        _mineButton = [[WXYTabBarButton alloc] initWithImageName:GRAPHIC_TAB_BAR_MESSAGE_BUTTON title:@"我"];
+        _mineButton = [[WXYTabBarButton alloc] initWithImageName:GRAPHIC_TAB_BAR_MINE_BUTTON title:@"我"];
     }
     return _mineButton;
 }

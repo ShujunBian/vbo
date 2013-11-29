@@ -66,9 +66,20 @@
         [self addSubview:self.iconImageView];
         [self addSubview:self.titleLabel];
         
-        NSArray* positionConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-3-[icon]-4-[title(10)]-3-|" options:NSLayoutFormatAlignAllCenterX metrics:nil views:@{@"icon": self.iconImageView,@"title":self.titleLabel}];
+        NSLayoutConstraint* iconCenterX = [NSLayoutConstraint constraintWithItem:self.iconImageView attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeCenterX multiplier:1.f constant:0];
+        NSLayoutConstraint* iconCenterY = [NSLayoutConstraint constraintWithItem:self.iconImageView attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeCenterY multiplier:1.f constant:0];
+
+        NSLayoutConstraint* labelCenterX = [NSLayoutConstraint constraintWithItem:self.titleLabel attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeCenterX multiplier:1.f constant:0];
+        NSLayoutConstraint* labelBottomY = [NSLayoutConstraint constraintWithItem:self.titleLabel attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeBottom multiplier:1.f constant:-3.f];
+        
+        
+//        NSArray* positionConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-3-[icon]-4-[title(10)]-3-|" options:NSLayoutFormatAlignAllCenterX metrics:nil views:@{@"icon": self.iconImageView,@"title":self.titleLabel}];
         NSLayoutConstraint* centerX = [NSLayoutConstraint constraintWithItem:self attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.iconImageView attribute:NSLayoutAttributeCenterX multiplier:1 constant:0];
-        [self addConstraints:positionConstraints];
+//        [self addConstraints:positionConstraints];
+        [self addConstraint:labelCenterX];
+        [self addConstraint:labelBottomY];
+        [self addConstraint:iconCenterX];
+        [self addConstraint:iconCenterY];
         [self addConstraint:centerX];
         
     }
