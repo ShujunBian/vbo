@@ -10,11 +10,12 @@
 
 @interface WXYSolidNavigationBar ()
 
-
+@property (strong, nonatomic) NSLayoutConstraint* heightConstraint;
 
 @end
 
 @implementation WXYSolidNavigationBar
+@dynamic navBarHeight;
 
 #pragma mark - Getter And Setter Method
 - (void)setTitle:(NSString *)title
@@ -22,6 +23,11 @@
     _title = title;
     self.titleLabel.text = _title;
 }
+- (float)navBarHeight
+{
+    return self.heightConstraint.constant;
+}
+
 
 #pragma mark - Init Method
 - (id)init
@@ -67,5 +73,20 @@
     // Drawing code
 }
 */
+#pragma mark - Change Height
+- (void)changeNavBarHeightBy:(float)deltaHeight
+{
+    float preHeight = self.heightConstraint.constant;
+    float height = deltaHeight + preHeight;
+    [self changeNavBarHeightTo:height];
+}
+- (void)changeNavBarHeightTo:(float)height
+{
+    height = height < ROOT_NAV_BAR_SHORT_HEIGHT? ROOT_NAV_BAR_SHORT_HEIGHT : height;
+    height = height > ROOT_NAV_BAR_LONG_HEIGHT? ROOT_NAV_BAR_LONG_HEIGHT : height;
+    self.heightConstraint.constant = height;
+#warning 还未改变文字大小及隐藏图标
+}
+
 
 @end

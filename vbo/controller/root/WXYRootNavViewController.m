@@ -17,6 +17,7 @@
 
 @property (strong, nonatomic) WXYSolidNavigationBar* navBar;
 
+@property (assign, nonatomic) float scrollViewPreviousOffsetY;
 @end
 
 @implementation WXYRootNavViewController
@@ -48,6 +49,9 @@
     NSArray* navBarHoriConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|[navBar]|" options:0 metrics:nil views:@{@"navBar":self.navBar}];
     [self.view addConstraint:navBarTopConstraint];
     [self.view addConstraints:navBarHoriConstraints];
+    
+    self.scrollViewPreviousOffsetY = 0.f;
+    
 }
 - (void)viewDidLayoutSubviews
 {
@@ -67,6 +71,11 @@
 {
     DDLogVerbose(@"scroll view will begin dragging");
     
+    
+    self.scrollViewPreviousOffsetY = scrollView.contentOffset.y;
+    
+    
+    
     id<WXYScrollHiddenDelegate> delegate = nil;
     if ([self.parentViewController conformsToProtocol:@protocol(WXYScrollHiddenDelegate)] && [self.parentViewController respondsToSelector:@selector(wxyScrollViewWillBeginDragging:)])
     {
@@ -77,8 +86,24 @@
 - (void)wxyScrollViewDidScroll:(UIScrollView *)scrollView
 {
     
-    DDLogVerbose(@"scroll view did end dragging");
+    float deltaHeight = self.scrollViewPreviousOffsetY - scrollView.contentOffset.y;
+
+    //改变NavBar高度
+    [self.navBar changeNavBarHeightBy:deltaHeight];
+//    self.navBar.heightConstraint.constant = - scrollView.contentOffset.y;
+
+    UIEdgeInsets previousInset = scrollView.contentInset;
+    if (previousInset.top != self.navBar.navBarHeight)
+    {
+        //防止因delegate导致无限递归
+        id<UIScrollViewDelegate> aDelegate = scrollView.delegate;
+        scrollView.delegate = nil;
+        scrollView.contentInset = UIEdgeInsetsMake(self.navBar.navBarHeight, previousInset.left, previousInset.bottom, previousInset.right);
+        scrollView.delegate = aDelegate;
+    }
+    self.scrollViewPreviousOffsetY = scrollView.contentOffset.y;
     
+    DDLogVerbose(@"scroll view did end dragging");
     id<WXYScrollHiddenDelegate> delegate = nil;
     if ([self.parentViewController conformsToProtocol:@protocol(WXYScrollHiddenDelegate)] && [self.parentViewController respondsToSelector:@selector(wxyScrollViewDidScroll:)])
     {
