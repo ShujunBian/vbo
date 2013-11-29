@@ -10,7 +10,9 @@
 #import "WXYNavigationBar.h"
 #import "WXYSolidNavigationBar.h"
 #import "WXYLoginManager.h"
-
+#import "DDLogLevelGlobal.h"
+#import "DDLog.h"
+//static int ddLogLevel = LOG_LEVEL_VERBOSE;
 @interface WXYRootNavViewController ()
 
 @property (strong, nonatomic) WXYSolidNavigationBar* navBar;
@@ -35,7 +37,6 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
 //    self.view.translatesAutoresizingMaskIntoConstraints = NO;
-    
 
     self.navBar = [[WXYSolidNavigationBar alloc] init];
     self.navBar.title = SHARE_LOGIN_MANAGER.currentUserInfo.userName;
@@ -61,17 +62,40 @@
 }
 
 
-#pragma mark - UIScrollView Delegate
-- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
+#pragma mark - WXYScrollHidden Delegate
+- (void)wxyScrollViewWillBeginDragging:(UIScrollView *)scrollView
+{
+    DDLogVerbose(@"scroll view will begin dragging");
+    
+    id<WXYScrollHiddenDelegate> delegate = nil;
+    if ([self.parentViewController conformsToProtocol:@protocol(WXYScrollHiddenDelegate)] && [self.parentViewController respondsToSelector:@selector(wxyScrollViewWillBeginDragging:)])
+    {
+        delegate = (id<WXYScrollHiddenDelegate>) self.parentViewController;
+        [delegate wxyScrollViewWillBeginDragging:scrollView];
+    }
+}
+- (void)wxyScrollViewDidScroll:(UIScrollView *)scrollView
 {
     
+    DDLogVerbose(@"scroll view did end dragging");
+    
+    id<WXYScrollHiddenDelegate> delegate = nil;
+    if ([self.parentViewController conformsToProtocol:@protocol(WXYScrollHiddenDelegate)] && [self.parentViewController respondsToSelector:@selector(wxyScrollViewDidScroll:)])
+    {
+        delegate = (id<WXYScrollHiddenDelegate>) self.parentViewController;
+        [delegate wxyScrollViewDidScroll:scrollView];
+    }
 }
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+- (void)wxyScrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
 {
-//    [self.navBar refresh];
-}
-- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
-{
+    DDLogVerbose(@"scroill view did end dragging");
+    
+    id<WXYScrollHiddenDelegate> delegate = nil;
+    if ([self.parentViewController conformsToProtocol:@protocol(WXYScrollHiddenDelegate)] && [self.parentViewController respondsToSelector:@selector(wxyScrollViewDidEndDragging:willDecelerate:)])
+    {
+        delegate = (id<WXYScrollHiddenDelegate>) self.parentViewController;
+        [delegate wxyScrollViewDidEndDragging:scrollView willDecelerate:decelerate];
+    }
     
 }
 @end

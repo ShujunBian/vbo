@@ -230,6 +230,7 @@
 		185E88B8182AAE670020F3B2 /* UIImage+ImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageEffects.m"; sourceTree = "<group>"; };
 		185EE17B18482FE90097F9D9 /* WXYSolidNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXYSolidNavigationBar.h; sourceTree = "<group>"; };
 		185EE17C18482FE90097F9D9 /* WXYSolidNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXYSolidNavigationBar.m; sourceTree = "<group>"; };
+		185EE1811848817F0097F9D9 /* WXYScrollHiddenDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WXYScrollHiddenDelegate.h; sourceTree = "<group>"; };
 		1866FAD71833D31100E08A03 /* WXYCommentTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXYCommentTest.m; sourceTree = "<group>"; };
 		1868F0F81829C8B200C5764D /* WXYRootNavViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXYRootNavViewController.h; sourceTree = "<group>"; };
 		1868F0F91829C8B200C5764D /* WXYRootNavViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXYRootNavViewController.m; sourceTree = "<group>"; };
@@ -571,6 +572,7 @@
 				1868F0F91829C8B200C5764D /* WXYRootNavViewController.m */,
 				1868F0FA1829C8B200C5764D /* WXYRootTabbarViewController.h */,
 				1868F0FB1829C8B200C5764D /* WXYRootTabbarViewController.m */,
+				185EE1811848817F0097F9D9 /* WXYScrollHiddenDelegate.h */,
 			);
 			path = root;
 			sourceTree = "<group>";

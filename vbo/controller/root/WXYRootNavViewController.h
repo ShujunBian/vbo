@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "WXYScrollHiddenDelegate.h"
 
-@interface WXYRootNavViewController : UINavigationController <UIScrollViewDelegate>
+
+@interface WXYRootNavViewController : UINavigationController<WXYScrollHiddenDelegate>
 
 @end

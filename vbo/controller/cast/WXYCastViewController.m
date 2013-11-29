@@ -17,6 +17,7 @@
 #import "WXYSettingManager.h"
 #import "UIImage+ImageEffects.h"
 #import "ScreenShotHelper.h"
+#import "WXYScrollHiddenDelegate.h"
 
 #define contantHeight 110.0
 #define contentLabelLineSpace 6.0
@@ -149,14 +150,33 @@
 }
 
 #pragma mark - UIScrollView Delegate
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
+{
+    id<WXYScrollHiddenDelegate> delegate = nil;
+    if ([self.parentViewController conformsToProtocol:@protocol(WXYScrollHiddenDelegate)] && [self.parentViewController respondsToSelector:@selector(wxyScrollViewWillBeginDragging:)])
+    {
+        delegate = (id<WXYScrollHiddenDelegate>) self.parentViewController;
+        [delegate wxyScrollViewWillBeginDragging:scrollView];
+    }
+}
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
-    id<UIScrollViewDelegate> delegate = nil;
-    if ([self.parentViewController.parentViewController conformsToProtocol:@protocol(UIScrollViewDelegate)])
+    id<WXYScrollHiddenDelegate> delegate = nil;
+    if ([self.parentViewController conformsToProtocol:@protocol(WXYScrollHiddenDelegate)] && [self.parentViewController respondsToSelector:@selector(wxyScrollViewDidScroll:)])
     {
-        delegate = (id<UIScrollViewDelegate>) self.parentViewController.parentViewController;
+        delegate = (id<WXYScrollHiddenDelegate>) self.parentViewController;
+        [delegate wxyScrollViewDidScroll:scrollView];
     }
-    [delegate scrollViewDidScroll:scrollView];
+}
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
+{
+    id<WXYScrollHiddenDelegate> delegate = nil;
+    if ([self.parentViewController conformsToProtocol:@protocol(WXYScrollHiddenDelegate)] && [self.parentViewController respondsToSelector:@selector(wxyScrollViewDidEndDragging:willDecelerate:)])
+    {
+        delegate = (id<WXYScrollHiddenDelegate>) self.parentViewController;
+        [delegate wxyScrollViewDidEndDragging:scrollView willDecelerate:decelerate];
+    }
+    
 }
 
 #pragma mark - calculate weiboCell Height
