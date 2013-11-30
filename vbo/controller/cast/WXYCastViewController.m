@@ -245,7 +245,6 @@
                              withInitalRect:(CGRect)initalRect
 {
     _selectedImageView = imageView;
-    _selectedImageView.hidden = YES;
     
     UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:NULL];
     CastImageViewController * toVc = [storyBoard instantiateViewControllerWithIdentifier:@"CastImageViewController"];
@@ -259,7 +258,9 @@
     toVc.initialRect = initalRect;
     
     toVc.transitioningDelegate = self;
-    [self presentViewController:toVc animated:YES completion:nil];
+    [self presentViewController:toVc animated:YES completion:^{
+            _selectedImageView.hidden = YES;
+    }];
 }
 
 #pragma mark - CastImageViewDelegate

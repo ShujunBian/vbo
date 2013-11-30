@@ -22,7 +22,8 @@
     
     UIView *containerView = [transitionContext containerView];
     [containerView addSubview:toVC.view];
-    
+    toVC.view.frame = [transitionContext finalFrameForViewController:toVC];
+
 #pragma mark - 先放大后缩小动画效果
 //    [UIView animateWithDuration:0.25 delay:0.0 options:UIViewAnimationOptionCurveEaseOut animations:^{
 //        toVC.view.frame = [transitionContext finalFrameForViewController:toVC];
@@ -68,11 +69,10 @@
 //            }];
 //        }
 //    }];
-    
+
 #pragma mark - 正常动画效果
     NSTimeInterval duration = [self transitionDuration:transitionContext];
     [UIView animateWithDuration:duration delay:0.0 options:UIViewAnimationOptionCurveEaseOut animations:^{
-        toVC.view.frame = [transitionContext finalFrameForViewController:toVC];
         
         [toVC.view setBackgroundColor:[UIColor blackColor]];
         float widthScaleRate = toVC.weiboDetailImageView.image.size.width / [UIScreen mainScreen].bounds.size.width;
