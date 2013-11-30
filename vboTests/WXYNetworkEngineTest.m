@@ -232,7 +232,7 @@
 {
     [self.asyncTestCase prepare];
     
-    [SHARE_NW_ENGINE getGroupMemberListById:@(TEST_GROUP_ID) cursor:@(0) succeed:^(Group *group, NSNumber *previousCursor, NSNumber *nextCursor)
+    [SHARE_NW_ENGINE getGroupMemberListById:@(3437695525545341) cursor:@(0) succeed:^(Group *group, NSNumber *previousCursor, NSNumber *nextCursor)
     {
         
         if (group.users.count)

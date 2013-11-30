@@ -7,7 +7,7 @@
 //
 
 #import "MHCPostViewController.h"
-#import "UINavigationController+MHDismissModalView.h"
+
 
 #import "UIView+Effects.h"
 
@@ -24,9 +24,11 @@
 {
     [super viewDidLoad];
     
+    //self.view.backgroundColor = [UIColor blueColor];
+//    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bg.png" ]];
     
-    self.view.backgroundColor = [UIColor colorWithPatternImage:[self.view makeScreenShot]];
-    //[self.view blur];
+//    self.view.backgroundColor = [UIColor colorWithPatternImage:[self.view makeScreenShot]];
+    [self.view blur];
     
     
     //navigation install.

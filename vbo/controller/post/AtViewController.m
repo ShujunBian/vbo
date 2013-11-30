@@ -8,7 +8,6 @@
 
 #import "atViewController.h"
 #import "WXYSettingManager.h"
-#import "UINavigationController+MHDismissModalView.h"
 #import "WXYNetworkEngine.h"
 
 @interface AtViewController ()
@@ -62,6 +61,22 @@
 }
 -(void)postWeibo
 {
+}
+
+-(void)network
+{
+    [SHARE_NW_ENGINE getGroupMemberListById:@(3437695525545341) cursor:@(0) succeed:^(Group *group, NSNumber *previousCursor, NSNumber *nextCursor)
+     {
+         
+         if (group.users.count)
+         {
+//             id u = [group.users anyObject];
+             NSArray* array = [group.users allObjects];
+         }
+     } error:^(NSError *error)
+     {
+
+     }];
 }
 
 
