@@ -129,20 +129,19 @@
     [_weiboContentTextView setScrollEnabled:NO];
     _weiboContentTextView.delegate = self;
     
+    [_weiboImage setImage:nil];
     if (currentCellStatus.bmiddlePicURL != nil) {
         _avatorTopSpaceConstaint.constant = weiboImageHeight + weiboCellBetweenHeight;
+        NSURL *anImageURL = [NSURL URLWithString:currentCellStatus.bmiddlePicURL];
+        [_weiboImage setImageFromURL:anImageURL placeHolderImage:nil animation:YES completion:nil];
+        _weiboImage.contentMode = UIViewContentModeScaleAspectFill;
+        _weiboImage.clipsToBounds = YES;
+        [self prepareGestureRecognizerInView:_weiboImage];
     }
     else {
         _avatorTopSpaceConstaint.constant = weiboCellBetweenHeight;
     }
     
-    [_weiboImage setImage:nil];
-    NSURL *anImageURL = [NSURL URLWithString:currentCellStatus.bmiddlePicURL];
-    [_weiboImage setImageFromURL:anImageURL placeHolderImage:nil animation:YES completion:nil];
-    _weiboImage.contentMode = UIViewContentModeScaleAspectFill;
-    _weiboImage.clipsToBounds = YES;
-    
-    [self prepareGestureRecognizerInView:_weiboImage];
     
     [_userAvator setImage:nil];
     [_userAvator setImageFromURLString:currentCellStatus.author.profileImageUrl
@@ -304,20 +303,18 @@ static inline void calculateAndSetFonts(CastViewCell *aCell)
 #pragma mark - 手势检测处理
 - (void)handleGesture:(UITapGestureRecognizer *)gestureRecognizer {
     CGPoint tapPoint = [gestureRecognizer locationInView:self];
-//    NSLog(@"Is in tap and point is %f %f",tapPoint.x,tapPoint.y);
-//    NSLog(@"self .frame is %f",self.frame.origin.y);
     
     CGRect cellRect = self.frame;
     if (_currentStatus.bmiddlePicURL != nil && tapPoint.y < 180.0) {
         CGRect initialRect = _weiboImage.frame;
         initialRect.origin.y += cellRect.origin.y;
-        [self.delegateForCastViewCell presentDetailImageViewWithImage:_weiboImage.image
+        [self.delegateForCastViewCell presentDetailImageViewWithImageView:_weiboImage
                                                        withInitalRect:initialRect];
     }
     else {
         CGRect initialRect = _repostImageView.frame;
         initialRect.origin.y += cellRect.origin.y;
-        [self.delegateForCastViewCell presentDetailImageViewWithImage:_repostImageView.image
+        [self.delegateForCastViewCell presentDetailImageViewWithImageView:_repostImageView
                                                        withInitalRect:initialRect];
     }
 }

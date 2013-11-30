@@ -158,6 +158,7 @@
 		5199293518459C320000216F /* CastViewImageTransitionAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 5199293418459C320000216F /* CastViewImageTransitionAnimation.m */; };
 		5199293818459CD00000216F /* CastImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5199293718459CD00000216F /* CastImageViewController.m */; };
 		51AACA90183D027100793547 /* ScreenShotHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 51AACA8F183D027100793547 /* ScreenShotHelper.m */; };
+		51E04EB218491061001D9500 /* CastViewImageDismissTransitionAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 51E04EB118491061001D9500 /* CastViewImageDismissTransitionAnimation.m */; };
 		51F8FA28182E0F5C00E211AC /* TTTAttributedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 51F8FA27182E0F5C00E211AC /* TTTAttributedLabel.m */; };
 /* End PBXBuildFile section */
 
@@ -379,6 +380,8 @@
 		5199293718459CD00000216F /* CastImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CastImageViewController.m; sourceTree = "<group>"; };
 		51AACA8E183D027100793547 /* ScreenShotHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScreenShotHelper.h; sourceTree = "<group>"; };
 		51AACA8F183D027100793547 /* ScreenShotHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScreenShotHelper.m; sourceTree = "<group>"; };
+		51E04EB018491061001D9500 /* CastViewImageDismissTransitionAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CastViewImageDismissTransitionAnimation.h; sourceTree = "<group>"; };
+		51E04EB118491061001D9500 /* CastViewImageDismissTransitionAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CastViewImageDismissTransitionAnimation.m; sourceTree = "<group>"; };
 		51F8FA26182E0F5C00E211AC /* TTTAttributedLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTTAttributedLabel.h; sourceTree = "<group>"; };
 		51F8FA27182E0F5C00E211AC /* TTTAttributedLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTTAttributedLabel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -981,6 +984,8 @@
 			children = (
 				5199293318459C320000216F /* CastViewImageTransitionAnimation.h */,
 				5199293418459C320000216F /* CastViewImageTransitionAnimation.m */,
+				51E04EB018491061001D9500 /* CastViewImageDismissTransitionAnimation.h */,
+				51E04EB118491061001D9500 /* CastViewImageDismissTransitionAnimation.m */,
 			);
 			name = TransitionAnimation;
 			sourceTree = "<group>";
@@ -1101,7 +1106,6 @@
 				18B02D4B182E0F1B00D9AF04 /* tabbar_discover_button.png in Resources */,
 				18B02D4F182E0F1B00D9AF04 /* tabbar_mine_button.png in Resources */,
 				18B02D4D182E0F1B00D9AF04 /* tabbar_message_button.png in Resources */,
-				4D4A8045184299C80078C81D /* at.png in Resources */,
 				18B02D53182E0F1B00D9AF04 /* tabbar_weibo_button.png in Resources */,
 				4D78489A18314C0A0025ADDA /* multitasking_screen_2x.png in Resources */,
 				18B02D53182E0F1B00D9AF04 /* tabbar_weibo_button.png in Resources */,
@@ -1174,6 +1178,7 @@
 				184A0FAC183BACC30003E82E /* WXYLoginManager.m in Sources */,
 				1841100318165608008B700C /* WXYNetworkOperation.m in Sources */,
 				51652DEA1835AC13004E4D30 /* UITextViewHelper.m in Sources */,
+				51E04EB218491061001D9500 /* CastViewImageDismissTransitionAnimation.m in Sources */,
 				185E88AF182AABF40020F3B2 /* MKNetworkEngine.m in Sources */,
 				1868F0FE1829C8B200C5764D /* WXYRootTabbarViewController.m in Sources */,
 				51510C18183BDF3B00BD7823 /* ComReqDetailCell.m in Sources */,
