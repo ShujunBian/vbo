@@ -32,6 +32,12 @@ typedef enum
 
 - (id)init;
 
+- (void)postButtonPressed;
+- (void)weiboButtonPressed;
+- (void)discoverButtonPressed;
+- (void)mineButtonPressed;
+- (void)messageButtonPressed;
+
 @property (weak, nonatomic) NSObject<WXYSolidTabBarDelegate>* delegate;
 
 @end

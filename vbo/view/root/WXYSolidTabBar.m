@@ -20,6 +20,11 @@
 @property (strong, nonatomic) WXYTabBarSolidButton* messageButton;
 @property (strong, nonatomic) WXYTabBarSolidButton* mineButton;
 @property (strong, nonatomic) WXYTabBarPostButton* postButton;
+
+- (void)deselectAllButton;
+
+
+
 @end
 
 @implementation WXYSolidTabBar
@@ -29,7 +34,7 @@
     if (!_weiboButton)
     {
         _weiboButton = [[WXYTabBarSolidButton alloc] initWithImageName:GRAPHIC_TAB_BAR_WEIBO_BUTTON highlightImageName:GRAHPIC_TAB_BAR_WEIBO_BUTTON_HIGHLIGHT title:@"微博"];
-        _weiboButton.highlight = YES;
+        [_weiboButton addTarget:self selector:@selector(weiboButtonPressed)];
     }
     return _weiboButton;
 }
@@ -38,6 +43,7 @@
     if (!_discoverButton)
     {
         _discoverButton = [[WXYTabBarSolidButton alloc] initWithImageName:GRAPHIC_TAB_BAR_DISCOVER_BUTTON highlightImageName:GRAPHIC_TAB_BAR_DISCOVER_BUTTON_HIGHLIGHT title:@"发现"];
+        [_discoverButton addTarget:self selector:@selector(discoverButtonPressed)];
     }
     return _discoverButton;
 }
@@ -46,6 +52,7 @@
     if (!_messageButton)
     {
         _messageButton = [[WXYTabBarSolidButton alloc] initWithImageName:GRAPHIC_TAB_BAR_MESSAGE_BUTTON highlightImageName:GRAPHIC_TAB_BAR_MESSAGE_BUTTON_HIGHLIGHT title:@"消息"];
+        [_messageButton addTarget:self selector:@selector(messageButtonPressed)];
     }
     return _messageButton;
 }
@@ -55,6 +62,7 @@
     if (!_mineButton)
     {
         _mineButton = [[WXYTabBarSolidButton alloc] initWithImageName:GRAPHIC_TAB_BAR_MINE_BUTTON highlightImageName:GRAPHIC_TAB_BAR_MINE_BUTTON_HIGHLIGHT title:@"我"];
+        [_mineButton addTarget:self selector:@selector(mineButtonPressed)];
     }
     return _mineButton;
 }
@@ -100,14 +108,56 @@
 
 - (void)postButtonPressed
 {
-    if ([self.delegate respondsToSelector:@selector(tabBar:buttonPressed:)])
+    if ([self.delegate conformsToProtocol:@protocol(WXYSolidTabBarDelegate)] && [self.delegate respondsToSelector:@selector(tabBar:buttonPressed:)])
     {
         [self.delegate tabBar:self buttonPressed:WXYTabBarButtonTypePost];
     }
 }
 
-
-
+- (void)deselectAllButton
+{
+    self.weiboButton.highlight = NO;
+    self.discoverButton.highlight = NO;
+    self.messageButton.highlight = NO;
+    self.mineButton.highlight = NO;
+}
+- (void)weiboButtonPressed
+{
+    [self deselectAllButton];
+    self.weiboButton.highlight = YES;
+    
+    if ([self.delegate conformsToProtocol:@protocol(WXYSolidTabBarDelegate)] && [self.delegate respondsToSelector:@selector(tabBar:buttonPressed:)])
+    {
+        [self.delegate tabBar:self buttonPressed:WXYTabBarButtonTypeWeibo];
+    }
+}
+- (void)discoverButtonPressed
+{
+    [self deselectAllButton];
+    self.discoverButton.highlight = YES;
+    if ([self.delegate conformsToProtocol:@protocol(WXYSolidTabBarDelegate)] && [self.delegate respondsToSelector:@selector(tabBar:buttonPressed:)])
+    {
+        [self.delegate tabBar:self buttonPressed:WXYTabBarButtonTypeDiscover];
+    }
+}
+- (void)mineButtonPressed
+{
+    [self deselectAllButton];
+    self.mineButton.highlight = YES;
+    if ([self.delegate conformsToProtocol:@protocol(WXYSolidTabBarDelegate)] && [self.delegate respondsToSelector:@selector(tabBar:buttonPressed:)])
+    {
+        [self.delegate tabBar:self buttonPressed:WXYTabBarButtonTypeMine];
+    }
+}
+- (void)messageButtonPressed
+{
+    [self deselectAllButton];
+    self.messageButton.highlight = YES;
+    if ([self.delegate conformsToProtocol:@protocol(WXYSolidTabBarDelegate)] && [self.delegate respondsToSelector:@selector(tabBar:buttonPressed:)])
+    {
+        [self.delegate tabBar:self buttonPressed:WXYTabBarButtonTypeMessage];
+    }
+}
 
 /*
 // Only override drawRect: if you perform custom drawing.

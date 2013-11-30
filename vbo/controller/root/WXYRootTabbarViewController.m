@@ -46,8 +46,9 @@
     NSArray* tabBarHoriConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|[tabbar]|" options:0 metrics:nil views:@{@"tabbar":self.tabbar}];
     [self.view addConstraint:tabBarTopConstraint];
     [self.view addConstraints:tabBarHoriConstraints];
-     
-
+    
+#warning 以后需改成退出时的index
+    [self.tabbar weiboButtonPressed];
 }
 
 - (void)didReceiveMemoryWarning
@@ -87,23 +88,12 @@
             break;
         }
         case WXYTabBarButtonTypeWeibo:
-        {
-            
-            
-            break;
-        }
         case WXYTabBarButtonTypeMessage:
-        {
-            break;
-        }
         case WXYTabBarButtonTypeDiscover:
-        {
-            break;
-        }
         case WXYTabBarButtonTypeMine:
-        {
+            self.selectedIndex = (int)type;
             break;
-        }
+        
     }
 }
 @end
