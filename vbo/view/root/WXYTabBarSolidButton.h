@@ -9,8 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "WXYBarButtonAbstract.h"
 
-@interface WXYTabBarButton : WXYBarButtonAbstract
+@interface WXYTabBarSolidButton : WXYBarButtonAbstract
 
-- (id)initWithImageName:(NSString*)imageName title:(NSString*)title;
+- (id)initWithImageName:(NSString*)imageName highlightImageName:(NSString*)highlightImageName title:(NSString*)title;
 
 @end

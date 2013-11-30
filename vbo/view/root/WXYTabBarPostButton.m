@@ -7,7 +7,7 @@
 //
 
 #import "WXYTabBarPostButton.h"
-#import "WXYTabBar.h"
+#import "WXYSolidTabBar.h"
 #import "WXYSettingManager.h"
 #import "GraphicName.h"
 

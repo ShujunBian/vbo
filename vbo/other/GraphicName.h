@@ -10,9 +10,18 @@
 #define vbo_GraphicName_h
 
 #define GRAPHIC_TAB_BAR_WEIBO_BUTTON @"tabbar_weibo_button.png"
+#define GRAHPIC_TAB_BAR_WEIBO_BUTTON_HIGHLIGHT @"tabbar_discover_button_highlight.png"
+
 #define GRAPHIC_TAB_BAR_DISCOVER_BUTTON @"tabbar_discover_button.png"
+#define GRAPHIC_TAB_BAR_DISCOVER_BUTTON_HIGHLIGHT @"tabbar_discover_button_highlight.png"
+
 #define GRAPHIC_TAB_BAR_MESSAGE_BUTTON @"tabbar_message_button.png"
+#define GRAPHIC_TAB_BAR_MESSAGE_BUTTON_HIGHLIGHT @"tabbar_message_button_highlight.png"
+
 #define GRAPHIC_TAB_BAR_MINE_BUTTON @"tabbar_mine_button.png"
+#define GRAPHIC_TAB_BAR_MINE_BUTTON_HIGHLIGHT @"tabbar_mine_button_highlight.png"
+
 #define GRAPHIC_TAB_BAR_POST_BUTTON @"tabbar_post_button.png"
+
 
 #endif

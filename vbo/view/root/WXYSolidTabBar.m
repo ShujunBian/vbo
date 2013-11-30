@@ -6,54 +6,54 @@
 //  Copyright (c) 2013 BmwDev. All rights reserved.
 //
 
-#import "WXYTabBar.h"
+#import "WXYSolidTabBar.h"
 #import "WXYTabBarPostButton.h"
 #import "WXYSettingManager.h"
 #import "GraphicName.h"
 
-@interface WXYTabBar ()
+@interface WXYSolidTabBar ()
 
 @property (strong, nonatomic) NSLayoutConstraint* tabBarHeightConstraint;
 
-@property (strong, nonatomic) WXYTabBarButton* weiboButton;
-@property (strong, nonatomic) WXYTabBarButton* discoverButton;
-@property (strong, nonatomic) WXYTabBarButton* messageButton;
-@property (strong, nonatomic) WXYTabBarButton* mineButton;
+@property (strong, nonatomic) WXYTabBarSolidButton* weiboButton;
+@property (strong, nonatomic) WXYTabBarSolidButton* discoverButton;
+@property (strong, nonatomic) WXYTabBarSolidButton* messageButton;
+@property (strong, nonatomic) WXYTabBarSolidButton* mineButton;
 @property (strong, nonatomic) WXYTabBarPostButton* postButton;
 @end
 
-@implementation WXYTabBar
+@implementation WXYSolidTabBar
 #pragma mark - Getter And Setter Method
-- (WXYTabBarButton*)weiboButton
+- (WXYTabBarSolidButton*)weiboButton
 {
     if (!_weiboButton)
     {
-        _weiboButton = [[WXYTabBarButton alloc] initWithImageName:GRAPHIC_TAB_BAR_WEIBO_BUTTON title:@"微博"];
+        _weiboButton = [[WXYTabBarSolidButton alloc] initWithImageName:GRAPHIC_TAB_BAR_WEIBO_BUTTON highlightImageName:GRAHPIC_TAB_BAR_WEIBO_BUTTON_HIGHLIGHT title:@"微博"];
     }
     return _weiboButton;
 }
-- (WXYTabBarButton*)discoverButton
+- (WXYTabBarSolidButton*)discoverButton
 {
     if (!_discoverButton)
     {
-        _discoverButton = [[WXYTabBarButton alloc] initWithImageName:GRAPHIC_TAB_BAR_DISCOVER_BUTTON title:@"发现"];
+        _discoverButton = [[WXYTabBarSolidButton alloc] initWithImageName:GRAPHIC_TAB_BAR_DISCOVER_BUTTON highlightImageName:GRAPHIC_TAB_BAR_DISCOVER_BUTTON_HIGHLIGHT title:@"发现"];
     }
     return _discoverButton;
 }
-- (WXYTabBarButton*)messageButton
+- (WXYTabBarSolidButton*)messageButton
 {
     if (!_messageButton)
     {
-        _messageButton = [[WXYTabBarButton alloc] initWithImageName:GRAPHIC_TAB_BAR_MESSAGE_BUTTON title:@"消息"];
+        _messageButton = [[WXYTabBarSolidButton alloc] initWithImageName:GRAPHIC_TAB_BAR_MESSAGE_BUTTON highlightImageName:GRAPHIC_TAB_BAR_MESSAGE_BUTTON_HIGHLIGHT title:@"消息"];
     }
     return _messageButton;
 }
 
-- (WXYTabBarButton*)mineButton
+- (WXYTabBarSolidButton*)mineButton
 {
     if (!_mineButton)
     {
-        _mineButton = [[WXYTabBarButton alloc] initWithImageName:GRAPHIC_TAB_BAR_MINE_BUTTON title:@"我"];
+        _mineButton = [[WXYTabBarSolidButton alloc] initWithImageName:GRAPHIC_TAB_BAR_MINE_BUTTON highlightImageName:GRAPHIC_TAB_BAR_MINE_BUTTON_HIGHLIGHT title:@"我"];
     }
     return _mineButton;
 }
@@ -74,7 +74,7 @@
     if (self)
     {
         self.translatesAutoresizingMaskIntoConstraints = NO;
-        self.blurTintColor = SHARE_SETTING_MANAGER.rootBarTintColor;
+        self.backgroundColor = [UIColor colorWithRed:35.f/255.f green:35.f/255.f blue:35.f/255.f alpha:1.f];
         
         self.tabBarHeightConstraint = [NSLayoutConstraint constraintWithItem:self attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:0 constant:ROOT_TAB_BAR_HEIGHT];
         [self addConstraint:self.tabBarHeightConstraint];

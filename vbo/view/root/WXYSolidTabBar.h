@@ -7,12 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "AMBlurView.h"
-#import "WXYTabBarButton.h"
+#import "WXYTabBarSolidButton.h"
 
 #define ROOT_TAB_BAR_HEIGHT 50.f
 
-@class WXYTabBar;
+@class WXYSolidTabBar;
 typedef enum
 {
     WXYTabBarButtonTypeWeibo,
@@ -22,18 +21,18 @@ typedef enum
     WXYTabBarButtonTypePost
 }WXYTabBarButtonType;
 
-@protocol WXYTabBarDelegate <NSObject>
+@protocol WXYSolidTabBarDelegate <NSObject>
 
-- (void)tabBar:(WXYTabBar*)tabBar buttonPressed:(WXYTabBarButtonType)type;
+- (void)tabBar:(WXYSolidTabBar*)tabBar buttonPressed:(WXYTabBarButtonType)type;
 
 @end
 
 
-@interface WXYTabBar : AMBlurView
+@interface WXYSolidTabBar : UIView
 
 - (id)init;
 
 - (void)refresh;
-@property (weak, nonatomic) NSObject<WXYTabBarDelegate>* delegate;
+@property (weak, nonatomic) NSObject<WXYSolidTabBarDelegate>* delegate;
 
 @end

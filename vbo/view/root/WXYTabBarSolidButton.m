@@ -6,19 +6,20 @@
 //  Copyright (c) 2013 BmwDev. All rights reserved.
 //
 
-#import "WXYTabBarButton.h"
-#import "WXYTabBar.h"
+#import "WXYTabBarSolidButton.h"
+#import "WXYSolidTabBar.h"
 
 
-@interface WXYTabBarButton ()
+@interface WXYTabBarSolidButton ()
 
 @property (strong, nonatomic) UILabel* titleLabel;
 @property (strong, nonatomic) UIImage* iconImage;
+@property (strong, nonatomic) UIImage* iconImageHighlight;
 @property (strong, nonatomic) UIImageView* iconImageView;
 
 @end
 
-@implementation WXYTabBarButton
+@implementation WXYTabBarSolidButton
 
 #pragma mark - Getter And Setter Method
 - (UILabel*)titleLabel
@@ -29,6 +30,7 @@
         _titleLabel.backgroundColor = [UIColor clearColor];
         _titleLabel.translatesAutoresizingMaskIntoConstraints = NO;
         _titleLabel.font = [UIFont fontWithName:@"STHeitiSC-Light" size:10.f];
+        _titleLabel.textColor = [UIColor colorWithRed:146.f/255.f green:146.f/255.f blue:146.f/255.f alpha:1.f];
     }
     return _titleLabel;
 }
@@ -44,7 +46,7 @@
 
 
 #pragma mark - Init Method
-- (id)initWithImageName:(NSString*)imageName title:(NSString*)title
+- (id)initWithImageName:(NSString*)imageName highlightImageName:(NSString*)highlightImageName title:(NSString*)title;
 {
     self = [super init];
     if (self)
@@ -59,7 +61,9 @@
 //        [self addConstraint:widthConstraint];
         
     
-        self.iconImage = [[UIImage imageNamed:imageName] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+        self.iconImage = [[UIImage imageNamed:imageName] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+        self.iconImageHighlight = [[UIImage imageNamed:highlightImageName] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+        
         self.iconImageView.image = self.iconImage;
         self.titleLabel.text = title;
         
@@ -67,7 +71,7 @@
         [self addSubview:self.titleLabel];
         
         NSLayoutConstraint* iconCenterX = [NSLayoutConstraint constraintWithItem:self.iconImageView attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeCenterX multiplier:1.f constant:0];
-        NSLayoutConstraint* iconCenterY = [NSLayoutConstraint constraintWithItem:self.iconImageView attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeCenterY multiplier:1.f constant:0];
+        NSLayoutConstraint* iconCenterY = [NSLayoutConstraint constraintWithItem:self.iconImageView attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeCenterY multiplier:1.f constant:-5];
 
         NSLayoutConstraint* labelCenterX = [NSLayoutConstraint constraintWithItem:self.titleLabel attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeCenterX multiplier:1.f constant:0];
         NSLayoutConstraint* labelBottomY = [NSLayoutConstraint constraintWithItem:self.titleLabel attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeBottom multiplier:1.f constant:-3.f];

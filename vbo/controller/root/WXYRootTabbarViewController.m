@@ -12,7 +12,7 @@
 
 @interface WXYRootTabbarViewController ()
 
-@property (strong, nonatomic) WXYTabBar* tabbar;
+@property (strong, nonatomic) WXYSolidTabBar* tabbar;
 
 @end
 
@@ -37,7 +37,7 @@
 
 //    self.view.translatesAutoresizingMaskIntoConstraints = NO;
     
-    self.tabbar = [[WXYTabBar alloc] init];
+    self.tabbar = [[WXYSolidTabBar alloc] init];
     self.tabbar.delegate = self;
     [self.view addSubview:self.tabbar];
     
@@ -71,7 +71,7 @@
     
 }
 
-- (void)tabBar:(WXYTabBar*)tabBar buttonPressed:(WXYTabBarButtonType)type
+- (void)tabBar:(WXYSolidTabBar*)tabBar buttonPressed:(WXYTabBarButtonType)type
 {
     switch (type)
     {
