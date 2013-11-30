@@ -8,6 +8,9 @@
 
 #import "WXYTabBarSolidButton.h"
 #import "WXYSolidTabBar.h"
+#import "WXYSettingManager.h"
+#define TEXT_COLOR [UIColor colorWithRed:146.f/255.f green:146.f/255.f blue:146.f/255.f alpha:1.f];
+#define IMAGE_VIEW_TINT_COLOR_NORMAL [UIColor colorWithRed:246.f/255.f green:244.f/255.f blue:240.f/255.f alpha:1.f]
 
 
 @interface WXYTabBarSolidButton ()
@@ -30,7 +33,7 @@
         _titleLabel.backgroundColor = [UIColor clearColor];
         _titleLabel.translatesAutoresizingMaskIntoConstraints = NO;
         _titleLabel.font = [UIFont fontWithName:@"STHeitiSC-Light" size:10.f];
-        _titleLabel.textColor = [UIColor colorWithRed:146.f/255.f green:146.f/255.f blue:146.f/255.f alpha:1.f];
+        _titleLabel.textColor = TEXT_COLOR;
     }
     return _titleLabel;
 }
@@ -40,10 +43,26 @@
     {
         _iconImageView = [[UIImageView alloc] init];
         _iconImageView.translatesAutoresizingMaskIntoConstraints = NO;
+        _iconImageView.tintColor = IMAGE_VIEW_TINT_COLOR_NORMAL;
     }
     return _iconImageView;
 }
-
+- (void)setHighlight:(BOOL)highlight
+{
+    _highlight = highlight;
+    if (_highlight)
+    {
+        self.iconImageView.image = self.iconImageHighlight;
+        self.iconImageView.tintColor = nil;
+        self.titleLabel.textColor = SHARE_SETTING_MANAGER.themeColor;
+    }
+    else
+    {
+        self.iconImageView.image = self.iconImage;
+        self.iconImageView.tintColor = IMAGE_VIEW_TINT_COLOR_NORMAL;
+        self.titleLabel.textColor = TEXT_COLOR;
+    }
+}
 
 #pragma mark - Init Method
 - (id)initWithImageName:(NSString*)imageName highlightImageName:(NSString*)highlightImageName title:(NSString*)title;
@@ -53,7 +72,7 @@
     {
         self.translatesAutoresizingMaskIntoConstraints = NO;
         
-        
+        _highlight = NO;
         
         NSLayoutConstraint* heightConstraint = [NSLayoutConstraint constraintWithItem:self attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:0 constant:ROOT_TAB_BAR_HEIGHT];
 //        NSLayoutConstraint* widthConstraint = [NSLayoutConstraint constraintWithItem:self attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:0 constant:[UIScreen mainScreen].bounds.size.width / 5];
@@ -61,7 +80,7 @@
 //        [self addConstraint:widthConstraint];
         
     
-        self.iconImage = [[UIImage imageNamed:imageName] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+        self.iconImage = [[UIImage imageNamed:imageName] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
         self.iconImageHighlight = [[UIImage imageNamed:highlightImageName] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
         
         self.iconImageView.image = self.iconImage;

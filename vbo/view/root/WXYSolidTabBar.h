@@ -32,7 +32,6 @@ typedef enum
 
 - (id)init;
 
-- (void)refresh;
 @property (weak, nonatomic) NSObject<WXYSolidTabBarDelegate>* delegate;
 
 @end

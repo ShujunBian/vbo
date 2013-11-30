@@ -64,7 +64,7 @@
 }
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
-    [self.tabbar refresh];
+
 }
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
@@ -88,6 +88,8 @@
         }
         case WXYTabBarButtonTypeWeibo:
         {
+            
+            
             break;
         }
         case WXYTabBarButtonTypeMessage:

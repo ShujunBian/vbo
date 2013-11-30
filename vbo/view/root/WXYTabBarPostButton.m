@@ -45,8 +45,9 @@
         
         self.backgroundColor = SHARE_SETTING_MANAGER.themeColor;
         
-        self.iconImage = [[UIImage imageNamed:GRAPHIC_TAB_BAR_POST_BUTTON] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+        self.iconImage = [[UIImage imageNamed:GRAPHIC_TAB_BAR_POST_BUTTON] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
         self.iconImageView.image = self.iconImage;
+        self.iconImageView.tintColor = [UIColor colorWithRed:35.f/255.f green:35.f/255.f blue:35.f/255.f alpha:1.f];
         [self addSubview:self.iconImageView];
         
         NSLayoutConstraint* centerX = [NSLayoutConstraint constraintWithItem:self.iconImageView attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeCenterX multiplier:1 constant:0];

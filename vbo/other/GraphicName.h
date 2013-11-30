@@ -10,7 +10,7 @@
 #define vbo_GraphicName_h
 
 #define GRAPHIC_TAB_BAR_WEIBO_BUTTON @"tabbar_weibo_button.png"
-#define GRAHPIC_TAB_BAR_WEIBO_BUTTON_HIGHLIGHT @"tabbar_discover_button_highlight.png"
+#define GRAHPIC_TAB_BAR_WEIBO_BUTTON_HIGHLIGHT @"tabbar_weibo_button_highlight.png"
 
 #define GRAPHIC_TAB_BAR_DISCOVER_BUTTON @"tabbar_discover_button.png"
 #define GRAPHIC_TAB_BAR_DISCOVER_BUTTON_HIGHLIGHT @"tabbar_discover_button_highlight.png"

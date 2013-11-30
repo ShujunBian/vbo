@@ -13,4 +13,6 @@
 
 - (id)initWithImageName:(NSString*)imageName highlightImageName:(NSString*)highlightImageName title:(NSString*)title;
 
+@property (assign, nonatomic) BOOL highlight;
+
 @end

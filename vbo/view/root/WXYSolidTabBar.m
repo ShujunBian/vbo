@@ -29,6 +29,7 @@
     if (!_weiboButton)
     {
         _weiboButton = [[WXYTabBarSolidButton alloc] initWithImageName:GRAPHIC_TAB_BAR_WEIBO_BUTTON highlightImageName:GRAHPIC_TAB_BAR_WEIBO_BUTTON_HIGHLIGHT title:@"微博"];
+        _weiboButton.highlight = YES;
     }
     return _weiboButton;
 }
@@ -99,18 +100,13 @@
 
 - (void)postButtonPressed
 {
-    NSLog(@"post");
     if ([self.delegate respondsToSelector:@selector(tabBar:buttonPressed:)])
     {
         [self.delegate tabBar:self buttonPressed:WXYTabBarButtonTypePost];
     }
 }
 
-#pragma mark - Refresh Blur
-- (void)refresh
-{
 
-}
 
 
 /*
