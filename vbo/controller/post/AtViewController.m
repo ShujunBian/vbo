@@ -70,7 +70,6 @@
          
          if (group.users.count)
          {
-//             id u = [group.users anyObject];
              NSArray* array = [group.users allObjects];
          }
      } error:^(NSError *error)

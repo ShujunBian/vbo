@@ -16,15 +16,42 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" placeholderIntrinsicWidth="320" placeholderIntrinsicHeight="568" translatesAutoresizingMaskIntoConstraints="NO" id="uqW-Cp-SRh">
-                                <rect key="frame" x="0.0" y="234" width="320" height="428"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="F6o-ZU-19G">
+                                <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" alpha="0.80000000000000004" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CHY-jd-VNw">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </imageView>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" placeholderIntrinsicWidth="320" placeholderIntrinsicHeight="568" translatesAutoresizingMaskIntoConstraints="NO" id="uqW-Cp-SRh">
+                                        <rect key="frame" x="0.0" y="38" width="320" height="466"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <inset key="scrollIndicatorInsets" minX="0.0" minY="20" maxX="0.0" maxY="0.0"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textView>
+                                </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <inset key="scrollIndicatorInsets" minX="0.0" minY="20" maxX="0.0" maxY="0.0"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textView>
+                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="uqW-Cp-SRh" firstAttribute="leading" secondItem="F6o-ZU-19G" secondAttribute="leading" id="0lS-Ag-gq5"/>
+                                    <constraint firstItem="CHY-jd-VNw" firstAttribute="top" secondItem="F6o-ZU-19G" secondAttribute="top" id="Kpp-e2-V4f"/>
+                                    <constraint firstAttribute="trailing" secondItem="CHY-jd-VNw" secondAttribute="trailing" id="QlZ-CP-Bfn"/>
+                                    <constraint firstAttribute="trailing" secondItem="CHY-jd-VNw" secondAttribute="trailing" id="bZD-PN-OKE"/>
+                                    <constraint firstAttribute="trailing" secondItem="CHY-jd-VNw" secondAttribute="trailing" id="cpg-8J-MBg"/>
+                                    <constraint firstItem="CHY-jd-VNw" firstAttribute="leading" secondItem="F6o-ZU-19G" secondAttribute="leading" id="e2L-g9-Mkh"/>
+                                </constraints>
+                            </scrollView>
                         </subviews>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="F6o-ZU-19G" secondAttribute="bottom" id="HVw-fz-rdD"/>
+                            <constraint firstAttribute="trailing" secondItem="F6o-ZU-19G" secondAttribute="trailing" id="LK2-2E-mlK"/>
+                            <constraint firstItem="F6o-ZU-19G" firstAttribute="leading" secondItem="wrv-Bl-6YJ" secondAttribute="leading" id="Rdo-Cg-68c"/>
+                            <constraint firstItem="F6o-ZU-19G" firstAttribute="top" secondItem="wrv-Bl-6YJ" secondAttribute="top" constant="64" id="rIx-wh-kjH"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="RlM-bb-X6l"/>
                     <connections>
@@ -48,7 +75,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <collectionView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" scrollEnabled="NO" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="FwQ-8r-53h">
+                            <collectionView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" scrollEnabled="NO" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="FwQ-8r-53h">
                                 <rect key="frame" x="0.0" y="64" width="320" height="64"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -112,6 +139,9 @@
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="FwQ-8r-53h" firstAttribute="top" secondItem="KxT-If-QJW" secondAttribute="top" constant="64" id="cbU-jB-9hT"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="fCW-ix-KCv"/>
                 </viewController>
