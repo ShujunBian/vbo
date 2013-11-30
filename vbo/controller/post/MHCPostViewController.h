@@ -8,6 +8,20 @@
 
 #import <UIKit/UIKit.h>
 
+@interface KeyButtonBgView : UIView
+
+@property (nonatomic)BOOL needsDisplayBg;
+
+
+
+@property (nonatomic)BOOL startToDrawCircleBg;
+
+@property (nonatomic)BOOL needsClear;
+
+@end
+
+
+
 @interface MHCPostViewController : UIViewController
     
 @property (strong, nonatomic) IBOutlet UITextView *postViewTextView;
@@ -23,9 +37,20 @@
 
 @property (strong, nonatomic) IBOutlet UIImageView *unlockBtn;
 
+
+
+
 //keboard button background view property .
+@property (strong, nonatomic) IBOutlet KeyButtonBgView *locateBgView;
+@property (strong, nonatomic) IBOutlet KeyButtonBgView *photoBgView;
+@property (strong, nonatomic) IBOutlet KeyButtonBgView *expressBgView;
 
-@property (strong, nonatomic) IBOutlet UIView *atBgView;
+@property (strong, nonatomic) IBOutlet KeyButtonBgView *atBgView;
 
+
+@property (strong, nonatomic) IBOutlet UIView *unlockBgView;
 
 @end
+
+
+
