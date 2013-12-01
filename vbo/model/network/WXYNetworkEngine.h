@@ -23,7 +23,7 @@ typedef enum{
 
 
 
-@interface WXYNetworkEngine : MKNetworkEngine <WeiboSDKDelegate>
+@interface WXYNetworkEngine : MKNetworkEngine 
 
 + (WXYNetworkEngine*)shareNetworkEngine;
 
@@ -169,7 +169,7 @@ typedef enum{
  * \param screenName 用户名称，与userId二选一
  * \param count 返回数量，最多200
  * \param cursor 页码游标，默认为0
- * \param succeedBlock Array内容为User, previousCursor与 nextCursor为上、下页游标，用于下次请求
+ * \param succeedBlock Array内容为User, previousCursor与 nextCursor为上、下页游标，用于下次请求，没有则为0
  * \param errorBlock 错误处理block
  * \return 当前网络请求Operation
  */
@@ -179,7 +179,24 @@ typedef enum{
                                   cursor:(NSNumber*)cursor
                                  succeed:(ArrayWithCursorBlock)succeedBlock
                                    error:(ErrorBlock)errorBlock;
-
+/*!读取用户关注的所有用户
+ * \param userId 用户Id，与screenName二选一
+ * \param screenName 用户名称，与userId二选一
+ * \param succeedBlock Array内容为User
+ * \param errorBlock 错误处理block
+ * \return 当前网络请求Operation
+ */
+- (MKNetworkOperation*)getAllFriendListById:(NSNumber*)userId
+                                 screenName:(NSString*)screenName
+                                    succeed:(ArrayBlock)succeedBlock
+                                      error:(ErrorBlock)errorBlock;
+/*!读取当前用户关注的所有用户
+ * \param succeedBlock Array内容为User
+ * \param errorBlock 错误处理block
+ * \return 当前网络请求Operation
+ */
+- (MKNetworkOperation*)getAllFriendOfCurrentUserSucceed:(ArrayBlock)succeedBlock
+                                                  error:(ErrorBlock)errorBlock;
 
 
 @end

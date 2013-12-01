@@ -49,6 +49,16 @@
 @end
 
 
+@interface WXYNetworkEngine ()
+- (MKNetworkOperation*)recursiveHelpGetAllFriendById:(NSNumber*)userId
+                                          screenName:(NSString*)screenName
+                                              cursor:(NSNumber*)cursor
+                                         returnArray:(NSMutableArray*)returnArray
+                                             succeed:(ArrayBlock)succeedBlock
+                                               error:(ErrorBlock)errorBlock;
+
+@end
+
 
 @implementation WXYNetworkEngine
 
@@ -589,6 +599,81 @@
           }];
     
     
+    return op;
+}
+
+
+//递归获取所有用户辅助方法
+- (MKNetworkOperation*)recursiveHelpGetAllFriendById:(NSNumber*)userId
+                                          screenName:(NSString*)screenName
+                                              cursor:(NSNumber*)cursor
+                                         returnArray:(NSMutableArray*)returnArray
+                                             succeed:(ArrayBlock)succeedBlock
+                                               error:(ErrorBlock)errorBlock
+{
+    __block MKNetworkOperation* op = nil;
+
+    op = [self getFriendListById:userId
+                 screenName:screenName
+                      count:200
+                     cursor:cursor
+                    succeed:^(NSArray *array, NSNumber *previousCursor, NSNumber *nextCursor)
+    {
+        [returnArray addObjectsFromArray:array];
+        
+        if (nextCursor.longLongValue == 0)
+        {
+            //递归结束
+            if (succeedBlock)
+            {
+                succeedBlock(returnArray);
+            }
+        }
+        else
+        {
+            //继续递归
+            op = [self recursiveHelpGetAllFriendById:userId
+                                     screenName:screenName
+                                         cursor:nextCursor
+                                    returnArray:returnArray
+                                        succeed:succeedBlock
+                                          error:errorBlock];
+        }
+        
+    }
+                      error:^(NSError *error)
+    {
+        if (errorBlock)
+        {
+            errorBlock(error);
+        }
+    }];
+    
+    return op;
+}
+- (MKNetworkOperation*)getAllFriendListById:(NSNumber*)userId
+                                 screenName:(NSString*)screenName
+                                    succeed:(ArrayBlock)succeedBlock
+                                      error:(ErrorBlock)errorBlock
+{
+    MKNetworkOperation* op = nil;
+    NSMutableArray* returnArray = [[NSMutableArray alloc] init];
+    op = [self recursiveHelpGetAllFriendById:userId screenName:screenName cursor:@(0) returnArray:returnArray succeed:succeedBlock error:errorBlock];
+    return op;
+}
+- (MKNetworkOperation*)getAllFriendOfCurrentUserSucceed:(ArrayBlock)succeedBlock
+                                                  error:(ErrorBlock)errorBlock
+{
+    MKNetworkOperation* op = nil;
+    
+    LoginUserInfo* info = SHARE_LOGIN_MANAGER.currentUserInfo;
+    if (info)
+    {
+        op = [self getAllFriendListById:@(info.userId.longLongValue)
+                             screenName:nil
+                                succeed:succeedBlock
+                                  error:errorBlock];
+    }
     return op;
 }
 

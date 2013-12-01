@@ -301,4 +301,54 @@
     [self.asyncTestCase waitForStatus:kGHUnitWaitStatusSuccess timeout:kMKNetworkKitRequestTimeOutInSeconds];
 }
 
+- (void)testGetAllFriendById
+{
+    [self.asyncTestCase prepare];
+    LoginUserInfo* user = SHARE_LOGIN_MANAGER.currentUserInfo;
+    
+    [SHARE_NW_ENGINE getAllFriendListById:@(user.userId.longLongValue)
+                               screenName:nil
+                                  succeed:^(NSArray *resultArray)
+    {
+        if (resultArray.count)
+        {
+            id user = resultArray[0];
+        }
+        
+        [self.asyncTestCase notify:kGHUnitWaitStatusSuccess];
+    }
+                                    error:^(NSError *error)
+    {
+        XCTFail(@"网络请求失败");
+        [self.asyncTestCase notify:kGHUnitWaitStatusFailure];
+    }];
+    
+    
+    [self.asyncTestCase waitForStatus:kGHUnitWaitStatusSuccess timeout:kMKNetworkKitRequestTimeOutInSeconds];
+}
+
+- (void)testGetAllFriendOfCurrentUserById
+{
+    [self.asyncTestCase prepare];
+    LoginUserInfo* user = SHARE_LOGIN_MANAGER.currentUserInfo;
+    
+    [SHARE_NW_ENGINE getAllFriendOfCurrentUserSucceed:^(NSArray *resultArray)
+     {
+         if (resultArray.count)
+         {
+             id user = resultArray[0];
+         }
+         
+         [self.asyncTestCase notify:kGHUnitWaitStatusSuccess];
+     }
+                                    error:^(NSError *error)
+     {
+         XCTFail(@"网络请求失败");
+         [self.asyncTestCase notify:kGHUnitWaitStatusFailure];
+     }];
+    
+    
+    [self.asyncTestCase waitForStatus:kGHUnitWaitStatusSuccess timeout:kMKNetworkKitRequestTimeOutInSeconds];
+}
+
 @end
