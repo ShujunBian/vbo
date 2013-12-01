@@ -158,6 +158,8 @@
 		5199293518459C320000216F /* CastViewImageTransitionAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 5199293418459C320000216F /* CastViewImageTransitionAnimation.m */; };
 		5199293818459CD00000216F /* CastImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5199293718459CD00000216F /* CastImageViewController.m */; };
 		51AACA90183D027100793547 /* ScreenShotHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 51AACA8F183D027100793547 /* ScreenShotHelper.m */; };
+		51DD4DE01849BEAB00999DDF /* CVDragIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 51DD4DDF1849BEAB00999DDF /* CVDragIndicatorView.m */; };
+		51DD4DE31849BECB00999DDF /* CVDragIndicatorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 51DD4DE21849BECB00999DDF /* CVDragIndicatorView.xib */; };
 		51E04EB218491061001D9500 /* CastViewImageDismissTransitionAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 51E04EB118491061001D9500 /* CastViewImageDismissTransitionAnimation.m */; };
 		51F8FA28182E0F5C00E211AC /* TTTAttributedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 51F8FA27182E0F5C00E211AC /* TTTAttributedLabel.m */; };
 /* End PBXBuildFile section */
@@ -380,6 +382,9 @@
 		5199293718459CD00000216F /* CastImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CastImageViewController.m; sourceTree = "<group>"; };
 		51AACA8E183D027100793547 /* ScreenShotHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScreenShotHelper.h; sourceTree = "<group>"; };
 		51AACA8F183D027100793547 /* ScreenShotHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScreenShotHelper.m; sourceTree = "<group>"; };
+		51DD4DDE1849BEAB00999DDF /* CVDragIndicatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CVDragIndicatorView.h; sourceTree = "<group>"; };
+		51DD4DDF1849BEAB00999DDF /* CVDragIndicatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CVDragIndicatorView.m; sourceTree = "<group>"; };
+		51DD4DE21849BECB00999DDF /* CVDragIndicatorView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CVDragIndicatorView.xib; sourceTree = "<group>"; };
 		51E04EB018491061001D9500 /* CastViewImageDismissTransitionAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CastViewImageDismissTransitionAnimation.h; sourceTree = "<group>"; };
 		51E04EB118491061001D9500 /* CastViewImageDismissTransitionAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CastViewImageDismissTransitionAnimation.m; sourceTree = "<group>"; };
 		51F8FA26182E0F5C00E211AC /* TTTAttributedLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTTAttributedLabel.h; sourceTree = "<group>"; };
@@ -590,6 +595,9 @@
 				51510C17183BDF3B00BD7823 /* ComReqDetailCell.m */,
 				5199293618459CD00000216F /* CastImageViewController.h */,
 				5199293718459CD00000216F /* CastImageViewController.m */,
+				51DD4DDE1849BEAB00999DDF /* CVDragIndicatorView.h */,
+				51DD4DDF1849BEAB00999DDF /* CVDragIndicatorView.m */,
+				51DD4DE21849BECB00999DDF /* CVDragIndicatorView.xib */,
 			);
 			path = cast;
 			sourceTree = "<group>";
@@ -1114,6 +1122,7 @@
 				18B02D51182E0F1B00D9AF04 /* tabbar_post_button.png in Resources */,
 				18B02D50182E0F1B00D9AF04 /* tabbar_mine_button@2x.png in Resources */,
 				1868F1381829EC7A00C5764D /* test.png in Resources */,
+				51DD4DE31849BECB00999DDF /* CVDragIndicatorView.xib in Resources */,
 				518A1CBE1843243300D36AFD /* EmoticonsInfo.plist in Resources */,
 				1838DF20181E677A003D015A /* WeiboSDK.bundle in Resources */,
 				18EED3581815865F000856CE /* MainStoryboard.storyboard in Resources */,
@@ -1209,6 +1218,7 @@
 				4D78489518314B8A0025ADDA /* ExampleViewCollectionView.m in Sources */,
 				18EB0A09182BF7DD005CC27D /* NSDictionary+noNilValueForKey.m in Sources */,
 				18A6A682182FCD6000D9FB7F /* WXYTabBarPostButton.m in Sources */,
+				51DD4DE01849BEAB00999DDF /* CVDragIndicatorView.m in Sources */,
 				515B0BFC18082A9B0092BADB /* AppDelegate.m in Sources */,
 				185E88AC182AABF40020F3B2 /* NSString+MKNetworkKitAdditions.m in Sources */,
 				18B02D59182E167800D9AF04 /* WXYTabBarButton.m in Sources */,

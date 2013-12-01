@@ -20,6 +20,7 @@
 #import "CastViewImageTransitionAnimation.h"
 #import "CastViewImageDismissTransitionAnimation.h"
 #import "CastImageViewController.h"
+#import "CVDragIndicatorView.h"
 
 #define contantHeight 110.0
 #define contentLabelLineSpace 6.0
@@ -32,6 +33,7 @@
 @property (nonatomic, weak) UIImageView * selectedImageView;
 @property (nonatomic, strong) CastViewImageTransitionAnimation * imageTransitionAnimation;
 @property (nonatomic, strong) CastViewImageDismissTransitionAnimation * imageDismissTransitionAnimation;
+@property (nonatomic, strong) CVDragIndicatorView * dragIndicatorView;
 
 @end
 
@@ -57,7 +59,6 @@
     [bgview setBackgroundColor:SHARE_SETTING_MANAGER.themeColor];
     [self.tableView setBackgroundView:bgview];
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
-    //    [self.view setTranslatesAutoresizingMaskIntoConstraints:NO];
     [self fetchWeiboContent];
     
     UINib *castNib = [UINib nibWithNibName:@"CastViewCell" bundle:[NSBundle bundleForClass:[CastViewCell class]]];
@@ -67,6 +68,9 @@
                                              selector:@selector(preferredContentSizeChanged:)
                                                  name:UIContentSizeCategoryDidChangeNotification
                                                object:nil];
+    
+//    [self.dragIndicatorView setFrame:CGRectMake(0, 100.0, 320.0, 44.0)];
+//    [self.tableView addSubview:self.dragIndicatorView];
     
 }
 
@@ -269,6 +273,18 @@
     [self dismissViewControllerAnimated:YES completion:^{
         _selectedImageView.hidden = NO;
     }];
+}
+
+#pragma mark - Property
+- (CVDragIndicatorView *)dragIndicatorView
+{
+    if (!_dragIndicatorView) {
+        NSArray *nibs = [[NSBundle mainBundle] loadNibNamed:@"CVDragIndicatorView"
+                                                      owner:self
+                                                    options:nil];
+        _dragIndicatorView = [nibs objectAtIndex:0];
+    }
+    return _dragIndicatorView;
 }
 
 - (void)viewDidUnload

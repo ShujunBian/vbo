@@ -76,7 +76,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="azM-Ia-xvr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-381" y="897"/>
+            <point key="canvasLocation" x="-376" y="875"/>
         </scene>
         <!--Com Rep View Controller-->
         <scene sceneID="zTV-sV-pTY">
