@@ -45,6 +45,8 @@
 @property (nonatomic, retain) NSSet *comments;
 @property (nonatomic, retain) NSSet *ownGroups;
 @property (nonatomic, retain) NSSet *groups;    //此属性仅作为group的users属性的相反属性，不使用
+@property (nonatomic, retain) NSSet *followedUsers;
+@property (nonatomic, retain) NSSet *followingUsers;
 
 @end
 
@@ -59,6 +61,17 @@
 - (void)removeCommentsObject:(Comment *)value;
 - (void)addComments:(NSSet *)values;
 - (void)removeComments:(NSSet *)values;
+
+- (void)addFollowedUsersObject:(User *)value;
+- (void)removeFollowedUsersObject:(User *)value;
+- (void)addFollowedUsers:(NSSet *)values;
+- (void)removeFollowedUsers:(NSSet *)values;
+
+- (void)addFollowingUsersObject:(User *)value;
+- (void)removeFollowingUsersObject:(User *)value;
+- (void)addFollowingUsers:(NSSet *)values;
+- (void)removeFollowingUsers:(NSSet *)values;
+
 
 + (User*)insertWithId:(NSNumber*)uId InContext:(NSManagedObjectContext*)context;
 

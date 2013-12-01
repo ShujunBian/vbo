@@ -161,6 +161,25 @@ typedef enum{
                                         error:(ErrorBlock)errorBlock;
 //写入
 
+////////关系接口
+//////读取
+
+/*!读取用户关注列表(一次最多200条)
+ * \param userId 用户Id，与screenName二选一
+ * \param screenName 用户名称，与userId二选一
+ * \param count 返回数量，最多200
+ * \param cursor 页码游标，默认为0
+ * \param succeedBlock Array内容为User, previousCursor与 nextCursor为上、下页游标，用于下次请求
+ * \param errorBlock 错误处理block
+ * \return 当前网络请求Operation
+ */
+- (MKNetworkOperation*)getFriendListById:(NSNumber*)userId
+                              screenName:(NSString*)screenName
+                                   count:(int)count
+                                  cursor:(NSNumber*)cursor
+                                 succeed:(ArrayWithCursorBlock)succeedBlock
+                                   error:(ErrorBlock)errorBlock;
+
 
 
 @end

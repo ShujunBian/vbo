@@ -113,6 +113,8 @@
         <attribute name="verified" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="verifiedReason" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="comments" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Comment" inverseName="user" inverseEntity="Comment" syncable="YES"/>
+        <relationship name="followedUsers" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="User" inverseName="followingUsers" inverseEntity="User" syncable="YES"/>
+        <relationship name="followingUsers" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="User" inverseName="followedUsers" inverseEntity="User" syncable="YES"/>
         <relationship name="groups" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Group" inverseName="users" inverseEntity="Group" syncable="YES"/>
         <relationship name="ownGroups" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Group" inverseName="owner" inverseEntity="Group" syncable="YES"/>
         <relationship name="statuses" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Status" inverseName="author" inverseEntity="Status" syncable="YES"/>

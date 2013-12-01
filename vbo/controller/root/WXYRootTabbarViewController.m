@@ -9,10 +9,10 @@
 #import "WXYRootTabbarViewController.h"
 #import "WXYSettingManager.h"
 #import "MHCPostViewController.h"
-//#import "DDLogLevelGlobal.h"
+#import "DDLogLevelGlobal.h"
 #import "WXYSolidNavigationBar.h"
 #import "DDLog.h"
-static int ddLogLevel = LOG_LEVEL_VERBOSE;
+//static int ddLogLevel = LOG_LEVEL_VERBOSE;
 
 @interface WXYRootTabbarViewController ()
 
