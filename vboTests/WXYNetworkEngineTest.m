@@ -10,6 +10,7 @@
 #import <GHUnitIOS/GHUnit.h>
 #import <XCTest/XCTest.h>
 #import "WXYNetworkEngine.h"
+#import "WXYLoginManager.h"
 
 #define TEST_GROUP_ID 3417030495788416
 
@@ -232,7 +233,7 @@
 {
     [self.asyncTestCase prepare];
     
-    [SHARE_NW_ENGINE getGroupMemberListById:@(TEST_GROUP_ID) cursor:@(0) succeed:^(Group *group, NSNumber *previousCursor, NSNumber *nextCursor)
+    [SHARE_NW_ENGINE getGroupMemberListById:@(3437695525545341) cursor:@(0) succeed:^(Group *group, NSNumber *previousCursor, NSNumber *nextCursor)
     {
         
         if (group.users.count)
@@ -278,6 +279,76 @@
     
     [self.asyncTestCase waitForStatus:kGHUnitWaitStatusSuccess timeout:kMKNetworkKitRequestTimeOutInSeconds];
 }
+- (void)testGetFriendListById
+{
+    [self.asyncTestCase prepare];
+    LoginUserInfo* user = SHARE_LOGIN_MANAGER.currentUserInfo;
+    
+    [SHARE_NW_ENGINE getFriendListById:@(user.userId.longLongValue) screenName:nil count:200 cursor:@0 succeed:^(NSArray *array, NSNumber *previousCursor, NSNumber *nextCursor)
+    {
+        
+        if (array.count)
+        {
+            id user = array[0];
+        }
+        
+        [self.asyncTestCase notify:kGHUnitWaitStatusSuccess];
+    } error:^(NSError *error) {
+        XCTFail(@"网络请求失败");
+        [self.asyncTestCase notify:kGHUnitWaitStatusFailure];
+    }];
+    
+    [self.asyncTestCase waitForStatus:kGHUnitWaitStatusSuccess timeout:kMKNetworkKitRequestTimeOutInSeconds];
+}
 
+- (void)testGetAllFriendById
+{
+    [self.asyncTestCase prepare];
+    LoginUserInfo* user = SHARE_LOGIN_MANAGER.currentUserInfo;
+    
+    [SHARE_NW_ENGINE getAllFriendListById:@(user.userId.longLongValue)
+                               screenName:nil
+                                  succeed:^(NSArray *resultArray)
+    {
+        if (resultArray.count)
+        {
+            id user = resultArray[0];
+        }
+        
+        [self.asyncTestCase notify:kGHUnitWaitStatusSuccess];
+    }
+                                    error:^(NSError *error)
+    {
+        XCTFail(@"网络请求失败");
+        [self.asyncTestCase notify:kGHUnitWaitStatusFailure];
+    }];
+    
+    
+    [self.asyncTestCase waitForStatus:kGHUnitWaitStatusSuccess timeout:kMKNetworkKitRequestTimeOutInSeconds];
+}
+
+- (void)testGetAllFriendOfCurrentUserById
+{
+    [self.asyncTestCase prepare];
+    LoginUserInfo* user = SHARE_LOGIN_MANAGER.currentUserInfo;
+    
+    [SHARE_NW_ENGINE getAllFriendOfCurrentUserSucceed:^(NSArray *resultArray)
+     {
+         if (resultArray.count)
+         {
+             id user = resultArray[0];
+         }
+         
+         [self.asyncTestCase notify:kGHUnitWaitStatusSuccess];
+     }
+                                    error:^(NSError *error)
+     {
+         XCTFail(@"网络请求失败");
+         [self.asyncTestCase notify:kGHUnitWaitStatusFailure];
+     }];
+    
+    
+    [self.asyncTestCase waitForStatus:kGHUnitWaitStatusSuccess timeout:kMKNetworkKitRequestTimeOutInSeconds];
+}
 
 @end

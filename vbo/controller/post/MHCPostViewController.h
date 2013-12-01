@@ -41,6 +41,7 @@
 
 
 //keboard button background view property .
+@property (strong, nonatomic) IBOutlet UIView *keyBoardMainView;
 @property (strong, nonatomic) IBOutlet KeyButtonBgView *locateBgView;
 @property (strong, nonatomic) IBOutlet KeyButtonBgView *photoBgView;
 @property (strong, nonatomic) IBOutlet KeyButtonBgView *expressBgView;
@@ -49,6 +50,9 @@
 
 
 @property (strong, nonatomic) IBOutlet UIView *unlockBgView;
+
+-(UIImage *)getImageWith:(UIImage *)screenShot;
+
 
 @end
 

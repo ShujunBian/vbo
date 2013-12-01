@@ -32,6 +32,7 @@
 
 - (Status*)getStatusById:(long long)statusId;
 - (User*)getUserById:(long long)userId;
+- (User*)getUserByScreenName:(NSString*)screenName;
 - (Comment*)getCommentById:(long long)commentId;
 - (Group*)getGroupById:(long long)groupId;
 @end

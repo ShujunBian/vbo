@@ -10,6 +10,7 @@
                 <outlet property="atBtn" destination="zPB-3i-7AC" id="ntI-ps-DtP"/>
                 <outlet property="expBtn" destination="8Ic-QQ-Qoe" id="3ha-JI-WLf"/>
                 <outlet property="expressBgView" destination="1be-bE-6ca" id="YaO-e1-5oi"/>
+                <outlet property="keyBoardMainView" destination="ylj-C5-bVQ" id="jOS-GZ-aiW"/>
                 <outlet property="locateBgView" destination="pf9-79-m8r" id="6i7-dX-Bg7"/>
                 <outlet property="locateBtn" destination="y9p-M1-vC5" id="bfC-VF-6WU"/>
                 <outlet property="photoBgView" destination="AQX-Ef-lr2" id="6Cm-rS-0MI"/>

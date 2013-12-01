@@ -10,7 +10,7 @@
 //#import "ModalViewController.h"
 //#import "ModalViewControllerWithoutScrollView.h"
 #import "UIImage+ImageEffects.h"
-#import "UINavigationController+MHDismissModalView.h"
+//#import "UINavigationController+MHDismissModalView.h"
 
 #import "MHCPostViewController.h"
 
