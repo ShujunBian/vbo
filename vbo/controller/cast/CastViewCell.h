@@ -18,7 +18,7 @@
 - (void)clickRepostButtonByStatus:(Status *)status;
 
 @required
-- (void)presentDetailImageViewWithImage:(UIImage *)image
+- (void)presentDetailImageViewWithImageView:(UIImageView *)imageView
                          withInitalRect:(CGRect)initalRect;
 
 @end

@@ -18,17 +18,20 @@
 #import "ScreenShotHelper.h"
 #import "WXYScrollHiddenDelegate.h"
 #import "CastViewImageTransitionAnimation.h"
+#import "CastViewImageDismissTransitionAnimation.h"
 #import "CastImageViewController.h"
 
 #define contantHeight 110.0
 #define contentLabelLineSpace 6.0
 #define tableViewSeprateLine [UIColor colorWithRed:0.0/255.0 green:0.0/255.0 blue:0.0/255.0 alpha:1.0]
 
-@interface WXYCastViewController ()
+@interface WXYCastViewController ()<CastImageViewControllerDelegate>
 
 //@property (nonatomic, strong) UIDynamicAnimator *animator;
 @property (nonatomic, strong) NSArray * weiboContentArray;
+@property (nonatomic, weak) UIImageView * selectedImageView;
 @property (nonatomic, strong) CastViewImageTransitionAnimation * imageTransitionAnimation;
+@property (nonatomic, strong) CastViewImageDismissTransitionAnimation * imageDismissTransitionAnimation;
 
 @end
 
@@ -48,6 +51,7 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     _imageTransitionAnimation = [CastViewImageTransitionAnimation new];
+    _imageDismissTransitionAnimation = [CastViewImageDismissTransitionAnimation new];
     
     UIView *bgview = [[UIView alloc]init];
     [bgview setBackgroundColor:SHARE_SETTING_MANAGER.themeColor];
@@ -237,20 +241,34 @@
     [self.navigationController pushViewController:comRepViewController animated:YES];
 }
 
-- (void)presentDetailImageViewWithImage:(UIImage *)image
-                         withInitalRect:(CGRect)initalRect
+- (void)presentDetailImageViewWithImageView:(UIImageView *)imageView
+                             withInitalRect:(CGRect)initalRect
 {
-    CastImageViewController * toVc = [[CastImageViewController alloc]init];
+    _selectedImageView = imageView;
     
+    UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:NULL];
+    CastImageViewController * toVc = [storyBoard instantiateViewControllerWithIdentifier:@"CastImageViewController"];
+    
+    toVc.delegate = self;
     CGPoint offsetRect = [_tableView contentOffset];
     initalRect.origin.y -= offsetRect.y;
     
-    UIImageView * testView = [[UIImageView alloc]initWithImage:image];
+    UIImageView * testView = [[UIImageView alloc]initWithImage:imageView.image];
     toVc.weiboDetailImageView = testView;
     toVc.initialRect = initalRect;
     
     toVc.transitioningDelegate = self;
-    [self.navigationController presentViewController:toVc animated:YES completion:nil];
+    [self presentViewController:toVc animated:YES completion:^{
+            _selectedImageView.hidden = YES;
+    }];
+}
+
+#pragma mark - CastImageViewDelegate
+- (void)castImageDidDismiss:(CastImageViewController *)viewController
+{
+    [self dismissViewControllerAnimated:YES completion:^{
+        _selectedImageView.hidden = NO;
+    }];
 }
 
 - (void)viewDidUnload
@@ -270,5 +288,10 @@
                                                                       sourceController:(UIViewController *)source
 {
     return self.imageTransitionAnimation;
+}
+
+- (id<UIViewControllerAnimatedTransitioning>)animationControllerForDismissedController:(UIViewController *)dismissed
+{
+    return self.imageDismissTransitionAnimation;
 }
 @end
