@@ -8,7 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "WXYSolidTabBar.h"
+#import "WXYScrollHiddenDelegate.h"
 
-@interface WXYRootTabbarViewController : UITabBarController<UIScrollViewDelegate, WXYSolidTabBarDelegate>
+@interface WXYRootTabbarViewController : UITabBarController<WXYScrollHiddenDelegate, WXYSolidTabBarDelegate>
 
 @end
