@@ -10,6 +10,7 @@
 #import "WatchListTableViewCell.h"
 #import "WXYSettingManager.h"
 #import "WXYNetworkEngine.h"
+#import "UIImageView+MKNetworkKitAdditions.h"
 
 @interface WatchListTableViewController ()
 
@@ -22,19 +23,17 @@
     [super viewDidLoad];
     
     [self.tableView registerNib:[UINib nibWithNibName:@"WatchListTableViewCell" bundle:nil] forCellReuseIdentifier:@"WatchListTableCell"];
-    [SHARE_NW_ENGINE getGroupMemberListById:@(3437695525545341) cursor:@(0) succeed:^(Group *group, NSNumber *previousCursor, NSNumber *nextCursor)
-     {
-         
-         if (group.users.count)
-         {
-             NSArray* array = [group.users allObjects];
-             [self.atUserArray arrayByAddingObjectsFromArray:array];
-             
-         }
-     } error:^(NSError *error)
-     {
-         
-     }];
+    [SHARE_NW_ENGINE getAllFriendOfCurrentUserSucceed:^(NSArray *resultArray) {
+        NSLog(@"%d",resultArray.count);
+        self.atUserArray = [[NSMutableArray alloc]initWithArray:resultArray];
+        [self.tableView reloadData];
+    } error:^(NSError *error) {
+        
+    }];
+}
+-(void)viewWillAppear:(BOOL)animated
+{
+    [self.tableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning
@@ -66,14 +65,14 @@
     WatchListTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[WatchListTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"WatchListTableCell"];
-        cell.selectedView.backgroundColor = SHARE_SETTING_MANAGER.themeColor;
-        NSString *name = [[self.atUserArray objectAtIndex:indexPath.row ] userName].text;
-        
-        cell.userName.text = name;
-                                
-        
-        return cell;
     }
+    
+    cell.selectedView.backgroundColor = SHARE_SETTING_MANAGER.themeColor;
+    User* user = [self.atUserArray objectAtIndex:indexPath.row];
+    
+    cell.userName.text = user.screenName;
+    
+    [cell.userHeadPhoto setImageFromURL:[NSURL URLWithString:user.avatarLargeUrl]];
     
     // Configure the cell..
     return cell;

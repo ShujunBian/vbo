@@ -10,6 +10,6 @@
 
 @interface WatchListTableViewController : UITableViewController
 
-@property (strong,nonatomic)NSArray *atUserArray;
+@property (strong,nonatomic)NSMutableArray *atUserArray;
 
 @end
