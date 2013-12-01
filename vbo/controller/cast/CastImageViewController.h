@@ -8,9 +8,17 @@
 
 #import "ViewController.h"
 
+@class CastImageViewController;
+@protocol CastImageViewControllerDelegate <NSObject>
+
+-(void) castImageDidDismiss:(CastImageViewController *)viewController;
+
+@end
+
 @interface CastImageViewController : ViewController
 
 @property (nonatomic, strong) UIImageView * weiboDetailImageView;
 @property (nonatomic) CGRect initialRect;
+@property (nonatomic, weak) id<CastImageViewControllerDelegate> delegate;
 
 @end
