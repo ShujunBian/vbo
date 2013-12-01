@@ -101,6 +101,18 @@
             info.userName = user.screenName;
             [SHARE_LOGIN_MANAGER loginUser:info];
             [[NSNotificationCenter defaultCenter] postNotificationName:kUserChangeNotification object:nil];
+            
+            UIAlertView* alert = nil;
+            if (SHARE_LOGIN_MANAGER.currentUserInfo.accessToken)
+            {
+                alert = [[UIAlertView alloc] initWithTitle:@"成功" message:nil delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
+            }
+            else
+            {
+                alert = [[UIAlertView alloc] initWithTitle:@"失败" message:nil delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
+            }
+            [alert show];
+            
         } error:^(NSError *error) {
 #warning 错误未处理
         }];
@@ -108,17 +120,7 @@
         
         
         
-        SHARE_SETTING_MANAGER.testAccessToken = [(WBAuthorizeResponse *)response accessToken];
-        UIAlertView* alert = nil;
-        if (SHARE_SETTING_MANAGER.testAccessToken)
-        {
-            alert = [[UIAlertView alloc] initWithTitle:@"成功" message:nil delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
-        }
-        else
-        {
-            alert = [[UIAlertView alloc] initWithTitle:@"失败" message:nil delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
-        }
-        [alert show];
+        
         //        NSString *title = @"认证结果";
         //        NSString *message = [NSString stringWithFormat:@"响应状态: %d\nresponse.userId: %@\nresponse.accessToken: %@\n响应UserInfo数据: %@\n原请求UserInfo数据: %@",
         //                             response.statusCode, [(WBAuthorizeResponse *)response userID], [(WBAuthorizeResponse *)response accessToken], response.userInfo, response.requestUserInfo];

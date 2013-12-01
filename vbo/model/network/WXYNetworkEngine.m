@@ -100,8 +100,7 @@
     NSMutableDictionary* params = [[NSMutableDictionary alloc] initWithDictionary:paramDict];
     //    if (user)
     //    {
-#warning 添加用户信息
-    [params setValue:SHARE_SETTING_MANAGER.testAccessToken forKey:@"access_token"];
+    [params setValue:SHARE_LOGIN_MANAGER.currentUserInfo.accessToken forKey:@"access_token"];
     //    }
     op = [self operationWithPath:path
                           params:params
@@ -585,6 +584,7 @@
                   [returnArray addObject:u];
                   [mainUser addFollowingUsersObject:u];
               }
+              [SHARE_DATA_MODEL saveCacheContext];
               if (succeedBlock)
               {
                   succeedBlock(returnArray,previewCursor,nextCursor);
