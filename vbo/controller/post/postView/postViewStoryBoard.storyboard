@@ -120,31 +120,8 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="stE-tJ-iHq" customClass="WatchListTableViewController">
-                                <rect key="frame" x="0.0" y="257" width="288" height="311"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <color key="sectionIndexTrackingBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="MSw-xy-glQ" customClass="WatchListTableViewCell">
-                                        <rect key="frame" x="0.0" y="22" width="288" height="44"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="MSw-xy-glQ" id="wWk-Cp-in1">
-                                            <rect key="frame" x="0.0" y="0.0" width="288" height="43"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vdH-EM-IrM">
-                                                    <rect key="frame" x="-190" y="-10" width="288" height="43"/>
-                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                                </imageView>
-                                            </subviews>
-                                        </tableViewCellContentView>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    </tableViewCell>
-                                </prototypes>
-                            </tableView>
                             <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FIj-DV-ZEB">
-                                <rect key="frame" x="288" y="128" width="0.0" height="440"/>
+                                <rect key="frame" x="302" y="128" width="0.0" height="440"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
@@ -154,8 +131,7 @@
                             <constraint firstAttribute="trailing" secondItem="FwQ-8r-53h" secondAttribute="trailing" id="HCj-Gu-dc8"/>
                             <constraint firstItem="M15-H4-yKD" firstAttribute="top" secondItem="KxT-If-QJW" secondAttribute="top" constant="128" id="b2b-q1-fRI"/>
                             <constraint firstItem="FwQ-8r-53h" firstAttribute="top" secondItem="KxT-If-QJW" secondAttribute="top" constant="64" id="cbU-jB-9hT"/>
-                            <constraint firstItem="FIj-DV-ZEB" firstAttribute="leading" secondItem="KxT-If-QJW" secondAttribute="leading" constant="288" id="cef-0d-N8R"/>
-                            <constraint firstItem="stE-tJ-iHq" firstAttribute="top" secondItem="KxT-If-QJW" secondAttribute="top" constant="257" id="hK7-Mi-AS6"/>
+                            <constraint firstItem="FIj-DV-ZEB" firstAttribute="leading" secondItem="KxT-If-QJW" secondAttribute="leading" constant="302" id="cef-0d-N8R"/>
                             <constraint firstAttribute="bottom" secondItem="FIj-DV-ZEB" secondAttribute="bottom" id="u0N-sA-3Rc"/>
                             <constraint firstItem="FIj-DV-ZEB" firstAttribute="top" secondItem="KxT-If-QJW" secondAttribute="top" constant="128" id="wra-kP-e7n"/>
                         </constraints>
@@ -165,7 +141,6 @@
                         <outlet property="abcView" destination="FIj-DV-ZEB" id="0OH-ky-lHh"/>
                         <outlet property="commonlyUsedCollectionView" destination="M15-H4-yKD" id="c1e-9g-AB4"/>
                         <outlet property="hasAtCollectionView" destination="FwQ-8r-53h" id="ZVH-Zx-Yda"/>
-                        <outlet property="watchListTableViewController" destination="stE-tJ-iHq" id="2Ek-sf-FdH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MEk-LP-deV" userLabel="First Responder" sceneMemberID="firstResponder"/>

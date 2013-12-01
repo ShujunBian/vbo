@@ -241,6 +241,17 @@
     self.needsClear = NO;
     
 }
+-(void)viewWillAppear
+{
+    //var init
+    
+    self.needsDisplayBg = NO;
+    
+    self.startToDrawCircleBg = NO;
+    
+    self.needsClear = NO;
+    
+}
 
 - (void)drawRect:(CGRect)rect
 {

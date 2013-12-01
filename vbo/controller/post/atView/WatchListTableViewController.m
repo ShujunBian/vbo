@@ -1,5 +1,5 @@
 //
-//  WatchListTableView.m
+//  WatchListTableViewController.m
 //  vbo
 //
 //  Created by Pursue_finky on 13-12-1.
@@ -7,7 +7,9 @@
 //
 
 #import "WatchListTableViewController.h"
-
+#import "WatchListTableViewCell.h"
+#import "WXYSettingManager.h"
+#import "WXYNetworkEngine.h"
 
 @interface WatchListTableViewController ()
 
@@ -15,24 +17,24 @@
 
 @implementation WatchListTableViewController
 
-- (id)initWithStyle:(UITableViewStyle)style
-{
-    self = [super initWithStyle:style];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
+    [self.tableView registerNib:[UINib nibWithNibName:@"WatchListTableViewCell" bundle:nil] forCellReuseIdentifier:@"WatchListTableCell"];
+    [SHARE_NW_ENGINE getGroupMemberListById:@(3437695525545341) cursor:@(0) succeed:^(Group *group, NSNumber *previousCursor, NSNumber *nextCursor)
+     {
+         
+         if (group.users.count)
+         {
+             NSArray* array = [group.users allObjects];
+             [self.atUserArray arrayByAddingObjectsFromArray:array];
+             
+         }
+     } error:^(NSError *error)
+     {
+         
+     }];
 }
 
 - (void)didReceiveMemoryWarning
@@ -43,27 +45,37 @@
 
 #pragma mark - Table view data source
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-#warning Potentially incomplete method implementation.
-    // Return the number of sections.
-    return 0;
-}
+//- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+//{
+//#warning Potentially incomplete method implementation.
+//    // Return the number of sections.
+//    return 0;
+//}
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
-    // Return the number of rows in the section.
-    return 0;
+    if(tableView == self.view)
+        return 24;
+    else
+        return 0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    static NSString *CellIdentifier = @"WatchListTableCell";
+    WatchListTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (cell == nil) {
+        cell = [[WatchListTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"WatchListTableCell"];
+        cell.selectedView.backgroundColor = SHARE_SETTING_MANAGER.themeColor;
+        NSString *name = [[self.atUserArray objectAtIndex:indexPath.row ] userName].text;
+        
+        cell.userName.text = name;
+                                
+        
+        return cell;
+    }
     
-    // Configure the cell...
-    
+    // Configure the cell..
     return cell;
 }
 
@@ -107,15 +119,21 @@
 */
 
 /*
-#pragma mark - Navigation
+#pragma mark - Table view delegate
 
-// In a story board-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+// In a xib-based application, navigation from a table can be handled in -tableView:didSelectRowAtIndexPath:
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
+    // Navigation logic may go here, for example:
+    // Create the next view controller.
+    <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
 
+    // Pass the selected object to the new view controller.
+    
+    // Push the view controller.
+    [self.navigationController pushViewController:detailViewController animated:YES];
+}
+ 
  */
 
 @end

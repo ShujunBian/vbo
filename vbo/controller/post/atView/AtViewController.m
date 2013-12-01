@@ -23,6 +23,10 @@
 {
     [super viewDidLoad];
     
+    
+    //subView Controller init.
+    self.watchListTvc = [[WatchListTableViewController alloc]init];
+    
     self.view.backgroundColor = [UIColor colorWithRed:246.f/255.f green:244.f/255.f blue:240.f/255.f alpha:1.0f];
     
     
@@ -62,7 +66,6 @@
     //cancel auto resizing
     [self.commonlyUsedCollectionView setTranslatesAutoresizingMaskIntoConstraints:NO];
     
-    [self.watchListTableViewController.tableView setTranslatesAutoresizingMaskIntoConstraints:NO];
     [self.abcView setTranslatesAutoresizingMaskIntoConstraints:NO];
     
     [self.hasAtCollectionView setTranslatesAutoresizingMaskIntoConstraints:NO];
@@ -74,20 +77,19 @@
     //if user not has the commonly-used friend.
     
     [self.commonlyUsedCollectionView removeFromSuperview];
-    [self.watchListTableViewController.tableView removeFromSuperview];
+    
     [self.abcView removeFromSuperview];
     
-    [self.view addSubview:self.watchListTableViewController.tableView];
     [self.view addSubview:self.abcView];
-//    [self.watchListTableView setTranslatesAutoresizingMaskIntoConstraints:NO];
     
     
+    [self.view addSubview:self.watchListTvc.view];
+    [self.watchListTvc.view setTranslatesAutoresizingMaskIntoConstraints:NO];
     
     //table view constraint.
     [self.view addConstraint:
-     [NSLayoutConstraint constraintWithItem:self.watchListTableViewController.tableView
-      
-                                  attribute:NSLayoutAttributeTop
+     [NSLayoutConstraint constraintWithItem:self.watchListTvc.view
+                                attribute:NSLayoutAttributeTop
       
                                   relatedBy:NSLayoutRelationEqual
       
@@ -99,8 +101,7 @@
       
                                    constant:128]];
     [self.view addConstraint:
-     [NSLayoutConstraint constraintWithItem:self.watchListTableViewController.tableView
-      
+     [NSLayoutConstraint constraintWithItem:self.watchListTvc.view
                                   attribute:NSLayoutAttributeBottom
       
                                   relatedBy:NSLayoutRelationEqual
@@ -114,8 +115,7 @@
                                    constant:0]];
     
     [self.view addConstraint:
-     [NSLayoutConstraint constraintWithItem:self.watchListTableViewController.tableView
-      
+     [NSLayoutConstraint constraintWithItem:self.watchListTvc.view
                                   attribute:NSLayoutAttributeLeft
       
                                   relatedBy:NSLayoutRelationEqual
@@ -128,8 +128,7 @@
       
                                    constant:0]];
     [self.view addConstraint:
-     [NSLayoutConstraint constraintWithItem:self.watchListTableViewController.tableView
-      
+     [NSLayoutConstraint constraintWithItem:self.watchListTvc.view
                                   attribute:NSLayoutAttributeRight
       
                                   relatedBy:NSLayoutRelationEqual
@@ -140,7 +139,7 @@
       
                                  multiplier:1
       
-                                   constant:-32]];
+                                   constant:-16]];
    
     
     //abc view constraint
@@ -185,7 +184,7 @@
       
                                  multiplier:1
       
-                                   constant:288]];
+                                   constant:302]];
     
 }
 -(void)cancel
@@ -198,19 +197,8 @@
 
 -(void)network
 {
-    [SHARE_NW_ENGINE getGroupMemberListById:@(3437695525545341) cursor:@(0) succeed:^(Group *group, NSNumber *previousCursor, NSNumber *nextCursor)
-     {
-         
-         if (group.users.count)
-         {
-             NSArray* array = [group.users allObjects];
-         }
-     } error:^(NSError *error)
-     {
-
-     }];
+ 
 }
-
 
 
 

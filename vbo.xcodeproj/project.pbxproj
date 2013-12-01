@@ -114,7 +114,9 @@
 		4D47D3FE18491CF500B12FC0 /* UIView+Effects.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D47D3FD18491CF500B12FC0 /* UIView+Effects.m */; };
 		4D47D4011849368E00B12FC0 /* bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D47D4001849368E00B12FC0 /* bg.png */; };
 		4D4A803C1842999F0078C81D /* KeyboardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D4A803B1842999F0078C81D /* KeyboardView.xib */; };
-		4D6EF0BE184A7F60009D7A18 /* WatchListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D6EF0BD184A7F60009D7A18 /* WatchListTableViewController.m */; };
+		4D5F23AE184B2510007A0898 /* WatchListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D5F23AC184B2510007A0898 /* WatchListTableViewController.m */; };
+		4D5F23AF184B2510007A0898 /* WatchListTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D5F23AD184B2510007A0898 /* WatchListTableViewController.xib */; };
+		4D5F23B1184B2DAC007A0898 /* WatchListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D5F23B0184B2DAC007A0898 /* WatchListTableViewCell.xib */; };
 		4D784890183147C40025ADDA /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D78488D183147C40025ADDA /* UIImage+ImageEffects.m */; };
 		4D78489E18314EB60025ADDA /* MHCPostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D78489D18314EB60025ADDA /* MHCPostViewController.m */; };
 		4D9DA271184A55EC00807B96 /* WatchListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D9DA270184A55EC00807B96 /* WatchListTableViewCell.m */; };
@@ -302,8 +304,10 @@
 		4D47D3FD18491CF500B12FC0 /* UIView+Effects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+Effects.m"; path = "blur/UIView+Effects.m"; sourceTree = "<group>"; };
 		4D47D4001849368E00B12FC0 /* bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bg.png; path = Resource/bg.png; sourceTree = "<group>"; };
 		4D4A803B1842999F0078C81D /* KeyboardView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KeyboardView.xib; sourceTree = "<group>"; };
-		4D6EF0BC184A7F60009D7A18 /* WatchListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WatchListTableViewController.h; path = atView/WatchListTableViewController.h; sourceTree = "<group>"; };
-		4D6EF0BD184A7F60009D7A18 /* WatchListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WatchListTableViewController.m; path = atView/WatchListTableViewController.m; sourceTree = "<group>"; };
+		4D5F23AB184B2510007A0898 /* WatchListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WatchListTableViewController.h; path = atView/WatchListTableViewController.h; sourceTree = "<group>"; };
+		4D5F23AC184B2510007A0898 /* WatchListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WatchListTableViewController.m; path = atView/WatchListTableViewController.m; sourceTree = "<group>"; };
+		4D5F23AD184B2510007A0898 /* WatchListTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = WatchListTableViewController.xib; path = atView/WatchListTableViewController.xib; sourceTree = "<group>"; };
+		4D5F23B0184B2DAC007A0898 /* WatchListTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WatchListTableViewCell.xib; sourceTree = "<group>"; };
 		4D78488C183147C40025ADDA /* UIImage+ImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+ImageEffects.h"; path = "blur/UIImage+ImageEffects.h"; sourceTree = "<group>"; };
 		4D78488D183147C40025ADDA /* UIImage+ImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+ImageEffects.m"; path = "blur/UIImage+ImageEffects.m"; sourceTree = "<group>"; };
 		4D78489C18314EB60025ADDA /* MHCPostViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHCPostViewController.h; sourceTree = "<group>"; };
@@ -794,10 +798,12 @@
 		4D6EF0BF184A81E5009D7A18 /* TableView */ = {
 			isa = PBXGroup;
 			children = (
+				4D5F23B0184B2DAC007A0898 /* WatchListTableViewCell.xib */,
 				4D9DA26F184A55EC00807B96 /* WatchListTableViewCell.h */,
 				4D9DA270184A55EC00807B96 /* WatchListTableViewCell.m */,
-				4D6EF0BC184A7F60009D7A18 /* WatchListTableViewController.h */,
-				4D6EF0BD184A7F60009D7A18 /* WatchListTableViewController.m */,
+				4D5F23AB184B2510007A0898 /* WatchListTableViewController.h */,
+				4D5F23AC184B2510007A0898 /* WatchListTableViewController.m */,
+				4D5F23AD184B2510007A0898 /* WatchListTableViewController.xib */,
 			);
 			name = TableView;
 			sourceTree = "<group>";
@@ -1057,38 +1063,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-
-				18B02D54182E0F1B00D9AF04 /* tabbar_weibo_button@2x.png in Resources */,
-				18B02D4E182E0F1B00D9AF04 /* tabbar_message_button@2x.png in Resources */,
-
-				4D78489918314C0A0025ADDA /* itunesradio_mystations_2x.png in Resources */,
 				51510C0E183BB10A00BD7823 /* CastViewCell.xib in Resources */,
 				515B0C0418082A9B0092BADB /* Images.xcassets in Resources */,
 				4D4A803C1842999F0078C81D /* KeyboardView.xib in Resources */,
 				18EED32F1815853E000856CE /* README.txt in Resources */,
-				4D4A8049184299C80078C81D /* unlock.png in Resources */,
-				4D4A8045184299C80078C81D /* at.png in Resources */,
-				4D4A8048184299C80078C81D /* photo.png in Resources */,
-				4D78489A18314C0A0025ADDA /* multitasking_screen_2x.png in Resources */,
-				4D4A8046184299C80078C81D /* expression.png in Resources */,
-				18B02D4B182E0F1B00D9AF04 /* tabbar_discover_button.png in Resources */,
-				18B02D4F182E0F1B00D9AF04 /* tabbar_mine_button.png in Resources */,
-				18B02D4D182E0F1B00D9AF04 /* tabbar_message_button.png in Resources */,
-				18B02D53182E0F1B00D9AF04 /* tabbar_weibo_button.png in Resources */,
-				18B02D53182E0F1B00D9AF04 /* tabbar_weibo_button.png in Resources */,
-
-				18B02D4C182E0F1B00D9AF04 /* tabbar_discover_button@2x.png in Resources */,
-				18B02D51182E0F1B00D9AF04 /* tabbar_post_button.png in Resources */,
-				18B02D50182E0F1B00D9AF04 /* tabbar_mine_button@2x.png in Resources */,
-
-				4D78489B18314C0A0025ADDA /* photos_moments_screen_2x.png in Resources */,
-
 				1868F1381829EC7A00C5764D /* test.png in Resources */,
 				518A1CBE1843243300D36AFD /* EmoticonsInfo.plist in Resources */,
 				1838DF20181E677A003D015A /* WeiboSDK.bundle in Resources */,
 				4D47D4011849368E00B12FC0 /* bg.png in Resources */,
+				4D5F23B1184B2DAC007A0898 /* WatchListTableViewCell.xib in Resources */,
 				18EED3581815865F000856CE /* MainStoryboard.storyboard in Resources */,
 				4D1E6F1C182A3AF60078229F /* postViewStoryBoard.storyboard in Resources */,
+				4D5F23AF184B2510007A0898 /* WatchListTableViewController.xib in Resources */,
 				515B0BF618082A9B0092BADB /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1186,7 +1172,6 @@
 				51510C15183BD8F600BD7823 /* ComRepCountCell.m in Sources */,
 				188E68971829131600BE534D /* vboCachedDatamodel.xcdatamodeld in Sources */,
 				51652DF01835D7FF004E4D30 /* UIFontDescriptor+TextKitAddition.m in Sources */,
-				4D6EF0BE184A7F60009D7A18 /* WatchListTableViewController.m in Sources */,
 				18EB0A02182BED82005CC27D /* StatusPicture.m in Sources */,
 				185E88A8182AABF40020F3B2 /* NSAlert+MKNetworkKitAdditions.m in Sources */,
 				1868F1131829CE1400C5764D /* WXYMineViewController.m in Sources */,
@@ -1197,6 +1182,7 @@
 				18EED32D1815853E000856CE /* DispatchQueueLogFormatter.m in Sources */,
 				51F8FA28182E0F5C00E211AC /* TTTAttributedLabel.m in Sources */,
 				18411000181655EB008B700C /* WXYNetworkEngine.m in Sources */,
+				4D5F23AE184B2510007A0898 /* WatchListTableViewController.m in Sources */,
 				185E88AA182AABF40020F3B2 /* NSDate+RFC1123.m in Sources */,
 				4D784890183147C40025ADDA /* UIImage+ImageEffects.m in Sources */,
 				1868F1241829D7EA00C5764D /* WXYSolidTabBar.m in Sources */,

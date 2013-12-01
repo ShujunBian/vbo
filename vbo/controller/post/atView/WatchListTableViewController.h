@@ -1,5 +1,5 @@
 //
-//  WatchListTableView.h
+//  WatchListTableViewController.h
 //  vbo
 //
 //  Created by Pursue_finky on 13-12-1.
@@ -9,5 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface WatchListTableViewController : UITableViewController
+
+@property (strong,nonatomic)NSArray *atUserArray;
 
 @end

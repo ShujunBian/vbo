@@ -8,15 +8,16 @@
 
 #import <UIKit/UIKit.h>
 
-
-
 @class WatchListTableViewController;
+
 
 @interface AtViewController : UIViewController
 
 @property (strong, nonatomic) IBOutlet UICollectionView *hasAtCollectionView;
 @property (strong, nonatomic) IBOutlet UICollectionView *commonlyUsedCollectionView;
-@property (strong, nonatomic) IBOutlet WatchListTableViewController*watchListTableViewController;
+
+
+@property(strong,nonatomic)WatchListTableViewController* watchListTvc;
 
 @property (strong, nonatomic) IBOutlet UIView *abcView;
 
