@@ -33,6 +33,9 @@
 #define GROUP_MEMBER_URL @"2/friendships/groups/members.json"
 #define GROUP_STATUS_URL @"2/friendships/groups/timeline.json"
 
+//Relation
+#define RELATION_FRIEND_LIST @"2/friendships/friends.json"
+
 #import "WXYSettingManager.h"
 #import "WXYDataModel.h"
 #import "WXYLoginManager.h"
@@ -45,6 +48,16 @@
 + (User*)getUserWithDict:(NSDictionary*)dict;
 @end
 
+
+@interface WXYNetworkEngine ()
+- (MKNetworkOperation*)recursiveHelpGetAllFriendById:(NSNumber*)userId
+                                          screenName:(NSString*)screenName
+                                              cursor:(NSNumber*)cursor
+                                         returnArray:(NSMutableArray*)returnArray
+                                             succeed:(ArrayBlock)succeedBlock
+                                               error:(ErrorBlock)errorBlock;
+
+@end
 
 
 @implementation WXYNetworkEngine
@@ -529,6 +542,141 @@
     return op;
 }
 
+
+#pragma mark - Relation
+#pragma mark Read
+- (MKNetworkOperation*)getFriendListById:(NSNumber*)userId
+                              screenName:(NSString*)screenName
+                                   count:(int)count
+                                  cursor:(NSNumber*)cursor
+                                 succeed:(ArrayWithCursorBlock)succeedBlock
+                                   error:(ErrorBlock)errorBlock
+{
+#warning 未测试
+    MKNetworkOperation* op = nil;
+    NSMutableDictionary* paramDict = [[NSMutableDictionary alloc] initWithDictionary:@{@"count": @(count), @"cursor":cursor}];
+    
+    User* mainUser = nil;
+    
+    if (userId)
+    {
+        [paramDict setValue:userId forKey:@"uid"];
+        mainUser = [SHARE_DATA_MODEL getUserById:userId.longLongValue];
+    }
+    else
+    {
+        [paramDict setValue:screenName forKey:@"screen_name"];
+        mainUser = [SHARE_DATA_MODEL getUserByScreenName:screenName];
+    }
+    
+    op = [self startOperationWithPath:RELATION_FRIEND_LIST
+                            needLogin:YES
+                             paramers:paramDict
+                          onSucceeded:^(MKNetworkOperation *completedOperation)
+          {
+              NSDictionary* responseDict = completedOperation.responseJSON;
+              NSNumber* nextCursor = responseDict[@"next_cursor"];
+              NSNumber* previewCursor = responseDict[@"previous_cursor"];
+              NSArray* userDictArray = responseDict[@"users"];
+              NSMutableArray* returnArray = [[NSMutableArray alloc] init];
+              for (NSDictionary* dict in userDictArray)
+              {
+                  User* u = [WXYNetworkDataFactory getUserWithDict:dict];
+                  [returnArray addObject:u];
+                  [mainUser addFollowingUsersObject:u];
+              }
+              if (succeedBlock)
+              {
+                  succeedBlock(returnArray,previewCursor,nextCursor);
+              }
+          }
+                              onError:^(MKNetworkOperation *completedOperation, NSError *error)
+          {
+              if (errorBlock)
+              {
+                  errorBlock(error);
+              }
+          }];
+    
+    
+    return op;
+}
+
+
+//递归获取所有用户辅助方法
+- (MKNetworkOperation*)recursiveHelpGetAllFriendById:(NSNumber*)userId
+                                          screenName:(NSString*)screenName
+                                              cursor:(NSNumber*)cursor
+                                         returnArray:(NSMutableArray*)returnArray
+                                             succeed:(ArrayBlock)succeedBlock
+                                               error:(ErrorBlock)errorBlock
+{
+    __block MKNetworkOperation* op = nil;
+
+    op = [self getFriendListById:userId
+                 screenName:screenName
+                      count:200
+                     cursor:cursor
+                    succeed:^(NSArray *array, NSNumber *previousCursor, NSNumber *nextCursor)
+    {
+        [returnArray addObjectsFromArray:array];
+        
+        if (nextCursor.longLongValue == 0)
+        {
+            //递归结束
+            if (succeedBlock)
+            {
+                succeedBlock(returnArray);
+            }
+        }
+        else
+        {
+            //继续递归
+            op = [self recursiveHelpGetAllFriendById:userId
+                                     screenName:screenName
+                                         cursor:nextCursor
+                                    returnArray:returnArray
+                                        succeed:succeedBlock
+                                          error:errorBlock];
+        }
+        
+    }
+                      error:^(NSError *error)
+    {
+        if (errorBlock)
+        {
+            errorBlock(error);
+        }
+    }];
+    
+    return op;
+}
+- (MKNetworkOperation*)getAllFriendListById:(NSNumber*)userId
+                                 screenName:(NSString*)screenName
+                                    succeed:(ArrayBlock)succeedBlock
+                                      error:(ErrorBlock)errorBlock
+{
+    MKNetworkOperation* op = nil;
+    NSMutableArray* returnArray = [[NSMutableArray alloc] init];
+    op = [self recursiveHelpGetAllFriendById:userId screenName:screenName cursor:@(0) returnArray:returnArray succeed:succeedBlock error:errorBlock];
+    return op;
+}
+- (MKNetworkOperation*)getAllFriendOfCurrentUserSucceed:(ArrayBlock)succeedBlock
+                                                  error:(ErrorBlock)errorBlock
+{
+    MKNetworkOperation* op = nil;
+    
+    LoginUserInfo* info = SHARE_LOGIN_MANAGER.currentUserInfo;
+    if (info)
+    {
+        op = [self getAllFriendListById:@(info.userId.longLongValue)
+                             screenName:nil
+                                succeed:succeedBlock
+                                  error:errorBlock];
+    }
+    return op;
+}
+
 @end
 
 @implementation WXYNetworkDataFactory
@@ -598,6 +746,7 @@
     group.owner = user;
     return group;
 }
+
 + (User*)getUserWithDict:(NSDictionary*)dict
 {
     NSNumber* userId = dict[@"id"];

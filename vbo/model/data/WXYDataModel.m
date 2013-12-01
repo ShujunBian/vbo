@@ -157,6 +157,26 @@
     }
     return returnStatus;
 }
+- (User*)getUserByScreenName:(NSString*)screenName
+{
+    User* user = nil;
+
+    NSFetchRequest* fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"User"];
+    NSPredicate* predicate = [NSPredicate predicateWithFormat:@"screenName==%@",screenName];
+    [fetchRequest setPredicate:predicate];
+    NSArray* resultArray = [SHARE_DATA_MODEL.cacheManagedObjectContext executeFetchRequest:fetchRequest error:nil];
+    if (resultArray.count)
+    {
+        user = resultArray[0];
+    }
+    else
+    {
+#warning 暂时先将只有名字的user id处理为-1
+        user = [User insertWithId:@(-1) InContext:SHARE_DATA_MODEL.cacheManagedObjectContext];
+        user.screenName = screenName;
+    }
+    return user;
+}
 - (User*)getUserById:(long long)userId
 {
     User* returnUser = nil;

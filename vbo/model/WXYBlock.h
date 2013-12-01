@@ -22,6 +22,7 @@ typedef void (^OperationErrorBlock)(MKNetworkOperation *completedOperation, NSEr
 typedef void (^ArrayBlock)(NSArray *resultArray);
 
 typedef void (^GroupWithCursorBlock)(Group* group, NSNumber* previousCursor, NSNumber* nextCursor);
+typedef void (^ArrayWithCursorBlock)(NSArray* array, NSNumber* previousCursor, NSNumber* nextCursor);
 typedef void (^StatusBlock)(Status* status);
 typedef void (^CommentBlock)(Comment* comment);
 typedef void (^UserBlock)(User* user);

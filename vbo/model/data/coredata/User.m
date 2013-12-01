@@ -44,6 +44,8 @@
 @dynamic comments;
 @dynamic ownGroups;
 @dynamic groups;
+@dynamic followedUsers;
+@dynamic followingUsers;
 
 + (User*)insertWithId:(NSNumber*)uId InContext:(NSManagedObjectContext*)context
 {
