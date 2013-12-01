@@ -67,12 +67,14 @@
         cell = [[WatchListTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"WatchListTableCell"];
     }
     
-    cell.selectedView.backgroundColor = SHARE_SETTING_MANAGER.themeColor;
+    cell.backgroundColor = [UIColor colorWithRed:246.f/255.f green:244.f/255.f blue:240.f/255.f alpha:1.0f];
     User* user = [self.atUserArray objectAtIndex:indexPath.row];
     
     cell.userName.text = user.screenName;
     
     [cell.userHeadPhoto setImageFromURL:[NSURL URLWithString:user.avatarLargeUrl]];
+    
+    [cell.checkView removeFromSuperview];
     
     // Configure the cell..
     return cell;
@@ -117,22 +119,30 @@
 }
 */
 
-/*
+
 #pragma mark - Table view delegate
 
-// In a xib-based application, navigation from a table can be handled in -tableView:didSelectRowAtIndexPath:
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Navigation logic may go here, for example:
-    // Create the next view controller.
-    <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
+    WatchListTableViewCell *cell = (WatchListTableViewCell *)[tableView cellForRowAtIndexPath:indexPath];
 
-    // Pass the selected object to the new view controller.
+    cell.selectedBackgroundView = [[UIView alloc] initWithFrame:cell.frame];
     
-    // Push the view controller.
-    [self.navigationController pushViewController:detailViewController animated:YES];
+    cell.selectedBackgroundView.backgroundColor = [UIColor whiteColor];
+    
+    cell.selectedView.backgroundColor = SHARE_SETTING_MANAGER.themeColor;
+    
+    [cell addSubview:cell.checkView];
+    
+   
 }
- 
- */
+
+-(void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    WatchListTableViewCell *cell = (WatchListTableViewCell *)[tableView cellForRowAtIndexPath:indexPath];
+    [cell.checkView removeFromSuperview];
+}
+
 
 @end

@@ -18,6 +18,11 @@
                     <rect key="frame" x="16" y="0.0" width="50" height="50"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="check" translatesAutoresizingMaskIntoConstraints="NO" id="Gj8-BO-QJp" userLabel="check">
+                    <rect key="frame" x="16" y="0.0" width="50" height="50"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                </imageView>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="userName" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PCh-up-YOG">
                     <rect key="frame" x="82" y="15" width="148" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -33,6 +38,7 @@
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
+                <outlet property="checkView" destination="Gj8-BO-QJp" id="iYS-J2-QVB"/>
                 <outlet property="contact_infoView" destination="4fz-av-lNQ" id="PLa-sN-THV"/>
                 <outlet property="selectedView" destination="Rm5-y8-4Nu" id="42z-ga-0QB"/>
                 <outlet property="userHeadPhoto" destination="1q0-gh-m4e" id="nnx-Z5-gc1"/>
@@ -41,6 +47,7 @@
         </view>
     </objects>
     <resources>
+        <image name="check" width="22" height="22"/>
         <image name="contact_info" width="22" height="22"/>
     </resources>
 </document>

@@ -13,5 +13,7 @@
 @property (strong, nonatomic) IBOutlet UIImageView *userHeadPhoto;
 @property (strong, nonatomic) IBOutlet UILabel *userName;
 @property (strong, nonatomic) IBOutlet UIImageView *contact_infoView;
+@property (strong, nonatomic) IBOutlet UIImageView *checkView;
+
 
 @end
