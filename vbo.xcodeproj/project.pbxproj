@@ -149,6 +149,8 @@
 		5199293518459C320000216F /* CastViewImageTransitionAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 5199293418459C320000216F /* CastViewImageTransitionAnimation.m */; };
 		5199293818459CD00000216F /* CastImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5199293718459CD00000216F /* CastImageViewController.m */; };
 		51AACA90183D027100793547 /* ScreenShotHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 51AACA8F183D027100793547 /* ScreenShotHelper.m */; };
+		51DD4DE01849BEAB00999DDF /* CVDragIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 51DD4DDF1849BEAB00999DDF /* CVDragIndicatorView.m */; };
+		51DD4DE31849BECB00999DDF /* CVDragIndicatorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 51DD4DE21849BECB00999DDF /* CVDragIndicatorView.xib */; };
 		51E04EB218491061001D9500 /* CastViewImageDismissTransitionAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 51E04EB118491061001D9500 /* CastViewImageDismissTransitionAnimation.m */; };
 		51F8FA28182E0F5C00E211AC /* TTTAttributedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 51F8FA27182E0F5C00E211AC /* TTTAttributedLabel.m */; };
 /* End PBXBuildFile section */
@@ -256,6 +258,7 @@
 		18D9E4E7183388E0004539CC /* Comment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Comment.m; sourceTree = "<group>"; };
 		18D9E4EB18338BF0004539CC /* Status.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Status.h; sourceTree = "<group>"; };
 		18D9E4EC18338BF0004539CC /* Status.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Status.m; sourceTree = "<group>"; };
+		18DA5F29184C5B2300902A47 /* AtViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AtViewController.h; path = atView/AtViewController.h; sourceTree = "<group>"; };
 		18E790E71834E584002B4785 /* WXYStatusTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXYStatusTest.m; sourceTree = "<group>"; };
 		18E790EB1834EF4E002B4785 /* WXYUserTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXYUserTest.m; sourceTree = "<group>"; };
 		18E790EF1834F512002B4785 /* Group.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Group.h; sourceTree = "<group>"; };
@@ -314,7 +317,6 @@
 		4D78489D18314EB60025ADDA /* MHCPostViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHCPostViewController.m; sourceTree = "<group>"; };
 		4D9DA26F184A55EC00807B96 /* WatchListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WatchListTableViewCell.h; path = atView/WatchListTableViewCell.h; sourceTree = "<group>"; };
 		4D9DA270184A55EC00807B96 /* WatchListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WatchListTableViewCell.m; path = atView/WatchListTableViewCell.m; sourceTree = "<group>"; };
-		4D9DA272184A561300807B96 /* AtViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AtViewController.h; path = atView/AtViewController.h; sourceTree = "<group>"; };
 		4D9DA273184A561300807B96 /* AtViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AtViewController.m; path = atView/AtViewController.m; sourceTree = "<group>"; };
 		5116A5BD18300277004FCC1A /* NSNotificationCenter+Addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSNotificationCenter+Addition.h"; sourceTree = "<group>"; };
 		5116A5BE18300277004FCC1A /* NSNotificationCenter+Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSNotificationCenter+Addition.m"; sourceTree = "<group>"; };
@@ -363,6 +365,9 @@
 		5199293718459CD00000216F /* CastImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CastImageViewController.m; sourceTree = "<group>"; };
 		51AACA8E183D027100793547 /* ScreenShotHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScreenShotHelper.h; sourceTree = "<group>"; };
 		51AACA8F183D027100793547 /* ScreenShotHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScreenShotHelper.m; sourceTree = "<group>"; };
+		51DD4DDE1849BEAB00999DDF /* CVDragIndicatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CVDragIndicatorView.h; sourceTree = "<group>"; };
+		51DD4DDF1849BEAB00999DDF /* CVDragIndicatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CVDragIndicatorView.m; sourceTree = "<group>"; };
+		51DD4DE21849BECB00999DDF /* CVDragIndicatorView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CVDragIndicatorView.xib; sourceTree = "<group>"; };
 		51E04EB018491061001D9500 /* CastViewImageDismissTransitionAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CastViewImageDismissTransitionAnimation.h; sourceTree = "<group>"; };
 		51E04EB118491061001D9500 /* CastViewImageDismissTransitionAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CastViewImageDismissTransitionAnimation.m; sourceTree = "<group>"; };
 		51F8FA26182E0F5C00E211AC /* TTTAttributedLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTTAttributedLabel.h; sourceTree = "<group>"; };
@@ -573,6 +578,9 @@
 				51510C17183BDF3B00BD7823 /* ComReqDetailCell.m */,
 				5199293618459CD00000216F /* CastImageViewController.h */,
 				5199293718459CD00000216F /* CastImageViewController.m */,
+				51DD4DDE1849BEAB00999DDF /* CVDragIndicatorView.h */,
+				51DD4DDF1849BEAB00999DDF /* CVDragIndicatorView.m */,
+				51DD4DE21849BECB00999DDF /* CVDragIndicatorView.xib */,
 			);
 			path = cast;
 			sourceTree = "<group>";
@@ -830,8 +838,8 @@
 		4DE8AC39184629FF00CA6A84 /* atView */ = {
 			isa = PBXGroup;
 			children = (
+				18DA5F29184C5B2300902A47 /* AtViewController.h */,
 				4D6EF0BF184A81E5009D7A18 /* TableView */,
-				4D9DA272184A561300807B96 /* AtViewController.h */,
 				4D9DA273184A561300807B96 /* AtViewController.m */,
 			);
 			name = atView;
@@ -1068,6 +1076,7 @@
 				4D4A803C1842999F0078C81D /* KeyboardView.xib in Resources */,
 				18EED32F1815853E000856CE /* README.txt in Resources */,
 				1868F1381829EC7A00C5764D /* test.png in Resources */,
+				51DD4DE31849BECB00999DDF /* CVDragIndicatorView.xib in Resources */,
 				518A1CBE1843243300D36AFD /* EmoticonsInfo.plist in Resources */,
 				1838DF20181E677A003D015A /* WeiboSDK.bundle in Resources */,
 				4D47D4011849368E00B12FC0 /* bg.png in Resources */,
@@ -1164,6 +1173,7 @@
 				18E790F11834F512002B4785 /* Group.m in Sources */,
 				18EB0A09182BF7DD005CC27D /* NSDictionary+noNilValueForKey.m in Sources */,
 				18A6A682182FCD6000D9FB7F /* WXYTabBarPostButton.m in Sources */,
+				51DD4DE01849BEAB00999DDF /* CVDragIndicatorView.m in Sources */,
 				515B0BFC18082A9B0092BADB /* AppDelegate.m in Sources */,
 				185E88AC182AABF40020F3B2 /* NSString+MKNetworkKitAdditions.m in Sources */,
 				18B02D59182E167800D9AF04 /* WXYTabBarSolidButton.m in Sources */,
@@ -1297,8 +1307,8 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Hongming Zhu (H5SJ56Z88P)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Hongming Zhu (H5SJ56Z88P)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Xie Cheng (AXP8APNT95)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Xie Cheng (AXP8APNT95)";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -1316,7 +1326,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "40DDCD3D-E6EE-4066-B9F9-81B0F01A26FB";
+				PROVISIONING_PROFILE = "531BCC86-6D54-49FD-8487-0B10566D1FD3";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -1338,8 +1348,8 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Hongming Zhu (H5SJ56Z88P)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Hongming Zhu (H5SJ56Z88P)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Xie Cheng (AXP8APNT95)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Xie Cheng (AXP8APNT95)";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -1350,7 +1360,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				PROVISIONING_PROFILE = "40DDCD3D-E6EE-4066-B9F9-81B0F01A26FB";
+				PROVISIONING_PROFILE = "531BCC86-6D54-49FD-8487-0B10566D1FD3";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -1385,7 +1395,7 @@
 				);
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "40DDCD3D-E6EE-4066-B9F9-81B0F01A26FB";
+				PROVISIONING_PROFILE = "531BCC86-6D54-49FD-8487-0B10566D1FD3";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1419,7 +1429,7 @@
 				);
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "40DDCD3D-E6EE-4066-B9F9-81B0F01A26FB";
+				PROVISIONING_PROFILE = "531BCC86-6D54-49FD-8487-0B10566D1FD3";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

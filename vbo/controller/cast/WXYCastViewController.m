@@ -20,18 +20,22 @@
 #import "CastViewImageTransitionAnimation.h"
 #import "CastViewImageDismissTransitionAnimation.h"
 #import "CastImageViewController.h"
+#import "CVDragIndicatorView.h"
 
 #define contantHeight 110.0
 #define contentLabelLineSpace 6.0
 #define tableViewSeprateLine [UIColor colorWithRed:0.0/255.0 green:0.0/255.0 blue:0.0/255.0 alpha:1.0]
 
-@interface WXYCastViewController ()<CastImageViewControllerDelegate>
+@interface WXYCastViewController ()<CastImageViewControllerDelegate,CVDragIndicatorViewDelegate>
 
 //@property (nonatomic, strong) UIDynamicAnimator *animator;
 @property (nonatomic, strong) NSArray * weiboContentArray;
 @property (nonatomic, weak) UIImageView * selectedImageView;
 @property (nonatomic, strong) CastViewImageTransitionAnimation * imageTransitionAnimation;
 @property (nonatomic, strong) CastViewImageDismissTransitionAnimation * imageDismissTransitionAnimation;
+@property (nonatomic, strong) CVDragIndicatorView * dragIndicatorView;
+
+@property (nonatomic) BOOL reloading;
 
 @end
 
@@ -57,7 +61,6 @@
     [bgview setBackgroundColor:SHARE_SETTING_MANAGER.themeColor];
     [self.tableView setBackgroundView:bgview];
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
-    //    [self.view setTranslatesAutoresizingMaskIntoConstraints:NO];
     [self fetchWeiboContent];
     
     UINib *castNib = [UINib nibWithNibName:@"CastViewCell" bundle:[NSBundle bundleForClass:[CastViewCell class]]];
@@ -68,6 +71,8 @@
                                                  name:UIContentSizeCategoryDidChangeNotification
                                                object:nil];
     
+    
+    [self.tableView addSubview:self.dragIndicatorView];
 }
 
 - (void)fetchWeiboContent
@@ -98,6 +103,7 @@
 - (void)viewDidLayoutSubviews
 {
     [super viewDidLayoutSubviews];
+    [_dragIndicatorView setFrame:CGRectMake(0, -44 , 320.0, 44)];
 }
 
 - (void)didReceiveMemoryWarning
@@ -160,41 +166,71 @@
 #pragma mark - UIScrollView Delegate
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
 {
-    id<WXYScrollHiddenDelegate> delegate = nil;
-    if ([self.parentViewController conformsToProtocol:@protocol(WXYScrollHiddenDelegate)] && [self.parentViewController respondsToSelector:@selector(wxyScrollViewWillBeginDragging:)])
-    {
-        delegate = (id<WXYScrollHiddenDelegate>) self.parentViewController;
-        [delegate wxyScrollViewWillBeginDragging:scrollView];
-    }
+//    id<WXYScrollHiddenDelegate> delegate = nil;
+//    if ([self.parentViewController conformsToProtocol:@protocol(WXYScrollHiddenDelegate)] && [self.parentViewController respondsToSelector:@selector(wxyScrollViewWillBeginDragging:)])
+//    {
+//        delegate = (id<WXYScrollHiddenDelegate>) self.parentViewController;
+//        [delegate wxyScrollViewWillBeginDragging:scrollView];
+//    }
 }
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
-    id<WXYScrollHiddenDelegate> delegate = nil;
-    if ([self.parentViewController conformsToProtocol:@protocol(WXYScrollHiddenDelegate)] && [self.parentViewController respondsToSelector:@selector(wxyScrollViewDidScroll:)])
-    {
-        delegate = (id<WXYScrollHiddenDelegate>) self.parentViewController;
-        [delegate wxyScrollViewDidScroll:scrollView];
-    }
+//    id<WXYScrollHiddenDelegate> delegate = nil;
+//    if ([self.parentViewController conformsToProtocol:@protocol(WXYScrollHiddenDelegate)] && [self.parentViewController respondsToSelector:@selector(wxyScrollViewDidScroll:)])
+//    {
+//        delegate = (id<WXYScrollHiddenDelegate>) self.parentViewController;
+//        [delegate wxyScrollViewDidScroll:scrollView];
+//    }
+//
+    [_dragIndicatorView refreshScrollViewDidScroll:scrollView];
+    NSLog(@"the current contentoff set is %f",scrollView.contentInset.top);
+
 }
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
 {
-    id<WXYScrollHiddenDelegate> delegate = nil;
-    if ([self.parentViewController conformsToProtocol:@protocol(WXYScrollHiddenDelegate)] && [self.parentViewController respondsToSelector:@selector(wxyScrollViewDidEndDragging:willDecelerate:)])
-    {
-        delegate = (id<WXYScrollHiddenDelegate>) self.parentViewController;
-        [delegate wxyScrollViewDidEndDragging:scrollView willDecelerate:decelerate];
-    }
+//    id<WXYScrollHiddenDelegate> delegate = nil;
+//    if ([self.parentViewController conformsToProtocol:@protocol(WXYScrollHiddenDelegate)] && [self.parentViewController respondsToSelector:@selector(wxyScrollViewDidEndDragging:willDecelerate:)])
+//    {
+//        delegate = (id<WXYScrollHiddenDelegate>) self.parentViewController;
+//        [delegate wxyScrollViewDidEndDragging:scrollView willDecelerate:decelerate];
+//    }
+    
+    [_dragIndicatorView refreshScrollViewDidEndDragging:scrollView];
     
 }
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
-    id<WXYScrollHiddenDelegate> delegate = nil;
-    if ([self.parentViewController conformsToProtocol:@protocol(WXYScrollHiddenDelegate)] && [self.parentViewController respondsToSelector:@selector(wxyScrollViewDidEndDecelerating:)])
-    {
-        delegate = (id<WXYScrollHiddenDelegate>) self.parentViewController;
-        [delegate wxyScrollViewDidEndDecelerating:scrollView];
-    }
+//    id<WXYScrollHiddenDelegate> delegate = nil;
+//    if ([self.parentViewController conformsToProtocol:@protocol(WXYScrollHiddenDelegate)] && [self.parentViewController respondsToSelector:@selector(wxyScrollViewDidEndDecelerating:)])
+//    {
+//        delegate = (id<WXYScrollHiddenDelegate>) self.parentViewController;
+//        [delegate wxyScrollViewDidEndDecelerating:scrollView];
+//    }
 }
+#pragma mark - CVDragIndicatorViewDelegate
+
+- (BOOL)refreshTableHeaderDataSourceIsLoading:(CVDragIndicatorView *)view
+{
+    //待取好数据后返回yes
+    return _reloading;
+}
+
+- (void)refreshTableHeaderDidTriggerRefresh:(CVDragIndicatorView *)view
+{
+    [self reloading];
+    [self performSelector:@selector(doneLoadingTableViewData) withObject:nil afterDelay:5.0];
+}
+
+- (void)reloadTableViewDataSource{
+	_reloading = YES;
+	
+}
+
+- (void)doneLoadingTableViewData{
+    _reloading = NO;
+	[_dragIndicatorView refreshScrollViewDataSourceDidFinishedLoading:_tableView];
+}
+
 #pragma mark - calculate weiboCell Height
 - (float)cellHeightForRowAtIndex:(NSInteger)row
 {
@@ -269,6 +305,16 @@
     [self dismissViewControllerAnimated:YES completion:^{
         _selectedImageView.hidden = NO;
     }];
+}
+
+#pragma mark - Property
+- (CVDragIndicatorView *)dragIndicatorView
+{
+    if (!_dragIndicatorView) {
+        _dragIndicatorView = [[CVDragIndicatorView alloc]initWithFrame:CGRectMake(0, -44.0, 320.0, 44)];
+        _dragIndicatorView.delegate = self;
+    }
+    return _dragIndicatorView;
 }
 
 - (void)viewDidUnload
