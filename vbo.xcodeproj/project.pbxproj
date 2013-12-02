@@ -66,6 +66,8 @@
 		18B02D5A182E167800D9AF04 /* WXYTabBarSolidButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B02D58182E167800D9AF04 /* WXYTabBarSolidButton.m */; };
 		18D9E4E8183388E0004539CC /* Comment.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D9E4E7183388E0004539CC /* Comment.m */; };
 		18D9E4ED18338BF0004539CC /* Status.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D9E4EC18338BF0004539CC /* Status.m */; };
+		18DA5F32184C65BF00902A47 /* WXYUserProfileView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DA5F31184C65BF00902A47 /* WXYUserProfileView.m */; };
+		18DA5F34184C65E200902A47 /* WXYUserProfileView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18DA5F33184C65E200902A47 /* WXYUserProfileView.xib */; };
 		18E790E81834E584002B4785 /* WXYStatusTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E790E71834E584002B4785 /* WXYStatusTest.m */; };
 		18E790EC1834EF4E002B4785 /* WXYUserTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E790EB1834EF4E002B4785 /* WXYUserTest.m */; };
 		18E790F11834F512002B4785 /* Group.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E790F01834F512002B4785 /* Group.m */; };
@@ -114,12 +116,13 @@
 		4D47D3FE18491CF500B12FC0 /* UIView+Effects.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D47D3FD18491CF500B12FC0 /* UIView+Effects.m */; };
 		4D47D4011849368E00B12FC0 /* bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D47D4001849368E00B12FC0 /* bg.png */; };
 		4D4A803C1842999F0078C81D /* KeyboardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D4A803B1842999F0078C81D /* KeyboardView.xib */; };
+		4D5F23AE184B2510007A0898 /* WatchListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D5F23AC184B2510007A0898 /* WatchListTableViewController.m */; };
+		4D5F23AF184B2510007A0898 /* WatchListTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D5F23AD184B2510007A0898 /* WatchListTableViewController.xib */; };
+		4D5F23B1184B2DAC007A0898 /* WatchListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D5F23B0184B2DAC007A0898 /* WatchListTableViewCell.xib */; };
 		4D784890183147C40025ADDA /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D78488D183147C40025ADDA /* UIImage+ImageEffects.m */; };
-		4D78489518314B8A0025ADDA /* ExampleViewCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D78489418314B8A0025ADDA /* ExampleViewCollectionView.m */; };
-		4D78489918314C0A0025ADDA /* itunesradio_mystations_2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D78489618314C0A0025ADDA /* itunesradio_mystations_2x.png */; };
-		4D78489A18314C0A0025ADDA /* multitasking_screen_2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D78489718314C0A0025ADDA /* multitasking_screen_2x.png */; };
-		4D78489B18314C0A0025ADDA /* photos_moments_screen_2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D78489818314C0A0025ADDA /* photos_moments_screen_2x.png */; };
 		4D78489E18314EB60025ADDA /* MHCPostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D78489D18314EB60025ADDA /* MHCPostViewController.m */; };
+		4D9DA271184A55EC00807B96 /* WatchListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D9DA270184A55EC00807B96 /* WatchListTableViewCell.m */; };
+		4D9DA274184A561300807B96 /* AtViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D9DA273184A561300807B96 /* AtViewController.m */; };
 		5116A5BF18300277004FCC1A /* NSNotificationCenter+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 5116A5BE18300277004FCC1A /* NSNotificationCenter+Addition.m */; };
 		51510C0E183BB10A00BD7823 /* CastViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 51510C0D183BB10A00BD7823 /* CastViewCell.xib */; };
 		51510C12183BBB4800BD7823 /* ComRepViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 51510C11183BBB4800BD7823 /* ComRepViewController.m */; };
@@ -150,7 +153,6 @@
 		5199293518459C320000216F /* CVImageTransitionAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 5199293418459C320000216F /* CVImageTransitionAnimation.m */; };
 		5199293818459CD00000216F /* CastImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5199293718459CD00000216F /* CastImageViewController.m */; };
 		51AACA90183D027100793547 /* ScreenShotHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 51AACA8F183D027100793547 /* ScreenShotHelper.m */; };
-		51B68844184B5A1C00A44738 /* AtViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 51B68843184B5A1C00A44738 /* AtViewController.m */; };
 		51DD4DE01849BEAB00999DDF /* CVDragIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 51DD4DDF1849BEAB00999DDF /* CVDragIndicatorView.m */; };
 		51DD4DE31849BECB00999DDF /* CVDragIndicatorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 51DD4DE21849BECB00999DDF /* CVDragIndicatorView.xib */; };
 		51E04EB218491061001D9500 /* CVImageDismissTransitionAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 51E04EB118491061001D9500 /* CVImageDismissTransitionAnimation.m */; };
@@ -260,6 +262,10 @@
 		18D9E4E7183388E0004539CC /* Comment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Comment.m; sourceTree = "<group>"; };
 		18D9E4EB18338BF0004539CC /* Status.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Status.h; sourceTree = "<group>"; };
 		18D9E4EC18338BF0004539CC /* Status.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Status.m; sourceTree = "<group>"; };
+		18DA5F29184C5B2300902A47 /* AtViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AtViewController.h; path = atView/AtViewController.h; sourceTree = "<group>"; };
+		18DA5F30184C65BF00902A47 /* WXYUserProfileView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXYUserProfileView.h; sourceTree = "<group>"; };
+		18DA5F31184C65BF00902A47 /* WXYUserProfileView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXYUserProfileView.m; sourceTree = "<group>"; };
+		18DA5F33184C65E200902A47 /* WXYUserProfileView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WXYUserProfileView.xib; sourceTree = "<group>"; };
 		18E790E71834E584002B4785 /* WXYStatusTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXYStatusTest.m; sourceTree = "<group>"; };
 		18E790EB1834EF4E002B4785 /* WXYUserTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXYUserTest.m; sourceTree = "<group>"; };
 		18E790EF1834F512002B4785 /* Group.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Group.h; sourceTree = "<group>"; };
@@ -308,16 +314,17 @@
 		4D47D3FD18491CF500B12FC0 /* UIView+Effects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+Effects.m"; path = "blur/UIView+Effects.m"; sourceTree = "<group>"; };
 		4D47D4001849368E00B12FC0 /* bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bg.png; path = Resource/bg.png; sourceTree = "<group>"; };
 		4D4A803B1842999F0078C81D /* KeyboardView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KeyboardView.xib; sourceTree = "<group>"; };
+		4D5F23AB184B2510007A0898 /* WatchListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WatchListTableViewController.h; path = atView/WatchListTableViewController.h; sourceTree = "<group>"; };
+		4D5F23AC184B2510007A0898 /* WatchListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WatchListTableViewController.m; path = atView/WatchListTableViewController.m; sourceTree = "<group>"; };
+		4D5F23AD184B2510007A0898 /* WatchListTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = WatchListTableViewController.xib; path = atView/WatchListTableViewController.xib; sourceTree = "<group>"; };
+		4D5F23B0184B2DAC007A0898 /* WatchListTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WatchListTableViewCell.xib; sourceTree = "<group>"; };
 		4D78488C183147C40025ADDA /* UIImage+ImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+ImageEffects.h"; path = "blur/UIImage+ImageEffects.h"; sourceTree = "<group>"; };
 		4D78488D183147C40025ADDA /* UIImage+ImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+ImageEffects.m"; path = "blur/UIImage+ImageEffects.m"; sourceTree = "<group>"; };
-		4D78489318314B8A0025ADDA /* ExampleViewCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExampleViewCollectionView.h; path = testPreView/ExampleViewCollectionView.h; sourceTree = "<group>"; };
-		4D78489418314B8A0025ADDA /* ExampleViewCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExampleViewCollectionView.m; path = testPreView/ExampleViewCollectionView.m; sourceTree = "<group>"; };
-		4D78489618314C0A0025ADDA /* itunesradio_mystations_2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = itunesradio_mystations_2x.png; path = testPreView/itunesradio_mystations_2x.png; sourceTree = "<group>"; };
-		4D78489718314C0A0025ADDA /* multitasking_screen_2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = multitasking_screen_2x.png; path = testPreView/multitasking_screen_2x.png; sourceTree = "<group>"; };
-		4D78489818314C0A0025ADDA /* photos_moments_screen_2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = photos_moments_screen_2x.png; path = testPreView/photos_moments_screen_2x.png; sourceTree = "<group>"; };
 		4D78489C18314EB60025ADDA /* MHCPostViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHCPostViewController.h; sourceTree = "<group>"; };
 		4D78489D18314EB60025ADDA /* MHCPostViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHCPostViewController.m; sourceTree = "<group>"; };
-		4DE8AC36184629F900CA6A84 /* AtViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AtViewController.h; sourceTree = "<group>"; };
+		4D9DA26F184A55EC00807B96 /* WatchListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WatchListTableViewCell.h; path = atView/WatchListTableViewCell.h; sourceTree = "<group>"; };
+		4D9DA270184A55EC00807B96 /* WatchListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WatchListTableViewCell.m; path = atView/WatchListTableViewCell.m; sourceTree = "<group>"; };
+		4D9DA273184A561300807B96 /* AtViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AtViewController.m; path = atView/AtViewController.m; sourceTree = "<group>"; };
 		5116A5BD18300277004FCC1A /* NSNotificationCenter+Addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSNotificationCenter+Addition.h"; sourceTree = "<group>"; };
 		5116A5BE18300277004FCC1A /* NSNotificationCenter+Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSNotificationCenter+Addition.m"; sourceTree = "<group>"; };
 		51510C0D183BB10A00BD7823 /* CastViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CastViewCell.xib; sourceTree = "<group>"; };
@@ -369,7 +376,6 @@
 		5199293718459CD00000216F /* CastImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CastImageViewController.m; sourceTree = "<group>"; };
 		51AACA8E183D027100793547 /* ScreenShotHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScreenShotHelper.h; sourceTree = "<group>"; };
 		51AACA8F183D027100793547 /* ScreenShotHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScreenShotHelper.m; sourceTree = "<group>"; };
-		51B68843184B5A1C00A44738 /* AtViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AtViewController.m; sourceTree = "<group>"; };
 		51DD4DDE1849BEAB00999DDF /* CVDragIndicatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CVDragIndicatorView.h; sourceTree = "<group>"; };
 		51DD4DDF1849BEAB00999DDF /* CVDragIndicatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CVDragIndicatorView.m; sourceTree = "<group>"; };
 		51DD4DE21849BECB00999DDF /* CVDragIndicatorView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CVDragIndicatorView.xib; sourceTree = "<group>"; };
@@ -672,6 +678,16 @@
 			path = other;
 			sourceTree = "<group>";
 		};
+		18DA5F2E184C65A800902A47 /* profile */ = {
+			isa = PBXGroup;
+			children = (
+				18DA5F30184C65BF00902A47 /* WXYUserProfileView.h */,
+				18DA5F31184C65BF00902A47 /* WXYUserProfileView.m */,
+				18DA5F33184C65E200902A47 /* WXYUserProfileView.xib */,
+			);
+			path = profile;
+			sourceTree = "<group>";
+		};
 		18EB09C5182B7F16005CC27D /* setting */ = {
 			isa = PBXGroup;
 			children = (
@@ -780,6 +796,7 @@
 		18EED3201815853E000856CE /* view */ = {
 			isa = PBXGroup;
 			children = (
+				18DA5F2E184C65A800902A47 /* profile */,
 				1868F11D1829D7EA00C5764D /* root */,
 				18EED3571815865F000856CE /* MainStoryboard.storyboard */,
 			);
@@ -791,7 +808,6 @@
 			children = (
 				4D47D4001849368E00B12FC0 /* bg.png */,
 				4DE8AC34184629D400CA6A84 /* subViews */,
-				4D78489218314ABF0025ADDA /* testPreView */,
 				4D78488B1831474C0025ADDA /* blur */,
 				4D1E6F19182A3AF50078229F /* postView */,
 				4D78489C18314EB60025ADDA /* MHCPostViewController.h */,
@@ -809,6 +825,19 @@
 			path = postView;
 			sourceTree = "<group>";
 		};
+		4D6EF0BF184A81E5009D7A18 /* TableView */ = {
+			isa = PBXGroup;
+			children = (
+				4D5F23B0184B2DAC007A0898 /* WatchListTableViewCell.xib */,
+				4D9DA26F184A55EC00807B96 /* WatchListTableViewCell.h */,
+				4D9DA270184A55EC00807B96 /* WatchListTableViewCell.m */,
+				4D5F23AB184B2510007A0898 /* WatchListTableViewController.h */,
+				4D5F23AC184B2510007A0898 /* WatchListTableViewController.m */,
+				4D5F23AD184B2510007A0898 /* WatchListTableViewController.xib */,
+			);
+			name = TableView;
+			sourceTree = "<group>";
+		};
 		4D78488B1831474C0025ADDA /* blur */ = {
 			isa = PBXGroup;
 			children = (
@@ -818,18 +847,6 @@
 				4D78488D183147C40025ADDA /* UIImage+ImageEffects.m */,
 			);
 			name = blur;
-			sourceTree = "<group>";
-		};
-		4D78489218314ABF0025ADDA /* testPreView */ = {
-			isa = PBXGroup;
-			children = (
-				4D78489618314C0A0025ADDA /* itunesradio_mystations_2x.png */,
-				4D78489718314C0A0025ADDA /* multitasking_screen_2x.png */,
-				4D78489818314C0A0025ADDA /* photos_moments_screen_2x.png */,
-				4D78489318314B8A0025ADDA /* ExampleViewCollectionView.h */,
-				4D78489418314B8A0025ADDA /* ExampleViewCollectionView.m */,
-			);
-			name = testPreView;
 			sourceTree = "<group>";
 		};
 		4DE8AC34184629D400CA6A84 /* subViews */ = {
@@ -843,8 +860,9 @@
 		4DE8AC39184629FF00CA6A84 /* atView */ = {
 			isa = PBXGroup;
 			children = (
-				4DE8AC36184629F900CA6A84 /* AtViewController.h */,
-				51B68843184B5A1C00A44738 /* AtViewController.m */,
+				18DA5F29184C5B2300902A47 /* AtViewController.h */,
+				4D6EF0BF184A81E5009D7A18 /* TableView */,
+				4D9DA273184A561300807B96 /* AtViewController.m */,
 			);
 			name = atView;
 			sourceTree = "<group>";
@@ -1079,22 +1097,21 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4D78489918314C0A0025ADDA /* itunesradio_mystations_2x.png in Resources */,
 				51510C0E183BB10A00BD7823 /* CastViewCell.xib in Resources */,
 				515B0C0418082A9B0092BADB /* Images.xcassets in Resources */,
 				4D4A803C1842999F0078C81D /* KeyboardView.xib in Resources */,
 				18EED32F1815853E000856CE /* README.txt in Resources */,
-				4D78489A18314C0A0025ADDA /* multitasking_screen_2x.png in Resources */,
-				4D78489A18314C0A0025ADDA /* multitasking_screen_2x.png in Resources */,
-				4D78489B18314C0A0025ADDA /* photos_moments_screen_2x.png in Resources */,
 				1868F1381829EC7A00C5764D /* test.png in Resources */,
 				51DD4DE31849BECB00999DDF /* CVDragIndicatorView.xib in Resources */,
 				518A1CBE1843243300D36AFD /* EmoticonsInfo.plist in Resources */,
 				1838DF20181E677A003D015A /* WeiboSDK.bundle in Resources */,
 				4D47D4011849368E00B12FC0 /* bg.png in Resources */,
+				4D5F23B1184B2DAC007A0898 /* WatchListTableViewCell.xib in Resources */,
 				18EED3581815865F000856CE /* MainStoryboard.storyboard in Resources */,
 				4D1E6F1C182A3AF60078229F /* postViewStoryBoard.storyboard in Resources */,
+				4D5F23AF184B2510007A0898 /* WatchListTableViewController.xib in Resources */,
 				515B0BF618082A9B0092BADB /* InfoPlist.strings in Resources */,
+				18DA5F34184C65E200902A47 /* WXYUserProfileView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1174,7 +1191,6 @@
 				1868F1331829DC1900C5764D /* WXYBlurTextView.m in Sources */,
 				51652DF31835D9A7004E4D30 /* UILabel+TextKitAddition.m in Sources */,
 				184A0FB0183BAE050003E82E /* LoginUserInfo.m in Sources */,
-				51B68844184B5A1C00A44738 /* AtViewController.m in Sources */,
 				4D47D3FE18491CF500B12FC0 /* UIView+Effects.m in Sources */,
 				1868F0FC1829C8B200C5764D /* WXYRootNavViewController.m in Sources */,
 				5158D662184C8D0A007297E6 /* CVImagePercentDismissTransitionAnimation.m in Sources */,
@@ -1184,7 +1200,6 @@
 				18EED3271815853E000856CE /* DDLog.m in Sources */,
 				1868F12F1829DA3300C5764D /* AMBlurView.m in Sources */,
 				18E790F11834F512002B4785 /* Group.m in Sources */,
-				4D78489518314B8A0025ADDA /* ExampleViewCollectionView.m in Sources */,
 				18EB0A09182BF7DD005CC27D /* NSDictionary+noNilValueForKey.m in Sources */,
 				18A6A682182FCD6000D9FB7F /* WXYTabBarPostButton.m in Sources */,
 				51DD4DE01849BEAB00999DDF /* CVDragIndicatorView.m in Sources */,
@@ -1206,10 +1221,13 @@
 				18EED32D1815853E000856CE /* DispatchQueueLogFormatter.m in Sources */,
 				51F8FA28182E0F5C00E211AC /* TTTAttributedLabel.m in Sources */,
 				18411000181655EB008B700C /* WXYNetworkEngine.m in Sources */,
+				4D5F23AE184B2510007A0898 /* WatchListTableViewController.m in Sources */,
 				185E88AA182AABF40020F3B2 /* NSDate+RFC1123.m in Sources */,
 				4D784890183147C40025ADDA /* UIImage+ImageEffects.m in Sources */,
 				1868F1241829D7EA00C5764D /* WXYSolidTabBar.m in Sources */,
 				515B0BF818082A9B0092BADB /* main.m in Sources */,
+				4D9DA271184A55EC00807B96 /* WatchListTableViewCell.m in Sources */,
+				4D9DA274184A561300807B96 /* AtViewController.m in Sources */,
 				18D9E4E8183388E0004539CC /* Comment.m in Sources */,
 				5199293518459C320000216F /* CVImageTransitionAnimation.m in Sources */,
 				18EB09C8182B7F30005CC27D /* WXYSettingManager.m in Sources */,
@@ -1219,6 +1237,7 @@
 				185E88B9182AAE670020F3B2 /* UIImage+ImageEffects.m in Sources */,
 				18A6A687182FF65C00D9FB7F /* WXYBarButtonAbstract.m in Sources */,
 				18EB09D9182B82F1005CC27D /* WXYDataModel.m in Sources */,
+				18DA5F32184C65BF00902A47 /* WXYUserProfileView.m in Sources */,
 				18EED3211815853E000856CE /* DDAbstractDatabaseLogger.m in Sources */,
 				185E88AE182AABF40020F3B2 /* UIImageView+MKNetworkKitAdditions.m in Sources */,
 				1841100618165626008B700C /* WXYError.m in Sources */,
@@ -1384,8 +1403,8 @@
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Xie Cheng (AXP8APNT95)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Xie Cheng (AXP8APNT95)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Hongming Zhu (H5SJ56Z88P)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Hongming Zhu (H5SJ56Z88P)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/vbo/otherLibraries",
@@ -1418,8 +1437,8 @@
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Xie Cheng (AXP8APNT95)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Xie Cheng (AXP8APNT95)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Hongming Zhu (H5SJ56Z88P)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Hongming Zhu (H5SJ56Z88P)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/vbo/otherLibraries",

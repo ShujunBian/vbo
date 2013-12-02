@@ -12,8 +12,6 @@
 
 @property (nonatomic)BOOL needsDisplayBg;
 
-
-
 @property (nonatomic)BOOL startToDrawCircleBg;
 
 @property (nonatomic)BOOL needsClear;

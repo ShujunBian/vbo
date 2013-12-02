@@ -8,7 +8,7 @@
 
 #import "WXYLoginManager.h"
 #define  kLoginUserListArchiverKey @"LOGIN_USER_LIST_ARCHIVER_KEY"
-#define kLoginUserInfoFileName @"loginUserInfo"
+#define kLoginUserInfoFileName @"/loginUserInfo"
 @interface WXYLoginManager ()
 
 @property (strong, nonatomic) NSMutableArray* loginUserMutableList;

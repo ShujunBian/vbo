@@ -100,8 +100,7 @@
     NSMutableDictionary* params = [[NSMutableDictionary alloc] initWithDictionary:paramDict];
     //    if (user)
     //    {
-#warning 添加用户信息
-    [params setValue:SHARE_SETTING_MANAGER.testAccessToken forKey:@"access_token"];
+    [params setValue:SHARE_LOGIN_MANAGER.currentUserInfo.accessToken forKey:@"access_token"];
     //    }
     op = [self operationWithPath:path
                           params:params
@@ -363,13 +362,24 @@
               
               BOOL fFirst = YES;
               Status* status = nil;
+
+              
+              
+              
               for (NSDictionary* commentDict in commentArray)
               {
+
+
                   if (fFirst)
                   {
+
                       fFirst = NO;
                       NSDictionary* dict = commentDict[@"status"];
-                      status = [WXYNetworkDataFactory getStatusWithDict:dict]; //刷新微博信息
+                      NSNumber* weiboId = dict[@"id"];
+                      status = [SHARE_DATA_MODEL getStatusById:weiboId.longLongValue];
+                      
+#warning 微博API bug,此处commentCount与repostCount永远返回0
+//                      status = [WXYNetworkDataFactory getStatusWithDict:dict]; //刷新微博信息
                   }
                   
                   Comment* comment = [WXYNetworkDataFactory getCommentWithDict:commentDict status:status];
@@ -585,6 +595,7 @@
                   [returnArray addObject:u];
                   [mainUser addFollowingUsersObject:u];
               }
+              [SHARE_DATA_MODEL saveCacheContext];
               if (succeedBlock)
               {
                   succeedBlock(returnArray,previewCursor,nextCursor);
