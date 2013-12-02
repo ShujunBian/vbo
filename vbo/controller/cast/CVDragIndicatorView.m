@@ -81,7 +81,7 @@
 
 - (void)refreshScrollViewDidScroll:(UIScrollView *)scrollView
 {
-    NSLog(@"the state is %u",_state);
+//    NSLog(@"the state is %u",_state);
     if (_state == PullRefreshLoading) {
 //		
 //        CGFloat offset = MAX(scrollView.contentOffset.y * -1, 0);

@@ -8,6 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-@interface CastViewImageTransitionAnimation : NSObject<UIViewControllerAnimatedTransitioning>
+@interface CVImageTransitionAnimation : NSObject<UIViewControllerAnimatedTransitioning>
 
 @end

@@ -6,10 +6,10 @@
 //  Copyright (c) 2013年 BmwDev. All rights reserved.
 //
 
-#import "CastViewImageTransitionAnimation.h"
+#import "CVImageTransitionAnimation.h"
 #import "CastImageViewController.h"
 
-@implementation CastViewImageTransitionAnimation
+@implementation CVImageTransitionAnimation
 
 - (NSTimeInterval)transitionDuration:(id <UIViewControllerContextTransitioning>)transitionContext
 {
@@ -90,6 +90,7 @@
                                                          imageSize.width / heightScaleRate,
                                                          imageSize.height / heightScaleRate);
         }
+        toVC.initialFullScreenRect = toVC.weiboDetailImageView.frame;
     }completion:^(BOOL finished) {
         [transitionContext completeTransition:YES];
     }];

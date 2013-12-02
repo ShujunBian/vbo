@@ -125,6 +125,8 @@
 		51510C12183BBB4800BD7823 /* ComRepViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 51510C11183BBB4800BD7823 /* ComRepViewController.m */; };
 		51510C15183BD8F600BD7823 /* ComRepCountCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 51510C14183BD8F600BD7823 /* ComRepCountCell.m */; };
 		51510C18183BDF3B00BD7823 /* ComReqDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 51510C17183BDF3B00BD7823 /* ComReqDetailCell.m */; };
+		5158D65E184C47C9007297E6 /* CVImagePercentDismissTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 5158D65D184C47C9007297E6 /* CVImagePercentDismissTransition.m */; };
+		5158D662184C8D0A007297E6 /* CVImagePercentDismissTransitionAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 5158D661184C8D0A007297E6 /* CVImagePercentDismissTransitionAnimation.m */; };
 		515B0BEC18082A9B0092BADB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 515B0BEB18082A9B0092BADB /* Foundation.framework */; };
 		515B0BEE18082A9B0092BADB /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 515B0BED18082A9B0092BADB /* CoreGraphics.framework */; };
 		515B0BF018082A9B0092BADB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 515B0BEF18082A9B0092BADB /* UIKit.framework */; };
@@ -145,13 +147,13 @@
 		518A1CB818431CCE00D36AFD /* MyTextAttachment.m in Sources */ = {isa = PBXBuildFile; fileRef = 518A1CB718431CCE00D36AFD /* MyTextAttachment.m */; };
 		518A1CBE1843243300D36AFD /* EmoticonsInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 518A1CBD1843243300D36AFD /* EmoticonsInfo.plist */; };
 		518A1CC11843247000D36AFD /* EmoticonsInfoHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 518A1CC01843247000D36AFD /* EmoticonsInfoHelper.m */; };
-		5199293518459C320000216F /* CastViewImageTransitionAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 5199293418459C320000216F /* CastViewImageTransitionAnimation.m */; };
+		5199293518459C320000216F /* CVImageTransitionAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 5199293418459C320000216F /* CVImageTransitionAnimation.m */; };
 		5199293818459CD00000216F /* CastImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5199293718459CD00000216F /* CastImageViewController.m */; };
 		51AACA90183D027100793547 /* ScreenShotHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 51AACA8F183D027100793547 /* ScreenShotHelper.m */; };
 		51B68844184B5A1C00A44738 /* AtViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 51B68843184B5A1C00A44738 /* AtViewController.m */; };
 		51DD4DE01849BEAB00999DDF /* CVDragIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 51DD4DDF1849BEAB00999DDF /* CVDragIndicatorView.m */; };
 		51DD4DE31849BECB00999DDF /* CVDragIndicatorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 51DD4DE21849BECB00999DDF /* CVDragIndicatorView.xib */; };
-		51E04EB218491061001D9500 /* CastViewImageDismissTransitionAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 51E04EB118491061001D9500 /* CastViewImageDismissTransitionAnimation.m */; };
+		51E04EB218491061001D9500 /* CVImageDismissTransitionAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 51E04EB118491061001D9500 /* CVImageDismissTransitionAnimation.m */; };
 		51F8FA28182E0F5C00E211AC /* TTTAttributedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 51F8FA27182E0F5C00E211AC /* TTTAttributedLabel.m */; };
 /* End PBXBuildFile section */
 
@@ -325,6 +327,10 @@
 		51510C14183BD8F600BD7823 /* ComRepCountCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ComRepCountCell.m; sourceTree = "<group>"; };
 		51510C16183BDF3B00BD7823 /* ComReqDetailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComReqDetailCell.h; sourceTree = "<group>"; };
 		51510C17183BDF3B00BD7823 /* ComReqDetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ComReqDetailCell.m; sourceTree = "<group>"; };
+		5158D65C184C47C9007297E6 /* CVImagePercentDismissTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CVImagePercentDismissTransition.h; sourceTree = "<group>"; };
+		5158D65D184C47C9007297E6 /* CVImagePercentDismissTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CVImagePercentDismissTransition.m; sourceTree = "<group>"; };
+		5158D660184C8D0A007297E6 /* CVImagePercentDismissTransitionAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CVImagePercentDismissTransitionAnimation.h; sourceTree = "<group>"; };
+		5158D661184C8D0A007297E6 /* CVImagePercentDismissTransitionAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CVImagePercentDismissTransitionAnimation.m; sourceTree = "<group>"; };
 		515B0BE818082A9B0092BADB /* vbo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = vbo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		515B0BEB18082A9B0092BADB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		515B0BED18082A9B0092BADB /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -357,8 +363,8 @@
 		518A1CBD1843243300D36AFD /* EmoticonsInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = EmoticonsInfo.plist; sourceTree = "<group>"; };
 		518A1CBF1843247000D36AFD /* EmoticonsInfoHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmoticonsInfoHelper.h; sourceTree = "<group>"; };
 		518A1CC01843247000D36AFD /* EmoticonsInfoHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmoticonsInfoHelper.m; sourceTree = "<group>"; };
-		5199293318459C320000216F /* CastViewImageTransitionAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CastViewImageTransitionAnimation.h; sourceTree = "<group>"; };
-		5199293418459C320000216F /* CastViewImageTransitionAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CastViewImageTransitionAnimation.m; sourceTree = "<group>"; };
+		5199293318459C320000216F /* CVImageTransitionAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CVImageTransitionAnimation.h; sourceTree = "<group>"; };
+		5199293418459C320000216F /* CVImageTransitionAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CVImageTransitionAnimation.m; sourceTree = "<group>"; };
 		5199293618459CD00000216F /* CastImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CastImageViewController.h; sourceTree = "<group>"; };
 		5199293718459CD00000216F /* CastImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CastImageViewController.m; sourceTree = "<group>"; };
 		51AACA8E183D027100793547 /* ScreenShotHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScreenShotHelper.h; sourceTree = "<group>"; };
@@ -367,8 +373,8 @@
 		51DD4DDE1849BEAB00999DDF /* CVDragIndicatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CVDragIndicatorView.h; sourceTree = "<group>"; };
 		51DD4DDF1849BEAB00999DDF /* CVDragIndicatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CVDragIndicatorView.m; sourceTree = "<group>"; };
 		51DD4DE21849BECB00999DDF /* CVDragIndicatorView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CVDragIndicatorView.xib; sourceTree = "<group>"; };
-		51E04EB018491061001D9500 /* CastViewImageDismissTransitionAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CastViewImageDismissTransitionAnimation.h; sourceTree = "<group>"; };
-		51E04EB118491061001D9500 /* CastViewImageDismissTransitionAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CastViewImageDismissTransitionAnimation.m; sourceTree = "<group>"; };
+		51E04EB018491061001D9500 /* CVImageDismissTransitionAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CVImageDismissTransitionAnimation.h; sourceTree = "<group>"; };
+		51E04EB118491061001D9500 /* CVImageDismissTransitionAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CVImageDismissTransitionAnimation.m; sourceTree = "<group>"; };
 		51F8FA26182E0F5C00E211AC /* TTTAttributedLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTTAttributedLabel.h; sourceTree = "<group>"; };
 		51F8FA27182E0F5C00E211AC /* TTTAttributedLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTTAttributedLabel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -955,10 +961,14 @@
 		5199292E18459BF20000216F /* TransitionAnimation */ = {
 			isa = PBXGroup;
 			children = (
-				5199293318459C320000216F /* CastViewImageTransitionAnimation.h */,
-				5199293418459C320000216F /* CastViewImageTransitionAnimation.m */,
-				51E04EB018491061001D9500 /* CastViewImageDismissTransitionAnimation.h */,
-				51E04EB118491061001D9500 /* CastViewImageDismissTransitionAnimation.m */,
+				5199293318459C320000216F /* CVImageTransitionAnimation.h */,
+				5199293418459C320000216F /* CVImageTransitionAnimation.m */,
+				51E04EB018491061001D9500 /* CVImageDismissTransitionAnimation.h */,
+				51E04EB118491061001D9500 /* CVImageDismissTransitionAnimation.m */,
+				5158D660184C8D0A007297E6 /* CVImagePercentDismissTransitionAnimation.h */,
+				5158D661184C8D0A007297E6 /* CVImagePercentDismissTransitionAnimation.m */,
+				5158D65C184C47C9007297E6 /* CVImagePercentDismissTransition.h */,
+				5158D65D184C47C9007297E6 /* CVImagePercentDismissTransition.m */,
 			);
 			name = TransitionAnimation;
 			sourceTree = "<group>";
@@ -1143,7 +1153,7 @@
 				184A0FAC183BACC30003E82E /* WXYLoginManager.m in Sources */,
 				1841100318165608008B700C /* WXYNetworkOperation.m in Sources */,
 				51652DEA1835AC13004E4D30 /* UITextViewHelper.m in Sources */,
-				51E04EB218491061001D9500 /* CastViewImageDismissTransitionAnimation.m in Sources */,
+				51E04EB218491061001D9500 /* CVImageDismissTransitionAnimation.m in Sources */,
 				185E88AF182AABF40020F3B2 /* MKNetworkEngine.m in Sources */,
 				1868F0FE1829C8B200C5764D /* WXYRootTabbarViewController.m in Sources */,
 				51510C18183BDF3B00BD7823 /* ComReqDetailCell.m in Sources */,
@@ -1156,6 +1166,7 @@
 				518A1CC11843247000D36AFD /* EmoticonsInfoHelper.m in Sources */,
 				1868F1221829D7EA00C5764D /* WXYNavigationBar.m in Sources */,
 				18EED3231815853E000856CE /* DDASLLogger.m in Sources */,
+				5158D65E184C47C9007297E6 /* CVImagePercentDismissTransition.m in Sources */,
 				1868F10F1829CE0A00C5764D /* WXYMessageViewController.m in Sources */,
 				51510C12183BBB4800BD7823 /* ComRepViewController.m in Sources */,
 				18EED32B1815853E000856CE /* ContextFilterLogFormatter.m in Sources */,
@@ -1166,6 +1177,7 @@
 				51B68844184B5A1C00A44738 /* AtViewController.m in Sources */,
 				4D47D3FE18491CF500B12FC0 /* UIView+Effects.m in Sources */,
 				1868F0FC1829C8B200C5764D /* WXYRootNavViewController.m in Sources */,
+				5158D662184C8D0A007297E6 /* CVImagePercentDismissTransitionAnimation.m in Sources */,
 				185E88A9182AABF40020F3B2 /* NSData+MKBase64.m in Sources */,
 				18EED3251815853E000856CE /* DDFileLogger.m in Sources */,
 				18EED35318158653000856CE /* ViewController.m in Sources */,
@@ -1199,7 +1211,7 @@
 				1868F1241829D7EA00C5764D /* WXYSolidTabBar.m in Sources */,
 				515B0BF818082A9B0092BADB /* main.m in Sources */,
 				18D9E4E8183388E0004539CC /* Comment.m in Sources */,
-				5199293518459C320000216F /* CastViewImageTransitionAnimation.m in Sources */,
+				5199293518459C320000216F /* CVImageTransitionAnimation.m in Sources */,
 				18EB09C8182B7F30005CC27D /* WXYSettingManager.m in Sources */,
 				51652DF71835DA96004E4D30 /* UITextView+TextKitAddition.m in Sources */,
 				185E88AD182AABF40020F3B2 /* UIAlertView+MKNetworkKitAdditions.m in Sources */,
