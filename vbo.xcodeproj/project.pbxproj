@@ -66,6 +66,8 @@
 		18B02D5A182E167800D9AF04 /* WXYTabBarSolidButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B02D58182E167800D9AF04 /* WXYTabBarSolidButton.m */; };
 		18D9E4E8183388E0004539CC /* Comment.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D9E4E7183388E0004539CC /* Comment.m */; };
 		18D9E4ED18338BF0004539CC /* Status.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D9E4EC18338BF0004539CC /* Status.m */; };
+		18DA5F32184C65BF00902A47 /* WXYUserProfileView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DA5F31184C65BF00902A47 /* WXYUserProfileView.m */; };
+		18DA5F34184C65E200902A47 /* WXYUserProfileView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18DA5F33184C65E200902A47 /* WXYUserProfileView.xib */; };
 		18E790E81834E584002B4785 /* WXYStatusTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E790E71834E584002B4785 /* WXYStatusTest.m */; };
 		18E790EC1834EF4E002B4785 /* WXYUserTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E790EB1834EF4E002B4785 /* WXYUserTest.m */; };
 		18E790F11834F512002B4785 /* Group.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E790F01834F512002B4785 /* Group.m */; };
@@ -259,6 +261,9 @@
 		18D9E4EB18338BF0004539CC /* Status.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Status.h; sourceTree = "<group>"; };
 		18D9E4EC18338BF0004539CC /* Status.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Status.m; sourceTree = "<group>"; };
 		18DA5F29184C5B2300902A47 /* AtViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AtViewController.h; path = atView/AtViewController.h; sourceTree = "<group>"; };
+		18DA5F30184C65BF00902A47 /* WXYUserProfileView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXYUserProfileView.h; sourceTree = "<group>"; };
+		18DA5F31184C65BF00902A47 /* WXYUserProfileView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXYUserProfileView.m; sourceTree = "<group>"; };
+		18DA5F33184C65E200902A47 /* WXYUserProfileView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WXYUserProfileView.xib; sourceTree = "<group>"; };
 		18E790E71834E584002B4785 /* WXYStatusTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXYStatusTest.m; sourceTree = "<group>"; };
 		18E790EB1834EF4E002B4785 /* WXYUserTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXYUserTest.m; sourceTree = "<group>"; };
 		18E790EF1834F512002B4785 /* Group.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Group.h; sourceTree = "<group>"; };
@@ -667,6 +672,16 @@
 			path = other;
 			sourceTree = "<group>";
 		};
+		18DA5F2E184C65A800902A47 /* profile */ = {
+			isa = PBXGroup;
+			children = (
+				18DA5F30184C65BF00902A47 /* WXYUserProfileView.h */,
+				18DA5F31184C65BF00902A47 /* WXYUserProfileView.m */,
+				18DA5F33184C65E200902A47 /* WXYUserProfileView.xib */,
+			);
+			path = profile;
+			sourceTree = "<group>";
+		};
 		18EB09C5182B7F16005CC27D /* setting */ = {
 			isa = PBXGroup;
 			children = (
@@ -775,6 +790,7 @@
 		18EED3201815853E000856CE /* view */ = {
 			isa = PBXGroup;
 			children = (
+				18DA5F2E184C65A800902A47 /* profile */,
 				1868F11D1829D7EA00C5764D /* root */,
 				18EED3571815865F000856CE /* MainStoryboard.storyboard */,
 			);
@@ -1085,6 +1101,7 @@
 				4D1E6F1C182A3AF60078229F /* postViewStoryBoard.storyboard in Resources */,
 				4D5F23AF184B2510007A0898 /* WatchListTableViewController.xib in Resources */,
 				515B0BF618082A9B0092BADB /* InfoPlist.strings in Resources */,
+				18DA5F34184C65E200902A47 /* WXYUserProfileView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1208,6 +1225,7 @@
 				185E88B9182AAE670020F3B2 /* UIImage+ImageEffects.m in Sources */,
 				18A6A687182FF65C00D9FB7F /* WXYBarButtonAbstract.m in Sources */,
 				18EB09D9182B82F1005CC27D /* WXYDataModel.m in Sources */,
+				18DA5F32184C65BF00902A47 /* WXYUserProfileView.m in Sources */,
 				18EED3211815853E000856CE /* DDAbstractDatabaseLogger.m in Sources */,
 				185E88AE182AABF40020F3B2 /* UIImageView+MKNetworkKitAdditions.m in Sources */,
 				1841100618165626008B700C /* WXYError.m in Sources */,
