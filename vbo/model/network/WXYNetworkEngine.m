@@ -42,10 +42,12 @@
 
 
 @interface WXYNetworkDataFactory : NSObject
++ (Status*)getStatusWithDictIncludeUser:(NSDictionary*)dict;
 + (Status*)getStatusWithDict:(NSDictionary*)dict;
 + (Comment*)getCommentWithDict:(NSDictionary*)dict status:(Status*)s;
 + (Group*)getGroupWithDict:(NSDictionary*)dict;
 + (User*)getUserWithDict:(NSDictionary*)dict;
++ (User*)getUserWithDictIncludeStatus:(NSDictionary*)dict;
 @end
 
 
@@ -170,7 +172,7 @@
                           onSucceeded:^(MKNetworkOperation *completedOperation)
           {
               NSDictionary* responseDict = completedOperation.responseJSON;
-              User* user = [WXYNetworkDataFactory getUserWithDict:responseDict];
+              User* user = [WXYNetworkDataFactory getUserWithDictIncludeStatus:responseDict];
               [SHARE_DATA_MODEL saveCacheContext];
               if (succeedBlock)
               {
@@ -206,7 +208,7 @@
               
               for (NSDictionary* dict in statuesDictArray)
               {
-                  Status* status = [WXYNetworkDataFactory getStatusWithDict:dict];
+                  Status* status = [WXYNetworkDataFactory getStatusWithDictIncludeUser:dict];
                   
                   [returnArray addObject:status];
               }
@@ -263,7 +265,7 @@
 #warning user暂为nil
     [self startOperationWithPath:urlStr user:nil paramers:paramDict httpMethod:@"POST" dataDict:imageDict onSucceeded:^(MKNetworkOperation *completedOperation) {
         NSDictionary* dict = completedOperation.responseJSON;
-        Status* status = [WXYNetworkDataFactory getStatusWithDict:dict];
+        Status* status = [WXYNetworkDataFactory getStatusWithDictIncludeUser:dict];
         [SHARE_DATA_MODEL saveCacheContext];
         if (succeedBlock)
         {
@@ -296,7 +298,7 @@
                           onSucceeded:^(MKNetworkOperation *completedOperation)
     {
         NSDictionary* dict = completedOperation.responseJSON;
-        Status* status = [WXYNetworkDataFactory getStatusWithDict:dict];
+        Status* status = [WXYNetworkDataFactory getStatusWithDictIncludeUser:dict];
         [SHARE_DATA_MODEL saveCacheContext];
         if (succeedBlock)
         {
@@ -532,7 +534,7 @@
               NSMutableArray* returnArray = [[NSMutableArray alloc] init];
               for (NSDictionary* dict in statusesArray)
               {
-                  Status* status = [WXYNetworkDataFactory getStatusWithDict:dict];
+                  Status* status = [WXYNetworkDataFactory getStatusWithDictIncludeUser:dict];
                   [returnArray addObject:status];
                   [group addStatusesObject:status];
               }
@@ -691,12 +693,16 @@
 @end
 
 @implementation WXYNetworkDataFactory
-
 + (Status*)getStatusWithDict:(NSDictionary*)dict
 {
     NSNumber* statusId = dict[@"id"];
     Status* status = [SHARE_DATA_MODEL getStatusById:statusId.longLongValue];
     [status updateWithDict:dict];
+    return status;
+}
++ (Status*)getStatusWithDictIncludeUser:(NSDictionary*)dict
+{
+    Status* status = [self getStatusWithDict:dict];
     
     NSDictionary* userDict = dict[@"user"];
     User* user = [self getUserWithDict:userDict];
@@ -707,7 +713,7 @@
     //处理转发
     if (repostDict)
     {
-        status.repostStatus = [self getStatusWithDict:repostDict];
+        status.repostStatus = [self getStatusWithDictIncludeUser:repostDict];
     }
     return status;
 }
@@ -763,6 +769,15 @@
     NSNumber* userId = dict[@"id"];
     User* user = [SHARE_DATA_MODEL getUserById:userId.longLongValue];
     [user updateWithDict:dict];
+
+    return user;
+}
++ (User*)getUserWithDictIncludeStatus:(NSDictionary*)dict
+{
+    User* user = [self getUserWithDict:dict];
+    NSDictionary* statusDict = dict[@"status"];
+    Status* status = [self getStatusWithDict:statusDict];
+    [user addStatusesObject:status];
     return user;
 }
 

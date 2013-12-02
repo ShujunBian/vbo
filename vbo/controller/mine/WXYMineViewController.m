@@ -7,12 +7,14 @@
 //
 
 #import "WXYLoginManager.h"
+#import "WXYNetworkEngine.h"
 #import "WXYMineViewController.h"
 //#import "WXYUserProfileView.h"
 
 #import "WXYUserProfileNumberView.h"
 #import "WXYUserProfilePhotoView.h"
 #import "WXYUserProfileGenderAndLocationCell.h"
+
 
 #import "UIImageView+MKNetworkKitAdditions.h"
 
@@ -24,7 +26,8 @@ static int ddLogLevel = LOG_LEVEL_VERBOSE;
 enum
 {
     kRowGenderAndLocation = 0,
-    kRowUserDescription = 1
+    kRowUserDescription,
+    kRowUserStatus
 };
 
 @interface WXYMineViewController ()
@@ -32,6 +35,7 @@ enum
 @property (strong, nonatomic) WXYUserProfilePhotoView* photoView;
 @property (strong, nonatomic) WXYUserProfileGenderAndLocationCell* genderAndLocationCell;
 @property (strong, nonatomic) UITableViewCell* descriptionCell;
+@property (strong, nonatomic) CastViewCell* statusCell;
 
 - (void)accountButtonPressed;
 - (void)settingButtonPressed;
@@ -75,7 +79,20 @@ enum
     }
     return _descriptionCell;
 }
-
+- (CastViewCell*)statusCell
+{
+    if (!_statusCell)
+    {
+//        Status * currentCellStatus = [_weiboContentArray objectAtIndex:[indexPath row]];
+        
+        _statusCell = [[CastViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"USER_PROFILE_STATUS_IDENTIFIER"];
+#warning delegate未实现
+//        _statusCell.delegateForCastViewCell = self;
+        
+//        [cell setCellWithWeiboStatus:currentCellStatus isInCastView:YES];
+    }
+    return _statusCell;
+}
 
 #pragma mark - Init Method
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -100,6 +117,15 @@ enum
     [self bind:SHARE_LOGIN_MANAGER.currentUser];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     
+    [SHARE_NW_ENGINE getUserInfoId:@(SHARE_LOGIN_MANAGER.currentUserInfo.userId.longLongValue)
+                      orScreenName:nil succeed:^(User *user)
+    {
+        [self bind:user];
+    }
+                             error:^(NSError *error)
+    {
+#warning 错误处理未实现
+    }];
     
 //        [self.tableView registerNib:[UINib nibWithNibName:@"WatchListTableViewCell" bundle:nil] forCellReuseIdentifier:@"WatchListTableCell"];
 }
@@ -129,6 +155,13 @@ enum
     self.genderAndLocationCell.genderLabel.text = user.gender;
     self.genderAndLocationCell.locationLabel.text = user.location;
     self.descriptionCell.textLabel.text = user.userDescription;
+    
+    if (user.statuses.array.count)
+    {
+        Status* status = user.statuses.array[0];
+        [self.statusCell setCellWithWeiboStatus:status isInCastView:NO];
+    }
+
 }
 
 #pragma mark - UITableView DataSource
@@ -141,12 +174,15 @@ enum
             break;
         case kRowUserDescription:
             cell = self.descriptionCell;
+            break;
+        case kRowUserStatus:
+            cell = self.statusCell;
     }
     return cell;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 2;
+    return 3;
 }
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {

@@ -83,4 +83,32 @@
     self.onlineStatus = [dict noNilValueForKey:@"online_status"];
     self.biFollowersCount = [dict noNilValueForKey:@"bi_followers_count"];
 }
+
+#pragma mark - Order RelationShip
+#warning 需要重写，根据时间进行排序、添加
+- (NSOrderedSet*)statuses
+{
+    return [self mutableOrderedSetValueForKey:@"statuses"];
+}
+
+- (void)addStatusesObject:(Status *)value
+{
+    NSMutableOrderedSet* orderSet = [self mutableOrderedSetValueForKey:@"statuses"];
+    [orderSet addObject:value];
+}
+- (void)removeStatusesObject:(Status *)value
+{
+    NSMutableOrderedSet* orderSet = [self mutableOrderedSetValueForKey:@"statuses"];
+    [orderSet removeObject:value];
+}
+- (void)addStatuses:(NSOrderedSet *)values
+{
+    NSMutableOrderedSet* orderSet = [self mutableOrderedSetValueForKey:@"statuses"];
+    [orderSet addObjectsFromArray:values.array];
+}
+- (void)removeStatuses:(NSOrderedSet *)values
+{
+    NSMutableOrderedSet* orderSet = [self mutableOrderedSetValueForKey:@"statuses"];
+    [orderSet removeObjectsInArray:values.array];
+}
 @end

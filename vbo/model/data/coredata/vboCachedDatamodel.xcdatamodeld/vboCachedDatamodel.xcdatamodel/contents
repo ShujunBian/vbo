@@ -117,7 +117,7 @@
         <relationship name="followingUsers" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="User" inverseName="followedUsers" inverseEntity="User" syncable="YES"/>
         <relationship name="groups" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Group" inverseName="users" inverseEntity="Group" syncable="YES"/>
         <relationship name="ownGroups" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Group" inverseName="owner" inverseEntity="Group" syncable="YES"/>
-        <relationship name="statuses" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Status" inverseName="author" inverseEntity="Status" syncable="YES"/>
+        <relationship name="statuses" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Status" inverseName="author" inverseEntity="Status" syncable="YES"/>
     </entity>
     <elements>
         <element name="Comment" positionX="0" positionY="0" width="0" height="0"/>
