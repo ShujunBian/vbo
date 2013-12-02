@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="4514" systemVersion="13A603" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="WXYUserProfileNumberView"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="eoh-FO-BA5" customClass="WXYUserProfileNumberView">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="关注" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zxk-uy-w6o">
+                    <rect key="frame" x="127" y="14" width="24" height="15"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="24" id="1Fd-oW-hxP"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <color key="textColor" red="0.58823529409999997" green="0.58823529409999997" blue="0.58823529409999997" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1530" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RAT-ay-wUo">
+                    <rect key="frame" x="166" y="7" width="97" height="29"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="97" id="RbJ-qp-lsy"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="54" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4dZ-1r-Hlf">
+                    <rect key="frame" x="20" y="7" width="99" height="29"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="粉丝" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZAA-MZ-kIa">
+                    <rect key="frame" x="276" y="14" width="24" height="15"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="24" id="3Q0-ag-1Ly"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <color key="textColor" red="0.58823529409999997" green="0.58823529409999997" blue="0.58823529409999997" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="4dZ-1r-Hlf" firstAttribute="leading" secondItem="eoh-FO-BA5" secondAttribute="leading" constant="20" symbolic="YES" id="9H6-Mj-lts"/>
+                <constraint firstItem="zxk-uy-w6o" firstAttribute="leading" secondItem="4dZ-1r-Hlf" secondAttribute="trailing" constant="8" symbolic="YES" id="Fkb-1G-gAl"/>
+                <constraint firstItem="zxk-uy-w6o" firstAttribute="baseline" secondItem="ZAA-MZ-kIa" secondAttribute="baseline" id="Okl-8Q-Om3"/>
+                <constraint firstItem="RAT-ay-wUo" firstAttribute="leading" secondItem="zxk-uy-w6o" secondAttribute="trailing" constant="15" id="PDT-Vp-mZP"/>
+                <constraint firstItem="ZAA-MZ-kIa" firstAttribute="leading" secondItem="RAT-ay-wUo" secondAttribute="trailing" constant="13" id="RgN-rH-9l4"/>
+                <constraint firstItem="zxk-uy-w6o" firstAttribute="centerY" secondItem="4dZ-1r-Hlf" secondAttribute="centerY" id="U7Q-E8-SZj"/>
+                <constraint firstAttribute="trailing" secondItem="ZAA-MZ-kIa" secondAttribute="trailing" constant="20" symbolic="YES" id="iDs-U5-kvJ"/>
+                <constraint firstItem="4dZ-1r-Hlf" firstAttribute="top" secondItem="eoh-FO-BA5" secondAttribute="top" constant="7" id="nkU-Ov-mGe"/>
+                <constraint firstItem="RAT-ay-wUo" firstAttribute="baseline" secondItem="4dZ-1r-Hlf" secondAttribute="baseline" id="tFB-e3-8lW"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="followerNumberLabel" destination="RAT-ay-wUo" id="t52-FB-CsI"/>
+                <outlet property="followingNumberLabel" destination="4dZ-1r-Hlf" id="POG-QN-ub7"/>
+            </connections>
+        </view>
+    </objects>
+</document>

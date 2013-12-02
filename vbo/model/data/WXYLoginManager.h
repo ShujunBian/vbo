@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "LoginUserInfo.h"
 
+@class User;
 /*
  *本类用于管理登陆过用户的Access Token及其它相关信息
  *所有信息加密保存
@@ -28,4 +29,5 @@
 @property (readonly, nonatomic) NSArray* loginUserList; //内容为LoginUserInfo,自动将当前登陆用户调整到第一
 @property (readonly, nonatomic) LoginUserInfo* currentUserInfo;
 
+@property (readonly, nonatomic) User* currentUser;
 @end

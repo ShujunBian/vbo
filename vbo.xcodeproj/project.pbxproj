@@ -57,6 +57,8 @@
 		1868F1381829EC7A00C5764D /* test.png in Resources */ = {isa = PBXBuildFile; fileRef = 1868F1371829EC7A00C5764D /* test.png */; };
 		188E68971829131600BE534D /* vboCachedDatamodel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 188E68951829131600BE534D /* vboCachedDatamodel.xcdatamodeld */; };
 		188E68981829131600BE534D /* vboCachedDatamodel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 188E68951829131600BE534D /* vboCachedDatamodel.xcdatamodeld */; };
+		18A67CD9184CF40F00C81722 /* WXYUserProfileCells.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18A67CD8184CF40F00C81722 /* WXYUserProfileCells.xib */; };
+		18A67CDC184CF42B00C81722 /* WXYUserProfileGenderAndLocationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A67CDB184CF42B00C81722 /* WXYUserProfileGenderAndLocationCell.m */; };
 		18A6A682182FCD6000D9FB7F /* WXYTabBarPostButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A6A681182FCD6000D9FB7F /* WXYTabBarPostButton.m */; };
 		18A6A683182FCD6000D9FB7F /* WXYTabBarPostButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A6A681182FCD6000D9FB7F /* WXYTabBarPostButton.m */; };
 		18A6A687182FF65C00D9FB7F /* WXYBarButtonAbstract.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A6A686182FF65C00D9FB7F /* WXYBarButtonAbstract.m */; };
@@ -64,6 +66,10 @@
 		18AD18C3181608D90097E830 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18AD18C2181608D90097E830 /* ImageIO.framework */; };
 		18B02D59182E167800D9AF04 /* WXYTabBarSolidButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B02D58182E167800D9AF04 /* WXYTabBarSolidButton.m */; };
 		18B02D5A182E167800D9AF04 /* WXYTabBarSolidButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B02D58182E167800D9AF04 /* WXYTabBarSolidButton.m */; };
+		18B0C94F184CC31600347492 /* WXYUserProfileNumberView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18B0C94E184CC31600347492 /* WXYUserProfileNumberView.xib */; };
+		18B0C954184CC40900347492 /* WXYUserProfilePhotoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18B0C953184CC40900347492 /* WXYUserProfilePhotoView.xib */; };
+		18B0C957184CC62200347492 /* WXYUserProfileNumberView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B0C956184CC62200347492 /* WXYUserProfileNumberView.m */; };
+		18B0C95A184CC64000347492 /* WXYUserProfilePhotoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B0C959184CC64000347492 /* WXYUserProfilePhotoView.m */; };
 		18D9E4E8183388E0004539CC /* Comment.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D9E4E7183388E0004539CC /* Comment.m */; };
 		18D9E4ED18338BF0004539CC /* Status.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D9E4EC18338BF0004539CC /* Status.m */; };
 		18DA5F32184C65BF00902A47 /* WXYUserProfileView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DA5F31184C65BF00902A47 /* WXYUserProfileView.m */; };
@@ -246,6 +252,9 @@
 		1868F1321829DC1900C5764D /* WXYBlurTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXYBlurTextView.m; sourceTree = "<group>"; };
 		1868F1371829EC7A00C5764D /* test.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test.png; sourceTree = "<group>"; };
 		188E68961829131600BE534D /* vboCachedDatamodel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = vboCachedDatamodel.xcdatamodel; sourceTree = "<group>"; };
+		18A67CD8184CF40F00C81722 /* WXYUserProfileCells.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WXYUserProfileCells.xib; sourceTree = "<group>"; };
+		18A67CDA184CF42B00C81722 /* WXYUserProfileGenderAndLocationCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXYUserProfileGenderAndLocationCell.h; sourceTree = "<group>"; };
+		18A67CDB184CF42B00C81722 /* WXYUserProfileGenderAndLocationCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXYUserProfileGenderAndLocationCell.m; sourceTree = "<group>"; };
 		18A6A680182FCD6000D9FB7F /* WXYTabBarPostButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXYTabBarPostButton.h; sourceTree = "<group>"; };
 		18A6A681182FCD6000D9FB7F /* WXYTabBarPostButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXYTabBarPostButton.m; sourceTree = "<group>"; };
 		18A6A685182FF65C00D9FB7F /* WXYBarButtonAbstract.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXYBarButtonAbstract.h; sourceTree = "<group>"; };
@@ -255,6 +264,12 @@
 		18B02D56182E0F6100D9AF04 /* GraphicName.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GraphicName.h; sourceTree = "<group>"; };
 		18B02D57182E167800D9AF04 /* WXYTabBarSolidButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXYTabBarSolidButton.h; sourceTree = "<group>"; };
 		18B02D58182E167800D9AF04 /* WXYTabBarSolidButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXYTabBarSolidButton.m; sourceTree = "<group>"; };
+		18B0C94E184CC31600347492 /* WXYUserProfileNumberView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WXYUserProfileNumberView.xib; sourceTree = "<group>"; };
+		18B0C953184CC40900347492 /* WXYUserProfilePhotoView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WXYUserProfilePhotoView.xib; sourceTree = "<group>"; };
+		18B0C955184CC62200347492 /* WXYUserProfileNumberView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXYUserProfileNumberView.h; sourceTree = "<group>"; };
+		18B0C956184CC62200347492 /* WXYUserProfileNumberView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXYUserProfileNumberView.m; sourceTree = "<group>"; };
+		18B0C958184CC64000347492 /* WXYUserProfilePhotoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXYUserProfilePhotoView.h; sourceTree = "<group>"; };
+		18B0C959184CC64000347492 /* WXYUserProfilePhotoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXYUserProfilePhotoView.m; sourceTree = "<group>"; };
 		18B6AB511847A82E00124C7D /* WXYNotificationNameList.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WXYNotificationNameList.h; sourceTree = "<group>"; };
 		18D9E4E6183388E0004539CC /* Comment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Comment.h; sourceTree = "<group>"; };
 		18D9E4E7183388E0004539CC /* Comment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Comment.m; sourceTree = "<group>"; };
@@ -675,9 +690,18 @@
 		18DA5F2E184C65A800902A47 /* profile */ = {
 			isa = PBXGroup;
 			children = (
+				18DA5F33184C65E200902A47 /* WXYUserProfileView.xib */,
 				18DA5F30184C65BF00902A47 /* WXYUserProfileView.h */,
 				18DA5F31184C65BF00902A47 /* WXYUserProfileView.m */,
-				18DA5F33184C65E200902A47 /* WXYUserProfileView.xib */,
+				18B0C94E184CC31600347492 /* WXYUserProfileNumberView.xib */,
+				18B0C955184CC62200347492 /* WXYUserProfileNumberView.h */,
+				18B0C956184CC62200347492 /* WXYUserProfileNumberView.m */,
+				18B0C953184CC40900347492 /* WXYUserProfilePhotoView.xib */,
+				18B0C958184CC64000347492 /* WXYUserProfilePhotoView.h */,
+				18B0C959184CC64000347492 /* WXYUserProfilePhotoView.m */,
+				18A67CD8184CF40F00C81722 /* WXYUserProfileCells.xib */,
+				18A67CDA184CF42B00C81722 /* WXYUserProfileGenderAndLocationCell.h */,
+				18A67CDB184CF42B00C81722 /* WXYUserProfileGenderAndLocationCell.m */,
 			);
 			path = profile;
 			sourceTree = "<group>";
@@ -1090,6 +1114,7 @@
 				51510C0E183BB10A00BD7823 /* CastViewCell.xib in Resources */,
 				515B0C0418082A9B0092BADB /* Images.xcassets in Resources */,
 				4D4A803C1842999F0078C81D /* KeyboardView.xib in Resources */,
+				18B0C94F184CC31600347492 /* WXYUserProfileNumberView.xib in Resources */,
 				18EED32F1815853E000856CE /* README.txt in Resources */,
 				1868F1381829EC7A00C5764D /* test.png in Resources */,
 				51DD4DE31849BECB00999DDF /* CVDragIndicatorView.xib in Resources */,
@@ -1099,7 +1124,9 @@
 				4D5F23B1184B2DAC007A0898 /* WatchListTableViewCell.xib in Resources */,
 				18EED3581815865F000856CE /* MainStoryboard.storyboard in Resources */,
 				4D1E6F1C182A3AF60078229F /* postViewStoryBoard.storyboard in Resources */,
+				18B0C954184CC40900347492 /* WXYUserProfilePhotoView.xib in Resources */,
 				4D5F23AF184B2510007A0898 /* WatchListTableViewController.xib in Resources */,
+				18A67CD9184CF40F00C81722 /* WXYUserProfileCells.xib in Resources */,
 				515B0BF618082A9B0092BADB /* InfoPlist.strings in Resources */,
 				18DA5F34184C65E200902A47 /* WXYUserProfileView.xib in Resources */,
 			);
@@ -1162,6 +1189,7 @@
 				51652DEA1835AC13004E4D30 /* UITextViewHelper.m in Sources */,
 				51E04EB218491061001D9500 /* CastViewImageDismissTransitionAnimation.m in Sources */,
 				185E88AF182AABF40020F3B2 /* MKNetworkEngine.m in Sources */,
+				18A67CDC184CF42B00C81722 /* WXYUserProfileGenderAndLocationCell.m in Sources */,
 				1868F0FE1829C8B200C5764D /* WXYRootTabbarViewController.m in Sources */,
 				51510C18183BDF3B00BD7823 /* ComReqDetailCell.m in Sources */,
 				18EED35518158653000856CE /* WXYTestViewController.m in Sources */,
@@ -1198,6 +1226,7 @@
 				18EB0A06182BF701005CC27D /* NSDate+Addition.m in Sources */,
 				51510C15183BD8F600BD7823 /* ComRepCountCell.m in Sources */,
 				188E68971829131600BE534D /* vboCachedDatamodel.xcdatamodeld in Sources */,
+				18B0C957184CC62200347492 /* WXYUserProfileNumberView.m in Sources */,
 				51652DF01835D7FF004E4D30 /* UIFontDescriptor+TextKitAddition.m in Sources */,
 				18EB0A02182BED82005CC27D /* StatusPicture.m in Sources */,
 				185E88A8182AABF40020F3B2 /* NSAlert+MKNetworkKitAdditions.m in Sources */,
@@ -1218,6 +1247,7 @@
 				4D9DA274184A561300807B96 /* AtViewController.m in Sources */,
 				18D9E4E8183388E0004539CC /* Comment.m in Sources */,
 				5199293518459C320000216F /* CastViewImageTransitionAnimation.m in Sources */,
+				18B0C95A184CC64000347492 /* WXYUserProfilePhotoView.m in Sources */,
 				18EB09C8182B7F30005CC27D /* WXYSettingManager.m in Sources */,
 				51652DF71835DA96004E4D30 /* UITextView+TextKitAddition.m in Sources */,
 				185E88AD182AABF40020F3B2 /* UIAlertView+MKNetworkKitAdditions.m in Sources */,

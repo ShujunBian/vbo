@@ -8,7 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface WXYMineViewController : UIViewController
-@property (weak, nonatomic) IBOutlet UIScrollView *contentScrollView;
+
+@interface WXYMineViewController : UIViewController<UITableViewDataSource, UITableViewDelegate>
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @end

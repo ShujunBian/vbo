@@ -7,6 +7,8 @@
 //
 
 #import "WXYLoginManager.h"
+#import "WXYDataModel.h"
+
 #define  kLoginUserListArchiverKey @"LOGIN_USER_LIST_ARCHIVER_KEY"
 #define kLoginUserInfoFileName @"/loginUserInfo"
 @interface WXYLoginManager ()
@@ -25,6 +27,7 @@
 
 @implementation WXYLoginManager
 
+@dynamic currentUser;
 @dynamic currentUserInfo;
 @dynamic loginUserList;
 @synthesize loginUserMutableList = _loginUserMutableList;
@@ -42,6 +45,12 @@
 }
 
 #pragma mark - Getter And Setter Method
+- (User*)currentUser
+{
+    LoginUserInfo* info = self.currentUserInfo;
+    User* user = [SHARE_DATA_MODEL getUserById:info.userId.longLongValue];
+    return user;
+}
 - (NSArray*)loginUserList
 {
     return self.loginUserMutableList;
