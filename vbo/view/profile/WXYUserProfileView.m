@@ -9,7 +9,8 @@
 #import "WXYUserProfileView.h"
 #import "User.h"
 #import "UIImageView+MKNetworkKitAdditions.h"
-
+#import "WXYSettingManager.h"
+#import <QuartzCore/QuartzCore.h>
 
 @implementation WXYUserProfileView
 
@@ -29,13 +30,20 @@
 }
 
 #pragma mark - Init Method
-- (id)initWithFrame:(CGRect)frame
+- (void)awakeFromNib
 {
-    self = [super initWithFrame:frame];
-    if (self) {
-        // Initialization code
-    }
-    return self;
+    [super awakeFromNib];
+    self.headPhotoImageView.layer.masksToBounds = YES;
+    self.headPhotoImageView.layer.cornerRadius = self.headPhotoImageView.frame.size.height / 2;
+    
+    self.follingNumberLabel.textColor = SHARE_SETTING_MANAGER.themeColor;
+    self.followedNumberLabel.textColor = SHARE_SETTING_MANAGER.themeColor;
+}
+
+- (void)tintColorDidChange
+{
+    self.follingNumberLabel.textColor = SHARE_SETTING_MANAGER.themeColor;
+    self.followedNumberLabel.textColor = SHARE_SETTING_MANAGER.themeColor;
 }
 
 #pragma mark - Bind
