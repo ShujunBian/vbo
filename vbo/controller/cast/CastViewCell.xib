@@ -224,6 +224,7 @@
                 <outlet property="repostBackgroundViewConstraint" destination="Giy-KV-Omu" id="plF-qu-Yel"/>
                 <outlet property="repostButton" destination="IAv-xg-LZc" id="u09-mm-klx"/>
                 <outlet property="repostButtonTopConstraint" destination="JhL-Bx-71O" id="4op-eI-NaA"/>
+                <outlet property="repostImageHeightConstaint" destination="wAq-hD-tAo" id="pXA-lw-2BQ"/>
                 <outlet property="repostImageView" destination="Me4-yj-8dD" id="HoA-wQ-jSq"/>
                 <outlet property="repostTextView" destination="eST-PZ-sG6" id="gTz-pa-GrG"/>
                 <outlet property="repostTextViewHeightConstraint" destination="Wql-am-nRU" id="tP7-Bd-84K"/>
@@ -234,6 +235,7 @@
                 <outlet property="userNickname" destination="77x-ER-tll" id="e6N-Ly-1zC"/>
                 <outlet property="weiboContentTextView" destination="04G-Sj-4tu" id="PEI-eV-EvY"/>
                 <outlet property="weiboImage" destination="sQq-A0-fIr" id="6rc-xq-WoT"/>
+                <outlet property="weiboImageHeightConstaint" destination="nL6-bd-uqd" id="FIB-9J-ULS"/>
             </connections>
         </tableViewCell>
     </objects>

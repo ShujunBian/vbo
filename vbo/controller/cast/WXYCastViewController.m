@@ -17,10 +17,12 @@
 #import "UIImage+ImageEffects.h"
 #import "ScreenShotHelper.h"
 #import "WXYScrollHiddenDelegate.h"
-#import "CastViewImageTransitionAnimation.h"
-#import "CastViewImageDismissTransitionAnimation.h"
+#import "CVImageTransitionAnimation.h"
+#import "CVImageDismissTransitionAnimation.h"
 #import "CastImageViewController.h"
 #import "CVDragIndicatorView.h"
+#import "CVImagePercentDismissTransition.h"
+#import "CVImagePercentDismissTransitionAnimation.h"
 
 #define contantHeight 110.0
 #define contentLabelLineSpace 6.0
@@ -31,8 +33,10 @@
 //@property (nonatomic, strong) UIDynamicAnimator *animator;
 @property (nonatomic, strong) NSArray * weiboContentArray;
 @property (nonatomic, weak) UIImageView * selectedImageView;
-@property (nonatomic, strong) CastViewImageTransitionAnimation * imageTransitionAnimation;
-@property (nonatomic, strong) CastViewImageDismissTransitionAnimation * imageDismissTransitionAnimation;
+@property (nonatomic, strong) CVImageTransitionAnimation * imageTransitionAnimation;
+@property (nonatomic, strong) CVImageDismissTransitionAnimation * imageDismissTransitionAnimation;
+@property (nonatomic, strong) CVImagePercentDismissTransitionAnimation * imagePercentDismissTransitionAnimation;
+@property (nonatomic, strong) CVImagePercentDismissTransition * imagePercentDismissTransition;
 @property (nonatomic, strong) CVDragIndicatorView * dragIndicatorView;
 
 @property (nonatomic) BOOL reloading;
@@ -54,8 +58,10 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    _imageTransitionAnimation = [CastViewImageTransitionAnimation new];
-    _imageDismissTransitionAnimation = [CastViewImageDismissTransitionAnimation new];
+    _imageTransitionAnimation = [CVImageTransitionAnimation new];
+    _imageDismissTransitionAnimation = [CVImageDismissTransitionAnimation new];
+    _imagePercentDismissTransition = [CVImagePercentDismissTransition new];
+    _imagePercentDismissTransitionAnimation = [CVImagePercentDismissTransitionAnimation new];
     
     UIView *bgview = [[UIView alloc]init];
     [bgview setBackgroundColor:SHARE_SETTING_MANAGER.themeColor];
@@ -166,46 +172,46 @@
 #pragma mark - UIScrollView Delegate
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
 {
-//    id<WXYScrollHiddenDelegate> delegate = nil;
-//    if ([self.parentViewController conformsToProtocol:@protocol(WXYScrollHiddenDelegate)] && [self.parentViewController respondsToSelector:@selector(wxyScrollViewWillBeginDragging:)])
-//    {
-//        delegate = (id<WXYScrollHiddenDelegate>) self.parentViewController;
-//        [delegate wxyScrollViewWillBeginDragging:scrollView];
-//    }
+    id<WXYScrollHiddenDelegate> delegate = nil;
+    if ([self.parentViewController conformsToProtocol:@protocol(WXYScrollHiddenDelegate)] && [self.parentViewController respondsToSelector:@selector(wxyScrollViewWillBeginDragging:)])
+    {
+        delegate = (id<WXYScrollHiddenDelegate>) self.parentViewController;
+        [delegate wxyScrollViewWillBeginDragging:scrollView];
+    }
 }
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
-//    id<WXYScrollHiddenDelegate> delegate = nil;
-//    if ([self.parentViewController conformsToProtocol:@protocol(WXYScrollHiddenDelegate)] && [self.parentViewController respondsToSelector:@selector(wxyScrollViewDidScroll:)])
-//    {
-//        delegate = (id<WXYScrollHiddenDelegate>) self.parentViewController;
-//        [delegate wxyScrollViewDidScroll:scrollView];
-//    }
-//
-    [_dragIndicatorView refreshScrollViewDidScroll:scrollView];
-    NSLog(@"the current contentoff set is %f",scrollView.contentInset.top);
+    id<WXYScrollHiddenDelegate> delegate = nil;
+    if ([self.parentViewController conformsToProtocol:@protocol(WXYScrollHiddenDelegate)] && [self.parentViewController respondsToSelector:@selector(wxyScrollViewDidScroll:)])
+    {
+        delegate = (id<WXYScrollHiddenDelegate>) self.parentViewController;
+        [delegate wxyScrollViewDidScroll:scrollView];
+    }
+
+//    [_dragIndicatorView refreshScrollViewDidScroll:scrollView];
+//    NSLog(@"the current contentoff set is %f",scrollView.contentInset.top);
 
 }
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
 {
-//    id<WXYScrollHiddenDelegate> delegate = nil;
-//    if ([self.parentViewController conformsToProtocol:@protocol(WXYScrollHiddenDelegate)] && [self.parentViewController respondsToSelector:@selector(wxyScrollViewDidEndDragging:willDecelerate:)])
-//    {
-//        delegate = (id<WXYScrollHiddenDelegate>) self.parentViewController;
-//        [delegate wxyScrollViewDidEndDragging:scrollView willDecelerate:decelerate];
-//    }
+    id<WXYScrollHiddenDelegate> delegate = nil;
+    if ([self.parentViewController conformsToProtocol:@protocol(WXYScrollHiddenDelegate)] && [self.parentViewController respondsToSelector:@selector(wxyScrollViewDidEndDragging:willDecelerate:)])
+    {
+        delegate = (id<WXYScrollHiddenDelegate>) self.parentViewController;
+        [delegate wxyScrollViewDidEndDragging:scrollView willDecelerate:decelerate];
+    }
     
-    [_dragIndicatorView refreshScrollViewDidEndDragging:scrollView];
+//    [_dragIndicatorView refreshScrollViewDidEndDragging:scrollView];
     
 }
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
-//    id<WXYScrollHiddenDelegate> delegate = nil;
-//    if ([self.parentViewController conformsToProtocol:@protocol(WXYScrollHiddenDelegate)] && [self.parentViewController respondsToSelector:@selector(wxyScrollViewDidEndDecelerating:)])
-//    {
-//        delegate = (id<WXYScrollHiddenDelegate>) self.parentViewController;
-//        [delegate wxyScrollViewDidEndDecelerating:scrollView];
-//    }
+    id<WXYScrollHiddenDelegate> delegate = nil;
+    if ([self.parentViewController conformsToProtocol:@protocol(WXYScrollHiddenDelegate)] && [self.parentViewController respondsToSelector:@selector(wxyScrollViewDidEndDecelerating:)])
+    {
+        delegate = (id<WXYScrollHiddenDelegate>) self.parentViewController;
+        [delegate wxyScrollViewDidEndDecelerating:scrollView];
+    }
 }
 #pragma mark - CVDragIndicatorViewDelegate
 
@@ -285,6 +291,8 @@
     UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:NULL];
     CastImageViewController * toVc = [storyBoard instantiateViewControllerWithIdentifier:@"CastImageViewController"];
     
+    
+    toVc.transitionDelegate = self.imagePercentDismissTransition;
     toVc.delegate = self;
     CGPoint offsetRect = [_tableView contentOffset];
     initalRect.origin.y -= offsetRect.y;
@@ -338,6 +346,11 @@
 
 - (id<UIViewControllerAnimatedTransitioning>)animationControllerForDismissedController:(UIViewController *)dismissed
 {
-    return self.imageDismissTransitionAnimation;
+    return self.imagePercentDismissTransition.interacting ? self.imagePercentDismissTransitionAnimation : self.imageDismissTransitionAnimation;
+}
+
+- (id<UIViewControllerInteractiveTransitioning>)interactionControllerForDismissal:(id<UIViewControllerAnimatedTransitioning>)animator
+{
+    return self.imagePercentDismissTransition.interacting ? self.imagePercentDismissTransition : nil;
 }
 @end
