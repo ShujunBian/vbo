@@ -26,6 +26,7 @@
 
 #define contantHeight 110.0
 #define contentLabelLineSpace 6.0
+#define navigationbarHeight 64.0
 #define tableViewSeprateLine [UIColor colorWithRed:0.0/255.0 green:0.0/255.0 blue:0.0/255.0 alpha:1.0]
 
 @interface WXYCastViewController ()<CastImageViewControllerDelegate,CVDragIndicatorViewDelegate>
@@ -88,7 +89,7 @@
         [self.tableView reloadData];
         [NSNotificationCenter postDidFetchCurrentUserNameNotification];
         
-//        [self performSelector:@selector(snap) withObject:nil afterDelay:5.0];
+        //        [self performSelector:@selector(snap) withObject:nil afterDelay:5.0];
         
     }error:nil];
 }
@@ -100,7 +101,7 @@
 //    [self.view drawViewHierarchyInRect:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height) afterScreenUpdates:NO];
 //    UIImage *snapshot = UIGraphicsGetImageFromCurrentImageContext();
 //    UIGraphicsEndImageContext();
-//    
+//
 //    UIImageView * testView = [[UIImageView alloc]initWithImage:[snapshot applyTintEffectWithColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.6]]];
 //    [testView setFrame:CGRectMake(0.0, 0.0, 320.0, 568.0)];
 //    [self.view addSubview:testView];
@@ -159,9 +160,9 @@
 {
     cell.backgroundColor = [UIColor clearColor];
     
-//    UIView *selectedBackgroundView = [[UIView alloc]init];
-//    [selectedBackgroundView setBackgroundColor:[UIColor clearColor]];
-//    cell.selectedBackgroundView = selectedBackgroundView;
+    //    UIView *selectedBackgroundView = [[UIView alloc]init];
+    //    [selectedBackgroundView setBackgroundColor:[UIColor clearColor]];
+    //    cell.selectedBackgroundView = selectedBackgroundView;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -172,46 +173,52 @@
 #pragma mark - UIScrollView Delegate
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
 {
-    id<WXYScrollHiddenDelegate> delegate = nil;
-    if ([self.parentViewController conformsToProtocol:@protocol(WXYScrollHiddenDelegate)] && [self.parentViewController respondsToSelector:@selector(wxyScrollViewWillBeginDragging:)])
-    {
-        delegate = (id<WXYScrollHiddenDelegate>) self.parentViewController;
-        [delegate wxyScrollViewWillBeginDragging:scrollView];
-    }
+//    if (scrollView.contentOffset.y >= -navigationbarHeight) {
+        id<WXYScrollHiddenDelegate> delegate = nil;
+        if ([self.parentViewController conformsToProtocol:@protocol(WXYScrollHiddenDelegate)] && [self.parentViewController respondsToSelector:@selector(wxyScrollViewWillBeginDragging:)])
+        {
+            delegate = (id<WXYScrollHiddenDelegate>) self.parentViewController;
+            [delegate wxyScrollViewWillBeginDragging:scrollView];
+        }
+//    }
 }
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
-    id<WXYScrollHiddenDelegate> delegate = nil;
-    if ([self.parentViewController conformsToProtocol:@protocol(WXYScrollHiddenDelegate)] && [self.parentViewController respondsToSelector:@selector(wxyScrollViewDidScroll:)])
-    {
-        delegate = (id<WXYScrollHiddenDelegate>) self.parentViewController;
-        [delegate wxyScrollViewDidScroll:scrollView];
+    NSLog(@"the scroll view contentoffset y is %f",scrollView.contentOffset.y);
+    if (scrollView.contentOffset.y >= -navigationbarHeight) {
+        id<WXYScrollHiddenDelegate> delegate = nil;
+        if ([self.parentViewController conformsToProtocol:@protocol(WXYScrollHiddenDelegate)] && [self.parentViewController respondsToSelector:@selector(wxyScrollViewDidScroll:)])
+        {
+            delegate = (id<WXYScrollHiddenDelegate>) self.parentViewController;
+            [delegate wxyScrollViewDidScroll:scrollView];
+        }
     }
-
-//    [_dragIndicatorView refreshScrollViewDidScroll:scrollView];
-//    NSLog(@"the current contentoff set is %f",scrollView.contentInset.top);
-
+    [_dragIndicatorView refreshScrollViewDidScroll:scrollView];
+    
 }
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
 {
-    id<WXYScrollHiddenDelegate> delegate = nil;
-    if ([self.parentViewController conformsToProtocol:@protocol(WXYScrollHiddenDelegate)] && [self.parentViewController respondsToSelector:@selector(wxyScrollViewDidEndDragging:willDecelerate:)])
-    {
-        delegate = (id<WXYScrollHiddenDelegate>) self.parentViewController;
-        [delegate wxyScrollViewDidEndDragging:scrollView willDecelerate:decelerate];
+    if (scrollView.contentOffset.y >= -navigationbarHeight) {
+        id<WXYScrollHiddenDelegate> delegate = nil;
+        if ([self.parentViewController conformsToProtocol:@protocol(WXYScrollHiddenDelegate)] && [self.parentViewController respondsToSelector:@selector(wxyScrollViewDidEndDragging:willDecelerate:)])
+        {
+            delegate = (id<WXYScrollHiddenDelegate>) self.parentViewController;
+            [delegate wxyScrollViewDidEndDragging:scrollView willDecelerate:decelerate];
+        }
     }
-    
-//    [_dragIndicatorView refreshScrollViewDidEndDragging:scrollView];
+    [_dragIndicatorView refreshScrollViewDidEndDragging:scrollView];
     
 }
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
-    id<WXYScrollHiddenDelegate> delegate = nil;
-    if ([self.parentViewController conformsToProtocol:@protocol(WXYScrollHiddenDelegate)] && [self.parentViewController respondsToSelector:@selector(wxyScrollViewDidEndDecelerating:)])
-    {
-        delegate = (id<WXYScrollHiddenDelegate>) self.parentViewController;
-        [delegate wxyScrollViewDidEndDecelerating:scrollView];
-    }
+//    if (scrollView.contentOffset.y >= -navigationbarHeight) {
+        id<WXYScrollHiddenDelegate> delegate = nil;
+        if ([self.parentViewController conformsToProtocol:@protocol(WXYScrollHiddenDelegate)] && [self.parentViewController respondsToSelector:@selector(wxyScrollViewDidEndDecelerating:)])
+        {
+            delegate = (id<WXYScrollHiddenDelegate>) self.parentViewController;
+            [delegate wxyScrollViewDidEndDecelerating:scrollView];
+        }
+//    }
 }
 #pragma mark - CVDragIndicatorViewDelegate
 
@@ -303,7 +310,7 @@
     
     toVc.transitioningDelegate = self;
     [self presentViewController:toVc animated:YES completion:^{
-            _selectedImageView.hidden = YES;
+        _selectedImageView.hidden = YES;
     }];
 }
 
