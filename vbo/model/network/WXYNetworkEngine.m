@@ -87,7 +87,7 @@
 }
 #pragma mark - Private Method
 - (MKNetworkOperation*)startOperationWithPath:(NSString*)path
-                                         user:(id)user
+                                         user:(LoginUserInfo*)userInfo
                                      paramers:(NSDictionary*)paramDict
                                    httpMethod:(NSString*)method
                                        dataDict:(NSDictionary*)dataDict
@@ -96,10 +96,10 @@
 {
     MKNetworkOperation* op = nil;
     NSMutableDictionary* params = [[NSMutableDictionary alloc] initWithDictionary:paramDict];
-    //    if (user)
-    //    {
-    [params setValue:SHARE_LOGIN_MANAGER.currentUserInfo.accessToken forKey:@"access_token"];
-    //    }
+    if (userInfo)
+    {
+        [params setValue:userInfo.accessToken forKey:@"access_token"];
+    }
     op = [self operationWithPath:path
                           params:params
                       httpMethod:method
@@ -115,13 +115,13 @@
 }
 
 - (MKNetworkOperation*)startOperationWithPath:(NSString*)path
-                                         user:(id)user
+                                         user:(LoginUserInfo*)userInfo
                                      paramers:(NSDictionary*)paramDict
                                    httpMethod:(NSString*)method
                                   onSucceeded:(OperationSucceedBlock)succeedBlock
                                       onError:(OperationErrorBlock)errorBlock
 {
-    return [self startOperationWithPath:path user:user paramers:paramDict httpMethod:method dataDict:nil onSucceeded:succeedBlock onError:errorBlock];
+    return [self startOperationWithPath:path user:userInfo paramers:paramDict httpMethod:method dataDict:nil onSucceeded:succeedBlock onError:errorBlock];
 }
 - (MKNetworkOperation*)startOperationWithPath:(NSString*)path
                                     needLogin:(BOOL)fLogin
@@ -129,8 +129,12 @@
                                   onSucceeded:(OperationSucceedBlock)succeedBlock
                                       onError:(OperationErrorBlock)errorBlock
 {
-#warning 未完成，user暂时为nil
-    return [self startOperationWithPath:path user:nil paramers:paramDict httpMethod:@"GET" onSucceeded:succeedBlock onError:errorBlock];
+    LoginUserInfo* userInfo = nil;
+    if (fLogin)
+    {
+        userInfo = SHARE_LOGIN_MANAGER.currentUserInfo;
+    }
+    return [self startOperationWithPath:path user:userInfo paramers:paramDict httpMethod:@"GET" onSucceeded:succeedBlock onError:errorBlock];
 }
 
 #pragma mark - Network Service Client
@@ -264,10 +268,7 @@
     }
     
 
-
-    
-#warning user暂为nil
-    [self startOperationWithPath:urlStr user:nil paramers:paramDict httpMethod:@"POST" dataDict:imageDict onSucceeded:^(MKNetworkOperation *completedOperation) {
+    [self startOperationWithPath:urlStr user:SHARE_LOGIN_MANAGER.currentUserInfo paramers:paramDict httpMethod:@"POST" dataDict:imageDict onSucceeded:^(MKNetworkOperation *completedOperation) {
         NSDictionary* dict = completedOperation.responseJSON;
         Status* status = [WXYNetworkDataFactory getStatusWithDictIncludeUser:dict];
         [SHARE_DATA_MODEL saveCacheContext];
@@ -293,10 +294,8 @@
                              error:(ErrorBlock)errorBlock
 {
     MKNetworkOperation* op = nil;
-    
-#warning user暂为nil
     op = [self startOperationWithPath:REPOST_WEIBO_URL
-                                 user:nil
+                                 user:SHARE_LOGIN_MANAGER.currentUserInfo
                              paramers:@{@"id":weiboId, @"status":text, @"is_comment":@(commentType)}
                            httpMethod:@"POST"
                           onSucceeded:^(MKNetworkOperation *completedOperation)
@@ -418,9 +417,8 @@
 {
     MKNetworkOperation* op = nil;
 
-#warning user为nil
     op = [self startOperationWithPath:COMMENT_CREATE_URL
-                                 user:nil
+                                 user:SHARE_LOGIN_MANAGER.currentUserInfo
                              paramers:@{@"id":weiboId, @"comment":content, @"comment_ori":@(fOrigin)}
                            httpMethod:@"POST"
                           onSucceeded:^(MKNetworkOperation *completedOperation)
