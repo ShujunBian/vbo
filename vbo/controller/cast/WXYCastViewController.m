@@ -235,7 +235,7 @@
 {
     [self reloadTableViewDataSource];
     [self.tableView setUserInteractionEnabled:NO];
-    [SHARE_NW_ENGINE getHomeTimelineOfCurrentUserSucceed:^(NSArray * resultArray){
+    [SHARE_NW_ENGINE getHomeTimelineOfCurrentUserPage:1 Succeed:^(NSArray * resultArray){
         self.weiboContentArray = resultArray;
         [self performSelector:@selector(doneLoadingTableViewData) withObject:nil afterDelay:0.5];
     }error:nil];
