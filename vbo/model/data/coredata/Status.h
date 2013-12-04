@@ -47,6 +47,11 @@ typedef enum
 @property (nonatomic, retain) Status *repostStatus;
 
 @property (nonatomic, retain) NSSet * groups;   //此方法仅作为group中statuses属性的inverse，不实际使用
+@property (nonatomic, retain) NSOrderedSet *commentList;
+
+//List Cached
+@property (nonatomic, retain) NSSet* beInTimeLine;
+
 @end
 
 @interface Status (CoreDataGeneratedAccessors)

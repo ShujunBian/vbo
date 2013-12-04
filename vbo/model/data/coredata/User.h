@@ -47,6 +47,13 @@
 @property (nonatomic, retain) NSSet *groups;    //此属性仅作为group的users属性的相反属性，不使用
 @property (nonatomic, retain) NSSet *followedUsers;
 @property (nonatomic, retain) NSSet *followingUsers;
+@property (nonatomic, retain) NSOrderedSet *followingList;
+@property (nonatomic, retain) NSOrderedSet *followedList;
+@property (nonatomic, retain) NSSet *beInFollowingList;
+@property (nonatomic, retain) NSSet *beInFollowedList;
+
+//List cached
+@property (nonatomic, retain) NSOrderedSet* homeTimeLine;
 
 @end
 
