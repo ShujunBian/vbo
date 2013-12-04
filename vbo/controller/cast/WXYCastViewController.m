@@ -27,6 +27,8 @@
 #define contantHeight 110.0
 #define contentLabelLineSpace 6.0
 #define navigationbarHeight 64.0
+#define screenShotTableView_Y_PointContentOffset -109.0
+#define theRefreshViewHeight 44.0
 #define tableViewSeprateLine [UIColor colorWithRed:0.0/255.0 green:0.0/255.0 blue:0.0/255.0 alpha:1.0]
 
 @interface WXYCastViewController ()<CastImageViewControllerDelegate,CVDragIndicatorViewDelegate>
@@ -184,7 +186,6 @@
 }
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
-    NSLog(@"the scroll view contentoffset y is %f",scrollView.contentOffset.y);
     if (scrollView.contentOffset.y >= -navigationbarHeight) {
         id<WXYScrollHiddenDelegate> delegate = nil;
         if ([self.parentViewController conformsToProtocol:@protocol(WXYScrollHiddenDelegate)] && [self.parentViewController respondsToSelector:@selector(wxyScrollViewDidScroll:)])
@@ -206,22 +207,23 @@
             [delegate wxyScrollViewDidEndDragging:scrollView willDecelerate:decelerate];
         }
     }
+
     [_dragIndicatorView refreshScrollViewDidEndDragging:scrollView];
     
 }
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
-//    if (scrollView.contentOffset.y >= -navigationbarHeight) {
+    if (scrollView.contentOffset.y >= -navigationbarHeight) {
         id<WXYScrollHiddenDelegate> delegate = nil;
         if ([self.parentViewController conformsToProtocol:@protocol(WXYScrollHiddenDelegate)] && [self.parentViewController respondsToSelector:@selector(wxyScrollViewDidEndDecelerating:)])
         {
             delegate = (id<WXYScrollHiddenDelegate>) self.parentViewController;
             [delegate wxyScrollViewDidEndDecelerating:scrollView];
         }
-//    }
+    }
 }
-#pragma mark - CVDragIndicatorViewDelegate
 
+#pragma mark - CVDragIndicatorViewDelegate
 - (BOOL)refreshTableHeaderDataSourceIsLoading:(CVDragIndicatorView *)view
 {
     //待取好数据后返回yes
@@ -230,18 +232,57 @@
 
 - (void)refreshTableHeaderDidTriggerRefresh:(CVDragIndicatorView *)view
 {
-    [self reloading];
-    [self performSelector:@selector(doneLoadingTableViewData) withObject:nil afterDelay:5.0];
+    [self reloadTableViewDataSource];
+    [self.tableView setUserInteractionEnabled:NO];
+    [SHARE_NW_ENGINE getHomeTimelineOfCurrentUserSucceed:^(NSArray * resultArray){
+        self.weiboContentArray = resultArray;
+        [self performSelector:@selector(doneLoadingTableViewData) withObject:nil afterDelay:0.5];
+    }error:nil];
+
+//    [self performSelector:@selector(doneLoadingTableViewData) withObject:nil afterDelay:3.0];
 }
 
 - (void)reloadTableViewDataSource{
 	_reloading = YES;
-	
 }
 
 - (void)doneLoadingTableViewData{
     _reloading = NO;
+    [self.tableView setUserInteractionEnabled:YES];
+    
+    CGRect windowRect = [UIScreen mainScreen].bounds;
+    UIImageView * screenShotImageView = [[UIImageView alloc]initWithFrame:CGRectMake(0,
+                                                                                     - (screenShotTableView_Y_PointContentOffset + theRefreshViewHeight),
+                                                                                     windowRect.size.width,
+                                                                                     windowRect.size.height + screenShotTableView_Y_PointContentOffset)];
+    [screenShotImageView setImage:[self viewScreenshot]];
+    [self.view addSubview:screenShotImageView];
+    self.tableView.hidden = YES;
+    self.tableView.frame = CGRectMake(0, -windowRect.size.height, windowRect.size.width, windowRect.size.height);
+    [self.tableView reloadData];
+    [UIView animateWithDuration:0.7 delay:0.0 options:UIViewAnimationOptionCurveEaseOut animations:^{
+        self.tableView.hidden = NO;
+        self.tableView.frame = CGRectMake(0, 0, windowRect.size.width, windowRect.size.height);
+        screenShotImageView.alpha = 0.0;
+        screenShotImageView.frame = CGRectMake(0,
+                                               windowRect.size.height,
+                                               windowRect.size.width,
+                                               windowRect.size.height + screenShotTableView_Y_PointContentOffset);
+    }completion:^(BOOL finished){
+    }];
 	[_dragIndicatorView refreshScrollViewDataSourceDidFinishedLoading:_tableView];
+}
+
+#pragma mark - ScreenShot
+- (UIImage *)viewScreenshot
+{
+    CGSize windowSize = [UIScreen mainScreen].bounds.size;
+    UIGraphicsBeginImageContextWithOptions(CGSizeMake(windowSize.width, windowSize.height + screenShotTableView_Y_PointContentOffset), NO, 2);
+    [self.view drawViewHierarchyInRect:CGRectMake(0, screenShotTableView_Y_PointContentOffset, self.view.frame.size.width, self.view.frame.size.height) afterScreenUpdates:NO];
+    UIImage * snapshot = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return snapshot;
 }
 
 #pragma mark - calculate weiboCell Height
@@ -326,7 +367,10 @@
 - (CVDragIndicatorView *)dragIndicatorView
 {
     if (!_dragIndicatorView) {
-        _dragIndicatorView = [[CVDragIndicatorView alloc]initWithFrame:CGRectMake(0, -44.0, 320.0, 44)];
+        _dragIndicatorView = [[CVDragIndicatorView alloc]initWithFrame:CGRectMake(0,
+                                                                                  theRefreshViewHeight,
+                                                                                  [UIScreen mainScreen].bounds.size.width,
+                                                                                  theRefreshViewHeight)];
         _dragIndicatorView.delegate = self;
     }
     return _dragIndicatorView;

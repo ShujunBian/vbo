@@ -5,7 +5,7 @@
 //  Created by Emerson on 13-11-30.
 //  Copyright (c) 2013年 BmwDev. All rights reserved.
 //
-//  Created by Devin Doty on 10/14/09October14.
+//  based on Devin Doty on 10/14/09October14.
 //  Copyright 2009 enormego. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -31,7 +31,7 @@
 
 #define FLIP_ANIMATION_DURATION 0.18f
 #define DEGREETORADIANS  3.1415926 / 180.0
-#define maxScrollOffset 105.0
+#define maxScrollOffset 90.0
 #define theCircleRadius 10.0
 #define navigationbarHeight 64.0
 #define statusBarHeight 20.0
@@ -39,6 +39,9 @@
 @interface CVDragIndicatorView()
 
 @property (nonatomic) float currentEndDegree;
+@property (nonatomic) float turningStartDegree;
+@property (nonatomic, strong) NSTimer * turningAnimationTimer;
+
 - (void)setState:(PullRefreshState)aState;
 
 @end
@@ -50,6 +53,8 @@
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
+        
+        _turningStartDegree = -90.0;
         [self setState:PullRefreshNormal];
         [self setBackgroundColor:[UIColor clearColor]];
     }
@@ -84,44 +89,56 @@
 
 - (void)refreshScrollViewDidScroll:(UIScrollView *)scrollView
 {
-//    NSLog(@"the state is %u",_state);
+    if (_state == PullRefreshNormal) {
+        [self setBezierPathByScrollOffset:- (scrollView.contentOffset.y + navigationbarHeight )];
+    }
+    
+    //    NSLog(@"the state is %u",_state);
     if (_state == PullRefreshLoading) {
-//		
-//        CGFloat offset = MAX(scrollView.contentOffset.y * -1, 0);
-//        offset = MIN(offset, 44);
-//        scrollView.contentInset = UIEdgeInsetsMake(offset, 0.0f, 0.0f, 0.0f);
-		
-	} else if (scrollView.isDragging) {
+        //
+        //        CGFloat offset = MAX(scrollView.contentOffset.y * -1, 0);
+        //        offset = MIN(offset, 44);
+        //        scrollView.contentInset = UIEdgeInsetsMake(offset, 0.0f, 0.0f, 0.0f);
         
+	} else if (scrollView.isDragging) {
 		BOOL _loading = NO;
-        _loading = [_delegate refreshTableHeaderDataSourceIsLoading:self];
-		
+        if (_delegate && [_delegate respondsToSelector:@selector(refreshTableHeaderDataSourceIsLoading:)]) {
+            _loading = [_delegate refreshTableHeaderDataSourceIsLoading:self];
+		}
 		if (_state == PullRefreshPulling && scrollView.contentOffset.y > - (navigationbarHeight + maxScrollOffset)
             && scrollView.contentOffset.y < -statusBarHeight && !_loading) {
 			[self setState:PullRefreshNormal];
-		} else if (_state == PullRefreshNormal && scrollView.contentOffset.y < - (navigationbarHeight + maxScrollOffset) && !_loading) {
+		}
+        else if (_state == PullRefreshNormal && scrollView.contentOffset.y < - (navigationbarHeight + maxScrollOffset) && !_loading) {
 			[self setState:PullRefreshPulling];
+//            _turningAnimationTimer = [NSTimer scheduledTimerWithTimeInterval:0.01 target:self selector:@selector(turningAnimation:) userInfo:nil repeats:YES];
+//            [_turningAnimationTimer fire];
 		}
 	}
 
-    [self setBezierPathByScrollOffset:- (scrollView.contentOffset.y + navigationbarHeight )];
 }
 
-- (void)refreshScrollViewDidEndDragging:(UIScrollView *)scrollView {
+- (void)refreshScrollViewDidEndDragging: (UIScrollView *)scrollView {
 	
 	BOOL _loading = NO;
-    _loading = [_delegate refreshTableHeaderDataSourceIsLoading:self];
+    if (_delegate && [_delegate respondsToSelector:@selector(refreshTableHeaderDataSourceIsLoading:)]) {
+        _loading = [_delegate refreshTableHeaderDataSourceIsLoading:self];
+    }
     
 	if (scrollView.contentOffset.y <= - (navigationbarHeight + maxScrollOffset) && !_loading) {
-		
-        [_delegate refreshTableHeaderDidTriggerRefresh:self];
+        _turningAnimationTimer = [NSTimer scheduledTimerWithTimeInterval:0.01 target:self selector:@selector(turningAnimation:) userInfo:nil repeats:YES];
+        [_turningAnimationTimer fire];
+        
+        if (_delegate && [_delegate respondsToSelector:@selector(refreshTableHeaderDidTriggerRefresh:)]) {
+            [_delegate refreshTableHeaderDidTriggerRefresh:self];
+        }
+        
 		[self setState:PullRefreshLoading];
         
         UIEdgeInsets previousInset = scrollView.contentInset;
-        id<UIScrollViewDelegate> aDelegate = scrollView.delegate;
+        __block id<UIScrollViewDelegate> aDelegate = scrollView.delegate;
         scrollView.delegate = nil;
-        
-        [UIView animateWithDuration:2.0 animations:^{
+        [UIView animateWithDuration:0.5 animations:^{
             scrollView.contentInset = UIEdgeInsetsMake(previousInset.top + (navigationbarHeight - statusBarHeight),
                                                        previousInset.left,
                                                        previousInset.bottom,
@@ -129,16 +146,20 @@
         }completion:^(BOOL finished) {
             scrollView.delegate = aDelegate;
         }];
+        
+        
 	}
 	
 }
 
 - (void)refreshScrollViewDataSourceDidFinishedLoading:(UIScrollView *)scrollView {
-
+    
     UIEdgeInsets previousInset = scrollView.contentInset;
-    id<UIScrollViewDelegate> aDelegate = scrollView.delegate;
+    __block id<UIScrollViewDelegate> aDelegate = scrollView.delegate;
     scrollView.delegate = nil;
-
+    
+//    NSLog(@"the scrollview contentinset is %f",scrollView.contentInset.top);
+    
     [UIView animateWithDuration:0.5 animations:^{
         scrollView.contentInset = UIEdgeInsetsMake(previousInset.top - (navigationbarHeight - statusBarHeight),
                                                    previousInset.left,
@@ -148,8 +169,10 @@
         scrollView.delegate = aDelegate;
     }];
     
+    [_turningAnimationTimer invalidate];
+    _turningStartDegree = -90.0;
 	[self setState:PullRefreshNormal];
-
+    
 }
 
 - (void)setBezierPathByScrollOffset:(float)offset
@@ -157,16 +180,23 @@
     if (offset > maxScrollOffset) {
         offset = maxScrollOffset;
     }
-    else if (offset <0.0) {
+    
+    if (offset <0.0) {
         offset = 0.0;
     }
     else if (offset < maxScrollOffset / 7.0) {
         _currentEndDegree = (1 - offset / (maxScrollOffset / 7)) * (- 90.0);
     }
     else {
-        _currentEndDegree = (offset - maxScrollOffset/ 7) / (maxScrollOffset / 7 * 6) * 225.0;
+        _currentEndDegree = offset / maxScrollOffset * 225.0;
     }
-//    NSLog(@"the currentEnd Degree is %f",_currentEndDegree);
+    //    NSLog(@"the currentEnd Degree is %f",_currentEndDegree);
+    [self setNeedsDisplay];
+}
+
+- (void)turningAnimation:(NSTimer *)timer
+{
+    _turningStartDegree += 2.0;
     [self setNeedsDisplay];
 }
 
@@ -174,35 +204,66 @@
 // An empty implementation adversely affects performance during animation.
 - (void)drawRect:(CGRect)rect
 {
-    // Drawing code
-//绘制原点
-    CGContextRef context = UIGraphicsGetCurrentContext();
     
-    CGContextSetStrokeColorWithColor(context, [[UIColor whiteColor] CGColor]);
-    UIBezierPath* pointPath;
-    float point_x_point = sinf((_currentEndDegree + 90.0) * DEGREETORADIANS) * theCircleRadius;
-    float point_y_point = cosf((_currentEndDegree + 90.0) * DEGREETORADIANS) * theCircleRadius;
-    pointPath = [UIBezierPath bezierPathWithArcCenter:CGPointMake(160.0 + point_x_point, 22.0 - point_y_point)
-                                           radius:1
-                                       startAngle:-90.0 * DEGREETORADIANS
-                                         endAngle:270.0 * DEGREETORADIANS
-                                        clockwise:YES];
-    pointPath.lineWidth = 2.0;
-    [pointPath stroke];
-    CGContextStrokePath(context);
-
-//    NSLog(@"the current point_x_point is %f %f",point_x_point,point_y_point);
-//绘制圆圈
-    CGContextSetStrokeColorWithColor(context, [[UIColor whiteColor] CGColor]);
-    UIBezierPath* aPath;
-    aPath = [UIBezierPath bezierPathWithArcCenter:CGPointMake(160.0, 22.0)
+    if (_state == PullRefreshNormal) {
+        //绘制原点
+        CGContextRef context = UIGraphicsGetCurrentContext();
+        
+        CGContextSetStrokeColorWithColor(context, [[UIColor whiteColor] CGColor]);
+        UIBezierPath* pointPath;
+        float point_x_point = sinf((_currentEndDegree + 90.0) * DEGREETORADIANS) * theCircleRadius;
+        float point_y_point = cosf((_currentEndDegree + 90.0) * DEGREETORADIANS) * theCircleRadius;
+        pointPath = [UIBezierPath bezierPathWithArcCenter:CGPointMake(160.0 + point_x_point, 22.0 - point_y_point)
+                                                   radius:1
+                                               startAngle:-90.0 * DEGREETORADIANS
+                                                 endAngle:270.0 * DEGREETORADIANS
+                                                clockwise:YES];
+        pointPath.lineWidth = 2.0;
+        [pointPath stroke];
+        CGContextStrokePath(context);
+        
+        //绘制圆圈
+        CGContextSetStrokeColorWithColor(context, [[UIColor whiteColor] CGColor]);
+        UIBezierPath* aPath;
+        aPath = [UIBezierPath bezierPathWithArcCenter:CGPointMake(160.0, 22.0)
                                                radius:theCircleRadius
                                            startAngle:-90.0 * DEGREETORADIANS
                                              endAngle:_currentEndDegree * DEGREETORADIANS
                                             clockwise:YES];
-    aPath.lineWidth = 1.0;
-    [aPath stroke];
-    CGContextStrokePath(context);
+        aPath.lineWidth = 1.0;
+        [aPath stroke];
+        CGContextStrokePath(context);
+//        NSLog(@"the current degree is %f",_currentEndDegree);
+    }
+    else {
+        CGContextRef context = UIGraphicsGetCurrentContext();
+        
+        //绘制原点
+        CGContextSetStrokeColorWithColor(context, [[UIColor whiteColor] CGColor]);
+        UIBezierPath* pointPath;
+        float point_x_point = sinf((_turningStartDegree + 315.0 + 90.0) * DEGREETORADIANS) * theCircleRadius;
+        float point_y_point = cosf((_turningStartDegree + 315.0 + 90.0) * DEGREETORADIANS) * theCircleRadius;
+        pointPath = [UIBezierPath bezierPathWithArcCenter:CGPointMake(160.0 + point_x_point, 22.0 - point_y_point)
+                                                   radius:1
+                                               startAngle:-90.0 * DEGREETORADIANS
+                                                 endAngle:270.0 * DEGREETORADIANS
+                                                clockwise:YES];
+        pointPath.lineWidth = 2.0;
+        [pointPath stroke];
+        CGContextStrokePath(context);
+        
+        //绘制圆圈
+        CGContextSetStrokeColorWithColor(context, [[UIColor whiteColor] CGColor]);
+        UIBezierPath* aPath;
+        aPath = [UIBezierPath bezierPathWithArcCenter:CGPointMake(160.0, 22.0)
+                                               radius:theCircleRadius
+                                           startAngle:_turningStartDegree * DEGREETORADIANS
+                                             endAngle:(_turningStartDegree + 315.0)* DEGREETORADIANS
+                                            clockwise:YES];
+        aPath.lineWidth = 1.0;
+        [aPath stroke];
+        CGContextStrokePath(context);
+    }
 }
 
 @end

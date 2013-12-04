@@ -5,7 +5,7 @@
 //  Created by Emerson on 13-11-30.
 //  Copyright (c) 2013年 BmwDev. All rights reserved.
 //
-//  Created by Devin Doty on 10/14/09October14.
+//  based on Devin Doty on 10/14/09October14.
 //  Copyright 2009 enormego. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -36,11 +36,29 @@ typedef enum{
 	PullRefreshLoading,
 } PullRefreshState;
 
-@protocol CVDragIndicatorViewDelegate;
+@class CVDragIndicatorView;
+@protocol CVDragIndicatorViewDelegate
+
+/*! 下拉刷新松手后调用的方法
+ * \param view 下拉刷新的view
+ */
+- (void)refreshTableHeaderDidTriggerRefresh:(CVDragIndicatorView*)view;
+
+/*! 下拉刷新松手后调用的方法
+ * \param view 下拉刷新的view
+ * \returns 是否正在loading
+ */
+- (BOOL)refreshTableHeaderDataSourceIsLoading:(CVDragIndicatorView*)view;
+
+@optional
+
+- (NSDate*)refreshTableHeaderDataSourceLastUpdated:(CVDragIndicatorView*)view;
+@end
+
 @interface CVDragIndicatorView : UIView
 
 @property (nonatomic) PullRefreshState state;
-@property (nonatomic,assign) id <CVDragIndicatorViewDelegate> delegate;
+@property (nonatomic, weak) NSObject <CVDragIndicatorViewDelegate>* delegate;
 
 - (void)refreshScrollViewDidScroll:(UIScrollView *)scrollView;
 - (void)refreshScrollViewDidEndDragging:(UIScrollView *)scrollView;
@@ -49,12 +67,3 @@ typedef enum{
 
 @end
 
-@protocol CVDragIndicatorViewDelegate
-
-- (void)refreshTableHeaderDidTriggerRefresh:(CVDragIndicatorView*)view;
-- (BOOL)refreshTableHeaderDataSourceIsLoading:(CVDragIndicatorView*)view;
-@optional
-
-- (NSDate*)refreshTableHeaderDataSourceLastUpdated:(CVDragIndicatorView*)view;
-
-@end
