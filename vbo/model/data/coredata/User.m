@@ -111,4 +111,25 @@
     NSMutableOrderedSet* orderSet = [self mutableOrderedSetValueForKey:@"statuses"];
     [orderSet removeObjectsInArray:values.array];
 }
+
+
+
+
+- (void)addHomeTimeLineObject:(Status*)value
+{
+
+}
+- (void)removeHomeTimeLineObject:(Status*)value
+{
+
+}
+- (void)addHomeTimeLine:(NSOrderedSet*)value
+{
+
+}
+- (void)removeHomeTimeLine:(NSOrderedSet*)value
+{
+
+}
+
 @end

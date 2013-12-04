@@ -29,6 +29,8 @@
 
 #import <objc/runtime.h>
 
+#import "WXYCachedNetworkEngine.h"
+
 static MKNetworkEngine *DefaultEngine;
 static char imageFetchOperationKey;
 
@@ -40,6 +42,13 @@ const float kFreshLoadAnimationDuration = 0.35f;
 @end
 
 @implementation UIImageView (MKNetworkKitAdditions)
+
+
++ (void)initialize
+{
+    [super initialize];
+    [self setDefaultEngine:[WXYCachedNetworkEngine shareCachedNetworkEngine]];
+}
 
 -(MKNetworkOperation*) imageFetchOperation {
   

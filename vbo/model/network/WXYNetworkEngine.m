@@ -71,10 +71,6 @@
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         s_networkEngine = [[WXYNetworkEngine alloc] initWithHostName:HOST_NAME];
-
-        MKNetworkEngine* imageEngine = [[MKNetworkEngine alloc] init];
-        [imageEngine useCache];
-        [UIImageView setDefaultEngine:imageEngine];
     });
     return s_networkEngine;
 }

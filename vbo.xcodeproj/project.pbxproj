@@ -22,6 +22,8 @@
 		184A0FB0183BAE050003E82E /* LoginUserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 184A0FAF183BAE050003E82E /* LoginUserInfo.m */; };
 		184A0FB1183BAE050003E82E /* LoginUserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 184A0FAF183BAE050003E82E /* LoginUserInfo.m */; };
 		184A0FB3183BC6D70003E82E /* WXYLoginManagerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 184A0FB2183BC6D70003E82E /* WXYLoginManagerTest.m */; };
+		185D74F3184F1D7900FACA47 /* NSManagedObject+OrderSetHepper.m in Sources */ = {isa = PBXBuildFile; fileRef = 185D74F2184F1D7900FACA47 /* NSManagedObject+OrderSetHepper.m */; };
+		185D74F8184F520600FACA47 /* WXYCachedNetworkEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 185D74F7184F520600FACA47 /* WXYCachedNetworkEngine.m */; };
 		185E88A8182AABF40020F3B2 /* NSAlert+MKNetworkKitAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 185E888D182AABF40020F3B2 /* NSAlert+MKNetworkKitAdditions.m */; };
 		185E88A9182AABF40020F3B2 /* NSData+MKBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = 185E888F182AABF40020F3B2 /* NSData+MKBase64.m */; };
 		185E88AA182AABF40020F3B2 /* NSDate+RFC1123.m in Sources */ = {isa = PBXBuildFile; fileRef = 185E8891182AABF40020F3B2 /* NSDate+RFC1123.m */; };
@@ -205,6 +207,10 @@
 		184A0FAE183BAE050003E82E /* LoginUserInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginUserInfo.h; sourceTree = "<group>"; };
 		184A0FAF183BAE050003E82E /* LoginUserInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginUserInfo.m; sourceTree = "<group>"; };
 		184A0FB2183BC6D70003E82E /* WXYLoginManagerTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXYLoginManagerTest.m; sourceTree = "<group>"; };
+		185D74F1184F1D7900FACA47 /* NSManagedObject+OrderSetHepper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSManagedObject+OrderSetHepper.h"; sourceTree = "<group>"; };
+		185D74F2184F1D7900FACA47 /* NSManagedObject+OrderSetHepper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSManagedObject+OrderSetHepper.m"; sourceTree = "<group>"; };
+		185D74F6184F520600FACA47 /* WXYCachedNetworkEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXYCachedNetworkEngine.h; sourceTree = "<group>"; };
+		185D74F7184F520600FACA47 /* WXYCachedNetworkEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXYCachedNetworkEngine.m; sourceTree = "<group>"; };
 		185E888C182AABF40020F3B2 /* NSAlert+MKNetworkKitAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSAlert+MKNetworkKitAdditions.h"; sourceTree = "<group>"; };
 		185E888D182AABF40020F3B2 /* NSAlert+MKNetworkKitAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSAlert+MKNetworkKitAdditions.m"; sourceTree = "<group>"; };
 		185E888E182AABF40020F3B2 /* NSData+MKBase64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+MKBase64.h"; sourceTree = "<group>"; };
@@ -472,6 +478,8 @@
 				18EB0A01182BED82005CC27D /* StatusPicture.m */,
 				18EB09E0182BAB37005CC27D /* User.h */,
 				18EB09E1182BAB37005CC27D /* User.m */,
+				185D74F1184F1D7900FACA47 /* NSManagedObject+OrderSetHepper.h */,
+				185D74F2184F1D7900FACA47 /* NSManagedObject+OrderSetHepper.m */,
 			);
 			path = coredata;
 			sourceTree = "<group>";
@@ -485,6 +493,8 @@
 				1841100218165608008B700C /* WXYNetworkOperation.m */,
 				1841100418165626008B700C /* WXYError.h */,
 				1841100518165626008B700C /* WXYError.m */,
+				185D74F6184F520600FACA47 /* WXYCachedNetworkEngine.h */,
+				185D74F7184F520600FACA47 /* WXYCachedNetworkEngine.m */,
 			);
 			path = network;
 			sourceTree = "<group>";
@@ -1252,6 +1262,7 @@
 				18411000181655EB008B700C /* WXYNetworkEngine.m in Sources */,
 				4D5F23AE184B2510007A0898 /* WatchListTableViewController.m in Sources */,
 				185E88AA182AABF40020F3B2 /* NSDate+RFC1123.m in Sources */,
+				185D74F3184F1D7900FACA47 /* NSManagedObject+OrderSetHepper.m in Sources */,
 				4D784890183147C40025ADDA /* UIImage+ImageEffects.m in Sources */,
 				18016452184D7889003EC38F /* CVImageTransitionAnimation.m in Sources */,
 				1868F1241829D7EA00C5764D /* WXYSolidTabBar.m in Sources */,
@@ -1265,6 +1276,7 @@
 				185E88AD182AABF40020F3B2 /* UIAlertView+MKNetworkKitAdditions.m in Sources */,
 				51652DED1835D7EF004E4D30 /* UIFont+TextKitAddition.m in Sources */,
 				185E88B9182AAE670020F3B2 /* UIImage+ImageEffects.m in Sources */,
+				185D74F8184F520600FACA47 /* WXYCachedNetworkEngine.m in Sources */,
 				18A6A687182FF65C00D9FB7F /* WXYBarButtonAbstract.m in Sources */,
 				18EB09D9182B82F1005CC27D /* WXYDataModel.m in Sources */,
 				18DA5F32184C65BF00902A47 /* WXYUserProfileView.m in Sources */,

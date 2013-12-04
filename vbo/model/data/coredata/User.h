@@ -47,12 +47,12 @@
 @property (nonatomic, retain) NSSet *groups;    //此属性仅作为group的users属性的相反属性，不使用
 @property (nonatomic, retain) NSSet *followedUsers;
 @property (nonatomic, retain) NSSet *followingUsers;
+
+//List cached
 @property (nonatomic, retain) NSOrderedSet *followingList;
 @property (nonatomic, retain) NSOrderedSet *followedList;
 @property (nonatomic, retain) NSSet *beInFollowingList;
 @property (nonatomic, retain) NSSet *beInFollowedList;
-
-//List cached
 @property (nonatomic, retain) NSOrderedSet* homeTimeLine;
 
 @end
@@ -87,6 +87,11 @@
 - (void)removeFollowingUsersObject:(User *)value;
 - (void)addFollowingUsers:(NSSet *)values;
 - (void)removeFollowingUsers:(NSSet *)values;
+
+- (void)addHomeTimeLineObject:(Status*)value;
+- (void)removeHomeTimeLineObject:(Status*)value;
+- (void)addHomeTimeLine:(NSOrderedSet*)value;
+- (void)removeHomeTimeLine:(NSOrderedSet*)value;
 
 
 + (User*)insertWithId:(NSNumber*)uId InContext:(NSManagedObjectContext*)context;
