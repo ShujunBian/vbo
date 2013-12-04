@@ -38,6 +38,9 @@
 @dynamic repostedBy;
 @dynamic repostStatus;
 @dynamic groups;
+@dynamic commentList;
+@dynamic beInTimeline;
+@dynamic beInStatusList;
 
 
 + (Status*)insertWithId:(NSNumber*)sId InContext:(NSManagedObjectContext*)context

@@ -6,7 +6,11 @@
 //  Copyright (c) 2013 BmwDev. All rights reserved.
 //
 
+
+
 #import "WXYDataModel.h"
+#import "WXYLoginManager.h"
+#import "NSArray+ConvertToOrderedSet.h"
 #import <CoreData/CoreData.h>
 
 @interface WXYDataModel ()
@@ -122,6 +126,7 @@
     [self saveCacheContext];
 }
 
+#pragma mark - Base
 - (id)getEntity:(NSString*)entityName byId:(long long)entityId idPropertyName:(NSString*)propertyName
 {
     NSFetchRequest* fetchRequest = [NSFetchRequest fetchRequestWithEntityName:entityName];
@@ -206,5 +211,46 @@
         returnGroup = [Group insertWithId:@(groupId) inContext:self.cacheManagedObjectContext];
     }
     return returnGroup;
+}
+
+#pragma mark - Time Line
+- (NSArray*)getCachedHomeTimeLineStatusOfCurrentUserPage:(int)page
+{
+    User* user = SHARE_LOGIN_MANAGER.currentUser;
+    NSArray* timeLineArray = user.homeTimeLine.array;
+    NSArray* returnArray = nil;
+
+    int fromIndex = (page - 1) * STATUS_PER_PAGE;
+    int toIndex = page * STATUS_PER_PAGE;
+    if (timeLineArray.count > fromIndex)
+    {
+        toIndex = timeLineArray.count < toIndex ? timeLineArray.count : toIndex;
+        returnArray = [timeLineArray subarrayWithRange:NSMakeRange(fromIndex, toIndex - fromIndex)];
+    }
+    return returnArray;
+}
+
+- (void)mergeCachedHomeTimeLineStatusWithNewStatus:(NSArray*)newStatuses user:(User*)user page:(int)page
+{
+    int fromIndex = (page - 1) * STATUS_PER_PAGE;
+    NSArray* removeArray = [user.homeTimeLine.array subarrayWithRange:NSMakeRange(fromIndex, user.homeTimeLine.count - fromIndex)];
+    [user removeHomeTimeLine:[removeArray convertToOrderedSet]];
+    [user addHomeTimeLine:[newStatuses convertToOrderedSet] ];
+
+    for (Status* s in removeArray)
+    {
+        if ([self checkStatusDeletable:s])
+        {
+            [self.cacheManagedObjectContext deleteObject:s];
+#warning 未处理删除User
+        }
+    }
+    [self saveCacheContext];
+}
+
+#pragma mark - Check
+- (BOOL)checkStatusDeletable:(Status*)status
+{
+    return !status.beInTimeline.count && !status.beInStatusList.count && !status.groups.count;
 }
 @end

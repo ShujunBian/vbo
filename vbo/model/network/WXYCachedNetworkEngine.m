@@ -22,4 +22,9 @@
     return s_networkEngine;
 }
 
+- (int)cacheMemoryCost
+{
+    return 50;
+}
+
 @end

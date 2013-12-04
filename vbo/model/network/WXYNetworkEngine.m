@@ -188,13 +188,15 @@
 
 #pragma mark - 微博接口
 #pragma mark 读取
-- (MKNetworkOperation*)getHomeTimelineOfCurrentUserSucceed:(ArrayBlock)succeedBlock
-                                                     error:(ErrorBlock)errorBlock
+- (MKNetworkOperation*)getHomeTimelineOfCurrentUserPage:(int)page
+                                                Succeed:(ArrayBlock)succeedBlock
+                                                  error:(ErrorBlock)errorBlock;
 {
     MKNetworkOperation* op = nil;
     op = [self startOperationWithPath:HOME_TIMELINE_URL
                             needLogin:YES
-                             paramers:@{}
+                             paramers:@{@"page":@(page),
+                                        @"count":@(STATUS_PER_PAGE)}
                           onSucceeded:^(MKNetworkOperation *completedOperation)
           {
               NSDictionary* responseDict = completedOperation.responseJSON;
@@ -202,12 +204,18 @@
               
               NSMutableArray* returnArray = [[NSMutableArray alloc] init];
               
+              
+              User* user = SHARE_LOGIN_MANAGER.currentUser;
+              
               for (NSDictionary* dict in statuesDictArray)
               {
                   Status* status = [WXYNetworkDataFactory getStatusWithDictIncludeUser:dict];
                   
                   [returnArray addObject:status];
               }
+              
+              [SHARE_DATA_MODEL mergeCachedHomeTimeLineStatusWithNewStatus:returnArray user:user page:page];
+              
               [SHARE_DATA_MODEL saveCacheContext];
               succeedBlock(returnArray);
               

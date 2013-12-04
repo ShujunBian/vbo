@@ -10,6 +10,7 @@
 #import "Status.h"
 #import "NSDictionary+noNilValueForKey.h"
 #import "NSDate+Addition.h"
+#import "NSManagedObject+OrderSetHepper.h"
 
 @implementation User
 
@@ -46,6 +47,13 @@
 @dynamic groups;
 @dynamic followedUsers;
 @dynamic followingUsers;
+
+@dynamic followedList;
+@dynamic followingList;
+@dynamic statusList;
+@dynamic beInFollowedList;
+@dynamic beInFollowingList;
+@dynamic homeTimeLine;
 
 + (User*)insertWithId:(NSNumber*)uId InContext:(NSManagedObjectContext*)context
 {
@@ -113,23 +121,26 @@
 }
 
 
-
+- (NSOrderedSet*)homeTimeLine
+{
+    return [self mutableOrderedSetValueForKey:@"homeTimeLine"];
+}
 
 - (void)addHomeTimeLineObject:(Status*)value
 {
-
+    [self addOrderSetObject:value forKey:@"homeTimeLine"];
 }
 - (void)removeHomeTimeLineObject:(Status*)value
 {
-
+    [self removeOrderSetObject:value forKey:@"homeTimeLine"];
 }
 - (void)addHomeTimeLine:(NSOrderedSet*)value
 {
-
+    [self addOrderSet:value forKey:@"homeTimeLine"];
 }
 - (void)removeHomeTimeLine:(NSOrderedSet*)value
 {
-
+    [self removeOrderSet:value forKey:@"homeTimeLine"];
 }
 
 @end

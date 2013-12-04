@@ -31,7 +31,7 @@
         <attribute name="commentsCount" optional="YES" attributeType="Integer 64" defaultValueString="0">
             <userInfo/>
         </attribute>
-        <attribute name="createdAt" attributeType="Date">
+        <attribute name="createdAt" optional="YES" attributeType="Date">
             <userInfo/>
         </attribute>
         <attribute name="favorited" optional="YES" attributeType="Boolean">
@@ -49,7 +49,7 @@
             <userInfo/>
         </attribute>
         <attribute name="statusMID" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="text" attributeType="String">
+        <attribute name="text" optional="YES" attributeType="String">
             <userInfo/>
         </attribute>
         <attribute name="thumbnailPicURL" optional="YES" attributeType="String" syncable="YES"/>
@@ -57,7 +57,8 @@
         <attribute name="visible" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="visibleListId" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <relationship name="author" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="statuses" inverseEntity="User" syncable="YES"/>
-        <relationship name="beInTimeLine" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="User" inverseName="homeTimeLine" inverseEntity="User" syncable="YES"/>
+        <relationship name="beInStatusList" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="User" inverseName="statusList" inverseEntity="User" syncable="YES"/>
+        <relationship name="beInTimeline" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="User" inverseName="homeTimeLine" inverseEntity="User" syncable="YES"/>
         <relationship name="commentList" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Comment" inverseName="beInCommentList" inverseEntity="Comment" syncable="YES"/>
         <relationship name="comments" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Comment" inverseName="status" inverseEntity="Comment" syncable="YES"/>
         <relationship name="groups" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Group" inverseName="statuses" inverseEntity="Group" syncable="YES"/>
@@ -112,7 +113,7 @@
         <attribute name="userDescription" optional="YES" attributeType="String">
             <userInfo/>
         </attribute>
-        <attribute name="userID" optional="YES" attributeType="Integer 64" defaultValueString="0" indexed="YES" syncable="YES"/>
+        <attribute name="userID" attributeType="Integer 64" defaultValueString="0" indexed="YES" syncable="YES"/>
         <attribute name="verified" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="verifiedReason" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="beInFollowedList" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="User" inverseName="followedList" inverseEntity="User" syncable="YES"/>
@@ -123,9 +124,10 @@
         <relationship name="followingList" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="User" inverseName="beInFollowingList" inverseEntity="User" syncable="YES"/>
         <relationship name="followingUsers" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="User" inverseName="followedUsers" inverseEntity="User" syncable="YES"/>
         <relationship name="groups" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Group" inverseName="users" inverseEntity="Group" syncable="YES"/>
-        <relationship name="homeTimeLine" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Status" inverseName="beInTimeLine" inverseEntity="Status" syncable="YES"/>
+        <relationship name="homeTimeLine" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Status" inverseName="beInTimeline" inverseEntity="Status" syncable="YES"/>
         <relationship name="ownGroups" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Group" inverseName="owner" inverseEntity="Group" syncable="YES"/>
         <relationship name="statuses" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Status" inverseName="author" inverseEntity="Status" syncable="YES"/>
+        <relationship name="statusList" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Status" inverseName="beInStatusList" inverseEntity="Status" syncable="YES"/>
     </entity>
     <elements>
         <element name="Comment" positionX="0" positionY="0" width="0" height="0"/>

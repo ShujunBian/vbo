@@ -50,7 +50,8 @@ typedef enum
 @property (nonatomic, retain) NSOrderedSet *commentList;
 
 //List Cached
-@property (nonatomic, retain) NSSet* beInTimeLine;
+@property (nonatomic, retain) NSSet* beInTimeline;
+@property (nonatomic, retain) NSSet* beInStatusList;
 
 @end
 

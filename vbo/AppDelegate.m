@@ -116,25 +116,7 @@
         } error:^(NSError *error) {
 #warning 错误未处理
         }];
-#warning 未获取用户信息，需要再次发送网络请求
         
-        
-        
-        
-        //        NSString *title = @"认证结果";
-        //        NSString *message = [NSString stringWithFormat:@"响应状态: %d\nresponse.userId: %@\nresponse.accessToken: %@\n响应UserInfo数据: %@\n原请求UserInfo数据: %@",
-        //                             response.statusCode, [(WBAuthorizeResponse *)response userID], [(WBAuthorizeResponse *)response accessToken], response.userInfo, response.requestUserInfo];
-        //        UIAlertView *alert =
-        //        [[UIAlertView alloc] initWithTitle:title
-        //                                   message:message
-        //                                  delegate:nil
-        //                         cancelButtonTitle:@"确定"
-        //                         otherButtonTitles:nil];
-        
-        //        self.wbtoken = [(WBAuthorizeResponse *)response accessToken];
-        
-        //        [alert show];
-        //        [alert release];
     }
 }
 

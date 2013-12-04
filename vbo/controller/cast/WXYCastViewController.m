@@ -84,10 +84,11 @@
 
 - (void)fetchWeiboContent
 {
-    [SHARE_NW_ENGINE getHomeTimelineOfCurrentUserSucceed:^(NSArray * resultArray){
-        self.weiboContentArray = resultArray;
-        [self.tableView reloadData];
-        [NSNotificationCenter postDidFetchCurrentUserNameNotification];
+    [SHARE_NW_ENGINE getHomeTimelineOfCurrentUserPage:1
+                                              Succeed:^(NSArray * resultArray){
+                                                  self.weiboContentArray = resultArray;
+                                                  [self.tableView reloadData];
+                                                  [NSNotificationCenter postDidFetchCurrentUserNameNotification];
         
         //        [self performSelector:@selector(snap) withObject:nil afterDelay:5.0];
         

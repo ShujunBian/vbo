@@ -54,6 +54,7 @@
 @property (nonatomic, retain) NSSet *beInFollowingList;
 @property (nonatomic, retain) NSSet *beInFollowedList;
 @property (nonatomic, retain) NSOrderedSet* homeTimeLine;
+@property (nonatomic, retain) NSOrderedSet* statusList;
 
 @end
 

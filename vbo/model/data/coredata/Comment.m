@@ -23,6 +23,7 @@
 @dynamic user;
 @dynamic repliedComments;
 @dynamic replyComment;
+@dynamic beInCommentList;
 
 + (Comment*)insertWithId:(NSNumber*)cId InContext:(NSManagedObjectContext*)context;
 {
