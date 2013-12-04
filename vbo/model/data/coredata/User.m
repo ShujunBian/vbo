@@ -93,7 +93,6 @@
 }
 
 #pragma mark - Order RelationShip
-#warning 需要重写，根据时间进行排序、添加
 - (NSOrderedSet*)statuses
 {
     return [self mutableOrderedSetValueForKey:@"statuses"];
@@ -102,6 +101,16 @@
 - (void)addStatusesObject:(Status *)value
 {
     NSMutableOrderedSet* orderSet = [self mutableOrderedSetValueForKey:@"statuses"];
+    int index = 0;
+    for (index = 0; index < orderSet.count; index++)
+    {
+        Status* s = orderSet[index];
+        if ([value.createdAt compare:s.createdAt] == NSOrderedDescending)
+        {
+            break;
+        }
+    }
+    [orderSet insertObject:value atIndex:index];
     [orderSet addObject:value];
 }
 - (void)removeStatusesObject:(Status *)value
@@ -111,7 +120,37 @@
 }
 - (void)addStatuses:(NSOrderedSet *)values
 {
+    NSMutableOrderedSet*  mutableValues = [values mutableCopy];
+    [mutableValues sortUsingComparator:^NSComparisonResult(id obj1, id obj2)
+     {
+         Status* l = (Status*)obj1;
+         Status* r = (Status*)obj2;
+         return -[l.createdAt compare:r.createdAt];
+     }];
     NSMutableOrderedSet* orderSet = [self mutableOrderedSetValueForKey:@"statuses"];
+    
+    //归并排序
+    int i = 0, j = 0;
+    for (j = 0; j < orderSet.count; j++)
+    {
+        Status* v = mutableValues[i];
+        Status* s = orderSet[j];
+        if ([v.createdAt compare:s.createdAt] == NSOrderedDescending)
+        {
+            [orderSet insertObject:v atIndex:j];
+            i++;
+            if (i == mutableValues.count)
+            {
+                break;
+            }
+        }
+    }
+    if (i != mutableValues.count)
+    {
+        NSArray* remainArray = [mutableValues.array subarrayWithRange:NSMakeRange(i, mutableValues.count - i)];
+        [orderSet addObjectsFromArray:remainArray];
+    }
+    
     [orderSet addObjectsFromArray:values.array];
 }
 - (void)removeStatuses:(NSOrderedSet *)values
