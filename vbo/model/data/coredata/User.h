@@ -11,6 +11,7 @@
 
 @class Status;
 @class Comment;
+@class AtEntity;
 
 @interface User : NSManagedObject
 //各项属性含义参看 http://open.weibo.com/wiki/2/users/show
@@ -56,6 +57,9 @@
 @property (nonatomic, retain) NSOrderedSet* homeTimeLine;
 @property (nonatomic, retain) NSOrderedSet* statusList;
 
+//At
+@property (nonatomic, retain) NSOrderedSet* atEntityList;
+@property (nonatomic, retain) NSSet* beAted;
 @end
 
 @interface User (CoreDataGeneratedAccessors)
@@ -97,6 +101,11 @@
 
 + (User*)insertWithId:(NSNumber*)uId InContext:(NSManagedObjectContext*)context;
 
+
+
 - (void)updateWithDict:(NSDictionary*)dict;
+- (void)sortAtEntityList;
+- (AtEntity*)getAtEntityOfUser:(User*)user;
+
 
 @end

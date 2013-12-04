@@ -8,12 +8,14 @@
 
 #import "User.h"
 #import "Status.h"
+#import "AtEntity.h"
 #import "NSDictionary+noNilValueForKey.h"
 #import "NSDate+Addition.h"
 #import "NSManagedObject+OrderSetHepper.h"
 
 @implementation User
-
+@dynamic beAted;
+@dynamic atEntityList;
 @dynamic blogURL;
 @dynamic cityCode;
 @dynamic domain;
@@ -64,6 +66,7 @@
 
 - (void)updateWithDict:(NSDictionary*)dict
 {
+    self.userID = [dict noNilValueForKey:@"id"];
     self.screenName = [dict noNilValueForKey:@"screen_name"];
     self.name = [dict noNilValueForKey:@"name"];
     self.provinceCode = [dict noNilValueForKey:@"province"];
@@ -182,4 +185,30 @@
     [self removeOrderSet:value forKey:@"homeTimeLine"];
 }
 
+- (NSOrderedSet*)atEntityList
+{
+    return  [self mutableOrderedSetValueForKey:@"atEntityList"];
+}
+
+- (void)sortAtEntityList
+{
+    NSMutableOrderedSet* set = [self mutableOrderedSetValueForKey:@"atEntityList"];
+    [set sortUsingComparator:^NSComparisonResult(id obj1, id obj2) {
+        AtEntity* l = (AtEntity*)obj1;
+        AtEntity* r = (AtEntity*)obj2;
+        return - [l.time compare:r.time];
+    }];
+}
+- (AtEntity*)getAtEntityOfUser:(User*)user
+{
+    AtEntity* e = nil;
+    for (AtEntity* entity in self.atEntityList)
+    {
+        if ([entity.user isEqual:user])
+        {
+            e = entity;
+        }
+    }
+    return e;
+}
 @end

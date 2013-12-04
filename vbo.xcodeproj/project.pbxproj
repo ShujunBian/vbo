@@ -25,6 +25,7 @@
 		1830F874184F6A5500516D72 /* vbo-Info.plist in Sources */ = {isa = PBXBuildFile; fileRef = 515B0BF318082A9B0092BADB /* vbo-Info.plist */; };
 		1830F875184F6A5500516D72 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 515B0BF718082A9B0092BADB /* main.m */; };
 		1830F88B184F744A00516D72 /* NSArray+ConvertToOrderedSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 1830F88A184F744A00516D72 /* NSArray+ConvertToOrderedSet.m */; };
+		1830F890184F9A3C00516D72 /* AtEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 1830F88F184F9A3C00516D72 /* AtEntity.m */; };
 		1838DF1F181E677A003D015A /* libWeiboSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1838DF1C181E677A003D015A /* libWeiboSDK.a */; };
 		1838DF20181E677A003D015A /* WeiboSDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 1838DF1D181E677A003D015A /* WeiboSDK.bundle */; };
 		18411000181655EB008B700C /* WXYNetworkEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 18410FFF181655EB008B700C /* WXYNetworkEngine.m */; };
@@ -205,6 +206,8 @@
 		1808F45B1835382900829471 /* WXYGroupTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXYGroupTest.m; sourceTree = "<group>"; };
 		1830F889184F744A00516D72 /* NSArray+ConvertToOrderedSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+ConvertToOrderedSet.h"; sourceTree = "<group>"; };
 		1830F88A184F744A00516D72 /* NSArray+ConvertToOrderedSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+ConvertToOrderedSet.m"; sourceTree = "<group>"; };
+		1830F88E184F9A3C00516D72 /* AtEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AtEntity.h; sourceTree = "<group>"; };
+		1830F88F184F9A3C00516D72 /* AtEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AtEntity.m; sourceTree = "<group>"; };
 		1838DF1C181E677A003D015A /* libWeiboSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeiboSDK.a; sourceTree = "<group>"; };
 		1838DF1D181E677A003D015A /* WeiboSDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = WeiboSDK.bundle; sourceTree = "<group>"; };
 		1838DF1E181E677A003D015A /* WeiboSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeiboSDK.h; sourceTree = "<group>"; };
@@ -495,6 +498,8 @@
 				18EB09E1182BAB37005CC27D /* User.m */,
 				185D74F1184F1D7900FACA47 /* NSManagedObject+OrderSetHepper.h */,
 				185D74F2184F1D7900FACA47 /* NSManagedObject+OrderSetHepper.m */,
+				1830F88E184F9A3C00516D72 /* AtEntity.h */,
+				1830F88F184F9A3C00516D72 /* AtEntity.m */,
 			);
 			path = coredata;
 			sourceTree = "<group>";
@@ -1226,6 +1231,7 @@
 				185E88AF182AABF40020F3B2 /* MKNetworkEngine.m in Sources */,
 				18A67CDC184CF42B00C81722 /* WXYUserProfileGenderAndLocationCell.m in Sources */,
 				1868F0FE1829C8B200C5764D /* WXYRootTabbarViewController.m in Sources */,
+				1830F890184F9A3C00516D72 /* AtEntity.m in Sources */,
 				51510C18183BDF3B00BD7823 /* ComReqDetailCell.m in Sources */,
 				18EED35518158653000856CE /* WXYTestViewController.m in Sources */,
 				1868F10B1829CE0100C5764D /* WXYDiscoverViewController.m in Sources */,

@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="3401" systemVersion="13A603" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="AtEntity" representedClassName="AtEntity" syncable="YES">
+        <attribute name="time" optional="YES" attributeType="Integer 32" defaultValueString="0" spotlightIndexingEnabled="YES" syncable="YES"/>
+        <relationship name="owner" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="atEntityList" inverseEntity="User" syncable="YES"/>
+        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="beAted" inverseEntity="User" syncable="YES"/>
+    </entity>
     <entity name="Comment" representedClassName="Comment" syncable="YES">
         <attribute name="commentID" optional="YES" attributeType="Integer 64" defaultValueString="0" indexed="YES" syncable="YES"/>
         <attribute name="commentMID" optional="YES" attributeType="String" syncable="YES"/>
@@ -116,6 +121,8 @@
         <attribute name="userID" attributeType="Integer 64" defaultValueString="0" indexed="YES" syncable="YES"/>
         <attribute name="verified" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="verifiedReason" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="atEntityList" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="AtEntity" inverseName="owner" inverseEntity="AtEntity" syncable="YES"/>
+        <relationship name="beAted" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="AtEntity" inverseName="user" inverseEntity="AtEntity" syncable="YES"/>
         <relationship name="beInFollowedList" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="User" inverseName="followedList" inverseEntity="User" syncable="YES"/>
         <relationship name="beInFollowingList" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="User" inverseName="followingList" inverseEntity="User" syncable="YES"/>
         <relationship name="comments" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Comment" inverseName="user" inverseEntity="Comment" syncable="YES"/>
@@ -135,5 +142,6 @@
         <element name="Status" positionX="0" positionY="0" width="0" height="0"/>
         <element name="StatusPicture" positionX="0" positionY="0" width="0" height="0"/>
         <element name="User" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="AtEntity" positionX="0" positionY="0" width="0" height="0"/>
     </elements>
 </model>

@@ -253,4 +253,46 @@
 {
     return !status.beInTimeline.count && !status.beInStatusList.count && !status.groups.count;
 }
+
+#pragma mark - At History
+- (NSArray*)getTopAtUser:(int)count
+{
+    NSMutableArray* returnArray = [@[] mutableCopy];
+    User* u = SHARE_LOGIN_MANAGER.currentUser;
+    
+    count = count < u.atEntityList.count ? count : u.atEntityList.count;
+    
+    for (AtEntity* entity in u.atEntityList)
+    {
+        [returnArray addObject:entity.user];
+    }
+    return returnArray;
+}
+
+- (void)recordAtUser:(User*)user
+{
+    if (user)
+    {
+        User* currentUser = SHARE_LOGIN_MANAGER.currentUser;
+        AtEntity* entity = [currentUser getAtEntityOfUser:user];
+        if (!entity)
+        {
+            AtEntity* entity = [AtEntity insertWithOwer:currentUser User:user inContext:self.cacheManagedObjectContext];
+        }
+        entity.time = @(entity.time.longValue + 1);
+        [currentUser sortAtEntityList];
+        [SHARE_DATA_MODEL saveCacheContext];
+    }
+}
+- (void)recordAtUserById:(NSNumber*)userId
+{
+    User* user = [self getUserById:userId.longLongValue];
+    [self recordAtUser:user];
+}
+- (void)recordAtUserByScreenName:(NSString*)screenName
+{
+    User* user = [self getUserByScreenName:screenName];
+    [self recordAtUser:user];
+}
+
 @end
