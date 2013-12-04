@@ -10,8 +10,15 @@
 
 @class Status;
 
+typedef enum{
+	CommentType = 0,
+	RepostType,
+	MoreType,
+} ComRepMoreType;
+
 @interface ComRepViewController : UIViewController
 
 @property (nonatomic, strong) Status * currentStatus;
+@property (nonatomic) ComRepMoreType currentType;
 
 @end

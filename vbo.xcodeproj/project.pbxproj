@@ -217,7 +217,6 @@
 		5199293818459CD00000216F /* CastImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5199293718459CD00000216F /* CastImageViewController.m */; };
 		51AACA90183D027100793547 /* ScreenShotHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 51AACA8F183D027100793547 /* ScreenShotHelper.m */; };
 		51DD4DE01849BEAB00999DDF /* CVDragIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 51DD4DDF1849BEAB00999DDF /* CVDragIndicatorView.m */; };
-		51DD4DE31849BECB00999DDF /* CVDragIndicatorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 51DD4DE21849BECB00999DDF /* CVDragIndicatorView.xib */; };
 		51E04EB218491061001D9500 /* CVImageDismissTransitionAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 51E04EB118491061001D9500 /* CVImageDismissTransitionAnimation.m */; };
 		51F8FA28182E0F5C00E211AC /* TTTAttributedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 51F8FA27182E0F5C00E211AC /* TTTAttributedLabel.m */; };
 /* End PBXBuildFile section */
@@ -456,7 +455,6 @@
 		51AACA8F183D027100793547 /* ScreenShotHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScreenShotHelper.m; sourceTree = "<group>"; };
 		51DD4DDE1849BEAB00999DDF /* CVDragIndicatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CVDragIndicatorView.h; sourceTree = "<group>"; };
 		51DD4DDF1849BEAB00999DDF /* CVDragIndicatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CVDragIndicatorView.m; sourceTree = "<group>"; };
-		51DD4DE21849BECB00999DDF /* CVDragIndicatorView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CVDragIndicatorView.xib; sourceTree = "<group>"; };
 		51E04EB018491061001D9500 /* CVImageDismissTransitionAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CVImageDismissTransitionAnimation.h; sourceTree = "<group>"; };
 		51E04EB118491061001D9500 /* CVImageDismissTransitionAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CVImageDismissTransitionAnimation.m; sourceTree = "<group>"; };
 		51F8FA26182E0F5C00E211AC /* TTTAttributedLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTTAttributedLabel.h; sourceTree = "<group>"; };
@@ -673,7 +671,6 @@
 				5199293718459CD00000216F /* CastImageViewController.m */,
 				51DD4DDE1849BEAB00999DDF /* CVDragIndicatorView.h */,
 				51DD4DDF1849BEAB00999DDF /* CVDragIndicatorView.m */,
-				51DD4DE21849BECB00999DDF /* CVDragIndicatorView.xib */,
 			);
 			path = cast;
 			sourceTree = "<group>";
@@ -1196,7 +1193,6 @@
 				18B0C94F184CC31600347492 /* WXYUserProfileNumberView.xib in Resources */,
 				18EED32F1815853E000856CE /* README.txt in Resources */,
 				1868F1381829EC7A00C5764D /* test.png in Resources */,
-				51DD4DE31849BECB00999DDF /* CVDragIndicatorView.xib in Resources */,
 				518A1CBE1843243300D36AFD /* EmoticonsInfo.plist in Resources */,
 				1838DF20181E677A003D015A /* WeiboSDK.bundle in Resources */,
 				4D47D4011849368E00B12FC0 /* bg.png in Resources */,

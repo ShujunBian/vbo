@@ -64,10 +64,15 @@
                                                                                   withWidth:254.0];
     [_commentTextView setScrollEnabled:NO];
     
-    UIImage * shadowImage = [UIImage imageNamed:@"card_shadow_unit.png"];
-    UIEdgeInsets insets = UIEdgeInsetsMake(0, 0, 0, 0);
-    [shadowImage resizableImageWithCapInsets:insets resizingMode:UIImageResizingModeStretch];
-    [_shadowImageView setImage:shadowImage];
+    UIGraphicsBeginImageContext(CGSizeMake(320.0, 1.0));
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    CGContextSetStrokeColorWithColor(context, [[UIColor colorWithRed:224.0/255.0 green:224.0/255.0 blue:224.0/255.0 alpha:1.0] CGColor]);
+    CGContextMoveToPoint(context, 0.0, 0.0);
+    CGContextAddLineToPoint(context, 320.0, 0.0);
+    CGContextStrokePath(context);
+    UIImage * linePic = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    [_shadowImageView setImage:linePic];
 }
 
 - (NSMutableAttributedString *)commentContentLabelAttributedString

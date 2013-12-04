@@ -28,7 +28,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
     _weiboDetailImageView.frame = _initialRect;
     _weiboDetailImageView.contentMode = UIViewContentModeScaleAspectFill;
     _weiboDetailImageView.clipsToBounds = YES;
