@@ -27,7 +27,12 @@ enum
 {
     kRowGenderAndLocation = 0,
     kRowUserDescription,
-    kRowUserStatus
+    kRowUserStatusCount,
+    kRowUserStatus,
+    kRowMoreStatus,
+    kRowCollectionStatus,
+    kRowZanStatus,
+    kRowCount
 };
 
 @interface WXYMineViewController ()
@@ -35,7 +40,11 @@ enum
 @property (strong, nonatomic) WXYUserProfilePhotoView* photoView;
 @property (strong, nonatomic) WXYUserProfileGenderAndLocationCell* genderAndLocationCell;
 @property (strong, nonatomic) UITableViewCell* descriptionCell;
+@property (strong, nonatomic) UITableViewCell* statusCountCell;
 @property (strong, nonatomic) CastViewCell* statusCell;
+@property (strong, nonatomic) UITableViewCell* moreStatusCell;
+@property (strong, nonatomic) UITableViewCell* collectionCell;
+@property (strong, nonatomic) UITableViewCell* zanCell;
 
 - (void)accountButtonPressed;
 - (void)settingButtonPressed;
@@ -79,6 +88,15 @@ enum
     }
     return _descriptionCell;
 }
+- (UITableViewCell*)statusCountCell
+{
+    if (!_statusCountCell)
+    {
+        _statusCountCell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"USER_PROFILE_STATUS_COUNT_CELL"];
+    }
+    return _statusCountCell;
+}
+
 - (CastViewCell*)statusCell
 {
     if (!_statusCell)
@@ -93,6 +111,37 @@ enum
     }
     return _statusCell;
 }
+- (UITableViewCell*)moreStatusCell
+{
+    if (!_moreStatusCell)
+    {
+        _moreStatusCell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"USER_PROFILE_MORE_STATUS_CELL"];
+        _moreStatusCell.textLabel.text = @"查看更多微博";
+        _moreStatusCell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    }
+    return _moreStatusCell;
+}
+- (UITableViewCell*)collectionCell
+{
+    if (!_collectionCell)
+    {
+        _collectionCell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"USER_PROFILE_COLLECTION_CELL"];
+        _collectionCell.textLabel.text = @"收藏";
+        _collectionCell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    }
+    return _collectionCell;
+}
+- (UITableViewCell*)zanCell
+{
+    if (!_zanCell)
+    {
+        _zanCell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"USER_PROFILE_ZAN_CELL"];
+        _zanCell.textLabel.text = @"赞过的";
+        _zanCell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    }
+    return _zanCell;
+}
+
 
 #pragma mark - Init Method
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -155,11 +204,12 @@ enum
     self.genderAndLocationCell.genderLabel.text = user.gender;
     self.genderAndLocationCell.locationLabel.text = user.location;
     self.descriptionCell.textLabel.text = user.userDescription;
-    
+    self.statusCountCell.textLabel.text = user.statusCount.stringValue;
     if (user.statuses.array.count)
     {
         Status* status = user.statuses.array[0];
         [self.statusCell setCellWithWeiboStatus:status isInCastView:NO];
+        self.statusCell.textLabel.text = status.text;
     }
 
 }
@@ -175,14 +225,27 @@ enum
         case kRowUserDescription:
             cell = self.descriptionCell;
             break;
+        case kRowUserStatusCount:
+            cell = self.statusCountCell;
+            break;
         case kRowUserStatus:
             cell = self.statusCell;
+            break;
+        case kRowMoreStatus:
+            cell = self.moreStatusCell;
+            break;
+        case kRowCollectionStatus:
+            cell = self.collectionCell;
+            break;
+        case kRowZanStatus:
+            cell = self.zanCell;
+            break;
     }
     return cell;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 3;
+    return kRowCount;
 }
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
