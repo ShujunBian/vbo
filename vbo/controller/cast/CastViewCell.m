@@ -169,7 +169,6 @@
     
     if (isInCastView) {
         _moreButton.imageView.image = [_moreButton.imageView.image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
-        [_moreButton.imageView setTintColor:SHARE_SETTING_MANAGER.themeColor];
         
         [_commentTimesLabel setTextColor:SHARE_SETTING_MANAGER.themeColor];
         NSString * commentTimesString = [NSString stringWithFormat:@"%d",[currentCellStatus.commentsCount integerValue]];
@@ -295,6 +294,9 @@
     [self.delegateForCastViewCell clickRepostButtonByStatus:_currentStatus];
 }
 
+- (IBAction)clickMoreButton:(id)sender {
+    [self.delegateForCastViewCell clickMoreButtonByStatus:_currentStatus];
+}
 
 #pragma mark - 根据系统设置字体调整cell高度和cell字体大小
 static inline void calculateAndSetFonts(CastViewCell *aCell)

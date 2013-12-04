@@ -16,6 +16,7 @@
 @optional
 - (void)clickCommentButtonByStatus:(Status *)status;
 - (void)clickRepostButtonByStatus:(Status *)status;
+- (void)clickMoreButtonByStatus:(Status *)status;
 
 @required
 - (void)presentDetailImageViewWithImageView:(UIImageView *)imageView

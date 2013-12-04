@@ -289,6 +289,11 @@
 - (float)cellHeightForRowAtIndex:(NSInteger)row
 {
     Status * currentCellStatus = [_weiboContentArray objectAtIndex:row];
+    return [self cellHeightForStatus:currentCellStatus];
+}
+
+- (float)cellHeightForStatus:(Status *)currentCellStatus
+{
     float cellHeight = contantHeight;
     if (currentCellStatus.bmiddlePicURL != nil) {
         cellHeight += 180.0;
@@ -319,7 +324,7 @@
     UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:NULL];
     ComRepViewController * comRepViewController = [storyBoard instantiateViewControllerWithIdentifier:@"ComRepViewController"];
     comRepViewController.currentStatus = status;
-    
+    comRepViewController.currentType = CommentType;
     [self.navigationController pushViewController:comRepViewController animated:YES];
 }
 
@@ -328,6 +333,16 @@
     UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:NULL];
     ComRepViewController * comRepViewController = [storyBoard instantiateViewControllerWithIdentifier:@"ComRepViewController"];
     comRepViewController.currentStatus = status;
+    comRepViewController.currentType = RepostType;
+    [self.navigationController pushViewController:comRepViewController animated:YES];
+}
+
+- (void)clickMoreButtonByStatus:(Status *)status
+{
+    UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:NULL];
+    ComRepViewController * comRepViewController = [storyBoard instantiateViewControllerWithIdentifier:@"ComRepViewController"];
+    comRepViewController.currentStatus = status;
+    comRepViewController.currentType = MoreType;
     [self.navigationController pushViewController:comRepViewController animated:YES];
 }
 

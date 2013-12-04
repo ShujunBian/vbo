@@ -169,6 +169,9 @@
                         <state key="normal" image="castView_more_button">
                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
+                        <connections>
+                            <action selector="clickMoreButton:" destination="gwM-Nz-zJy" eventType="touchUpInside" id="q3V-79-f6x"/>
+                        </connections>
                     </button>
                 </subviews>
                 <constraints>
