@@ -116,6 +116,7 @@ enum
     if (!_moreStatusCell)
     {
         _moreStatusCell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"USER_PROFILE_MORE_STATUS_CELL"];
+        _moreStatusCell.textLabel.font = [UIFont fontWithName:@"STHeitiSC-Light" size:17.f];
         _moreStatusCell.textLabel.text = @"查看更多微博";
         _moreStatusCell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
@@ -126,6 +127,7 @@ enum
     if (!_collectionCell)
     {
         _collectionCell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"USER_PROFILE_COLLECTION_CELL"];
+        _collectionCell.textLabel.font = [UIFont fontWithName:@"STHeitiSC-Light" size:17.f];
         _collectionCell.textLabel.text = @"收藏";
         _collectionCell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
@@ -136,8 +138,10 @@ enum
     if (!_zanCell)
     {
         _zanCell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"USER_PROFILE_ZAN_CELL"];
+        _zanCell.textLabel.font = [UIFont fontWithName:@"STHeitiSC-Light" size:17.f];
         _zanCell.textLabel.text = @"赞过的";
         _zanCell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        _zanCell.imageView.image = [UIImage imageNamed:@"status_like.png"];
     }
     return _zanCell;
 }

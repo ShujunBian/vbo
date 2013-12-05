@@ -53,6 +53,7 @@
 		185E88B1182AABF40020F3B2 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 185E88A1182AABF40020F3B2 /* Reachability.m */; };
 		185E88B9182AAE670020F3B2 /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 185E88B8182AAE670020F3B2 /* UIImage+ImageEffects.m */; };
 		185EE17D18482FE90097F9D9 /* WXYSolidNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 185EE17C18482FE90097F9D9 /* WXYSolidNavigationBar.m */; };
+		18611FC118509C1800D19900 /* UserCachedList.m in Sources */ = {isa = PBXBuildFile; fileRef = 18611FC018509C1800D19900 /* UserCachedList.m */; };
 		1866FAD81833D31100E08A03 /* WXYCommentTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 1866FAD71833D31100E08A03 /* WXYCommentTest.m */; };
 		1868F0FC1829C8B200C5764D /* WXYRootNavViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1868F0F91829C8B200C5764D /* WXYRootNavViewController.m */; };
 		1868F0FD1829C8B200C5764D /* WXYRootNavViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1868F0F91829C8B200C5764D /* WXYRootNavViewController.m */; };
@@ -258,6 +259,8 @@
 		185EE17B18482FE90097F9D9 /* WXYSolidNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXYSolidNavigationBar.h; sourceTree = "<group>"; };
 		185EE17C18482FE90097F9D9 /* WXYSolidNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXYSolidNavigationBar.m; sourceTree = "<group>"; };
 		185EE1811848817F0097F9D9 /* WXYScrollHiddenDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WXYScrollHiddenDelegate.h; sourceTree = "<group>"; };
+		18611FBF18509C1800D19900 /* UserCachedList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserCachedList.h; sourceTree = "<group>"; };
+		18611FC018509C1800D19900 /* UserCachedList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserCachedList.m; sourceTree = "<group>"; };
 		1866FAD71833D31100E08A03 /* WXYCommentTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXYCommentTest.m; sourceTree = "<group>"; };
 		1868F0F81829C8B200C5764D /* WXYRootNavViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXYRootNavViewController.h; sourceTree = "<group>"; };
 		1868F0F91829C8B200C5764D /* WXYRootNavViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXYRootNavViewController.m; sourceTree = "<group>"; };
@@ -500,6 +503,8 @@
 				185D74F2184F1D7900FACA47 /* NSManagedObject+OrderSetHepper.m */,
 				1830F88E184F9A3C00516D72 /* AtEntity.h */,
 				1830F88F184F9A3C00516D72 /* AtEntity.m */,
+				18611FBF18509C1800D19900 /* UserCachedList.h */,
+				18611FC018509C1800D19900 /* UserCachedList.m */,
 			);
 			path = coredata;
 			sourceTree = "<group>";
@@ -1260,6 +1265,7 @@
 				18EED3271815853E000856CE /* DDLog.m in Sources */,
 				1868F12F1829DA3300C5764D /* AMBlurView.m in Sources */,
 				18E790F11834F512002B4785 /* Group.m in Sources */,
+				18611FC118509C1800D19900 /* UserCachedList.m in Sources */,
 				18EB0A09182BF7DD005CC27D /* NSDictionary+noNilValueForKey.m in Sources */,
 				18A6A682182FCD6000D9FB7F /* WXYTabBarPostButton.m in Sources */,
 				51DD4DE01849BEAB00999DDF /* CVDragIndicatorView.m in Sources */,

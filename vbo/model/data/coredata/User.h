@@ -11,7 +11,7 @@
 
 @class Status;
 @class Comment;
-@class AtEntity;
+@class AtEntity,UserCachedList;
 
 @interface User : NSManagedObject
 //各项属性含义参看 http://open.weibo.com/wiki/2/users/show
@@ -42,7 +42,7 @@
 @property (nonatomic, retain) NSNumber * followMe;
 @property (nonatomic, retain) NSNumber * onlineStatus;
 @property (nonatomic, retain) NSNumber * biFollowersCount;
-@property (nonatomic, retain) NSOrderedSet *statuses;
+@property (nonatomic, retain) NSOrderedSet *statuses;//用户微博，按时间排序
 @property (nonatomic, retain) NSSet *comments;
 @property (nonatomic, retain) NSSet *ownGroups;
 @property (nonatomic, retain) NSSet *groups;    //此属性仅作为group的users属性的相反属性，不使用
@@ -50,15 +50,17 @@
 @property (nonatomic, retain) NSSet *followingUsers;
 
 //List cached
+@property (nonatomic, retain) UserCachedList* cachedList;
+
 @property (nonatomic, retain) NSOrderedSet *followingList;
 @property (nonatomic, retain) NSOrderedSet *followedList;
 @property (nonatomic, retain) NSSet *beInFollowingList;
 @property (nonatomic, retain) NSSet *beInFollowedList;
-@property (nonatomic, retain) NSOrderedSet* homeTimeLine;
+//@property (nonatomic, retain) NSOrderedSet* homeTimeLine;
 @property (nonatomic, retain) NSOrderedSet* statusList;
 
 //At
-@property (nonatomic, retain) NSOrderedSet* atEntityList;
+//@property (nonatomic, retain) NSOrderedSet* atEntityList;
 @property (nonatomic, retain) NSSet* beAted;
 @end
 

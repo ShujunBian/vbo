@@ -277,7 +277,7 @@
         AtEntity* entity = [currentUser getAtEntityOfUser:user];
         if (!entity)
         {
-            AtEntity* entity = [AtEntity insertWithOwer:currentUser User:user inContext:self.cacheManagedObjectContext];
+            entity = [AtEntity insertWithOwer:currentUser User:user inContext:self.cacheManagedObjectContext];
         }
         entity.time = @(entity.time.longValue + 1);
         [currentUser sortAtEntityList];

@@ -368,28 +368,20 @@
               BOOL fFirst = YES;
               Status* status = nil;
 
-              
-              
-              
               for (NSDictionary* commentDict in commentArray)
               {
-
-
                   if (fFirst)
                   {
-
                       fFirst = NO;
                       NSDictionary* dict = commentDict[@"status"];
                       NSNumber* weiboId = dict[@"id"];
                       status = [SHARE_DATA_MODEL getStatusById:weiboId.longLongValue];
-                      
 #warning 微博API bug,此处commentCount与repostCount永远返回0
 //                      status = [WXYNetworkDataFactory getStatusWithDict:dict]; //刷新微博信息
                   }
                   
                   Comment* comment = [WXYNetworkDataFactory getCommentWithDict:commentDict status:status];
                   [returnArray addObject:comment];
-                  
               }
               if (succeedBlock)
               {
