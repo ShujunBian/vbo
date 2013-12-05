@@ -14,8 +14,8 @@
 #import "NSManagedObject+OrderSetHepper.h"
 
 @implementation User
+@dynamic loginCached;
 @dynamic beAted;
-@dynamic atEntityList;
 @dynamic blogURL;
 @dynamic cityCode;
 @dynamic domain;
@@ -49,13 +49,9 @@
 @dynamic groups;
 @dynamic followedUsers;
 @dynamic followingUsers;
-
-@dynamic followedList;
-@dynamic followingList;
 @dynamic statusList;
 @dynamic beInFollowedList;
 @dynamic beInFollowingList;
-@dynamic homeTimeLine;
 
 + (User*)insertWithId:(NSNumber*)uId InContext:(NSManagedObjectContext*)context
 {
@@ -163,52 +159,5 @@
 }
 
 
-- (NSOrderedSet*)homeTimeLine
-{
-    return [self mutableOrderedSetValueForKey:@"homeTimeLine"];
-}
 
-- (void)addHomeTimeLineObject:(Status*)value
-{
-    [self addOrderSetObject:value forKey:@"homeTimeLine"];
-}
-- (void)removeHomeTimeLineObject:(Status*)value
-{
-    [self removeOrderSetObject:value forKey:@"homeTimeLine"];
-}
-- (void)addHomeTimeLine:(NSOrderedSet*)value
-{
-    [self addOrderSet:value forKey:@"homeTimeLine"];
-}
-- (void)removeHomeTimeLine:(NSOrderedSet*)value
-{
-    [self removeOrderSet:value forKey:@"homeTimeLine"];
-}
-
-- (NSOrderedSet*)atEntityList
-{
-    return  [self mutableOrderedSetValueForKey:@"atEntityList"];
-}
-
-- (void)sortAtEntityList
-{
-    NSMutableOrderedSet* set = [self mutableOrderedSetValueForKey:@"atEntityList"];
-    [set sortUsingComparator:^NSComparisonResult(id obj1, id obj2) {
-        AtEntity* l = (AtEntity*)obj1;
-        AtEntity* r = (AtEntity*)obj2;
-        return - [l.time compare:r.time];
-    }];
-}
-- (AtEntity*)getAtEntityOfUser:(User*)user
-{
-    AtEntity* e = nil;
-    for (AtEntity* entity in self.atEntityList)
-    {
-        if ([entity.user isEqual:user])
-        {
-            e = entity;
-        }
-    }
-    return e;
-}
 @end

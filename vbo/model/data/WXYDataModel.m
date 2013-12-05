@@ -217,7 +217,7 @@
 - (NSArray*)getCachedHomeTimeLineStatusOfCurrentUserPage:(int)page
 {
     User* user = SHARE_LOGIN_MANAGER.currentUser;
-    NSArray* timeLineArray = user.homeTimeLine.array;
+    NSArray* timeLineArray = user.loginCached.homeTimeLine.array;
     NSArray* returnArray = nil;
 
     int fromIndex = (page - 1) * STATUS_PER_PAGE;
@@ -232,10 +232,11 @@
 
 - (void)mergeCachedHomeTimeLineStatusWithNewStatus:(NSArray*)newStatuses user:(User*)user page:(int)page
 {
+    LoginCachedEntity* cachedList = user.loginCached;
     int fromIndex = (page - 1) * STATUS_PER_PAGE;
-    NSArray* removeArray = [user.homeTimeLine.array subarrayWithRange:NSMakeRange(fromIndex, user.homeTimeLine.count - fromIndex)];
-    [user removeHomeTimeLine:[removeArray convertToOrderedSet]];
-    [user addHomeTimeLine:[newStatuses convertToOrderedSet] ];
+    NSArray* removeArray = [cachedList.homeTimeLine.array subarrayWithRange:NSMakeRange(fromIndex, cachedList.homeTimeLine.count - fromIndex)];
+    [cachedList removeHomeTimeLine:[removeArray convertToOrderedSet]];
+    [cachedList addHomeTimeLine:[newStatuses convertToOrderedSet] ];
 
     for (Status* s in removeArray)
     {
@@ -258,7 +259,7 @@
 - (NSArray*)getTopAtUser:(int)count
 {
     NSMutableArray* returnArray = [@[] mutableCopy];
-    User* u = SHARE_LOGIN_MANAGER.currentUser;
+    LoginCachedEntity* u = SHARE_LOGIN_MANAGER.currentUser.loginCached;
     
     count = count < u.atEntityList.count ? count : u.atEntityList.count;
     
@@ -274,13 +275,13 @@
     if (user)
     {
         User* currentUser = SHARE_LOGIN_MANAGER.currentUser;
-        AtEntity* entity = [currentUser getAtEntityOfUser:user];
+        AtEntity* entity = [currentUser.loginCached getAtEntityOfUser:user];
         if (!entity)
         {
             entity = [AtEntity insertWithOwer:currentUser User:user inContext:self.cacheManagedObjectContext];
         }
         entity.time = @(entity.time.longValue + 1);
-        [currentUser sortAtEntityList];
+        [currentUser.loginCached sortAtEntityList];
         [SHARE_DATA_MODEL saveCacheContext];
     }
 }

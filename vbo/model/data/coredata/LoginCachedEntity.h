@@ -11,7 +11,7 @@
 
 @class AtEntity, Comment, Status, User;
 
-@interface UserCachedList : NSManagedObject
+@interface LoginCachedEntity : NSManagedObject
 
 @property (nonatomic, retain) User *owner;
 @property (nonatomic, retain) NSOrderedSet *homeTimeLine;
@@ -21,7 +21,14 @@
 @property (nonatomic, retain) NSOrderedSet *atEntityList;
 @end
 
-@interface UserCachedList (CoreDataGeneratedAccessors)
+@interface LoginCachedEntity (CoreDataGeneratedAccessors)
+- (void)addHomeTimeLineObject:(Status*)value;
+- (void)removeHomeTimeLineObject:(Status*)value;
+- (void)addHomeTimeLine:(NSOrderedSet*)value;
+- (void)removeHomeTimeLine:(NSOrderedSet*)value;
+
+- (void)sortAtEntityList;
+- (AtEntity*)getAtEntityOfUser:(User*)user;
 /*
 - (void)insertObject:(Status *)value inHomeTimeLineAtIndex:(NSUInteger)idx;
 - (void)removeObjectFromHomeTimeLineAtIndex:(NSUInteger)idx;

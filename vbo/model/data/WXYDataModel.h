@@ -16,6 +16,7 @@
 #import "Status.h"
 #import "Group.h"
 #import "AtEntity.h"
+#import "LoginCachedEntity.h"
 
 
 #define SHARE_DATA_MODEL [WXYDataModel shareDataModel]
