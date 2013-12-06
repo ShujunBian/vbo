@@ -36,7 +36,7 @@
 @interface WXYCastViewController ()<CastImageViewControllerDelegate,CVDragIndicatorViewDelegate,CVLoadIndicatorViewDelegate>
 
 //@property (nonatomic, strong) UIDynamicAnimator *animator;
-@property (nonatomic, strong) NSArray * weiboContentArray;
+@property (nonatomic, strong) NSMutableArray * weiboContentArray;
 @property (nonatomic, weak) UIImageView * selectedImageView;
 @property (nonatomic, strong) CVImageTransitionAnimation * imageTransitionAnimation;
 @property (nonatomic, strong) CVImageDismissTransitionAnimation * imageDismissTransitionAnimation;
@@ -45,6 +45,7 @@
 @property (nonatomic, strong) CVDragIndicatorView * dragIndicatorView;
 @property (nonatomic, strong) CVLoadIndicatorView * loadIndicatorView;
 
+@property (nonatomic) NSInteger currentWeiboPage;
 @property (nonatomic) BOOL reloading;
 //@property (nonatomic) float test;
 @end
@@ -69,6 +70,9 @@
     _imagePercentDismissTransition = [CVImagePercentDismissTransition new];
     _imagePercentDismissTransitionAnimation = [CVImagePercentDismissTransitionAnimation new];
     
+    self.weiboContentArray = [[NSMutableArray alloc]initWithCapacity:50];
+    _currentWeiboPage = 1;
+
     UIView *bgview = [[UIView alloc]init];
     [bgview setBackgroundColor:SHARE_SETTING_MANAGER.themeColor];
     [self.tableView setBackgroundView:bgview];
@@ -83,9 +87,27 @@
                                                  name:UIContentSizeCategoryDidChangeNotification
                                                object:nil];
     
-    
     [self.tableView addSubview:self.dragIndicatorView];
-    [self.tableView addSubview:self.loadIndicatorView];
+    
+
+//    NSDictionary* viewsDict = @{@"outView":self.view, @"tableview":self.tableView ,@"loadView":self.loadIndicatorView};
+//    NSArray* vLayouts = [NSLayoutConstraint constraintsWithVisualFormat:@"V:[loadView][tableview]"
+//                                                                options:0
+//                                                                metrics:nil
+//                                                                  views:viewsDict];
+    
+#warning 上拉加载
+//    self.loadIndicatorView.translatesAutoresizingMaskIntoConstraints = NO;
+//    [self.view addSubview:self.loadIndicatorView];
+//    NSLayoutConstraint * loadConstraint = [NSLayoutConstraint constraintWithItem:self.loadIndicatorView
+//                                                                       attribute:NSLayoutAttributeTop
+//                                                                       relatedBy:NSLayoutRelationEqual
+//                                                                          toItem:self.view
+//                                                                       attribute:NSLayoutAttributeTop
+//                                                                      multiplier:1.0
+//                                                                        constant:220.0];
+//    [self.view addConstraint:loadConstraint];
+    
 //    _test = 0.0;
 }
 - (void)viewWillAppear:(BOOL)animated
@@ -93,11 +115,13 @@
     [super viewWillAppear:animated];
     self.navigationController.navigationBarHidden = YES;
 }
+
 - (void)fetchWeiboContent
 {
+    _currentWeiboPage = 1;
     [SHARE_NW_ENGINE getHomeTimelineOfCurrentUserPage:1
                                               Succeed:^(NSArray * resultArray){
-                                                  self.weiboContentArray = resultArray;
+                                                  [self.weiboContentArray addObjectsFromArray:resultArray];
                                                   [self.tableView reloadData];
                                                   [NSNotificationCenter postDidFetchCurrentUserNameNotification];
         
@@ -106,6 +130,17 @@
     }error:nil];
 }
 
+- (void)loadMoreWeiboContent
+{
+    _currentWeiboPage ++;
+    [SHARE_NW_ENGINE getHomeTimelineOfCurrentUserPage:_currentWeiboPage
+                                              Succeed:^(NSArray * resultArray){
+                                                  [self.view setUserInteractionEnabled:YES];
+                                                  [self.weiboContentArray addObjectsFromArray:resultArray];
+                                                  [self.tableView reloadData];
+                                                  [NSNotificationCenter postDidFetchCurrentUserNameNotification];
+                                              }error:nil];
+}
 
 //- (void)snap
 //{
@@ -126,10 +161,10 @@
                                             -kRefreshViewHeight ,
                                             [UIScreen mainScreen].bounds.size.width,
                                             kRefreshViewHeight)];
-    [_loadIndicatorView setFrame:CGRectMake(0,
-                                            _tableView.bounds.size.height,
-                                            [UIScreen mainScreen].bounds.size.width,
-                                            kRefreshViewHeight)];
+//    [_loadIndicatorView setFrame:CGRectMake(0,
+//                                            _tableView.bounds.size.height,
+//                                            [UIScreen mainScreen].bounds.size.width,
+//                                            kRefreshViewHeight)];
 }
 
 - (void)didReceiveMemoryWarning
@@ -221,6 +256,11 @@
     }
 
     [_dragIndicatorView refreshScrollViewDidEndDragging:scrollView];
+    
+    if (scrollView.contentOffset.y + [UIScreen mainScreen].bounds.size.height > scrollView.contentSize.height ) {
+        [self.view setUserInteractionEnabled:NO];
+        [self loadMoreWeiboContent];
+    }
     
 }
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
