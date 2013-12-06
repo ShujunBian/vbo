@@ -21,7 +21,7 @@
     AtEntity* u = [NSEntityDescription insertNewObjectForEntityForName:@"AtEntity" inManagedObjectContext:context];
     u.time = @(0);
     u.user = user;
-    u.owner = owner;
+    u.owner = owner.loginCached;
     return u;
 }
 

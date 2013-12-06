@@ -67,7 +67,7 @@
 
 - (void)testGetGroupById
 {
-    Group* g = [SHARE_DATA_MODEL getGroupById:TEST_GROUP_ID];
+    Group* g = [SHARE_DATA_MODEL getOrCreateGroupById:TEST_GROUP_ID];
     XCTAssertEqualObjects(self.group, g, @"获取的group不对");
 }
 

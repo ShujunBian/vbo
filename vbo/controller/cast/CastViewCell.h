@@ -17,7 +17,7 @@
 - (void)clickCommentButtonByStatus:(Status *)status;
 - (void)clickRepostButtonByStatus:(Status *)status;
 - (void)clickMoreButtonByStatus:(Status *)status;
-
+- (void)clickUrl:(NSString*)url;
 @required
 - (void)presentDetailImageViewWithImageView:(UIImageView *)imageView
                          withInitalRect:(CGRect)initalRect;

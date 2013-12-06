@@ -13,6 +13,9 @@
 #import "UIImageView+MKNetworkKitAdditions.h"
 
 @interface WatchListTableViewController ()
+{
+//    BOOL cell_reuse_sig;
+}
 
 @end
 
@@ -30,10 +33,13 @@
     } error:^(NSError *error) {
         
     }];
+    
+    selected_cell_array = [[NSMutableArray alloc]init];
+    
 }
 -(void)viewWillAppear:(BOOL)animated
 {
-    [self.tableView reloadData];
+    //[self.tableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning
@@ -65,17 +71,40 @@
     WatchListTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[WatchListTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"WatchListTableCell"];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     
-    cell.backgroundColor = [UIColor colorWithRed:246.f/255.f green:244.f/255.f blue:240.f/255.f alpha:1.0f];
     User* user = [self.atUserArray objectAtIndex:indexPath.row];
+    
+
+    BOOL cell_reuse_sig = NO;
+    cell_reuse_sig = [selected_cell_array containsObject:user];
     
     cell.userName.text = user.screenName;
     
     [cell.userHeadPhoto setImageFromURL:[NSURL URLWithString:user.avatarLargeUrl]];
+    cell.selectedView.backgroundColor = SHARE_SETTING_MANAGER.themeColor;
     
-    [cell.checkView removeFromSuperview];
+
+    if(cell_reuse_sig)
+    {
+//        [cell setSelected:YES];
+
+       
+        cell.checkView.hidden = NO;
+        
+        cell.selectedView.hidden = NO;
+        cell.backgroundColor = [UIColor whiteColor];
+    }
+    else
+    {
+        //        [cell setSelected:NO];
+        cell.checkView.hidden = YES;
+        cell.selectedView.hidden = YES;
+        cell.backgroundColor = [UIColor colorWithRed:246.f/255.f green:244.f/255.f blue:240.f/255.f alpha:1.0f];
+    }
     
+    cell_reuse_sig = NO;
     // Configure the cell..
     return cell;
 }
@@ -125,23 +154,35 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+
     WatchListTableViewCell *cell = (WatchListTableViewCell *)[tableView cellForRowAtIndexPath:indexPath];
 
-    cell.selectedBackgroundView = [[UIView alloc] initWithFrame:cell.frame];
     
-    cell.selectedBackgroundView.backgroundColor = [UIColor whiteColor];
     
     cell.selectedView.backgroundColor = SHARE_SETTING_MANAGER.themeColor;
     
-    [cell addSubview:cell.checkView];
+    User* user = [self.atUserArray objectAtIndex:indexPath.row];
     
-   
-}
-
--(void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    WatchListTableViewCell *cell = (WatchListTableViewCell *)[tableView cellForRowAtIndexPath:indexPath];
-    [cell.checkView removeFromSuperview];
+    if ([selected_cell_array containsObject:user])
+    {
+        cell.backgroundColor = [UIColor colorWithRed:246.f/255.f green:244.f/255.f blue:240.f/255.f alpha:1.0f];
+        
+        [selected_cell_array removeObject:user];
+        
+        cell.checkView.hidden = YES;
+        cell.selectedView.hidden = YES;
+    }
+    else
+    {
+        cell.backgroundColor = [UIColor whiteColor];
+        [selected_cell_array addObject:user];
+        
+        cell.selectedView.hidden = NO;
+        
+        cell.checkView.hidden = NO;
+    }
+    [tableView deselectRowAtIndexPath:indexPath animated:NO];
+    
 }
 
 

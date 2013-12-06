@@ -41,7 +41,7 @@
 
 - (void)testGetCommentById
 {
-    Comment* c = [SHARE_DATA_MODEL getCommentById:200ll];
+    Comment* c = [SHARE_DATA_MODEL getOrCreateCommentById:200ll];
     XCTAssertEqualObjects(self.comment, c, @"getCommentById不可用");
 }
 

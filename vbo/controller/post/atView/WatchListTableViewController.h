@@ -9,7 +9,10 @@
 #import <UIKit/UIKit.h>
 
 @interface WatchListTableViewController : UITableViewController
-
+{
+    NSMutableArray *selected_cell_array;
+    
+}
 @property (strong,nonatomic)NSMutableArray *atUserArray;
 
 @end

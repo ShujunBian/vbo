@@ -86,6 +86,9 @@
     
     
     
+    NSLog(@"%f,%f,%f,%f",self.postViewTextView.frame.origin.x,self.postViewTextView.frame.origin.y,self.postViewTextView.frame.size.width,self.postViewTextView.frame.size.height);
+    
+    
 
 }
 

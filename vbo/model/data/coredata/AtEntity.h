@@ -9,12 +9,12 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-@class User;
+@class User,LoginCachedEntity;
 
 @interface AtEntity : NSManagedObject
 
 @property (nonatomic, retain) NSNumber * time;
-@property (nonatomic, retain) User *owner;
+@property (nonatomic, retain) LoginCachedEntity *owner;
 @property (nonatomic, retain) User *user;
 
 + (AtEntity*)insertWithOwer:(User*)owner User:(User*)user inContext:(NSManagedObjectContext*)context;

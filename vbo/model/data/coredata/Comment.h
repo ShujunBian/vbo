@@ -25,7 +25,7 @@
 
 //List Cached
 @property (nonatomic, retain) Status *beInCommentList;
-
+@property (nonatomic, retain) User* beInUserCommentList;
 
 + (Comment*)insertWithId:(NSNumber*)cId InContext:(NSManagedObjectContext*)context;
 - (void)updateWithDict:(NSDictionary*)dict;

@@ -16,6 +16,7 @@
 #import "Status.h"
 #import "Group.h"
 #import "AtEntity.h"
+#import "LoginCachedEntity.h"
 
 
 #define SHARE_DATA_MODEL [WXYDataModel shareDataModel]
@@ -35,10 +36,15 @@
 
 
 //Base
+- (Status*)getOrCreateStatusById:(long long)statusId;
 - (Status*)getStatusById:(long long)statusId;
+- (User*)getOrCreateUserById:(long long)userId;
 - (User*)getUserById:(long long)userId;
+- (User*)getOrCreateUserByScreenName:(NSString*)screenName;
 - (User*)getUserByScreenName:(NSString*)screenName;
+- (Comment*)getOrCreateCommentById:(long long)commentId;
 - (Comment*)getCommentById:(long long)commentId;
+- (Group*)getOrCreateGroupById:(long long)groupId;
 - (Group*)getGroupById:(long long)groupId;
 
 //Time line

@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		18016452184D7889003EC38F /* CVImageTransitionAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 18016451184D7889003EC38F /* CVImageTransitionAnimation.m */; };
 		1808F45C1835382900829471 /* WXYGroupTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 1808F45B1835382900829471 /* WXYGroupTest.m */; };
+		182D758E1851E24900F58C07 /* WXYProfileTableViewDelegateObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 182D758D1851E24900F58C07 /* WXYProfileTableViewDelegateObject.m */; };
+		182D75911851E25E00F58C07 /* WXYUserProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 182D75901851E25E00F58C07 /* WXYUserProfileViewController.m */; };
 		1830F851184F687600516D72 /* vboCachedDatamodel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 188E68951829131600BE534D /* vboCachedDatamodel.xcdatamodeld */; };
 		1830F853184F6A5500516D72 /* UIFont+TextKitAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = 51652DEC1835D7EF004E4D30 /* UIFont+TextKitAddition.m */; };
 		1830F855184F6A5500516D72 /* UIFontDescriptor+TextKitAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = 51652DEF1835D7FF004E4D30 /* UIFontDescriptor+TextKitAddition.m */; };
@@ -53,6 +55,7 @@
 		185E88B1182AABF40020F3B2 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 185E88A1182AABF40020F3B2 /* Reachability.m */; };
 		185E88B9182AAE670020F3B2 /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 185E88B8182AAE670020F3B2 /* UIImage+ImageEffects.m */; };
 		185EE17D18482FE90097F9D9 /* WXYSolidNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 185EE17C18482FE90097F9D9 /* WXYSolidNavigationBar.m */; };
+		18611FC118509C1800D19900 /* LoginCachedEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 18611FC018509C1800D19900 /* LoginCachedEntity.m */; };
 		1866FAD81833D31100E08A03 /* WXYCommentTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 1866FAD71833D31100E08A03 /* WXYCommentTest.m */; };
 		1868F0FC1829C8B200C5764D /* WXYRootNavViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1868F0F91829C8B200C5764D /* WXYRootNavViewController.m */; };
 		1868F0FD1829C8B200C5764D /* WXYRootNavViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1868F0F91829C8B200C5764D /* WXYRootNavViewController.m */; };
@@ -148,6 +151,8 @@
 		4D78489E18314EB60025ADDA /* MHCPostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D78489D18314EB60025ADDA /* MHCPostViewController.m */; };
 		4D9DA271184A55EC00807B96 /* WatchListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D9DA270184A55EC00807B96 /* WatchListTableViewCell.m */; };
 		4D9DA274184A561300807B96 /* AtViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D9DA273184A561300807B96 /* AtViewController.m */; };
+		4DC26F851851AB25005AE8BB /* atSelectedView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DC26F841851AB25005AE8BB /* atSelectedView.xib */; };
+		4DC26F881851ADA6005AE8BB /* ATSelectedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DC26F871851ADA6005AE8BB /* ATSelectedViewController.m */; };
 		5116A5BF18300277004FCC1A /* NSNotificationCenter+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 5116A5BE18300277004FCC1A /* NSNotificationCenter+Addition.m */; };
 		51510C0E183BB10A00BD7823 /* CastViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 51510C0D183BB10A00BD7823 /* CastViewCell.xib */; };
 		51510C12183BBB4800BD7823 /* ComRepViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 51510C11183BBB4800BD7823 /* ComRepViewController.m */; };
@@ -208,6 +213,10 @@
 		18016450184D7889003EC38F /* CVImageTransitionAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CVImageTransitionAnimation.h; sourceTree = "<group>"; };
 		18016451184D7889003EC38F /* CVImageTransitionAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CVImageTransitionAnimation.m; sourceTree = "<group>"; };
 		1808F45B1835382900829471 /* WXYGroupTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXYGroupTest.m; sourceTree = "<group>"; };
+		182D758C1851E24900F58C07 /* WXYProfileTableViewDelegateObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXYProfileTableViewDelegateObject.h; sourceTree = "<group>"; };
+		182D758D1851E24900F58C07 /* WXYProfileTableViewDelegateObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXYProfileTableViewDelegateObject.m; sourceTree = "<group>"; };
+		182D758F1851E25E00F58C07 /* WXYUserProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXYUserProfileViewController.h; sourceTree = "<group>"; };
+		182D75901851E25E00F58C07 /* WXYUserProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXYUserProfileViewController.m; sourceTree = "<group>"; };
 		1830F889184F744A00516D72 /* NSArray+ConvertToOrderedSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+ConvertToOrderedSet.h"; sourceTree = "<group>"; };
 		1830F88A184F744A00516D72 /* NSArray+ConvertToOrderedSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+ConvertToOrderedSet.m"; sourceTree = "<group>"; };
 		1830F88E184F9A3C00516D72 /* AtEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AtEntity.h; sourceTree = "<group>"; };
@@ -262,6 +271,8 @@
 		185EE17B18482FE90097F9D9 /* WXYSolidNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXYSolidNavigationBar.h; sourceTree = "<group>"; };
 		185EE17C18482FE90097F9D9 /* WXYSolidNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXYSolidNavigationBar.m; sourceTree = "<group>"; };
 		185EE1811848817F0097F9D9 /* WXYScrollHiddenDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WXYScrollHiddenDelegate.h; sourceTree = "<group>"; };
+		18611FBF18509C1800D19900 /* LoginCachedEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginCachedEntity.h; sourceTree = "<group>"; };
+		18611FC018509C1800D19900 /* LoginCachedEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginCachedEntity.m; sourceTree = "<group>"; };
 		1866FAD71833D31100E08A03 /* WXYCommentTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXYCommentTest.m; sourceTree = "<group>"; };
 		1868F0F81829C8B200C5764D /* WXYRootNavViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXYRootNavViewController.h; sourceTree = "<group>"; };
 		1868F0F91829C8B200C5764D /* WXYRootNavViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXYRootNavViewController.m; sourceTree = "<group>"; };
@@ -371,6 +382,9 @@
 		4D9DA26F184A55EC00807B96 /* WatchListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WatchListTableViewCell.h; path = atView/WatchListTableViewCell.h; sourceTree = "<group>"; };
 		4D9DA270184A55EC00807B96 /* WatchListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WatchListTableViewCell.m; path = atView/WatchListTableViewCell.m; sourceTree = "<group>"; };
 		4D9DA273184A561300807B96 /* AtViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AtViewController.m; path = atView/AtViewController.m; sourceTree = "<group>"; };
+		4DC26F841851AB25005AE8BB /* atSelectedView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = atSelectedView.xib; sourceTree = "<group>"; };
+		4DC26F861851ADA6005AE8BB /* ATSelectedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ATSelectedViewController.h; sourceTree = "<group>"; };
+		4DC26F871851ADA6005AE8BB /* ATSelectedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ATSelectedViewController.m; sourceTree = "<group>"; };
 		5116A5BD18300277004FCC1A /* NSNotificationCenter+Addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSNotificationCenter+Addition.h"; sourceTree = "<group>"; };
 		5116A5BE18300277004FCC1A /* NSNotificationCenter+Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSNotificationCenter+Addition.m"; sourceTree = "<group>"; };
 		51510C0D183BB10A00BD7823 /* CastViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CastViewCell.xib; sourceTree = "<group>"; };
@@ -470,6 +484,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		182D758A1851E23600F58C07 /* user */ = {
+			isa = PBXGroup;
+			children = (
+				182D758C1851E24900F58C07 /* WXYProfileTableViewDelegateObject.h */,
+				182D758D1851E24900F58C07 /* WXYProfileTableViewDelegateObject.m */,
+				182D758F1851E25E00F58C07 /* WXYUserProfileViewController.h */,
+				182D75901851E25E00F58C07 /* WXYUserProfileViewController.m */,
+			);
+			path = user;
+			sourceTree = "<group>";
+		};
 		1838DF1B181E677A003D015A /* libWeiboSDK */ = {
 			isa = PBXGroup;
 			children = (
@@ -511,6 +536,8 @@
 				185D74F2184F1D7900FACA47 /* NSManagedObject+OrderSetHepper.m */,
 				1830F88E184F9A3C00516D72 /* AtEntity.h */,
 				1830F88F184F9A3C00516D72 /* AtEntity.m */,
+				18611FBF18509C1800D19900 /* LoginCachedEntity.h */,
+				18611FC018509C1800D19900 /* LoginCachedEntity.m */,
 			);
 			path = coredata;
 			sourceTree = "<group>";
@@ -679,6 +706,7 @@
 		1868F1071829CDE400C5764D /* mine */ = {
 			isa = PBXGroup;
 			children = (
+				182D758A1851E23600F58C07 /* user */,
 				1868F1111829CE1400C5764D /* WXYMineViewController.h */,
 				1868F1121829CE1400C5764D /* WXYMineViewController.m */,
 			);
@@ -922,6 +950,16 @@
 			name = blur;
 			sourceTree = "<group>";
 		};
+		4DC26F831851AB03005AE8BB /* AtSelectedView */ = {
+			isa = PBXGroup;
+			children = (
+				4DC26F841851AB25005AE8BB /* atSelectedView.xib */,
+				4DC26F861851ADA6005AE8BB /* ATSelectedViewController.h */,
+				4DC26F871851ADA6005AE8BB /* ATSelectedViewController.m */,
+			);
+			name = AtSelectedView;
+			sourceTree = "<group>";
+		};
 		4DE8AC34184629D400CA6A84 /* subViews */ = {
 			isa = PBXGroup;
 			children = (
@@ -933,6 +971,7 @@
 		4DE8AC39184629FF00CA6A84 /* atView */ = {
 			isa = PBXGroup;
 			children = (
+				4DC26F831851AB03005AE8BB /* AtSelectedView */,
 				18DA5F29184C5B2300902A47 /* AtViewController.h */,
 				4D6EF0BF184A81E5009D7A18 /* TableView */,
 				4D9DA273184A561300807B96 /* AtViewController.m */,
@@ -1176,6 +1215,7 @@
 				18B0C94F184CC31600347492 /* WXYUserProfileNumberView.xib in Resources */,
 				515F94C318518B1D0029CCA6 /* DVTableSectionView.xib in Resources */,
 				18EED32F1815853E000856CE /* README.txt in Resources */,
+				4DC26F851851AB25005AE8BB /* atSelectedView.xib in Resources */,
 				1868F1381829EC7A00C5764D /* test.png in Resources */,
 				518A1CBE1843243300D36AFD /* EmoticonsInfo.plist in Resources */,
 				1838DF20181E677A003D015A /* WeiboSDK.bundle in Resources */,
@@ -1267,6 +1307,7 @@
 				51510C12183BBB4800BD7823 /* ComRepViewController.m in Sources */,
 				18EED32B1815853E000856CE /* ContextFilterLogFormatter.m in Sources */,
 				18EED3291815853E000856CE /* DDTTYLogger.m in Sources */,
+				182D75911851E25E00F58C07 /* WXYUserProfileViewController.m in Sources */,
 				1868F1331829DC1900C5764D /* WXYBlurTextView.m in Sources */,
 				51652DF31835D9A7004E4D30 /* UILabel+TextKitAddition.m in Sources */,
 				184A0FB0183BAE050003E82E /* LoginUserInfo.m in Sources */,
@@ -1280,6 +1321,7 @@
 				18EED3271815853E000856CE /* DDLog.m in Sources */,
 				1868F12F1829DA3300C5764D /* AMBlurView.m in Sources */,
 				18E790F11834F512002B4785 /* Group.m in Sources */,
+				18611FC118509C1800D19900 /* LoginCachedEntity.m in Sources */,
 				18EB0A09182BF7DD005CC27D /* NSDictionary+noNilValueForKey.m in Sources */,
 				18A6A682182FCD6000D9FB7F /* WXYTabBarPostButton.m in Sources */,
 				51DD4DE01849BEAB00999DDF /* CVDragIndicatorView.m in Sources */,
@@ -1311,6 +1353,7 @@
 				18016452184D7889003EC38F /* CVImageTransitionAnimation.m in Sources */,
 				1868F1241829D7EA00C5764D /* WXYSolidTabBar.m in Sources */,
 				515B0BF818082A9B0092BADB /* main.m in Sources */,
+				4DC26F881851ADA6005AE8BB /* ATSelectedViewController.m in Sources */,
 				4D9DA271184A55EC00807B96 /* WatchListTableViewCell.m in Sources */,
 				4D9DA274184A561300807B96 /* AtViewController.m in Sources */,
 				18D9E4E8183388E0004539CC /* Comment.m in Sources */,
@@ -1326,6 +1369,7 @@
 				18DA5F32184C65BF00902A47 /* WXYUserProfileView.m in Sources */,
 				18EED3211815853E000856CE /* DDAbstractDatabaseLogger.m in Sources */,
 				185E88AE182AABF40020F3B2 /* UIImageView+MKNetworkKitAdditions.m in Sources */,
+				182D758E1851E24900F58C07 /* WXYProfileTableViewDelegateObject.m in Sources */,
 				1841100618165626008B700C /* WXYError.m in Sources */,
 				185EE17D18482FE90097F9D9 /* WXYSolidNavigationBar.m in Sources */,
 				5183B185182AA876008F22D1 /* CastViewCell.m in Sources */,

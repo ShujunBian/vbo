@@ -24,6 +24,7 @@
 #import "CVLoadIndicatorView.h"
 #import "CVImagePercentDismissTransition.h"
 #import "CVImagePercentDismissTransitionAnimation.h"
+#import "WXYUserProfileViewController.h"
 
 #define kContantHeight 110.0
 #define kContentLabelLineSpace 6.0
@@ -87,7 +88,11 @@
     [self.tableView addSubview:self.loadIndicatorView];
 //    _test = 0.0;
 }
-
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    self.navigationController.navigationBarHidden = YES;
+}
 - (void)fetchWeiboContent
 {
     [SHARE_NW_ENGINE getHomeTimelineOfCurrentUserPage:1
@@ -382,6 +387,26 @@
     [self presentViewController:toVc animated:YES completion:^{
         _selectedImageView.hidden = YES;
     }];
+}
+- (void)clickUrl:(NSString *)url
+{
+    if ([url hasPrefix:@"@"])
+    {
+        //@用户
+        NSString* userName = [url substringFromIndex:1];
+        WXYUserProfileViewController* vc = [self.storyboard instantiateViewControllerWithIdentifier:@"WXYUserProfileViewController"];
+        vc.userName = userName;
+        [self.navigationController pushViewController:vc animated:YES];
+    }
+    else if ([url hasPrefix:@"#"] && [url hasSuffix:@"#"])
+    {
+        //话题
+#warning 未处理
+    }
+    else if ([url hasPrefix:@"http://"])
+    {
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:url]];
+    }
 }
 
 #pragma mark - CastImageViewDelegate

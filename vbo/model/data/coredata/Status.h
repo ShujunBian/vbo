@@ -72,6 +72,12 @@ typedef enum
 - (void)addRepostedBy:(NSSet *)values;
 - (void)removeRepostedBy:(NSSet *)values;
 
+- (void)addCommentListObject:(Comment *)value;
+- (void)removeCommentListObject:(Comment *)value;
+- (void)addCommentList:(NSOrderedSet *)values;
+- (void)removeCommentList:(NSOrderedSet *)values;
+
+
 
 + (Status*)insertWithId:(NSNumber*)sId InContext:(NSManagedObjectContext*)context;
 - (void)updateWithDict:(NSDictionary*)dict;

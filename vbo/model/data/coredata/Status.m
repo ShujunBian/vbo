@@ -13,6 +13,7 @@
 #import "User.h"
 #import "NSDictionary+noNilValueForKey.h"
 #import "NSDate+Addition.h"
+#import "NSManagedObject+OrderSetHepper.h"
 
 
 @implementation Status
@@ -41,6 +42,11 @@
 @dynamic commentList;
 @dynamic beInTimeline;
 @dynamic beInStatusList;
+
+- (NSOrderedSet*)commentList
+{
+    return [self mutableOrderedSetValueForKey:@"commentList"];
+}
 
 
 + (Status*)insertWithId:(NSNumber*)sId InContext:(NSManagedObjectContext*)context
@@ -76,6 +82,23 @@
     self.visible = [visibleDict noNilValueForKey:@"type"];
     self.visibleListId = [dict noNilValueForKey:@"list_id"];
     
+}
+
+- (void)addCommentListObject:(Comment *)value
+{
+    [self addOrderSetObject:value forKey:@"commentList"];
+}
+- (void)removeCommentListObject:(Comment *)value
+{
+    [self removeOrderSetObject:value forKey:@"commentList"];
+}
+- (void)addCommentList:(NSOrderedSet *)values
+{
+    [self addOrderSet:values forKey:@"commentList"];
+}
+- (void)removeCommentList:(NSOrderedSet *)values
+{
+    [self removeOrderSet:values forKey:@"commentList"];
 }
 
 @end

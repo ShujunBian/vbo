@@ -11,7 +11,7 @@
 
 @class Status;
 @class Comment;
-@class AtEntity;
+@class AtEntity,LoginCachedEntity;
 
 @interface User : NSManagedObject
 //各项属性含义参看 http://open.weibo.com/wiki/2/users/show
@@ -42,7 +42,7 @@
 @property (nonatomic, retain) NSNumber * followMe;
 @property (nonatomic, retain) NSNumber * onlineStatus;
 @property (nonatomic, retain) NSNumber * biFollowersCount;
-@property (nonatomic, retain) NSOrderedSet *statuses;
+@property (nonatomic, retain) NSOrderedSet *statuses;   //用户微博，按时间排序
 @property (nonatomic, retain) NSSet *comments;
 @property (nonatomic, retain) NSSet *ownGroups;
 @property (nonatomic, retain) NSSet *groups;    //此属性仅作为group的users属性的相反属性，不使用
@@ -50,15 +50,13 @@
 @property (nonatomic, retain) NSSet *followingUsers;
 
 //List cached
-@property (nonatomic, retain) NSOrderedSet *followingList;
-@property (nonatomic, retain) NSOrderedSet *followedList;
+@property (nonatomic, retain) LoginCachedEntity* loginCached;
+
 @property (nonatomic, retain) NSSet *beInFollowingList;
 @property (nonatomic, retain) NSSet *beInFollowedList;
-@property (nonatomic, retain) NSOrderedSet* homeTimeLine;
 @property (nonatomic, retain) NSOrderedSet* statusList;
 
 //At
-@property (nonatomic, retain) NSOrderedSet* atEntityList;
 @property (nonatomic, retain) NSSet* beAted;
 @end
 
@@ -77,7 +75,6 @@
 - (void)addStatuses:(NSOrderedSet *)values;
 - (void)removeStatuses:(NSOrderedSet *)values;
 
-
 - (void)addCommentsObject:(Comment *)value;
 - (void)removeCommentsObject:(Comment *)value;
 - (void)addComments:(NSSet *)values;
@@ -93,19 +90,10 @@
 - (void)addFollowingUsers:(NSSet *)values;
 - (void)removeFollowingUsers:(NSSet *)values;
 
-- (void)addHomeTimeLineObject:(Status*)value;
-- (void)removeHomeTimeLineObject:(Status*)value;
-- (void)addHomeTimeLine:(NSOrderedSet*)value;
-- (void)removeHomeTimeLine:(NSOrderedSet*)value;
-
-
 + (User*)insertWithId:(NSNumber*)uId InContext:(NSManagedObjectContext*)context;
 
-
-
 - (void)updateWithDict:(NSDictionary*)dict;
-- (void)sortAtEntityList;
-- (AtEntity*)getAtEntityOfUser:(User*)user;
+
 
 
 @end

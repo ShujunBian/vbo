@@ -150,11 +150,9 @@
     return returnEntity;
 }
 
-- (Status*)getStatusById:(long long)statusId
+- (Status*)getOrCreateStatusById:(long long)statusId
 {
-    Status* returnStatus = nil;
-    returnStatus = [self getEntity:@"Status" byId:statusId idPropertyName:@"statusID"];
-    
+    Status* returnStatus = [self getStatusById:statusId];
     
     if (!returnStatus)
     {
@@ -162,10 +160,26 @@
     }
     return returnStatus;
 }
+- (Status*)getStatusById:(long long)statusId
+{
+    Status* returnStatus = nil;
+    returnStatus = [self getEntity:@"Status" byId:statusId idPropertyName:@"statusID"];
+    return returnStatus;
+}
+- (User*)getOrCreateUserByScreenName:(NSString*)screenName
+{
+    User* user = [self getUserByScreenName:screenName];
+    if (!user)
+    {
+        user = [User insertWithId:@(-1) InContext:SHARE_DATA_MODEL.cacheManagedObjectContext];
+        user.screenName = screenName;
+    }
+    return user;
+}
 - (User*)getUserByScreenName:(NSString*)screenName
 {
     User* user = nil;
-
+    
     NSFetchRequest* fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"User"];
     NSPredicate* predicate = [NSPredicate predicateWithFormat:@"screenName==%@",screenName];
     [fetchRequest setPredicate:predicate];
@@ -174,42 +188,52 @@
     {
         user = resultArray[0];
     }
-    else
-    {
-#warning 暂时先将只有名字的user id处理为-1
-        user = [User insertWithId:@(-1) InContext:SHARE_DATA_MODEL.cacheManagedObjectContext];
-        user.screenName = screenName;
-    }
     return user;
 }
-- (User*)getUserById:(long long)userId
+
+- (User*)getOrCreateUserById:(long long)userId
 {
-    User* returnUser = nil;
-    returnUser = [self getEntity:@"User" byId:userId idPropertyName:@"userID"];
+    User* returnUser = [self getUserById:userId];
     if (!returnUser)
     {
         returnUser = [User insertWithId:@(userId) InContext:self.cacheManagedObjectContext];
     }
     return returnUser;
 }
-- (Comment*)getCommentById:(long long)commentId
+- (User*)getUserById:(long long)userId
 {
-    Comment* returnComment = nil;
-    returnComment = [self getEntity:@"Comment" byId:commentId idPropertyName:@"commentID"];
+    User* returnUser = nil;
+    returnUser = [self getEntity:@"User" byId:userId idPropertyName:@"userID"];
+    return returnUser;
+}
+- (Comment*)getOrCreateCommentById:(long long)commentId
+{
+    Comment* returnComment = [self getCommentById:commentId];
     if (!returnComment)
     {
         returnComment = [Comment insertWithId:@(commentId) InContext:self.cacheManagedObjectContext];
     }
     return returnComment;
 }
-- (Group*)getGroupById:(long long)groupId
+- (Comment*)getCommentById:(long long)commentId
 {
-    Group* returnGroup = nil;
-    returnGroup = [self getEntity:@"Group" byId:groupId idPropertyName:@"groupId"];
+    Comment* returnComment = nil;
+    returnComment = [self getEntity:@"Comment" byId:commentId idPropertyName:@"commentID"];
+    return returnComment;
+}
+- (Group*)getOrCreateGroupById:(long long)groupId
+{
+    Group* returnGroup = [self getGroupById:groupId];
     if (!returnGroup)
     {
         returnGroup = [Group insertWithId:@(groupId) inContext:self.cacheManagedObjectContext];
     }
+    return returnGroup;
+}
+- (Group*)getGroupById:(long long)groupId
+{
+    Group* returnGroup = nil;
+    returnGroup = [self getEntity:@"Group" byId:groupId idPropertyName:@"groupId"];
     return returnGroup;
 }
 
@@ -217,7 +241,7 @@
 - (NSArray*)getCachedHomeTimeLineStatusOfCurrentUserPage:(int)page
 {
     User* user = SHARE_LOGIN_MANAGER.currentUser;
-    NSArray* timeLineArray = user.homeTimeLine.array;
+    NSArray* timeLineArray = user.loginCached.homeTimeLine.array;
     NSArray* returnArray = nil;
 
     int fromIndex = (page - 1) * STATUS_PER_PAGE;
@@ -232,10 +256,11 @@
 
 - (void)mergeCachedHomeTimeLineStatusWithNewStatus:(NSArray*)newStatuses user:(User*)user page:(int)page
 {
+    LoginCachedEntity* cachedList = user.loginCached;
     int fromIndex = (page - 1) * STATUS_PER_PAGE;
-    NSArray* removeArray = [user.homeTimeLine.array subarrayWithRange:NSMakeRange(fromIndex, user.homeTimeLine.count - fromIndex)];
-    [user removeHomeTimeLine:[removeArray convertToOrderedSet]];
-    [user addHomeTimeLine:[newStatuses convertToOrderedSet] ];
+    NSArray* removeArray = [cachedList.homeTimeLine.array subarrayWithRange:NSMakeRange(fromIndex, cachedList.homeTimeLine.count - fromIndex)];
+    [cachedList removeHomeTimeLine:[removeArray convertToOrderedSet]];
+    [cachedList addHomeTimeLine:[newStatuses convertToOrderedSet] ];
 
     for (Status* s in removeArray)
     {
@@ -258,7 +283,7 @@
 - (NSArray*)getTopAtUser:(int)count
 {
     NSMutableArray* returnArray = [@[] mutableCopy];
-    User* u = SHARE_LOGIN_MANAGER.currentUser;
+    LoginCachedEntity* u = SHARE_LOGIN_MANAGER.currentUser.loginCached;
     
     count = count < u.atEntityList.count ? count : u.atEntityList.count;
     
@@ -274,24 +299,24 @@
     if (user)
     {
         User* currentUser = SHARE_LOGIN_MANAGER.currentUser;
-        AtEntity* entity = [currentUser getAtEntityOfUser:user];
+        AtEntity* entity = [currentUser.loginCached getAtEntityOfUser:user];
         if (!entity)
         {
-            AtEntity* entity = [AtEntity insertWithOwer:currentUser User:user inContext:self.cacheManagedObjectContext];
+            entity = [AtEntity insertWithOwer:currentUser User:user inContext:self.cacheManagedObjectContext];
         }
         entity.time = @(entity.time.longValue + 1);
-        [currentUser sortAtEntityList];
+        [currentUser.loginCached sortAtEntityList];
         [SHARE_DATA_MODEL saveCacheContext];
     }
 }
 - (void)recordAtUserById:(NSNumber*)userId
 {
-    User* user = [self getUserById:userId.longLongValue];
+    User* user = [self getOrCreateUserById:userId.longLongValue];
     [self recordAtUser:user];
 }
 - (void)recordAtUserByScreenName:(NSString*)screenName
 {
-    User* user = [self getUserByScreenName:screenName];
+    User* user = [self getOrCreateUserByScreenName:screenName];
     [self recordAtUser:user];
 }
 

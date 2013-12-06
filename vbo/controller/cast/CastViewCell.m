@@ -291,12 +291,16 @@
     NSString * string = [URL.relativeString stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     NSLog(@"The URL is %@",string);
     
-    UIActionSheet * testActionSheet = [[UIActionSheet alloc]initWithTitle:@"Click URl"
-                                                                 delegate:self
-                                                        cancelButtonTitle:@"OK"
-                                                   destructiveButtonTitle:nil
-                                                        otherButtonTitles:nil];
-    [testActionSheet showInView:self.superview];
+    if ([self.delegateForCastViewCell respondsToSelector:@selector(clickUrl:)])
+    {
+        [self.delegateForCastViewCell clickUrl:string];
+    }
+//    UIActionSheet * testActionSheet = [[UIActionSheet alloc]initWithTitle:@"Click URl"
+//                                                                 delegate:self
+//                                                        cancelButtonTitle:@"OK"
+//                                                   destructiveButtonTitle:nil
+//                                                        otherButtonTitles:nil];
+//    [testActionSheet showInView:self.superview];
     //    NSLayoutManager * layoutManger = _weiboContentTextView.layoutManager;
     
     return NO;
