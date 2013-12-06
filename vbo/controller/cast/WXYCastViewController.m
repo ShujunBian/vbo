@@ -23,6 +23,7 @@
 #import "CVDragIndicatorView.h"
 #import "CVImagePercentDismissTransition.h"
 #import "CVImagePercentDismissTransitionAnimation.h"
+#import "WXYUserProfileViewController.h"
 
 #define contantHeight 110.0
 #define contentLabelLineSpace 6.0
@@ -376,7 +377,23 @@
 }
 - (void)clickUrl:(NSString *)url
 {
-#warning 未写
+    if ([url hasPrefix:@"@"])
+    {
+        //@用户
+        NSString* userName = [url substringFromIndex:1];
+        WXYUserProfileViewController* vc = [self.storyboard instantiateViewControllerWithIdentifier:@"WXYUserProfileViewController"];
+        vc.userName = userName;
+        [self.navigationController pushViewController:vc animated:YES];
+    }
+    else if ([url hasPrefix:@"#"] && [url hasSuffix:@"#"])
+    {
+        //话题
+#warning 未处理
+    }
+    else if ([url hasPrefix:@"http://"])
+    {
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:url]];
+    }
 }
 
 #pragma mark - CastImageViewDelegate

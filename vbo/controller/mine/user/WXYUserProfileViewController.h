@@ -15,5 +15,5 @@
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @property (strong, nonatomic) NSString* userName;
-
+@property (strong, nonatomic) User* user;
 @end
