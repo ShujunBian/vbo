@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		18016452184D7889003EC38F /* CVImageTransitionAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 18016451184D7889003EC38F /* CVImageTransitionAnimation.m */; };
 		1808F45C1835382900829471 /* WXYGroupTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 1808F45B1835382900829471 /* WXYGroupTest.m */; };
+		182D7587185175EB00F58C07 /* WXYProfileTableViewDelegateObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 182D7586185175EB00F58C07 /* WXYProfileTableViewDelegateObject.m */; };
 		1830F851184F687600516D72 /* vboCachedDatamodel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 188E68951829131600BE534D /* vboCachedDatamodel.xcdatamodeld */; };
 		1830F853184F6A5500516D72 /* UIFont+TextKitAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = 51652DEC1835D7EF004E4D30 /* UIFont+TextKitAddition.m */; };
 		1830F855184F6A5500516D72 /* UIFontDescriptor+TextKitAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = 51652DEF1835D7FF004E4D30 /* UIFontDescriptor+TextKitAddition.m */; };
@@ -205,6 +206,8 @@
 		18016450184D7889003EC38F /* CVImageTransitionAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CVImageTransitionAnimation.h; sourceTree = "<group>"; };
 		18016451184D7889003EC38F /* CVImageTransitionAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CVImageTransitionAnimation.m; sourceTree = "<group>"; };
 		1808F45B1835382900829471 /* WXYGroupTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXYGroupTest.m; sourceTree = "<group>"; };
+		182D7585185175EB00F58C07 /* WXYProfileTableViewDelegateObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXYProfileTableViewDelegateObject.h; sourceTree = "<group>"; };
+		182D7586185175EB00F58C07 /* WXYProfileTableViewDelegateObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXYProfileTableViewDelegateObject.m; sourceTree = "<group>"; };
 		1830F889184F744A00516D72 /* NSArray+ConvertToOrderedSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+ConvertToOrderedSet.h"; sourceTree = "<group>"; };
 		1830F88A184F744A00516D72 /* NSArray+ConvertToOrderedSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+ConvertToOrderedSet.m"; sourceTree = "<group>"; };
 		1830F88E184F9A3C00516D72 /* AtEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AtEntity.h; sourceTree = "<group>"; };
@@ -668,6 +671,8 @@
 			children = (
 				1868F1111829CE1400C5764D /* WXYMineViewController.h */,
 				1868F1121829CE1400C5764D /* WXYMineViewController.m */,
+				182D7585185175EB00F58C07 /* WXYProfileTableViewDelegateObject.h */,
+				182D7586185175EB00F58C07 /* WXYProfileTableViewDelegateObject.m */,
 			);
 			path = mine;
 			sourceTree = "<group>";
@@ -1232,6 +1237,7 @@
 				184A0FAC183BACC30003E82E /* WXYLoginManager.m in Sources */,
 				1841100318165608008B700C /* WXYNetworkOperation.m in Sources */,
 				51652DEA1835AC13004E4D30 /* UITextViewHelper.m in Sources */,
+				182D7587185175EB00F58C07 /* WXYProfileTableViewDelegateObject.m in Sources */,
 				51E04EB218491061001D9500 /* CVImageDismissTransitionAnimation.m in Sources */,
 				185E88AF182AABF40020F3B2 /* MKNetworkEngine.m in Sources */,
 				18A67CDC184CF42B00C81722 /* WXYUserProfileGenderAndLocationCell.m in Sources */,
