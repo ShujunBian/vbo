@@ -45,6 +45,10 @@
 #define DISCOVER_TOPIC_WEEKLY @"2/trends/weekly.json"
 #define DISCOVER_SEARCH_TOPIC @"2/search/topics.json"
 
+//Favorite
+#define FAVOR_GET_LIST_URL @"2/favorites.json"
+
+
 #import "WXYSettingManager.h"
 #import "WXYDataModel.h"
 #import "WXYLoginManager.h"
@@ -840,6 +844,42 @@
     return op;
 }
 
+#pragma mark - 收藏
+#pragma mark 读取
+- (MKNetworkOperation*)getFavoriteStatusPage:(int)page
+                                     succeed:(ArrayBlock)succeedBlock
+                                       error:(ErrorBlock)errorBlock
+{
+    MKNetworkOperation* op = nil;
+    op = [self startOperationWithPath:FAVOR_GET_LIST_URL
+                            needLogin:YES
+                             paramers:@{@"page":@(page), @"count":@(STATUS_PER_PAGE)}
+                          onSucceeded:^(MKNetworkOperation *completedOperation)
+          {
+              NSMutableArray* returnArray = [@[] mutableCopy];
+              NSDictionary* responseDict = completedOperation.responseJSON;
+              NSArray* favoriteArray = responseDict[@"favorites"];
+              for (NSDictionary* favorDict in favoriteArray)
+              {
+                  NSDictionary* dict = favorDict[@"status"];
+                  Status* s = [WXYNetworkDataFactory getStatusWithDictIncludeUser:dict];
+                  [returnArray addObject:s];
+              }
+#warning 缓存未处理
+              if (succeedBlock)
+              {
+                  succeedBlock(returnArray);
+              }
+          }
+                              onError:^(MKNetworkOperation *completedOperation, NSError *error)
+          {
+              if (errorBlock)
+              {
+                  errorBlock(error);
+              }
+          }];
+    return op;
+}
 @end
 
 @implementation WXYNetworkDataFactory

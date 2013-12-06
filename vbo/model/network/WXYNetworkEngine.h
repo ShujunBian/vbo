@@ -233,4 +233,20 @@ typedef enum{
                               page:(int)page
                            succeed:(ArrayBlock)succeedBlock
                              error:(ErrorBlock)errorBlock;
+
+
+////收藏
+//读取
+
+/*!读取当前用户收藏列表
+ * @param page 页码，从1开始
+ * @param succeedBlock 成功处理block,Array内容为Status
+ */
+- (MKNetworkOperation*)getFavoriteStatusPage:(int)page
+                                     succeed:(ArrayBlock)succeedBlock
+                                       error:(ErrorBlock)errorBlock;
+
+//写入
+
+
 @end
