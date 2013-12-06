@@ -370,6 +370,10 @@
         _selectedImageView.hidden = YES;
     }];
 }
+- (void)clickUrl:(NSString *)url
+{
+#warning 未写
+}
 
 #pragma mark - CastImageViewDelegate
 - (void)castImageDidDismiss:(CastImageViewController *)viewController

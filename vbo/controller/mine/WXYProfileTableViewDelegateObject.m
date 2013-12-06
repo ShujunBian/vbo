@@ -14,7 +14,9 @@
 #import "WXYUserProfileNumberView.h"
 #import "WXYUserProfilePhotoView.h"
 #import "UIImageView+MKNetworkKitAdditions.h"
-
+#import "WXYSettingManager.h"
+#define contantHeight 110.0
+#define contentLabelLineSpace 6.0
 enum
 {
     kRowGenderAndLocation = 0,
@@ -29,6 +31,8 @@ enum
 
 @interface WXYProfileTableViewDelegateObject ()
 
+@property (strong, nonatomic) User* bindUser;
+- (float)cellHeightForStatus:(Status *)currentCellStatus;
 @property (weak, nonatomic) UITableView* tableView;
 
 @property (strong, nonatomic) WXYUserProfileNumberView* numberView;
@@ -54,6 +58,7 @@ enum
         self.tableView = tableView;
         self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         self.tableView.tableHeaderView = self.photoView;
+        self.tableView.backgroundColor = SHARE_SETTING_MANAGER.themeColor;
 
     }
     return self;
@@ -111,7 +116,11 @@ enum
     {
         //        Status * currentCellStatus = [_weiboContentArray objectAtIndex:[indexPath row]];
         
-        _statusCell = [[CastViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"USER_PROFILE_STATUS_IDENTIFIER"];
+        UINib *castNib = [UINib nibWithNibName:@"CastViewCell" bundle:[NSBundle bundleForClass:[CastViewCell class]]];
+        [self.tableView registerNib:castNib forCellReuseIdentifier:@"CastViewCell"];
+        _statusCell = [self.tableView dequeueReusableCellWithIdentifier:@"CastViewCell"];
+        _statusCell.backgroundColor = [UIColor clearColor];
+//        _statusCell = [[CastViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"USER_PROFILE_STATUS_IDENTIFIER"];
 #warning delegate未实现
         //        _statusCell.delegateForCastViewCell = self;
         
@@ -175,7 +184,7 @@ enum
 #pragma mark - Private Method
 - (void)bind:(User*)user
 {
-    
+    self.bindUser = user;
     [self.photoView.headPhotoImageView setImageFromURL:[NSURL URLWithString:user.avatarLargeUrl]];
     self.numberView.followerNumberLabel.text = user.followersCount.stringValue;
     self.numberView.followingNumberLabel.text = user.friendCount.stringValue;
@@ -196,8 +205,8 @@ enum
     if (user.statuses.array.count)
     {
         Status* status = user.statuses.array[0];
-        [self.statusCell setCellWithWeiboStatus:status isInCastView:NO];
-        self.statusCell.textLabel.text = status.text;
+        [self.statusCell setCellWithWeiboStatus:status isInCastView:YES];
+//        self.statusCell.textLabel.text = status.text;
     }
     
 }
@@ -229,6 +238,7 @@ enum
             cell = self.zanCell;
             break;
     }
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -264,6 +274,32 @@ enum
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if (indexPath.row == kRowUserStatus)
+    {
+        return [self cellHeightForStatus:self.bindUser.statuses.array[0]];
+    }
     return 44.f;
+}
+
+#pragma mark - Height
+- (float)cellHeightForStatus:(Status *)currentCellStatus
+{
+    float cellHeight = contantHeight;
+    if (currentCellStatus.bmiddlePicURL != nil) {
+        cellHeight += 180.0;
+    }
+    NSMutableAttributedString * contentString = [UITextViewHelper setAttributeString:[[NSMutableAttributedString alloc]initWithString:currentCellStatus.text]
+                                                                      WithNormalFont:SHARE_SETTING_MANAGER.castViewTableCellContentLabelFont
+                                                                         withUrlFont:SHARE_SETTING_MANAGER.castViewTableCellContentLabelFont
+                                                                     withNormalColor:SHARE_SETTING_MANAGER.castViewTableCellContentLabelTextColor
+                                                                        withUrlColor:SHARE_SETTING_MANAGER.themeColor
+                                                                  withLabelLineSpace:contentLabelLineSpace];
+    cellHeight += [UITextViewHelper HeightForAttributedString:contentString withWidth:288.0f];
+    
+    if (currentCellStatus.repostStatus != nil) {
+        cellHeight += [CastViewCell getHeightofCastRepostViewByStatus:currentCellStatus.repostStatus] + 20.0;
+    }
+    
+    return cellHeight;
 }
 @end

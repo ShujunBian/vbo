@@ -249,7 +249,7 @@
             <objects>
                 <navigationController definesPresentationContext="YES" id="pgN-fx-2eE" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="fjB-DD-oDG"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="p4p-9j-CFC">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="p4p-9j-CFC">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>

@@ -13,31 +13,43 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="男" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P0d-J9-obL">
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="男" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P0d-J9-obL">
                         <rect key="frame" x="20" y="11" width="17" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="17" id="W69-dU-6ZX"/>
+                        </constraints>
                         <fontDescription key="fontDescription" name="STHeitiSC-Light" family="Heiti SC" pointSize="12"/>
                         <color key="textColor" red="0.58823529411764708" green="0.58823529411764708" blue="0.58823529411764708" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="上海" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nDO-76-aka">
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="上海" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nDO-76-aka">
                         <rect key="frame" x="53" y="11" width="34" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="34" id="eEK-Na-PTz"/>
+                        </constraints>
                         <fontDescription key="fontDescription" name="STHeitiSC-Light" family="Heiti SC" pointSize="12"/>
                         <color key="textColor" red="0.58823529411764708" green="0.58823529411764708" blue="0.58823529411764708" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="hor_separator.png" translatesAutoresizingMaskIntoConstraints="NO" id="R7T-mP-UyW">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="hor_separator.png" translatesAutoresizingMaskIntoConstraints="NO" id="R7T-mP-UyW">
                         <rect key="frame" x="16" y="43" width="304" height="1"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     </imageView>
                 </subviews>
                 <color key="backgroundColor" red="0.96470588235294119" green="0.95686274509803915" blue="0.94117647058823528" alpha="1" colorSpace="calibratedRGB"/>
                 <constraints>
-                    <constraint firstItem="P0d-J9-obL" firstAttribute="leading" secondItem="h4s-Kd-Qkp" secondAttribute="leading" constant="20" symbolic="YES" id="F90-CY-f9I"/>
-                    <constraint firstItem="nDO-76-aka" firstAttribute="baseline" secondItem="P0d-J9-obL" secondAttribute="baseline" id="GOj-j2-JVJ"/>
-                    <constraint firstItem="nDO-76-aka" firstAttribute="leading" secondItem="P0d-J9-obL" secondAttribute="trailing" constant="14" id="Mom-wi-o0O"/>
-                    <constraint firstItem="P0d-J9-obL" firstAttribute="centerY" secondItem="h4s-Kd-Qkp" secondAttribute="centerY" id="at6-c8-LxY"/>
+                    <constraint firstItem="P0d-J9-obL" firstAttribute="top" secondItem="nDO-76-aka" secondAttribute="top" id="9kc-aZ-dlH"/>
+                    <constraint firstItem="nDO-76-aka" firstAttribute="leading" secondItem="P0d-J9-obL" secondAttribute="trailing" constant="16" id="N8Y-1D-X13"/>
+                    <constraint firstItem="P0d-J9-obL" firstAttribute="leading" secondItem="h4s-Kd-Qkp" secondAttribute="leading" constant="20" symbolic="YES" id="OGC-lC-Wch"/>
+                    <constraint firstItem="P0d-J9-obL" firstAttribute="top" secondItem="h4s-Kd-Qkp" secondAttribute="top" constant="11" id="eEQ-Ys-a6z"/>
+                    <constraint firstItem="nDO-76-aka" firstAttribute="baseline" secondItem="P0d-J9-obL" secondAttribute="baseline" id="hdN-G3-SpW"/>
+                    <constraint firstItem="R7T-mP-UyW" firstAttribute="top" secondItem="P0d-J9-obL" secondAttribute="bottom" constant="11" id="i2e-sj-Ay8"/>
+                    <constraint firstItem="nDO-76-aka" firstAttribute="centerY" secondItem="h4s-Kd-Qkp" secondAttribute="centerY" id="j0i-W2-b6X"/>
+                    <constraint firstAttribute="trailing" secondItem="R7T-mP-UyW" secondAttribute="trailing" id="p07-xp-L9B"/>
+                    <constraint firstAttribute="bottom" secondItem="R7T-mP-UyW" secondAttribute="bottom" constant="-1" id="tjC-dC-gN9"/>
+                    <constraint firstItem="R7T-mP-UyW" firstAttribute="leading" secondItem="h4s-Kd-Qkp" secondAttribute="leading" constant="16" id="vBb-Ec-Etk"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
