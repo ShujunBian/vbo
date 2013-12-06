@@ -27,6 +27,7 @@
 @property (nonatomic, strong) NSArray * hotUserArray;
 
 @property (nonatomic, weak) IBOutlet UITableView * tableView;
+@property (nonatomic, strong) UISearchBar * searchBar;
 
 @property (nonatomic, strong) DVTableSectionView * discoverTableSectionView;
 @property (nonatomic) DiscoverSegmentType currentSegmentType;
@@ -48,8 +49,11 @@
 {
     [super viewDidLoad];
     
-    UISearchBar * searchBar = [[UISearchBar alloc]init];
-    self.navigationItem.titleView = searchBar;
+    _searchBar = [[UISearchBar alloc]init];
+    self.navigationItem.titleView = _searchBar;
+    [_searchBar setPlaceholder:@"搜索"];
+    UITapGestureRecognizer * touch = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(touchInView)];
+    [self.view addGestureRecognizer:touch];
     
 	// Do any additional setup after loading the view.
     UIView *bgview = [[UIView alloc]init];
@@ -57,11 +61,7 @@
     [self.tableView setBackgroundView:bgview];
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     
-    NSArray *nibs = [[NSBundle mainBundle] loadNibNamed:@"DVTableSectionView"
-                                                  owner:self
-                                                options:nil];
-    self.discoverTableSectionView = [nibs objectAtIndex:0];
-    _discoverTableSectionView.delegate = self;
+    self.discoverTableSectionView.delegate = self;
     _currentSegmentType = DCSegmentWeibo;
     
     UINib *castNib = [UINib nibWithNibName:@"CastViewCell" bundle:[NSBundle bundleForClass:[CastViewCell class]]];
@@ -69,8 +69,6 @@
     
     [self fetchRecommandUserArray];
     [self fetchHotWeiboArray];
-    
-//    NSLog(@"the currnet discoverSce is %d",_discoverTableSectionView.se
     
 }
 
@@ -258,16 +256,22 @@
     [_tableView reloadData];
 }
 
+#pragma private methods
+- (void)touchInView
+{
+    [_searchBar resignFirstResponder];
+}
+
 #pragma mark - Property
-//- (DiscoverTableSectionView *)_discoverTableSectionView
-//{
-//    if (!_discoverTableSectionView) {
-//        NSArray *nibs = [[NSBundle mainBundle] loadNibNamed:@"DiscoverTableSectionView"
-//                                                      owner:self
-//                                                    options:nil];
-//        _discoverTableSectionView = [nibs objectAtIndex:0];
-//    }
-//    return _discoverTableSectionView;
-//}
+- (DVTableSectionView *)discoverTableSectionView
+{
+    if (!_discoverTableSectionView) {
+        NSArray *nibs = [[NSBundle mainBundle] loadNibNamed:@"DVTableSectionView"
+                                                      owner:self
+                                                    options:nil];
+        _discoverTableSectionView = [nibs objectAtIndex:0];
+    }
+    return _discoverTableSectionView;
+}
 
 @end

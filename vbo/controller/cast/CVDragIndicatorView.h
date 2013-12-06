@@ -50,9 +50,6 @@ typedef enum{
  */
 - (BOOL)refreshTableHeaderDataSourceIsLoading:(CVDragIndicatorView*)view;
 
-@optional
-
-- (NSDate*)refreshTableHeaderDataSourceLastUpdated:(CVDragIndicatorView*)view;
 @end
 
 @interface CVDragIndicatorView : UIView

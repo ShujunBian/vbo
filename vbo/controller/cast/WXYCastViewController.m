@@ -21,17 +21,18 @@
 #import "CVImageDismissTransitionAnimation.h"
 #import "CastImageViewController.h"
 #import "CVDragIndicatorView.h"
+#import "CVLoadIndicatorView.h"
 #import "CVImagePercentDismissTransition.h"
 #import "CVImagePercentDismissTransitionAnimation.h"
 
-#define contantHeight 110.0
-#define contentLabelLineSpace 6.0
-#define navigationbarHeight 64.0
-#define screenShotTableView_Y_PointContentOffset -109.0
-#define theRefreshViewHeight 44.0
+#define kContantHeight 110.0
+#define kContentLabelLineSpace 6.0
+#define kNavigationbarHeight 64.0
+#define kScreenShotTableView_Y_PointContentOffset -109.0
+#define kRefreshViewHeight 44.0
 #define tableViewSeprateLine [UIColor colorWithRed:0.0/255.0 green:0.0/255.0 blue:0.0/255.0 alpha:1.0]
 
-@interface WXYCastViewController ()<CastImageViewControllerDelegate,CVDragIndicatorViewDelegate>
+@interface WXYCastViewController ()<CastImageViewControllerDelegate,CVDragIndicatorViewDelegate,CVLoadIndicatorViewDelegate>
 
 //@property (nonatomic, strong) UIDynamicAnimator *animator;
 @property (nonatomic, strong) NSArray * weiboContentArray;
@@ -41,9 +42,10 @@
 @property (nonatomic, strong) CVImagePercentDismissTransitionAnimation * imagePercentDismissTransitionAnimation;
 @property (nonatomic, strong) CVImagePercentDismissTransition * imagePercentDismissTransition;
 @property (nonatomic, strong) CVDragIndicatorView * dragIndicatorView;
+@property (nonatomic, strong) CVLoadIndicatorView * loadIndicatorView;
 
 @property (nonatomic) BOOL reloading;
-
+//@property (nonatomic) float test;
 @end
 
 @implementation WXYCastViewController
@@ -82,6 +84,8 @@
     
     
     [self.tableView addSubview:self.dragIndicatorView];
+    [self.tableView addSubview:self.loadIndicatorView];
+//    _test = 0.0;
 }
 
 - (void)fetchWeiboContent
@@ -113,7 +117,14 @@
 - (void)viewDidLayoutSubviews
 {
     [super viewDidLayoutSubviews];
-    [_dragIndicatorView setFrame:CGRectMake(0, -44 , 320.0, 44)];
+    [_dragIndicatorView setFrame:CGRectMake(0,
+                                            -kRefreshViewHeight ,
+                                            [UIScreen mainScreen].bounds.size.width,
+                                            kRefreshViewHeight)];
+    [_loadIndicatorView setFrame:CGRectMake(0,
+                                            _tableView.bounds.size.height,
+                                            [UIScreen mainScreen].bounds.size.width,
+                                            kRefreshViewHeight)];
 }
 
 - (void)didReceiveMemoryWarning
@@ -161,11 +172,6 @@
 #pragma mark - UITableView Delegate
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-//    cell.backgroundColor = [UIColor clearColor];
-    
-    //    UIView *selectedBackgroundView = [[UIView alloc]init];
-    //    [selectedBackgroundView setBackgroundColor:[UIColor clearColor]];
-    //    cell.selectedBackgroundView = selectedBackgroundView;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -176,7 +182,7 @@
 #pragma mark - UIScrollView Delegate
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
 {
-//    if (scrollView.contentOffset.y >= -navigationbarHeight) {
+//    if (scrollView.contentOffset.y >= -kNavigationbarHeight) {
         id<WXYScrollHiddenDelegate> delegate = nil;
         if ([self.parentViewController conformsToProtocol:@protocol(WXYScrollHiddenDelegate)] && [self.parentViewController respondsToSelector:@selector(wxyScrollViewWillBeginDragging:)])
         {
@@ -187,7 +193,7 @@
 }
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
-    if (scrollView.contentOffset.y >= -navigationbarHeight) {
+    if (scrollView.contentOffset.y >= -kNavigationbarHeight) {
         id<WXYScrollHiddenDelegate> delegate = nil;
         if ([self.parentViewController conformsToProtocol:@protocol(WXYScrollHiddenDelegate)] && [self.parentViewController respondsToSelector:@selector(wxyScrollViewDidScroll:)])
         {
@@ -200,7 +206,7 @@
 }
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
 {
-    if (scrollView.contentOffset.y >= -navigationbarHeight) {
+    if (scrollView.contentOffset.y >= -kNavigationbarHeight) {
         id<WXYScrollHiddenDelegate> delegate = nil;
         if ([self.parentViewController conformsToProtocol:@protocol(WXYScrollHiddenDelegate)] && [self.parentViewController respondsToSelector:@selector(wxyScrollViewDidEndDragging:willDecelerate:)])
         {
@@ -214,7 +220,7 @@
 }
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
-    if (scrollView.contentOffset.y >= -navigationbarHeight) {
+    if (scrollView.contentOffset.y >= -kNavigationbarHeight) {
         id<WXYScrollHiddenDelegate> delegate = nil;
         if ([self.parentViewController conformsToProtocol:@protocol(WXYScrollHiddenDelegate)] && [self.parentViewController respondsToSelector:@selector(wxyScrollViewDidEndDecelerating:)])
         {
@@ -240,7 +246,6 @@
         [self performSelector:@selector(doneLoadingTableViewData) withObject:nil afterDelay:0.5];
     }error:nil];
 
-//    [self performSelector:@selector(doneLoadingTableViewData) withObject:nil afterDelay:3.0];
 }
 
 - (void)reloadTableViewDataSource{
@@ -253,9 +258,9 @@
     
     CGRect windowRect = [UIScreen mainScreen].bounds;
     UIImageView * screenShotImageView = [[UIImageView alloc]initWithFrame:CGRectMake(0,
-                                                                                     - (screenShotTableView_Y_PointContentOffset + theRefreshViewHeight),
+                                                                                     - (kScreenShotTableView_Y_PointContentOffset + kRefreshViewHeight),
                                                                                      windowRect.size.width,
-                                                                                     windowRect.size.height + screenShotTableView_Y_PointContentOffset)];
+                                                                                     windowRect.size.height + kScreenShotTableView_Y_PointContentOffset)];
     [screenShotImageView setImage:[self viewScreenshot]];
     [self.view addSubview:screenShotImageView];
     self.tableView.hidden = YES;
@@ -268,18 +273,24 @@
         screenShotImageView.frame = CGRectMake(0,
                                                windowRect.size.height,
                                                windowRect.size.width,
-                                               windowRect.size.height + screenShotTableView_Y_PointContentOffset);
+                                               windowRect.size.height + kScreenShotTableView_Y_PointContentOffset);
     }completion:^(BOOL finished){
     }];
 	[_dragIndicatorView refreshScrollViewDataSourceDidFinishedLoading:_tableView];
+}
+
+#pragma mark - CVLoadIndicatorView Delegate
+- (void)loadMoreTableFooterDidTriggerLoadMore:(CVLoadIndicatorView *)view
+{
+    
 }
 
 #pragma mark - ScreenShot
 - (UIImage *)viewScreenshot
 {
     CGSize windowSize = [UIScreen mainScreen].bounds.size;
-    UIGraphicsBeginImageContextWithOptions(CGSizeMake(windowSize.width, windowSize.height + screenShotTableView_Y_PointContentOffset), NO, 2);
-    [self.view drawViewHierarchyInRect:CGRectMake(0, screenShotTableView_Y_PointContentOffset, self.view.frame.size.width, self.view.frame.size.height) afterScreenUpdates:NO];
+    UIGraphicsBeginImageContextWithOptions(CGSizeMake(windowSize.width, windowSize.height + kScreenShotTableView_Y_PointContentOffset), NO, 2);
+    [self.view drawViewHierarchyInRect:CGRectMake(0, kScreenShotTableView_Y_PointContentOffset, self.view.frame.size.width, self.view.frame.size.height) afterScreenUpdates:NO];
     UIImage * snapshot = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     
@@ -290,12 +301,14 @@
 - (float)cellHeightForRowAtIndex:(NSInteger)row
 {
     Status * currentCellStatus = [_weiboContentArray objectAtIndex:row];
+//    _test += [self cellHeightForStatus:currentCellStatus];
+//    NSLog(@"the test is %f",_test);
     return [self cellHeightForStatus:currentCellStatus];
 }
 
 - (float)cellHeightForStatus:(Status *)currentCellStatus
 {
-    float cellHeight = contantHeight;
+    float cellHeight = kContantHeight;
     if (currentCellStatus.bmiddlePicURL != nil) {
         cellHeight += 180.0;
     }
@@ -304,7 +317,7 @@
                                                                          withUrlFont:SHARE_SETTING_MANAGER.castViewTableCellContentLabelFont
                                                                      withNormalColor:SHARE_SETTING_MANAGER.castViewTableCellContentLabelTextColor
                                                                         withUrlColor:SHARE_SETTING_MANAGER.themeColor
-                                                                  withLabelLineSpace:contentLabelLineSpace];
+                                                                  withLabelLineSpace:kContentLabelLineSpace];
     cellHeight += [UITextViewHelper HeightForAttributedString:contentString withWidth:288.0f];
     
     if (currentCellStatus.repostStatus != nil) {
@@ -384,12 +397,24 @@
 {
     if (!_dragIndicatorView) {
         _dragIndicatorView = [[CVDragIndicatorView alloc]initWithFrame:CGRectMake(0,
-                                                                                  theRefreshViewHeight,
+                                                                                  - kRefreshViewHeight,
                                                                                   [UIScreen mainScreen].bounds.size.width,
-                                                                                  theRefreshViewHeight)];
+                                                                                  kRefreshViewHeight)];
         _dragIndicatorView.delegate = self;
     }
     return _dragIndicatorView;
+}
+
+- (CVLoadIndicatorView *)loadIndicatorView
+{
+    if (!_loadIndicatorView) {
+        _loadIndicatorView = [[CVLoadIndicatorView alloc]initWithFrame:CGRectMake(0,
+                                                                                  kRefreshViewHeight,
+                                                                                  [UIScreen mainScreen].bounds.size.width,
+                                                                                  kRefreshViewHeight)];
+        _loadIndicatorView.delegate = self;
+    }
+    return _loadIndicatorView;
 }
 
 - (void)viewDidUnload
