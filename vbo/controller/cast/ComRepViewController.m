@@ -14,6 +14,7 @@
 #import "ComRepCountCell.h"
 #import "ComReqDetailCell.h"
 
+#define navigationBarHeight 64.0
 #define contantHeight 110.0
 #define contentLabelLineSpace 6.0
 #define secondCommentCellHeight 25.0
@@ -47,28 +48,11 @@
 	// Do any additional setup after loading the view.
     [self.navigationController setNavigationBarHidden:NO animated:YES];
 
-    self.view.tintColor = SHARE_SETTING_MANAGER.themeColor;
-    self.navigationItem.backBarButtonItem.tintColor = SHARE_SETTING_MANAGER.themeColor;
-    self.navigationItem.leftItemsSupplementBackButton = YES;
-//    UIImageView* im = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"weibo_List_Button.png"]];
-//    self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:im];
-//    [self.navigationItem.backBarButtonItem setBackgroundImage:[UIImage imageNamed:@"weibo_List_Button.png"] forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
-    
-    //                                                                           style:UIBarButtonItemStyleBordered target:self
-//                                                                          action:@selector(back)];
-//
-
-//    self.navigationItem.backBarButtonItem.customView = im;
-    
-    
-//    self.navigationItem.leftBarButtonItems = [[NSArray alloc]initWithObjects:
-//                                              [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"back_button.png"]
-//                                                                                                            style:UIBarButtonItemStyleBordered target:self
-//                                                                                                           action:@selector(back)],
-//                                              [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"weibo_List_Button.png"]
-//                                                                              style:UIBarButtonItemStyleBordered target:self
-//                                                                             action:nil],
-//                                              nil];
+    UIBarButtonItem *barButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"weibo_List_Button.png"]
+                                                                      style:UIBarButtonItemStyleBordered
+                                                                     target:nil
+                                                                     action:nil];
+    [self.navigationItem setBackBarButtonItem:barButtonItem];
     
     
     [self.view setTintColor:SHARE_SETTING_MANAGER.themeColor];
@@ -88,6 +72,17 @@
                                                object:nil];
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+
+}
+
+- (void)viewDidLayoutSubviews
+{
+    [super viewDidLayoutSubviews];
+
+}
+
 - (void)fetchCommentContent
 {
     [SHARE_NW_ENGINE getCommentsOfWeibo:_currentStatus.statusID
@@ -95,15 +90,29 @@
                                 succeed:^(NSArray * resultArray){
                                     self.commentArray = [[NSMutableArray alloc]initWithArray:resultArray];
                                     [self.tableView reloadData];
+                                    [self resetTableViewContentOffset];
                                 }
                                   error:nil];
 }
-
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)resetTableViewContentOffset
+{
+    if (_currentType == CommentType && [_currentStatus.commentsCount integerValue] != 0) {
+        CGPoint contentOffset = CGPointMake(0, [self weiboCellHeightForRowAtIndex] - navigationBarHeight);
+        [self.tableView setContentOffset:contentOffset animated:NO];
+    }
+    else if (_currentType == RepostType) {
+        //如果选择转发按钮
+    }
+    else {
+        //如果选择more按钮
+    }
 }
 
 #pragma mark - UITableView DataSource

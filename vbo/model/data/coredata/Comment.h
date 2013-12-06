@@ -20,8 +20,12 @@
 @property (nonatomic, retain) NSString * text;
 @property (nonatomic, retain) Status *status;
 @property (nonatomic, retain) User *user;
-@property (nonatomic, retain) Comment* replyComment;
-@property (nonatomic, retain) NSSet* repliedComments;
+@property (nonatomic, retain) Comment *replyComment;
+@property (nonatomic, retain) NSSet *repliedComments;
+
+//List Cached
+@property (nonatomic, retain) Status *beInCommentList;
+@property (nonatomic, retain) User* beInUserCommentList;
 
 + (Comment*)insertWithId:(NSNumber*)cId InContext:(NSManagedObjectContext*)context;
 - (void)updateWithDict:(NSDictionary*)dict;

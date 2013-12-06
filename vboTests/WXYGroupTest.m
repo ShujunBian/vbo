@@ -10,6 +10,7 @@
 #import "WXYDataModel.h"
 
 #define TEST_GROUP_ID 200ll
+#define TEST_GROUP2_ID 201ll
 #define TEST_USER1_ID 100ll
 #define TEST_USER2_ID 101ll
 #define TEST_STATUS1_ID 103ll
@@ -18,6 +19,7 @@
 @interface WXYGroupTest : XCTestCase
 
 @property (strong, nonatomic) Group* group;
+@property (strong, nonatomic) Group* group2;
 
 @property (strong, nonatomic) User* user1;
 @property (strong, nonatomic) User* user2;
@@ -34,6 +36,7 @@
     [super setUp];
     // Put setup code here. This method is called before the invocation of each test method in the class.
     self.group = [Group insertWithId:@(TEST_GROUP_ID) inContext:SHARE_DATA_MODEL.cacheManagedObjectContext];
+    self.group2 = [Group insertWithId:@(TEST_GROUP2_ID) inContext:SHARE_DATA_MODEL.cacheManagedObjectContext];
     self.user1 = [User insertWithId:@(TEST_USER1_ID) InContext:SHARE_DATA_MODEL.cacheManagedObjectContext];
     self.user2 = [User insertWithId:@(TEST_USER2_ID) InContext:SHARE_DATA_MODEL.cacheManagedObjectContext];
     self.status1 = [Status insertWithId:@(TEST_STATUS1_ID) InContext:SHARE_DATA_MODEL.cacheManagedObjectContext];
@@ -51,6 +54,7 @@
 {
     // Put teardown code here. This method is called after the invocation of each test method in the class.
     [SHARE_DATA_MODEL.cacheManagedObjectContext deleteObject:self.group];
+    [SHARE_DATA_MODEL.cacheManagedObjectContext deleteObject:self.group2];
     [SHARE_DATA_MODEL.cacheManagedObjectContext deleteObject:self.user1];
     [SHARE_DATA_MODEL.cacheManagedObjectContext deleteObject:self.user2];
     [SHARE_DATA_MODEL.cacheManagedObjectContext deleteObject:self.status1];
@@ -139,5 +143,6 @@
     id s = [self.group.statuses anyObject];
     XCTAssert([s isKindOfClass:[Status class]], @"group.statuses中应该为Status");
 }
+
 
 @end

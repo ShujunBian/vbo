@@ -17,21 +17,32 @@
 #import "UIImage+ImageEffects.h"
 #import "ScreenShotHelper.h"
 #import "WXYScrollHiddenDelegate.h"
-#import "CastViewImageTransitionAnimation.h"
-#import "CastViewImageDismissTransitionAnimation.h"
+#import "CVImageTransitionAnimation.h"
+#import "CVImageDismissTransitionAnimation.h"
 #import "CastImageViewController.h"
+#import "CVDragIndicatorView.h"
+#import "CVImagePercentDismissTransition.h"
+#import "CVImagePercentDismissTransitionAnimation.h"
 
 #define contantHeight 110.0
 #define contentLabelLineSpace 6.0
+#define navigationbarHeight 64.0
+#define screenShotTableView_Y_PointContentOffset -109.0
+#define theRefreshViewHeight 44.0
 #define tableViewSeprateLine [UIColor colorWithRed:0.0/255.0 green:0.0/255.0 blue:0.0/255.0 alpha:1.0]
 
-@interface WXYCastViewController ()<CastImageViewControllerDelegate>
+@interface WXYCastViewController ()<CastImageViewControllerDelegate,CVDragIndicatorViewDelegate>
 
 //@property (nonatomic, strong) UIDynamicAnimator *animator;
 @property (nonatomic, strong) NSArray * weiboContentArray;
 @property (nonatomic, weak) UIImageView * selectedImageView;
-@property (nonatomic, strong) CastViewImageTransitionAnimation * imageTransitionAnimation;
-@property (nonatomic, strong) CastViewImageDismissTransitionAnimation * imageDismissTransitionAnimation;
+@property (nonatomic, strong) CVImageTransitionAnimation * imageTransitionAnimation;
+@property (nonatomic, strong) CVImageDismissTransitionAnimation * imageDismissTransitionAnimation;
+@property (nonatomic, strong) CVImagePercentDismissTransitionAnimation * imagePercentDismissTransitionAnimation;
+@property (nonatomic, strong) CVImagePercentDismissTransition * imagePercentDismissTransition;
+@property (nonatomic, strong) CVDragIndicatorView * dragIndicatorView;
+
+@property (nonatomic) BOOL reloading;
 
 @end
 
@@ -50,14 +61,15 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    _imageTransitionAnimation = [CastViewImageTransitionAnimation new];
-    _imageDismissTransitionAnimation = [CastViewImageDismissTransitionAnimation new];
+    _imageTransitionAnimation = [CVImageTransitionAnimation new];
+    _imageDismissTransitionAnimation = [CVImageDismissTransitionAnimation new];
+    _imagePercentDismissTransition = [CVImagePercentDismissTransition new];
+    _imagePercentDismissTransitionAnimation = [CVImagePercentDismissTransitionAnimation new];
     
     UIView *bgview = [[UIView alloc]init];
     [bgview setBackgroundColor:SHARE_SETTING_MANAGER.themeColor];
     [self.tableView setBackgroundView:bgview];
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
-    //    [self.view setTranslatesAutoresizingMaskIntoConstraints:NO];
     [self fetchWeiboContent];
     
     UINib *castNib = [UINib nibWithNibName:@"CastViewCell" bundle:[NSBundle bundleForClass:[CastViewCell class]]];
@@ -68,16 +80,23 @@
                                                  name:UIContentSizeCategoryDidChangeNotification
                                                object:nil];
     
+    
+    [self.tableView addSubview:self.dragIndicatorView];
 }
-
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    self.navigationController.navigationBarHidden = YES;
+}
 - (void)fetchWeiboContent
 {
-    [SHARE_NW_ENGINE getHomeTimelineOfCurrentUserSucceed:^(NSArray * resultArray){
-        self.weiboContentArray = resultArray;
-        [self.tableView reloadData];
-        [NSNotificationCenter postDidFetchCurrentUserNameNotification];
+    [SHARE_NW_ENGINE getHomeTimelineOfCurrentUserPage:1
+                                              Succeed:^(NSArray * resultArray){
+                                                  self.weiboContentArray = resultArray;
+                                                  [self.tableView reloadData];
+                                                  [NSNotificationCenter postDidFetchCurrentUserNameNotification];
         
-//        [self performSelector:@selector(snap) withObject:nil afterDelay:5.0];
+        //        [self performSelector:@selector(snap) withObject:nil afterDelay:5.0];
         
     }error:nil];
 }
@@ -89,7 +108,7 @@
 //    [self.view drawViewHierarchyInRect:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height) afterScreenUpdates:NO];
 //    UIImage *snapshot = UIGraphicsGetImageFromCurrentImageContext();
 //    UIGraphicsEndImageContext();
-//    
+//
 //    UIImageView * testView = [[UIImageView alloc]initWithImage:[snapshot applyTintEffectWithColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.6]]];
 //    [testView setFrame:CGRectMake(0.0, 0.0, 320.0, 568.0)];
 //    [self.view addSubview:testView];
@@ -98,6 +117,7 @@
 - (void)viewDidLayoutSubviews
 {
     [super viewDidLayoutSubviews];
+    [_dragIndicatorView setFrame:CGRectMake(0, -44 , 320.0, 44)];
 }
 
 - (void)didReceiveMemoryWarning
@@ -147,9 +167,9 @@
 {
     cell.backgroundColor = [UIColor clearColor];
     
-//    UIView *selectedBackgroundView = [[UIView alloc]init];
-//    [selectedBackgroundView setBackgroundColor:[UIColor clearColor]];
-//    cell.selectedBackgroundView = selectedBackgroundView;
+    //    UIView *selectedBackgroundView = [[UIView alloc]init];
+    //    [selectedBackgroundView setBackgroundColor:[UIColor clearColor]];
+    //    cell.selectedBackgroundView = selectedBackgroundView;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -160,45 +180,125 @@
 #pragma mark - UIScrollView Delegate
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
 {
-    id<WXYScrollHiddenDelegate> delegate = nil;
-    if ([self.parentViewController conformsToProtocol:@protocol(WXYScrollHiddenDelegate)] && [self.parentViewController respondsToSelector:@selector(wxyScrollViewWillBeginDragging:)])
-    {
-        delegate = (id<WXYScrollHiddenDelegate>) self.parentViewController;
-        [delegate wxyScrollViewWillBeginDragging:scrollView];
-    }
+//    if (scrollView.contentOffset.y >= -navigationbarHeight) {
+        id<WXYScrollHiddenDelegate> delegate = nil;
+        if ([self.parentViewController conformsToProtocol:@protocol(WXYScrollHiddenDelegate)] && [self.parentViewController respondsToSelector:@selector(wxyScrollViewWillBeginDragging:)])
+        {
+            delegate = (id<WXYScrollHiddenDelegate>) self.parentViewController;
+            [delegate wxyScrollViewWillBeginDragging:scrollView];
+        }
+//    }
 }
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
-    id<WXYScrollHiddenDelegate> delegate = nil;
-    if ([self.parentViewController conformsToProtocol:@protocol(WXYScrollHiddenDelegate)] && [self.parentViewController respondsToSelector:@selector(wxyScrollViewDidScroll:)])
-    {
-        delegate = (id<WXYScrollHiddenDelegate>) self.parentViewController;
-        [delegate wxyScrollViewDidScroll:scrollView];
+    if (scrollView.contentOffset.y >= -navigationbarHeight) {
+        id<WXYScrollHiddenDelegate> delegate = nil;
+        if ([self.parentViewController conformsToProtocol:@protocol(WXYScrollHiddenDelegate)] && [self.parentViewController respondsToSelector:@selector(wxyScrollViewDidScroll:)])
+        {
+            delegate = (id<WXYScrollHiddenDelegate>) self.parentViewController;
+            [delegate wxyScrollViewDidScroll:scrollView];
+        }
     }
+    [_dragIndicatorView refreshScrollViewDidScroll:scrollView];
+    
 }
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
 {
-    id<WXYScrollHiddenDelegate> delegate = nil;
-    if ([self.parentViewController conformsToProtocol:@protocol(WXYScrollHiddenDelegate)] && [self.parentViewController respondsToSelector:@selector(wxyScrollViewDidEndDragging:willDecelerate:)])
-    {
-        delegate = (id<WXYScrollHiddenDelegate>) self.parentViewController;
-        [delegate wxyScrollViewDidEndDragging:scrollView willDecelerate:decelerate];
+    if (scrollView.contentOffset.y >= -navigationbarHeight) {
+        id<WXYScrollHiddenDelegate> delegate = nil;
+        if ([self.parentViewController conformsToProtocol:@protocol(WXYScrollHiddenDelegate)] && [self.parentViewController respondsToSelector:@selector(wxyScrollViewDidEndDragging:willDecelerate:)])
+        {
+            delegate = (id<WXYScrollHiddenDelegate>) self.parentViewController;
+            [delegate wxyScrollViewDidEndDragging:scrollView willDecelerate:decelerate];
+        }
     }
+
+    [_dragIndicatorView refreshScrollViewDidEndDragging:scrollView];
     
 }
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
-    id<WXYScrollHiddenDelegate> delegate = nil;
-    if ([self.parentViewController conformsToProtocol:@protocol(WXYScrollHiddenDelegate)] && [self.parentViewController respondsToSelector:@selector(wxyScrollViewDidEndDecelerating:)])
-    {
-        delegate = (id<WXYScrollHiddenDelegate>) self.parentViewController;
-        [delegate wxyScrollViewDidEndDecelerating:scrollView];
+    if (scrollView.contentOffset.y >= -navigationbarHeight) {
+        id<WXYScrollHiddenDelegate> delegate = nil;
+        if ([self.parentViewController conformsToProtocol:@protocol(WXYScrollHiddenDelegate)] && [self.parentViewController respondsToSelector:@selector(wxyScrollViewDidEndDecelerating:)])
+        {
+            delegate = (id<WXYScrollHiddenDelegate>) self.parentViewController;
+            [delegate wxyScrollViewDidEndDecelerating:scrollView];
+        }
     }
 }
+
+#pragma mark - CVDragIndicatorViewDelegate
+- (BOOL)refreshTableHeaderDataSourceIsLoading:(CVDragIndicatorView *)view
+{
+    //待取好数据后返回yes
+    return _reloading;
+}
+
+- (void)refreshTableHeaderDidTriggerRefresh:(CVDragIndicatorView *)view
+{
+    [self reloadTableViewDataSource];
+    [self.tableView setUserInteractionEnabled:NO];
+    [SHARE_NW_ENGINE getHomeTimelineOfCurrentUserPage:1 Succeed:^(NSArray * resultArray){
+        self.weiboContentArray = resultArray;
+        [self performSelector:@selector(doneLoadingTableViewData) withObject:nil afterDelay:0.5];
+    }error:nil];
+
+//    [self performSelector:@selector(doneLoadingTableViewData) withObject:nil afterDelay:3.0];
+}
+
+- (void)reloadTableViewDataSource{
+	_reloading = YES;
+}
+
+- (void)doneLoadingTableViewData{
+    _reloading = NO;
+    [self.tableView setUserInteractionEnabled:YES];
+    
+    CGRect windowRect = [UIScreen mainScreen].bounds;
+    UIImageView * screenShotImageView = [[UIImageView alloc]initWithFrame:CGRectMake(0,
+                                                                                     - (screenShotTableView_Y_PointContentOffset + theRefreshViewHeight),
+                                                                                     windowRect.size.width,
+                                                                                     windowRect.size.height + screenShotTableView_Y_PointContentOffset)];
+    [screenShotImageView setImage:[self viewScreenshot]];
+    [self.view addSubview:screenShotImageView];
+    self.tableView.hidden = YES;
+    self.tableView.frame = CGRectMake(0, -windowRect.size.height, windowRect.size.width, windowRect.size.height);
+    [self.tableView reloadData];
+    [UIView animateWithDuration:0.7 delay:0.0 options:UIViewAnimationOptionCurveEaseOut animations:^{
+        self.tableView.hidden = NO;
+        self.tableView.frame = CGRectMake(0, 0, windowRect.size.width, windowRect.size.height);
+        screenShotImageView.alpha = 0.0;
+        screenShotImageView.frame = CGRectMake(0,
+                                               windowRect.size.height,
+                                               windowRect.size.width,
+                                               windowRect.size.height + screenShotTableView_Y_PointContentOffset);
+    }completion:^(BOOL finished){
+    }];
+	[_dragIndicatorView refreshScrollViewDataSourceDidFinishedLoading:_tableView];
+}
+
+#pragma mark - ScreenShot
+- (UIImage *)viewScreenshot
+{
+    CGSize windowSize = [UIScreen mainScreen].bounds.size;
+    UIGraphicsBeginImageContextWithOptions(CGSizeMake(windowSize.width, windowSize.height + screenShotTableView_Y_PointContentOffset), NO, 2);
+    [self.view drawViewHierarchyInRect:CGRectMake(0, screenShotTableView_Y_PointContentOffset, self.view.frame.size.width, self.view.frame.size.height) afterScreenUpdates:NO];
+    UIImage * snapshot = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return snapshot;
+}
+
 #pragma mark - calculate weiboCell Height
 - (float)cellHeightForRowAtIndex:(NSInteger)row
 {
     Status * currentCellStatus = [_weiboContentArray objectAtIndex:row];
+    return [self cellHeightForStatus:currentCellStatus];
+}
+
+- (float)cellHeightForStatus:(Status *)currentCellStatus
+{
     float cellHeight = contantHeight;
     if (currentCellStatus.bmiddlePicURL != nil) {
         cellHeight += 180.0;
@@ -229,7 +329,7 @@
     UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:NULL];
     ComRepViewController * comRepViewController = [storyBoard instantiateViewControllerWithIdentifier:@"ComRepViewController"];
     comRepViewController.currentStatus = status;
-    
+    comRepViewController.currentType = CommentType;
     [self.navigationController pushViewController:comRepViewController animated:YES];
 }
 
@@ -238,6 +338,16 @@
     UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:NULL];
     ComRepViewController * comRepViewController = [storyBoard instantiateViewControllerWithIdentifier:@"ComRepViewController"];
     comRepViewController.currentStatus = status;
+    comRepViewController.currentType = RepostType;
+    [self.navigationController pushViewController:comRepViewController animated:YES];
+}
+
+- (void)clickMoreButtonByStatus:(Status *)status
+{
+    UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:NULL];
+    ComRepViewController * comRepViewController = [storyBoard instantiateViewControllerWithIdentifier:@"ComRepViewController"];
+    comRepViewController.currentStatus = status;
+    comRepViewController.currentType = MoreType;
     [self.navigationController pushViewController:comRepViewController animated:YES];
 }
 
@@ -249,6 +359,8 @@
     UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:NULL];
     CastImageViewController * toVc = [storyBoard instantiateViewControllerWithIdentifier:@"CastImageViewController"];
     
+    
+    toVc.transitionDelegate = self.imagePercentDismissTransition;
     toVc.delegate = self;
     CGPoint offsetRect = [_tableView contentOffset];
     initalRect.origin.y -= offsetRect.y;
@@ -259,8 +371,12 @@
     
     toVc.transitioningDelegate = self;
     [self presentViewController:toVc animated:YES completion:^{
-            _selectedImageView.hidden = YES;
+        _selectedImageView.hidden = YES;
     }];
+}
+- (void)clickUrl:(NSString *)url
+{
+#warning 未写
 }
 
 #pragma mark - CastImageViewDelegate
@@ -269,6 +385,19 @@
     [self dismissViewControllerAnimated:YES completion:^{
         _selectedImageView.hidden = NO;
     }];
+}
+
+#pragma mark - Property
+- (CVDragIndicatorView *)dragIndicatorView
+{
+    if (!_dragIndicatorView) {
+        _dragIndicatorView = [[CVDragIndicatorView alloc]initWithFrame:CGRectMake(0,
+                                                                                  theRefreshViewHeight,
+                                                                                  [UIScreen mainScreen].bounds.size.width,
+                                                                                  theRefreshViewHeight)];
+        _dragIndicatorView.delegate = self;
+    }
+    return _dragIndicatorView;
 }
 
 - (void)viewDidUnload
@@ -292,6 +421,11 @@
 
 - (id<UIViewControllerAnimatedTransitioning>)animationControllerForDismissedController:(UIViewController *)dismissed
 {
-    return self.imageDismissTransitionAnimation;
+    return self.imagePercentDismissTransition.interacting ? self.imagePercentDismissTransitionAnimation : self.imageDismissTransitionAnimation;
+}
+
+- (id<UIViewControllerInteractiveTransitioning>)interactionControllerForDismissal:(id<UIViewControllerAnimatedTransitioning>)animator
+{
+    return self.imagePercentDismissTransition.interacting ? self.imagePercentDismissTransition : nil;
 }
 @end

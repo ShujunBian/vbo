@@ -249,7 +249,7 @@
             <objects>
                 <navigationController definesPresentationContext="YES" id="pgN-fx-2eE" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="fjB-DD-oDG"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="p4p-9j-CFC">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="p4p-9j-CFC">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -269,12 +269,31 @@
                         <viewControllerLayoutGuide type="bottom" id="xIY-dc-Ye6"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="FCS-7A-x7U">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="9cE-va-6oA">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="455"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <sections/>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="9cE-va-6oA" firstAttribute="top" secondItem="FCS-7A-x7U" secondAttribute="top" id="YPp-pp-zBT"/>
+                            <constraint firstAttribute="bottom" secondItem="9cE-va-6oA" secondAttribute="bottom" id="bnJ-yt-u2C"/>
+                            <constraint firstAttribute="trailing" secondItem="9cE-va-6oA" secondAttribute="trailing" id="hSo-xt-yNt"/>
+                            <constraint firstItem="9cE-va-6oA" firstAttribute="leading" secondItem="FCS-7A-x7U" secondAttribute="leading" id="lhf-qi-x3N"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="oZV-eT-nSw"/>
                     <navigationItem key="navigationItem" id="xvP-Kb-aTd"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
+                    <connections>
+                        <outlet property="tableView" destination="9cE-va-6oA" id="ThB-k1-cQk"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TuZ-Lw-bmR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -408,7 +427,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="plw-Ra-xtp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1969" y="216"/>
+            <point key="canvasLocation" x="-2353" y="1346"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

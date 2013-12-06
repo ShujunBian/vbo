@@ -8,11 +8,14 @@
 
 #import "User.h"
 #import "Status.h"
+#import "AtEntity.h"
 #import "NSDictionary+noNilValueForKey.h"
 #import "NSDate+Addition.h"
+#import "NSManagedObject+OrderSetHepper.h"
 
 @implementation User
-
+@dynamic loginCached;
+@dynamic beAted;
 @dynamic blogURL;
 @dynamic cityCode;
 @dynamic domain;
@@ -46,6 +49,9 @@
 @dynamic groups;
 @dynamic followedUsers;
 @dynamic followingUsers;
+@dynamic statusList;
+@dynamic beInFollowedList;
+@dynamic beInFollowingList;
 
 + (User*)insertWithId:(NSNumber*)uId InContext:(NSManagedObjectContext*)context
 {
@@ -56,6 +62,7 @@
 
 - (void)updateWithDict:(NSDictionary*)dict
 {
+    self.userID = [dict noNilValueForKey:@"id"];
     self.screenName = [dict noNilValueForKey:@"screen_name"];
     self.name = [dict noNilValueForKey:@"name"];
     self.provinceCode = [dict noNilValueForKey:@"province"];
@@ -83,4 +90,74 @@
     self.onlineStatus = [dict noNilValueForKey:@"online_status"];
     self.biFollowersCount = [dict noNilValueForKey:@"bi_followers_count"];
 }
+
+#pragma mark - Order RelationShip
+- (NSOrderedSet*)statuses
+{
+    return [self mutableOrderedSetValueForKey:@"statuses"];
+}
+
+- (void)addStatusesObject:(Status *)value
+{
+    NSMutableOrderedSet* orderSet = [self mutableOrderedSetValueForKey:@"statuses"];
+    int index = 0;
+    for (index = 0; index < orderSet.count; index++)
+    {
+        Status* s = orderSet[index];
+        if ([value.createdAt compare:s.createdAt] == NSOrderedDescending)
+        {
+            break;
+        }
+    }
+    [orderSet insertObject:value atIndex:index];
+    [orderSet addObject:value];
+}
+- (void)removeStatusesObject:(Status *)value
+{
+    NSMutableOrderedSet* orderSet = [self mutableOrderedSetValueForKey:@"statuses"];
+    [orderSet removeObject:value];
+}
+- (void)addStatuses:(NSOrderedSet *)values
+{
+    NSMutableOrderedSet*  mutableValues = [values mutableCopy];
+    [mutableValues sortUsingComparator:^NSComparisonResult(id obj1, id obj2)
+     {
+         Status* l = (Status*)obj1;
+         Status* r = (Status*)obj2;
+         return -[l.createdAt compare:r.createdAt];
+     }];
+    NSMutableOrderedSet* orderSet = [self mutableOrderedSetValueForKey:@"statuses"];
+    
+    //归并排序
+    int i = 0, j = 0;
+    for (j = 0; j < orderSet.count; j++)
+    {
+        Status* v = mutableValues[i];
+        Status* s = orderSet[j];
+        if ([v.createdAt compare:s.createdAt] == NSOrderedDescending)
+        {
+            [orderSet insertObject:v atIndex:j];
+            i++;
+            if (i == mutableValues.count)
+            {
+                break;
+            }
+        }
+    }
+    if (i != mutableValues.count)
+    {
+        NSArray* remainArray = [mutableValues.array subarrayWithRange:NSMakeRange(i, mutableValues.count - i)];
+        [orderSet addObjectsFromArray:remainArray];
+    }
+    
+    [orderSet addObjectsFromArray:values.array];
+}
+- (void)removeStatuses:(NSOrderedSet *)values
+{
+    NSMutableOrderedSet* orderSet = [self mutableOrderedSetValueForKey:@"statuses"];
+    [orderSet removeObjectsInArray:values.array];
+}
+
+
+
 @end

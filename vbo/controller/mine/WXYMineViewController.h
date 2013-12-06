@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
+
 @interface WXYMineViewController : UIViewController
+#warning CastViewCellDelegate未实现
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @end

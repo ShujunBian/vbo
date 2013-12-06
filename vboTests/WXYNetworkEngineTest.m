@@ -22,20 +22,29 @@
 @end
 
 @implementation WXYNetworkEngineTest
+static NSLock* s_Lock = nil;
++ (void)setUp
+{
+
+    s_Lock = [[NSLock alloc] init];
+}
 
 - (void)setUp
 {
     [super setUp];
     // Put setup code here. This method is called before the invocation of each test method in the class.
+    [s_Lock lock];
     self.asyncTestCase = [[GHAsyncTestCase alloc] init];
     [self.asyncTestCase setUp];
     self.engine = SHARE_NW_ENGINE;
+
     [NSThread sleepForTimeInterval:0.5f];
 }
 
 - (void)tearDown
 {
     // Put teardown code here. This method is called after the invocation of each test method in the class.
+    [s_Lock unlock];
     [super tearDown];
     [self.asyncTestCase tearDown];
 }
@@ -66,21 +75,22 @@
 
 #pragma mark - Weibo
 #pragma mark Read
-- (void)testGetHomeTimelineOfCurrentUser
-{
-    [self.asyncTestCase prepare];
-    [self.engine getHomeTimelineOfCurrentUserSucceed:^(NSArray *resultArray) {
-        Status* status = resultArray[0];
-        NSLog(@"%@",status.statusID);
-        [self.asyncTestCase notify:kGHUnitWaitStatusSuccess];
-
-    } error:^(NSError *error) {
-        XCTFail(@"获取Home界面微博失败");
-        [self.asyncTestCase notify:kGHUnitWaitStatusFailure];
-    }];
-    [self.asyncTestCase waitForStatus:kGHUnitWaitStatusSuccess timeout:kMKNetworkKitRequestTimeOutInSeconds];
-
-}
+//- (void)testGetHomeTimelineOfCurrentUser
+//{
+//    [self.asyncTestCase prepare];
+//    [self.engine getHomeTimelineOfCurrentUserPage:1
+//                                          Succeed:^(NSArray *resultArray) {
+//        Status* status = resultArray[0];
+//        NSLog(@"%@",status.statusID);
+//        [self.asyncTestCase notify:kGHUnitWaitStatusSuccess];
+//
+//    } error:^(NSError *error) {
+//        XCTFail(@"获取Home界面微博失败");
+//        [self.asyncTestCase notify:kGHUnitWaitStatusFailure];
+//    }];
+//    [self.asyncTestCase waitForStatus:kGHUnitWaitStatusSuccess timeout:kMKNetworkKitRequestTimeOutInSeconds];
+//
+//}
 
 #pragma mark Write
 - (void)testPostWeiboText

@@ -1,11 +1,18 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="3401" systemVersion="13A603" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="AtEntity" representedClassName="AtEntity" syncable="YES">
+        <attribute name="time" optional="YES" attributeType="Integer 32" defaultValueString="0" spotlightIndexingEnabled="YES" syncable="YES"/>
+        <relationship name="owner" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LoginCachedEntity" inverseName="atEntityList" inverseEntity="LoginCachedEntity" syncable="YES"/>
+        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="beAted" inverseEntity="User" syncable="YES"/>
+    </entity>
     <entity name="Comment" representedClassName="Comment" syncable="YES">
         <attribute name="commentID" optional="YES" attributeType="Integer 64" defaultValueString="0" indexed="YES" syncable="YES"/>
         <attribute name="commentMID" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="createdAt" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="source" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="beInCommentList" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Status" inverseName="commentList" inverseEntity="Status" syncable="YES"/>
+        <relationship name="beInUserCommentList" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LoginCachedEntity" inverseName="commentList" inverseEntity="LoginCachedEntity" syncable="YES"/>
         <relationship name="repliedComments" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Comment" inverseName="replyComment" inverseEntity="Comment" syncable="YES"/>
         <relationship name="replyComment" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Comment" inverseName="repliedComments" inverseEntity="Comment" syncable="YES"/>
         <relationship name="status" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Status" inverseName="comments" inverseEntity="Status" syncable="YES"/>
@@ -25,12 +32,20 @@
         <relationship name="statuses" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Status" inverseName="groups" inverseEntity="Status" syncable="YES"/>
         <relationship name="users" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="User" inverseName="groups" inverseEntity="User" syncable="YES"/>
     </entity>
+    <entity name="LoginCachedEntity" representedClassName="LoginCachedEntity" syncable="YES">
+        <relationship name="atEntityList" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="AtEntity" inverseName="owner" inverseEntity="AtEntity" syncable="YES"/>
+        <relationship name="commentList" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Comment" inverseName="beInUserCommentList" inverseEntity="Comment" syncable="YES"/>
+        <relationship name="followedList" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="User" inverseName="beInFollowedList" inverseEntity="User" syncable="YES"/>
+        <relationship name="followingList" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="User" inverseName="beInFollowingList" inverseEntity="User" syncable="YES"/>
+        <relationship name="homeTimeLine" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Status" inverseName="beInTimeline" inverseEntity="Status" syncable="YES"/>
+        <relationship name="owner" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="loginCached" inverseEntity="User" syncable="YES"/>
+    </entity>
     <entity name="Status" representedClassName="Status" syncable="YES">
         <attribute name="bmiddlePicURL" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="commentsCount" optional="YES" attributeType="Integer 64" defaultValueString="0">
             <userInfo/>
         </attribute>
-        <attribute name="createdAt" attributeType="Date">
+        <attribute name="createdAt" optional="YES" attributeType="Date">
             <userInfo/>
         </attribute>
         <attribute name="favorited" optional="YES" attributeType="Boolean">
@@ -48,7 +63,7 @@
             <userInfo/>
         </attribute>
         <attribute name="statusMID" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="text" attributeType="String">
+        <attribute name="text" optional="YES" attributeType="String">
             <userInfo/>
         </attribute>
         <attribute name="thumbnailPicURL" optional="YES" attributeType="String" syncable="YES"/>
@@ -56,6 +71,9 @@
         <attribute name="visible" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="visibleListId" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <relationship name="author" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="statuses" inverseEntity="User" syncable="YES"/>
+        <relationship name="beInStatusList" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="User" inverseName="statusList" inverseEntity="User" syncable="YES"/>
+        <relationship name="beInTimeline" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="LoginCachedEntity" inverseName="homeTimeLine" inverseEntity="LoginCachedEntity" syncable="YES"/>
+        <relationship name="commentList" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Comment" inverseName="beInCommentList" inverseEntity="Comment" syncable="YES"/>
         <relationship name="comments" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Comment" inverseName="status" inverseEntity="Comment" syncable="YES"/>
         <relationship name="groups" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Group" inverseName="statuses" inverseEntity="Group" syncable="YES"/>
         <relationship name="pictures" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="StatusPicture" inverseName="status" inverseEntity="StatusPicture" syncable="YES"/>
@@ -109,19 +127,26 @@
         <attribute name="userDescription" optional="YES" attributeType="String">
             <userInfo/>
         </attribute>
-        <attribute name="userID" optional="YES" attributeType="Integer 64" defaultValueString="0" indexed="YES" syncable="YES"/>
+        <attribute name="userID" attributeType="Integer 64" defaultValueString="0" indexed="YES" syncable="YES"/>
         <attribute name="verified" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="verifiedReason" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="beAted" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="AtEntity" inverseName="user" inverseEntity="AtEntity" syncable="YES"/>
+        <relationship name="beInFollowedList" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="LoginCachedEntity" inverseName="followedList" inverseEntity="LoginCachedEntity" syncable="YES"/>
+        <relationship name="beInFollowingList" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="LoginCachedEntity" inverseName="followingList" inverseEntity="LoginCachedEntity" syncable="YES"/>
         <relationship name="comments" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Comment" inverseName="user" inverseEntity="Comment" syncable="YES"/>
         <relationship name="followedUsers" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="User" inverseName="followingUsers" inverseEntity="User" syncable="YES"/>
         <relationship name="followingUsers" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="User" inverseName="followedUsers" inverseEntity="User" syncable="YES"/>
         <relationship name="groups" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Group" inverseName="users" inverseEntity="Group" syncable="YES"/>
+        <relationship name="loginCached" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LoginCachedEntity" inverseName="owner" inverseEntity="LoginCachedEntity" syncable="YES"/>
         <relationship name="ownGroups" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Group" inverseName="owner" inverseEntity="Group" syncable="YES"/>
-        <relationship name="statuses" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Status" inverseName="author" inverseEntity="Status" syncable="YES"/>
+        <relationship name="statuses" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Status" inverseName="author" inverseEntity="Status" syncable="YES"/>
+        <relationship name="statusList" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Status" inverseName="beInStatusList" inverseEntity="Status" syncable="YES"/>
     </entity>
     <elements>
+        <element name="AtEntity" positionX="0" positionY="0" width="0" height="0"/>
         <element name="Comment" positionX="0" positionY="0" width="0" height="0"/>
         <element name="Group" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="LoginCachedEntity" positionX="0" positionY="0" width="0" height="0"/>
         <element name="Status" positionX="0" positionY="0" width="0" height="0"/>
         <element name="StatusPicture" positionX="0" positionY="0" width="0" height="0"/>
         <element name="User" positionX="0" positionY="0" width="0" height="0"/>

@@ -42,10 +42,12 @@
 
 
 @interface WXYNetworkDataFactory : NSObject
++ (Status*)getStatusWithDictIncludeUser:(NSDictionary*)dict;
 + (Status*)getStatusWithDict:(NSDictionary*)dict;
 + (Comment*)getCommentWithDict:(NSDictionary*)dict status:(Status*)s;
 + (Group*)getGroupWithDict:(NSDictionary*)dict;
 + (User*)getUserWithDict:(NSDictionary*)dict;
++ (User*)getUserWithDictIncludeStatus:(NSDictionary*)dict;
 @end
 
 
@@ -69,10 +71,6 @@
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         s_networkEngine = [[WXYNetworkEngine alloc] initWithHostName:HOST_NAME];
-
-        MKNetworkEngine* imageEngine = [[MKNetworkEngine alloc] init];
-        [imageEngine useCache];
-        [UIImageView setDefaultEngine:imageEngine];
     });
     return s_networkEngine;
 }
@@ -89,7 +87,7 @@
 }
 #pragma mark - Private Method
 - (MKNetworkOperation*)startOperationWithPath:(NSString*)path
-                                         user:(id)user
+                                         user:(LoginUserInfo*)userInfo
                                      paramers:(NSDictionary*)paramDict
                                    httpMethod:(NSString*)method
                                        dataDict:(NSDictionary*)dataDict
@@ -98,10 +96,10 @@
 {
     MKNetworkOperation* op = nil;
     NSMutableDictionary* params = [[NSMutableDictionary alloc] initWithDictionary:paramDict];
-    //    if (user)
-    //    {
-    [params setValue:SHARE_LOGIN_MANAGER.currentUserInfo.accessToken forKey:@"access_token"];
-    //    }
+    if (userInfo)
+    {
+        [params setValue:userInfo.accessToken forKey:@"access_token"];
+    }
     op = [self operationWithPath:path
                           params:params
                       httpMethod:method
@@ -117,13 +115,13 @@
 }
 
 - (MKNetworkOperation*)startOperationWithPath:(NSString*)path
-                                         user:(id)user
+                                         user:(LoginUserInfo*)userInfo
                                      paramers:(NSDictionary*)paramDict
                                    httpMethod:(NSString*)method
                                   onSucceeded:(OperationSucceedBlock)succeedBlock
                                       onError:(OperationErrorBlock)errorBlock
 {
-    return [self startOperationWithPath:path user:user paramers:paramDict httpMethod:method dataDict:nil onSucceeded:succeedBlock onError:errorBlock];
+    return [self startOperationWithPath:path user:userInfo paramers:paramDict httpMethod:method dataDict:nil onSucceeded:succeedBlock onError:errorBlock];
 }
 - (MKNetworkOperation*)startOperationWithPath:(NSString*)path
                                     needLogin:(BOOL)fLogin
@@ -131,8 +129,12 @@
                                   onSucceeded:(OperationSucceedBlock)succeedBlock
                                       onError:(OperationErrorBlock)errorBlock
 {
-#warning 未完成，user暂时为nil
-    return [self startOperationWithPath:path user:nil paramers:paramDict httpMethod:@"GET" onSucceeded:succeedBlock onError:errorBlock];
+    LoginUserInfo* userInfo = nil;
+    if (fLogin)
+    {
+        userInfo = SHARE_LOGIN_MANAGER.currentUserInfo;
+    }
+    return [self startOperationWithPath:path user:userInfo paramers:paramDict httpMethod:@"GET" onSucceeded:succeedBlock onError:errorBlock];
 }
 
 #pragma mark - Network Service Client
@@ -170,7 +172,7 @@
                           onSucceeded:^(MKNetworkOperation *completedOperation)
           {
               NSDictionary* responseDict = completedOperation.responseJSON;
-              User* user = [WXYNetworkDataFactory getUserWithDict:responseDict];
+              User* user = [WXYNetworkDataFactory getUserWithDictIncludeStatus:responseDict];
               [SHARE_DATA_MODEL saveCacheContext];
               if (succeedBlock)
               {
@@ -190,13 +192,15 @@
 
 #pragma mark - 微博接口
 #pragma mark 读取
-- (MKNetworkOperation*)getHomeTimelineOfCurrentUserSucceed:(ArrayBlock)succeedBlock
-                                                     error:(ErrorBlock)errorBlock
+- (MKNetworkOperation*)getHomeTimelineOfCurrentUserPage:(int)page
+                                                Succeed:(ArrayBlock)succeedBlock
+                                                  error:(ErrorBlock)errorBlock;
 {
     MKNetworkOperation* op = nil;
     op = [self startOperationWithPath:HOME_TIMELINE_URL
                             needLogin:YES
-                             paramers:@{}
+                             paramers:@{@"page":@(page),
+                                        @"count":@(STATUS_PER_PAGE)}
                           onSucceeded:^(MKNetworkOperation *completedOperation)
           {
               NSDictionary* responseDict = completedOperation.responseJSON;
@@ -204,12 +208,18 @@
               
               NSMutableArray* returnArray = [[NSMutableArray alloc] init];
               
+              
+              User* user = SHARE_LOGIN_MANAGER.currentUser;
+              
               for (NSDictionary* dict in statuesDictArray)
               {
-                  Status* status = [WXYNetworkDataFactory getStatusWithDict:dict];
+                  Status* status = [WXYNetworkDataFactory getStatusWithDictIncludeUser:dict];
                   
                   [returnArray addObject:status];
               }
+              
+              [SHARE_DATA_MODEL mergeCachedHomeTimeLineStatusWithNewStatus:returnArray user:user page:page];
+              
               [SHARE_DATA_MODEL saveCacheContext];
               succeedBlock(returnArray);
               
@@ -258,12 +268,9 @@
     }
     
 
-
-    
-#warning user暂为nil
-    [self startOperationWithPath:urlStr user:nil paramers:paramDict httpMethod:@"POST" dataDict:imageDict onSucceeded:^(MKNetworkOperation *completedOperation) {
+    [self startOperationWithPath:urlStr user:SHARE_LOGIN_MANAGER.currentUserInfo paramers:paramDict httpMethod:@"POST" dataDict:imageDict onSucceeded:^(MKNetworkOperation *completedOperation) {
         NSDictionary* dict = completedOperation.responseJSON;
-        Status* status = [WXYNetworkDataFactory getStatusWithDict:dict];
+        Status* status = [WXYNetworkDataFactory getStatusWithDictIncludeUser:dict];
         [SHARE_DATA_MODEL saveCacheContext];
         if (succeedBlock)
         {
@@ -287,16 +294,14 @@
                              error:(ErrorBlock)errorBlock
 {
     MKNetworkOperation* op = nil;
-    
-#warning user暂为nil
     op = [self startOperationWithPath:REPOST_WEIBO_URL
-                                 user:nil
+                                 user:SHARE_LOGIN_MANAGER.currentUserInfo
                              paramers:@{@"id":weiboId, @"status":text, @"is_comment":@(commentType)}
                            httpMethod:@"POST"
                           onSucceeded:^(MKNetworkOperation *completedOperation)
     {
         NSDictionary* dict = completedOperation.responseJSON;
-        Status* status = [WXYNetworkDataFactory getStatusWithDict:dict];
+        Status* status = [WXYNetworkDataFactory getStatusWithDictIncludeUser:dict];
         [SHARE_DATA_MODEL saveCacheContext];
         if (succeedBlock)
         {
@@ -362,18 +367,21 @@
               
               BOOL fFirst = YES;
               Status* status = nil;
+
               for (NSDictionary* commentDict in commentArray)
               {
                   if (fFirst)
                   {
                       fFirst = NO;
                       NSDictionary* dict = commentDict[@"status"];
-                      status = [WXYNetworkDataFactory getStatusWithDict:dict]; //刷新微博信息
+                      NSNumber* weiboId = dict[@"id"];
+                      status = [SHARE_DATA_MODEL getStatusById:weiboId.longLongValue];
+#warning 微博API bug,此处commentCount与repostCount永远返回0
+//                      status = [WXYNetworkDataFactory getStatusWithDict:dict]; //刷新微博信息
                   }
                   
                   Comment* comment = [WXYNetworkDataFactory getCommentWithDict:commentDict status:status];
                   [returnArray addObject:comment];
-                  
               }
               if (succeedBlock)
               {
@@ -401,9 +409,8 @@
 {
     MKNetworkOperation* op = nil;
 
-#warning user为nil
     op = [self startOperationWithPath:COMMENT_CREATE_URL
-                                 user:nil
+                                 user:SHARE_LOGIN_MANAGER.currentUserInfo
                              paramers:@{@"id":weiboId, @"comment":content, @"comment_ori":@(fOrigin)}
                            httpMethod:@"POST"
                           onSucceeded:^(MKNetworkOperation *completedOperation)
@@ -521,7 +528,7 @@
               NSMutableArray* returnArray = [[NSMutableArray alloc] init];
               for (NSDictionary* dict in statusesArray)
               {
-                  Status* status = [WXYNetworkDataFactory getStatusWithDict:dict];
+                  Status* status = [WXYNetworkDataFactory getStatusWithDictIncludeUser:dict];
                   [returnArray addObject:status];
                   [group addStatusesObject:status];
               }
@@ -680,12 +687,16 @@
 @end
 
 @implementation WXYNetworkDataFactory
-
 + (Status*)getStatusWithDict:(NSDictionary*)dict
 {
     NSNumber* statusId = dict[@"id"];
     Status* status = [SHARE_DATA_MODEL getStatusById:statusId.longLongValue];
     [status updateWithDict:dict];
+    return status;
+}
++ (Status*)getStatusWithDictIncludeUser:(NSDictionary*)dict
+{
+    Status* status = [self getStatusWithDict:dict];
     
     NSDictionary* userDict = dict[@"user"];
     User* user = [self getUserWithDict:userDict];
@@ -696,7 +707,7 @@
     //处理转发
     if (repostDict)
     {
-        status.repostStatus = [self getStatusWithDict:repostDict];
+        status.repostStatus = [self getStatusWithDictIncludeUser:repostDict];
     }
     return status;
 }
@@ -752,6 +763,15 @@
     NSNumber* userId = dict[@"id"];
     User* user = [SHARE_DATA_MODEL getUserById:userId.longLongValue];
     [user updateWithDict:dict];
+
+    return user;
+}
++ (User*)getUserWithDictIncludeStatus:(NSDictionary*)dict
+{
+    User* user = [self getUserWithDict:dict];
+    NSDictionary* statusDict = dict[@"status"];
+    Status* status = [self getStatusWithDict:statusDict];
+    [user addStatusesObject:status];
     return user;
 }
 

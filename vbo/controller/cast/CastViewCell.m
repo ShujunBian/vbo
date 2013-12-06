@@ -24,6 +24,7 @@
 @property (nonatomic, strong) Status * currentStatus;
 
 @property (nonatomic, weak) IBOutlet UIImageView * weiboImage;
+@property (nonatomic, weak) IBOutlet NSLayoutConstraint * weiboImageHeightConstaint;
 @property (nonatomic, weak) IBOutlet UIImageView * userAvator;
 
 @property (nonatomic, weak) IBOutlet UILabel * userNickname;
@@ -44,6 +45,7 @@
 @property (nonatomic, weak) IBOutlet NSLayoutConstraint * contentTextViewHegihtConstraint;
 
 @property (nonatomic, weak) IBOutlet UIImageView * repostImageView;
+@property (nonatomic, weak) IBOutlet NSLayoutConstraint * repostImageHeightConstaint;
 @property (nonatomic, weak) IBOutlet UITextView * repostTextView;
 @property (nonatomic, weak) IBOutlet UILabel * repostUserNameLabel;
 @property (nonatomic, weak) IBOutlet UIView * repostBackgroundView;
@@ -58,6 +60,10 @@
 @end
 
 @implementation CastViewCell
+{
+    UITapGestureRecognizer * tapGesture;
+}
+
 - (void)awakeFromNib
 {
     //    _cellBackgroundView.layer.shadowColor = [UIColor blackColor].CGColor;
@@ -70,6 +76,9 @@
                                                  name:UIContentSizeCategoryDidChangeNotification
                                                object:nil];
     [self setSelectionStyle:UITableViewCellSelectionStyleNone];
+    
+    tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleGesture:)];
+    tapGesture.numberOfTapsRequired = 1;
     
     //    [self prepareGestureRecognizerInView:self];
 }
@@ -130,7 +139,9 @@
     _weiboContentTextView.delegate = self;
     
     [_weiboImage setImage:nil];
+    [_weiboImage removeGestureRecognizer:tapGesture];
     if (currentCellStatus.bmiddlePicURL != nil) {
+        _weiboImageHeightConstaint.constant = 180.0;
         _avatorTopSpaceConstaint.constant = weiboImageHeight + weiboCellBetweenHeight;
         NSURL *anImageURL = [NSURL URLWithString:currentCellStatus.bmiddlePicURL];
         [_weiboImage setImageFromURL:anImageURL placeHolderImage:nil animation:YES completion:nil];
@@ -139,6 +150,7 @@
         [self prepareGestureRecognizerInView:_weiboImage];
     }
     else {
+        _weiboImageHeightConstaint.constant = 0.0;
         _avatorTopSpaceConstaint.constant = weiboCellBetweenHeight;
     }
     
@@ -157,7 +169,6 @@
     
     if (isInCastView) {
         _moreButton.imageView.image = [_moreButton.imageView.image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
-        [_moreButton.imageView setTintColor:SHARE_SETTING_MANAGER.themeColor];
         
         [_commentTimesLabel setTextColor:SHARE_SETTING_MANAGER.themeColor];
         NSString * commentTimesString = [NSString stringWithFormat:@"%d",[currentCellStatus.commentsCount integerValue]];
@@ -175,10 +186,12 @@
     }
     
     [_repostImageView setImage:nil];
+    [_repostImageView removeGestureRecognizer:tapGesture];
     [_repostTextView setText:nil];
     [_repostUserNameLabel setText:nil];
     
     if (currentCellStatus.repostStatus != nil) {
+        _repostImageHeightConstaint.constant = 98.0;
         float repostHeightWithPadding = [CastViewCell getHeightofCastRepostViewByStatus:currentCellStatus.repostStatus];
         _repostBackgroundViewConstraint.constant = isInCastView ?  repostHeightWithPadding : repostHeightWithPadding - padding;
         [_repostBackgroundView setBackgroundColor:repostBackgroundViewColor];
@@ -192,6 +205,7 @@
             [self prepareGestureRecognizerInView:_repostImageView];
         }
         else {
+            _repostImageHeightConstaint.constant = 0.0;
             _reposetUserNameTopConstraint.constant = 27.0;
         }
         [_repostUserNameLabel setText:currentCellStatus.repostStatus.author.name];
@@ -260,12 +274,16 @@
     NSString * string = [URL.relativeString stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     NSLog(@"The URL is %@",string);
     
-    UIActionSheet * testActionSheet = [[UIActionSheet alloc]initWithTitle:@"Click URl"
-                                                                 delegate:self
-                                                        cancelButtonTitle:@"OK"
-                                                   destructiveButtonTitle:nil
-                                                        otherButtonTitles:nil];
-    [testActionSheet showInView:self.superview];
+    if ([self.delegateForCastViewCell respondsToSelector:@selector(clickUrl:)])
+    {
+        [self.delegateForCastViewCell clickUrl:string];
+    }
+//    UIActionSheet * testActionSheet = [[UIActionSheet alloc]initWithTitle:@"Click URl"
+//                                                                 delegate:self
+//                                                        cancelButtonTitle:@"OK"
+//                                                   destructiveButtonTitle:nil
+//                                                        otherButtonTitles:nil];
+//    [testActionSheet showInView:self.superview];
     //    NSLayoutManager * layoutManger = _weiboContentTextView.layoutManager;
     
     return NO;
@@ -280,6 +298,9 @@
     [self.delegateForCastViewCell clickRepostButtonByStatus:_currentStatus];
 }
 
+- (IBAction)clickMoreButton:(id)sender {
+    [self.delegateForCastViewCell clickMoreButtonByStatus:_currentStatus];
+}
 
 #pragma mark - 根据系统设置字体调整cell高度和cell字体大小
 static inline void calculateAndSetFonts(CastViewCell *aCell)
@@ -295,8 +316,6 @@ static inline void calculateAndSetFonts(CastViewCell *aCell)
 
 - (void)prepareGestureRecognizerInView:(UIView *)view{
     [view setUserInteractionEnabled:YES];
-    UITapGestureRecognizer * tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleGesture:)];
-    tapGesture.numberOfTapsRequired = 1;
     [view addGestureRecognizer:tapGesture];
 }
 

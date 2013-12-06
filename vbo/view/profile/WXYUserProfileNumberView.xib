@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="4514" systemVersion="13A603" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="WXYUserProfileNumberView"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="eoh-FO-BA5" customClass="WXYUserProfileNumberView">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="关注" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zxk-uy-w6o">
+                    <rect key="frame" x="127" y="14" width="24" height="15"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="24" id="1Fd-oW-hxP"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="STHeitiSC-Light" family="Heiti SC" pointSize="12"/>
+                    <color key="textColor" red="0.58823529409999997" green="0.58823529409999997" blue="0.58823529409999997" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1530" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RAT-ay-wUo">
+                    <rect key="frame" x="177" y="7" width="86" height="29"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="86" id="BdP-wD-x5d"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="24"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="54" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4dZ-1r-Hlf">
+                    <rect key="frame" x="20" y="7" width="99" height="29"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="24"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="粉丝" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZAA-MZ-kIa">
+                    <rect key="frame" x="276" y="14" width="24" height="15"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="24" id="3Q0-ag-1Ly"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="STHeitiSC-Light" family="Heiti SC" pointSize="12"/>
+                    <color key="textColor" red="0.58823529409999997" green="0.58823529409999997" blue="0.58823529409999997" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="hor_separator" translatesAutoresizingMaskIntoConstraints="NO" id="652-d7-AK0">
+                    <rect key="frame" x="0.0" y="43" width="320" height="1"/>
+                    <autoresizingMask key="autoresizingMask"/>
+                </imageView>
+                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="ver_separator" translatesAutoresizingMaskIntoConstraints="NO" id="S7L-h6-j9s">
+                    <rect key="frame" x="160" y="0.0" width="1" height="44"/>
+                    <autoresizingMask key="autoresizingMask"/>
+                </imageView>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="652-d7-AK0" firstAttribute="top" secondItem="zxk-uy-w6o" secondAttribute="bottom" constant="14" id="1v5-df-1oh"/>
+                <constraint firstItem="652-d7-AK0" firstAttribute="centerX" secondItem="S7L-h6-j9s" secondAttribute="centerX" id="3f3-qb-pnv"/>
+                <constraint firstItem="RAT-ay-wUo" firstAttribute="leading" secondItem="S7L-h6-j9s" secondAttribute="trailing" constant="16" id="53J-EZ-6de"/>
+                <constraint firstItem="zxk-uy-w6o" firstAttribute="leading" secondItem="4dZ-1r-Hlf" secondAttribute="trailing" constant="8" symbolic="YES" id="Fkb-1G-gAl"/>
+                <constraint firstItem="zxk-uy-w6o" firstAttribute="baseline" secondItem="ZAA-MZ-kIa" secondAttribute="baseline" id="Okl-8Q-Om3"/>
+                <constraint firstItem="S7L-h6-j9s" firstAttribute="top" secondItem="eoh-FO-BA5" secondAttribute="top" id="RXz-PV-7BF"/>
+                <constraint firstItem="zxk-uy-w6o" firstAttribute="centerY" secondItem="4dZ-1r-Hlf" secondAttribute="centerY" id="U7Q-E8-SZj"/>
+                <constraint firstItem="ZAA-MZ-kIa" firstAttribute="leading" secondItem="RAT-ay-wUo" secondAttribute="trailing" constant="13" id="YL9-li-2Aj"/>
+                <constraint firstItem="4dZ-1r-Hlf" firstAttribute="leading" secondItem="eoh-FO-BA5" secondAttribute="leading" constant="20" symbolic="YES" id="ai4-Zy-EtM"/>
+                <constraint firstItem="S7L-h6-j9s" firstAttribute="leading" secondItem="zxk-uy-w6o" secondAttribute="trailing" constant="9" id="d3w-rm-E8O"/>
+                <constraint firstItem="RAT-ay-wUo" firstAttribute="baseline" secondItem="4dZ-1r-Hlf" secondAttribute="baseline" id="hlP-OG-d8f"/>
+                <constraint firstItem="RAT-ay-wUo" firstAttribute="top" secondItem="4dZ-1r-Hlf" secondAttribute="top" id="ihZ-dW-xij"/>
+                <constraint firstItem="652-d7-AK0" firstAttribute="leading" secondItem="eoh-FO-BA5" secondAttribute="leading" id="jbo-mF-dZy"/>
+                <constraint firstAttribute="trailing" secondItem="ZAA-MZ-kIa" secondAttribute="trailing" constant="20" symbolic="YES" id="kPX-a5-OUd"/>
+                <constraint firstItem="RAT-ay-wUo" firstAttribute="centerY" secondItem="ZAA-MZ-kIa" secondAttribute="centerY" id="los-4Q-Hak"/>
+                <constraint firstItem="652-d7-AK0" firstAttribute="top" secondItem="RAT-ay-wUo" secondAttribute="bottom" constant="7" id="pOs-3b-ISm"/>
+                <constraint firstItem="652-d7-AK0" firstAttribute="bottom" secondItem="S7L-h6-j9s" secondAttribute="bottom" id="xg2-mo-ruK"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="followerNumberLabel" destination="RAT-ay-wUo" id="t52-FB-CsI"/>
+                <outlet property="followingNumberLabel" destination="4dZ-1r-Hlf" id="POG-QN-ub7"/>
+            </connections>
+        </view>
+    </objects>
+    <resources>
+        <image name="hor_separator" width="320" height="1"/>
+        <image name="ver_separator" width="1" height="44"/>
+    </resources>
+</document>

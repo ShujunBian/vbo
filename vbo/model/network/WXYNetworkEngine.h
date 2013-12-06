@@ -50,12 +50,14 @@ typedef enum{
 ////////读取
 
 /*! 获取当前登录用户及其所关注用户的最新微博
+ * \param page 页码，从1开始
  * \param succeedBlock 网络请求成功处理block，block参数NSArray的内容为Status
  * \param errorBlock 网络请求失败处理block
  * \returns 当前网络请求Operation
  */
-- (MKNetworkOperation*)getHomeTimelineOfCurrentUserSucceed:(ArrayBlock)succeedBlock
-                                                     error:(ErrorBlock)errorBlock;
+- (MKNetworkOperation*)getHomeTimelineOfCurrentUserPage:(int)page
+                                                Succeed:(ArrayBlock)succeedBlock
+                                                  error:(ErrorBlock)errorBlock;
 ////////写入
 #warning fLocation暂不实现
 /*! 发送微博
