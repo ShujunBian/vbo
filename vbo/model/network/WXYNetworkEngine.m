@@ -43,6 +43,7 @@
 #define DISCOVER_TOPIC_HOURLY @"2/trends/hourly.json"
 #define DISCOVER_TOPIC_DAILY @"2/trends/daily.json"
 #define DISCOVER_TOPIC_WEEKLY @"2/trends/weekly.json"
+#define DISCOVER_SEARCH_TOPIC @"2/search/topics.json"
 
 #import "WXYSettingManager.h"
 #import "WXYDataModel.h"
@@ -803,6 +804,42 @@
     
     return op;
 }
+
+- (MKNetworkOperation*)searchTopic:(NSString*)keyword
+                              page:(int)page
+                           succeed:(ArrayBlock)succeedBlock
+                             error:(ErrorBlock)errorBlock
+{
+    MKNetworkOperation* op = nil;
+    op = [self startOperationWithPath:DISCOVER_SEARCH_TOPIC
+                            needLogin:YES
+                             paramers:@{@"q":keyword, @"page":@(page),@"count":@(STATUS_PER_PAGE)}
+                          onSucceeded:^(MKNetworkOperation *completedOperation)
+          {
+              NSDictionary* dict = completedOperation.responseJSON;
+              NSArray* statusDictArray = dict[@"statuses"];
+              NSMutableArray* returnArray = [@[] mutableCopy];
+              for (NSDictionary* dict in statusDictArray)
+              {
+                  Status* status = [WXYNetworkDataFactory getStatusWithDictIncludeUser:dict];
+                  [returnArray addObject:status];
+              }
+#warning 缓存垃圾未处理
+              if (succeedBlock)
+              {
+                  succeedBlock(returnArray);
+              }
+          }
+                              onError:^(MKNetworkOperation *completedOperation, NSError *error)
+          {
+              if (errorBlock)
+              {
+                  errorBlock(error);
+              }
+          }];
+    return op;
+}
+
 @end
 
 @implementation WXYNetworkDataFactory

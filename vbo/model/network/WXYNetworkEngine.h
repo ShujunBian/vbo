@@ -223,4 +223,14 @@ typedef enum{
  */
 - (MKNetworkOperation*)getHotTopicSucceed:(ArrayBlock)succeedBlock
                                     error:(ErrorBlock)errorBlock;
+
+/*!搜索某一话题下的微博
+ * @param keyword 关键字
+ * @param page 页码，从1开始
+ * @param succeedBlock 成功处理block,Array内容为Status
+ */
+- (MKNetworkOperation*)searchTopic:(NSString*)keyword
+                              page:(int)page
+                           succeed:(ArrayBlock)succeedBlock
+                             error:(ErrorBlock)errorBlock;
 @end
