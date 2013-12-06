@@ -85,6 +85,8 @@ enum
     {
         _descriptionCell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"USER_PROFILE_DESCRIPTION_CELL"];
         _descriptionCell.contentView.backgroundColor = [UIColor colorWithRed:246.f/255.f green:244.f/255.f blue:240.f/255.f alpha:1.f];
+        _descriptionCell.textLabel.font = [UIFont fontWithName:@"STHeitiSC-Light" size:14.f];
+        _descriptionCell.textLabel.textColor = [UIColor colorWithRed:35.f/255.f green:35.f/255.f blue:35.f/255.f alpha:1.f];
     }
     return _descriptionCell;
 }
@@ -119,6 +121,13 @@ enum
         _moreStatusCell.textLabel.font = [UIFont fontWithName:@"STHeitiSC-Light" size:17.f];
         _moreStatusCell.textLabel.text = @"查看更多微博";
         _moreStatusCell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        UIImage* separator = [UIImage imageNamed:@"hor_separator.png"];
+        UIImageView* imageView = [[UIImageView alloc] initWithImage:separator];
+        imageView.frame = CGRectMake(16, 43, 304, 1);
+        [_moreStatusCell.contentView addSubview:imageView];
+        UIView* backgroundView = [[UIView alloc] init];
+        backgroundView.backgroundColor = [UIColor colorWithRed:246.f/255.f green:244.f/255.f blue:240.f/255.f alpha:1.f];
+        _moreStatusCell.backgroundView = backgroundView;
     }
     return _moreStatusCell;
 }
@@ -130,6 +139,13 @@ enum
         _collectionCell.textLabel.font = [UIFont fontWithName:@"STHeitiSC-Light" size:17.f];
         _collectionCell.textLabel.text = @"收藏";
         _collectionCell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        UIImage* separator = [UIImage imageNamed:@"hor_separator.png"];
+        UIImageView* imageView = [[UIImageView alloc] initWithImage:separator];
+        imageView.frame = CGRectMake(16, 43, 304, 1);
+        [_collectionCell.contentView addSubview:imageView];
+        UIView* backgroundView = [[UIView alloc] init];
+        backgroundView.backgroundColor = [UIColor colorWithRed:246.f/255.f green:244.f/255.f blue:240.f/255.f alpha:1.f];
+        _collectionCell.backgroundView = backgroundView;
     }
     return _collectionCell;
 }
@@ -142,6 +158,10 @@ enum
         _zanCell.textLabel.text = @"赞过的";
         _zanCell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         _zanCell.imageView.image = [UIImage imageNamed:@"status_like.png"];
+        
+        UIView* backgroundView = [[UIView alloc] init];
+        backgroundView.backgroundColor = [UIColor colorWithRed:246.f/255.f green:244.f/255.f blue:240.f/255.f alpha:1.f];
+        _zanCell.backgroundView = backgroundView;
     }
     return _zanCell;
 }
@@ -193,6 +213,8 @@ enum
 #pragma mark - IBAction
 - (void)accountButtonPressed
 {
+
+    
     DDLogVerbose(@"account button pressed");
 }
 - (void)settingButtonPressed
@@ -204,8 +226,17 @@ enum
 {
     [self.photoView.headPhotoImageView setImageFromURL:[NSURL URLWithString:user.avatarLargeUrl]];
     self.numberView.followerNumberLabel.text = user.followersCount.stringValue;
-    self.numberView.followingNumberLabel.text = user.following.stringValue;
-    self.genderAndLocationCell.genderLabel.text = user.gender;
+    self.numberView.followingNumberLabel.text = user.friendCount.stringValue;
+    NSString* genderStr = nil;
+    if ([user.gender isEqualToString:@"m"])
+    {
+        genderStr = @"男";
+    }
+    else
+    {
+        genderStr = @"女";
+    }
+    self.genderAndLocationCell.genderLabel.text = genderStr;
     self.genderAndLocationCell.locationLabel.text = user.location;
     self.descriptionCell.textLabel.text = user.userDescription;
     self.statusCountCell.textLabel.text = user.statusCount.stringValue;

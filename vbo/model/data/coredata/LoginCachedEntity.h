@@ -29,6 +29,7 @@
 
 - (void)sortAtEntityList;
 - (AtEntity*)getAtEntityOfUser:(User*)user;
+
 /*
 - (void)insertObject:(Status *)value inHomeTimeLineAtIndex:(NSUInteger)idx;
 - (void)removeObjectFromHomeTimeLineAtIndex:(NSUInteger)idx;
