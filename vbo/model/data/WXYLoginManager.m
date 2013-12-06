@@ -48,7 +48,7 @@
 - (User*)currentUser
 {
     LoginUserInfo* info = self.currentUserInfo;
-    User* user = [SHARE_DATA_MODEL getUserById:info.userId.longLongValue];
+    User* user = [SHARE_DATA_MODEL getOrCreateUserById:info.userId.longLongValue];
     return user;
 }
 - (NSArray*)loginUserList

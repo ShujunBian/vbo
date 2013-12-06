@@ -375,7 +375,7 @@
                       fFirst = NO;
                       NSDictionary* dict = commentDict[@"status"];
                       NSNumber* weiboId = dict[@"id"];
-                      status = [SHARE_DATA_MODEL getStatusById:weiboId.longLongValue];
+                      status = [SHARE_DATA_MODEL getOrCreateStatusById:weiboId.longLongValue];
 #warning 微博API bug,此处commentCount与repostCount永远返回0
 //                      status = [WXYNetworkDataFactory getStatusWithDict:dict]; //刷新微博信息
                   }
@@ -488,7 +488,7 @@
               NSNumber* nextCursor = responseDict[@"next_cursor"];
               
               NSArray* userDictArray = responseDict[@"users"];
-              Group* group = [SHARE_DATA_MODEL getGroupById:groupId.longLongValue];
+              Group* group = [SHARE_DATA_MODEL getOrCreateGroupById:groupId.longLongValue];
               for (NSDictionary* userDict in userDictArray)
               {
                   User* user = [WXYNetworkDataFactory getUserWithDict:userDict];
@@ -524,7 +524,7 @@
           {
               NSDictionary* responseDict = completedOperation.responseJSON;
               NSArray* statusesArray = responseDict[@"statuses"];
-              Group* group = [SHARE_DATA_MODEL getGroupById:groupId.longLongValue];
+              Group* group = [SHARE_DATA_MODEL getOrCreateGroupById:groupId.longLongValue];
               NSMutableArray* returnArray = [[NSMutableArray alloc] init];
               for (NSDictionary* dict in statusesArray)
               {
@@ -567,12 +567,12 @@
     if (userId)
     {
         [paramDict setValue:userId forKey:@"uid"];
-        mainUser = [SHARE_DATA_MODEL getUserById:userId.longLongValue];
+        mainUser = [SHARE_DATA_MODEL getOrCreateUserById:userId.longLongValue];
     }
     else
     {
         [paramDict setValue:screenName forKey:@"screen_name"];
-        mainUser = [SHARE_DATA_MODEL getUserByScreenName:screenName];
+        mainUser = [SHARE_DATA_MODEL getOrCreateUserByScreenName:screenName];
     }
     
     op = [self startOperationWithPath:RELATION_FRIEND_LIST
@@ -690,7 +690,7 @@
 + (Status*)getStatusWithDict:(NSDictionary*)dict
 {
     NSNumber* statusId = dict[@"id"];
-    Status* status = [SHARE_DATA_MODEL getStatusById:statusId.longLongValue];
+    Status* status = [SHARE_DATA_MODEL getOrCreateStatusById:statusId.longLongValue];
     [status updateWithDict:dict];
     return status;
 }
@@ -715,12 +715,12 @@
 + (Comment*)getCommentWithDict:(NSDictionary*)dict status:(Status*)s
 {
     NSNumber* commentId = dict[@"id"];
-    Comment* comment = [SHARE_DATA_MODEL getCommentById:commentId.longLongValue];
+    Comment* comment = [SHARE_DATA_MODEL getOrCreateCommentById:commentId.longLongValue];
     [comment updateWithDict:dict];
     
     NSDictionary* userDict = dict[@"user"];
     NSNumber* userId = userDict[@"id"];
-    User* user = [SHARE_DATA_MODEL getUserById:userId.longLongValue];
+    User* user = [SHARE_DATA_MODEL getOrCreateUserById:userId.longLongValue];
     [user updateWithDict:userDict];
     comment.user = user;
     
@@ -728,7 +728,7 @@
     if (statusDict)
     {
         NSNumber* statusId = statusDict[@"id"];
-        Status* status = [SHARE_DATA_MODEL getStatusById:statusId.longLongValue];
+        Status* status = [SHARE_DATA_MODEL getOrCreateStatusById:statusId.longLongValue];
         if (status.text && status.createdAt)
         {
             s = status;
@@ -749,7 +749,7 @@
 + (Group*)getGroupWithDict:(NSDictionary*)dict
 {
     NSNumber* groupId = dict[@"id"];
-    Group* group = [SHARE_DATA_MODEL getGroupById:groupId.longLongValue];
+    Group* group = [SHARE_DATA_MODEL getOrCreateGroupById:groupId.longLongValue];
     [group updateWithDict:dict];
 
     NSDictionary* userDict = dict[@"user"];
@@ -761,7 +761,7 @@
 + (User*)getUserWithDict:(NSDictionary*)dict
 {
     NSNumber* userId = dict[@"id"];
-    User* user = [SHARE_DATA_MODEL getUserById:userId.longLongValue];
+    User* user = [SHARE_DATA_MODEL getOrCreateUserById:userId.longLongValue];
     [user updateWithDict:dict];
 
     return user;
