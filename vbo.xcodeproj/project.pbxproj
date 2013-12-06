@@ -121,6 +121,8 @@
 		4D78489E18314EB60025ADDA /* MHCPostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D78489D18314EB60025ADDA /* MHCPostViewController.m */; };
 		4D9DA271184A55EC00807B96 /* WatchListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D9DA270184A55EC00807B96 /* WatchListTableViewCell.m */; };
 		4D9DA274184A561300807B96 /* AtViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D9DA273184A561300807B96 /* AtViewController.m */; };
+		4DC26F851851AB25005AE8BB /* atSelectedView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DC26F841851AB25005AE8BB /* atSelectedView.xib */; };
+		4DC26F881851ADA6005AE8BB /* ATSelectedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DC26F871851ADA6005AE8BB /* ATSelectedViewController.m */; };
 		5116A5BF18300277004FCC1A /* NSNotificationCenter+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 5116A5BE18300277004FCC1A /* NSNotificationCenter+Addition.m */; };
 		51510C0E183BB10A00BD7823 /* CastViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 51510C0D183BB10A00BD7823 /* CastViewCell.xib */; };
 		51510C12183BBB4800BD7823 /* ComRepViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 51510C11183BBB4800BD7823 /* ComRepViewController.m */; };
@@ -316,6 +318,9 @@
 		4D9DA270184A55EC00807B96 /* WatchListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WatchListTableViewCell.m; path = atView/WatchListTableViewCell.m; sourceTree = "<group>"; };
 		4D9DA272184A561300807B96 /* AtViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AtViewController.h; path = atView/AtViewController.h; sourceTree = "<group>"; };
 		4D9DA273184A561300807B96 /* AtViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AtViewController.m; path = atView/AtViewController.m; sourceTree = "<group>"; };
+		4DC26F841851AB25005AE8BB /* atSelectedView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = atSelectedView.xib; sourceTree = "<group>"; };
+		4DC26F861851ADA6005AE8BB /* ATSelectedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ATSelectedViewController.h; sourceTree = "<group>"; };
+		4DC26F871851ADA6005AE8BB /* ATSelectedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ATSelectedViewController.m; sourceTree = "<group>"; };
 		5116A5BD18300277004FCC1A /* NSNotificationCenter+Addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSNotificationCenter+Addition.h"; sourceTree = "<group>"; };
 		5116A5BE18300277004FCC1A /* NSNotificationCenter+Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSNotificationCenter+Addition.m"; sourceTree = "<group>"; };
 		51510C0D183BB10A00BD7823 /* CastViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CastViewCell.xib; sourceTree = "<group>"; };
@@ -819,6 +824,16 @@
 			name = blur;
 			sourceTree = "<group>";
 		};
+		4DC26F831851AB03005AE8BB /* AtSelectedView */ = {
+			isa = PBXGroup;
+			children = (
+				4DC26F841851AB25005AE8BB /* atSelectedView.xib */,
+				4DC26F861851ADA6005AE8BB /* ATSelectedViewController.h */,
+				4DC26F871851ADA6005AE8BB /* ATSelectedViewController.m */,
+			);
+			name = AtSelectedView;
+			sourceTree = "<group>";
+		};
 		4DE8AC34184629D400CA6A84 /* subViews */ = {
 			isa = PBXGroup;
 			children = (
@@ -830,6 +845,7 @@
 		4DE8AC39184629FF00CA6A84 /* atView */ = {
 			isa = PBXGroup;
 			children = (
+				4DC26F831851AB03005AE8BB /* AtSelectedView */,
 				4D6EF0BF184A81E5009D7A18 /* TableView */,
 				4D9DA272184A561300807B96 /* AtViewController.h */,
 				4D9DA273184A561300807B96 /* AtViewController.m */,
@@ -1067,6 +1083,7 @@
 				515B0C0418082A9B0092BADB /* Images.xcassets in Resources */,
 				4D4A803C1842999F0078C81D /* KeyboardView.xib in Resources */,
 				18EED32F1815853E000856CE /* README.txt in Resources */,
+				4DC26F851851AB25005AE8BB /* atSelectedView.xib in Resources */,
 				1868F1381829EC7A00C5764D /* test.png in Resources */,
 				518A1CBE1843243300D36AFD /* EmoticonsInfo.plist in Resources */,
 				1838DF20181E677A003D015A /* WeiboSDK.bundle in Resources */,
@@ -1187,6 +1204,7 @@
 				4D784890183147C40025ADDA /* UIImage+ImageEffects.m in Sources */,
 				1868F1241829D7EA00C5764D /* WXYSolidTabBar.m in Sources */,
 				515B0BF818082A9B0092BADB /* main.m in Sources */,
+				4DC26F881851ADA6005AE8BB /* ATSelectedViewController.m in Sources */,
 				4D9DA271184A55EC00807B96 /* WatchListTableViewCell.m in Sources */,
 				4D9DA274184A561300807B96 /* AtViewController.m in Sources */,
 				18D9E4E8183388E0004539CC /* Comment.m in Sources */,

@@ -10,10 +10,6 @@
             <rect key="frame" x="0.0" y="0.0" width="288" height="50"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Rm5-y8-4Nu" userLabel="selectedView">
-                    <rect key="frame" x="0.0" y="0.0" width="16" height="50"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                </imageView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1q0-gh-m4e" userLabel="userHeadPhoto">
                     <rect key="frame" x="16" y="0.0" width="50" height="50"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -34,13 +30,18 @@
                     <rect key="frame" x="238" y="0.0" width="50" height="50"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
+                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="R30-Wx-MP3">
+                    <rect key="frame" x="0.0" y="0.0" width="16" height="50"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="checkView" destination="Gj8-BO-QJp" id="iYS-J2-QVB"/>
                 <outlet property="contact_infoView" destination="4fz-av-lNQ" id="PLa-sN-THV"/>
-                <outlet property="selectedView" destination="Rm5-y8-4Nu" id="42z-ga-0QB"/>
+                <outlet property="selectedView" destination="R30-Wx-MP3" id="STv-bN-tbl"/>
                 <outlet property="userHeadPhoto" destination="1q0-gh-m4e" id="nnx-Z5-gc1"/>
                 <outlet property="userName" destination="PCh-up-YOG" id="UTt-Lh-94m"/>
             </connections>

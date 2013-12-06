@@ -9,7 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface WatchListTableViewCell : UITableViewCell
-@property (strong, nonatomic) IBOutlet UIImageView *selectedView;
+
+@property (strong, nonatomic) IBOutlet UIView *selectedView;
 @property (strong, nonatomic) IBOutlet UIImageView *userHeadPhoto;
 @property (strong, nonatomic) IBOutlet UILabel *userName;
 @property (strong, nonatomic) IBOutlet UIImageView *contact_infoView;
