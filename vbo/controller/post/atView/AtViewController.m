@@ -26,6 +26,26 @@
     
     //subView Controller init.
     self.watchListTvc = [[WatchListTableViewController alloc]init];
+    self.atSelectedVC = [[AtSelectedViewController alloc]init];
+    
+
+    
+    __weak AtViewController* weakSelf = self;
+    self.watchListTvc.selectedAtVCBlock = ^(User *selectedUser)
+    {
+        NSLog(@"in block the user ID:%@",selectedUser.userID);
+        [weakSelf.selectedUserArray addObject:selectedUser];
+    
+        [weakSelf.atSelectedVC sendSelectedUserData:selectedUser];
+    };
+    
+    self.watchListTvc.deSelectedAtVCBlock = ^(User *deSelectedUser)
+    {
+        [weakSelf.selectedUserArray removeObject:deSelectedUser];
+        
+        [weakSelf.atSelectedVC sendDeSelectedUserData:deSelectedUser];
+    };
+
     
     self.view.backgroundColor = [UIColor colorWithRed:246.f/255.f green:244.f/255.f blue:240.f/255.f alpha:1.0f];
     
@@ -68,8 +88,6 @@
     
     [self.abcView setTranslatesAutoresizingMaskIntoConstraints:NO];
     
-    [self.hasAtCollectionView setTranslatesAutoresizingMaskIntoConstraints:NO];
-    
     
     /*
      change the code later..
@@ -78,10 +96,9 @@
     
     [self.commonlyUsedCollectionView removeFromSuperview];
     
-    [self.abcView removeFromSuperview];
+    //[self.abcView removeFromSuperview];
     
-    [self.view addSubview:self.abcView];
-    
+    //[self.view addSubview:self.abcView];
     
     [self.view addSubview:self.watchListTvc.view];
     [self.watchListTvc.view setTranslatesAutoresizingMaskIntoConstraints:NO];
@@ -185,7 +202,78 @@
                                  multiplier:1
       
                                    constant:302]];
+    //at selected view constraint
+    [self addChildViewController:self.atSelectedVC];
     
+    [self.view addSubview:self.atSelectedVC.view];
+    
+    [self.atSelectedVC.view setTranslatesAutoresizingMaskIntoConstraints:NO];
+
+    [self.view addConstraint:
+     [NSLayoutConstraint constraintWithItem:self.atSelectedVC.view
+      
+                                  attribute:NSLayoutAttributeTop
+      
+                                  relatedBy:NSLayoutRelationEqual
+      
+                                     toItem:self.watchListTvc.view
+      
+                                  attribute:NSLayoutAttributeTop
+      
+                                 multiplier:1
+      
+                                   constant:-64]];
+    [self.view addConstraint:
+     [NSLayoutConstraint constraintWithItem:self.atSelectedVC.view
+      
+                                  attribute:NSLayoutAttributeBottom
+      
+                                  relatedBy:NSLayoutRelationEqual
+      
+                                     toItem:self.watchListTvc.view
+      
+                                  attribute:NSLayoutAttributeTop
+      
+                                 multiplier:1
+      
+                                   constant:0]];
+    [self.view addConstraint:
+     [NSLayoutConstraint constraintWithItem:self.atSelectedVC.view
+      
+                                  attribute:NSLayoutAttributeLeft
+      
+                                  relatedBy:NSLayoutRelationEqual
+      
+                                     toItem:self.view
+      
+                                  attribute:NSLayoutAttributeLeft
+      
+                                 multiplier:1
+      
+                                   constant:0]];
+    [self.view addConstraint:
+     [NSLayoutConstraint constraintWithItem:self.atSelectedVC.view
+                                  attribute:NSLayoutAttributeRight
+      
+                                  relatedBy:NSLayoutRelationEqual
+      
+                                     toItem:self.view
+      
+                                  attribute:NSLayoutAttributeRight
+      
+                                 multiplier:1
+      
+                                   constant:0]];
+    
+
+    
+}
+
+
+
+- (void)viewDidLayoutSubviews
+{
+    [super viewDidLayoutSubviews];
 }
 -(void)cancel
 {

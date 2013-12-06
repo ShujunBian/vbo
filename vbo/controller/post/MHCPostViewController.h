@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
+
 @interface KeyButtonBgView : UIView
 
 @property (nonatomic)BOOL needsDisplayBg;
@@ -21,7 +22,10 @@
 
 
 @interface MHCPostViewController : UIViewController
-    
+
+
+
+
 @property (strong, nonatomic) IBOutlet UITextView *postViewTextView;
 @property (weak, nonatomic) IBOutlet UIView *redefinedKeyboard;
 

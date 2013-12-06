@@ -7,12 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "WXYBlock.h"
+@class User;
+typedef void (^AtVCBlock)(User* user);
 
 @interface WatchListTableViewController : UITableViewController
 {
-    NSMutableArray *selected_cell_array;
-    
+    NSMutableArray *selected_cell_array;    
 }
 @property (strong,nonatomic)NSMutableArray *atUserArray;
+@property (strong, nonatomic) AtVCBlock selectedAtVCBlock;
+@property (strong,nonatomic) AtVCBlock deSelectedAtVCBlock;
 
 @end
+
