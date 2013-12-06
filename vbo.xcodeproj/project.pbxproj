@@ -166,6 +166,9 @@
 		515B0C0C18082A9B0092BADB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 515B0BEB18082A9B0092BADB /* Foundation.framework */; };
 		515B0C0D18082A9B0092BADB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 515B0BEF18082A9B0092BADB /* UIKit.framework */; };
 		515B0C1518082A9B0092BADB /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 515B0C1318082A9B0092BADB /* InfoPlist.strings */; };
+		515F94C018517DE90029CCA6 /* DVRecommandCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 515F94BF18517DE90029CCA6 /* DVRecommandCell.m */; };
+		515F94C318518B1D0029CCA6 /* DVTableSectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 515F94C218518B1D0029CCA6 /* DVTableSectionView.xib */; };
+		515F94C6185192740029CCA6 /* DVTableSectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 515F94C5185192740029CCA6 /* DVTableSectionView.m */; };
 		51652DEA1835AC13004E4D30 /* UITextViewHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 51652DE91835AC13004E4D30 /* UITextViewHelper.m */; };
 		51652DED1835D7EF004E4D30 /* UIFont+TextKitAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = 51652DEC1835D7EF004E4D30 /* UIFont+TextKitAddition.m */; };
 		51652DF01835D7FF004E4D30 /* UIFontDescriptor+TextKitAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = 51652DEF1835D7FF004E4D30 /* UIFontDescriptor+TextKitAddition.m */; };
@@ -395,6 +398,11 @@
 		515B0C0A18082A9B0092BADB /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		515B0C1218082A9B0092BADB /* vboTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "vboTests-Info.plist"; sourceTree = "<group>"; };
 		515B0C1418082A9B0092BADB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		515F94BE18517DE90029CCA6 /* DVRecommandCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DVRecommandCell.h; sourceTree = "<group>"; };
+		515F94BF18517DE90029CCA6 /* DVRecommandCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DVRecommandCell.m; sourceTree = "<group>"; };
+		515F94C218518B1D0029CCA6 /* DVTableSectionView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DVTableSectionView.xib; sourceTree = "<group>"; };
+		515F94C4185192740029CCA6 /* DVTableSectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DVTableSectionView.h; sourceTree = "<group>"; };
+		515F94C5185192740029CCA6 /* DVTableSectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DVTableSectionView.m; sourceTree = "<group>"; };
 		51652DE81835AC13004E4D30 /* UITextViewHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UITextViewHelper.h; sourceTree = "<group>"; };
 		51652DE91835AC13004E4D30 /* UITextViewHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UITextViewHelper.m; sourceTree = "<group>"; };
 		51652DEB1835D7EF004E4D30 /* UIFont+TextKitAddition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIFont+TextKitAddition.h"; sourceTree = "<group>"; };
@@ -645,6 +653,11 @@
 			children = (
 				1868F1091829CE0100C5764D /* WXYDiscoverViewController.h */,
 				1868F10A1829CE0100C5764D /* WXYDiscoverViewController.m */,
+				515F94BE18517DE90029CCA6 /* DVRecommandCell.h */,
+				515F94BF18517DE90029CCA6 /* DVRecommandCell.m */,
+				515F94C218518B1D0029CCA6 /* DVTableSectionView.xib */,
+				515F94C4185192740029CCA6 /* DVTableSectionView.h */,
+				515F94C5185192740029CCA6 /* DVTableSectionView.m */,
 			);
 			path = discover;
 			sourceTree = "<group>";
@@ -1156,6 +1169,7 @@
 				515B0C0418082A9B0092BADB /* Images.xcassets in Resources */,
 				4D4A803C1842999F0078C81D /* KeyboardView.xib in Resources */,
 				18B0C94F184CC31600347492 /* WXYUserProfileNumberView.xib in Resources */,
+				515F94C318518B1D0029CCA6 /* DVTableSectionView.xib in Resources */,
 				18EED32F1815853E000856CE /* README.txt in Resources */,
 				1868F1381829EC7A00C5764D /* test.png in Resources */,
 				518A1CBE1843243300D36AFD /* EmoticonsInfo.plist in Resources */,
@@ -1232,6 +1246,7 @@
 				18A67CDC184CF42B00C81722 /* WXYUserProfileGenderAndLocationCell.m in Sources */,
 				1868F0FE1829C8B200C5764D /* WXYRootTabbarViewController.m in Sources */,
 				1830F890184F9A3C00516D72 /* AtEntity.m in Sources */,
+				515F94C6185192740029CCA6 /* DVTableSectionView.m in Sources */,
 				51510C18183BDF3B00BD7823 /* ComReqDetailCell.m in Sources */,
 				18EED35518158653000856CE /* WXYTestViewController.m in Sources */,
 				1868F10B1829CE0100C5764D /* WXYDiscoverViewController.m in Sources */,
@@ -1272,6 +1287,7 @@
 				188E68971829131600BE534D /* vboCachedDatamodel.xcdatamodeld in Sources */,
 				18B0C957184CC62200347492 /* WXYUserProfileNumberView.m in Sources */,
 				51652DF01835D7FF004E4D30 /* UIFontDescriptor+TextKitAddition.m in Sources */,
+				515F94C018517DE90029CCA6 /* DVRecommandCell.m in Sources */,
 				18EB0A02182BED82005CC27D /* StatusPicture.m in Sources */,
 				185E88A8182AABF40020F3B2 /* NSAlert+MKNetworkKitAdditions.m in Sources */,
 				1868F1131829CE1400C5764D /* WXYMineViewController.m in Sources */,

@@ -128,7 +128,7 @@
     if (_weiboContentArray == nil) {
         return 0;
     }
-    return [_weiboContentArray count];;
+    return [_weiboContentArray count];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -161,7 +161,7 @@
 #pragma mark - UITableView Delegate
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    cell.backgroundColor = [UIColor clearColor];
+//    cell.backgroundColor = [UIColor clearColor];
     
     //    UIView *selectedBackgroundView = [[UIView alloc]init];
     //    [selectedBackgroundView setBackgroundColor:[UIColor clearColor]];

@@ -34,7 +34,12 @@
 - (void)setCellWithWeiboStatus:(Status *)currentCellStatus
                   isInCastView:(BOOL)isInCastView;
 
-/*! 获得转发的View的高度
+/*! 获得整条的View的高度
+ * \param status 转发的status内容
+ */
++ (float)getHeightForCastCellViewByStatus:(Status *)currentCellStatus;
+
+/*! 获得转发微博的View的高度
  * \param status 转发的status内容
  */
 
