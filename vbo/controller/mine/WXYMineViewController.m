@@ -44,7 +44,7 @@ static int ddLogLevel = LOG_LEVEL_VERBOSE;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+    self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:248.f/255.f green:248.f/255.f blue:248.f/255.f alpha:1.f];
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"账户" style:UIBarButtonItemStylePlain target:self action:@selector(accountButtonPressed)];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"设置" style:UIBarButtonItemStylePlain target:self action:@selector(settingButtonPressed)];
     self.title = SHARE_LOGIN_MANAGER.currentUserInfo.userName;

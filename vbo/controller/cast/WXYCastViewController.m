@@ -83,7 +83,11 @@
     
     [self.tableView addSubview:self.dragIndicatorView];
 }
-
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    self.navigationController.navigationBarHidden = YES;
+}
 - (void)fetchWeiboContent
 {
     [SHARE_NW_ENGINE getHomeTimelineOfCurrentUserPage:1
