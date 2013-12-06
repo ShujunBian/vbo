@@ -73,6 +73,18 @@
     
     //label.backgroundColor = SHARE_SETTING_MANAGER.themeColor;
     
+    UIButton *cancel = [UIButton buttonWithType:UIButtonTypeCustom];
+    
+    
+    
+    [cancel setImage:[UIImage imageNamed:@"cancelAtSelected"] forState:UIControlStateNormal];
+    
+    [cancel setContentMode: UIViewContentModeCenter];
+    
+    cancel.frame = CGRectMake(17+requiredSize.width, 0,34, 30);
+    
+    [cancel addTarget:self action:@selector(pressMeAction:) forControlEvents:UIControlEventTouchUpInside];
+    
     if([self.selectedViewArray count] == 0)
     {
         atUserView.frame = CGRectMake(0, 0, requiredSize.width+48, 30);
@@ -98,6 +110,8 @@
     atUserView.layer.masksToBounds = YES;
     
     [atUserView addSubview:label];
+    
+    [atUserView addSubview:cancel];
     
     [self.container addSubview:atUserView];
     
@@ -160,6 +174,12 @@
         }
     }
 }
+
+- (void)pressMeAction:(id)sender {
+   
+}
+
+
 
 
 
