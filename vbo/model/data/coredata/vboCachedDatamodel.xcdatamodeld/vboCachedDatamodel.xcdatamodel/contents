@@ -38,6 +38,7 @@
         <relationship name="followedList" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="User" inverseName="beInFollowedList" inverseEntity="User" syncable="YES"/>
         <relationship name="followingList" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="User" inverseName="beInFollowingList" inverseEntity="User" syncable="YES"/>
         <relationship name="homeTimeLine" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Status" inverseName="beInTimeline" inverseEntity="Status" syncable="YES"/>
+        <relationship name="hotStatuses" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Status" inverseName="beInHotStatuses" inverseEntity="Status" syncable="YES"/>
         <relationship name="owner" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="loginCached" inverseEntity="User" syncable="YES"/>
     </entity>
     <entity name="Status" representedClassName="Status" syncable="YES">
@@ -71,6 +72,7 @@
         <attribute name="visible" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="visibleListId" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <relationship name="author" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="statuses" inverseEntity="User" syncable="YES"/>
+        <relationship name="beInHotStatuses" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="LoginCachedEntity" inverseName="hotStatuses" inverseEntity="LoginCachedEntity" syncable="YES"/>
         <relationship name="beInStatusList" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="User" inverseName="statusList" inverseEntity="User" syncable="YES"/>
         <relationship name="beInTimeline" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="LoginCachedEntity" inverseName="homeTimeLine" inverseEntity="LoginCachedEntity" syncable="YES"/>
         <relationship name="commentList" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Comment" inverseName="beInCommentList" inverseEntity="Comment" syncable="YES"/>

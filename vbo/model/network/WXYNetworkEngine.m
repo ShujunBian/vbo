@@ -8,6 +8,7 @@
 
 #import "WXYNetworkEngine.h"
 #import "WXYNetworkOperation.h"
+#import "NSArray+ConvertToOrderedSet.h"
 
 #define HOST_NAME @"api.weibo.com"
 #import "UIImageView+MKNetworkKitAdditions.h"
@@ -34,7 +35,14 @@
 #define GROUP_STATUS_URL @"2/friendships/groups/timeline.json"
 
 //Relation
-#define RELATION_FRIEND_LIST @"2/friendships/friends.json"
+#define RELATION_FRIEND_LIST_URL @"2/friendships/friends.json"
+
+//Discover
+#define DISCOVER_HOT_WEIBO_URL @"2/suggestions/favorites/hot.json"
+#define DISCOVER_HOT_USER_URL @"2/suggestions/users/hot.json"
+#define DISCOVER_TOPIC_HOURLY @"2/trends/hourly.json"
+#define DISCOVER_TOPIC_DAILY @"2/trends/daily.json"
+#define DISCOVER_TOPIC_WEEKLY @"2/trends/weekly.json"
 
 #import "WXYSettingManager.h"
 #import "WXYDataModel.h"
@@ -95,11 +103,12 @@
                                       onError:(OperationErrorBlock)errorBlock
 {
     MKNetworkOperation* op = nil;
-    NSMutableDictionary* params = [[NSMutableDictionary alloc] initWithDictionary:paramDict];
+    NSMutableDictionary* params = [[NSMutableDictionary alloc] init];
     if (userInfo)
     {
         [params setValue:userInfo.accessToken forKey:@"access_token"];
     }
+    [params addEntriesFromDictionary:paramDict];
     op = [self operationWithPath:path
                           params:params
                       httpMethod:method
@@ -575,7 +584,7 @@
         mainUser = [SHARE_DATA_MODEL getOrCreateUserByScreenName:screenName];
     }
     
-    op = [self startOperationWithPath:RELATION_FRIEND_LIST
+    op = [self startOperationWithPath:RELATION_FRIEND_LIST_URL
                             needLogin:YES
                              paramers:paramDict
                           onSucceeded:^(MKNetworkOperation *completedOperation)
@@ -684,6 +693,116 @@
     return op;
 }
 
+
+
+#pragma mark - 发现
+#pragma mark 读取
+- (MKNetworkOperation*)getHotWeiboPage:(int)page
+                               succeed:(ArrayBlock)succeedBlock
+                                 error:(ErrorBlock)errorBlock
+{
+    MKNetworkOperation* op = nil;
+    
+    op = [self startOperationWithPath:DISCOVER_HOT_WEIBO_URL
+                            needLogin:YES
+                             paramers:@{@"page":@(page), @"count":@(STATUS_PER_PAGE)}
+                          onSucceeded:^(MKNetworkOperation *completedOperation)
+          {
+              NSArray* responseArray = completedOperation.responseJSON;
+              NSMutableArray* returnArray = [[NSMutableArray alloc] init];
+              for (NSDictionary* dict in responseArray)
+              {
+                  Status* status = [WXYNetworkDataFactory getStatusWithDictIncludeUser:dict];
+                  [returnArray addObject:status];
+              }
+#warning 未添加缓存
+//              [SHARE_LOGIN_MANAGER.currentUser.loginCached addHotStatuses:[returnArray convertToOrderedSet]];
+              if (succeedBlock)
+              {
+                  succeedBlock(returnArray);
+              }
+          }
+                              onError:^(MKNetworkOperation *completedOperation, NSError *error)
+          {
+              if (errorBlock)
+              {
+                  errorBlock(error);
+              }
+          }];
+    
+    return op;
+}
+
+- (MKNetworkOperation*)getHotUserSucceed:(ArrayBlock)succeedBlock
+                                   error:(ErrorBlock)errorBlock
+{
+    MKNetworkOperation* op = nil;
+    
+    op = [self startOperationWithPath:DISCOVER_HOT_USER_URL
+                            needLogin:YES
+                             paramers:@{}
+                          onSucceeded:^(MKNetworkOperation *completedOperation)
+          {
+              NSArray* responseArray = completedOperation.responseJSON;
+              NSMutableArray* returnArray = [[NSMutableArray alloc] init];
+              for (NSDictionary* dict in responseArray)
+              {
+                  User* user = [WXYNetworkDataFactory getUserWithDictIncludeStatus:dict];
+                  [returnArray addObject:user];
+              }
+#warning 未加入缓存
+              if (succeedBlock)
+              {
+                  succeedBlock(returnArray);
+              }
+          }
+                              onError:^(MKNetworkOperation *completedOperation, NSError *error)
+          {
+              if (errorBlock)
+              {
+                  errorBlock(error);
+              }
+          }];
+    
+    return op;
+}
+
+- (MKNetworkOperation*)getHotTopicSucceed:(ArrayBlock)succeedBlock
+                                    error:(ErrorBlock)errorBlock
+{
+    MKNetworkOperation* op = nil;
+    
+    op = [self startOperationWithPath:DISCOVER_TOPIC_DAILY
+                            needLogin:YES
+                             paramers:@{}
+                          onSucceeded:^(MKNetworkOperation *completedOperation)
+    {
+        NSMutableArray* returnArray = [[NSMutableArray alloc] init];
+        NSDictionary* responseDict = completedOperation.responseJSON;
+        NSDictionary* topicsDict = responseDict[@"trends"];
+        NSArray* arrayArray = [topicsDict allValues];
+        for (NSArray* a in arrayArray)
+        {
+            for (NSDictionary* topicDict in a)
+            {
+                [returnArray addObject:topicDict[@"name"]];
+            }
+        }
+        if (succeedBlock)
+        {
+            succeedBlock(returnArray);
+        }
+    }
+                              onError:^(MKNetworkOperation *completedOperation, NSError *error)
+    {
+        if (errorBlock)
+        {
+            errorBlock(error);
+        }
+    }];
+    
+    return op;
+}
 @end
 
 @implementation WXYNetworkDataFactory

@@ -201,4 +201,26 @@ typedef enum{
                                                   error:(ErrorBlock)errorBlock;
 
 
+/////发现
+//读取
+
+/*!获取当前热门微博
+ * @param page 页码，从1开始
+ * @param succeedBlock 成功处理block,Array内容为Status
+ */
+- (MKNetworkOperation*)getHotWeiboPage:(int)page
+                               succeed:(ArrayBlock)succeedBlock
+                                 error:(ErrorBlock)errorBlock;
+
+/*!获取热门用户
+ * @param succeedBlock 成功处理block,Array内容为User
+ */
+- (MKNetworkOperation*)getHotUserSucceed:(ArrayBlock)succeedBlock
+                                   error:(ErrorBlock)errorBlock;
+
+/*!获取一小时内热门话题
+ * @param succeedBlock 成功处理block,Array内容为NSString
+ */
+- (MKNetworkOperation*)getHotTopicSucceed:(ArrayBlock)succeedBlock
+                                    error:(ErrorBlock)errorBlock;
 @end

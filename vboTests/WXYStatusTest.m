@@ -47,6 +47,7 @@
 {
     XCTAssert([self.status isKindOfClass:[Status class]], @"self.status应该为Status类");
 }
+
 - (void)testFont
 {
     NSArray* fontFamilies = [UIFont familyNames];
