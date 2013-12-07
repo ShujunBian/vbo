@@ -25,6 +25,13 @@
 @dynamic hotStatuses;
 
 
++ (LoginCachedEntity*)insertWithOwer:(User*)owner inContext:(NSManagedObjectContext*)context
+{
+    LoginCachedEntity* e = [NSEntityDescription insertNewObjectForEntityForName:@"LoginCachedEntity" inManagedObjectContext:context];
+    owner.loginCached = e;
+    return e;
+}
+
 #pragma mark Home Time Line
 - (NSOrderedSet*)homeTimeLine
 {

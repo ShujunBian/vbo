@@ -9,7 +9,7 @@
 #import "WXYTestViewController.h"
 #import "WeiboSDK.h"
 #import "WXYNetworkEngine.h"
-
+#import "WXYNotificationNameList.h"
 @interface WXYTestViewController ()
 
 @end
@@ -29,14 +29,22 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(hideButtonPressed:) name:kUserLoginSucceedNotification object:nil];
 }
-
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+}
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
 - (IBAction)buttonPressed:(id)sender
 {
     [SHARE_NW_ENGINE userLogin];
@@ -45,4 +53,6 @@
 {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
+
+
 @end

@@ -99,8 +99,10 @@
         [SHARE_LOGIN_MANAGER loginUser:info];
         [SHARE_NW_ENGINE getUserInfoId:@(info.userId.longLongValue) orScreenName:nil succeed:^(User *user) {
             info.userName = user.screenName;
+            user.loginCached = [LoginCachedEntity insertWithOwer:user inContext:SHARE_DATA_MODEL.cacheManagedObjectContext];
             [SHARE_LOGIN_MANAGER loginUser:info];
             [[NSNotificationCenter defaultCenter] postNotificationName:kUserChangeNotification object:nil];
+            [[NSNotificationCenter defaultCenter] postNotificationName:kUserLoginSucceedNotification object:nil];
             
             UIAlertView* alert = nil;
             if (SHARE_LOGIN_MANAGER.currentUserInfo.accessToken)
@@ -112,7 +114,7 @@
                 alert = [[UIAlertView alloc] initWithTitle:@"失败" message:nil delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
             }
             [alert show];
-            
+            [SHARE_DATA_MODEL saveCacheContext];
         } error:^(NSError *error) {
 #warning 错误未处理
         }];

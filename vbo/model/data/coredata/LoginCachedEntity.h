@@ -23,6 +23,8 @@
 @end
 
 @interface LoginCachedEntity (CoreDataGeneratedAccessors)
++ (LoginCachedEntity*)insertWithOwer:(User*)owner inContext:(NSManagedObjectContext*)context;
+
 - (void)addHomeTimeLineObject:(Status*)value;
 - (void)removeHomeTimeLineObject:(Status*)value;
 - (void)addHomeTimeLine:(NSOrderedSet*)value;

@@ -80,7 +80,8 @@ static int ddLogLevel = LOG_LEVEL_VERBOSE;
 - (void)accountButtonPressed
 {
 
-    
+    UIViewController* vc = [self.storyboard instantiateViewControllerWithIdentifier:@"WXYTestViewControllerIdentity"];
+    [self presentViewController:vc animated:YES completion:nil];
     DDLogVerbose(@"account button pressed");
 }
 - (void)settingButtonPressed

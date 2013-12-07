@@ -25,6 +25,7 @@
 #import "CVImagePercentDismissTransition.h"
 #import "CVImagePercentDismissTransitionAnimation.h"
 #import "WXYUserProfileViewController.h"
+#import "WXYDataModel.h"
 
 #define kContantHeight 110.0
 #define kContentLabelLineSpace 6.0
@@ -77,7 +78,10 @@
     [bgview setBackgroundColor:SHARE_SETTING_MANAGER.themeColor];
     [self.tableView setBackgroundView:bgview];
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
-    [self fetchWeiboContent];
+
+    
+    
+    //    [self fetchWeiboContent];
     
     UINib *castNib = [UINib nibWithNibName:@"CastViewCell" bundle:[NSBundle bundleForClass:[CastViewCell class]]];
     [self.tableView registerNib:castNib forCellReuseIdentifier:@"CastViewCell"];
@@ -89,7 +93,9 @@
     
     [self.tableView addSubview:self.dragIndicatorView];
     
-
+    [self.weiboContentArray addObjectsFromArray:[SHARE_DATA_MODEL getCachedHomeTimeLineStatusOfCurrentUserPage:1]];
+    NSArray* tlArray = [SHARE_DATA_MODEL getCachedHomeTimeLineStatusOfCurrentUserPage:1];
+    [self.tableView reloadData];
 //    NSDictionary* viewsDict = @{@"outView":self.view, @"tableview":self.tableView ,@"loadView":self.loadIndicatorView};
 //    NSArray* vLayouts = [NSLayoutConstraint constraintsWithVisualFormat:@"V:[loadView][tableview]"
 //                                                                options:0
@@ -115,12 +121,17 @@
     [super viewWillAppear:animated];
     self.navigationController.navigationBarHidden = YES;
 }
-
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    [self fetchWeiboContent];
+}
 - (void)fetchWeiboContent
 {
     _currentWeiboPage = 1;
     [SHARE_NW_ENGINE getHomeTimelineOfCurrentUserPage:1
                                               Succeed:^(NSArray * resultArray){
+                                                  [self.weiboContentArray removeAllObjects];
                                                   [self.weiboContentArray addObjectsFromArray:resultArray];
                                                   [self.tableView reloadData];
                                                   [NSNotificationCenter postDidFetchCurrentUserNameNotification];
