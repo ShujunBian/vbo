@@ -57,7 +57,7 @@
 @interface WXYNetworkDataFactory : NSObject
 + (Status*)getStatusWithDictIncludeUser:(NSDictionary*)dict;
 + (Status*)getStatusWithDict:(NSDictionary*)dict;
-+ (Comment*)getCommentWithDict:(NSDictionary*)dict status:(Status*)s;
++ (Comment*)getCommentIncludeUserWithDict:(NSDictionary*)dict status:(Status*)s;
 + (Group*)getGroupWithDict:(NSDictionary*)dict;
 + (User*)getUserWithDict:(NSDictionary*)dict;
 + (User*)getUserWithDictIncludeStatus:(NSDictionary*)dict;
@@ -394,7 +394,7 @@
 //                      status = [WXYNetworkDataFactory getStatusWithDict:dict]; //刷新微博信息
                   }
                   
-                  Comment* comment = [WXYNetworkDataFactory getCommentWithDict:commentDict status:status];
+                  Comment* comment = [WXYNetworkDataFactory getCommentIncludeUserWithDict:commentDict status:status];
                   [returnArray addObject:comment];
               }
               if (succeedBlock)
@@ -430,7 +430,7 @@
                           onSucceeded:^(MKNetworkOperation *completedOperation)
           {
               NSDictionary* responseDict = completedOperation.responseJSON;
-              Comment* comment = [WXYNetworkDataFactory getCommentWithDict:responseDict status:nil];
+              Comment* comment = [WXYNetworkDataFactory getCommentIncludeUserWithDict:responseDict status:nil];
               [SHARE_DATA_MODEL saveCacheContext];
               if (succeedBlock)
               {
@@ -850,6 +850,7 @@
                                      succeed:(ArrayBlock)succeedBlock
                                        error:(ErrorBlock)errorBlock
 {
+#warning 标签未处理
     MKNetworkOperation* op = nil;
     op = [self startOperationWithPath:FAVOR_GET_LIST_URL
                             needLogin:YES
@@ -908,7 +909,7 @@
     return status;
 }
 
-+ (Comment*)getCommentWithDict:(NSDictionary*)dict status:(Status*)s
++ (Comment*)getCommentIncludeUserWithDict:(NSDictionary*)dict status:(Status*)s
 {
     NSNumber* commentId = dict[@"id"];
     Comment* comment = [SHARE_DATA_MODEL getOrCreateCommentById:commentId.longLongValue];
@@ -936,7 +937,7 @@
     if (replyDict)
     {
         //回复的微博中，没有"Status"属性
-        Comment* replyComment = [WXYNetworkDataFactory getCommentWithDict:replyDict status:s];
+        Comment* replyComment = [WXYNetworkDataFactory getCommentIncludeUserWithDict:replyDict status:s];
         comment.replyComment = replyComment;
     }
     return comment;

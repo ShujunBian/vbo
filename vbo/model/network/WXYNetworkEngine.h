@@ -114,6 +114,8 @@ typedef enum{
                                   succeed:(ArrayBlock)succeedBlock
                                     error:(ErrorBlock)errorBlock;
 
+
+
 ///////写入
 
 /*!评论微博
