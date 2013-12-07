@@ -60,7 +60,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     if(tableView == self.view)
-        return 24;
+        return [self.atUserArray count];
     else
         return 0;
 }

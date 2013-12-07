@@ -67,7 +67,7 @@
     backBtn.frame = CGRectMake(0, 0, 67, 21);
     
     [backBtn setImage:[UIImage imageNamed:@"backToPost.png"] forState:UIControlStateNormal];
-    [backBtn addTarget:self action:@selector(cancel) forControlEvents:UIControlEventTouchUpInside];
+    [backBtn addTarget:self action:@selector(returnToPost) forControlEvents:UIControlEventTouchUpInside];
     
     UIBarButtonItem *backItem = [[UIBarButtonItem alloc] initWithCustomView:backBtn];
     
@@ -264,23 +264,24 @@
                                  multiplier:1
       
                                    constant:0]];
-    
-
-    
 }
-
-
 
 - (void)viewDidLayoutSubviews
 {
     [super viewDidLayoutSubviews];
 }
--(void)cancel
+-(void)returnToPost
 {
+    
+    
+    NSArray *array = [[NSArray alloc]initWithArray:self.selectedUserArray];
+    
+    //self.sendSelectedUsersBlock(array);
     [self.navigationController popToRootViewControllerAnimated:YES];
 }
 -(void)postWeibo
 {
+    
 }
 
 -(void)network
