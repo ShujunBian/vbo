@@ -175,6 +175,10 @@
 		515F94C318518B1D0029CCA6 /* DVTableSectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 515F94C218518B1D0029CCA6 /* DVTableSectionView.xib */; };
 		515F94C6185192740029CCA6 /* DVTableSectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 515F94C5185192740029CCA6 /* DVTableSectionView.m */; };
 		515F94C91851E5D70029CCA6 /* CVLoadIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 515F94C81851E5D70029CCA6 /* CVLoadIndicatorView.m */; };
+		515F94CC18520E0D0029CCA6 /* ComRepCountCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 515F94CB18520E0D0029CCA6 /* ComRepCountCell.xib */; };
+		515F94D11852D9900029CCA6 /* TCommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 515F94D01852D9900029CCA6 /* TCommentViewController.m */; };
+		515F94D41852D99E0029CCA6 /* TRepostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 515F94D31852D99E0029CCA6 /* TRepostViewController.m */; };
+		515F94D71852DDD60029CCA6 /* TShowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 515F94D61852DDD60029CCA6 /* TShowViewController.m */; };
 		51652DEA1835AC13004E4D30 /* UITextViewHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 51652DE91835AC13004E4D30 /* UITextViewHelper.m */; };
 		51652DED1835D7EF004E4D30 /* UIFont+TextKitAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = 51652DEC1835D7EF004E4D30 /* UIFont+TextKitAddition.m */; };
 		51652DF01835D7FF004E4D30 /* UIFontDescriptor+TextKitAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = 51652DEF1835D7FF004E4D30 /* UIFontDescriptor+TextKitAddition.m */; };
@@ -420,6 +424,13 @@
 		515F94C5185192740029CCA6 /* DVTableSectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DVTableSectionView.m; sourceTree = "<group>"; };
 		515F94C71851E5D70029CCA6 /* CVLoadIndicatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CVLoadIndicatorView.h; sourceTree = "<group>"; };
 		515F94C81851E5D70029CCA6 /* CVLoadIndicatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CVLoadIndicatorView.m; sourceTree = "<group>"; };
+		515F94CB18520E0D0029CCA6 /* ComRepCountCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ComRepCountCell.xib; sourceTree = "<group>"; };
+		515F94CF1852D9900029CCA6 /* TCommentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCommentViewController.h; sourceTree = "<group>"; };
+		515F94D01852D9900029CCA6 /* TCommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCommentViewController.m; sourceTree = "<group>"; };
+		515F94D21852D99E0029CCA6 /* TRepostViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRepostViewController.h; sourceTree = "<group>"; };
+		515F94D31852D99E0029CCA6 /* TRepostViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRepostViewController.m; sourceTree = "<group>"; };
+		515F94D51852DDD60029CCA6 /* TShowViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TShowViewController.h; sourceTree = "<group>"; };
+		515F94D61852DDD60029CCA6 /* TShowViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TShowViewController.m; sourceTree = "<group>"; };
 		51652DE81835AC13004E4D30 /* UITextViewHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UITextViewHelper.h; sourceTree = "<group>"; };
 		51652DE91835AC13004E4D30 /* UITextViewHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UITextViewHelper.m; sourceTree = "<group>"; };
 		51652DEB1835D7EF004E4D30 /* UIFont+TextKitAddition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIFont+TextKitAddition.h"; sourceTree = "<group>"; };
@@ -659,6 +670,7 @@
 		1868F1001829CD7800C5764D /* cast */ = {
 			isa = PBXGroup;
 			children = (
+				515F94CE1852D9710029CCA6 /* Test */,
 				1868F1011829CD9700C5764D /* WXYCastViewController.h */,
 				1868F1021829CD9700C5764D /* WXYCastViewController.m */,
 				5183B183182AA876008F22D1 /* CastViewCell.h */,
@@ -668,6 +680,7 @@
 				51510C11183BBB4800BD7823 /* ComRepViewController.m */,
 				51510C13183BD8F600BD7823 /* ComRepCountCell.h */,
 				51510C14183BD8F600BD7823 /* ComRepCountCell.m */,
+				515F94CB18520E0D0029CCA6 /* ComRepCountCell.xib */,
 				51510C16183BDF3B00BD7823 /* ComReqDetailCell.h */,
 				51510C17183BDF3B00BD7823 /* ComReqDetailCell.m */,
 				5199293618459CD00000216F /* CastImageViewController.h */,
@@ -1074,6 +1087,19 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		515F94CE1852D9710029CCA6 /* Test */ = {
+			isa = PBXGroup;
+			children = (
+				515F94CF1852D9900029CCA6 /* TCommentViewController.h */,
+				515F94D01852D9900029CCA6 /* TCommentViewController.m */,
+				515F94D21852D99E0029CCA6 /* TRepostViewController.h */,
+				515F94D31852D99E0029CCA6 /* TRepostViewController.m */,
+				515F94D51852DDD60029CCA6 /* TShowViewController.h */,
+				515F94D61852DDD60029CCA6 /* TShowViewController.m */,
+			);
+			name = Test;
+			sourceTree = "<group>";
+		};
 		51652DF41835DA78004E4D30 /* TextKit */ = {
 			isa = PBXGroup;
 			children = (
@@ -1226,6 +1252,7 @@
 				4D1E6F1C182A3AF60078229F /* postViewStoryBoard.storyboard in Resources */,
 				18B0C954184CC40900347492 /* WXYUserProfilePhotoView.xib in Resources */,
 				4D5F23AF184B2510007A0898 /* WatchListTableViewController.xib in Resources */,
+				515F94CC18520E0D0029CCA6 /* ComRepCountCell.xib in Resources */,
 				18A67CD9184CF40F00C81722 /* WXYUserProfileCells.xib in Resources */,
 				515B0BF618082A9B0092BADB /* InfoPlist.strings in Resources */,
 				18DA5F34184C65E200902A47 /* WXYUserProfileView.xib in Resources */,
@@ -1330,6 +1357,7 @@
 				185E88AC182AABF40020F3B2 /* NSString+MKNetworkKitAdditions.m in Sources */,
 				18B02D59182E167800D9AF04 /* WXYTabBarSolidButton.m in Sources */,
 				518A1CB818431CCE00D36AFD /* MyTextAttachment.m in Sources */,
+				515F94D41852D99E0029CCA6 /* TRepostViewController.m in Sources */,
 				18EB0A06182BF701005CC27D /* NSDate+Addition.m in Sources */,
 				51510C15183BD8F600BD7823 /* ComRepCountCell.m in Sources */,
 				188E68971829131600BE534D /* vboCachedDatamodel.xcdatamodeld in Sources */,
@@ -1337,6 +1365,7 @@
 				51652DF01835D7FF004E4D30 /* UIFontDescriptor+TextKitAddition.m in Sources */,
 				515F94C018517DE90029CCA6 /* DVRecommandCell.m in Sources */,
 				18EB0A02182BED82005CC27D /* StatusPicture.m in Sources */,
+				515F94D11852D9900029CCA6 /* TCommentViewController.m in Sources */,
 				185E88A8182AABF40020F3B2 /* NSAlert+MKNetworkKitAdditions.m in Sources */,
 				1868F1131829CE1400C5764D /* WXYMineViewController.m in Sources */,
 				185E88B1182AABF40020F3B2 /* Reachability.m in Sources */,
@@ -1359,6 +1388,7 @@
 				4D9DA274184A561300807B96 /* AtViewController.m in Sources */,
 				18D9E4E8183388E0004539CC /* Comment.m in Sources */,
 				18B0C95A184CC64000347492 /* WXYUserProfilePhotoView.m in Sources */,
+				515F94D71852DDD60029CCA6 /* TShowViewController.m in Sources */,
 				18EB09C8182B7F30005CC27D /* WXYSettingManager.m in Sources */,
 				51652DF71835DA96004E4D30 /* UITextView+TextKitAddition.m in Sources */,
 				185E88AD182AABF40020F3B2 /* UIAlertView+MKNetworkKitAdditions.m in Sources */,

@@ -18,6 +18,7 @@
 
 - (void)awakeFromNib
 {
+    [self setBackgroundColor:[UIColor clearColor]];
     [self setSelectionStyle:UITableViewCellSelectionStyleNone];
 }
 
