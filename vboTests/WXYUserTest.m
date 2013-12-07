@@ -27,10 +27,10 @@
     [super setUp];
     // Put setup code here. This method is called before the invocation of each test method in the class.
     self.user = [User insertWithId:@(200) InContext:SHARE_DATA_MODEL.cacheManagedObjectContext];
-    self.status = [SHARE_DATA_MODEL getStatusById:300];
-    self.status2 = [SHARE_DATA_MODEL getStatusById:301];
-    self.status3 = [SHARE_DATA_MODEL getStatusById:302];
-    self.status4 = [SHARE_DATA_MODEL getStatusById:303];
+    self.status = [SHARE_DATA_MODEL getOrCreateStatusById:300];
+    self.status2 = [SHARE_DATA_MODEL getOrCreateStatusById:301];
+    self.status3 = [SHARE_DATA_MODEL getOrCreateStatusById:302];
+    self.status4 = [SHARE_DATA_MODEL getOrCreateStatusById:303];
     [SHARE_DATA_MODEL saveCacheContext];
 }
 
@@ -49,7 +49,7 @@
 
 - (void)testGetUserById
 {
-    User* u = [SHARE_DATA_MODEL getUserById:200ll];
+    User* u = [SHARE_DATA_MODEL getOrCreateUserById:200ll];
     XCTAssertEqualObjects(self.user, u, @"GetUserById有错");
 }
 

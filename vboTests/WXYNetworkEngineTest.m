@@ -361,4 +361,85 @@ static NSLock* s_Lock = nil;
     [self.asyncTestCase waitForStatus:kGHUnitWaitStatusSuccess timeout:kMKNetworkKitRequestTimeOutInSeconds];
 }
 
+- (void)testGetHourlyHotTopic
+{
+    [self.asyncTestCase prepare];
+    [SHARE_NW_ENGINE getHotTopicSucceed:^(NSArray *resultArray)
+    {
+        if (resultArray.count)
+        {
+            id topic = resultArray[0];
+            XCTAssert([topic isKindOfClass:[NSString class]], @"topic应为string");
+            [self.asyncTestCase notify:kGHUnitWaitStatusSuccess];
+        }
+    } error:^(NSError *error)
+    {
+        XCTFail(@"网络请求失败");
+        [self.asyncTestCase notify:kGHUnitWaitStatusFailure];
+    }];
+    [self.asyncTestCase waitForStatus:kGHUnitWaitStatusSuccess timeout:kMKNetworkKitRequestTimeOutInSeconds];
+}
+
+- (void)testGetHotUser
+{
+    [self.asyncTestCase prepare];
+    [SHARE_NW_ENGINE getHotUserSucceed:^(NSArray *resultArray) {
+        [self.asyncTestCase notify:kGHUnitWaitStatusSuccess];
+    } error:^(NSError *error) {
+        XCTFail(@"网络请求失败");
+        [self.asyncTestCase notify:kGHUnitWaitStatusFailure];
+    }];
+        [self.asyncTestCase waitForStatus:kGHUnitWaitStatusSuccess timeout:kMKNetworkKitRequestTimeOutInSeconds];
+}
+- (void)testGetHotStatus
+{
+    [self.asyncTestCase prepare];
+    [SHARE_NW_ENGINE getHotWeiboPage:1 succeed:^(NSArray *resultArray) {
+        if (resultArray.count)
+        {
+            id status = resultArray[0];
+            XCTAssert([status isKindOfClass:[Status class]], @"topic应为string");
+        }
+        [self.asyncTestCase notify:kGHUnitWaitStatusSuccess];
+    } error:^(NSError *error) {
+        XCTFail(@"网络请求失败");
+        [self.asyncTestCase notify:kGHUnitWaitStatusFailure];
+    }];
+    [self.asyncTestCase waitForStatus:kGHUnitWaitStatusSuccess timeout:kMKNetworkKitRequestTimeOutInSeconds];
+}
+- (void)testSearchTopic
+{
+    [self.asyncTestCase prepare];
+    [SHARE_NW_ENGINE searchTopic:@"tjcdi" page:1 succeed:^(NSArray *resultArray) {
+        if (resultArray.count)
+        {
+            id status = resultArray[0];
+            XCTAssert([status isKindOfClass:[Status class]], @"topic应为string");
+        }
+        [self.asyncTestCase notify:kGHUnitWaitStatusSuccess];
+    } error:^(NSError *error) {
+        XCTFail(@"网络请求失败");
+        [self.asyncTestCase notify:kGHUnitWaitStatusFailure];
+    }];
+    [self.asyncTestCase waitForStatus:kGHUnitWaitStatusSuccess timeout:kMKNetworkKitRequestTimeOutInSeconds];
+}
+- (void)testFavoriteStatus
+{
+    [self.asyncTestCase prepare];
+    
+    [SHARE_NW_ENGINE getFavoriteStatusPage:1 succeed:^(NSArray *resultArray) {
+        if (resultArray.count)
+        {
+            id status = resultArray[0];
+            XCTAssert([status isKindOfClass:[Status class]], @"topic应为string");
+        }
+        [self.asyncTestCase notify:kGHUnitWaitStatusSuccess];
+    } error:^(NSError *error) {
+        XCTFail(@"网络请求失败");
+        [self.asyncTestCase notify:kGHUnitWaitStatusFailure];
+        
+    }];
+    [self.asyncTestCase waitForStatus:kGHUnitWaitStatusSuccess timeout:kMKNetworkKitRequestTimeOutInSeconds];
+
+}
 @end

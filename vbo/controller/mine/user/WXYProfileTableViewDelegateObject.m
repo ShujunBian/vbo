@@ -208,6 +208,7 @@ enum
         [self.statusCell setCellWithWeiboStatus:status isInCastView:YES];
 //        self.statusCell.textLabel.text = status.text;
     }
+    [self.tableView reloadData];
     
 }
 
@@ -276,7 +277,10 @@ enum
 {
     if (indexPath.row == kRowUserStatus)
     {
-        return [self cellHeightForStatus:self.bindUser.statuses.array[0]];
+        if (self.bindUser.statuses.count)
+        {
+            return [self cellHeightForStatus:self.bindUser.statuses.array[0]];
+        }
     }
     return 44.f;
 }

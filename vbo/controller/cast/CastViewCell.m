@@ -12,11 +12,12 @@
 #import "ComRepViewController.h"
 #import "NSDate+Addition.h"
 
+#define kContantHeight 110.0
+#define kContentLabelLineSpace 6.0
 #define padding 5.0
 #define weiboImageHeight 180.0
 #define weiboCellBetweenHeight 10.0
 #define repostViewConstantHeight 59.0
-#define contentLabelLineSpace 6.0
 #define repostBackgroundViewColor [UIColor colorWithRed:234.0 / 255.0 green:234.0 / 255.0 blue:234.0 / 255.0 alpha:1.0]
 #define shadowHeight 1.0
 
@@ -76,6 +77,7 @@
                                                  name:UIContentSizeCategoryDidChangeNotification
                                                object:nil];
     [self setSelectionStyle:UITableViewCellSelectionStyleNone];
+    [self setBackgroundColor:[UIColor clearColor]];
     
     tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleGesture:)];
     tapGesture.numberOfTapsRequired = 1;
@@ -232,14 +234,7 @@
 
 - (NSMutableAttributedString *)weiboContentLabelAttributedStringByStatus:(Status *)currentCellStatus
 {
-    NSMutableAttributedString * contentString = [UITextViewHelper setAttributeString:[[NSMutableAttributedString alloc]initWithString:currentCellStatus.text]
-                                                                      WithNormalFont:SHARE_SETTING_MANAGER.castViewTableCellContentLabelFont
-                                                                         withUrlFont:SHARE_SETTING_MANAGER.castViewTableCellContentLabelFont
-                                                                     withNormalColor:SHARE_SETTING_MANAGER.castViewTableCellContentLabelTextColor
-                                                                        withUrlColor:SHARE_SETTING_MANAGER.themeColor
-                                                                  withLabelLineSpace:contentLabelLineSpace];
-    
-    return contentString;
+    return [CastViewCell getContentStringByStatus:currentCellStatus];
 }
 
 - (void)preferredContentSizeChanged:(NSNotification *)notification
@@ -249,6 +244,22 @@
                                                                                   withWidth:288.0];
 }
 
+#pragma mark 计算该cell在castview中高度
++ (float)getHeightForCastCellViewByStatus:(Status *)currentCellStatus
+{
+    float cellHeight = kContantHeight;
+    if (currentCellStatus.bmiddlePicURL != nil) {
+        cellHeight += 180.0;
+    }
+    cellHeight += [UITextViewHelper HeightForAttributedString:[CastViewCell getContentStringByStatus:currentCellStatus] withWidth:288.0f];
+    
+    if (currentCellStatus.repostStatus != nil) {
+        cellHeight += [CastViewCell getHeightofCastRepostViewByStatus:currentCellStatus.repostStatus] + 20.0;
+    }
+    
+    return cellHeight;
+}
+
 + (float)getHeightofCastRepostViewByStatus:(Status *) status
 {
     float heightofCastRepostView = repostViewConstantHeight;
@@ -256,15 +267,21 @@
         heightofCastRepostView += 98.0;
     }
     if (status.text != nil) {
-        NSMutableAttributedString * contentString = [UITextViewHelper setAttributeString:[[NSMutableAttributedString alloc]initWithString:status.text]
-                                                                          WithNormalFont:SHARE_SETTING_MANAGER.castViewTableCellContentLabelFont
-                                                                             withUrlFont:SHARE_SETTING_MANAGER.castViewTableCellContentLabelFont
-                                                                         withNormalColor:SHARE_SETTING_MANAGER.castViewTableCellContentLabelTextColor
-                                                                            withUrlColor:SHARE_SETTING_MANAGER.themeColor
-                                                                      withLabelLineSpace:contentLabelLineSpace];
-        heightofCastRepostView += [UITextViewHelper HeightForAttributedString:contentString withWidth:288.0f];
+        heightofCastRepostView += [UITextViewHelper HeightForAttributedString:[CastViewCell getContentStringByStatus:status]
+                                                                    withWidth:288.0f];
     }
     return heightofCastRepostView + padding;
+}
+
++ (NSMutableAttributedString *)getContentStringByStatus:(Status *)status
+{
+    NSMutableAttributedString * contentString = [UITextViewHelper setAttributeString:[[NSMutableAttributedString alloc]initWithString:status.text]
+                                                                      WithNormalFont:SHARE_SETTING_MANAGER.castViewTableCellContentLabelFont
+                                                                         withUrlFont:SHARE_SETTING_MANAGER.castViewTableCellContentLabelFont
+                                                                     withNormalColor:SHARE_SETTING_MANAGER.castViewTableCellContentLabelTextColor
+                                                                        withUrlColor:SHARE_SETTING_MANAGER.themeColor
+                                                                  withLabelLineSpace:kContentLabelLineSpace];
+    return contentString;
 }
 
 #pragma mark - textViewDelegate

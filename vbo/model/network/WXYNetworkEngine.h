@@ -114,6 +114,8 @@ typedef enum{
                                   succeed:(ArrayBlock)succeedBlock
                                     error:(ErrorBlock)errorBlock;
 
+
+
 ///////写入
 
 /*!评论微博
@@ -199,6 +201,54 @@ typedef enum{
  */
 - (MKNetworkOperation*)getAllFriendOfCurrentUserSucceed:(ArrayBlock)succeedBlock
                                                   error:(ErrorBlock)errorBlock;
+
+
+/////发现
+//读取
+
+/*!获取当前热门微博
+ * @param page 页码，从1开始
+ * @param succeedBlock 成功处理block,Array内容为Status
+ */
+- (MKNetworkOperation*)getHotWeiboPage:(int)page
+                               succeed:(ArrayBlock)succeedBlock
+                                 error:(ErrorBlock)errorBlock;
+
+/*!获取热门用户
+ * @param succeedBlock 成功处理block,Array内容为User
+ */
+- (MKNetworkOperation*)getHotUserSucceed:(ArrayBlock)succeedBlock
+                                   error:(ErrorBlock)errorBlock;
+
+/*!获取一小时内热门话题
+ * @param succeedBlock 成功处理block,Array内容为NSString
+ */
+- (MKNetworkOperation*)getHotTopicSucceed:(ArrayBlock)succeedBlock
+                                    error:(ErrorBlock)errorBlock;
+
+/*!搜索某一话题下的微博
+ * @param keyword 关键字
+ * @param page 页码，从1开始
+ * @param succeedBlock 成功处理block,Array内容为Status
+ */
+- (MKNetworkOperation*)searchTopic:(NSString*)keyword
+                              page:(int)page
+                           succeed:(ArrayBlock)succeedBlock
+                             error:(ErrorBlock)errorBlock;
+
+
+////收藏
+//读取
+
+/*!读取当前用户收藏列表
+ * @param page 页码，从1开始
+ * @param succeedBlock 成功处理block,Array内容为Status
+ */
+- (MKNetworkOperation*)getFavoriteStatusPage:(int)page
+                                     succeed:(ArrayBlock)succeedBlock
+                                       error:(ErrorBlock)errorBlock;
+
+//写入
 
 
 @end

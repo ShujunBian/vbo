@@ -42,6 +42,7 @@
 @dynamic commentList;
 @dynamic beInTimeline;
 @dynamic beInStatusList;
+@dynamic beInHotStatuses;
 
 - (NSOrderedSet*)commentList
 {

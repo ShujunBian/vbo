@@ -19,6 +19,7 @@
 @property (nonatomic, retain) NSOrderedSet *followedList;
 @property (nonatomic, retain) NSOrderedSet *commentList;
 @property (nonatomic, retain) NSOrderedSet *atEntityList;
+@property (nonatomic, retain) NSOrderedSet *hotStatuses;
 @end
 
 @interface LoginCachedEntity (CoreDataGeneratedAccessors)
@@ -26,6 +27,12 @@
 - (void)removeHomeTimeLineObject:(Status*)value;
 - (void)addHomeTimeLine:(NSOrderedSet*)value;
 - (void)removeHomeTimeLine:(NSOrderedSet*)value;
+
+- (void)addHotStatusesObject:(Status*)value;
+- (void)removeHotStatusesObject:(Status*)value;
+- (void)addHotStatuses:(NSOrderedSet*)value;
+- (void)removeHotStatuses:(NSOrderedSet*)value;
+
 
 - (void)sortAtEntityList;
 - (AtEntity*)getAtEntityOfUser:(User*)user;

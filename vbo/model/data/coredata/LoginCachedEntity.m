@@ -22,7 +22,10 @@
 @dynamic followedList;
 @dynamic commentList;
 @dynamic atEntityList;
+@dynamic hotStatuses;
 
+
+#pragma mark Home Time Line
 - (NSOrderedSet*)homeTimeLine
 {
     return [self mutableOrderedSetValueForKey:@"homeTimeLine"];
@@ -45,6 +48,29 @@
     [self removeOrderSet:value forKey:@"homeTimeLine"];
 }
 
+#pragma mark Hot Statuses
+- (NSOrderedSet*)hotStatuses
+{
+    return [self mutableOrderedSetValueForKey:@"homeTimeLine"];
+}
+- (void)addHotStatusesObject:(Status*)value
+{
+    [self addOrderSetObject:value forKey:@"homeTimeLine"];
+}
+- (void)removeHotStatusesObject:(Status*)value
+{
+    [self removeOrderSetObject:value forKey:@"homeTimeLine"];
+}
+- (void)addHotStatuses:(NSOrderedSet*)value
+{
+    [self addOrderSet:value forKey:@"homeTimeLine"];
+}
+- (void)removeHotStatuses:(NSOrderedSet*)value
+{
+    [self removeOrderSet:value forKey:@"homeTimeLine"];
+}
+
+#pragma mark At Entity List
 - (NSOrderedSet*)atEntityList
 {
     return  [self mutableOrderedSetValueForKey:@"atEntityList"];
@@ -71,5 +97,4 @@
     }
     return e;
 }
-
 @end

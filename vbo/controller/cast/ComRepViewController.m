@@ -24,7 +24,7 @@
 #define cellButtonHeight 44.0
 #define cellBackgroundBottmoConstraint 5.0
 
-@interface ComRepViewController ()
+@interface ComRepViewController ()<CastViewCellDelegate>
 
 @property (nonatomic, weak) IBOutlet UITableView * tableView;
 @property (nonatomic, strong) NSMutableArray * commentArray;
@@ -192,7 +192,11 @@
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
-
+#pragma mark - CastViewCell Delegate
+-(void)presentDetailImageViewWithImageView:(UIImageView *)imageView withInitalRect:(CGRect)initalRect
+{
+#warning 实现点击图片后Transition
+}
 
 #pragma mark - calculate weiboCell Height
 - (float)weiboCellHeightForRowAtIndex

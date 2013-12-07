@@ -52,6 +52,7 @@ typedef enum
 //List Cached
 @property (nonatomic, retain) NSSet* beInTimeline;
 @property (nonatomic, retain) NSSet* beInStatusList;
+@property (nonatomic, retain) NSSet* beInHotStatuses;
 
 @end
 

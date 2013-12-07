@@ -8,6 +8,7 @@
 
 #import "WXYNetworkEngine.h"
 #import "WXYNetworkOperation.h"
+#import "NSArray+ConvertToOrderedSet.h"
 
 #define HOST_NAME @"api.weibo.com"
 #import "UIImageView+MKNetworkKitAdditions.h"
@@ -34,7 +35,19 @@
 #define GROUP_STATUS_URL @"2/friendships/groups/timeline.json"
 
 //Relation
-#define RELATION_FRIEND_LIST @"2/friendships/friends.json"
+#define RELATION_FRIEND_LIST_URL @"2/friendships/friends.json"
+
+//Discover
+#define DISCOVER_HOT_WEIBO_URL @"2/suggestions/favorites/hot.json"
+#define DISCOVER_HOT_USER_URL @"2/suggestions/users/hot.json"
+#define DISCOVER_TOPIC_HOURLY @"2/trends/hourly.json"
+#define DISCOVER_TOPIC_DAILY @"2/trends/daily.json"
+#define DISCOVER_TOPIC_WEEKLY @"2/trends/weekly.json"
+#define DISCOVER_SEARCH_TOPIC @"2/search/topics.json"
+
+//Favorite
+#define FAVOR_GET_LIST_URL @"2/favorites.json"
+
 
 #import "WXYSettingManager.h"
 #import "WXYDataModel.h"
@@ -44,7 +57,7 @@
 @interface WXYNetworkDataFactory : NSObject
 + (Status*)getStatusWithDictIncludeUser:(NSDictionary*)dict;
 + (Status*)getStatusWithDict:(NSDictionary*)dict;
-+ (Comment*)getCommentWithDict:(NSDictionary*)dict status:(Status*)s;
++ (Comment*)getCommentIncludeUserWithDict:(NSDictionary*)dict status:(Status*)s;
 + (Group*)getGroupWithDict:(NSDictionary*)dict;
 + (User*)getUserWithDict:(NSDictionary*)dict;
 + (User*)getUserWithDictIncludeStatus:(NSDictionary*)dict;
@@ -95,11 +108,12 @@
                                       onError:(OperationErrorBlock)errorBlock
 {
     MKNetworkOperation* op = nil;
-    NSMutableDictionary* params = [[NSMutableDictionary alloc] initWithDictionary:paramDict];
+    NSMutableDictionary* params = [[NSMutableDictionary alloc] init];
     if (userInfo)
     {
         [params setValue:userInfo.accessToken forKey:@"access_token"];
     }
+    [params addEntriesFromDictionary:paramDict];
     op = [self operationWithPath:path
                           params:params
                       httpMethod:method
@@ -375,12 +389,12 @@
                       fFirst = NO;
                       NSDictionary* dict = commentDict[@"status"];
                       NSNumber* weiboId = dict[@"id"];
-                      status = [SHARE_DATA_MODEL getStatusById:weiboId.longLongValue];
+                      status = [SHARE_DATA_MODEL getOrCreateStatusById:weiboId.longLongValue];
 #warning 微博API bug,此处commentCount与repostCount永远返回0
 //                      status = [WXYNetworkDataFactory getStatusWithDict:dict]; //刷新微博信息
                   }
                   
-                  Comment* comment = [WXYNetworkDataFactory getCommentWithDict:commentDict status:status];
+                  Comment* comment = [WXYNetworkDataFactory getCommentIncludeUserWithDict:commentDict status:status];
                   [returnArray addObject:comment];
               }
               if (succeedBlock)
@@ -416,7 +430,7 @@
                           onSucceeded:^(MKNetworkOperation *completedOperation)
           {
               NSDictionary* responseDict = completedOperation.responseJSON;
-              Comment* comment = [WXYNetworkDataFactory getCommentWithDict:responseDict status:nil];
+              Comment* comment = [WXYNetworkDataFactory getCommentIncludeUserWithDict:responseDict status:nil];
               [SHARE_DATA_MODEL saveCacheContext];
               if (succeedBlock)
               {
@@ -488,7 +502,7 @@
               NSNumber* nextCursor = responseDict[@"next_cursor"];
               
               NSArray* userDictArray = responseDict[@"users"];
-              Group* group = [SHARE_DATA_MODEL getGroupById:groupId.longLongValue];
+              Group* group = [SHARE_DATA_MODEL getOrCreateGroupById:groupId.longLongValue];
               for (NSDictionary* userDict in userDictArray)
               {
                   User* user = [WXYNetworkDataFactory getUserWithDict:userDict];
@@ -524,7 +538,7 @@
           {
               NSDictionary* responseDict = completedOperation.responseJSON;
               NSArray* statusesArray = responseDict[@"statuses"];
-              Group* group = [SHARE_DATA_MODEL getGroupById:groupId.longLongValue];
+              Group* group = [SHARE_DATA_MODEL getOrCreateGroupById:groupId.longLongValue];
               NSMutableArray* returnArray = [[NSMutableArray alloc] init];
               for (NSDictionary* dict in statusesArray)
               {
@@ -567,15 +581,15 @@
     if (userId)
     {
         [paramDict setValue:userId forKey:@"uid"];
-        mainUser = [SHARE_DATA_MODEL getUserById:userId.longLongValue];
+        mainUser = [SHARE_DATA_MODEL getOrCreateUserById:userId.longLongValue];
     }
     else
     {
         [paramDict setValue:screenName forKey:@"screen_name"];
-        mainUser = [SHARE_DATA_MODEL getUserByScreenName:screenName];
+        mainUser = [SHARE_DATA_MODEL getOrCreateUserByScreenName:screenName];
     }
     
-    op = [self startOperationWithPath:RELATION_FRIEND_LIST
+    op = [self startOperationWithPath:RELATION_FRIEND_LIST_URL
                             needLogin:YES
                              paramers:paramDict
                           onSucceeded:^(MKNetworkOperation *completedOperation)
@@ -684,13 +698,196 @@
     return op;
 }
 
+
+
+#pragma mark - 发现
+#pragma mark 读取
+- (MKNetworkOperation*)getHotWeiboPage:(int)page
+                               succeed:(ArrayBlock)succeedBlock
+                                 error:(ErrorBlock)errorBlock
+{
+    MKNetworkOperation* op = nil;
+    
+    op = [self startOperationWithPath:DISCOVER_HOT_WEIBO_URL
+                            needLogin:YES
+                             paramers:@{@"page":@(page), @"count":@(STATUS_PER_PAGE)}
+                          onSucceeded:^(MKNetworkOperation *completedOperation)
+          {
+              NSArray* responseArray = completedOperation.responseJSON;
+              NSMutableArray* returnArray = [[NSMutableArray alloc] init];
+              for (NSDictionary* dict in responseArray)
+              {
+                  Status* status = [WXYNetworkDataFactory getStatusWithDictIncludeUser:dict];
+                  [returnArray addObject:status];
+              }
+#warning 未添加缓存
+//              [SHARE_LOGIN_MANAGER.currentUser.loginCached addHotStatuses:[returnArray convertToOrderedSet]];
+              if (succeedBlock)
+              {
+                  succeedBlock(returnArray);
+              }
+          }
+                              onError:^(MKNetworkOperation *completedOperation, NSError *error)
+          {
+              if (errorBlock)
+              {
+                  errorBlock(error);
+              }
+          }];
+    
+    return op;
+}
+
+- (MKNetworkOperation*)getHotUserSucceed:(ArrayBlock)succeedBlock
+                                   error:(ErrorBlock)errorBlock
+{
+    MKNetworkOperation* op = nil;
+    
+    op = [self startOperationWithPath:DISCOVER_HOT_USER_URL
+                            needLogin:YES
+                             paramers:@{}
+                          onSucceeded:^(MKNetworkOperation *completedOperation)
+          {
+              NSArray* responseArray = completedOperation.responseJSON;
+              NSMutableArray* returnArray = [[NSMutableArray alloc] init];
+              for (NSDictionary* dict in responseArray)
+              {
+                  User* user = [WXYNetworkDataFactory getUserWithDictIncludeStatus:dict];
+                  [returnArray addObject:user];
+              }
+#warning 未加入缓存
+              if (succeedBlock)
+              {
+                  succeedBlock(returnArray);
+              }
+          }
+                              onError:^(MKNetworkOperation *completedOperation, NSError *error)
+          {
+              if (errorBlock)
+              {
+                  errorBlock(error);
+              }
+          }];
+    
+    return op;
+}
+
+- (MKNetworkOperation*)getHotTopicSucceed:(ArrayBlock)succeedBlock
+                                    error:(ErrorBlock)errorBlock
+{
+    MKNetworkOperation* op = nil;
+    
+    op = [self startOperationWithPath:DISCOVER_TOPIC_DAILY
+                            needLogin:YES
+                             paramers:@{}
+                          onSucceeded:^(MKNetworkOperation *completedOperation)
+    {
+        NSMutableArray* returnArray = [[NSMutableArray alloc] init];
+        NSDictionary* responseDict = completedOperation.responseJSON;
+        NSDictionary* topicsDict = responseDict[@"trends"];
+        NSArray* arrayArray = [topicsDict allValues];
+        for (NSArray* a in arrayArray)
+        {
+            for (NSDictionary* topicDict in a)
+            {
+                [returnArray addObject:topicDict[@"name"]];
+            }
+        }
+        if (succeedBlock)
+        {
+            succeedBlock(returnArray);
+        }
+    }
+                              onError:^(MKNetworkOperation *completedOperation, NSError *error)
+    {
+        if (errorBlock)
+        {
+            errorBlock(error);
+        }
+    }];
+    
+    return op;
+}
+
+- (MKNetworkOperation*)searchTopic:(NSString*)keyword
+                              page:(int)page
+                           succeed:(ArrayBlock)succeedBlock
+                             error:(ErrorBlock)errorBlock
+{
+    MKNetworkOperation* op = nil;
+    op = [self startOperationWithPath:DISCOVER_SEARCH_TOPIC
+                            needLogin:YES
+                             paramers:@{@"q":keyword, @"page":@(page),@"count":@(STATUS_PER_PAGE)}
+                          onSucceeded:^(MKNetworkOperation *completedOperation)
+          {
+              NSDictionary* dict = completedOperation.responseJSON;
+              NSArray* statusDictArray = dict[@"statuses"];
+              NSMutableArray* returnArray = [@[] mutableCopy];
+              for (NSDictionary* dict in statusDictArray)
+              {
+                  Status* status = [WXYNetworkDataFactory getStatusWithDictIncludeUser:dict];
+                  [returnArray addObject:status];
+              }
+#warning 缓存垃圾未处理
+              if (succeedBlock)
+              {
+                  succeedBlock(returnArray);
+              }
+          }
+                              onError:^(MKNetworkOperation *completedOperation, NSError *error)
+          {
+              if (errorBlock)
+              {
+                  errorBlock(error);
+              }
+          }];
+    return op;
+}
+
+#pragma mark - 收藏
+#pragma mark 读取
+- (MKNetworkOperation*)getFavoriteStatusPage:(int)page
+                                     succeed:(ArrayBlock)succeedBlock
+                                       error:(ErrorBlock)errorBlock
+{
+#warning 标签未处理
+    MKNetworkOperation* op = nil;
+    op = [self startOperationWithPath:FAVOR_GET_LIST_URL
+                            needLogin:YES
+                             paramers:@{@"page":@(page), @"count":@(STATUS_PER_PAGE)}
+                          onSucceeded:^(MKNetworkOperation *completedOperation)
+          {
+              NSMutableArray* returnArray = [@[] mutableCopy];
+              NSDictionary* responseDict = completedOperation.responseJSON;
+              NSArray* favoriteArray = responseDict[@"favorites"];
+              for (NSDictionary* favorDict in favoriteArray)
+              {
+                  NSDictionary* dict = favorDict[@"status"];
+                  Status* s = [WXYNetworkDataFactory getStatusWithDictIncludeUser:dict];
+                  [returnArray addObject:s];
+              }
+#warning 缓存未处理
+              if (succeedBlock)
+              {
+                  succeedBlock(returnArray);
+              }
+          }
+                              onError:^(MKNetworkOperation *completedOperation, NSError *error)
+          {
+              if (errorBlock)
+              {
+                  errorBlock(error);
+              }
+          }];
+    return op;
+}
 @end
 
 @implementation WXYNetworkDataFactory
 + (Status*)getStatusWithDict:(NSDictionary*)dict
 {
     NSNumber* statusId = dict[@"id"];
-    Status* status = [SHARE_DATA_MODEL getStatusById:statusId.longLongValue];
+    Status* status = [SHARE_DATA_MODEL getOrCreateStatusById:statusId.longLongValue];
     [status updateWithDict:dict];
     return status;
 }
@@ -712,15 +909,15 @@
     return status;
 }
 
-+ (Comment*)getCommentWithDict:(NSDictionary*)dict status:(Status*)s
++ (Comment*)getCommentIncludeUserWithDict:(NSDictionary*)dict status:(Status*)s
 {
     NSNumber* commentId = dict[@"id"];
-    Comment* comment = [SHARE_DATA_MODEL getCommentById:commentId.longLongValue];
+    Comment* comment = [SHARE_DATA_MODEL getOrCreateCommentById:commentId.longLongValue];
     [comment updateWithDict:dict];
     
     NSDictionary* userDict = dict[@"user"];
     NSNumber* userId = userDict[@"id"];
-    User* user = [SHARE_DATA_MODEL getUserById:userId.longLongValue];
+    User* user = [SHARE_DATA_MODEL getOrCreateUserById:userId.longLongValue];
     [user updateWithDict:userDict];
     comment.user = user;
     
@@ -728,7 +925,7 @@
     if (statusDict)
     {
         NSNumber* statusId = statusDict[@"id"];
-        Status* status = [SHARE_DATA_MODEL getStatusById:statusId.longLongValue];
+        Status* status = [SHARE_DATA_MODEL getOrCreateStatusById:statusId.longLongValue];
         if (status.text && status.createdAt)
         {
             s = status;
@@ -740,7 +937,7 @@
     if (replyDict)
     {
         //回复的微博中，没有"Status"属性
-        Comment* replyComment = [WXYNetworkDataFactory getCommentWithDict:replyDict status:s];
+        Comment* replyComment = [WXYNetworkDataFactory getCommentIncludeUserWithDict:replyDict status:s];
         comment.replyComment = replyComment;
     }
     return comment;
@@ -749,7 +946,7 @@
 + (Group*)getGroupWithDict:(NSDictionary*)dict
 {
     NSNumber* groupId = dict[@"id"];
-    Group* group = [SHARE_DATA_MODEL getGroupById:groupId.longLongValue];
+    Group* group = [SHARE_DATA_MODEL getOrCreateGroupById:groupId.longLongValue];
     [group updateWithDict:dict];
 
     NSDictionary* userDict = dict[@"user"];
@@ -761,7 +958,7 @@
 + (User*)getUserWithDict:(NSDictionary*)dict
 {
     NSNumber* userId = dict[@"id"];
-    User* user = [SHARE_DATA_MODEL getUserById:userId.longLongValue];
+    User* user = [SHARE_DATA_MODEL getOrCreateUserById:userId.longLongValue];
     [user updateWithDict:dict];
 
     return user;
