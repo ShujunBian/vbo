@@ -257,7 +257,7 @@
 
     [_dragIndicatorView refreshScrollViewDidEndDragging:scrollView];
     
-    if (scrollView.contentOffset.y + [UIScreen mainScreen].bounds.size.height > scrollView.contentSize.height ) {
+    if (scrollView.contentOffset.y + [UIScreen mainScreen].bounds.size.height > scrollView.contentSize.height + 20.0) {
         [self.view setUserInteractionEnabled:NO];
         [self loadMoreWeiboContent];
     }
@@ -287,7 +287,8 @@
     [self reloadTableViewDataSource];
     [self.tableView setUserInteractionEnabled:NO];
     [SHARE_NW_ENGINE getHomeTimelineOfCurrentUserPage:1 Succeed:^(NSArray * resultArray){
-        self.weiboContentArray = resultArray;
+        [self.weiboContentArray removeAllObjects];
+        [self.weiboContentArray addObjectsFromArray:resultArray];
         [self performSelector:@selector(doneLoadingTableViewData) withObject:nil afterDelay:0.5];
     }error:nil];
 

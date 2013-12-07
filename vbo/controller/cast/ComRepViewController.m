@@ -66,6 +66,9 @@
     UINib *castNib = [UINib nibWithNibName:@"CastViewCell" bundle:[NSBundle bundleForClass:[CastViewCell class]]];
     [self.tableView registerNib:castNib forCellReuseIdentifier:@"CastViewCell"];
     
+    UINib *comReCounttNib = [UINib nibWithNibName:@"ComRepCountCell" bundle:[NSBundle bundleForClass:[ComRepCountCell class]]];
+    [self.tableView registerNib:comReCounttNib forCellReuseIdentifier:@"ComRepCountCell"];
+    
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(preferredContentSizeChanged:)
                                                  name:UIContentSizeCategoryDidChangeNotification
@@ -157,7 +160,13 @@
         {
             cell = [[ComRepCountCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:secondRowcellIdentifier];
         }
-        NSString * labelString = [NSString stringWithFormat:@"%d条评论",[_currentStatus.commentsCount integerValue]];
+        NSString * labelString;
+        if ([_currentStatus.commentsCount integerValue] != 0) {
+            labelString = [NSString stringWithFormat:@"%d条评论",[_currentStatus.commentsCount integerValue]];
+        }
+        else {
+            labelString = @"无评论";
+        }
         [cell setComRepCountLabel:labelString];
         [self.view layoutIfNeeded];
         
@@ -182,10 +191,6 @@
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     cell.backgroundColor = [UIColor clearColor];
-    
-    UIView *normalView = [[UIView alloc]init];
-    [normalView setBackgroundColor:[UIColor clearColor]];
-    cell.backgroundView = normalView;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath

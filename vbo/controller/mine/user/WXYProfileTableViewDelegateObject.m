@@ -15,6 +15,7 @@
 #import "WXYUserProfilePhotoView.h"
 #import "UIImageView+MKNetworkKitAdditions.h"
 #import "WXYSettingManager.h"
+#import "ComRepCountCell.h"
 #define contantHeight 110.0
 #define contentLabelLineSpace 6.0
 enum
@@ -40,7 +41,7 @@ enum
 
 @property (strong, nonatomic) WXYUserProfileGenderAndLocationCell* genderAndLocationCell;
 @property (strong, nonatomic) UITableViewCell* descriptionCell;
-@property (strong, nonatomic) UITableViewCell* statusCountCell;
+@property (strong, nonatomic) ComRepCountCell* statusCountCell;
 @property (strong, nonatomic) CastViewCell* statusCell;
 @property (strong, nonatomic) UITableViewCell* moreStatusCell;
 @property (strong, nonatomic) UITableViewCell* collectionCell;
@@ -105,7 +106,9 @@ enum
 {
     if (!_statusCountCell)
     {
-        _statusCountCell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"USER_PROFILE_STATUS_COUNT_CELL"];
+        UINib *comReCounttNib = [UINib nibWithNibName:@"ComRepCountCell" bundle:[NSBundle bundleForClass:[ComRepCountCell class]]];
+        [self.tableView registerNib:comReCounttNib forCellReuseIdentifier:@"USER_PROFILE_STATUS_COUNT_CELL"];
+        _statusCountCell = [self.tableView dequeueReusableCellWithIdentifier:@"USER_PROFILE_STATUS_COUNT_CELL"];
     }
     return _statusCountCell;
 }
@@ -118,6 +121,7 @@ enum
         
         UINib *castNib = [UINib nibWithNibName:@"CastViewCell" bundle:[NSBundle bundleForClass:[CastViewCell class]]];
         [self.tableView registerNib:castNib forCellReuseIdentifier:@"CastViewCell"];
+        
         _statusCell = [self.tableView dequeueReusableCellWithIdentifier:@"CastViewCell"];
         _statusCell.backgroundColor = [UIColor clearColor];
 //        _statusCell = [[CastViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"USER_PROFILE_STATUS_IDENTIFIER"];
@@ -201,7 +205,16 @@ enum
     self.genderAndLocationCell.genderLabel.text = genderStr;
     self.genderAndLocationCell.locationLabel.text = user.location;
     self.descriptionCell.textLabel.text = user.userDescription;
-    self.statusCountCell.textLabel.text = user.statusCount.stringValue;
+    
+    NSString * comRepCountString;
+    if ([user.statusCount integerValue] != 0) {
+        comRepCountString = [NSString stringWithFormat:@"%d 条评论",[user.statusCount integerValue]];
+    }
+    else {
+        comRepCountString = @"无评论";
+    }
+    [self.statusCountCell setComRepCountLabel:comRepCountString];
+
     if (user.statuses.array.count)
     {
         Status* status = user.statuses.array[0];
@@ -281,6 +294,10 @@ enum
         {
             return [self cellHeightForStatus:self.bindUser.statuses.array[0]];
         }
+    }
+    else if (indexPath.row == kRowUserStatusCount)
+    {
+        return 25.f;
     }
     return 44.f;
 }
