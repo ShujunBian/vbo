@@ -107,6 +107,7 @@
     cell_reuse_sig = NO;
     // Configure the cell..
     return cell;
+    
 }
 
 /*
@@ -163,6 +164,7 @@
     
     User* user = [self.atUserArray objectAtIndex:indexPath.row];
     
+    
     if ([selected_cell_array containsObject:user])
     {
         cell.backgroundColor = [UIColor colorWithRed:246.f/255.f green:244.f/255.f blue:240.f/255.f alpha:1.0f];
@@ -171,6 +173,10 @@
         
         cell.checkView.hidden = YES;
         cell.selectedView.hidden = YES;
+        
+        self.deSelectedAtVCBlock(user);
+        
+        
     }
     else
     {
@@ -180,6 +186,8 @@
         cell.selectedView.hidden = NO;
         
         cell.checkView.hidden = NO;
+        
+        self.selectedAtVCBlock(user);
     }
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
     
