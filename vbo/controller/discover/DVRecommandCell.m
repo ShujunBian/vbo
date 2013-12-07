@@ -80,7 +80,7 @@
                   withUserInfo:(User *)user
 {
     [imageView setImage:nil];
-    [imageView setImageFromURLString:user.profileImageUrl
+    [imageView setImageFromURLString:user.avatarLargeUrl
                                 placeHolderImage:nil animation:YES completion:nil];
     imageView.layer.cornerRadius = 25.0;
     imageView.layer.masksToBounds = YES;

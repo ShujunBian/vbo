@@ -174,6 +174,7 @@
 		515F94C018517DE90029CCA6 /* DVRecommandCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 515F94BF18517DE90029CCA6 /* DVRecommandCell.m */; };
 		515F94C318518B1D0029CCA6 /* DVTableSectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 515F94C218518B1D0029CCA6 /* DVTableSectionView.xib */; };
 		515F94C6185192740029CCA6 /* DVTableSectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 515F94C5185192740029CCA6 /* DVTableSectionView.m */; };
+		515F94C91851E5D70029CCA6 /* CVLoadIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 515F94C81851E5D70029CCA6 /* CVLoadIndicatorView.m */; };
 		51652DEA1835AC13004E4D30 /* UITextViewHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 51652DE91835AC13004E4D30 /* UITextViewHelper.m */; };
 		51652DED1835D7EF004E4D30 /* UIFont+TextKitAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = 51652DEC1835D7EF004E4D30 /* UIFont+TextKitAddition.m */; };
 		51652DF01835D7FF004E4D30 /* UIFontDescriptor+TextKitAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = 51652DEF1835D7FF004E4D30 /* UIFontDescriptor+TextKitAddition.m */; };
@@ -417,6 +418,8 @@
 		515F94C218518B1D0029CCA6 /* DVTableSectionView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DVTableSectionView.xib; sourceTree = "<group>"; };
 		515F94C4185192740029CCA6 /* DVTableSectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DVTableSectionView.h; sourceTree = "<group>"; };
 		515F94C5185192740029CCA6 /* DVTableSectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DVTableSectionView.m; sourceTree = "<group>"; };
+		515F94C71851E5D70029CCA6 /* CVLoadIndicatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CVLoadIndicatorView.h; sourceTree = "<group>"; };
+		515F94C81851E5D70029CCA6 /* CVLoadIndicatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CVLoadIndicatorView.m; sourceTree = "<group>"; };
 		51652DE81835AC13004E4D30 /* UITextViewHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UITextViewHelper.h; sourceTree = "<group>"; };
 		51652DE91835AC13004E4D30 /* UITextViewHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UITextViewHelper.m; sourceTree = "<group>"; };
 		51652DEB1835D7EF004E4D30 /* UIFont+TextKitAddition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIFont+TextKitAddition.h"; sourceTree = "<group>"; };
@@ -671,6 +674,8 @@
 				5199293718459CD00000216F /* CastImageViewController.m */,
 				51DD4DDE1849BEAB00999DDF /* CVDragIndicatorView.h */,
 				51DD4DDF1849BEAB00999DDF /* CVDragIndicatorView.m */,
+				515F94C71851E5D70029CCA6 /* CVLoadIndicatorView.h */,
+				515F94C81851E5D70029CCA6 /* CVLoadIndicatorView.m */,
 			);
 			path = cast;
 			sourceTree = "<group>";
@@ -1343,6 +1348,7 @@
 				4D5F23AE184B2510007A0898 /* WatchListTableViewController.m in Sources */,
 				185E88AA182AABF40020F3B2 /* NSDate+RFC1123.m in Sources */,
 				185D74F3184F1D7900FACA47 /* NSManagedObject+OrderSetHepper.m in Sources */,
+				515F94C91851E5D70029CCA6 /* CVLoadIndicatorView.m in Sources */,
 				4D784890183147C40025ADDA /* UIImage+ImageEffects.m in Sources */,
 				18016452184D7889003EC38F /* CVImageTransitionAnimation.m in Sources */,
 				1868F1241829D7EA00C5764D /* WXYSolidTabBar.m in Sources */,

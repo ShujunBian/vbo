@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13A603" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="PW0-B4-TWX">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="12F45" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="PW0-B4-TWX">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
     </dependencies>
@@ -579,10 +579,27 @@
                     <tabBarItem key="tabBarItem" title="Item 2" id="gd1-ba-aht"/>
                     <navigationItem key="navigationItem" id="5ig-hz-vEU"/>
                     <connections>
+                        <outlet property="searchDisplayController" destination="Qlq-iZ-I7P" id="nQb-J9-DiR"/>
                         <outlet property="tableView" destination="b6x-U0-bxF" id="NUv-XJ-ooz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QRb-fL-rWk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="Ffl-PC-udr">
+                    <connections>
+                        <outlet property="delegate" destination="8CQ-c3-0Jb" id="o4T-UH-xpb"/>
+                        <outlet property="searchContentsController" destination="8CQ-c3-0Jb" id="OWi-lq-t5b"/>
+                        <outlet property="searchResultsDataSource" destination="8CQ-c3-0Jb" id="bQm-4i-u7M"/>
+                        <outlet property="searchResultsDelegate" destination="8CQ-c3-0Jb" id="fDc-N4-fR9"/>
+                    </connections>
+                </searchDisplayController>
+                <searchDisplayController id="Qlq-iZ-I7P">
+                    <connections>
+                        <outlet property="delegate" destination="8CQ-c3-0Jb" id="2Vu-iV-Q2g"/>
+                        <outlet property="searchContentsController" destination="8CQ-c3-0Jb" id="bkZ-Dc-vAL"/>
+                        <outlet property="searchResultsDataSource" destination="8CQ-c3-0Jb" id="jvg-nd-Qj5"/>
+                        <outlet property="searchResultsDelegate" destination="8CQ-c3-0Jb" id="tA3-CQ-ywf"/>
+                    </connections>
+                </searchDisplayController>
             </objects>
             <point key="canvasLocation" x="-381" y="1599"/>
         </scene>
