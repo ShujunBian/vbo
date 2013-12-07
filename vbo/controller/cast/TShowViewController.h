@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "WXYBlock.h"
 
 typedef enum{
 	ShowUser = 0,
@@ -14,6 +15,12 @@ typedef enum{
 	ShowTalk,
 } ShowType;
 
-@interface TShowViewController : UIViewController
+typedef void (^FetchBlock)(ArrayBlock succeedBlock, ErrorBlock errorBlock);
+
+@interface TShowViewController : UIViewController<UITableViewDataSource, UITableViewDelegate>
+
+@property (nonatomic) ShowType currentShowType;
+
+@property (strong, nonatomic) FetchBlock fetchBlock;
 
 @end

@@ -13,6 +13,8 @@
 #import "CastViewCell.h"
 #import "ComRepCountCell.h"
 #import "ComReqDetailCell.h"
+#import "TCommentViewController.h"
+#import "TRepostViewController.h"
 
 #define navigationBarHeight 64.0
 #define contantHeight 110.0
@@ -61,7 +63,7 @@
     
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     [self.tableView setBackgroundColor:[UIColor clearColor]];
-    [self fetchCommentContent];
+
     
     UINib *castNib = [UINib nibWithNibName:@"CastViewCell" bundle:[NSBundle bundleForClass:[CastViewCell class]]];
     [self.tableView registerNib:castNib forCellReuseIdentifier:@"CastViewCell"];
@@ -75,9 +77,15 @@
                                                object:nil];
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self fetchCommentContent];
+}
+
 - (void)viewDidAppear:(BOOL)animated
 {
-
+    [super viewDidAppear:animated];
 }
 
 - (void)viewDidLayoutSubviews
@@ -223,6 +231,20 @@
     }
     
     return cellHeight - cellButtonHeight - cellBackgroundBottmoConstraint + 1.0;
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"CommentSegue"])
+    {
+        TCommentViewController* vc =  segue.destinationViewController;
+        vc.status = self.currentStatus;
+    }
+    else if ([segue.identifier isEqualToString:@"RepostSegue"])
+    {
+        TRepostViewController* vc = segue.destinationViewController;
+        vc.status = self.currentStatus;
+    }
 }
 
 - (float)commentCellHeightForRowAtIndex:(NSInteger)row

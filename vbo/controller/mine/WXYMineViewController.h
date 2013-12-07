@@ -7,9 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "WXYProfileTableViewDelegateObject.h"
 
-
-@interface WXYMineViewController : UIViewController
+@interface WXYMineViewController : UIViewController<WXYProfileDelegate>
 #warning CastViewCellDelegate未实现
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;

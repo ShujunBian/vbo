@@ -9,7 +9,8 @@
 #import "WXYLoginManager.h"
 #import "WXYNetworkEngine.h"
 #import "WXYMineViewController.h"
-#import "WXYProfileTableViewDelegateObject.h"
+#import "TShowViewController.h"
+
 
 #import "UIImageView+MKNetworkKitAdditions.h"
 
@@ -25,7 +26,6 @@ static int ddLogLevel = LOG_LEVEL_VERBOSE;
 - (void)accountButtonPressed;
 - (void)settingButtonPressed;
 
-- (void)bind:(User*)user;
 @property (strong, nonatomic) WXYProfileTableViewDelegateObject* tableViewDelegateObject;
 @end
 
@@ -50,20 +50,9 @@ static int ddLogLevel = LOG_LEVEL_VERBOSE;
     self.title = SHARE_LOGIN_MANAGER.currentUserInfo.userName;
 
     self.tableViewDelegateObject = [[WXYProfileTableViewDelegateObject alloc] initWithTableView:self.tableView];
+    self.tableViewDelegateObject.delegate = self;
     self.tableView.dataSource = self.tableViewDelegateObject;
     self.tableView.delegate = self.tableViewDelegateObject;
-    [self.tableViewDelegateObject bind:SHARE_LOGIN_MANAGER.currentUser];
-    
-    [SHARE_NW_ENGINE getUserInfoId:@(SHARE_LOGIN_MANAGER.currentUserInfo.userId.longLongValue)
-                      orScreenName:nil succeed:^(User *user)
-    {
-        [self.tableViewDelegateObject bind:user];
-    }
-                             error:^(NSError *error)
-    {
-#warning 错误处理未实现
-    }];
-    
 //        [self.tableView registerNib:[UINib nibWithNibName:@"WatchListTableViewCell" bundle:nil] forCellReuseIdentifier:@"WatchListTableCell"];
 }
 
@@ -73,7 +62,20 @@ static int ddLogLevel = LOG_LEVEL_VERBOSE;
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
+- (void)viewWillAppear:(BOOL)animated
+{
+    [self.tableViewDelegateObject bind:SHARE_LOGIN_MANAGER.currentUser];
+    
+    [SHARE_NW_ENGINE getUserInfoId:@(SHARE_LOGIN_MANAGER.currentUserInfo.userId.longLongValue)
+                      orScreenName:nil succeed:^(User *user)
+     {
+         [self.tableViewDelegateObject bind:user];
+     }
+                             error:^(NSError *error)
+     {
+#warning 错误处理未实现
+     }];
+}
 
 
 #pragma mark - IBAction
@@ -89,4 +91,40 @@ static int ddLogLevel = LOG_LEVEL_VERBOSE;
     DDLogVerbose(@"setting button pressed");
 }
 
+#pragma mark - Profile Delegate
+- (void)allButtonPressed
+{
+    TShowViewController* vc = [self.storyboard instantiateViewControllerWithIdentifier:@"TShowViewController"];
+
+    vc.fetchBlock = ^(ArrayBlock succeedBlock, ErrorBlock errorBlock)
+    {
+        [SHARE_NW_ENGINE getTimelineOfUser:SHARE_LOGIN_MANAGER.currentUser page:1 succeed:succeedBlock error:errorBlock];
+    };
+    vc.currentShowType = ShowWeibo;
+    [self.navigationController pushViewController:vc animated:YES];
+}
+- (void)collectButtonPressed
+{
+    TShowViewController* vc = [self.storyboard instantiateViewControllerWithIdentifier:@"TShowViewController"];
+    vc.title = @"收藏";
+    vc.fetchBlock = ^(ArrayBlock succeedBlock, ErrorBlock errorBlock){
+        [SHARE_NW_ENGINE getFavoriteStatusPage:1 succeed:succeedBlock error:errorBlock];
+    };
+    vc.currentShowType = ShowWeibo;
+    [self.navigationController pushViewController:vc animated:YES];
+}
+- (void)followerPressed
+{
+
+}
+- (void)followingPressed
+{
+    TShowViewController* vc = [self.storyboard instantiateViewControllerWithIdentifier:@"TShowViewController"];
+    vc.title = @"收藏";
+    vc.fetchBlock = ^(ArrayBlock succeedBlock, ErrorBlock errorBlock){
+        [SHARE_NW_ENGINE getFirstFriendListById:SHARE_LOGIN_MANAGER.currentUser.userID succeed:succeedBlock error:errorBlock];
+    };
+    vc.currentShowType = ShowUser;
+    [self.navigationController pushViewController:vc animated:YES];
+}
 @end

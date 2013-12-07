@@ -8,6 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol WXYUserProfileNumberViewDelegate <NSObject>
+
+- (void)followingButtonPressed;
+- (void)followerButtonPressed;
+
+@end
+
 @interface WXYUserProfileNumberView : UIView
 
 @property (weak, nonatomic) IBOutlet UILabel* followingNumberLabel;

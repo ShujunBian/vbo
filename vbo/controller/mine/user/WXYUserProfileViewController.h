@@ -7,10 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "WXYProfileTableViewDelegateObject.h"
 
 @class User;
 
-@interface WXYUserProfileViewController : UIViewController
+@interface WXYUserProfileViewController : UIViewController<WXYProfileDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 

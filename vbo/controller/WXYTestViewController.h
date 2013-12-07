@@ -9,7 +9,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface WXYTestViewController : UIViewController
+@interface WXYTestViewController : UIViewController<UITableViewDataSource, UITableViewDelegate>
 - (IBAction)buttonPressed:(id)sender;
+
+
 
 @end

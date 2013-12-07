@@ -9,6 +9,7 @@
 #import "TShowViewController.h"
 #import "Status.h"
 #import "User.h"
+#import "UIImageView+MKNetworkKitAdditions.h"
 #import "CastViewCell.h"
 
 #define kContantHeight 110.0
@@ -19,7 +20,7 @@
 @property (nonatomic, weak) IBOutlet UITableView * tableView;
 @property (nonatomic, weak) IBOutlet UILabel * label;
 @property (nonatomic, strong) NSArray * currentShowArray;
-@property (nonatomic) ShowType currentShowType;
+
 
 @end
 
@@ -39,13 +40,28 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     UINib *castNib = [UINib nibWithNibName:@"CastViewCell" bundle:[NSBundle bundleForClass:[CastViewCell class]]];
+    self.tableView.dataSource = self;
+    self.tableView.delegate = self;
     [self.tableView registerNib:castNib forCellReuseIdentifier:@"CastViewCell"];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    self.fetchBlock(^(NSArray* array)
+    {
+        self.currentShowArray = array;
+        [self.tableView reloadData];
+    },^(NSError* error)
+    {
+        
+    });
 }
 
 - (void)setShowControllerByType:(ShowType)showType
                        andArray:(NSArray *)array
 {
-    _currentShowArray = [[NSArray alloc]initWithArray:array];
+//    _currentShowArray = [[NSArray alloc]initWithArray:array];
     _currentShowType = showType;
     switch (_currentShowType) {
         case ShowUser:
@@ -113,13 +129,22 @@
             return cell;
         }
         case ShowUser: {
-            static NSString * comRepDetailCellIdentifier = @"TalkCell";
-            UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:comRepDetailCellIdentifier];
+            
+            User* user = [_currentShowArray objectAtIndex:indexPath.row];
+            static NSString* cellIdentifier = @"UserViewCell";
+            UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+            //                cell.delegateForCastViewCell = self;
             if (cell == nil)
             {
-                cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:comRepDetailCellIdentifier];
+                cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
             }
+            //                [cell setCellWithWeiboStatus:currentCellStatus isInCastView:YES];
+            [cell.imageView setImageFromURLString:user.avatarLargeUrl placeHolderImage:nil animation:YES completion:nil];
+            cell.textLabel.text = user.screenName;
             [self.view layoutIfNeeded];
+            
+            return cell;
+            
             
             return cell;
         }
@@ -142,8 +167,16 @@
 #pragma mark - calculate weiboCell Height
 - (float)cellHeightForRowAtIndex:(NSInteger)row
 {
-    Status * currentCellStatus = [_currentShowArray objectAtIndex:row];
-    return [self cellHeightForStatus:currentCellStatus];
+    if (_currentShowType == ShowWeibo)
+    {
+        Status * currentCellStatus = [_currentShowArray objectAtIndex:row];
+        return [self cellHeightForStatus:currentCellStatus];
+    }
+    else
+    {
+        return 44.f;
+    }
+
 }
 
 - (float)cellHeightForStatus:(Status *)currentCellStatus

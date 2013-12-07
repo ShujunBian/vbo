@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-
+@class Status;
 @interface TCommentViewController : UIViewController
+
+@property (strong, nonatomic) Status* status;
 
 @end

@@ -7,6 +7,9 @@
 //
 
 #import "TRepostViewController.h"
+#import "Status.h"
+#import "WXYNetworkEngine.h"
+
 
 @interface TRepostViewController ()
 
@@ -40,7 +43,17 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-- (IBAction)clickButton:(id)sender {
+- (IBAction)clickButton:(id)sender
+{
+    [SHARE_NW_ENGINE repostWeibo:self.status.statusID text:self.textView.text isComment:RepostCommentTypeAll succeed:^(Status *status) {
+        [self.navigationController popToRootViewControllerAnimated:YES];
+    } error:^(NSError *error) {
+        
+    }];
+}
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    [self.textView resignFirstResponder];
 }
 
 @end

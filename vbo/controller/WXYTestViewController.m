@@ -10,6 +10,7 @@
 #import "WeiboSDK.h"
 #import "WXYNetworkEngine.h"
 #import "WXYNotificationNameList.h"
+#import "WXYLoginManager.h"
 @interface WXYTestViewController ()
 
 @end
@@ -54,5 +55,30 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+    UITableViewCell* cell = nil;
+    cell = [tableView dequeueReusableCellWithIdentifier:@"Iden"];
+    if (!cell)
+    {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Iden"];
+    }
+    LoginUserInfo* info = SHARE_LOGIN_MANAGER.loginUserList[indexPath.row];
+    cell.textLabel.text = info.userName;
+    return cell;
+}
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    LoginUserInfo* info = SHARE_LOGIN_MANAGER.loginUserList[indexPath.row];
+    [SHARE_LOGIN_MANAGER loginUser:info];
+    UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"切换成功" message:nil delegate:nil cancelButtonTitle:nil otherButtonTitles:nil];
+//    [alert show];
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
 
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return SHARE_LOGIN_MANAGER.loginUserList.count;
+}
 @end

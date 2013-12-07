@@ -7,7 +7,9 @@
 //
 
 #import "WXYUserProfileViewController.h"
-#import "WXYProfileTableViewDelegateObject.h"
+#import "TShowViewController.h"
+#import "TCommentViewController.h"
+#import "WXYNetworkEngine.h"
 #import "WXYNetworkEngine.h"
 
 @interface WXYUserProfileViewController ()
@@ -32,7 +34,7 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     self.tableViewDelegateObject = [[WXYProfileTableViewDelegateObject alloc] initWithTableView:self.tableView];
-    
+    self.tableViewDelegateObject.delegate = self;
     self.tableView.dataSource = self.tableViewDelegateObject;
     self.tableView.delegate = self.tableViewDelegateObject;
     
@@ -71,6 +73,29 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - Profile Delegate
+- (void)allButtonPressed
+{
+    TShowViewController* vc = [self.storyboard instantiateViewControllerWithIdentifier:@"TShowViewController"];
+    
+    vc.fetchBlock = ^(ArrayBlock succeedBlock, ErrorBlock errorBlock)
+    {
+        [SHARE_NW_ENGINE getTimelineOfUser:self.user page:1 succeed:succeedBlock error:errorBlock];
+    };
+    vc.currentShowType = ShowWeibo;
+    [self.navigationController pushViewController:vc animated:YES];
+}
+- (void)collectButtonPressed
+{
+//    TShowViewController* vc = [self.storyboard instantiateViewControllerWithIdentifier:@"TShowViewController"];
+//    vc.title = @"收藏";
+//    vc.fetchBlock = ^(ArrayBlock succeedBlock, ErrorBlock errorBlock){
+//        [SHARE_NW_ENGINE getFavoriteStatusPage:1 succeed:succeedBlock error:errorBlock];
+//    };
+//    vc.currentShowType = ShowWeibo;
+//    [self.navigationController pushViewController:vc animated:YES];
 }
 
 @end

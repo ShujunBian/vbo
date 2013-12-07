@@ -41,7 +41,7 @@
 //    self.view.translatesAutoresizingMaskIntoConstraints = NO;
 
     self.navBar = [[WXYSolidNavigationBar alloc] init];
-    self.navBar.title = SHARE_LOGIN_MANAGER.currentUserInfo.userName;
+
     [self.view addSubview:self.navBar];
 
 //    self.navBar.snapShotView = ((UIViewController*)self.childViewControllers[0]).view;
@@ -59,6 +59,7 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    self.navBar.title = SHARE_LOGIN_MANAGER.currentUserInfo.userName;
 }
 
 - (void)viewDidLayoutSubviews

@@ -13,6 +13,7 @@
 
 #import "WXYSettingManager.h"
 #import "AtViewController.h"
+#import "WXYNetworkEngine.h"
 
 @interface MHCPostViewController ()
 
@@ -114,7 +115,12 @@
 -(void)postWeibo
 {
     //add some code after...
-    
+    [SHARE_NW_ENGINE postWeiboOfCurrentUser:self.postViewTextView.text image:nil withLocation:NO visibleType:StatusVisibleTypeNormal visibleListId:nil succeed:^(Status *status)
+    {
+        [self dismissViewControllerAnimated:YES completion:nil];
+    } error:^(NSError *error) {
+        
+    }];
 }
 
 

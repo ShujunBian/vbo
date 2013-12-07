@@ -20,6 +20,7 @@
 #define HOME_TIMELINE_URL @"2/statuses/home_timeline.json"
 #define REPOST_WEIBO_URL @"2/statuses/repost.json"
 #define DESTROY_WEIBO_URL @"2/statuses/destroy.json"
+#define USER_TIMELINE_URL @"2/statuses/user_timeline.json"
 
 //post
 #define POST_WEIBO_URL @"2/statuses/update.json"
@@ -36,6 +37,8 @@
 
 //Relation
 #define RELATION_FRIEND_LIST_URL @"2/friendships/friends.json"
+#define FRIEND_SHIP_CREATE @"2/friendships/create.json"
+#define FROIEND_SHIP_DESTORY @"2/friendships/destroy.json"
 
 //Discover
 #define DISCOVER_HOT_WEIBO_URL @"2/suggestions/favorites/hot.json"
@@ -880,6 +883,52 @@
               }
           }];
     return op;
+}
+
+
+
+- (MKNetworkOperation*)getTimelineOfUser:(User*)user
+                                    page:(int)page
+                                 succeed:(ArrayBlock)succeedBlock
+                                   error:(ErrorBlock)errorBlock
+{
+    MKNetworkOperation* op = nil;
+    op = [self startOperationWithPath:USER_TIMELINE_URL
+                            needLogin:YES
+                             paramers:@{@"uid":user.userID,@"page":@(page)}
+                          onSucceeded:^(MKNetworkOperation *completedOperation)
+          
+          {
+              NSDictionary* dict = completedOperation.responseJSON;
+              NSArray* statusArray = dict[@"statuses"];
+              NSMutableArray* returnArray = [@[] mutableCopy];
+              for (NSDictionary* dict in statusArray)
+              {
+                  Status* status = [WXYNetworkDataFactory getStatusWithDictIncludeUser:dict];
+                  [returnArray addObject:status];
+              }
+              if (succeedBlock)
+              {
+                  succeedBlock(returnArray);
+              }
+          }
+                              onError:^(MKNetworkOperation *completedOperation, NSError *error)
+          {
+              if (errorBlock)
+              {
+                  errorBlock(error);
+              }
+          }];
+    return op;
+}
+
+- (MKNetworkOperation*)getFirstFriendListById:(NSNumber*)userId
+                                      succeed:(ArrayBlock)succeedBlock
+                                        error:(ErrorBlock)errorBlock
+{
+    return [self getFriendListById:userId screenName:nil count:20 cursor:@(0) succeed:^(NSArray *array, NSNumber *previousCursor, NSNumber *nextCursor) {
+        succeedBlock(array);
+    } error:errorBlock];
 }
 @end
 

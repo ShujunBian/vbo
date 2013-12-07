@@ -12,6 +12,7 @@
 #import "DDLogLevelGlobal.h"
 #import "WXYSolidNavigationBar.h"
 #import "DDLog.h"
+#import "WXYLoginManager.h"
 //static int ddLogLevel = LOG_LEVEL_VERBOSE;
 
 @interface WXYRootTabbarViewController ()
@@ -75,6 +76,21 @@
     
 #warning 以后需改成退出时的index
     [self.tabbar weiboButtonPressed];
+    
+}
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+
+}
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    if (!SHARE_LOGIN_MANAGER.loginUserList.count)
+    {
+        UIViewController* vc = [self.storyboard instantiateViewControllerWithIdentifier:@"WXYTestViewControllerIdentity"];
+        [self presentViewController:vc animated:NO completion:nil];
+    }
 }
 
 - (void)didReceiveMemoryWarning

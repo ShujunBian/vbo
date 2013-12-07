@@ -7,6 +7,8 @@
 //
 
 #import "TCommentViewController.h"
+#import "Status.h"
+#import "WXYNetworkEngine.h"
 
 @interface TCommentViewController ()
 
@@ -40,7 +42,17 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)clickButton:(id)sender {
+- (IBAction)clickButton:(id)sender
+{
+    [SHARE_NW_ENGINE createCommentOfWeibo:self.status.statusID content:self.textView.text commentOnOrigin:NO succeed:^(Comment *comment) {
+        [self.navigationController popViewControllerAnimated:YES];
+    } error:^(NSError *error) {
+        
+    }];
+}
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    [self.textView resignFirstResponder];
 }
 
 @end

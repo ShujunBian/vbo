@@ -10,8 +10,16 @@
 #import <UIKit/UIKit.h>
 @class User;
 
-@interface WXYProfileTableViewDelegateObject : NSObject <UITableViewDataSource, UITableViewDelegate>
+@protocol WXYProfileDelegate <NSObject>
 
+- (void)allButtonPressed;
+- (void)collectButtonPressed;
+- (void)followerPressed;
+- (void)followingPressed;
+@end
+
+@interface WXYProfileTableViewDelegateObject : NSObject <UITableViewDataSource, UITableViewDelegate>
+@property (weak, nonatomic) id<WXYProfileDelegate> delegate;
 
 - (id)initWithTableView:(UITableView*)tableView;
 - (void)bind:(User*)user;

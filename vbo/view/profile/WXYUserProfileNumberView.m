@@ -19,7 +19,9 @@
     NSArray* array = [nib instantiateWithOwner:self options:nil];
     if (array.count)
     {
-        return array[0];
+        WXYUserProfileNumberView* view = array[0];
+
+        return view;
     }
     else
     {

@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface WXYDiscoverViewController : UIViewController
+@interface WXYDiscoverViewController : UIViewController<UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate, UISearchBarDelegate>
 
 @end

@@ -183,6 +183,9 @@ typedef enum{
                                   cursor:(NSNumber*)cursor
                                  succeed:(ArrayWithCursorBlock)succeedBlock
                                    error:(ErrorBlock)errorBlock;
+- (MKNetworkOperation*)getFirstFriendListById:(NSNumber*)userId
+                                      succeed:(ArrayBlock)succeedBlock
+                                        error:(ErrorBlock)errorBlock;
 /*!读取用户关注的所有用户
  * \param userId 用户Id，与screenName二选一
  * \param screenName 用户名称，与userId二选一
@@ -251,4 +254,9 @@ typedef enum{
 //写入
 
 
+
+- (MKNetworkOperation*)getTimelineOfUser:(User*)user
+                                    page:(int)page
+                                 succeed:(ArrayBlock)succeedBlock
+                                   error:(ErrorBlock)errorBlock;
 @end

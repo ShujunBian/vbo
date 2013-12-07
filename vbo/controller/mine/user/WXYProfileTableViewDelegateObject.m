@@ -70,6 +70,10 @@ enum
     if (!_numberView)
     {
         _numberView = [WXYUserProfileNumberView makeView];
+        UITapGestureRecognizer* following = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(followingNumberPressed)];
+        UITapGestureRecognizer* follower = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(followerNumberPressed)];
+        [_numberView.followingNumberLabel addGestureRecognizer:following];
+        [_numberView.followerNumberLabel addGestureRecognizer:follower];
     }
     return _numberView;
 }
@@ -301,6 +305,28 @@ enum
     }
     return 44.f;
 }
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    switch (indexPath.row)
+    {
+        case kRowCollectionStatus:
+            if ([self.delegate respondsToSelector:@selector(collectButtonPressed)])
+            {
+                [self.delegate collectButtonPressed];
+            }
+            break;
+        case kRowMoreStatus:
+            if ([self.delegate respondsToSelector:@selector(allButtonPressed)])
+            {
+                [self.delegate allButtonPressed];
+            }
+            
+            break;
+        default:
+            break;
+    }
+}
 
 #pragma mark - Height
 - (float)cellHeightForStatus:(Status *)currentCellStatus
@@ -322,5 +348,19 @@ enum
     }
     
     return cellHeight;
+}
+
+- (void)followingNumberPressed
+{
+    if ([self.delegate respondsToSelector:@selector(followingPressed)]) {
+        [self.delegate followingPressed];
+    }
+}
+- (void)followerNumberPressed
+{
+    if ([self.delegate respondsToSelector:@selector(followerPressed)])
+    {
+        [self.delegate followerPressed];
+    }
 }
 @end

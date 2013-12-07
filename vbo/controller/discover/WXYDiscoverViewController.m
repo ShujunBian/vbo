@@ -13,6 +13,8 @@
 #import "DVRecommandCell.h"
 #import "DVTableSectionView.h"
 #import "CastViewCell.h"
+#import "TShowViewController.h"
+#import "WXYUserProfileViewController.h"
 
 #define kContantHeight 110.0
 #define kContentLabelLineSpace 6.0
@@ -52,8 +54,10 @@
     _searchBar = [[UISearchBar alloc]init];
     self.navigationItem.titleView = _searchBar;
     [_searchBar setPlaceholder:@"搜索"];
+    _searchBar.delegate = self;
+
     UITapGestureRecognizer * touch = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(touchInView)];
-    [self.view addGestureRecognizer:touch];
+//    [self.view addGestureRecognizer:touch];
     
 	// Do any additional setup after loading the view.
     UIView *bgview = [[UIView alloc]init];
@@ -69,23 +73,37 @@
     
     [self fetchRecommandUserArray];
     [self fetchHotWeiboArray];
+    [self fetchHotTopic];
     
 }
 
 - (void)fetchRecommandUserArray
 {
-    [SHARE_NW_ENGINE getAllFriendOfCurrentUserSucceed:^(NSArray * resultArray){
+    [SHARE_NW_ENGINE getHotUserSucceed:^(NSArray *resultArray) {
         _recommandArray = resultArray;
+        _hotUserArray = resultArray;
         [_tableView reloadData];
-    }error:nil];
+    } error:^(NSError *error) {
+        
+    }];
 }
 
 - (void)fetchHotWeiboArray
 {
-    [SHARE_NW_ENGINE getHomeTimelineOfCurrentUserPage:1 Succeed:^(NSArray * resultArray){
+    [SHARE_NW_ENGINE getHotWeiboPage:1 succeed:^(NSArray *resultArray) {
         _hotWeiboArray = resultArray;
         [_tableView reloadData];
-    } error:nil];
+    } error:^(NSError *error) {
+        
+    }];
+}
+- (void)fetchHotTopic
+{
+    [SHARE_NW_ENGINE getHotTopicSucceed:^(NSArray *resultArray) {
+        _hotTalkArray = resultArray;
+    } error:^(NSError *error) {
+        
+    }];
 }
 
 #pragma mark - UITableView DataSource
@@ -154,19 +172,62 @@
     else {
         switch (_currentSegmentType) {
             case DCSegmentTalk: {
-                return 0;
+                return 44;
             }
             case DCSegmentWeibo: {
                 return [self cellHeightForRowAtIndex:[indexPath row]];
 
             }
             case DCSegmentUser: {
-                return 0;
+                return 44;
             }
         }
     }
 }
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    NSInteger sectionNumber = indexPath.section;
+    if (sectionNumber == 0) {
+        return;
+    }
+    else {
+        switch (_currentSegmentType) {
+            case DCSegmentTalk:
+            {
+                
+                NSString* topic = [_hotTalkArray objectAtIndex:indexPath.row];
+                
+                TShowViewController* vc = [self.storyboard instantiateViewControllerWithIdentifier:@"TShowViewController"];
+                vc.title = [NSString stringWithFormat:@"#%@#",topic];
+                vc.currentShowType = ShowWeibo;
+                vc.fetchBlock = ^(ArrayBlock succeedBlock, ErrorBlock errorBlock)
+                {
+                    [SHARE_NW_ENGINE searchTopic:topic page:1 succeed:succeedBlock error:errorBlock];
+                };
 
+                [self.navigationController pushViewController:vc animated:YES];
+                
+                break;
+            }
+            case DCSegmentWeibo:
+            {
+                Status * currentCellStatus = [_hotWeiboArray objectAtIndex:[indexPath row]];
+                break;
+            }
+            case DCSegmentUser:
+            {
+                User* user = [_hotUserArray objectAtIndex:indexPath.row];
+                WXYUserProfileViewController* vc = [self.storyboard instantiateViewControllerWithIdentifier:@"WXYUserProfileViewController"];
+                vc.user = user;
+                [self.navigationController pushViewController:vc animated:YES];
+
+                break;
+            }
+
+        }
+    }
+}
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -186,7 +247,23 @@
     else {
         switch (_currentSegmentType) {
             case DCSegmentTalk: {
-                return nil;
+
+                NSString* topic = [_hotTalkArray objectAtIndex:indexPath.row];
+                static NSString* cellIdentifier = @"TalkViewCell";
+                UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+                //                cell.delegateForCastViewCell = self;
+                if (cell == nil)
+                {
+                    cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+                }
+                //                [cell setCellWithWeiboStatus:currentCellStatus isInCastView:YES];
+//                [cell.imageView setImageFromURLString:user.avatarLargeUrl placeHolderImage:nil animation:YES completion:nil];
+                cell.textLabel.text = [NSString stringWithFormat:@"#%@#",topic];
+                [self.view layoutIfNeeded];
+                
+                return cell;
+                
+                
             }
             case DCSegmentWeibo: {
                 Status * currentCellStatus = [_hotWeiboArray objectAtIndex:[indexPath row]];
@@ -203,7 +280,20 @@
                 return cell;
             }
             case DCSegmentUser: {
-                return nil;
+                User* user = [_hotUserArray objectAtIndex:indexPath.row];
+                static NSString* cellIdentifier = @"UserViewCell";
+                UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+//                cell.delegateForCastViewCell = self;
+                if (cell == nil)
+                {
+                    cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+                }
+//                [cell setCellWithWeiboStatus:currentCellStatus isInCastView:YES];
+                [cell.imageView setImageFromURLString:user.avatarLargeUrl placeHolderImage:nil animation:YES completion:nil];
+                cell.textLabel.text = user.screenName;
+                [self.view layoutIfNeeded];
+                
+                return cell;
             }
             default:
                 return nil;
@@ -273,5 +363,23 @@
     }
     return _discoverTableSectionView;
 }
-
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    [self touchInView];
+}
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
+{
+    NSString* topic = searchBar.text;
+    
+    TShowViewController* vc = [self.storyboard instantiateViewControllerWithIdentifier:@"TShowViewController"];
+    vc.title = [NSString stringWithFormat:@"#%@#",topic];
+    vc.currentShowType = ShowWeibo;
+    vc.fetchBlock = ^(ArrayBlock succeedBlock, ErrorBlock errorBlock)
+    {
+        [SHARE_NW_ENGINE searchTopic:topic page:1 succeed:succeedBlock error:errorBlock];
+    };
+    
+    [self.navigationController pushViewController:vc animated:YES];
+    
+}
 @end

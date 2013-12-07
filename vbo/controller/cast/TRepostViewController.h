@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
+@class Status;
 @interface TRepostViewController : UIViewController
-
+@property (strong, nonatomic) Status* status;
 @end

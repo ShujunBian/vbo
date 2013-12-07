@@ -129,7 +129,7 @@
         <attribute name="userDescription" optional="YES" attributeType="String">
             <userInfo/>
         </attribute>
-        <attribute name="userID" attributeType="Integer 64" defaultValueString="0" indexed="YES" syncable="YES"/>
+        <attribute name="userID" optional="YES" attributeType="Integer 64" defaultValueString="0" indexed="YES" syncable="YES"/>
         <attribute name="verified" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="verifiedReason" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="beAted" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="AtEntity" inverseName="user" inverseEntity="AtEntity" syncable="YES"/>
