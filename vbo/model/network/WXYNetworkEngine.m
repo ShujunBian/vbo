@@ -38,7 +38,7 @@
 //Relation
 #define RELATION_FRIEND_LIST_URL @"2/friendships/friends.json"
 #define FRIEND_SHIP_CREATE @"2/friendships/create.json"
-#define FROIEND_SHIP_DESTORY @"2/friendships/destroy.json"
+#define FRIEND_SHIP_DESTORY @"2/friendships/destroy.json"
 
 //Discover
 #define DISCOVER_HOT_WEIBO_URL @"2/suggestions/favorites/hot.json"
@@ -929,6 +929,53 @@
     return [self getFriendListById:userId screenName:nil count:20 cursor:@(0) succeed:^(NSArray *array, NSNumber *previousCursor, NSNumber *nextCursor) {
         succeedBlock(array);
     } error:errorBlock];
+}
+
+- (MKNetworkOperation*)friendshipAdd:(NSNumber*)userId
+                             succeed:(UserBlock)succeedBlock
+                               error:(ErrorBlock)errorBlock
+{
+    MKNetworkOperation* op = nil;
+    
+    op = [self startOperationWithPath:FRIEND_SHIP_CREATE user:SHARE_LOGIN_MANAGER.currentUserInfo paramers:@{@"uid":userId} httpMethod:@"POST" onSucceeded:^(MKNetworkOperation *completedOperation)
+    {
+        User* user = [WXYNetworkDataFactory getUserWithDictIncludeStatus:completedOperation.responseJSON];
+        if (succeedBlock)
+        {
+            succeedBlock(user);
+        }
+    } onError:^(MKNetworkOperation *completedOperation, NSError *error)
+    {
+        if (errorBlock)
+        {
+            errorBlock(error);
+        }
+    }];
+    
+    return op;
+}
+- (MKNetworkOperation*)friendshipDestroy:(NSNumber*)userId
+                                 succeed:(UserBlock)succeedBlock
+                                   error:(ErrorBlock)errorBlock
+{
+    MKNetworkOperation* op = nil;
+    
+    op = [self startOperationWithPath:FRIEND_SHIP_DESTORY user:SHARE_LOGIN_MANAGER.currentUserInfo paramers:@{@"uid":userId} httpMethod:@"POST" onSucceeded:^(MKNetworkOperation *completedOperation)
+          {
+              User* user = [WXYNetworkDataFactory getUserWithDictIncludeStatus:completedOperation.responseJSON];
+              if (succeedBlock)
+              {
+                  succeedBlock(user);
+              }
+          } onError:^(MKNetworkOperation *completedOperation, NSError *error)
+          {
+              if (errorBlock)
+              {
+                  errorBlock(error);
+              }
+          }];
+    
+    return op;
 }
 @end
 

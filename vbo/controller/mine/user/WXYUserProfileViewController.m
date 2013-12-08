@@ -15,6 +15,8 @@
 @interface WXYUserProfileViewController ()
 
 @property (strong, nonatomic) WXYProfileTableViewDelegateObject* tableViewDelegateObject;
+@property (strong, nonatomic) UIBarButtonItem* rightItem;
+- (void)rightItemPressed;
 @end
 
 @implementation WXYUserProfileViewController
@@ -37,7 +39,10 @@
     self.tableViewDelegateObject.delegate = self;
     self.tableView.dataSource = self.tableViewDelegateObject;
     self.tableView.delegate = self.tableViewDelegateObject;
-    
+    self.rightItem = [[UIBarButtonItem alloc] initWithTitle:@"设置" style:UIBarButtonItemStylePlain target:self action:@selector(rightItemPressed)];
+
+
+    self.navigationItem.rightBarButtonItem = self.rightItem;
     if (self.userName)
     {
         self.user = [SHARE_DATA_MODEL getUserByScreenName:self.userName];
@@ -57,6 +62,17 @@
      {
          self.user = user;
          [self.tableViewDelegateObject  bind:user];
+         if (self.user)
+         {
+             if (self.user.following.boolValue)
+             {
+                 self.rightItem.title = @"已关注";
+             }
+             else
+             {
+                 self.rightItem.title = @"关注";
+             }
+         }
      }
                              error:^(NSError *error)
      {
@@ -67,6 +83,18 @@
 {
     [super viewWillAppear:animated];
     self.navigationController.navigationBarHidden = NO;
+    if (self.user)
+    {
+        if (self.user.following.boolValue)
+        {
+            self.rightItem.title = @"已关注";
+        }
+        else
+        {
+            self.rightItem.title = @"关注";
+        }
+    }
+
 }
 
 - (void)didReceiveMemoryWarning
@@ -97,5 +125,41 @@
 //    vc.currentShowType = ShowWeibo;
 //    [self.navigationController pushViewController:vc animated:YES];
 }
-
+- (void)followingPressed
+{
+    TShowViewController* vc = [self.storyboard instantiateViewControllerWithIdentifier:@"TShowViewController"];
+    vc.title = @"收藏";
+    vc.fetchBlock = ^(ArrayBlock succeedBlock, ErrorBlock errorBlock){
+        [SHARE_NW_ENGINE getFirstFriendListById:self.user.userID succeed:succeedBlock error:errorBlock];
+    };
+    vc.currentShowType = ShowUser;
+    [self.navigationController pushViewController:vc animated:YES];
+}
+- (void)rightItemPressed
+{
+    if (!self.user.following.boolValue)
+    {
+        [SHARE_NW_ENGINE friendshipAdd:self.user.userID succeed:^(User *user) {
+            self.user = user;
+            UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"关注成功" message:nil delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];
+            [alert show];
+            self.rightItem.title = @"已关注";
+        } error:^(NSError *error) {
+            UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"关注失败" message:nil delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];
+            [alert show];
+        }];
+    }
+    else
+    {
+        [SHARE_NW_ENGINE friendshipDestroy:self.user.userID succeed:^(User *user) {
+            self.user = user;
+            UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"取消关注成功" message:nil delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];
+            [alert show];
+            self.rightItem.title = @"关注";
+        } error:^(NSError *error) {
+            UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"取消关注失败" message:nil delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];
+            [alert show];
+        }];
+    }
+}
 @end

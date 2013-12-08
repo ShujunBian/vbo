@@ -107,8 +107,6 @@
         <attribute name="followersCount" optional="YES" attributeType="Integer 64" defaultValueString="0">
             <userInfo/>
         </attribute>
-        <attribute name="following" optional="YES" attributeType="Boolean" syncable="YES"/>
-        <attribute name="followMe" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="friendCount" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="gender" optional="YES" attributeType="String">
             <userInfo/>

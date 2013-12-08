@@ -259,4 +259,11 @@ typedef enum{
                                     page:(int)page
                                  succeed:(ArrayBlock)succeedBlock
                                    error:(ErrorBlock)errorBlock;
+
+- (MKNetworkOperation*)friendshipAdd:(NSNumber*)userId
+                             succeed:(UserBlock)succeedBlock
+                               error:(ErrorBlock)errorBlock;
+- (MKNetworkOperation*)friendshipDestroy:(NSNumber*)userId
+                                 succeed:(UserBlock)succeedBlock
+                                   error:(ErrorBlock)errorBLock;
 @end

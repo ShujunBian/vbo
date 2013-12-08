@@ -12,6 +12,7 @@
 #import "NSDictionary+noNilValueForKey.h"
 #import "NSDate+Addition.h"
 #import "NSManagedObject+OrderSetHepper.h"
+#import "WXYLoginManager.h"
 
 @implementation User
 @dynamic loginCached;
@@ -53,6 +54,16 @@
 @dynamic beInFollowedList;
 @dynamic beInFollowingList;
 
+- (NSNumber*)followMe
+{
+    return @([self.followingUsers containsObject:SHARE_LOGIN_MANAGER.currentUser]);
+}
+- (NSNumber*)following
+{
+    return @([self.followedUsers containsObject:SHARE_LOGIN_MANAGER.currentUser]);
+}
+
+
 + (User*)insertWithId:(NSNumber*)uId InContext:(NSManagedObjectContext*)context
 {
     User* u = [NSEntityDescription insertNewObjectForEntityForName:@"User" inManagedObjectContext:context];
@@ -62,6 +73,8 @@
 
 - (void)updateWithDict:(NSDictionary*)dict
 {
+    User* loginUser = SHARE_LOGIN_MANAGER.currentUser;
+    
     self.userID = [dict noNilValueForKey:@"id"];
     self.screenName = [dict noNilValueForKey:@"screen_name"];
     self.name = [dict noNilValueForKey:@"name"];
@@ -79,14 +92,35 @@
     self.favouritesCount = [dict noNilValueForKey:@"favourites_count"];
     NSString* createdAtString = [dict noNilValueForKey:@"created_at"];
     self.createdAt = [NSDate dateFromStringRepresentation:createdAtString];
-    self.following = [dict noNilValueForKey:@"following"];
+
+    NSNumber* following = [dict noNilValueForKey:@"following"];
+    NSNumber* followMe = [dict noNilValueForKey:@"follow_me"];
+    if (following.boolValue)
+    {
+        [loginUser addFollowingUsersObject:self];
+    }
+    else
+    {
+        [loginUser removeFollowingUsersObject:self];
+    }
+    
+    if (followMe.boolValue)
+    {
+        [loginUser addFollowedUsersObject:self];
+    }
+    else
+    {
+        [loginUser removeFollowedUsersObject:self];
+    }
+    
+    
     self.allowAllActMessage = [dict noNilValueForKey:@"allow_all_act_msg"];
     self.geoEnabled = [dict noNilValueForKey:@"geo_enabled"];
     self.verified = [dict noNilValueForKey:@"verified"];
     self.allowAllComment = [dict noNilValueForKey:@"allow_all_comment"];
     self.avatarLargeUrl = [dict noNilValueForKey:@"avatar_large"];
     self.verifiedReason = [dict noNilValueForKey:@"verified_reason"];
-    self.followMe = [dict noNilValueForKey:@"follow_me"];
+
     self.onlineStatus = [dict noNilValueForKey:@"online_status"];
     self.biFollowersCount = [dict noNilValueForKey:@"bi_followers_count"];
 }
