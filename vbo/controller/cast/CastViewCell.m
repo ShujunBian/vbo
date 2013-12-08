@@ -156,7 +156,6 @@
         _avatorTopSpaceConstaint.constant = weiboCellBetweenHeight;
     }
     
-    
     [_userAvator setImage:nil];
     [_userAvator setImageFromURLString:currentCellStatus.author.profileImageUrl
                       placeHolderImage:nil animation:YES completion:nil];
@@ -165,6 +164,14 @@
     
     [_userNickname setText:currentCellStatus.author.screenName];
     [_userNickname setTextColor:SHARE_SETTING_MANAGER.themeColor];
+    
+    UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTap:)];
+    tap.numberOfTapsRequired = 1;
+    tap.delegate = self;
+    [_userAvator setUserInteractionEnabled:YES];
+    [_userNickname setUserInteractionEnabled:YES];
+    [_userNickname addGestureRecognizer:tap];
+    [_userAvator addGestureRecognizer:tap];
     
     [_currentTimeLabel setTextColor:SHARE_SETTING_MANAGER.castViewTableCellTimeLabelColor];
     [_currentTimeLabel setText:[currentCellStatus.createdAt customString]];
@@ -304,6 +311,12 @@
     //    NSLayoutManager * layoutManger = _weiboContentTextView.layoutManager;
     
     return NO;
+}
+- (void)handleTap:(UITapGestureRecognizer *)gestureRecognizer {
+    if (self.delegateForCastViewCell && [self.delegateForCastViewCell respondsToSelector:@selector(clickUrl:)]) {
+        NSString * str = [NSString stringWithFormat:@"@%@",_userNickname.text];
+        [self.delegateForCastViewCell clickUrl:str];
+    }
 }
 
 #pragma mark - IBActions
